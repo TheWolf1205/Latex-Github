@@ -1,0 +1,330 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning, automata}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}    
+\usepackage{hyperref}       
+\usepackage{url}        
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{amsfonts}   
+\usepackage{nicefrac}       
+\usepackage{microtype}      
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{ragged2e}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage[spanish]{babel} % ¡Solo una vez!
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{manfnt}
+\usepackage{layout}
+\usepackage{manfnt}
+\usepackage{phaistos}
+\usepackage{polynom}
+\usepackage[inkscapeformat=png]{svg}
+\usepackage[most]{tcolorbox}
+\usepackage{listings}
+
+\lstset{
+    language=Python,                        % Lenguaje de programación
+    basicstyle=\ttfamily\small\color[HTML]{F8F8F2}, % Fuente monoespaciada y texto blanco claro
+    backgroundcolor=\color[HTML]{282A36},   % Fondo oscuro (Dracula)
+    keywordstyle=\color[HTML]{FF79C6}\bfseries, % Palabras clave en rosa y negrita
+    commentstyle=\color[HTML]{6272A4}\itshape, % Comentarios en gris azulado y cursiva
+    stringstyle=\color[HTML]{F1FA8C},       % Cadenas en amarillo
+    numberstyle=\tiny\color[HTML]{BD93F9}, % Números en lila
+    identifierstyle=\color[HTML]{8BE9FD},  % Identificadores en azul claro
+    emph={xlabel, ylabel, title, legend, grid}, % Destaca palabras específicas
+    emphstyle=\color[HTML]{50FA7B},        % Color verde brillante para palabras destacadas
+    numbers=left,                           % Números de línea a la izquierda
+    stepnumber=1,                           % Mostrar número en cada línea
+    numbersep=10pt,                         % Separación de los números de línea
+    showstringspaces=false,                 % No marcar los espacios en las cadenas
+    frame=note,                           % Marco alrededor del código
+    framexleftmargin=20pt,                  % Espacio a la izquierda del marco para los números
+    rulecolor=\color[HTML]{F8F8F2},         % Color del borde del marco
+    breaklines=true,                        % Rompe líneas largas
+    breakatwhitespace=true,                 % Rompe en los espacios
+    tabsize=4,                              % Tamaño de tabuladores
+    escapeinside={\%*}{*)}                  % Permite la inserción de LaTeX dentro del código
+}
+
+\lstset{literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+  {Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1 
+}
+
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+
+%% Integral promedio
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.57\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+
+\setcounter{page}{0}
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+%|#*******************************************************************#|
+\pagestyle{fancy}
+\lhead{Taller}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problema \arabic{#1} continúa en la siguiente página\ldots}\nobreak{}
+    \nobreak\extramarks{Problema \arabic{#1} (continuación}{Problema \arabic{#1} continúa en la siguiente página\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problema \arabic{#1} (continuación)}{Problema \arabic{#1} continúa en la siguiente página\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problema \arabic{#1}}{}\nobreak{}
+}
+
+
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problema \arabic{homeworkProblemCounter}}{}\nobreak
+%margen de una pagina
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{#1}%
+\setlength{\rightmargin}{#2}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problema \arabic{homeworkProblemCounter}:}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+
+%|#*******************************************************************#|
+
+\newcommand{\hmwkTitle}{Taller 3}
+\newcommand{\hmwkDueDate}{\today}
+\newcommand{\hmwkClass}{Análisis Númerico}
+\newcommand{\hmwkUniversity}{Universidad Nacional de Colombia}
+\newcommand{\hmwkAuthorName}{Andrés David Cadena Simons \and acadenas@unal.edu.co \and Sandra Natalia Florez Garcia \and sflorezga@unal.edu.co}
+\newcommand{\hmwkInstructor}{Jorge Mauricio Ruiz Vera}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{06 de febrero de 2025}\\
+    \vspace{0.1in}\large{\textit{\hmwkUniversity}}\\
+    \vspace{1.5in} \textrm{\hmwkInstructor}
+    \vspace{1.5in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+%
+%   Nuevos tipos de columna
+%
+\newcolumntype{C}{>{$}c<{$}}
+\newcolumntype{L}{>{$}l<{$}}
+\newcolumntype{R}{>{$}r<{$}}
+% ---------------------------
+%|  Various Helper Commands  |
+% ---------------------------
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% -For derivatives-
+\newcommand{\deriv}[2]{\frac{\mathrm{d #1 }}{\mathrm{d} #2} }
+
+%For derivatives of degree >1
+\newcommand{\mderiv}[3]{\frac{\mathrm{d^{#3} #1 }}{\mathrm{d} #2} }
+
+% -For partial derivatives-
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% -Integral dx-
+\newcommand{\dx}{\hspace{3pt}\mathrm{d}}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\\\\\large Solución:\\ \hspace*{5pt}}}
+
+%parentesis automatico
+\newcommand{\parauto}[1]{\ensuremath{\left( #1 \right)}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+
+%TcolorBox
+
+% Definir colores y la tcolorbox de la solución
+\definecolor{myDColor}{HTML}{101010} 
+
+\definecolor{myLColor}{RGB}{153,204,255} 
+
+\definecolor{LinkColor}{HTML}{9669d9} 
+
+
+\newtcolorbox{solucion}[1][]{%
+    enhanced,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    before upper={\parindent15pt},
+    breakable,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {4pt}{0pt}{myDColor},
+    colback = myLColor!5,
+    coltitle = myLColor!5,
+    sharp corners,
+    rounded corners = southeast,
+    arc is angular,
+    arc = 3mm,
+    attach boxed title to top left,
+    boxed title style = {%
+        enhanced,
+        colback = myDColor,
+        colframe = myDColor,
+        top = 0pt,
+        bottom = 0pt,
+        sharp corners,
+        rounded corners = northeast,
+        arc is angular,
+        arc = 2mm,
+        rightrule = 0pt,
+        bottomrule = 0pt,
+        toprule = 0pt,
+    },
+    title = {\bfseries\large Solución:}, 
+    overlay unbroken={%
+        \node[anchor=west, color=black!70] at (title.east) {#1};
+        \path[fill = tcbcolback!80!black] 
+            ([yshift = 3mm]interior.south east) -- ++(-0.4,-0.1) -- ++(0.1,-0.2);
+    },
+    overlay first = {%
+        \node[anchor=west, color=black!70] at (title.east) {#1};
+        \path[fill = tcbcolback!80!black] 
+            ([yshift = 3mm]interior.south east) -- ++(-0.4,-0.1) -- ++(0.1,-0.2);
+    },
+    overlay middle={%
+        \path[fill = tcbcolback!80!black] 
+            ([yshift = -3mm]interior.north east) -- ++(-0.4,0.1) -- ++(0.1,0.2);
+        \path[fill = tcbcolback!80!black] 
+            ([yshift = 3mm]interior.south east) -- ++(-0.4,-0.1) -- ++(0.1,-0.2);
+    },
+    overlay last={%
+        \path[fill = tcbcolback!80!black] 
+            ([yshift = -3mm]interior.north east) -- ++(-0.4,0.1) -- ++(0.1,0.2);
+        \path[fill = tcbcolback!80!black] 
+            ([yshift = 3mm]interior.south east) -- ++(-0.4,-0.1) -- ++(0.1,-0.2);
+    },
+    extras middle and last = { rounded corners = northeast }
+}
+
+% Ambientes de teorema, nota, etc.
+\newtheorem{teorema}{Teorema}[section] % Vinculado a la sección
+\newtheorem{proposicion}{Proposición}[section] % Vinculado a la sección
+\newtheorem{nota}{Nota}[section] % Vinculado a la sección
+\newtheorem{ejemplo}{Ejemplo}[section] % Vinculado a la sección
+\newtheorem{lema}{Lema}[section] % Vinculado a la sección
+\newtheorem{axioma}{Axioma}[section] % Vinculado a la sección
+\newtheorem{definicion}{Definición}[section] % Vinculado a la sección
+
+
+
+
+%Cuadrito de Demostración
+\newcommand{\heart}{\begin{tikzpicture}[scale=0.001cm,rotate=180]
+\fill[black] (0,0) 
+        .. controls (0,-0.5) and (0.3,-1.8) .. (2,-2)
+        .. controls (4.2,-2) and (5.5,0) .. (5.5,3)
+        .. controls (5.5,5.5) and (3.5,7.5) .. (0,10)
+        .. controls (-3.5,7.5) and (-5.5,5.5) .. (-5.5,3)
+        .. controls (-5.5,0) and (-4.2,-2) .. (-2,-2)
+        .. controls (-0.3,-1.8) and (0,-0.5) .. (0,0);
+\end{tikzpicture}}
+
+\newcommand{\demostrado}[0]{ \begin{flushright} $\heart{}$ \end{flushright}}
