@@ -1,0 +1,37 @@
+\begin{homeworkProblem}
+  Mostrar que:
+  \begin{solution}
+    \begin{enumerate}
+      \item $sin(3x)=3cos^2(x)sin(x)-sin^3(x)$.\\
+        Note que:
+        \begin{align*}
+          sin(3x)&=Ima(cos(3x)+isen(3x))\\
+          &=Ima(e^{i3x})\\
+          &=Ima([e^{ix}]^3)\\
+          &=Ima([cos(x)+isen(x)]^3)\\
+          &=Ima(cos^3(x) + 3icos^2(x)sin(x) - 3cos(x)sin^2(x) - isin^3(x))\\
+          &=3cos^2(x)sin(x)-sin^3(x)
+        \end{align*}
+      \item $cos(3x)=cos^3(x)-3cos(x)sin^2(x)$.\\
+        Note que utilizando la expresión compleja del punto anterior se tiene que:
+        \begin{align*}
+          cos(3x)&=Re(cos(3x)+isen(3x))\\
+          &=Re(cos^3(x) + 3icos^2(x)sin(x) - 3cos(x)sin^2(x) - isin^3(x))\\
+          &=cos^3(x)-3cos(x)sin^2(x)
+        \end{align*}
+      \item $cos(8x)+28cos(4x)+35=64(cos^8(x)+sin^8(x))$.\\
+      Note que:
+      \begin{align*}
+        (e^{ix}+e^{-ix})^{8}+(e^{ix}-e^{-ix})^{8}&=2(e^{i8x} + e^{-i8x})+ 56(e^{4ix} + e^{-4ix}) + 140,
+      \end{align*}
+      es decir:
+      \begin{align*}
+        (2cos(x))^{8}+(2sin(x))^{8}&= 2(2cos(8x)) + 56(2cos(4x)) + 140
+      \end{align*}
+      lo que implica:
+      \begin{align*}
+        64(cos^{8}(x)+sin^{8}(x))&=cos(8x)+28cos(4x)+35
+      \end{align*}
+    \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}

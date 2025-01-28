@@ -1,0 +1,16 @@
+\begin{homeworkProblem}
+  Sea $f(z)=z-\frac{z^3}{3}+\frac{z^5}{5}-\frac{z^7}{7}+\cdots$. Mostrar que $f'(z)=\frac{1}{z^2+1}$.
+  \begin{solution}
+    Note que:
+    \begin{align*}
+      f(z) = \sum_{k=0}^{\infty} \frac{z^{2n+1}}{2n+1}(-1)^n      
+    \end{align*}
+    Luego:
+    \begin{align*}
+      f'(z) &= \sum_{0}^{\infty} \frac{(2n+1)(z^{2n})}{2n+1}(-1)^n\\
+      &= \sum_{0}^{\infty}z^{2n}(-1)^n\\
+      &= \sum_{0}^{\infty} (-z^2)^n\\
+      &= \frac{1}{z^2 + 1}
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}

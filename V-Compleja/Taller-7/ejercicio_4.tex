@@ -1,0 +1,20 @@
+\begin{homeworkProblem}
+  Definición: Se dice que una función $f$ es localmente constante en $z_0$, si existe un disco abierto $D(z_0,r)$, tal que $f$ es constante sobre $D$.\\
+  Sea f es analítica sobre un abierto $U$, sea $z_0\in U$ un máximo para $|f|$ ($|f(z_0)|\geq |f(z)|$, para todo $z\in U$). Probar que $f$ es localmente constante en $z_0$.
+  \begin{solution}
+    Como $f$ es analítica sobre un abierto $U$ desarrollemos la serie de potencias alrededor de $z_0$:
+    \begin{align*}
+      f(z)=\sum_{n=0}^{\infty}a_n(z-z_1)^n
+    \end{align*}
+    y por ende:
+    \begin{align*}
+      f(z_0)=a_0
+    \end{align*}
+    ahora, razonando por contradicción, supongamos que $f$ no es localmente constante en $z_0$, entonces existe $m\geq 1$ tal que $m$ es el mínimo entero positivo para el que $a_m\neq 0$, luego:
+    \begin{align*}
+      f(z)=a_0+a_m(z-z_0)^{m}+\sum_{n=m+1}^{\infty}a_n(z-z_0)^{n}
+    \end{align*}
+    luego como $f$ no es constante en ninguna vecindad de $z_0$, entonces si tomamos $D$ un disco alrededor de $z_0$ y de radio $\epsilon$ se satisface que $f$ es una aplicación abierta, luego existe un disco $\tilde{D}$ de centro $f(z_0)$ y radio $\delta$ tal que $\tilde{D}\subseteq f(D)$, luego como $f(z_0)\in \tilde{D}$ siempre se puede encontrar un $z\in D$ tal que $|f(z_0)|<|f(z)|$, \textbf{CONTRADICCIÓN}, ya que $z_0$ es un máximo de $|f|$, luego podemos concluir que $f$ tiene que ser localmente constante en $z_0$.
+    \demostrado
+  \end{solution}
+\end{homeworkProblem}

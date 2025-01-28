@@ -1,0 +1,22 @@
+\begin{homeworkProblem}
+  Para $k$ entero positivo, sea $J_k(z) = \sum_{0}^{\infty} \frac{(-1)^n}{n! (n+k)!} \left( \frac{z}{2} \right)^{2n+k}$. Probar:
+  \begin{align*}
+    z^2 J_k''(z) + zJ_k'(z) + (z^2 - k^2) J_k(z) = 0.   
+  \end{align*}
+  \begin{solution}
+    Dada la función:
+    \begin{align*}
+      J_k(z) &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n! (n+k)!} \left( \frac{z}{2} \right)^{2n+k},
+    \end{align*}
+    calculamos sus derivadas y productos:
+    \begin{align*}
+      zJ_k'(z) &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n! (n+k)!} (2n+k)\left( \frac{z}{2} \right)^{2n+k} \\
+      z^2J_k''(z) &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n! (n+k)!} \cdot (2n+k)(2n+k-1) \left( \frac{z}{2} \right)^{2n+k}.
+    \end{align*}
+    Sustituyendo en la ecuación:
+    \begin{align*}
+      z^2 J_k''(z) + z J_k'(z) + (z^2 - k^2) J_k(z),
+    \end{align*}
+    obtenemos:
+  \end{solution}
+\end{homeworkProblem}

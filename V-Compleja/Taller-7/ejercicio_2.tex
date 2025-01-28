@@ -1,0 +1,19 @@
+\begin{homeworkProblem}
+  Definición: Sea $U\subseteq \mathbb{C}$ un abierto del plano complejo, $f$ función definida sobre $U$. Se dice que $f$ es una aplicación abierta si para todo abierto $U\subseteq \mathbb{C}$, entonces $f(U)$ es abierto.\\
+  Sea $f$ es analítica sobre un abierto $U$. Suponga que en cada punto $z_0\in U$, $f$ es no constante en un disco centrado en ese punto. Probar que $f$ es una aplicación abierta.
+  \begin{solution}
+    Note que como $f$ es analítica sobre $U$, entonces podemos suponer que si tomamos $z_0\in U$, entonces se satisface que:
+    \begin{align*}
+      f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n
+    \end{align*}
+    Luego como $f$ es no constante en cualquier disco de $z_0$, entonces existe $m\geq 0$ tal que $a_m$ es el primer coeficiente distinto de 0, luego se satisface que:
+    \begin{align*}
+      f(z)&=a_m(z-z_0)^{m}+\sum_{n=m+1}^{\infty}a_n(z-z_0)^n\\
+      &=a_m(z-z_0)^{m}\left( 1+\frac{1}{a_m}\sum_{n=m+1}a_n(z-z_0)^{n-m} \right)\\
+      &=a_m(z-z_0)^{m}(1+h(z))
+    \end{align*}
+    Luego, supongamos un disco $D$ de centro $z_0$ y radio $\epsilon$ tal que si tomamos $z\in D$, entonces $1+h(z)\neq 0$, luego si evaluamos $f$ sobre $D$, el término $a_m(z-z_0)^m$ lo llevará a otro disco y el factor $1+h(z)$ al ser distinto de 0 solo dilatará y deformará el disco, por lo que podemos afirmar que $f(D)$ es abierto.\\
+    Luego como $z_0$ es arbitrario en $U$, entonces se puede repetir el mismo procedimiento para cada $z\in U$, lo que nos permite concluir que $f$ es una aplicación abierta en $U$.
+    \demostrado
+  \end{solution}
+\end{homeworkProblem}

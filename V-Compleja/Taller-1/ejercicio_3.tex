@@ -1,0 +1,32 @@
+\begin{homeworkProblem}
+  Mostrar que el triangulo de vértices $z_1$, $z_2$, $z_3$ es equilátero, si y solo si
+  $$z_1^2+z_2^2+z_3^2=z_1z_2+z_2z_3+z_1z_3$$
+  \begin{solution}
+    Note que cualquier triángulo equilátero se puede ver centrado en $(0,0)$ y como raíces cúbicas de un número complejo, es decir satisfacen ser $z^3=w$ para algún $w$ complejo.\\
+    Ahora, si el centro es distinto de $(0,0)$, simplemente debemos de trasladarlas, es decir, $(z-a)^3-b$.\\
+    Por otro lado como $z_1,z_2$ y $z_3$ con los vértices, entonces son raices de ese polinomio, por lo que la siguiente expresión y sus implicaciones son válidas:
+    \begin{align*}
+      (z-z_1)(z-z_2)(z-z_3)&=(z-a)^3-b\\
+      (z^{2}-(z_1+z_2)z+z_1z_2)(z-z_3)&=z^{3}-3az^{2}+3a^2z-a^3-b\\
+      z^{3}-(z_1+z_2+z_3)z^2+(z_1z_2+z_1z_3+z_2z_3)z-z_1z_2z_3&=z^{3}-3az^{2}+3a^2z-a^3-b
+    \end{align*}
+    de donde se puede deducir el siguiente sistema de ecuaciones:
+    \begin{align*}
+      \begin{cases}
+        z_1+z_2+z_3&=3a\text{,} \\
+        z_1z_2+z_1z_3+z_2z_3&=3a^2,\\
+        z_1z_2z_3&=a^3+b.
+      \end{cases}
+    \end{align*}
+    En dónde si tomamos $(z_1+z_2+z_3)^2=9a^2=3(z_1z_2+z_1z_3+z_2z_3)$, entonces:
+    \begin{align*}
+      z_1^2 + 2z_1z_2 + z_2^2 + 2z_1z_3 + 2z_2z_3 + z_3^2&=3z_1z_2+3z_1z_3+3z_2z_3
+    \end{align*}
+    de lo que se concluye que:
+    \begin{align*}
+      z_1^2+z_2^2+z_3^2&=z_1z_2+z_1z_3+z_2z_3
+    \end{align*}
+    con lo cuál queda demostrada una dirección.\\
+    Para el otro caso, note que se puede llevar el mismo argumento en sentido contrario, por lo que queda demostrado el ejercicio.
+  \end{solution}
+\end{homeworkProblem}

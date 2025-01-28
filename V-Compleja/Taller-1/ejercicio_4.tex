@@ -1,0 +1,22 @@
+\begin{homeworkProblem}
+  Mostrar que la suma de los ángulos interiores de un triangulo es $\pi$.
+  \begin{solution}
+    Suponga $z_1,z_2,z_3\in\mathbb{C}$ los vértices del triángulo.\\
+    Note que:
+    \begin{align*}
+      \frac{(z_1-z_2)}{|z_1-z_2|}&=e^{\alpha}\frac{(z_1-z_3)}{|z_1-z_3|}\\
+      \frac{(z_2-z_3)}{|z_2-z_3|}&=e^{\beta}\frac{(z_2-z_1)}{|z_2-z_1|}\\
+      \frac{(z_3-z_1)}{|z_3-z_1|}&=e^{\gamma}\frac{(z_3-z_2)}{|z_3-z_2|}
+    \end{align*}
+    Ya que son números complejos de norma $1$, entonces solo difieren por sus ángulos $\alpha, \beta$ y $\gamma$.\\
+    Ahora si multiplicamos estos $3$ complejos se tiene que:
+    \begin{align*}
+      \frac{(z_1-z_2)}{|z_1-z_2|}\cdot\frac{(z_2-z_3)}{|z_2-z_3|}\cdot\frac{(z_3-z_1)}{|z_3-z_1|}&=e^{\gamma}\frac{(z_3-z_2)}{|z_3-z_2|}\cdot e^{\alpha}\frac{(z_1-z_3)}{|z_1-z_3|}\cdot e^{\beta}\frac{(z_2-z_1)}{|z_2-z_1|} 
+    \end{align*}
+    Lo que implica que:
+    \begin{align*}
+      -1&=e^{\alpha+\beta+\gamma}
+    \end{align*}
+    De lo que se concluye que $\alpha+\beta+\gamma=\pi$.
+  \end{solution}
+\end{homeworkProblem}

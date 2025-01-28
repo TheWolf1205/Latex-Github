@@ -1,0 +1,17 @@
+\begin{homeworkProblem}
+  Calcular $(-3+4i)^{\frac{3}{2}}$, primero tomando la raíz cuadrada y el resultado elevarlo al cubo, y segundo, invirtiendo el procedimiento.
+  \begin{solution}
+    Sea $z=-3+4i=5e^{iarctan\left( \frac{4}{-3} \right)}$, entonces $z^{\frac{1}{2}}=\sqrt{5}e^{i\frac{arctan\left( \frac{4}{-3} \right)+2k\pi}{2}}$ con $k=0,1$, luego si elevamos el resultado al cubo, nos queda:
+    \begin{align*}
+      z^{\frac{3}{2}}&=\left(\sqrt{5}e^{i\frac{arctan\left( \frac{4}{-3} \right)+2k\pi}{2}}\right)^{3}\\
+      &=5\sqrt{5}e^{3i\frac{arctan\left( \frac{4}{-3} \right)+2k\pi}{2}}\\
+      &=5\sqrt{5}e^{i\frac{3arctan\left( \frac{4}{-3} \right)+6k\pi}{2}}
+    \end{align*}
+    Ahora hagamos el procedimiento a la inversa.\\
+    $z^{3}=125e^{i3arctan\left( \frac{4}{-3} \right)}$, por lo que al sacar raíz tenemos:
+    \begin{align*}
+      z^{\frac{3}{2}}&=5\sqrt{5}e^{i\frac{3arctan\left( \frac{4}{-3} \right)+2k\pi}{2}}
+    \end{align*}
+    con $k=0,1$.
+  \end{solution}
+\end{homeworkProblem}

@@ -1,0 +1,30 @@
+\begin{homeworkProblem}
+  Si $f(z)=\sum_{n=1}^{\infty}\frac{z^{2n}}{(2n)!}$. Probar que $f''(z)=f(z)$.
+  \begin{solution}
+    Usando resultados anteriores:
+    \begin{align*}
+      f''(z)&=\sum_{n=2}^{\infty}(2n)(2n-1)\frac{z^{2n-2}}{(2n)!}\\
+      &=\sum_{n=2}^{\infty}\frac{z^{2n-2}}{(2n-2)!}\\
+      &=\sum_{n=1}^{\infty}\frac{z^{2n}}{(2n)!}\\
+      &=f(z)
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}
+\begin{homeworkProblem}
+  Si $f(z)=\sum_{n=0}^{\infty}\frac{z^{2n}}{(n!)^2}$. Probar que $z^2f''(z)+zf'(z)=4z^2f(z)$.
+  \begin{solution}
+    Calculemos $f'$ y $f''$:
+    \begin{align*}
+      f'(z)&=\sum_{n=1}^{\infty}(2n)\frac{z^{2n-1}}{(n!)^2}\\
+      f''(z)&=\sum_{n=1}^{\infty}(2n)(2n-1)\frac{z^{2n-2}}{(n!)^2}
+    \end{align*}
+    luego:
+    \begin{align*}
+      z^2f''(z)+zf'(z)&=\sum_{n=1}^{\infty}(2n)\frac{z^{2n}}{(n!)^2}+\sum_{n=1}^{\infty}(2n)(2n-1)\frac{z^{2n}}{(n!)^2}\\
+      &=\sum_{n=1}^{\infty}4n^2\frac{z^{2n}}{(n!)^2}\\
+      &=4z^2\sum_{n=1}^{\infty}\frac{z^2n-2}{((n-1)!)^2}\\
+      &=4z^2\sum_{n=0}^{\infty}\frac{z^{2n}}{(n!)^2}\\
+      &=4z^2f(z)
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}

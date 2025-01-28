@@ -1,0 +1,73 @@
+\begin{homeworkProblem}
+  Sea $f(z)=\sum_{n=0}^{\infty}a_nz^n$, con radio de convergencia $r$. Probar:
+  \begin{itemize}
+    \item $g(z)=\sum_{n=1}^{\infty}na_nz^{n-1}$ tiene el mismo radio de convergencia de $f$.
+      \begin{solution}
+        Sabemos que:
+        \begin{align*}
+          \lim_{n \to \infty}|a_n|^{\frac{1}{n}}=\frac{1}{r}
+        \end{align*}
+        luego:
+        \begin{align*}
+          \lim_{n \to \infty}|na_n|^{\frac{1}{n}}&=\lim_{n \to \infty}|n|^{\frac{1}{n}}|a_n|^{\frac{1}{n}}\\
+          &=(1)\left( \frac{1}{r} \right)\\
+          &=\frac{1}{r}
+        \end{align*}
+        de lo que se puede concluir que el radio de convergencia de $g$ es $r$.
+        \demostrado
+      \end{solution}
+    \item $f$ es holomorfa en $D(0,r)$ y $f'(z)=g(z)$.
+      \begin{solution}
+        Sea $|z|<r$ y $\delta>0$ tal que $|z|+\delta < r$. Sea $h\in\mathbb{C}$ tal que $|h|<\delta$, luego:
+        \begin{align*}
+          f(z+h)&=\sum_{n=0}^{\infty}a_n(z+h)^{n}\\
+          &=\sum_{n=0}^{\infty}a_n(z^n+nz^{n-1}h+h^2p_n(z,h))
+        \end{align*}
+        donde $p_n(z,h)$ es un polinomio con coeficientes en los enteros.\\
+        Note que:
+        \begin{align*}
+          \left| p_n(z,h) \right|&\leq\left| \sum_{k=2}^{n} \binom{n}{k}\delta^{k-2}z^{n-k}\right|\\
+          &\leq \sum_{k=2}^{n}\binom{n}{k}\delta^{k-2}|z|^{n-k}\\
+          &\leq p_n(|z|,\delta)
+        \end{align*}
+        Ahora:
+        \begin{align*}
+          f(z+h)-f(z)-\sum_{n=1}^{\infty}na_nz^{n-1}h=h^2\sum_{n=2}^{\infty}a_np_n(z,h)
+        \end{align*}
+        lo que implica:
+        \begin{align*}
+          \frac{f(z+h)-f(z)}{h}-\sum_{n=1}^{\infty}na_nz^{n-1}&=h\sum_{n=2}^{\infty}a_np_n(z,h)
+        \end{align*}
+        luego:
+        \begin{align*}
+          \lim_{h \to 0}\left| h\sum_{n=2}^{\infty}a_np_n(z,h) \right|&\leq \lim_{h \to 0}|h|\left| \sum_{n=2}^{\infty}a_np_n(z,h) \right|\\
+          &\leq \lim_{h \to 0}|h|\sum_{n=2}^{\infty}|a_n|p_n(|z|,\delta)\\
+          &\leq 0
+        \end{align*}
+        luego $f$ es diferenciable y su derivada es $g$.
+        \demostrado
+      \end{solution}
+    \item Pruebe $a_n=\frac{f^{(n)}(0)}{n!}$.
+      \begin{solution}
+        Note que:
+        \begin{align*}
+          f^{(n)}(z)&=\sum_{k=n}^{\infty}\left(\prod_{i=k-n+1}^{k}i\right)a_k(z)^{k-n}\\
+          &=n!a_n+\sum_{k=n+1}^{\infty}\left(\prod_{i=k-n+1}^{k}i\right)a_k(z)^{k-n}
+        \end{align*}
+        luego $f^{(n)}(0)=n!a_n$, lo que implica $a_n=\frac{f^{(n)}(0)}{n!}$.
+        \demostrado
+      \end{solution}
+    \item Sea $h(z)=\sum_{n=0}^{\infty}\frac{a_n}{n+1}z^{n+1}$. Pruebe que tiene radio de convergencia $r$. (Note que $h'(z)=f(z)$, $h$ se le llama primitiva de $f$).
+    \begin{solution}
+      Note que:
+      \begin{align*}
+        \lim_{n \to \infty}\left| \frac{a_{n-1}}{n} \right|^{\frac{1}{n}}&\leq \lim_{n \to \infty}\frac{|a_{n-1}|^{\frac{1}{n}}}{|n|^{\frac{1}{n}}}\\
+        &\leq \frac{\lim_{n \to \infty}|a_{n-1}|^{\frac{1}{n}}}{\lim_{n \to \infty}|n|^{\frac{1}{n}}}\\
+        &\leq \frac{\frac{1}{r}}{1}\\
+        &\leq \frac{1}{r}
+      \end{align*}
+      luego $h(z)$ tiene radio de convergencia $r$.
+      \demostrado
+    \end{solution}
+  \end{itemize}
+\end{homeworkProblem}

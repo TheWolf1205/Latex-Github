@@ -1,0 +1,16 @@
+\begin{homeworkProblem}
+  Si$J(z) = \sum_0^\infty \frac{(-1)^n}{(n!)^2} \left(\frac{z}{2}\right)^{2n}$. Probar $z^2 J''(z) + zJ'(z) + z^2 J(z) = 0$.
+  \begin{solution}
+    Calculemos $zJ'$ y $z^2J''$ 
+    \begin{align*}
+      zJ'(z) &= \sum_{n=1}^{\infty} \frac{(-1)^n}{(n!)^2} \frac{(2n)}{2^{2n}} z^{2n}\\
+      z^{2}J''(z) &= \sum_{n=1}^{\infty} \frac{(-1)^n}{(n!)^2} \frac{(2n)(2n-1)}{2^{2n}} z^{2n}
+    \end{align*}
+    Ahora sumemos:
+    \begin{align*}
+      z^2J''(z)+zJ'(z)&=\sum_{n=1}^{\infty} \frac{(-1)^n}{(n!)^2} \frac{(2n)(2n)}{2^{2n}} z^{2n}\\
+      &=-\sum_{n=0}^{\infty} \frac{(-1)^n4(n+1)^2}{2^{2n+2}((n+1)!)^2} z^{2n+2}\\
+      &=-\sum_{n=0}^{\infty} \frac{(-1)^n}{(n!)^2}z^2\left( \frac{z}{2} \right)^{2n} = -z^2J(z)
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}

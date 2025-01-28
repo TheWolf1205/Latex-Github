@@ -1,0 +1,10 @@
+\begin{homeworkProblem}
+  Definición: Sea $U\subseteq \mathbb{C}$ un abierto del plano complejo, $f$ función definida sobre $U$ y sea $f(U)=V$. Se dique que $f$ es isomorfismo analítico si $V$ es abierto y existe una función $g:V\to U$ tal que $f\circ g=Id_V$, $g\circ f=Id_U$.\\
+  Se dice que $f$ es isomorfismo analítico local en $z_0$, si existe un abierto $U$, $z_0\in U$ y $f$ es isomorfismo analítico sobre $U$.\\
+  Suponga $0\in U$, sea $f$ analítica en $z = 0$ y suponga que $f(z) = a_1z +a_2z^2+a_3z^3+\cdots$ con $a_1\neq 0$. Probar que $f$ es isomorfismo analítico local en $z=0$.
+  \begin{solution}
+    Note que por definición $f$ es analítica en $z=0$, suponga $D$ el disco de convergencia de $f$, luego $f(0)=0$, entonces suponga $V_{0}^{\delta}$ un disco de centro $0$ y radio $\delta$, contenido en $\tilde{D}$ el disco de convergencia de $g$ (inversa formal de $f$), luego suponga $g(V_0^{\delta})\subseteq D$ (por continuidad).\\
+    Sea $U_0=f^{-1}(V_0^{\delta})=\{z\in D: f(z)\in V_{0}^{\delta}\}$, luego como $f$ es continua, entonces $U_0$ es abierto, luego $f(U_0)=V_0^{\delta}$, $f\circ g=Id_{V_0^{\delta}}$, $g\circ f=Id_{U_0}$ y por ende $f$ restringida a $U_0$ es un isomorfismo analítico, luego como $z\in U_0$, entonces $f$ es un isomorfismo analítico local en $0$. 
+    \demostrado
+  \end{solution}
+\end{homeworkProblem}
