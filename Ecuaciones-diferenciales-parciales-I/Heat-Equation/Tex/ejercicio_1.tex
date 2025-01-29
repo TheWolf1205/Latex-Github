@@ -1,0 +1,209 @@
+\begin{homeworkProblem}
+  \begin{teorema}
+    Asuma que $g\in C(\mathbb{R}^{n})\cap L^{\infty}(\mathbb{R}^{n})$ y sea $u$ definida por:
+    \begin{align*}
+      u(x,t)&=(\Phi(\cdot,t)*g)(x)\\
+      &=\frac{1}{(4\pi t)^{\frac{n}{2}}}\int_{\mathbb{R}^{n}}e^{-\frac{|x-y|^2}{4t}}g(y)dy
+    \end{align*}
+    con $x\in\mathbb{R}^{n}$ y $t>0$.
+    Entonces:
+    \begin{enumerate}
+      \item $u\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$,
+      \item $u_t-\Delta u=0$ para $x\in\mathbb{R}^{n}$ y $t>0$,
+      \item $\underset{(x,t)\rightarrow(x^0,0),x\in\mathbb{R}^{n},t>0}{\lim}u(x,t)=g(x^0)$ para cada punto $x^0\in\mathbb{R}^{n}$. 
+    \end{enumerate}
+  \end{teorema}
+  \begin{solucion}
+    \begin{enumerate}
+      \item $u\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$
+        Note que la función $\frac{1}{t^{\frac{n}{2}}}\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$, ahora veamos que $e^{-\frac{|x|^2}{4t}}\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$.\\
+        Para esto será interesante ver que $e^{-\frac{|x|^2}{4t}}$ es infinitamente derivable respecto a $x$ e infinitamente derivable respecto a $t$ independientemente y luego inductivamente ver que estás son a su vez infinitamente derivables entre si, es decir:\\
+        Sabemos que respecto a la variable $x$ se tiene que:
+        \begin{align*}
+         \partial_{x_i}e^{-\frac{|x|^2}{4t}}&=-\dfrac{x_i}{2t}e^{-\frac{|x|^2}{4t}},
+        \end{align*}
+        y a su vez, utilizando un argumento inductivo podemos verificar que en general:
+        \begin{align*}
+          \partial^{\alpha}e^{-\frac{|x|^2}{4t}}&=\dfrac{p(x,t)}{(2t)^{|\alpha|}}e^{-\frac{|x|^2}{4t}},
+        \end{align*}
+        con $\alpha$ multi-índice y $p$ es un polinomio con grado $|\alpha|$. Esto debido a que cada derivada parcial respecto a la componente $x_{j}$ aumenta a lo más un grado el polinomio definido por la derivada anterior, y añade un factor $\left(-\dfrac{1}{2t}\right)$ \\
+        Además, sabemos que respecto a $t$ se cumple que:
+        \begin{align*}
+          \partial_{t}e^{-\frac{|x|^2}{4t}}& = \frac{|x|^{2}}{4t^2} e^{-\frac{|x|^2}{4t}},
+        \end{align*}
+        y a su vez, usando la regla del producto de las derivadas y un argumento inductivo se puede verificar que en general:
+        \begin{align*}
+          \partial^{k}_{t}e^{-\frac{|x|^2}{4t}}&=\frac{q(x,t)}{(2t)^{2k}}e^{-\frac{|x|^2}{4t}},
+        \end{align*}
+        con $k\in \mathbb{N}$ y $q$ polinomio.\\
+        Ahora, utilizando esto, podemos ver que si derivamos $e^{-\frac{|x|^2}{4t}}$ respecto a $(x,t)$, dado cualquier multi-índice $\beta$, existen un polinomio $p$ no nulos y unos enteros $m,n\in \mathbb{Z}$ tales que:
+        \begin{align*}
+          \partial^{\beta}e^{-\frac{|x|^2}{4t}}&=\frac{p(x,t)}{(2t)^n(4t)^m}e^{-\frac{|x|^2}{4t}}
+        \end{align*}
+        Luego, note que si dado $\delta>0$ y tomamos $t\in[\delta, \infty)$, entonces:
+        \begin{align*}
+          \left|\partial^{\beta}e^{-\frac{|x|^2}{4t}}\right|&=\left|\frac{p(x,t)}{(2t)^n(4t)^m}e^{-\frac{|x|^2}{4t}}\right|\\
+          &\leq \left|\frac{p(x,y)}{(2\delta)^n(4\delta)^m}\right|\left|e^{-\frac{|x|^2}{4t}}\right|\\
+          &\leq M
+        \end{align*}
+        Para algún $M\in \mathbb{R}$, luego como $\delta$ es arbitrario, se puede extender de $[\delta,\infty)$ a $(0,\infty)$. 
+        Luego como:
+        \begin{align*}
+          u(x,t)&=\frac{1}{(4\pi t)^{\frac{n}{2}}}\int_{\mathbb{R}^{n}}e^{-\frac{|x-y|^2}{4t}}g(y)dy\\
+          &=\frac{1}{(4\pi)^{\frac{n}{2}}}\left( \frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}(\cdot,t)*g \right)(x),
+        \end{align*}
+        al ser $\frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}\in C^{\infty}(\mathbb{R}^{n}\times(0,\infty))$ con todas sus derivadas acotadas, entonces sabemos que $u$ y $\left( \partial^{\beta}\frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}(\cdot,t)*g \right)(x)$ se encuentran bien definidas.\\
+        Ahora veamos que $u\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$, es decir, veamos que $\partial^{\beta}\left( \frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}(\cdot,t)*g \right)(x)=\left( \partial^{\beta}\frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}(\cdot,t)*g \right)(x)$.\\
+        Para esto como sabemos que dado $\beta$ multi-índice se cumple que:
+        \begin{align*}
+          \partial^{\beta}e^{-\frac{|x|^2}{4t}}&=\frac{p(x,t)}{(2t)^n(4t)^m}e^{-\frac{|x|^2}{4t}}, 
+        \end{align*}
+        luego usando la regla del producto podemos fijarnos que solamente será necesario ver que se cumple para las primeras derivadas respecto a $x$ y $t$.\\
+        Veamos el caso para $x_j$.\\
+        Dados $(x,t)\in\mathbb{R}^{n}\times (0,\infty)$, note que:
+        \begin{align*}
+          \left| \frac{e^{-\frac{|x+h\epsilon_j-y|^2}{4t}}-e^{-\frac{|x-y|^2}{4t}}}{h} \right|&\leq\frac{\left| e^{-\frac{(x-y+h\epsilon_j)\cdot(x-y+h\epsilon_j)}{4t}}-e^{-\frac{|x-y|^2}{4t}} \right|}{|h|}\\
+          &\leq\frac{\left| e^{-\frac{|x-y|^2+2(h\epsilon_j)\cdot(x-y)+|h\epsilon_j|^2}{4t}}-e^{-\frac{|x-y|^2}{4t}} \right|}{|h|}\\
+          &\leq \frac{\left| e^{-\frac{|x-y|^2}{4t}}\left( e^{-\frac{2(h\epsilon_j)\cdot(x-y)+|h\epsilon_j|^2}{4t}}-1 \right) \right|}{|h|}
+        \end{align*}
+        Usando la desigualdad del valor medio podemos ver que dado $h^*$ tal que $0<|h^*|<|h|$ (suponga $|h|\leq 1/4$ sin pérdida de generalidad), se cumple que:
+        \begin{align*}
+          \left| \frac{e^{-\frac{|x+h\epsilon_j-y|^2}{4t}}-e^{-\frac{|x-y|^2}{4t}}}{h} \right| &\leq \frac{\left| e^{-\frac{|x-y|^2}{4t}}\left( e^{-\frac{2(h\epsilon_j)\cdot(x-y)+|h\epsilon_j|^2}{4t}}-1 \right) \right|}{|h|}\\
+          &\leq \frac{\left| e^{-\frac{|x-y|^2}{4t}}\left( (-2(x-y)_j-2|h^*\epsilon_j|)e^{-\frac{2(x-y)\cdot(h^*\epsilon_j)+|h^*\epsilon_j|^2}{4t}} \right)(|h|) \right|}{|h|}\\
+          &\leq \left| (-2(x-y)_j -2|h|)e^{-\frac{|x-y|^2+2(h\epsilon_j)\cdot(x-y)+|h|^2}{4t}}\right|\\
+          &\leq \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|=f(y)
+        \end{align*}
+        Ahora veamos que $f(y)\in L^1(\mathbb{R}^{n})$.\\
+        \begin{align*}
+          \|f\|_1&=\int_{\mathbb{R}^{n}} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy\\
+          &\leq \int_{|x-y|\leq 1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy\\
+          &+ \int_{|x-y|>1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy\\
+          &\leq I + J
+        \end{align*}
+        Veamos que $I$ converge:
+        \begin{align*}
+          I&\leq \int_{|x-y|\leq 1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy\\
+          &\leq \int_{|x-y|\leq 1} \left| \left(-2 -\frac{1}{2}\right)e^{-\frac{1+1/2+1/8}{4t}}\right|dy\\
+          &\leq C
+        \end{align*}
+        Ahora veamos que $J$ converge:
+        para esto veamos que si $|x-y|>1$, entonces:
+        \begin{align*}
+          \frac{|x-y|}{2}\leq\frac{|x-y|^2}{2}\leq |x-y|^2\\
+          |x-y|^2+\frac{|x-y|}{2}\leq 2|x-y|^2
+        \end{align*}
+        Por lo que es válido decir que:
+        \begin{align*}
+          J&\leq \int_{|x-y|>1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy\\
+          &\leq \int_{|x-y|>1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{2|x-y|^2+1/8}{4t}}\right|dy\\
+          &\leq C
+        \end{align*}
+        Por lo que usando el teorema de la convergencia dominada de Lebesgue podemos afirmar que dado $(x,t)\in\mathbb{R}^{n}\times (0,\infty)$ se satisface que:
+          \begin{align*}
+            \partial_{x_j}u(x,t)&=\partial_{x_j}\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy\\
+            &=\int_{\mathbb{R}^{n}}\partial_{x_j}\Phi(x-y,t)g(y)dy\\
+            &=(\partial_{x_j}\Phi(\cdot,t)*g)(x,t)
+          \end{align*}
+        Ahora veamos el caso para la primera derivada respecto a $t$.\\
+        Dados $(x,t)\in\mathbb{R}^{n}\times (0,\infty)$, note que por desigualdad del valor medio:
+        \begin{align*}
+          \left| \frac{\frac{1}{(t+h)^{n/2}}e^{-\frac{|x-y|^2}{4(t+h)}}-\frac{1}{t^{n/2}}e^{-\frac{|x-y|^2}{4t}}}{h} \right|&\leq \left| \frac{\left( \frac{-2n(t+h^*)+|x-y|^2}{4(t+h^*)^{n/2+2}}e^{-\frac{|x-y|^2}{4(t+h^*)}} \right)h}{h} \right|
+        \end{align*}
+        Luego, suponga $h\leq k$, entonces como $0\leq h^*\leq h$ se cumple que:
+        \begin{align*}
+          \left| \frac{\frac{1}{(t+h)^{n/2}}e^{-\frac{|x-y|^2}{4(t+h)}}-\frac{1}{t^{n/2}}e^{-\frac{|x-y|^2}{4t}}}{h} \right|&\leq \left| \frac{-2n(t+h^*)+|x-y|^2}{4(t+h^*)^{n/2+2}}e^{-\frac{|x-y|^2}{4(t+h^*)}} \right|\\
+          &\leq \left| \frac{2n(t+k)+|x-y|^2}{4(t)^{n/2+2}}e^{-\frac{|x-y|^2}{4(t+k)}} \right|=f(y)
+        \end{align*}
+        Luego $f(y)\in L^1(\mathbb{R}^{n})$, por lo que usando el teorema de la convergencia dominada de Lebesgue se tiene que dado $(x,t)\in\mathbb{R}^{n}\times (0,\infty)$ se cumple que:
+        \begin{align*}
+          \partial_{t}u(x,t)&=\partial_{t}\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy\\
+          &=\int_{\mathbb{R}^{n}}\partial_{t}\Phi(x-y,t)g(y)dy\\
+          &=(\partial_{t}\Phi(\cdot,t)*g)(x,t)
+        \end{align*}
+        Por lo que quedaría demostrado que $u\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$.
+        \demostrado
+        \newpage
+      \item $u_t-\Delta u=0$ para $x\in\mathbb{R}^{n}$ y $t>0$.\\
+        Para esto veamos que $\Phi$ satisface la ecuación del calor.\\
+        Note que:
+        \begin{align*}
+          \partial_{x_i}^2\frac{1}{(4\pi t)^{n/2}}e^{-\frac{-|x|^2}{4t}}&=-\frac{1}{(4\pi t)^{n/2}(2t)}\left( 1-\frac{x_i^2}{2t} \right)e^{-\frac{|x|^2}{4t}}\\
+          \partial_{t}\frac{1}{(4\pi t)^{n/2}}e^{-\frac{|x|^2}{4t}}&=-\frac{1}{(4\pi t)^{n/2}(2t)}\left( n-\frac{|x|^2}{2t} \right)e^{-\frac{|x|^2}{4t}}
+        \end{align*}
+        luego:
+        \begin{align*}
+          \Phi_t-\Delta\Phi&=-\frac{1}{(4\pi t)^{n/2}(2t)}\left( n-\frac{|x|^2}{2t} \right)e^{-\frac{|x|^2}{4t}}+\sum_{i=1}^{n}\frac{1}{(4\pi t)^{n/2}(2t)}\left( 1-\frac{x_i^2}{2t} \right)e^{-\frac{|x|^2}{4t}})\\
+          &=0
+        \end{align*}
+        Ahora note que:
+        \begin{align*}
+          u_t-\Delta u&=\int_{\mathbb{R}^{n}}(\Phi_t-\Delta\Phi)(x-y,t)g(y)dy\\
+          &=0 &&\text{ya que $\Phi$ soluciona la ecuación del calor.}
+        \end{align*}
+        \demostrado
+      \item $\underset{(x,t)\rightarrow(x^0,0),x\in\mathbb{R}^{n},t>0}{\lim}u(x,t)=g(x^0)$ para cada punto $x^0\in\mathbb{R}^{n}$.\\
+      Para esto primero veamos que:
+      \begin{align*}
+        \int_{\mathbb{R}^{n}}\Phi(x,t)dx&=1,
+      \end{align*}
+      para todo $t>0$.\\
+      Para ver esto note que:
+      \begin{align*}
+        \int_{\mathbb{R}^{n}}\Phi(x,t)dx&=\frac{1}{(4\pi t)^{n/2}}\int_{\mathbb{R}^{n}}e^{-\frac{|x|^2}{4t}}dx\\
+        &=\frac{1}{\pi^{n/2}}\int_{\mathbb{R}^{n}}e^{-z}dz &&\text{como $e^{-z}\in L^1(\mathbb{R}^{n})$.}\\
+        &=\frac{1}{\pi^{n/2}}\int_{-\infty}^{\infty}\int_{\infty}^{\infty}\cdots \int_{-\infty}^{\infty}e^{-z_1-z_2-\cdots-z_n}dz_1dz_2\cdots dz_n\\
+        &=\frac{1}{\pi^{n/2}}\prod_{i=1}^{n}\int_{-\infty}^{\infty}e^{-z_i}dz_i\\
+        &=\frac{1}{\pi^{n/2}}\prod_{i=1}^{n}\pi^{1/2}=1
+      \end{align*}
+      Dado $x^0\in \mathbb{R}^{n}$ y $\epsilon>0$, escoja $\delta>0$ tal que:
+      \begin{align*}
+        |g(y)-g(x^0)|<\epsilon &&\text{si }|y-x^0|<\delta,y\in\mathbb{R}^{n}.
+      \end{align*}
+      (note que esto se satisface por la continuidad de $g$).\\
+      Entonces si nosotros tomamos $|x-x^0|<\frac{\delta}{2}$, nosotros tenemos que:
+      \begin{align*}
+        |u(x,t)-g(x^0)|&=\left|\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy-g(x^0)\right|\\
+        &=\left|\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy-\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(x^0)dy\right|\\
+        &\leq \left| \int_{\mathbb{R}^{n}}\Phi(x-y,t)(g(y)-g(x^0))dy \right|\\
+        &=\left| \int_{B(x^{0},\delta)}\Phi(x-y,t)(g(y)-g(x^0))dy \right|\\
+        &\phantom{=}+\left| \int_{\mathbb{R}^{n}-B(x^{0},\delta)}\Phi(x-y,t)(g(y)-g(x^0))dy \right|\\
+        &=|I|+|J|
+      \end{align*}
+      note que:
+      \begin{align*}
+        |I|&\leq\left| \int_{B(x^{0},\delta)}\Phi(x-y,t)(g(y)-g(x^0))dy \right|\\
+        &\leq \int_{B(x^{0},\delta)}\Phi(x-y,t)|g(y)-g(x^0)|dy\\
+        &\leq \epsilon \int_{B(x^{0},\delta)}\Phi(x-y,t)dy\\
+        &\leq \epsilon
+      \end{align*}
+      por otro lado, si $|x-y|\geq \delta$, entonces:
+      \begin{align*}
+        |y-x^0|&\leq|y-x|+|x-x^0|\\
+        &\leq |y-x|+\frac{\delta}{2}\\
+        &\leq |y-x|+\frac{1}{2}|y-x^0|\\
+        \frac{1}{2}|y-x^0|&\leq|y-x|
+      \end{align*}
+      consecuentemente:
+      \begin{align*}
+        |J|&\leq \left| \int_{\mathbb{R}^{n}-B(x^{0},\delta)}\Phi(x-y,t)(g(y)-g(x^0))dy \right|\\
+        &\leq \int_{\mathbb{R}^{n}-B(x^{0},\delta)}\Phi(x-y,t)|g(y)-g(x^0)|dy\\
+        &\leq 2\|g\|_\infty\int_{\mathbb{R}^{n}-B(x^{0},\delta)}\Phi(x-y,t)\\
+        &\leq \frac{C}{t^{n/2}}\int_{\mathbb{R}^{n}-B(x^{0},\delta)}e^{-\frac{|x-y|^2}{4t}}dy\\
+        &\leq \frac{C}{t^{n/2}}\int_{\mathbb{R}^{n}-B(x^{0},\delta)}e^{-\frac{|y-x^0|^2}{16t}}\\
+        &\leq \frac{C}{t^{n/2}}\int_{\delta}^{\infty}e^{-\frac{-r^2}{16t}}r^{n-1}dr
+      \end{align*}
+      ahora, suponga $u=\frac{r^2}{16t}$, luego:
+      \begin{align*}
+        |J|&\leq \frac{C}{t^{n/2}}\int_{\delta}^{\infty}e^{-\frac{-r^2}{16t}}r^{n-1}dr\\
+        &\leq\int_{\frac{\delta^2}{16t}}^{\infty}\frac{(4\sqrt{u}\sqrt{t})^{n-1}8t}{\sqrt{t}^n (4\sqrt{u}\sqrt{t})}e^{-u}du\\
+        &\leq \int_{\frac{\delta^2}{16t}}^{\infty}8(4\sqrt{u})^{n-2}e^{-u}du
+      \end{align*}
+      La cual cuando $t\rightarrow 0^+$, $\frac{\delta^2}{16t}\rightarrow\infty$ y por ende la integral tiende a 0. Por consecuente es posible afirmar que:
+      \begin{align*}
+        |u(x,t)-g(x^0)|&\leq |I|+|J|\\
+        &\leq \epsilon
+      \end{align*}
+      Cuando $t\rightarrow 0^+$, es decir, $\underset{(x,t)\rightarrow(x^0,0),x\in\mathbb{R}^{n},t>0}{\lim}u(x,t)=g(x^0)$ para cada punto $x^0\in\mathbb{R}^{n}$. 
+    \end{enumerate}
+  \end{solucion}
+\end{homeworkProblem}

@@ -1,0 +1,50 @@
+\begin{homeworkProblem}
+  Sean $U$ un abierto acotado con borde suave y $u \in C^{2}(\overline{U})$ la solución del problema:
+  \begin{align*}
+    \hspace{-6cm}(1)\hspace{3cm}\begin{cases}
+      -\Delta u=f &\text{ en $U$,}\\
+      \phantom{-\Delta} u=g &\text{ en $\partial U$,}
+    \end{cases}
+  \end{align*}
+  donde $f$ y $g$ son continuas. Definimos el conjunto $\mathcal{A} = \{ w \in C^{2}(\overline{U}): w = g$ en $\partial U \}$ y el funcional de energía
+  \begin{align*}
+    E[w] = \int _{U} \left(\dfrac{1}{2} |\nabla w|^{2} - wf\right) dx.
+  \end{align*}
+  Muestre que 
+  \begin{align*}
+    E[u] = \min_{w \in \mathcal{A}} E[w].
+  \end{align*}
+  Es decir, soluciones de la EDP (1) minimizan el funcional de energía $E[\cdot]$.\\
+  \textbf{Sugerencia:} sea $w\in \mathcal{A}$ puesto que $u$ soluciona $(1)$, tenemos que $-\Delta u -f=0$ en $U$ y por lo tanto:
+  \begin{align*}
+    0=\int_{U}(-\Delta u - f)(u-w)dx
+  \end{align*}
+  Integre por partes la expresión anterior para obtener el resultado deseado. Recuerde que la desigualdad de Cauchy-Schwartz implica:
+  \begin{align*}
+    |\nabla u \cdot \nabla v|\leq |\nabla u||\nabla v|\leq \frac{1}{2}|\nabla u|^2+\frac{1}{2}|\nabla v|
+  \end{align*}
+  \begin{solucion}
+    Escoja $w\in\mathcal{A}$, entonces:
+    \begin{align*}
+      0&=\int_{U}(-\Delta u-f)(u-w)dx\\
+      &=\int_{U}-(\Delta u)(u-w)dx - \int_{U}f(u-w)dx
+    \end{align*}
+    Realizando integración por partes en el primer sumando y como $u-w=g-g=0$ en $\partial U$:
+    \begin{align*}
+      0&=\int_{U}\nabla u \cdot \nabla(u-w)-f(u-w)dx\\
+      0&=\int_{U}\nabla u \cdot \nabla u-\nabla u\cdot \nabla w-uf+wfdx\\ 
+    \end{align*}
+    Lo que implica que:
+    \begin{align*}
+      \int_{U}|\nabla u|^2 -ufdx&=\int_{U}\nabla u\cdot \nabla w-wfdx && \text{Usando Cauchy-Schwartz.}\\
+      &\leq \int_{U}\frac{1}{2}|\nabla u|^2+\frac{1}{2}|\nabla w|^2-wf dx
+    \end{align*}
+    Lo que implica que:
+    \begin{align*}
+      \int_{U}\frac{1}{2}|\nabla u|^2-ufdx=E[u]&\leq \int_{U}\frac{1}{2}|w|^2-wfdx\\
+      &\leq E[w]
+    \end{align*}
+    Por lo que podemos afirmar que $E[u]=\min_{w\in\mathcal{A}}E[w]$.
+    \demostrado
+  \end{solucion}
+\end{homeworkProblem}

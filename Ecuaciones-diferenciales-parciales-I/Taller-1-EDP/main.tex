@@ -1,0 +1,384 @@
+\input{encabezado}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{cancel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\begin{homeworkProblem}
+Demuestre el teorema multinomial. Sea $x=\left(x_1, \ldots, x_n\right) \in \mathbb{R}^n$, entonces
+$$
+\left(x_1+\cdots+x_n\right)^k=\sum_{|\alpha|=k}\left(\begin{array}{c}
+|\alpha| \\
+\alpha
+\end{array}\right) x^\alpha,
+$$
+donde $\left(\begin{array}{c}|\alpha| \\ \alpha\end{array}\right):=\dfrac{|\alpha| !}{\alpha !}$ con $\alpha !=\alpha_{1} ! \ldots \alpha_{n} !$ y $x^\alpha=x_1^\alpha \ldots x_n^{\alpha_n}$. La suma es considerada sobre todos los multi-índices $\alpha=\left(\alpha_1, \ldots, \alpha_n\right)$ con $|\alpha|=k$.
+Sugerencia. Para cada $k \geq 0$, muestre la igualdad buscada por inducción sobre en número de variables $n$.\\
+    \begin{solucion}
+        Dado $k \geq 0 $, razonemos por inducción sobre el número de variables $n$. Para $n = 1$ el resultado es trivial. \\
+        Ahora, supongamos que el resultado se tiene para todo $s<n+1$, esto es:
+        \begin{align*}
+            (x_{1}+...+x_{n})^{k} = \displaystyle \sum_{\abs{\alpha_{1} + ... + \alpha_{n}} = k} \binom{\abs{\alpha}}{\alpha} x^{\alpha}.
+        \end{align*}
+        Ahora, procedamos con $n+1:$
+        \begin{align*}
+            (x_{1}+...+x_{n}+x_{n+1})^{k}  &= (x_{1}+...+x_{n}+x_{n+1})^{k}, \hspace{1cm} \text{teorema del binomio de Newton}\\
+                                        & = \displaystyle \sum_{s=0}^{k} \dfrac{k!}{s!(k-s)!} (x_{1}+...+x_{n})^s x_{n+1}^{k-s}, \hspace{1cm} \text{ hipótesis de inducción}\\
+                                        & = \displaystyle \sum_{s=0}^{k}\dfrac{k!}{s!(k-s)!} \left( \displaystyle \sum_{\abs{\alpha_{1} + ... +\alpha_{n} = s}} \dfrac{s!}{\alpha_{1}!...\alpha_{n}!}x_{1}^{\alpha_{1}}...x_{n}^{\alpha_{n}} \right)x_{n+1}^{k-s} ,\\ 
+                                         & = \displaystyle\sum_{s=0}^{k} \displaystyle \sum_{\abs{\alpha_{1} + ... +\alpha_{n} } = s} \dfrac{k!}{s!(k-s)!} \dfrac{s!}{\alpha_{1}!...\alpha_{n}!}x_{1}^{\alpha_{1}}...x_{n}^{\alpha_{n}}x_{n+1}^{k-s}\\
+                                         & = \displaystyle\sum_{s=0}^{k} \displaystyle \sum_{\abs{\alpha_{1} + ... +\alpha_{n} } = s} \dfrac{k!}{\alpha_{1}!...\alpha_{n}!(k-s)!}x_{1}^{\alpha_{1}}...x_{n}^{\alpha_{n}}x_{n+1}^{k-s}, \hspace{0,5cm}  \alpha_{n+1} = k-s\\
+                                         &=\displaystyle \sum_{\abs{\alpha_{1}...+\alpha_{n}+\alpha_{n+1}}} \dfrac{k!}{\alpha_{1}!...\alpha_{n}!(k-s)!}x_{1}^{\alpha_{1}}...x_{n}^{\alpha_{n}}x_{n+1}^{\alpha_{n+1}}.\\
+                                         &= \displaystyle \sum_{\abs{\alpha}} \binom{\abs{\alpha}}{\alpha}x^{\alpha}
+        \end{align*}
+        \demostrado
+    \end{solucion}
+\end{homeworkProblem}
+\newpage
+
+\begin{homeworkProblem}
+    Para cada una de las siguientes EDPs diga su orden y determine si es lineal, semilineal, cuasilineal o completamente no lineal.\\
+    \textbf{Nota:} Por simplicidad asumiremos que $u=u(x,t)$.
+\begin{itemize}
+    \item  \textbf{Ecuación de Schrödinger:} $i u_t+\Delta u+V(x) u=0$.
+    \begin{solucion}
+        \textbf{Lineal de segundo orden.}\\
+        Veamos que la siguiente expresión es válida:
+        \begin{align*}
+            iu_t+\Delta u+V(x)u&=iu_t+u_{xx}+u_{tt}+V(x)u\\
+            &=u_{xx}+u_{tt}+iu_{t}+V(x)u\\
+            &=0
+        \end{align*}
+        Luego los coeficientes de la EDP son $(1,1,i,V(x))$, por lo cuál sabemos que la ecuación es \textbf{Lineal} y como tenemos  a $u_{xx}$, entonces podemos concluir en que la EDP es de \textbf{segundo orden}. 
+    \end{solucion}
+    
+\item \textbf{Ecuación del telégrafo:} $u_{tt}+2du_{t}-u_{x}x=0$ donde $d \in \mathbb{R}$.
+    \begin{solucion}
+        \textbf{Lineal de segundo orden.}\\
+        Veamos que la siguiente expresión es válida:
+        \begin{align*}
+            u_{tt}+2du_{t}-u_{x}x&=u_{tt}+2du_{t}-xu_{x}\\
+            &=0
+        \end{align*}
+        Luego los coeficientes de la EDP son $(1,2d,-x)$, por lo cuál sabemos que la ecuación es \textbf{Lineal} y como tenemos a $u_{tt}$, entonces podemos concluir en que la EDP es de \textbf{segundo orden}.
+    \end{solucion}
+\newpage
+\item \textbf{Ecuación de superficie mínima:} $\operatorname{div}\left(\dfrac{\nabla u}{\left(1+\|\nabla u\|^2\right)^{\frac{1}{2}}}\right)=0$, donde $\operatorname{div}(F)=$ $\nabla \cdot F$, es el operador divergencia del campo $F$.
+    \begin{solucion}
+        \textbf{Cuasilineal de segundo orden.}\\
+        Veamos que la siguiente expresión es válida:
+        \begin{align*}
+            \dfrac{\nabla u}{\left(1+\|\nabla u\|^2\right)^{\frac{1}{2}}}&=\dfrac{\left(u_x,u_t\right)}{(1+u_x^2+u_t^2)^{\frac{1}{2}}}\\
+            &=\left(u_x(1+u_x^2+u_t^2)^{-\frac{1}{2}},u_t(1+u_x^2+u_t^2)^{-\frac{1}{2}}\right)
+        \end{align*}
+        Luego:
+        \begin{align*}
+            \operatorname{div}\left(\dfrac{\nabla u}{\left(1+\|\nabla u\|^2\right)^{\frac{1}{2}}}\right)&=\operatorname{div}\left(u_x(1+u_x^2+u_t^2)^{-\frac{1}{2}},u_t(1+u_x^2+u_t^2)^{-\frac{1}{2}}\right)\\
+            &=\frac{u_{xx}}{\sqrt{1+u_x^2+u_t^2}}+\left(-\frac{2(u_x)^2(u_{xx})+2(u_t)(u_x)(u_{tx})}{2\sqrt{(1+u_x^2+u_t^2)^3}}\right)+\\
+            &\phantom{=.}\frac{u_{tt}}{\sqrt{1+u_x^2+u_t^2}}+\left(-\frac{2(u_x)(u_t)(u_{xt})+2(u_t)^2(u_{tt})}{2\sqrt{(1+u_x^2+u_t^2)^3}}\right)\\
+            &\hspace{-1cm}=\frac{u_{xx}(1+u_x^2+u_t^2)+u_{tt}(1+u_x^2+u_t^2)-u_{xx}(u_x^2)-u_{tx}(u_x)(u_t)-u_{tt}(u_t^2)-u_{xt}(u_x)(u_t)}{\sqrt{(1+u_x^2+u_t^2)^3}}\\
+            &=\frac{u_{xx}(1+u_t^2)+u_{tt}(1+u_x^2)-u_{tx}(u_x)(u_t)-u_{xt}(u_x)(u_t)}{\sqrt{(1+u_x^2+u_t^2)^3}}\\
+            &=0
+        \end{align*}
+        Luego por el coeficiente $\frac{(1+u_t^2)}{\sqrt{(1+u_x^2+u_t^2)^3}}$ que acompaña al término $u_{xx}$ de la EDP sabemos que la ecuación es \textbf{Cuasilineal} y como tenemos a $u_{xx}$, entonces podemos concluir en que la EDP es de \textbf{segundo orden}.
+    \end{solucion}
+\newpage
+\item \textbf{Ecuación de Monge-Ampere:} $\operatorname{det}(\mathrm{Hu})=f$, donde $\mathrm{Hu}$ denota la matriz Hessiana de $u$.
+    \begin{solucion}
+        \textbf{Completamente no lineal de segundo orden.}\\
+        En nuestro caso $u=u(x,t)$, es válida la siguiente expresión:
+        \begin{align*}
+            \operatorname{det}(Hu)&=u_{xx}u_{tt}-u_{tx}u_{xt}=u_{xx}u_{tt}-(u_{xt})^2\\
+            &=f
+        \end{align*}
+        Luego, si asumimos $f=f(x)$, por el termino $(u_{xt})^2$ de la EDP sabemos que la ecuación es \textbf{Completamente no lineal} y como tenemos a $u_{xx}$, entonces podemos concluir en que la EDP es de \textbf{segundo orden}.\\ 
+    \end{solucion}
+
+\end{itemize}
+\end{homeworkProblem}
+\newpage
+\begin{homeworkProblem}
+    Solucione utilizando características:
+\begin{itemize}
+    \item[(a)] $u_x+u_y=u^2$, con $u(x, 0)=h(x)$.
+    \begin{solucion}
+     Tendiendo en cuenta el problema de valor inicial tomaremos la curva \\$C=\{(r,0,h(r))\}$. Note que la EDP puede ser reescrita de la siguiente forma:
+     \begin{align*}
+         u_x+u_y-u^2&=0\\
+         (1,1,u^2)\cdot(u_x,u_y,-1)&=0
+     \end{align*}
+     De esta forma con la información de la curva $C$ y la reescritura podemos plantear el siguiente sistema de EDOs 
+    \begin{align*}
+        \begin{cases}
+            \dfrac{dx}{ds}=1,& x(0,r)=r\\
+            \\
+            \dfrac{dy}{ds}=1,& y(0,r)=0\\
+            \\
+            \dfrac{dz}{ds}=z^2,& z(0,r)=h(r).\\
+        \end{cases}
+    \end{align*}
+    De esta manera tenemos tres EDO que pueden ser resueltas por separación de variables obteniendo así:
+    \begin{align*}
+        x&=s+c_1(r)\\
+        y&=s+c_2(r)\\
+        z&=-\frac{1}{s+c_3(r)}.
+    \end{align*}
+    y usando las condiciones iniciales para cada EDO obtenemos que:
+    \begin{align*}
+        c_1(r)&=r\\
+        c_2(r)&=0\\
+        c_3(r)&=-\frac{1}{h(r)}.
+    \end{align*}
+    Ahora verificaremos si podemos devolver el cambio de variable por medio del Jacobiano:
+    \begin{align*}
+       \left. \det\begin{pmatrix}
+            \dfrac{\partial x}{\partial s} & \dfrac{\partial x}{\partial r}\\
+            & \\
+            \dfrac{\partial y}{\partial s} & \dfrac{\partial y}{\partial r}
+        \end{pmatrix} \right|_{(0,r)}=\det\begin{pmatrix}
+            1 & 1\\
+            1 & 0
+        \end{pmatrix}=-1\neq 0
+    \end{align*}
+    Como es distinto de 0 por el teorema de la función inversa sabemos que podemos despejar nuestras ecuaciones para dejar a $z$ en términos de $x$ y $y$. Como $c_2(r)=0$ tenemos que $y=s$. Además como $c_1(r)=r$ en la ecuación de $x$ tenemos que $x=y+r$ es decir que $r=x-y$ y reemplazando en $z$ obtenemos que nuestra solución es:
+    $$u(x,y)=z=-\frac{1}{y-\frac{1}{h(x-y)}}=\frac{h(x-y)}{yh(x-y)-y}.$$
+    \end{solucion}
+    \item[(b)] Sea $\vec{b}=\left(b_1, \ldots, b_n\right) \in \mathbb{R}^n$ con $b_n \neq 0$. Considere la EDP: $\vec{b} \cdot \nabla u=e^{-u}$, con $u\left(x_1, \ldots, x_{n-1}, 0\right)=h\left(x_1, \ldots, x_{n-1}\right)$.
+    \begin{solucion}
+        Apoyándonos en el dato inicial nuestra superficie esta dada por: $$C=\{(r_1,\dots,r_{n-1},0,h(r_1\dots,r_{n-1}))\}$$
+        y realizando una reescritura de la EDP obtenemos que:
+        $$(b_1,\dots,b_n,e^{-u})\cdot(u_{x_1},\dots,u_{x_n},-1)=0$$
+         De esta manera notamos que el sistema de EDOs es el siguiente:
+    \begin{align*}
+        \begin{cases}
+            \dfrac{dx_i}{ds}=b_i,&x_i(0,r_1\dots,r_{n-1})=r_i\text{ con }1\leq i\leq n-1,\\
+            \\
+            \dfrac{dx_n}{ds}=b_n,&x_n(0,r_1\dots,r_{n-1})=0,\\
+            \\
+            \dfrac{dz}{ds}=e^{-z},&z(0,r_1\dots,r_{n-1})=h(r_1\dots,r_{n-1}).
+        \end{cases}
+    \end{align*}
+    Así resolviendo cada EDO tenemos que:
+    \begin{align*}
+        x_i&=b_is+c_i(r)\text{ con }1\leq i\leq n,\\
+        z&=\log(s+c(r)).
+    \end{align*}
+    y usando las condiciones iniciales tenemos que:
+    \begin{align*}
+        c_i(r)&=r_i\text{ con }1\leq i\leq n-1,\\
+        c_n(r)&=0,\\
+        c(r)&=e^{h(r_1,\dots,r_{n-1})}.
+    \end{align*}
+    Ahora observemos si el Jacobiano es diferente de 0 para poder aplicar el teorema de la función inversa:
+    \begin{align*}
+       \left. \det\begin{pmatrix}
+            \dfrac{\partial x_1}{ \partial s} & \dfrac{ \partial x_1}{\partial r_{1}} & \cdot & \cdot & \cdot & \dfrac{\partial x_1}{\partial r_{n-1}}\\
+            \dfrac{\partial x_2}{\partial s} & \dfrac{\partial x_2}{
+            \partial r_{1}} & \cdot & \cdot & \cdot & \dfrac{\partial x_2}{\partial r_{n-1}}\\
+            \cdot&\cdot & & & &\cdot \\
+            \cdot&\cdot & & & &\cdot \\
+            \cdot&\cdot & & & &\cdot \\
+            \dfrac{\partial x_n}{\partial s} & \dfrac{\partial x_n}{
+            \partial r_{1}} & \cdot & \cdot & \cdot & \dfrac{\partial x_n}{\partial r_{n-1}}
+        \end{pmatrix}\right|_{(0,r_1,\dots,r_{n-1})}&=\det\begin{pmatrix}
+            b_1& 1 & 0 & \cdot& \cdot& \cdot& 0\\
+            b_2& 0 & 1 &\cdot& \cdot& \cdot& 0\\
+            \cdot& \cdot& & & & & \\
+            \cdot& \cdot& & & & & \\
+            \cdot& \cdot& & & & & \\
+            b_n & 0 & 0 & \cdot& \cdot& \cdot& 0
+        \end{pmatrix}\\&=(-1)^{n+1}b_n\neq0
+    \end{align*}
+    Ahora si con seguridad podemos despejar. Empecemos notando que como $c_n(r)=0$ $x_n=b_ns$ y como $b_n\neq0$ tenemos que $s=\dfrac{x_n}{b_n}$ de esta manera como $c_i(r)=r_i$ para $1\leq i\leq n-1$ tenemos que $x_i=\dfrac{b_i}{b_n}x_n+r_i$ y por tanto $r_i=x_i-\dfrac{b_i}{b_n}x_n$. De esta manera reemplazando en $z$ obtenemos que la solución es:
+    $$u(x,y)=z=\log\left(\frac{x_n}{b_n}+e^{h\left(x_1-\frac{b_1}{b_n}x_n,\dots,x_{n-1}-\frac{b_{n-1}}{b_n}x_n\right)}\right)$$
+    \end{solucion}
+   
+    \item[(c)] $x_1 u_{x_1}+2 x_2 u_{x_2}+u_{x_3}=3 u$, con $u\left(x_1, x_2, 0\right)=g\left(x_1, x_2\right)$.
+    \begin{solucion}
+        Inspirado por el dato inicial tenemos que la superficie es $C=\{(r_1,r_2,0,g(r_1,r_2))\}$ y si reescribimos la EDP de la siguiente forma:
+        $$(x_1,2x_2,1,3u)\cdot(u_{x_1},u_{x_2},u_{x_3},-1)=0$$
+        De esta forma el sitema de EDOs queda planteado de la siguiente manera:
+        $$\begin{cases}
+            \dfrac{dx_1}{ds}=x_1,&x_1(0,r_1,r_2)=r_1,\\
+            \\
+            \dfrac{dx_2}{ds}=2x_2,&x_2(0,r_1,r_2)=r_2,\\
+            \\
+            \dfrac{dx_3}{ds}=1,&x_3(0,r_1,r_2)=0\\
+            \\
+            \dfrac{dz}{ds}=3z,&z(0,r_1,r_2)=g(r_1,r_2)
+        \end{cases}$$
+        Asi resolviendo cada EDO tenemos que:
+        \begin{align*}
+            x_1&=c_1(r)e^s\\
+            x_2&=c_2(r)e^{2s}\\
+            x_3&=s+c_3(r)\\
+            z&=c(r)e^{3s}
+        \end{align*}
+        y por las condiciones iniciales tenemos que:
+        \begin{align*}
+            c_1(r)&=r_1\\
+            c_2(r)&=r_2\\
+            c_3(r)&=0\\
+            c(r)&=g(r_1,r_2)\\
+        \end{align*}
+        Ahora verifiquemos por medio del Jacobiano si podemos aplicar el teorema de la función inversa:
+        \begin{align*}
+            \left.\det\begin{pmatrix}
+                \dfrac{\partial x_1}{\partial s} & \dfrac{\partial x_1}{\partial r_1} & \dfrac{\partial x_1}{\partial r_2} \\ 
+                & & \\
+                \dfrac{\partial x_2}{\partial s} & \dfrac{\partial x_2}{\partial r_1} & \dfrac{\partial x_2}{\partial r_2} \\
+                & & \\
+                \dfrac{\partial x_3}{\partial s} & \dfrac{\partial x_3}{\partial r_1} & \dfrac{\partial x_3}{\partial r_2} \\
+            \end{pmatrix}\right|_{(0,r_1,r_2)}=\det\begin{pmatrix}
+                r_1 & 1 & 0 \\
+                2r_2& 0 & 1\\
+                1 & 0 & 0 \\
+            \end{pmatrix}=1\neq 0
+        \end{align*}
+        Esto nos indica que si podemos despejar entonces de entrada sabemos que $x_3=s$ ya que $c_3(r)=0.$ Luego como $c_1(r)=r_1$ tenemos que $x_1=r_1e^x_3$ y por tanto $r_1=x_1e^{-x_3}$. De manera similar obtenemos que $r_2=x_2e^{-2x_3}$ y juntando todo y reemplazando en $z$ obtenemos la solución que es:
+        $$u(x,y)=z=g(x_1e^{-x_3},x_2e^{-2x_3})e^{3x_3}.$$
+    \end{solucion}
+    \item[(d)] $u u_x+u_y=1$, con $u(x, x)=\frac{1}{2} x$.
+    \begin{solucion}
+        Tomando como referencia el dato inicial nuestra curva sera $C=\{(r,r,\frac{1}{2}r)\}$ y con una reescritura de la EDP tenemos que:
+        $$(u,1,1)\cdot(u_x.u_y,-1)=0$$
+        De esta manera obtenemos el siguiente sistema de EDOs:
+        $$\begin{cases}
+            \dfrac{dx}{ds}=z,&x(r,r)=r\\
+            \\
+            \dfrac{dy}{ds}=1,&y(r,r)=r\\
+            \\
+            \dfrac{dz}{ds}=1,&z(r,r)=\frac{1}{2}r\\  
+        \end{cases}$$
+        Resolviendo la ultima ecuación tenemos que $z=s+c_3(r)$ pero por el valor inicial sabemos que $c_3(r)=-\frac{1}{2}r$ es decir $z=s-\frac{1}{2}r$. Si reemplazamos $z$ por la expresión podemos resolver la primera ecuación y obtenemos que:
+        \begin{align*}
+            x&=\dfrac{s^2}{2}-\dfrac{rs}{2}+c_1(r)\\
+            y&=s+c_2(r)
+        \end{align*}
+        y utilizando los valores iniciales obtenemos que $c_1(r)=r$ y $c_2(r)=0$ así llegamos a las 3 ecuaciones:
+        \begin{align*}
+            x&=\dfrac{s^2}{2}-\dfrac{rs}{2}+r\\
+            y&=s\\
+            z&=s-\frac{r}{2}
+        \end{align*}
+        Antes de intentar despejar, aseguremos que podemos por medio del Jacobiano:
+        \begin{align*}
+            \left.\det\begin{pmatrix}
+                \dfrac{\partial x}{\partial s} & \dfrac{\partial x}{\partial r}\\
+            & \\
+            \dfrac{\partial y}{\partial s} & \dfrac{\partial y}{\partial r}
+            \end{pmatrix}\right|_{(r,r)}=\det\begin{pmatrix}
+                \dfrac{r}{2}& 1\\
+                1& 1\\
+            \end{pmatrix}=\dfrac{r}{2}-1\neq 0
+        \end{align*}
+        esto quiere decir que podemos invertir solo si $r\neq 2$ pero suponiendo esto tenemos por las ecuaciones que $x=\dfrac{y^2}{2}+r(1-\dfrac{y}{2})$ es decir que $r=\dfrac{2x-y^2}{2-y}$ de esta manera reemplazando en $z$ obtenemos que la solución es:
+        $$u(x,y)=z=y-\dfrac{2x-y^2}{4-2y}=\dfrac{4y-2x-y^2}{4-2y}.$$
+    \end{solucion}
+    \item[(e)] $u_t+u_x^2=t$, con $u(x, 0)=0$.
+    \begin{solucion}
+        Inspirado en los datos iniciales tenemos que nuestra curva es $C=\{(r,0,0)\}$ Notemos que si reescribimos nuestra EDP en términos de una función $F(x,t,z,p,q)=0$ donde $z=u$, $p=u_x$ y $q=u_t$ tenemos que:
+        $$F(x,t,z,p,q)=p^2+q-t=0$$
+        De aquí podemos concluir inmediatamente que $F_p=2p$, $F_q=1$, $F_x=0$, $F_t=-1$ y $F_z=0$. Por lo tanto tendríamos las siguientes EDOs:
+        \begin{align*}
+            \dfrac{dx}{ds}=2p&&
+            \dfrac{dt}{ds}=1&&
+            \dfrac{dz}{ds}=2p^2+q&&
+            \dfrac{dp}{ds}=0&&
+            \dfrac{dq}{ds}=1
+        \end{align*}
+        Ahora por la curva ya tenemos tres datos iniciales $x(0,r)=r$, $t(0,r)=0$ y $z(0,r)=0$ nos faltan los datos iniciales para las EDOs de $p$ y $q$ intentemos determinarlas. Nuestra primera ecuación para esto es:
+        $$F(r,0,0,\psi_1,\psi_2)=\psi_1^2+\psi_2=0$$
+        y la segunda esta dada por:
+        $$0=\psi_1\cdot1+\psi_2\cdot0$$
+        De esto obtenemos que $\psi_1=0=\psi_2$. De esta manera ya podemos plantear el sistema de EDOs
+        $$\begin{cases}
+           \dfrac{dx}{ds}=2p,&x(0,r)=r,\\
+           \\
+            \dfrac{dt}{ds}=1,&t(0,r)=0,\\
+            \\
+            \dfrac{dz}{ds}=2p^2+q,&z(0,r)=0,\\
+            \\
+            \dfrac{dp}{ds}=0,&p(0,r)=0,\\
+            \\
+            \dfrac{dq}{ds}=1,&q(0,r)=0.\\
+        \end{cases}$$
+        De las dos ultimas ecuaciones obtenemos que $p=c_4(r)$ pero por el valor inicial sabemos entonces que $p=0$ y que $q=s+c_5(r)$ pero como $q(0,r)=0$ tenemos que $q=s$ y con esta información podemos resolver las tres primeras fácilmente ya que si reemplazamos obtenemos que:
+        $$\begin{cases}
+           \dfrac{dx}{ds}=0,&x(0,r)=r,\\
+           \\
+            \dfrac{dt}{ds}=1,&t(0,r)=0,\\
+            \\
+            \dfrac{dz}{ds}=s,&z(0,r)=0.\\
+        \end{cases}$$
+        Entonces por razonamientos similares tenemos que $t=s$, $x=c_1(r)$ pero por el valor inicial concluimos que $x=r$ y por ultimo $z=\dfrac{s^2}{2}+c_3(r)$ y por el valor inicial $c_3(r)=0$ es decir $z=\dfrac{s^2}{2}$ de esta manera reemplazando la solución es:
+        $$u(x,y)=z=\dfrac{t^2}{2}.$$
+        Note que no hubo necesidad de hacer ningún despeje pero solo para sentirnos seguros aquí realizaremos el Jacobiano:
+        \begin{align*}
+            \left.\det\begin{pmatrix}
+                \dfrac{\partial x}{\partial s} & \dfrac{\partial x}{\partial r}\\
+            & \\
+            \dfrac{\partial t}{\partial s} & \dfrac{\partial t}{\partial r}
+            \end{pmatrix}\right|_{(0,r)}=\det\begin{pmatrix}
+                0 & 1\\
+                1 & 0
+            \end{pmatrix}=1\neq 0.
+        \end{align*}
+    \end{solucion}
+\end{itemize}
+\end{homeworkProblem}
+\newpage
+
+\begin{homeworkProblem}
+    Sean $a_i, c, i=1, \ldots, n$ funciones en $C\left(\mathbb{R}^n\right)$ (el espacio de funciones continuas a valores reales con domino $\mathbb{R}^n$ ). Considere el problema de Cauchy
+
+\begin{equation}
+    \left\{\begin{array}{l}
+\displaystyle\sum_{i=1}^n a_i(x) u_{x_i}=c(x), \quad x \in \mathbb{R}^n, \\
+\left.u\right|_{\Gamma}=g
+\end{array}\right.
+\end{equation}
+
+donde $\Gamma$ es la superficie (o $n-1$ variedad) en $\mathbb{R}^n$ dada por
+$$
+\Gamma=\left\{\vec{r}=\left(r_1, r_2 \ldots, r_{n-1}\right) \in \mathbb{R}^{n-1}: \Phi(\vec{r})=\left(\phi_1(\vec{r}), \ldots, \phi_n(\vec{r})\right)\right\},
+$$
+cada una de las funciones $g, \phi_j, j=1, \ldots, n$ está en $C^1\left(\mathbb{R}^{n-1}\right.$ ) (es decir, son funciones continuamente diferenciables con dominio $\mathbb{R}^{n-1}$ ). Además, suponga que $\Gamma$ no es característica en el sentido
+$$
+\operatorname{det}\left(\begin{array}{cccc}
+a_1(\Phi(\vec{r})) & \partial_{r_1} \phi_1(\vec{r}) & \ldots & \partial_{r_{n-1}} \phi_1(\vec{r}) \\
+\vdots & \vdots & & \\
+a_n(\Phi(\vec{r})) & \partial_{r_1} \phi_n(\vec{r}) & \ldots & \partial_{r_{n-1}} \phi_n(\vec{r})
+\end{array}\right) \neq 0
+$$
+para todo punto $\vec{r}=\left(r_1, \ldots, r_{n-1}\right) \in \mathbb{R}^{n-1}$.
+Muestre que existe una única solución $u \in C^1\left(\mathbb{R}^n\right)$ del problema de Cauchy (1).
+\begin{solucion}
+    Note que el problema nos invita a plantear el siguiente sistema de ecuaciones ordinarias:
+    \begin{align*}
+        \frac{dx_i}{ds}=a_i(x) &\hspace{2cm} x_i(0,\vec{r})=\phi_i(\vec{r})\\
+        \frac{dz}{ds}=c(x) &\hspace{2cm} z(o,\vec{r})=g(\vec{r})
+    \end{align*}
+    Con $1\leq i\leq n$.\\
+    Note que podemos describir el problema acoplandolo de la siguiente forma:
+    \begin{align*}
+        \frac{d(x_1,x_2,\cdots,x_n,z)}{ds}=(a_1,a_2,\cdots,a_n,c)(x) \hspace{2 cm} f(0,\vec{r})=(\phi_1,\phi_2,\cdots,\phi_n,g)(\vec{r})
+    \end{align*}
+    Luego, como $a_i, c\in C^1(\mathbb{R}^n$) y $\phi_i, g \in C^1(\mathbb{R}^{n-1})$ con $1\leq i\leq n$, entonces por la desigualdad del valor medio se tiene que todas estas son localmente Lipschitz y por ende el acoplamiento de estás, luego $(a_1,a_2,\cdots,a_n,c)(x) \in C^1(\mathbb{R}^n)$ y es localmente Lipschitz, por lo que el sistema de ecuaciones diferenciales ordinarias tiene una única solución $z(s,\vec{r})$, además como por hipótesis tenemos que $\Gamma$ es no característica en todo punto  $(0,\vec{r})$ tal que $\vec{r}\in\mathbb{R}^{n-1}$, entonces existe una vecindad $V$ al rededor de $0$ en $\mathbb{R}$, tal que el cambio de variable de  $x$ a $(s,\vec{r})$ es invertible, lo que nos asegura que el problema de Cauchy tiene una única solución $\mu(x)\in C^{1}(\mathbb{R}^{n})$ en $U\times \mathbb{R}^{n-1}$ en donde $U$ es una vecindad de $\mathbb{R}$.
+    \demostrado
+ \end{solucion}
+\end{homeworkProblem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

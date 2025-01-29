@@ -1,0 +1,20 @@
+\begin{homeworkProblem}
+  \begin{teorema}
+    Asuma que $g\in C(\mathbb{R}^{n})\cap L^{\infty}(\mathbb{R}^{n})$, $f\in C^{2}_{1}(\mathbb{R}^{n}\times (0,\infty))$ con soporte compacto y sea $u$ definida por:
+    \begin{align*}
+      u(x,t)&=(\Phi(\cdot,t)*g)(x)+\int_{0}^{t}(\Phi(\cdot,t-s)*f(\cdot,s))(x)ds\\
+      &=\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy+\int_{0}^{t}\int_{\mathbb{R}^{n}}\Phi(x-y,t-s)f(y,s)dyds
+    \end{align*}
+    con $x\in\mathbb{R}^{n}$ y $t>0$. Entonces:
+    \begin{enumerate}
+      \item $u\in C^{2}_{1}(\mathbb{R}^{n}\times (0,\infty))$,
+      \item $u_t-\Delta u=f$ para $x\in\mathbb{R}^{n}$ y $t>0$,
+      \item $\underset{(x,t)\rightarrow(x^0,0),x\in\mathbb{R}^{n},t>0}{\lim}u(x,t)=g(x^0)$ para cada punto $x^0\in\mathbb{R}^{n}$.
+    \end{enumerate}
+  \end{teorema}
+  \begin{solucion}
+    \begin{enumerate}
+      \item $u\in C^{2}_{1}(\mathbb{R}^{n}\times (0,\infty))$.
+    \end{enumerate}
+  \end{solucion}
+\end{homeworkProblem}

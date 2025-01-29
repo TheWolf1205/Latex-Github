@@ -1,0 +1,102 @@
+\begin{homeworkProblem}
+  Demuestre el teorema de acotación de derivadas para soluciones de la ecuación del calor. Más precisamente, para cada multi-índices $\alpha$ y $\beta$ existe una constante $C_{\alpha, \beta} > 0$ tal que
+  \begin{equation*}
+    \max_{C(x, t; \frac{r}{2})} |\partial_{x}^{\alpha} \partial_{t}^{\beta}u| \leq \dfrac{C_{\alpha, \beta}}{r^{|\alpha|+2|\beta|+n+2}}||u||_{L^{1}(C(x,t;r))}, 
+  \end{equation*}
+  para todo cilindro $C(x,t;\frac{r}{2}) \subset C(x,t;r) \subset U_{T}$ y toda solución $u$ de la ecuación de la ecuación del calor en $U_{T}$.
+  \begin{solucion}
+    Solución. Primero fijemos un punto $(x_{0}, t_{0}) \in U_{T}$ y $r>0$ suficientemente pequeño para que $C:=C(x_{0}, t_{0};r) \subset U_{T}$. Definamos también $C':=C(x_{0}, t_{0};\frac{3}{4}r)$ y $C'':=C(x_{0}, t_{0};\frac{r}{2})$, con el mismo centro superior $(x_{0}, t_{0})$.
+    Tomemos una función suave de cierre $\zeta = \zeta(x,t)$ tal que\
+    \begin{align*}
+      \begin{cases*}
+        0 \leq \zeta \leq 1, \zeta \equiv \text{ 1 en } C',\\
+        \zeta \equiv 0 \text{ cerca del borde parabólico de} C.
+      \end{cases*}  
+    \end{align*}
+    
+    Extendamos $\zeta \equiv 0$ en $(\mathbb{R}^{n} \times [0,t_{0}]) - C$.\\
+    Como $u$ es solución en $U_{T}$ entonces $u \in C^{\infty}(U_{T})$ y si tomamos
+    \begin{align*}
+      v(x,t) := \zeta(x,t)u(x,t) \hspace{1cm} (x\in \mathbb{R}^{n}, 0 \leq t \leq t_{0}). 
+    \end{align*}
+    Entonces 
+    \begin{align*}
+      v_{t} = \zeta u_{t} + \zeta_{t}u, \Delta v = \zeta \Delta u + 2 \nabla \zeta \cdot \nabla u + \nabla \zeta u.
+    \end{align*}
+    Luego 
+    \begin{align*}
+      v = 0 \hspace{1cm} \text{   en } \mathbb{R}^{n} \times {t=0},
+    \end{align*}
+    y
+    \begin{align*}
+      v_{t} - \Delta v &= \zeta u_{t} + \zeta_{t}u - \zeta \Delta u - 2 \nabla \zeta \cdot \nabla u - \nabla \zeta u\\
+        &= \zeta (u_{t} - \Delta u) + \zeta_{t}u - 2 \nabla \zeta \cdot \nabla u - \nabla \zeta u\\
+        &= \zeta_{t}u - 2 \nabla \zeta \cdot \nabla u - \nabla \zeta u =: \tilde{f}
+    \end{align*}
+    en $\mathbb{R}^{n} \times (0,t_{0})$. Ahora tome
+    \begin{align*}
+      \tilde{v} = \int_{0}^{t} \int_{\mathbb{R}^{n}} \Phi(x-y, t-s) \tilde{f}(y,s) dyds.  
+    \end{align*}
+    De modo que,
+    \begin{align*}
+     \begin{cases*}
+      \tilde{v}_{t} - \Delta \tilde{v} = \tilde{f} \text{ en } \mathbb{R}^{n} \times (0,t_{0}),\\ 
+         \hspace{1.02cm} \tilde{v}= 0 \text{ en } \mathbb{R}^{n} \times \{ t=0 \}.
+     \end{cases*} 
+    \end{align*}
+    Como tanto $v$ como $\tilde{v}$ satisfacen la misma ecuación del calor y por como están definidas podemos concluir que están acotadas. Luego, $v \equiv \tilde{v}$ debido al teorema de unicidad de solución. Así tenemos que
+    \begin{align*}
+      v(x,t) = \int_{0}^{t} \int_{\mathbb{R}^{n}} \Phi(x-y,t-s) \tilde{f}dyds.
+    \end{align*}  
+    Ahora supongamos $(x,t) \in C''$. Como $\zeta \equiv 0$ fuera del cilindro $C$, entonces, la definición de $\tilde{f}$ la igualdad anterior implican
+    \begin{align*}
+      v(x,t) &= \zeta(x,t)u(x,t) = 1\cdot u(x,t) = u(x,t)\\ 
+      &=\int \int_{C} \Phi(x-y,t-s) [(\zeta_{s}(y,s)- \Delta \zeta (y,s))u(y.s)- 2\nabla \zeta(y,s) \cdot \nabla u(y,s)]dyds.
+    \end{align*}
+    Note que en la ecuación anterior, la expresión entre paréntesis cuadrados se hace $0$ en una región cercana a la singularidad de $\Phi$, véase $\mathbb{R}^{n} \times \{t=0\}$ por como se definió $\zeta$. Ahora,
+    \begin{align}
+      & u(x,t) = \\ 
+      & \int \int_{C} [\Phi(x-y,t-s) (\zeta_{s}(y,s)- \Delta \zeta (y,s))u(y.s) - 2\Phi(x-y,t-s) \nabla \zeta(y,s) \cdot \nabla u(y,s)]dyds
+    \end{align}
+    Fijémonos únicamente en el segundo término e integremos por partes
+    \begin{align*}
+      \int_{C} - 2\Phi(x-y,t-s) \nabla \zeta(y,s) \cdot \nabla u(y,s)dyds &=\\ 
+      &= \int_{\partial C} -2 \Phi(x-y,t-s) \nabla \zeta(y,s) \cdot u(y,s)dyds -\\ 
+      & \int_{C}-2 \nabla_{y} \Phi(x-y,t-s) \nabla \zeta(y,s) \cdot u(y,s)dyds\\ 
+      & = \int_{C} 2 \nabla_{y} \Phi(x-y,t-s) \nabla \zeta(y,s) \cdot u(y,s)dyds.
+    \end{align*}
+    Así, $(1)$ nos queda como sigue:
+    \begin{align*}
+      u(x,t) = \int \int_{C} [\Phi(x-y,t-s) (\zeta_{s}(y,s)- \Delta \zeta (y,s)) + 2 \nabla_{y} \Phi(x-y,t-s) \nabla \zeta(y,s)]u(y,s)dyds.
+    \end{align*}
+    La fórmula anterior tiene la forma
+    \begin{align*}
+      u(x,t) = \int \int_{C} K(x,y,t,s)u(y,s)dyds \hspace{1.5cm} ((x,t) \in C'').
+    \end{align*}
+    Ahora, al cambiar coordenadas, podemos asumir que el punto de tope $(x_{0}, y_{0}) = (0,0)$. Asumiendo que $C(1) : = C(0,0;1)$ está en $U_{T}$. Sea $C(\frac{1}{2}):= C(0,0;\frac{1}{2})$. La fórmula anterior nos queda de la siguiente manera
+    \begin{align*}
+      u(x,t) = \int \int_{C(1)} K(x,y,t,s)u(y,s)dyds \hspace{1.5cm} ((x,t) \in C(\frac{1}{2})).
+    \end{align*}
+    Donde $K$ es una función suave puesto que $\Phi, \zeta, u $ lo son en $U_{T}$. En consecuencia 
+    \begin{align*}
+      |u(x,t)| &\leq \int \int_{C(1)} |K(x,y,t,s)||u(y,s)|dyds\\
+      |\partial_{x_{i}} ^{\alpha}\partial_{t}^{m}u(x,t)| &\leq \int \int_{C(1)} |\partial_{x_{i}} ^{\alpha}\partial_{t}^{m}K(x,y,t,s)|u(y,s)|dyds\\ 
+      &\leq C_{\alpha m}||u||_{L^{1}(C(1))}
+    \end{align*}
+    Para una constante $C_{\alpha m}$.\\ 
+    Ahora supongamos que el cilindro $C(r) := C(0,0;r)$ reposa en $U_{T}$. Sea $C(\frac{r}{2}):= C(0,0,;\frac{r}{2})$. Reescalamos como sigue
+    \begin{align*}
+      v(x,t) := u(rx,r^{2}t).
+    \end{align*}
+    Entonces $v_{t} - \Delta v = 0$ en el cilindro $C(1)$. De acuerdo a lo anterior,
+    \begin{align*}
+      |\partial_{x_{i}} ^{\alpha}\partial_{t}^{m}v(x,t)| &\leq C_{\alpha m}||v||_{L^{1}(C(1))} \hspace{1cm} \text{ en } ((x,t) \in C(\frac{1}{2})). 
+    \end{align*}
+    Pero $\partial_{x_{i}} ^{\alpha}\partial_{t}^{m}v(x,t) = r^{2m+|\alpha|} \partial_{x_{i}} ^{\alpha}\partial_{t}^{m}u(rx,r^{2}t)$ y $||v||_{L^{1}(C(1))} = \frac{1}{r^{n+2}}||u||_{L^{1}(C(r))}$.\\
+    De modo que 
+    \begin{align*}
+      \max_{C(x,t;\frac{r}{2})}|\partial_{x_{i}} ^{\alpha}\partial_{t}^{m}u| \leq \frac{C_{\alpha m}}{r^{|\alpha|}+2m+n+2}||u||_{L^{1}(C(x,t;r))}. 
+    \end{align*}    
+    \demostrado
+  \end{solucion}  
+\end{homeworkProblem}

@@ -1,0 +1,75 @@
+\begin{homeworkProblem}
+   Sea $\| \cdot\|$ una norma en $\mathbb{R}^n$ y $A$ una matriz invertible de tamaño $n\times n$. Pruebe que: \\
+    Si $Ax=b$, $(A+\delta A)(x+\delta x)=b+\delta b$ y $\| A^{-1}\|\| \delta A\|< 1$, entonces $A+\delta A$ es invertible y se cumple que: 
+    \begin{align*}       
+      \frac{\| \delta x\|}{\|x\|} \leq \frac{\text{cond}(A)}{1-\| A^{-1}\|\| \delta A\|}\left( \frac{\| \delta A\|}{\|A\|}+\frac{\| \delta b\|}{\|b\|}\right)
+    \end{align*}
+  \begin{solucion}
+    Por hipótesis, $A \in \mathbb{R}^{n \times n}$ es invertible, por lo que $-A^{-1} \delta A \in \mathbb{R}^{n \times n}$. Como la norma matricial inducida por una norma en $\mathbb{R}^n$ es submultiplicativa y $\| A^{-1} \|\| \delta A \| < 1$, se tiene que:
+    \[
+      \| - A^{-1} \delta A \| \leq |-1| \| A^{-1} \| \| \delta A \| = \| A^{-1} \| \| \delta A \| < 1.
+    \]
+    Entonces, por la Serie de Neumann, $I - (-A^{-1} \delta A)$ es invertible. Por consiguiente, dado que es producto de matrices invertibles, $A + \delta A = A(I - (-A^{-1} \delta A))$ también es invertible.
+
+    Además, sabemos que:
+    \[
+      (A + \delta A)(x + \delta x) = b + \delta b.
+    \]
+    Expandiendo,
+    \[
+      Ax + A \delta x + \delta A x + \delta A \delta x = b + \delta b.
+    \]
+    Como $Ax = b$ y $A$ es invertible, se tiene:
+    \[
+      A \delta x = \delta b - \delta A x - \delta A \delta x,
+    \]
+    y despejando $\delta x$,
+    \[
+      \delta x = A^{-1} (\delta b - \delta A x - \delta A \delta x).
+    \]
+    Aplicando la norma y usando propiedades de la norma inducida:
+    \[
+      \| \delta x \| \leq \| A^{-1} \| \| \delta b - \delta A x - \delta A \delta x \|.
+    \]
+    Esto implica:
+    \[
+      \| \delta x \| \leq \| A^{-1} \| (\| \delta b \| + \| \delta A \delta x \| + \| \delta A x \|),
+    \]
+    y expandiendo,
+    \[
+      \| \delta x \| \leq \| A^{-1} \| \| \delta b \| + \| A^{-1} \| \| \delta A \| \| \delta x \| + \| A^{-1} \| \| \delta A \| \| x \|.
+    \]
+    Por lo tanto,
+    \[
+      \| \delta x \| - \| A^{-1} \| \| \delta A \| \| \delta x \| \leq \| A^{-1} \| (\| \delta A \| \| x \| + \| \delta b \|),
+    \]
+    lo que resulta en:
+    \[
+      (1 - \| A^{-1} \| \| \delta A \|) \| \delta x \| \leq \| A^{-1} \| (\| \delta A \| \| x \| + \| \delta b \|).
+    \]
+    De aquí,
+    \begin{equation}
+      \| \delta x \| \leq \frac{\| A^{-1} \|}{1 - \| A^{-1} \| \| \delta A \|} (\| \delta A \| \| x \| + \| \delta b \|).
+    \end{equation}
+    
+    Además, como $Ax = b$, se cumple:
+    \begin{equation}
+      \|b\| \leq \|A\| \|x\| \implies \frac{\|A\|}{\|b\|} \geq \frac{1}{\|x\|}.
+    \end{equation}
+    
+    Finalmente, aplicando (2) en (1), obtenemos:
+    \[
+      \frac{\| \delta x \|}{\|x\|} \leq \frac{\| A^{-1} \|}{1 - \| A^{-1} \| \| \delta A \|} \left( \frac{\| \delta A \| \| x \|}{\|x\|} + \frac{\| \delta b \|}{\|x\|} \right).
+    \]
+    Simplificando,
+    \[
+      \frac{\| \delta x \|}{\|x\|} \leq \frac{\| A^{-1} \|}{1 - \| A^{-1} \| \| \delta A \|} \left( \| \delta A \| + \frac{\| \delta b \| \| A \|}{\|b\|} \right).
+    \]
+    Finalmente,
+    \[
+      \frac{\| \delta x \|}{\|x\|} \leq \frac{\| A^{-1} \| \| A \|}{1 - \| A^{-1} \| \| \delta A \|} \left( \frac{\| \delta A \|}{\|A\|} + \frac{\| \delta b \|}{\|b\|} \right),
+    \]
+    lo que demuestra la desigualdad deseada.
+    \demostrado
+  \end{solucion}
+\end{homeworkProblem}

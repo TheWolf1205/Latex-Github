@@ -1,0 +1,85 @@
+\begin{homeworkProblem}
+  \begin{enumerate}
+    \item Suponga que $u$ es una solución suave de la ecuación del calor $u_t-\Delta u=0$ en $\mathbb{R}^{n}\times (0,\infty)$. Encuentre una familia de términos $a,b\in\mathbb{R}$ tales que $u_\lambda(x,t)=u(\lambda^ax,\lambda^bt)$ también sea solución de la ecuación del calor para todo $\lambda\in\mathbb{R}^{+}$.
+    \item Use el ejercicio anterior para mostrar que $v(x,t):=x\cdot \nabla u(x,t)+2tu_t(x,t)$ también soluciona la ecuación del calor.
+    \item Suponga que $u$ es una solución suave para la ecuación del calor no lineal $u_t-\Delta u=u^3u_{x_1}$ en $\mathbb{R}^{n}\times (0,\infty)$. Encuentre una familia de términos $a,b,c\in\mathbb{R}$ tales que $u_\lambda(x,t)=\lambda^au(\lambda^bx,\lambda^ct)$ también sea solución de tal ecuación del calor no lineal para todo $\lambda\in\mathbb{R}^{+}$. 
+  \end{enumerate}
+  \begin{solucion}
+    \begin{enumerate}
+      \item Suponga que $u$ es una solución suave de la ecuación del calor $u_t-\Delta u=0$ en $\mathbb{R}^{n}\times (0,\infty)$. Encuentre una familia de términos $a,b\in\mathbb{R}$ tales que $u_\lambda(x,t)=u(\lambda^ax,\lambda^bt)$ también sea solución de la ecuación del calor para todo $\lambda\in\mathbb{R}^{+}$.\\
+        Suponga que $u_\lambda(x,t)$ satisface la ecuación del calor, es decir:
+        \begin{align*}
+          \partial_{t}u_{\lambda}(x,t)-\Delta u_{\lambda}(x,t)=0,
+        \end{align*}
+        en $\mathbb{R}^{n} \times (0,\infty)$, luego:
+        \begin{align*}
+          \partial_{t}u_{\lambda}(x,y)&=u_t(\lambda^ax,\lambda^bt)\\
+          &=u_t(\lambda^ax,\lambda^bt)(\lambda^b)\\
+          \Delta u_\lambda&=\sum_{i=1}^{n}\frac{\partial^2 u_\lambda(x,t)}{\partial x_ix_i}\\
+          &=\sum_{i=1}^n\frac{\partial^2 u}{\partial x_ix_i}(\lambda^ax,\lambda^bt)(\lambda^a)^2
+        \end{align*}
+        Luego:
+        \begin{align*}
+          u_{\lambda_t}(x,t)-\Delta u_\lambda(x,t)&=\lambda^b u_t(\lambda^ax,\lambda^{b}t)-\lambda^{2a}\Delta u (\lambda^ax,\lambda^bt)\\
+          &=\lambda^c(u_{t}(\lambda^ax,\lambda^bt)-\Delta u(\lambda^ax,\lambda^bt))\\
+          &=0\\
+        \end{align*}
+        Luego $\lambda^c=\lambda^b=\lambda^{2a}$, por lo que podemos concluir en que $2a=b$, luego $u_{\lambda}(x,t)=u(\lambda^{a}x,\lambda^{2a}t)$ es solución para la ecuación del calor para todo $a\in \mathbb{R}$.
+        \demostrado
+        \newpage
+      \item Use el ejercicio anterior para mostrar que $v(x,t):=x\cdot \nabla u(x,t)+2tu_t(x,t)$ también soluciona la ecuación del calor.\\
+        Note que si tomamos $a=1$, como para todo $\lambda\in\mathbb{R}^{+}$ se cumple que $u_{\lambda_{t}}(x,t)$ soluciona la ecuación del calor, es decir:
+        \begin{align*}
+          \partial_{t}u_{\lambda}(x,t)-\Delta u_{\lambda}(x,y)&=\lambda^2u_t(\lambda x,\lambda^2t)-\lambda^2\Delta u(\lambda x,\lambda^2 t),\\
+          &=0,
+        \end{align*}
+        luego si derivamos respecto a $\lambda$:
+        \begin{align*}
+          \partial_{\lambda}(\partial_{t}u_{\lambda}(x,t)-\Delta u_{\lambda}(x,y))&=\partial_{\lambda}(\lambda^2u_t(\lambda x,\lambda^2t))-\partial_{\lambda}(\lambda^2\Delta u(\lambda x,\lambda^2 t)),\\
+          &=2\lambda u_t(\lambda x,\lambda^2 t)+\lambda^2u_{t\lambda}(\lambda x,\lambda^2 t)-2\lambda\Delta u(\lambda x,\lambda^2 t)-\lambda^2\partial_{\lambda}\Delta u(\lambda x,\lambda^2 t)),\\
+          &=(2\lambda)(u_t(\lambda x,\lambda^2 t)-\Delta u(\lambda x,\lambda^2 t))+(\lambda^2)(\partial_{\lambda}u_t(\lambda x,\lambda^2 t)-\partial_{\lambda}\Delta u(\lambda x,\lambda^2 t)),\\
+          &=(\lambda^2)(\partial_{\lambda}u_t(\lambda x,\lambda^2 t)-\partial_{\lambda}\Delta u(\lambda x,\lambda^2 t)),\\
+          &=(\lambda^2)(\partial_{t}\partial_{\lambda}u(\lambda x,\lambda^2 t)-\Delta \partial_{\lambda}u(\lambda x,\lambda^2 t)),\\
+          &=0.
+        \end{align*}
+        Por lo que podemos asegurar que $\partial_{\lambda}u(\lambda x,\lambda^2 t)$ también es solución de la ecuación del calor.\\
+        Ahora calculemos $\partial_{\lambda}u(\lambda x,\lambda^2 t)$:
+        \begin{align*}
+          \partial_{\lambda}u(\lambda x,\lambda^2 t)&=\nabla u (\lambda x,\lambda^2 t)\cdot x+2\lambda tu_{t}(\lambda x,\lambda^2 t),\\
+        \end{align*}
+        fijando $\lambda=1$ se tiene que:
+        \begin{align*}
+          x\cdot \nabla u(x,t)+2tu_t(x,t)&=v(x,t),
+        \end{align*}
+        por lo que se puede asegurar que $v(x,t)$ es una solución de la ecuación del calor.
+        \demostrado
+      \item Suponga que $u$ es una solución suave para la ecuación del calor no lineal $u_t-\Delta u=u^3u_{x_1}$ en $\mathbb{R}^{n}\times (0,\infty)$. Encuentre una familia de términos $a,b,c\in\mathbb{R}$ tales que $u_\lambda(x,t)=\lambda^au(\lambda^bx,\lambda^ct)$ también sea solución de tal ecuación del calor no lineal para todo $\lambda\in\mathbb{R}^{+}$.\\
+        Suponga que $u_{\lambda}(x,t)$ es solución de la ecuación del calor no lineal, es decir:
+        \begin{align*}
+          \partial_{t}u_{\lambda}(x,t)-\Delta u_{\lambda}(x,t)=[u_{\lambda}(x,t)]^3\partial_{x_1}u_{\lambda}(x,t),
+        \end{align*}
+        en donde:
+        \begin{align*}
+          \partial_{t}u_{\lambda}(x,t)&=\lambda^{a+c}u_t(\lambda^{b}x,\lambda^{c}t),\\
+          \Delta u_{\lambda}(x,t)&=\lambda^{a+2b}\Delta u(\lambda^{b}x,\lambda^{c}t),\\
+          \partial_{x_1}u_{\lambda}(x,t)&=\lambda^{a+b}\partial_{x_1}u(\lambda^{b}x,\lambda^{c}t),
+        \end{align*}
+        por lo que tenemos que:
+        \begin{align*}
+          \lambda^{a+c}u_{t}(\lambda^{b}x,\lambda^{c}t)-\lambda^{a+2b}\Delta u(\lambda^{b}x,\lambda^{c}t)=\lambda^{4a+b}u^3(\lambda^{b}x,\lambda^{c}t)\partial_{x_1}u(\lambda^{b}x,\lambda^{c}t),
+        \end{align*}
+        lo que implica que:
+        \begin{align*}
+          \lambda^{-3a-b+c}u_{t}(\lambda^{b}x,\lambda^{c}t)-\lambda^{-3a+b}\Delta u(\lambda^{b}x,\lambda^{c}t)&=u^3(\lambda^{b}x,\lambda^{c}t)\partial_{x_1}u(\lambda^{b}x,\lambda^{c}t),\\
+          \lambda^{d}(u_{t}(\lambda^{b}x,\lambda^{c}t)-\Delta u(\lambda^{b}x,\lambda^{c}t))&=u^3(\lambda^{b}x,\lambda^{c}t)\partial_{x_1}u(\lambda^{b}x,\lambda^{c}t),
+        \end{align*}
+        en donde $d$ tiene que ser igual a $0$, por lo que se tiene que:
+        \begin{align*}
+          -3a-b+c&=0,\\
+          -3a+b&=0,
+        \end{align*}
+        de lo que podemos deducir que si $a\in\mathbb{R}$, entonces $b=3a$ y $c=6a$, por lo que podemos asegurar que para la familia de términos $(a,3a,6a)$ con $a\in\mathbb{R}$ se cumple que $u_{\lambda}(x,t)=\lambda^{a}u(\lambda^{3a}x,\lambda^{6a}t)$ es solución de la ecuación del calor no lineal anteriormente mencionada.
+        \demostrado
+    \end{enumerate}
+  \end{solucion}  
+\end{homeworkProblem}

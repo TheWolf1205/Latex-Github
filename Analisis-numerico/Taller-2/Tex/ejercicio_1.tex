@@ -1,0 +1,117 @@
+\begin{homeworkProblem}
+  Sea $A\in \mathbb{R}^{m\times n}$. Entonces se satisface:
+  \begin{enumerate}
+    \item $\|A\|_2=\|A^{T}\|_{2}\leq \|A\|_{F}=\|A^{T}\|_{F}$,
+    \item $\|A\|_{\infty}\leq \sqrt{n}\|A\|_{2}$,
+    \item $\|A\|_{2}\leq \sqrt{m}\|A\|_{\infty}$,
+    \item $\|A\|_{2}\leq \sqrt{\|A\|_{1}\|A\|_{\infty}}$.
+  \end{enumerate}
+  \begin{solucion}
+    \begin{enumerate}
+      \item $\|A\|_2=\|A^{T}\|_{2}\leq \|A\|_{F}=\|A^{T}\|_{F}$.\\
+        Veamos primero que $\|A\|_{2}=\|A^{T}\|_{2}$, para esto recordemos que:
+        \begin{align*}
+          \|A\|_{2}=\sqrt{\lambda_{m\acute{a}x}(A^TA)}
+        \end{align*}
+        Por lo que sabemos que $\|A\|_{2}$ depende totalmente de sus valores propios, por lo que será suficiente para concluir el resultado con ver que los valores propios de $A^{T}A$ son los mismos valores propios de $(A^{T})^{T}A^{T}=AA^{T}$, para esto será suficiente con verificar que si tomamos $\lambda\neq 0$ valor propio de $A^TA$, entonces:
+        \begin{align*}
+          A^TAx&=\lambda x\\
+          AA^TAx&=\lambda Ax\\
+          AA^Ty&=\lambda y
+        \end{align*}
+        Por lo que podríamos decir que $\lambda$ también es un valor propio de $AA^T$, note que de forma análoga se puede repetir el mismo procedimiento para ver que los valores propios de $AA^T$ son valores propios de $A^TA$ y por ende estas 2 matrices comparten valores propios distintos de $0$, luego se puede concluir que $\sqrt{\lambda_{m\acute{a}x}(A^TA)}=\sqrt{\lambda_{m\acute{a}x}(AA^T)}$, es decir, $\|A\|_2=\|A^T\|_{2}$.
+        Ahora, veamos que $\|A\|_{F}=\|A^T\|_{F}$, para esto recordemos que:
+        \begin{align*}
+          \|A\|_{F}=\left( \sum_{i=1}^n \sum_{j=1}^{m}|a_{ij}|^2 \right)^{\frac{1}{2}}
+        \end{align*}
+        por lo que si tomamos $a_{ij}\in A$ y $\tilde{a}_{ji}\in A^T$, debería ser fácil seguir el siguiente cálculo:
+        \begin{align*}
+          \|A\|_{F}&=\left( \sum_{i=1}^n \sum_{j=1}^{m}|a_{ij}|^2 \right)^{\frac{1}{2}}\\
+          &=\left( \sum_{i=1}^n \sum_{j=1}^{m}|\tilde{a}_{ji}|^2 \right)^{\frac{1}{2}}\\
+          &=\left( \sum_{j=1}^m \sum_{i=1}^{n}|\tilde{a}_{ji}|^2 \right)^{\frac{1}{2}}\\
+          &=\|A^T\|_{F}
+        \end{align*}
+        Ahora veamos que $\|A\|_{2}\leq \|A\|_{F}$.\\
+        Primero note que si tomamos la matriz $A^TA\in R^{n\times n}$ se cumple que:
+        \begin{align*}
+          [A^TA]_{ij}=\sum_{k=1}^{m}a_{ki}a_{kj}
+        \end{align*}
+        Luego:
+        \begin{align*}
+          tr(A^TA)&=\sum_{i=1}^n [A^TA]_{ii}\\
+          &=\sum_{i=1}^{n}\sum_{j=1}^{m}a_{ji}a_{ji}\\
+          &=\|A\|_{F}
+        \end{align*}
+        además sabemos que $tr(A^{T}A)=\sigma_1^2+\sigma_2^2+\cdots+\sigma_r^2$ y que $\|A\|_2^2=\sigma_{1}^2$, por lo que podemos asegurar que:
+        \begin{align*}
+          \|A\|_2&\leq \sigma_1^2\\
+          &\leq \sigma_1^2+\sigma_2^2+\cdots+\sigma_r^2\\
+          &\leq \|A\|_{F}^2
+        \end{align*}
+        lo que implica que $\|A\|_2\leq \|A\|_F$, lo que concluye el ejercicio.
+        \demostrado
+      \item $\|A\|_{\infty}\leq \sqrt{n}\|A\|_2$.\\
+        Note que:
+        \begin{align*}
+          \|A\|_{\infty}&=\max_{i=1,\cdots,m}\sum_{j=1}^{n}|a_{ij}|\\
+        \end{align*}
+        Ahora, suponga $A_i=(a_{i1},a_{i2},\cdots,a_{in})\in \mathbb{R}^{n}$, note que:
+        \begin{align*}
+          \sum_{j=1}^{n}|a_{ij}|&= (|a_{i1}|,|a_{i2}|,\cdots,|a_{in}|)\cdot (1,1,\cdots,1) &&\text{Luego por Cauchy-Schwarz.}\\
+          &\leq \|(|a_{i1}|,|a_{i2}|,\cdots,|a_{in}|)\|_2\|(1,1,\cdots,1)\|_{2}\\
+          &\leq \sqrt{\sum_{j=1}^n|a_{ij}|^{2}}\times \sqrt{\sum_{j=1}^{n}|1|^2}\\
+          &\leq \sqrt{n}\|A_i\|_{2}
+        \end{align*}
+        Ahora, como $\|A_i\|_{2}\leq \|A\|_{2}$ para todo $i=1,\cdots,m$ al ser consistente, al tomar máximo en ambos lados de la desigualdad se cumple que:
+        \begin{align*}
+          \|A\|_{1}&\leq \max_{i=1,\cdots,m}\sum_{j=1}^{n}|a_{ij}|\\
+          &\leq \sqrt{n}\|A\|_{2}
+        \end{align*}
+        lo que concluye el resultado esperado.
+        \demostrado
+      \item $\|A\|_{2}\leq\sqrt{m}\|A\|_{\infty}$.\\
+        Sea $x\in \mathbb{R}^{n}$ tal que $\|x\|_2=1$, y denotemos:
+        \begin{align*}
+          (Ax)_{i}=\sum_{j=1}^{n}a_{ij}x_{j}
+        \end{align*}
+        entonces:
+        \begin{align*}
+          |(Ax)_i|&=\left|\sum_{j=1}^na_{ij}x_{j}\right|\\
+          &\leq \sum_{j=1}^{n}|a_{ij}||x_j|\\
+          &\leq \sqrt{\sum_{j=1}^{n}|a_{ij}|^2}\|x\|_{2} &&\text{Por Cauchy-Schawrz.}\\
+          &\leq \sqrt{\sum_{j=1}^{n}|a_{ij}|^2}
+        \end{align*}
+        luego como:
+        \begin{align*}
+          \|Ax\|_2^2&=\sum_{i=1}^{m}|(Ax)_i|^2\\
+          &=\sum_{i=1}^{m}\sum_{j=1}^n|a_{ij}^2|\\
+          &\leq \sum_{i=1}^{m}\|A\|^2_{\infty}\\
+          &\leq m\|A\|^2_{\infty}
+        \end{align*}
+        luego tomando raiz cuadrada en ambos lados y el máximo de los $\|Ax\|_2$ con $x$ de norma 1, se puede concluir que $\|A\|_2\leq \sqrt{m}\|A\|_{\infty}$, lo que concluye el resultado esperado.
+      \item $\|A\|_2\sqrt{\|A\|_1\|A\|_\infty}$.\\
+        Sea $x\in\mathbb{R}^{n}$ con $\|x\|=1$ arbitrario, entonces:
+        \begin{align*}
+          (Ax)_i=\sum_{j=1}^{n}a_ijx_j
+        \end{align*}
+        Y utilizando la definición de $\|x\|_1$ tenemos que:
+        \begin{align*}
+          \|Ax\|_1&=\sum_{i=1}^m\left| (Ax)_i \right|\\
+          &=\sum_{i=1}^{m}\left| \sum_{j=1}^{n}a_{ij}x_j \right|
+        \end{align*}
+        usando el procedimiento que usamos en el primer ejercicio sabemos que:
+        \begin{align*}
+          \|Ax\|_{2}^2&\leq\sum_{i=1}^{m}\left| \sum_{j=1}^{n}a_{ij}x_j \right|^2\\
+          &\leq\sum_{i=1}^{m}\left|\sum_{j=1}^{n}a_{ij}x_j\right|\max_{i=1,\cdots,m}\left|\sum_{j=1}^{n}a_{ij}x_j\right|\\
+          &\leq \|Ax\|_1\|Ax\|_{\infty}\\
+          &\leq \|A\|_{1}\|A\|_{\infty}
+        \end{align*}
+        Luego tomando raíz y luego tomando el máximo variando los $\|x\|=1$ se concluye que:
+        \begin{align*}
+          \|A\|_2\leq \sqrt{\|A\|_{\infty}\|A\|_{1}}
+        \end{align*}
+        Lo que finaliza el ejercicio.
+        \demostrado
+    \end{enumerate}  
+  \end{solucion}
+\end{homeworkProblem}

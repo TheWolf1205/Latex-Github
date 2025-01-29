@@ -1,0 +1,38 @@
+\begin{homeworkProblem}
+  En $\mathbb{R}^{2}$, encuentre la función de Green para el primer cuadrante $U=\{(x,y)\in \mathbb{R}^{2}: x>0 \text{ y } y>0\}$. Verifique su respuesta:
+  \textbf{Sugerencia:} recuerde que la función de Green viene dada por $G(x,y)=\Phi(y-x)-\Phi^x(y)$ donde:
+  \begin{align*} 
+    \begin{cases}
+      -\Delta \phi^x=0, &\text{ en } U \text{,}\\
+      \phi^x=\Phi(y-x), &\text{ en } \partial U.
+    \end{cases} 
+  \end{align*}
+  Una manera de encontrar la función $\phi^x$ es escribirla como la suma de diferentes proyecciones de $\Phi(x-y)$ sobre cada cuadrante (Siga una idea similar a lo hecho para el caso $\mathbb{R}^{n}_{+}$). 
+  \begin{solucion}
+    Suponga $\tilde{x}=(-x_1,x_2)$.\\
+    Sea $x\in \mathbb{R}^{2}$ tal que $x=(x_1,x_2)$, luego la función de Green para $U$ será:
+    \begin{align*}
+      G(x,y)&=\Phi(y-(x_1,x_2))+\Phi(y-(-x_1,-x_2))-\Phi(y-(-x_1,x_2))-\Phi(y-(x_1,-x_2))\\
+      &=-\frac{log|(y-(x_1,x_2))|}{2\pi}-\frac{log|(y-(-x_1,-x_2))|}{2\pi}+\frac{log|(y-(-x_1,x_2))|}{2\pi}+\frac{log|(y-(x_1,-x_2))|}{2\pi}\\
+      &=\frac{log\left| \frac{(y-(-x_1,x_2))(y-(x_1,-x_2))}{(y-(x_1,x_2))(y-(-x_1,-x_2))} \right|}{2\pi}\\
+      &=\frac{log\left| \frac{(y-(-x_1,x_2))(y+(-x_1,x_2))}{(y-(x_1,x_2))(y+(x_1,x_2))} \right|}{2\pi}\\
+      &=\frac{log\left| \frac{y^2-(-x_1,x_2)^2}{y^2-(x_1,x_2)^2} \right|}{2\pi}\\
+      &=-\frac{\ln|y^2-x^2|}{2\pi}+\frac{\log|y^2-\tilde{x}|^2}{2\pi}\\
+      &=\Phi(y^2-x^2)-\Phi(y^2-\tilde{x}^2)
+    \end{align*}
+    Veamos que $\phi^x(y)=-\Phi(y-(-x_1,-x_2))+\Phi(y-(-x_1,x_2))+\Phi(y-(x_1,-x_2))=\Phi(y-x)$ si tomamos $y\in\partial U=\{(y_1,y_2):y_1=0\text{ y } y_2 \geq 0 \text{ ó } y_1 \geq 0 \text{ y } y_2=0\}$.
+    Suponga $y=(0,y_2)$ con $y_2\geq 0$, entonces:
+    \begin{align*}
+      \phi^x(y)&=-\Phi(y-(-x_1,-x_2))+\Phi(y-(-x_1,x_2))+\Phi(y-(x_1,-x_2))\\
+      &=-\Phi((0,y_2)-(-x_1,-x_2))+\Phi((0,y_2)-(-x_1,x_2))+\Phi((0,y_2)-(x_1,-x_2))\\
+      &=-\Phi((x_1,y_2+x_2))+\Phi((x_1,y_2-x_2))+\Phi((-x_1,y_2+x_2))\\
+      &=\frac{\ln|(x_1,y_2+x_2)|}{2\pi}-\frac{\ln|(x_1,y_2-x_2)|}{2\pi}-\frac{\ln|(-x_1,y_2+x_2)|}{2\pi}\\
+      &=\frac{\ln\left( \sqrt{x_1^2 + (y_2+x_2)^2} \right)}{2\pi}-\frac{\ln\left( \sqrt{x_1^2 + (y_2-x_2)^2} \right)}{2\pi}-\frac{\ln\left( \sqrt{(-x_1)^2 + (y_2+x_2)^2} \right)}{2\pi}\\
+      &=\frac{\ln\left( \sqrt{x_1^2 + (y_2+x_2)^2} \right)}{2\pi}-\frac{\ln\left( \sqrt{x_1^2 + (y_2-x_2)^2} \right)}{2\pi}-\frac{\ln\left( \sqrt{x_1^2 + (y_2+x_2)^2} \right)}{2\pi}\\
+      &=-\frac{\ln\left( \sqrt{(-x_1)^2 + (y_2-x_2)^2} \right)}{2\pi}\\
+      &=\Phi((0,y_2)-x)\\
+      &=\Phi(y-x)
+    \end{align*}
+    Note que el caso $y=(y_1,0)$ con $y_1\geq 0$ es análogo, por lo que podemos afirmar que $\phi^x(y)=\Phi(y-x)$ con $y\in\partial U$ 
+  \end{solucion}
+\end{homeworkProblem}

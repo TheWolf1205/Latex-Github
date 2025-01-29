@@ -1,0 +1,180 @@
+\begin{homeworkProblem}
+  (\textbf{Fórmula de Poisson's para el espacio medio}) Asuma que $g\in C(\mathbb{R}^{n-1}) \cap L^{\infty}(\mathbb{R}^{n-1})$ y defina $u$ como:
+  \begin{align*}
+    u(x)&=\frac{2x_n}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}}\frac{g(y)}{|x-y|^n}dy
+  \end{align*}
+  con $x\in\mathbb{R}^{n}_{+}$. Muestre que:
+  \begin{enumerate}
+    \item $u\in C^{\infty}(\mathbb{R}^{n}_{+})\cap L^{\infty}(\mathbb{R}^{n}_{+})$.
+    \begin{solucion}
+      \begin{definicion}
+        La función de Green para el espacio medio $\mathbb{R}^{n}_{+}$ es:
+        \begin{align*}
+          G(x,y)&:=\Phi(y-x)-\Phi(y-\tilde{x}) &&((x,y)\in\mathbb{R}^{n}_{+}:x\neq y).
+        \end{align*}
+        En donde $\tilde{x}=(x_1,\cdots,x_{n-1},-x_n)$
+      \end{definicion}
+      \begin{definicion}
+        El Kernel de Poisson's para el espacio medio $\mathbb{R}^{n}_{+}$ es:
+        \begin{align*}
+          K(x,y)&:=\frac{2x_n}{n\alpha(n)}\frac{1}{|x-y|^n} &&(x\in \mathbb{R}^{n}_{+},y\in \partial\mathbb{R}^{n}_{+})
+        \end{align*}
+      \end{definicion}
+      Veamos que $u\in C^{\infty}(\mathbb{R}^{n}_{+})$, para esto definamos:
+      \begin{align*}
+        f(x)= 
+        \begin{cases}
+          \frac{1}{|x|^n}, &\text{ Si } x\in\partial \mathbb{R}^{n}_{+}\setminus\{0\}\\
+          0, &\text{ En otro caso.}
+        \end{cases}
+      \end{align*}
+      Note que $f\in C^{\infty}(\mathbb{R}^{n}_{+})$. Ahora note que:
+      \begin{align*}
+        u(x)&=\frac{2x_n}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}}\frac{g(y)}{|x-y|^n}dy\\
+        &=\frac{2x_n}{n\alpha(n)}(f*g)(x)
+      \end{align*}
+      Ahora veamos que se puede realizar derivación bajo el signo de la integral, esto ya que para $x_j$ con $j\neq n$ usando la desigualdad del valor medio:
+      \begin{align*}
+        \left| \frac{\frac{g(y)}{|x+h\epsilon_j-y|^n}-\frac{g(y)}{|x-y|^n}}{h} \right|&\leq \left| \frac{g(y)}{\left(\sum_{i\leq n, i\neq j}(x_i-y_i)^2+(x_j+h_j-y_j)^2\right)^{n/2}}-\frac{g(y)}{\left(\sum_{i\leq n, i\neq j}(x_i-y_i)^2+(x_j-y_j)^2\right)^{n/2}} \frac{1}{h}\right|\\
+        &\leq \left| -\frac{2ng(y)(x_j+h^*_j-y_j)}{2|x+h^*\epsilon_j-y|^{n+2}} \right|\\
+        &\leq \left| \frac{ng(y)}{|x+h^*\epsilon_j-y|^{n+1}} \right|\\
+        &\leq C\left| \frac{1}{|x-y|^{n+1}} \right|=l(y)\\
+      \end{align*}
+      Luego, $l(y)\in L^{1}(\partial\mathbb{R}^{n}_{+})$, por lo que podemos realizar derivación bajo el signo de la integral.
+      Luego, $\partial_{x_i} u = \frac{2x_n}{n\alpha(n)}(\partial_{x_i}f*g)(x)$ si $i\neq n$ y para el caso $i=n$ como $2x_n\in C^{\infty}(\mathbb{R}^{n}_{+})$, entonces podemos asegurar que $\partial^{\alpha}u$ existe para cualquier $\alpha$ multi-índice, es decir, $u\in C^{\infty}(\mathbb{R}^{n}_{+})$.\\
+      Ahora, veamos que $u\in L^{\infty}(\mathbb{R}^{n}_{+})$.\\
+      Para esto será importante ver que:
+      \begin{align*}
+        \int_{\partial \mathbb{R}^{n}_{+}}K(x,y)dy=1
+      \end{align*}
+      Para esto note que:
+      \begin{align*}
+        \int_{\partial \mathbb{R}^{n}_+}K(x,y)&=\int_{\partial \mathbb{R}^{n}_+}\frac{2x_n}{n\alpha(n)}\frac{1}{|x-y|^n}dy\\
+        &=\frac{2x_n}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}}\frac{1}{|x-y|^n}dy\\
+        &=\frac{2x_n}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}}\frac{1}{||\tilde{x}-y|^2+x_n^2|^{n/2}}dy &&\text{En donde $\tilde{x}=(x_1,\cdots,x_{n-1})$.}\\
+        &=\frac{2x_n}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}}\frac{x_n^{n-1}}{|x_n^2|z|^2+x_n^2|^{n/2}}dz &&\text{Haciendo $z=\frac{\tilde{x}-y}{x_n}$.}\\
+        &=\frac{2}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}}\frac{1}{(|z|^2+1)^{n/2}}dz
+      \end{align*}
+      Ahora, usando coordenadas polares:
+      \begin{align*}
+        \int_{\partial \mathbb{R}^{n}_{+}}K(x,y)dy&=\frac{2}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}}\frac{1}{(|z|^2+1)^{n/2}}dz\\
+        &=\frac{2}{n\alpha(n)} \int_{0}^{\infty}\int_{\partial B(0,1)}\frac{r^{n-2}}{(r^2+1)^{n/2}}dSdr &&\text{Con $B(0,1)$ en $\mathbb{R}^{n-1}$.}\\
+        &=\frac{2}{n\alpha(n)}|\partial B(0,1)|\int_{0}^{\infty}\frac{r^{n-2}}{(r^2+1)^{n/2}}dr
+      \end{align*}
+      Ahora, realizando la sustitución trigonométrica $\tan(\theta)=r$, tenemos que:
+      \begin{align*}
+        \int_{\partial \mathbb{R}^{n}_{+}}K(x,y)dy&=\frac{2}{n\alpha(n)}|\partial B(0,1)|\int_{0}^{\infty}\frac{r^{n-2}}{(r^2+1)^{n/2}}dr\\
+        &=\frac{2(n-1)\alpha(n-1)}{n\alpha(n)}\int_{0}^{\pi/2}\frac{\tan^{n-2}(\theta)\sec^2(\theta)}{(\tan^2(\theta)+1)^{n/2}}d\theta\\
+        &=\frac{2(n-1)\alpha(n-1)}{n\alpha(n)}\int_{0}^{\pi/2}\frac{\tan^{n-2}(\theta)\sec^2(\theta)}{(\sec^2(\theta))^{n/2}}d\theta\\
+        &=\frac{2(n-1)\alpha(n-1)}{n\alpha(n)}\int_{0}^{\pi/2}\frac{\tan^{n-2}(\theta)}{\sec^{n-2}(\theta)}d\theta\\
+        &=\frac{2(n-1)\alpha(n-1)}{n\alpha(n)}\int_{0}^{\pi/2}\sen^{n-2}(\theta)d\theta
+      \end{align*}
+      Ahora, usando que:
+      \begin{align*}
+        \int \sen^n(x)dx&=-\frac{1}{n}\sen^{n-1}(x)cos(x)+\frac{n-1}{n}\int \sen^{n-2}(x)dx
+      \end{align*}
+      Podemos verificar que:
+      \begin{align*} 
+        \int_{0}^{\pi/2} \sen^{n-2}(\theta)d\theta&=-\frac{1}{n}\sen^{n-3}(\theta)cos(\theta)\Big|_{0}^{\pi/2}+\frac{n-3}{n-2}\int_{0}^{\pi/2}\sen^{n-4}(\theta)dx\\
+        &=\frac{n-3}{n-2}\int_{0}^{\pi/2}sen^{n-2}(\theta)d\theta\\
+      \end{align*}
+      Lo que nos lleva a tener en cuenta los casos:
+      \begin{align*}
+        \int_{0}^{\pi/2}\sen^0(\theta)d\theta&=\frac{\pi}{2}\\
+        \int_{0}^{\pi/2}\sen(\theta)d\theta&=1
+      \end{align*}
+      Pensemos por casos:
+      \begin{itemize}
+        \item $n$ par.\\
+          \begin{align*}
+            \int_{0}^{\pi/2}\sen^{n-2}(\theta)d\theta&=\left( \frac{\pi}{2}\right) \prod_{i=1}^{\frac{n}{2}-1} \frac{n-2i-1}{n-2i}
+          \end{align*}
+          Por lo que si usamos la propiedad factorial de $\Gamma$ tenemos que:
+          \begin{align*}
+            \int_{0}^{\pi/2}K(x,y)dy&=\frac{2(n-1)\alpha(n-1)}{n\alpha(n)}\int_{0}^{\pi/2}\sen^{n-2}(\theta)d\theta\\
+            &=\frac{2(n-1)\alpha(n-1)}{n\alpha(n)}\frac{\pi}{2}\prod_{i=1}^{\frac{n}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{2(n-1)\pi^{\frac{n-1}{2}}\Gamma\left( \frac{n}{2}+1 \right)}{n\Gamma\left( \frac{n-1}{2}+1 \right)\pi^{\frac{n}{2}}}\frac{\pi}{2}\prod_{i=1}^{\frac{n}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{\pi^{\frac{1}{2}}(n-1)\Gamma\left( \frac{n}{2}+1 \right)}{n\Gamma\left( \frac{n-1}{2}+1 \right)}\prod_{i=1}^{\frac{n}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{\pi^{\frac{1}{2}}(n-1)\left( \frac{n}{2} \right)\left( \frac{n-2}{2} \right)\cdots\left( \frac{4}{2} \right)\left( \frac{2}{2} \right)\Gamma\left( \frac{2}{2} \right)}{n\left( \frac{n-1}{2} \right)\left( \frac{n-3}{2} \right)\cdots\left( \frac{3}{2} \right)\left( \frac{1}{2} \right)\Gamma\left( \frac{1}{2} \right)}\prod_{i=1}^{\frac{n}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{(n-1)\left( \frac{n}{2} \right)\left( \frac{n-2}{2} \right)\cdots\left( \frac{4}{2} \right)}{n\left( \frac{n-1}{2} \right)\left( \frac{n-3}{2} \right)\cdots\left( \frac{3}{2} \right)\left( \frac{1}{2} \right)}\prod_{i=1}^{\frac{n}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{(n-1)\left( n \right)\left( n-2 \right)\cdots\left( 4 \right)}{n\left( n-1 \right)\left( n-3 \right)\cdots\left( \frac{1}{2} \right)}\prod_{i=1}^{\frac{n}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\prod_{i=1}^{\frac{n}{2}-1}\frac{n-2i}{n-2i-1}\prod_{i=1}^{\frac{n}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=1
+          \end{align*}
+        \item $n$ impar.\\
+          \begin{align*}
+            \int_{0}^{\pi/2}\sen^{n-2}(\theta)d\theta=\prod_{i=1}^{\frac{n-1}{2}-1}\frac{n-2i-1}{n-2i}
+          \end{align*}
+          Por lo que si usamos la propiedad factorial de $\Gamma$ tenemos que:
+          \begin{align*} 
+            \int_{0}^{\pi/2}K(x,y)dy&=\frac{2(n-1)\alpha(n-1)}{n\alpha(n)}\int_{0}^{\pi/2}\sen^{n-2}(\theta)d\theta\\
+            &=\frac{2(n-1)\alpha(n-1)}{n\alpha(n)}\prod_{i=1}^{\frac{n-1}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{2(n-1)\pi^{\frac{n-1}{2}}\Gamma\left( \frac{n}{2}+1 \right)}{n\pi^{\frac{n}{2}}\Gamma\left( \frac{n-1}{2}+1 \right)}\prod_{i=1}^{\frac{n-1}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{2(n-1)\Gamma\left( \frac{n}{2}+1 \right)}{\pi^{\frac{1}{2}}n\Gamma\left( \frac{n-1}{2}+1 \right)}\prod_{i=1}^{\frac{n-1}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{2(n-1)\left( \frac{n}{2} \right)\left( \frac{n-2}{2} \right)\cdots\left( \frac{3}{2} \right)\left( \frac{1}{2} \right)\Gamma\left( \frac{1}{2} \right)}{\pi^{\frac{1}{2}}n\left( \frac{n-1}{2} \right)\left( \frac{n-3}{2} \right)\cdots\left( \frac{4}{2} \right)\left( \frac{2}{2} \right)\Gamma\left( \frac{2}{2} \right)}\prod_{i=1}^{\frac{n-1}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\frac{2(n-1)\left( n \right)\left( n-2 \right)\cdots\left( 3 \right)\left( 1 \right)}{n\left( n-1 \right)\left( n-3 \right)\cdots\left( 4 \right)\left( 2 \right)}\prod_{i=1}^{\frac{n-1}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=\prod_{i=1}^{\frac{n-1}{2}-1}\frac{n-2i}{n-2i-1}\prod_{i=1}^{\frac{n-1}{2}-1}\frac{n-2i-1}{n-2i}\\
+            &=1
+          \end{align*}
+      \end{itemize}
+      Por lo que podemos asegurar que:
+      \begin{align*}
+        \int_{\partial \mathbb{R}^{n}_{+}}K(x,y)dy&=1
+      \end{align*}
+      De esto se sigue que:
+      \begin{align*}
+        |u(x)|&\leq \left|\int_{\partial \mathbb{R}^{n}_{+}}g(y)K(x,y)dy\right|\\
+        &\leq \|g\|_{L^{\infty}(\mathbb{R}^{n-1})}\left| \int_{\partial \mathbb{R}^{n}_{+}} K(x,y)dy \right|\\
+        &\leq \|g\|_{L^{\infty}(\mathbb{R}^{n-1})}
+      \end{align*}
+      Es decir, $u\in L^{\infty}(\mathbb{R}^{n}_{+})$.
+    \end{solucion}
+    \item $\Delta u=0$ en $\mathbb{R}^{n}_{+}$.
+    \begin{solucion}
+      Note que $G(x,y)$ es armónica respecto a ambas variables a excepción del punto $x=y$, ahora note que:
+      \begin{align*}
+        u(x)&=\frac{2x_n}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}}\frac{g(y)}{|x-y|^n}dy\\
+        &=\int_{\partial \mathbb{R}^{n}_{+}}g(y)K(x,y)dy
+      \end{align*}
+      Ahora, como $-\partial_{y_n}G(x,y)=K(x,y)$, entonces $K(x,y)$ es armónica y por ende sabemos que su derivada es continua, por lo que podemos aplicar la derivada bajo el signo de la integral:
+      \begin{align*}
+        \Delta u(x)&=\Delta_x \int_{\partial \mathbb{R}^{n}_{+}}g(y)K(x,y)dy\\
+        &=\int_{\partial \mathbb{R}^{n}_{+}}g(y)\Delta_x K(x,y)dy &&\text{Pero como $\Delta_x K(x,y)=0$.}\\
+        &=0
+      \end{align*}
+    \end{solucion}
+    \item $\lim_{\underset{x\in \mathbb{R}^{n}_{+}}{x\rightarrow x^0}}u(x)=g(x^0)$ para cada punto $x^0\in\partial \mathbb{R}^{n}_{+}$.
+    \begin{solucion}
+      Sea $x^0\in\partial \mathbb{R}^{n}_{+}$, dado $\epsilon > 0$ escogemos $\delta > 0$ tal que si $|y-x^0|<\delta$ con $y\in\partial \mathbb{R}^{n}_{+}$, se cumpla que:
+      \begin{align*}
+        |g(y)-g(x^0)|<\epsilon
+      \end{align*}
+      Entonces, si tomamos $|x-x^0|<\frac{\delta}{2}$ con $x\in\mathbb{R}^{n}_{+}$, entonces:
+      \begin{align*}
+        |u(x)-g(x^0)|&\leq \int_{\partial \mathbb{R}^{n}_{+}}K(x,y)|g(y)-g(x^0)|dy\\
+        &\leq \int_{\partial \mathbb{R}^{n}_{+}\cap B(x^0,\delta)}K(x,y)|g(y)-g(x^0)|dy + \int_{\partial \mathbb{R}^{n}_{+}\setminus B(x^0,\delta)}K(x,y)|g(y)-g(x^0)|dy\\
+        &:\leq I + J
+      \end{align*}
+      Ahora, para $I$ note que:
+      \begin{align*}
+        I&\leq \int_{\partial \mathbb{R}^{n}_{+}\cap B(x^0,\delta)}K(x,y)|g(y)-g(x^0)|dy\\
+        &< \epsilon \int_{\partial \mathbb{R}^{n}_{+}}K(x,y)dy\\
+        &< \epsilon 
+      \end{align*}
+      Por lo que podemos asegurar que si $x\rightarrow x^0$, entonces $I\rightarrow 0$.\\
+      Ahora, para $J$ como $|x-x^0|\leq \frac{\delta}{2}$ y $|y-x^0|\geq \delta$, entonces:
+      \begin{align}
+        |y-x^0|&\leq |y-x|+|x-x^0|\\
+        &\leq |y-x|+\frac{\delta}{2}\\
+        &\leq |y-x|+\frac{1}{2}|y-x^0|
+      \end{align}
+      Lo que implica que $\frac{1}{2}|y-x^0|\leq |y-x|$, usando esto tenemos que:
+      \begin{align*}
+        J&\leq \int_{\partial \mathbb{R}^{n}_{+}\setminus B(x^0,\delta)}K(x,y)|g(y)-g(x^0)|dy\\
+        &\leq 2\|g\|_{L^{\infty}(\mathbb{R}^{n-1})}\int_{\partial \mathbb{R}^{n}_{+}\setminus B(x^0,\delta)}K(x,y)dy\\
+        &\leq \frac{2^{n+2}\|g\|_{L^{\infty}(\mathbb{R}^{n-1})}x_n}{n\alpha(n)}\int_{\partial \mathbb{R}^{n}_{+}\setminus B(x^0,\delta)}|x-y|^{-n}dy
+      \end{align*}
+      El cual tiende a $0$ cuando $x_n\rightarrow 0$, por lo que podemos asegurar que si $x\rightarrow x^0$, entonces $u(x)\rightarrow g(x^0)$. 
+    \end{solucion}
+  \end{enumerate}
+\end{homeworkProblem}

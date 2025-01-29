@@ -1,0 +1,472 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{Boadilla}       % or try default, Darmstadt, Warsaw, ...
+  \usecolortheme{beaver} % or try albatross, beaver, crane, ...
+  \usefonttheme{serif}    % or try default, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}{Andrés Cadena (UNAL)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.37\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}{Ecuación del calor}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.28\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}{01/08/24}
+  \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\supp}{supp}
+
+%%%%%%%%Tikz stuff
+\usepackage{tikz} 
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{ upgreek }
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usetikzlibrary{intersections, pgfplots.fillbetween}
+\usepackage{tikz-3dplot}
+\pgfplotsset{compat=1.7}
+\usetikzlibrary{patterns}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{natbib}
+\setcitestyle{year,open={(},close={)}}
+
+%Simbolo demostración
+\newcommand{\heart}{\begin{tikzpicture}[scale=0.001cm,rotate=180]
+\fill[black] (0,0) 
+        .. controls (0,-0.5) and (0.3,-1.8) .. (2,-2)
+        .. controls (4.2,-2) and (5.5,0) .. (5.5,3)
+        .. controls (5.5,5.5) and (3.5,7.5) .. (0,10)
+        .. controls (-3.5,7.5) and (-5.5,5.5) .. (-5.5,3)
+        .. controls (-5.5,0) and (-4.2,-2) .. (-2,-2)
+        .. controls (-0.3,-1.8) and (0,-0.5) .. (0,0);
+\end{tikzpicture}}
+
+\newcommand{\demostrado}[0]{ \begin{flushright} $\heart{}$ \end{flushright}}
+
+%sagetex
+%\usepackage{sagetex}
+
+\AtBeginSection[]
+  {
+     \begin{frame}<beamer>
+     \frametitle{Plan}
+     \tableofcontents[currentsection]
+     \end{frame}
+  }
+  
+ 
+  
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%New commands
+
+\newcommand{\sech}{\operatorname{sech}}
+%\DeclareMathOperator{\supp}{supp}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\definecolor{mirojo}{RGB}{160,0,0}
+\setbeamercolor{section number projected}{bg=mirojo,fg=white}
+\setbeamercolor{subsection number projected}{bg=mirojo,fg=white}
+\setlist[enumerate]{label=\textcolor{mirojo}{\arabic*.}}
+\setbeamercolor{block title}{bg=mirojo,fg=white}
+\setbeamercolor{block body}{bg=mirojo!20,fg=black}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{Ecuación del calor: Teorema 1}
+\author{\texorpdfstring{ 
+Andrés David Cadena Simons \\
+Universidad Nacional de Colombia, Bogotá}{A}}
+
+\institute{ }
+\date{\footnotesize 1 de agosto del 2024}
+
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+
+\end{frame}
+
+
+\begin{frame}{Contenido}
+  \tableofcontents
+\end{frame}
+
+\section{Teorema.}
+
+\begin{frame}{Teorema}
+  \begin{block}{Teorema}
+    Asuma que $g\in C(\mathbb{R}^{n})\cap L^{\infty}(\mathbb{R}^{n})$ y sea $u$ definida por:
+    \begin{align*}
+      u(x,t)&=(\Phi(\cdot,t)*g)(x),\\
+      &=\frac{1}{(4\pi t)^{\frac{n}{2}}}\int_{\mathbb{R}^{n}}e^{-\frac{|x-y|^2}{4t}}g(y)dy,
+    \end{align*}
+    con $x\in\mathbb{R}^{n}$ y $t>0$.
+    Entonces:
+    \begin{enumerate}
+      \item $u\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$,
+      \item $u_t-\Delta u=0$ para $x\in\mathbb{R}^{n}$ y $t>0$,
+      \item $\underset{(x,t)\rightarrow(x^0,0),x\in\mathbb{R}^{n},t>0}{\lim}u(x,t)=g(x^0)$ para cada punto $x^0\in\mathbb{R}^{n}$. 
+    \end{enumerate}
+    \cite{book:5979}.
+  \end{block}
+\end{frame}
+
+\section{Demostración.}
+
+\begin{frame}{Demostración.}
+  \begin{block}{Demostración}
+    \begin{itemize}
+      \item $u\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$.
+    \end{itemize}
+    Sabemos que respecto a la variable $x$ se tiene que:
+    \begin{align*}
+      \partial_{x_i}e^{-\frac{|x|^2}{4t}}&=-\dfrac{x_i}{2t}e^{-\frac{|x|^2}{4t}},
+    \end{align*}
+    y a su vez, utilizando un argumento inductivo podemos verificar que en general:
+    \begin{align*}
+      \partial^{\alpha}e^{-\frac{|x|^2}{4t}}&=\dfrac{p(x,t)}{(2t)^{|\alpha|}}e^{-\frac{|x|^2}{4t}},
+    \end{align*}
+    con $\alpha$ multi-índice y $p$ es un polinomio de grado $|\alpha|$. 
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Además, sabemos que respecto a $t$ se cumple que:
+    \begin{align*}
+      \partial_{t}e^{-\frac{|x|^2}{4t}}& = \frac{|x|^{2}}{4t^2} e^{-\frac{|x|^2}{4t}},
+    \end{align*}
+    y a su vez, usando la regla del producto de las derivadas y un argumento inductivo se puede verificar que en general:
+    \begin{align*}
+      \partial^{k}_{t}e^{-\frac{|x|^2}{4t}}&=\frac{q(x,t)}{(2t)^{2k}}e^{-\frac{|x|^2}{4t}},
+    \end{align*}
+    con $k\in \mathbb{N}$ y $q$ polinomio.\\
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Ahora, utilizando esto, podemos ver que si derivamos $e^{-\frac{|x|^2}{4t}}$ respecto a $(x,t)$, dado cualquier multi-índice $\beta$, existen un polinomio $p$ no nulo y $m\in \mathbb{Z}$ tales que:
+    \begin{align*}
+      \partial^{\beta}e^{-\frac{|x|^2}{4t}}&=\frac{p(x,t)}{(2t)^m}e^{-\frac{|x|^2}{4t}},
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    al ser $\frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}\in C^{\infty}(\mathbb{R}^{n}\times(0,\infty))$ con todas sus derivadas acotadas, entonces sabemos que $u$ y $\left( \partial^{\beta}\frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}(\cdot,t)*g \right)(x)$ se encuentran bien definidas.\\
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Ahora veamos que $u\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$, es decir, veamos que $\partial^{\beta}\left( \frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}(\cdot,t)*g \right)(x)=\left( \partial^{\beta}\frac{1}{t^{\frac{n}{2}}}e^{-\frac{|x|^2}{4t}}(\cdot,t)*g \right)(x)$.\\
+    Para esto como sabemos que dado $\beta$ multi-índice se cumple que:
+    \begin{align*}
+      \partial^{\beta}e^{-\frac{|x|^2}{4t}}&=\frac{p(x,t)}{(2t)^m}e^{-\frac{|x|^2}{4t}}, 
+    \end{align*}
+    luego usando la regla del producto podemos fijarnos que solamente será necesario ver que se cumple para las primeras derivadas respecto a $x$ y $t$.\\
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Veamos el caso para $x_j$.\\
+    Dados $(x,t)\in\mathbb{R}^{n}\times (0,\infty)$, note que:
+    \begin{align*}
+      \left| \frac{e^{-\frac{|x+h\epsilon_j-y|^2}{4t}}-e^{-\frac{|x-y|^2}{4t}}}{h} \right|&\leq\frac{\left| e^{-\frac{(x-y+h\epsilon_j)\cdot(x-y+h\epsilon_j)}{4t}}-e^{-\frac{|x-y|^2}{4t}} \right|}{|h|},\\
+      &\leq\frac{\left| e^{-\frac{|x-y|^2+2(h\epsilon_j)\cdot(x-y)+|h\epsilon_j|^2}{4t}}-e^{-\frac{|x-y|^2}{4t}} \right|}{|h|},\\
+      &\leq \frac{\left| e^{-\frac{|x-y|^2}{4t}}\left( e^{-\frac{2(h\epsilon_j)\cdot(x-y)+|h\epsilon_j|^2}{4t}}-1 \right) \right|}{|h|},
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+        Ahora veamos que $f(y)\in L^1(\mathbb{R}^{n})$.\\
+        \begin{align*}
+          \|f\|_1&=\int_{\mathbb{R}^{n}} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy,\\
+          &\leq \int_{|x-y|\leq 1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy,\\
+          &+ \int_{|x-y|>1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy,\\
+          &\leq I + J
+        \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Veamos que $I$ converge:
+    \begin{align*}
+      I&\leq \int_{|x-y|\leq 1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy,\\
+      &\leq \int_{|x-y|\leq 1} \left| \left(-2 -\frac{1}{2}\right)e^{-\frac{1+1/2+1/8}{4t}}\right|dy,\\
+      &\leq C,
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Ahora veamos que $J$ converge.\\
+    Para esto veamos que si $|x-y|>1$, entonces:
+    \begin{align*}
+      \frac{|x-y|}{2}\leq\frac{|x-y|^2}{2}\leq |x-y|^2,\\
+      -|x-y|\geq-|x-y|^2-\frac{1}{2}|x-y|,
+    \end{align*}
+    por lo que es válido decir que:
+    \begin{align*}
+      J&\leq \int_{|x-y|>1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|^2+(1/2)|x-y|+1/8}{4t}}\right|dy,\\
+      &\leq \int_{|x-y|>1} \left| \left(-2|x-y| -\frac{1}{2}\right)e^{-\frac{|x-y|+1/8}{4t}}\right|dy,\\
+      &\leq C,
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Por lo que usando el teorema de la convergencia dominada de Lebesgue podemos afirmar que dado $(x,t)\in\mathbb{R}^{n}\times (0,\infty)$ se satisface que:
+      \begin{align*}
+        \partial_{x_j}u(x,t)&=\partial_{x_j}\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy,\\
+        &=\int_{\mathbb{R}^{n}}\partial_{x_j}\Phi(x-y,t)g(y)dy,\\
+        &=(\partial_{x_j}\Phi(\cdot,t)*g)(x,t),
+      \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Ahora veamos el caso para la primera derivada respecto a $t$.\\
+    Dados $(x,t)\in\mathbb{R}^{n}\times (0,\infty)$, note que por desigualdad del valor medio:
+    \begin{align*}
+      \left| \frac{\frac{1}{(t+h)^{n/2}}e^{-\frac{|x-y|^2}{4(t+h)}}-\frac{1}{t^{n/2}}e^{-\frac{|x-y|^2}{4t}}}{h} \right|&\leq \left| \frac{\left( \frac{-2n(t+h^*)+|x-y|^2}{4(t+h^*)^{n/2+2}}e^{-\frac{|x-y|^2}{4(t+h^*)}} \right)h}{h} \right|,
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Luego, suponga $h\leq k$, entonces como $0\leq h^*\leq h$ se cumple que:
+    \begin{align*}
+      \left| \frac{\frac{1}{(t+h)^{n/2}}e^{-\frac{|x-y|^2}{4(t+h)}}-\frac{1}{t^{n/2}}e^{-\frac{|x-y|^2}{4t}}}{h} \right|&\leq \left| \frac{-2n(t+h^*)+|x-y|^2}{4(t+h^*)^{n/2+2}}e^{-\frac{|x-y|^2}{4(t+h^*)}} \right|,\\
+      &\leq \left| \frac{2n(t+k)+|x-y|^2}{4(t)^{n/2+2}}e^{-\frac{|x-y|^2}{4(t+k)}} \right|=f(y),
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    luego $f(y)\in L^1(\mathbb{R}^{n})$, por lo que usando el teorema de la convergencia dominada de Lebesgue se tiene que dado $(x,t)\in\mathbb{R}^{n}\times (0,\infty)$ se cumple que:
+    \begin{align*}
+      \partial_{t}u(x,t)&=\partial_{t}\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy,\\
+      &=\int_{\mathbb{R}^{n}}\partial_{t}\Phi(x-y,t)g(y)dy,\\
+      &=(\partial_{t}\Phi(\cdot,t)*g)(x,t),
+    \end{align*}
+    por lo que quedaría demostrado que $u\in C^{\infty}(\mathbb{R}^{n}\times (0,\infty))$.
+    \demostrado
+  \end{block}  
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    \begin{itemize}
+      \item $u_t-\Delta u=0$ para $x\in\mathbb{R}^{n}$ y $t>0$. 
+    \end{itemize}
+    Para esto veamos que $\Phi$ satisface la ecuación del calor.\\
+    Note que:
+    \begin{align*}
+      \partial_{x_i}^2\frac{1}{(4\pi t)^{n/2}}e^{-\frac{-|x|^2}{4t}}&=-\frac{1}{(4\pi t)^{n/2}(2t)}\left( 1-\frac{x_i^2}{2t} \right)e^{-\frac{|x|^2}{4t}},\\
+      \partial_{t}\frac{1}{(4\pi t)^{n/2}}e^{-\frac{|x|^2}{4t}}&=-\frac{1}{(4\pi t)^{n/2}(2t)}\left( n-\frac{|x|^2}{2t} \right)e^{-\frac{|x|^2}{4t}},
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    luego:
+    \begin{align*}
+      \Phi_t-\Delta\Phi&=-\frac{1}{(4\pi t)^{n/2}(2t)}\left( n-\frac{|x|^2}{2t} \right)e^{-\frac{|x|^2}{4t}},\\
+      &\phantom{=}+\sum_{i=1}^{n}\frac{1}{(4\pi t)^{n/2}(2t)}\left( 1-\frac{x_i^2}{2t} \right)e^{-\frac{|x|^2}{4t}}),\\
+      &=0,
+    \end{align*}
+    Ahora note que:
+    \begin{align*}
+      u_t-\Delta u&=\int_{\mathbb{R}^{n}}(\Phi_t-\Delta\Phi)(x-y,t)g(y)dy,\\
+      &=0,
+    \end{align*}
+    ya que $\Phi$ soluciona la ecuación del calor.
+    \demostrado
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    \begin{itemize}
+      \item $\underset{(x,t)\rightarrow(x^0,0),x\in\mathbb{R}^{n},t>0}{\lim}u(x,t)=g(x^0)$ para cada punto $x^0\in\mathbb{R}^{n}$.
+    \end{itemize}
+    Para esto primero veamos que:
+    \begin{align*}
+      \int_{\mathbb{R}^{n}}\Phi(x,t)dx&=1,
+    \end{align*}
+    para todo $t>0$.\\
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Para ver esto note que:
+    \begin{align*}
+      \int_{\mathbb{R}^{n}}\Phi(x,t)dx&=\frac{1}{(4\pi t)^{n/2}}\int_{\mathbb{R}^{n}}e^{-\frac{|x|^2}{4t}}dx,\\
+      &=\frac{1}{\pi^{n/2}}\int_{\mathbb{R}^{n}}e^{-|z|^2}dz ,\\
+      &=\frac{1}{\pi^{n/2}}\int_{-\infty}^{\infty}\int_{\infty}^{\infty}\cdots \int_{-\infty}^{\infty}e^{-z_1^2-z_2^2-\cdots-z_n^2}dz_1dz_2\cdots dz_n,\\
+      &=\frac{1}{\pi^{n/2}}\prod_{i=1}^{n}\int_{-\infty}^{\infty}e^{-z_i}dz_i,\\
+      &=\frac{1}{\pi^{n/2}}\prod_{i=1}^{n}\pi^{1/2}=1,
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Dado $x^0\in \mathbb{R}^{n}$ y $\epsilon>0$, escoja $\delta>0$ tal que:
+    \begin{align*}
+      |g(y)-g(x^0)|<\epsilon &&\text{si }|y-x^0|<\delta,y\in\mathbb{R}^{n}.
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Entonces si nosotros tomamos $|x-x^0|<\frac{\delta}{2}$, nosotros tenemos que:
+    \begin{align*}
+      |u(x,t)-g(x^0)|&=\left|\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy-g(x^0)\right|,\\
+      &=\left|\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(y)dy-\int_{\mathbb{R}^{n}}\Phi(x-y,t)g(x^0)dy\right|,\\
+      &\leq \left| \int_{\mathbb{R}^{n}}\Phi(x-y,t)(g(y)-g(x^0))dy \right|,\\
+      &=\left| \int_{B(x^{0},\delta)}\Phi(x-y,t)(g(y)-g(x^0))dy \right|,\\
+      &\phantom{=}+\left| \int_{\mathbb{R}^{n}-B(x^{0},\delta)}\Phi(x-y,t)(g(y)-g(x^0))dy \right|,\\
+      &=|I|+|J|,
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    note que:
+    \begin{align*}
+      |I|&\leq\left| \int_{B(x^{0},\delta)}\Phi(x-y,t)(g(y)-g(x^0))dy \right|,\\
+      &\leq \int_{B(x^{0},\delta)}\Phi(x-y,t)|g(y)-g(x^0)|dy,\\
+      &\leq \epsilon \int_{B(x^{0},\delta)}\Phi(x-y,t)dy,\\
+      &\leq \epsilon,
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    por otro lado, si $|x-y|\geq \delta$, entonces:
+    \begin{align*}
+      |y-x^0|&\leq|y-x|+|x-x^0|,\\
+      &\leq |y-x|+\frac{\delta}{2},\\
+      &\leq |y-x|+\frac{1}{2}|y-x^0|,\\
+      \frac{1}{2}|y-x^0|&\leq|y-x|,
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    consecuentemente:
+    \begin{align*}
+      |J|&\leq \left| \int_{\mathbb{R}^{n}-B(x^{0},\delta)}\Phi(x-y,t)(g(y)-g(x^0))dy \right|,\\
+      &\leq \int_{\mathbb{R}^{n}-B(x^{0},\delta)}\Phi(x-y,t)|g(y)-g(x^0)|dy,\\
+      &\leq 2\|g\|_\infty\int_{\mathbb{R}^{n}-B(x^{0},\delta)}\Phi(x-y,t)dy,\\
+      &\leq \frac{C}{t^{n/2}}\int_{\mathbb{R}^{n}-B(x^{0},\delta)}e^{-\frac{|x-y|^2}{4t}}dy,\\
+      &\leq \frac{C}{t^{n/2}}\int_{\mathbb{R}^{n}-B(x^{0},\delta)}e^{-\frac{|y-x^0|^2}{16t}}dy,\\
+      &\leq \frac{C}{t^{n/2}}\int_{\delta}^{\infty}e^{-\frac{-r^2}{16t}}r^{n-1}dr,
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+  ahora, suponga $u=\frac{r^2}{16t}$, luego:
+    \begin{align*}
+      |J|&\leq \frac{C}{t^{n/2}}\int_{\delta}^{\infty}e^{-\frac{-r^2}{16t}}r^{n-1}dr,\\
+      &\leq\int_{\frac{\delta^2}{16t}}^{\infty}\frac{(4\sqrt{u}\sqrt{t})^{n-1}8t}{\sqrt{t}^n (4\sqrt{u}\sqrt{t})}e^{-u}du,\\
+      &\leq \int_{\frac{\delta^2}{16t}}^{\infty}8(4\sqrt{u})^{n-2}e^{-u}du,
+    \end{align*}
+    La cual cuando $t\rightarrow 0^+$, $\frac{\delta^2}{16t}\rightarrow\infty$ y por ende la integral tiende a $0$.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{}
+    Por consecuente es posible afirmar que:
+    \begin{align*}
+      |u(x,t)-g(x^0)|&\leq |I|+|J|,\\
+      &\leq \epsilon,
+    \end{align*}
+    Cuando $t\rightarrow 0^+$, es decir, $\underset{(x,t)\rightarrow(x^0,0),x\in\mathbb{R}^{n},t>0}{\lim}u(x,t)=g(x^0)$ para cada punto $x^0\in\mathbb{R}^{n}$.
+  \end{block}  
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Bibliografía}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Bibliografía.}
+	
+	
+	\bibliographystyle{authordate1} 
+	%  \bibliographystyle{plain}
+	\bibliography{references}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{center}
+\Huge {\color{red} Gracias por la atención} 
+\end{center}
+    
+\end{frame}
+\begin{frame}{Tablero}
+\end{frame}
+
+
+
+\end{document}

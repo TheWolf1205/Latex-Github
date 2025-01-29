@@ -1,0 +1,110 @@
+\begin{homeworkProblem}
+  Sea $U$ un abierto de $\mathbb{R}^{n}$. Decimos que una función $v\in C^{2}(\overline{U})$ es subarmónica si:
+  \begin{align*}
+    -\Delta v &\leq 0 &&\text{en $U$.} 
+  \end{align*}
+  \begin{enumerate}
+    \item Demuestre que si $v$ es subarmónica, entonces:
+      \begin{align*}
+        v(x)&\leq \fint_{B(x,r)}v(y)dy, &&\text{para toda $B(x,r)\subseteq U$.}
+      \end{align*}
+      \textbf{Sugerencia:} argumente como en la demostración de la propiedad del valor medio para la ecuación de Laplace, es decir, considere $\phi(r)=\fint_{\partial B(x,r)}u(y)dS(y)$ y calcule $\phi'(r)$.
+      \begin{solucion}
+        Considere $\phi(r)$ tal que si tomamos $B(x,r)\subseteq U$:
+        \begin{align*}
+          \phi(r)&=\fint_{\partial B(x,r)}v(y)dS(y)\\
+          &=\fint_{\partial B(0,1)}v(x+rz)dS(z)
+        \end{align*}
+        Ahora, si derivamos $\phi$ tenemos que:
+        \begin{align*}
+          \phi'(r)&=\frac{d}{dr}\fint_{\partial B(0,1)}v(x+rz)dS(z)\\
+          &=\fint_{\partial B(0,1)}\nabla v(x+rz)\cdot z dS(z) &&\text{Usando $y=x+rz$.}\\
+          &=\fint_{\partial B(0,1)}\nabla v(y)\cdot \frac{y-x}{r}dS(y) &&\text{Como $\frac{y-x}{r}$ es normal a $\partial B(0,1)$.}\\
+          &=\frac{1}{|\partial B(0,1)|}\int_{\partial B(0,1)}\nabla v(y)\cdot \eta dS(y)\\
+          &=\frac{1}{|\partial B(0,1)|}\int_{\partial B(0,1)}\Delta v(y)dy &&\text{Usando la formula de Green II.}\\
+          &\geq 0 &&\text{Ya que $\Delta v(y)\geq0$}
+        \end{align*}
+        Ahora, como $\phi'(r)\geq 0$, entonces $\phi$ debe de ser una función creciente, por lo que podemos asegurar que:
+        \begin{align*}
+          \phi(r)&\geq \lim_{r\rightarrow 0} \phi(r)\\
+          &\geq \fint_{\partial B(x,r)}v(y)dS(y)\\
+          &\geq v(x)
+        \end{align*}
+        Por lo que podemos asegurar que:
+        \begin{align*}
+          v(x)&\leq \fint_{\partial B(x,r)}v(y)dS(y)
+        \end{align*}
+        Ahora, note que:
+        \begin{align*}
+          \int_{B(x,r)}v(y)dy&\geq \int_{0}^{r}\int_{\partial B(x,s)}v(y)dS(y)ds\\
+          &\geq \int_{0}^{r}v(x)|\partial B(x,s)|ds\\
+          &\geq v(x)\int_{0}^{r}n\alpha(n)s^{n-1}ds\\
+          &\geq v(x)\alpha(n)r^{n}\\
+          &\geq v(x)|B(x,r)|
+        \end{align*}
+        Por lo que podemos concluir en que:
+        \begin{align*}
+          v(x)&\leq \frac{1}{|B(x,r)|}\int_{B(x,r)}v(y)dy\\
+          &\leq \fint_{\partial B(x,r)}v(y)dy
+        \end{align*}
+        \demostrado
+      \end{solucion}
+    \item Como consecuencia demuestre que si $U$ es conexo, entonces $\max_{\overline{U}}v=\max_{\partial U}v$.
+      \begin{solucion} 
+        Suponga que existe $x_0$ tal que $v(x_0)=M=\max_{x\in \overline{U}}v(x)$, entonces suponiendo $0<r_0<d(x_0,\partial U$ y usando el punto anterior se tiene que:
+        \begin{align*}
+          v(x_0)&\leq\fint_{B(x_0,r_0)}v(y)dy\\
+          &\leq M
+        \end{align*}
+        Ahora, note que $M<M$ es un absurdo, por lo que necesariamente se debe de tener $M=M$, ahora, aprecie que este hecho solo se puede dar si $v(y)=M$ para todo $y\in B(x_0,r_0)$, lo que motiva a pensar en los siguientes subconjuntos de $U$:
+        \begin{align*}
+          A:=\{x\in U: v(x)=M\}\\
+          B:=\{x\in U: v(x)\neq M\}
+        \end{align*}
+        Note que tanto $A$ como como $B$ son abiertos, ya que para cada $x\in A$ se cumple que existe $B(x,r_x)$ tal que para todo $y\in B(x,r_x)$ se da que $y\in A$, usando el razonamiento que realizamos con $x_0$.\\
+        Ahora, note que $B$ también es abierto, ya que dado $x\in B$ ($v(x)\neq M$), tenemos que por la continuidad de $v$ existe un $0<r_x<d(x,\partial U)$ tal que si $y\in B(x,r_x)$, entonces $y\neq M$ y por ende $y\in B$.\\
+        Luego, note que $A\cup B=U$ y $A\cap B=\emptyset$, pero como $U$ es conexo, entonces $A=\emptyset$ o $B=\emptyset$, pero como $x_0\in A$, entonces $B=\emptyset$, por lo que podemos afirmar que $v(x)=M$ para todo $x\in U$, además, como $v\in C^{0}(\overline{U})$, entonces $v(x)=M$ para todo $x\in \overline{U}$, por lo que podemos asegurar que:
+        \begin{align*}
+          \max_{x\in\overline{U}}v(x)=\max_{x\in\partial U}v(x)
+        \end{align*}
+        \demostrado
+      \end{solucion}
+    \item Sea $\phi:\mathbb{R}\rightarrow \mathbb{R}$ una función suave convexa ($\phi''>0$). Demuestre que si $u$ es armónica, entonces la función $v=\phi(u)$ es subarmónica.
+      \begin{solucion}
+        Note que:
+        \begin{align*}
+          \partial_{x_i}v(x)&=\partial_{x_i}(\phi \circ u)(x)\\
+          &=[(\phi'\circ u)(x)][\partial_{x_i}u(x)]\\
+          \partial_{x_i^2}v(x)&=[(\phi''\circ u)(x)][\partial_{x_i}u(x)][\partial_{x_i}u(x)]+[(\phi'\circ u)(x)][\partial_{x_i^2}u(x)]\\
+          &=[(\phi''\circ u)(x)][\partial_{x_i}u(x)]^2+[(\phi'\circ u)(x)][\partial_{x_i^2}u(x)]
+        \end{align*}
+        Pero como $\phi''>0$
+        \begin{align*}
+          \partial_{x_i^2}v(x)&>[(\phi'\circ u)(x)][\partial_{x_i^2}u(x)]
+        \end{align*}
+        Luego:
+        \begin{align*}
+          \Delta v(x)&>[(\phi'\circ u)(x)]\Delta u &&\text{Pero como $\Delta u=0$.}\\
+          &>0
+        \end{align*}
+        Por lo que podemos concluir en que $v=\phi(u)$ es subarmónica.
+        \demostrado
+      \end{solucion}
+    \newpage
+    \item Demuestre que si $u$ es armónica, entonces $v=|\nabla u|^2$ es subarmónica.
+      \begin{solucion}
+        Note que, como $u$ es armónica, sus derivadas también lo son, además $\nabla u$ es la suma de sus derivadas e igualmente sabemos que suma de funciones armónicas es armónica, por lo que será suficiente ver que $v=|u|^2$ es armónica para comprobarlo.\\ 
+        Suponga $\phi(x)=|x|^2$, utilizando el cálculo del punto anterior y $v=\phi(u)$, es fácil llegar a que:
+        \begin{align*}
+          \partial_{x_i^2}v(x)&=2[\partial_{x_i}u(x)]^2+[2|u(x)|][\partial_{x_i^2}u(x)]
+        \end{align*}
+        Por lo que podemos verificar que:
+        \begin{align*}
+          \Delta v(x)&=2\sum_{i=1}^{n}[\partial_{x_i^2}u(x)]^2+2|u(x)|\Delta u(x)\\
+          &=2\sum_{i=1}^n[\partial_{x_i^2}u(x)]^2 &&\text{Ya que $\Delta u(x)=0$.}\\
+          &\geq 0
+        \end{align*}
+        Por lo que podemos concluir que $v$ es subarmónica. 
+      \end{solucion}
+  \end{enumerate}
+\end{homeworkProblem}

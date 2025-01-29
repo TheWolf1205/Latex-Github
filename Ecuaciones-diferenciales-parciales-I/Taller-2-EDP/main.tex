@@ -1,0 +1,495 @@
+\input{encabezado}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\begin{homeworkProblem}
+Considere el siguiente problema de valor inicial:
+\begin{align*}
+    \begin{cases}
+        \partial_{x}^{2}u-u&=0,\hspace{2cm}(x,y)\in\mathbb{R}^2\\
+        u(0,y)&=f(y),\hspace{2cm}y\in\mathbb{R}\\
+        \partial_{x}u(0,y)&=g(y),\hspace{2cm}y\in\mathbb{R}
+    \end{cases}
+\end{align*}
+Donde $f,g\in C^{2}(\mathbb{R})$ y se busca una solución $u\in C^{2}(\mathbb{R}^2)$.
+\begin{enumerate}[i)]
+    \item Encuentre una solución del problema anterior y muestre su unicidad.\\
+    \textbf{Sugerencia:} note que como la EDP no depende de y, podemos buscar soluciones como en EDO, es decir, $u(x,y)=c(y)e^{\lambda x}$ para algún $\lambda$ para la unicidad, muestre que si $w$ es una solución $C^{2}(\mathbb{R}^{2})$ del problema $(1)$ con $f=g=0$, entonces intgrando la ecuación $\partial_{x}^{2}w-w=0$ se sigue que:
+    \begin{align*}
+        w(x,y)=\int_{0}^{x}(x-s)w(s,y)ds
+    \end{align*}
+    Itere la formula anterior (reemplace el valor de $w$ nuevamente por la integral) para mostrar que $w(x,y)=0$ para cualquier punto arbitrario $(x,y)$.
+    \begin{solucion}
+        Suponga que $u(x,y)=c(y)e^{\lambda x}$, de aquí tenemos que:
+        \begin{align*}
+            \partial^{2}_{x}u-u&=c(y)\lambda^2e^{\lambda x}-c(y)e^{\lambda x} &&\text{Como no deseamos que $u$ sea la solución trivial, entonces}\\
+            &=c(y)e^{\lambda x}(\lambda^2-1)\\
+            &=c(y)e^{\lambda x}(\lambda-1)(\lambda + 1)\\
+            &=0
+        \end{align*}
+        De aquí se puede deducir que $\lambda=\pm 1$, luego $u(x,y)=C_1(y)e^{x}+C_2e^{-x}$.\\
+        Ahora, para cálcular $C_1$ y $C_2$ usaremos los datos iniciales, así:
+        \begin{align*}
+            u(0,y)&=C_1+C_2=f(y)\\
+            \partial_{x}u(0,y)&=C_1-C_2=g(y)
+        \end{align*}
+        De aquí se puede deducir que:
+        \begin{align*}
+            C_1=\parauto{\frac{f(y)+g(y)}{2}}\\
+            C_2=\parauto{\frac{f(y)-g(y)}{2}}
+        \end{align*}
+        Luego:
+        \begin{align*}
+            u(x,y)&=C_1(y)e^{x}+C_2e^{-x}\\
+            &=\parauto{\frac{f(y)+g(y)}{2}}e^{x}+\parauto{\frac{f(y)-g(y)}{2}}e^{-x}\\
+            &=f(y)\parauto{\frac{e^{x}+e^{-x}}{2}}+g(y)\parauto{\frac{e^{x}-e^{-x}}{2}}\\
+            &=f(y)cosh(x)+g(y)sinh(x)
+        \end{align*}
+        Ahora, comprobemos la solución:
+        \begin{align*}
+            \partial_{x}^2u-u&=\partial_{x}^2(f(y)cosh(x)+g(y)sinh(x))-(f(y)cosh(x)+g(y)sinh(x))\\
+            &=\partial_{x}(f(y)sinh(x)+g(y)cosh(x))-(f(y)cosh(x)+g(y)sinh(x))\\
+            &=(f(y)cosh(x)+g(y)sinh(x))-f(y)cosh(x)+g(y)sinh(x)\\
+            &=0
+        \end{align*}
+        Ahora, para demostrar la unicidad de la solución, vamos a suponer que existe $v\in C^{2}(\mathbb{R}^2)$ tal que $v$ es solución de $(1)$ con $f=g=0$, así tome $w=u-v$ y tome $y\in \mathbb{R}$ fijo, entonces:
+        \begin{align*}
+            w&=C_1e^{x}+C_2e^{-x}\\
+            w(0)&=C_1+C_2=0\\
+            w'(0)&=C_1-C_2=0
+        \end{align*}
+        De aquí podemos deducir que:
+        \begin{align*}
+            C_1&=-C_2\\
+            C_1&=C_2
+        \end{align*}
+        Luego $C_1=\pm C_2$, lo que implica que $C_1=C_2=0$.\\
+        Así:
+        \begin{align*}
+            w(x)&=C_1e^{x}+C_2e^{-x}\\
+            &=(0)e^{x}+(0)e^{-x}\\
+            &=0
+        \end{align*}
+        Luego como dado $y\in \mathbb{R}$ arbitrario $w=0$, entonces podemos concluir en que $w(x,y)=u(x,y)-v(x,y)=0$, lo que implica que $u(x,y)=v(x,y)$.\\
+        Así, podemos concluir que $u$ es solución única del problema de valor inicial $(1)$ con $f=g=0$
+        \demostrado
+    \end{solucion}
+    \item Sean $f,g,\widetilde{f},\widetilde{g}\in C^{2}(\mathbb{R})$ funciones acotadas, tales que existe $\epsilon>0$ para el cual
+    \begin{align*}
+        \|f-\widetilde{f}\|_{\infty}<\epsilon, \hspace{2cm} \|g-\widetilde{g}\|_{\infty}<\epsilon,
+    \end{align*}
+    Donde $\|h\|_{\infty}=sup_{x\in\mathbb{R}}|h(x)|$. Sean $u(x,y)$ y $\widetilde{u}(x,y)$ soluciones del problema de Cauchy (1) con datos iniciales $f,g,\widetilde{f},\widetilde{g}$, respectivamente. Muestre que:
+    \begin{align*}
+        |u(x,y)-\widetilde{u}(x,y)|\leq\epsilon(|sinh(x)|+|cosh(x)|),
+    \end{align*}
+    Para cualquier $(x,y)\in\mathbb{R}^2$. ¿Qué puede decir de la dependencia continua de los datos? Es decir, si los datos iniciales están cercanos en la distancia $\| \cdot \|_{\infty}$, ¿sucede lo mismo con las soluciones del problema de Cauchy (1)?
+    \begin{solucion}
+        Note que:
+        \begin{align*}
+            |u(x,y)-\widetilde{u}(x,y)|&\leq|f(y)cosh(x)+g(y)sinh(x)-\widetilde{f}(y)cosh(x)-\widetilde{g}(y)sinh(x)|\\
+            &\leq |(f(y)-\widetilde{f}(y))cosh(x)+(g(y)-\widetilde{g}(y))sinh(x)|\\
+            &\leq |(f(y)-\widetilde{f}(y))cosh(x)|+|(g(y)-\widetilde{g}(y))sinh(x)|\\
+            &\leq sup_{y\in\mathbb{R}}|f(y)-\widetilde{f}(y)||cosh(x)|+sup_{y\in\mathbb{R}}|g(y)-\widetilde{g}(y)||sinh(x)|\\
+            &\leq \|f-\widetilde{f}\|_{\infty}|cosh(x)|+\|g-\widetilde{g}\|_{\infty}|sinh(x)|\\
+            &\leq \epsilon |cosh(x)|+ \epsilon |sinh(x)|\\
+            &\leq \epsilon(|cosh(x)|+|sinh(x)|)
+        \end{align*}
+        \demostrado
+        Sobre la dependencia continua no se puede decir mucho al respecto, pues, aunque los datos iniciales estén cercanos en la distancia $\| \cdot\|_{\infty}$ tendríamos problemas en la siguiente expresión:
+        \begin{align*}
+            \|u-\widetilde{u}\|_{\infty}=sup_{x\in\mathbb{R}}|u(x,y-\widetilde{u}(x,y))|&\leq \epsilon (sup_{x\in\mathbb{R}}(|cosh(x)|+|sinh(x)|))\\
+            &\leq \epsilon \| |cosh|+|sinh| \|_{\infty}=\infty
+        \end{align*}
+        Por ende, en un principio no podemos concluir nada sobre la cercanía de las soluciones, respecto a la cercanía de los datos iniciales.
+    \end{solucion}
+\end{enumerate}
+\end{homeworkProblem}
+\newpage
+
+\begin{homeworkProblem}
+Clasifique las siguientes ecuaciones según su tipo y llévelas a su forma canónica.
+\begin{enumerate}[(i)]
+    \item $4u_{xx}+12u_{xy}+5u_{yy}=6u_{x}-u_{y}$ 
+\begin{solucion}
+    \textbf{Respuesta:} Hiperbólica $v_{\xi\eta}=\frac{4}{9}v_{\xi}+\frac{1}{9}v_{\eta}$\\
+    Note que:
+    \begin{itemize}
+        \item $a=4$
+        \item $b=6$
+        \item $c=5$
+        \item $g=6u_{x}-u_{y}$
+    \end{itemize}
+    De aquí podemos determinar $\delta$, así:
+    \begin{align*}
+        \delta(x,y)&=b^2-ac\\
+        &=(6)^2-(4)(5)\\
+        &=16\\
+        &>0
+    \end{align*}
+    Luego podemos concluir en que la EDP es \textbf{Hiperbólica}.
+    \begin{enumerate}
+        \item Paso 1) Solucionar:\\
+        Note que en este caso:
+        \begin{align*}
+            \frac{dy}{dx}&=\frac{b \pm \sqrt{b^{2}-ac}}{a}\\
+            &=\frac{(6) \pm \sqrt{(6)^{2}-(4)(5)}}{(4)}\\
+            &=\frac{6\pm 4}{4}\\
+            &=\frac{3 \pm 2}{2}
+        \end{align*}
+        Luego:
+        \begin{align*}
+            y&=\frac{5}{2}x+C_1\\
+            y&=\frac{1}{2}x+C_2\\
+        \end{align*}
+        \item Paso 2) Despejar las constantes:\\
+        \begin{align*}
+            \xi&=C_1=y-\frac{5}{2}x\\
+            \eta&=C_2=y-\frac{1}{2}x
+        \end{align*}
+        \item Paso 3) Verificar:\\
+        Suponga $u(x,y)=v(\xi,\eta)$, luego:
+        \begin{itemize}
+            \item \begin{align*}
+                u_{x}&=v_{\xi}\xi_{x}+v_{\eta}\eta_{x}\\
+                &=v_{\xi}\parauto{-\frac{5}{2}}+v_{\eta}\parauto{-\frac{1}{2}}
+            \end{align*}
+            \item \begin{align*}
+                u_{y}&=v_{\xi}\xi_{y}+v_{\eta}\eta_{y}\\
+                &=v_{\xi}+v_{\eta}
+            \end{align*}
+            \item \begin{align*}
+                u_{xx}&=\parauto{-\frac{5}{2}}(v_{\xi\xi}\xi_{x}+v_{\xi\eta}\eta_{x})+\parauto{-\frac{1}{2}}(v_{\xi\eta}\xi_{x}+v_{\eta\eta}\eta_{x})\\
+                &=\parauto{-\frac{5}{2}}\parauto{v_{\xi\xi}\parauto{-\frac{5}{2}}+v_{\xi\eta}\parauto{-\frac{1}{2}}}+\parauto{-\frac{1}{2}}\parauto{v_{\xi\eta}\parauto{-\frac{5}{2}}+v_{\eta\eta}\parauto{-\frac{1}{2}}}\\
+                &=\parauto{\frac{25}{4}}v_{\xi\xi}+\parauto{\frac{10}{4}}v_{\xi\eta}+\parauto{\frac{1}{4}}v_{\eta\eta}
+            \end{align*}
+            \item \begin{align*}
+                u_{xy}&=v_{\xi\xi}\xi_{x}+v_{\xi\eta}\eta_{x}+v_{\xi\eta}\xi_{x}+v_{\eta\eta}\eta_{x}\\
+                &=v_{\xi\xi}\parauto{-\frac{5}{2}}+v_{\xi\eta}\parauto{-\frac{1}{2}}+v_{\xi\eta}\parauto{-\frac{5}{2}}+v_{\eta\eta}\parauto{-\frac{1}{2}}\\
+                &=\parauto{-\frac{5}{2}}v_{\xi\xi}+(-3)v_{\xi\eta}+\parauto{-\frac{1}{2}}v_{\eta\eta}
+            \end{align*}
+            \item \begin{align*}
+                u_{yy}&=v_{\xi\xi}\xi_{y}+v_{\xi\eta}\eta_{y}+v_{\xi\eta}\xi_{y}+v_{\eta\eta}\eta_{y}\\
+                &=v_{\xi\xi}+v_{\xi\eta}+v_{\xi\eta}+v_{\eta\eta}\\
+                &=v_{\xi\xi}+2v_{\xi\eta}+v_{\eta\eta}\\
+            \end{align*}
+        \end{itemize}
+        Luego, reemplazando en $4u_{xx}+12u_{xy}+5u_{yy}=6u_{x}-u_{y}$ tenemos:
+        \begin{align*}
+            4u_{xx}+12u_{xy}+5u_{yy}&=6u_{x}-u_{y}\\
+            v_{\xi\eta}&=\frac{4}{9}v_{\xi}+\frac{1}{9}v_{\eta}            
+        \end{align*}
+        
+    \end{enumerate}
+\end{solucion}
+    \item $u_{xx}-4u_{xy}+4u_{yy}=4+2u_{x}$ 
+\begin{solucion}
+    \textbf{Respuesta:} Parabólica $v_{\xi\xi}=2v_{\xi}+4v_{\eta}+4$\\
+    Note que:
+    \begin{itemize}
+        \item $a=1$
+        \item $b=-2$
+        \item $c=4$
+        \item $g=4-2u_{x}$
+    \end{itemize}
+    De aquí podemos determinar $\delta$, así:
+    \begin{align*}
+        \delta(x,y)&=b^2-ac\\
+        &=(-2)^2-(1)(4)\\
+        &=0
+    \end{align*}
+    Luego podemos concluir en que la EDP es \textbf{Parabólica}.
+    \begin{enumerate}
+        \item Paso 1) Solucionar:\\
+        Note que en este caso:
+        \begin{align*}
+            \frac{dy}{dx}&=\frac{b}{a}\\
+            &=-\frac{2}{1}\\
+            &=-2
+        \end{align*}
+        Luego:
+        \begin{align*}
+            y&=-2x+C_1\\
+        \end{align*}
+        \item Paso 2) Despejar las constantes:\\
+        \begin{align*}
+            \eta&=C_1=y+2x
+        \end{align*}
+        Ahora, para calcular $\xi$ usaremos el determinante de la matrix Jacobiana asegurandonos que este mismo sea distinto de $0$, así podrá notar que $\xi=y+x$ satisface:
+        \begin{align*}
+            \eta_{x}-2\eta_{y}&=1-2\\
+            &=-1\\
+            &\neq 0
+        \end{align*}
+        \item Paso 3) Verificar:\\
+        Suponga $u(x,y)=v(\xi,\eta)$, luego:
+        \begin{itemize}
+            \item \begin{align*}
+                u_{x}&=v_{\xi}\xi_{x}+v_{\eta}\eta_{x}\\
+                &=v_{\xi}+2v_{\eta}
+            \end{align*}
+            \item \begin{align*}
+                u_{y}&=v_{\xi}\xi_{y}+v_{\eta}\eta_{y}\\
+                &=v_{\xi}+v_{\eta}
+            \end{align*}
+            \item \begin{align*}
+                u_{xx}&=(v_{\xi\xi}\xi_{x}+v_{\xi\eta}\eta_{x})+2(v_{\xi\eta}\xi_{x}+v_{\eta\eta}\eta_{x})\\
+                &=v_{\xi\xi}+4v_{\xi\eta}+4v_{\eta\eta}
+            \end{align*}
+            \item \begin{align*}
+                u_{xy}&=v_{\xi\xi}\xi_{x}+v_{\xi\eta}\eta_{x}+v_{\xi\eta}\xi_{x}+v_{\eta\eta}\eta_{x}\\
+                &=v_{\xi\xi}+3v_{\xi\eta}+2v_{\eta\eta}
+            \end{align*}
+            \item \begin{align*}
+                u_{yy}&=v_{\xi\xi}\xi_{y}+v_{\xi\eta}\eta_{y}+v_{\xi\eta}\xi_{y}+v_{\eta\eta}\eta_{y}\\
+                &=v_{\xi\xi}+v_{\xi\eta}+v_{\xi\eta}+v_{\eta\eta}\\
+                &=v_{\xi\xi}+2v_{\xi\eta}+v_{\eta\eta}\\
+            \end{align*}
+        \end{itemize}
+        Luego, reemplazando en $u_{xx}-4u_{xy}+4u_{yy}=4+2u_{x}$ tenemos:
+        \begin{align*}
+            u_{xx}-4u_{xy}+4u_{yy}&=4+2u_{x}\\
+            v_{\xi\xi}&=2v_{\xi}+4v_{\eta}+4            
+        \end{align*}
+        
+    \end{enumerate}
+\end{solucion}
+    \item $(1+x^{2})^{2}u_{xx}-(1+y^2)^2u_{yy}=0$ 
+\begin{solucion}
+    \textbf{Respuesta:} Hiperbólica\\
+    $$v_{\xi\eta}=\parauto{\frac{tan\parauto{\frac{\eta-\xi}{2}}}{2}+\frac{tan\parauto{\frac{\xi+\eta}{2}}}{2}}v_{\xi}+\parauto{\frac{tan\parauto{\frac{\xi+\eta}{2}}}{2}-\frac{tan\parauto{\frac{\eta-\xi}{2}}}{2}}v_{\eta}$$
+    Note que:
+    \begin{itemize}
+        \item $a=(1+x^2)^2$
+        \item $b=0$
+        \item $c=-(1+y^2)^2$
+        \item $g=0$
+    \end{itemize}
+    De aquí podemos determinar $\delta$, así:
+    \begin{align*}
+        \delta(x,y)&=b^2-ac\\
+        &=(0)^2-(1+x^2)^2(-(1+y^2)^2)\\
+        &=(1+x^2)^2(1+y^2)^2\\
+        &>0
+    \end{align*}
+    Luego podemos concluir en que la EDP es \textbf{Hiperbólica}.
+    \begin{enumerate}
+        \item Paso 1) Solucionar:\\
+        Note que en este caso:
+        \begin{align*}
+            \frac{dy}{dx}&=\frac{b \pm \sqrt{b^{2}-ac}}{a}\\
+            &=\pm\frac{ (1+x^2)(1+y^2)}{(1+x^2)^2}\\
+            &=\pm\frac{1+y^2}{1+x^2}
+        \end{align*}
+        Luego:
+        \begin{align*}
+            arctan(y)&=arctan(x)+C_1\\
+            arctan(y)&=-arctan(x)+C_2
+        \end{align*}
+        \item Paso 2) Despejar las constantes:\\
+        \begin{align*}
+            \xi&=C_1=arctan(y)-arctan(x)\\
+            \eta&=C_2=arctan(y)+arctan(x)
+        \end{align*}
+        \item Paso 3) Verificar:\\
+        Suponga $u(x,y)=v(\xi,\eta)$, luego:
+        \begin{itemize}
+            \item \begin{align*}
+                u_{x}&=v_{\xi}\xi_{x}+v_{\eta}\eta_{x}\\
+                &=\parauto{\frac{1}{1+x^2}}(-v_{\xi}+v_{\eta})
+            \end{align*}
+            \item \begin{align*}
+                u_{y}&=v_{\xi}\xi_{y}+v_{\eta}\eta_{y}\\
+                &=\parauto{\frac{1}{1+y^2}}(v_{\xi}+v_{\eta})            \end{align*}
+            \item \begin{align*}
+                u_{xx}&=\parauto{\frac{1}{1+x^2}}(-v_{\xi\xi}\xi_{x}-v_{\xi\eta}\eta_{x}+v_{\xi\eta}\xi_{x}+v_{\eta\eta}\eta_{x})-\parauto{\frac{2x}{(1+x^2)^2}}(-v_{\xi}+v_{\eta})\\
+                &=\parauto{\frac{1}{(1+x^2)^2}}(v_{\xi\xi}-2v_{\xi\eta}+v_{\eta\eta}\eta_{x})-\parauto{\frac{2x}{(1+x^2)^2}}(-v_{\xi}+v_{\eta})
+            \end{align*}
+            \item \begin{align*}
+                u_{yy}&=\parauto{\frac{1}{1+y^2}}(v_{\xi\xi}\xi_{x}+v_{\xi\eta}\eta_{x}+v_{\xi\eta}\xi_{x}+v_{\eta\eta}\eta_{x})-\parauto{\frac{2y}{(1+y^2)^2}}(v_{\xi}+v_{\eta})\\
+                &=\parauto{\frac{1}{(1+y^2)^2}}(v_{\xi\xi}+2v_{\xi\eta}+v_{\eta\eta}\eta_{x})-\parauto{\frac{2y}{(1+y^2)^2}}(v_{\xi}+v_{\eta})
+            \end{align*}
+            \item \begin{align*}
+                arctan(y)&=\frac{\xi+\eta}{2}\\
+                y&=tan\parauto{\frac{\xi+\eta}{2}}\\
+                arctan(x)&=\frac{\eta-\xi}{2}\\
+                x&=tan\parauto{\frac{\eta-\xi}{2}}
+                \end{align*}
+        \end{itemize}
+        Luego, reemplazando en $(1+x^{2})^{2}u_{xx}-(1+y^2)^2u_{yy}=0$ tenemos:
+        \begin{align*}
+            (1+x^{2})^{2}u_{xx}-(1+y^2)^2u_{yy}&=0\\
+            -4v_{\xi\eta}&=-2xv_{\xi}+2xv_{\eta}-2yv_{\xi}-2yv_{\eta}\\
+            v_{\xi\eta}&=\parauto{\frac{x}{2}+\frac{y}{2}}v_{\xi}+\parauto{\frac{y}{2}-\frac{x}{2}}v_{\eta}\\
+            v_{\xi\eta}&=\parauto{\frac{tan\parauto{\frac{\eta-\xi}{2}}}{2}+\frac{tan\parauto{\frac{\xi+\eta}{2}}}{2}}v_{\xi}+\parauto{\frac{tan\parauto{\frac{\xi+\eta}{2}}}{2}-\frac{tan\parauto{\frac{\eta-\xi}{2}}}{2}}v_{\eta}
+        \end{align*}
+        
+    \end{enumerate}
+\end{solucion}\end{enumerate}
+\end{homeworkProblem}
+\newpage
+
+\begin{homeworkProblem}
+Considere la ecuación 
+\begin{equation}
+    \label{eq: original p4}
+    u_{xx}+4u_{xy}+u_{x} = 0.
+\end{equation}
+\begin{enumerate}[(i)]
+    \item Lleve la ecuación a su forma canónica.
+    \begin{solucion}
+        Primero calculemos su determinante para identificar si es de tipo hiperbólico, elíptico o parabólico. Tenemos $a=1, b=2, c=0$. Luego $\Delta = b^{2}-ac = 2^{2} -(1)(0) = 4>0$, por lo tanto la EDP es de tipo hiperbólico en el plano $xy$.\\
+        Tenemos entonces que el cambio de variables está dado por las ecuaciones características.
+        \begin{align}
+            \dfrac{dy}{dx} &= \dfrac{b \pm \sqrt{b^2-ac}}{a} = \dfrac{2 \pm \sqrt{2^2-(1)(0)}}{1} =2 \pm 2,\\
+            \dfrac{dy}{dx} &=(2 \pm 2), \hspace{4cm}\text{solucionando la EDO tenemos,}\\
+            y &= (2 \pm 2)x + c,
+        \end{align}
+        al igualar a la constante obtenemos los cambios de variables $\xi \text{ y } \eta$. De este modo, nos queda $\xi = y - 4x$, $\eta = y$. Ahora veamos las derivadas de $u$ en términos de $\xi$ y $\eta$.
+        \begin{align*}
+            u_{x} &= u_{\xi}\xi_{x} + u_{\eta}\eta_{x} = u_{\xi}(-4) + u_{\eta}(0)\\ 
+            &= -4u_{\xi},\\
+            u_{xx} &= -4(u_{\xi})_{x} = -4(u_{\xi \xi} \xi_{x} + u_{\xi \eta} \eta_{x}) = -4(u_{\xi \xi}(-4) + u_{\eta \xi}(0))\\
+            &= 16u{_\xi \xi}. \hspace{5cm} \text{y}\\
+            u_{xy} &= -4(u_{\xi})_{y} = -4((u_{\xi \xi} \xi_{y} + u_{\xi \eta} \eta_{y}) = -4 (u_{\xi\xi}(1) + u_{\xi \eta}(1))\\ 
+            &= -4 (u_{\xi\xi} + u_{\xi \eta}).
+        \end{align*}
+        Por lo que al reemplazar, ~\ref{eq: original p4} nos queda:
+        \begin{align*}
+            16u_{\xi \xi} + 4(-4)(u_{\xi \eta}) -4u{\xi}&= 0\\
+            16u_{\xi \xi} - 16u_{\xi \xi} -16u_{\xi \eta} - 4u_{\xi} &=0\\
+            16u_{\xi \eta} + 4u_{\xi} = 0
+        \end{align*}
+            Al dividir la igualdad por $4$ tenemos que la forma canónica de ~\ref{eq: original p4} es:
+            \begin{equation}
+                \label{eq: canonica p4}
+                4u_{\xi \eta} + u_{\xi} = 0.
+            \end{equation}   
+        \demostrado
+\end{solucion}
+\newpage
+    \item Encuentre la solución específica $u(x,8x) = 0, u_{x}(x,8x)=4e^{-2x}$.
+\end{enumerate}
+\begin{solucion}
+    Si tomamos $w(\eta) = u_{\xi}$ en la ecuación ~\ref{eq: canonica p4} nos queda una EDO de orden 1 que podemos solucionar por variables separables como sigue:
+    \begin{align*}
+        4w' &= -w,\\
+        \frac{4dw}{w} &= -d\eta,\\
+        4log(w) &= -\eta + h(\xi),\\
+        w^{4} &= h(\xi)e^{-\eta},
+        \end{align*}
+        luego,
+        \begin{equation}
+            \label{eq: kja}
+            w = u_{\xi} = h(\xi)e^{-\frac{\eta}{4}}.
+        \end{equation}
+    Integrando respecto a la variable $\xi$ nos queda
+    \begin{align*}
+        u(\xi, \eta)  =e^{\frac{-\eta}{4}}(H(\xi) + C(\eta)),
+    \end{align*}
+    con $H$ siendo una antiderivada de $h$. Luego, al regresar a $x$ e $y$ obtenemos
+    \begin{align*}
+        u(x,y) &= e^{-\frac{-y}{4}}(H(y-4x) + C(y)), \text{  al derivar respecto a } x \text{ y usar las condiciones iniciales para $u_{x} $,}\\
+        u_{x}(x,8x) &= -4e^{-2x}H'(4x) = 4e^{-2x}H'(4x), \text{ por lo que }\\
+        H'(4x) &= -1, \text{ y al integrar respecto a x llegamos a }\\
+        H(4x) &= -4x, \text{ de modo que}\\
+        H\left(4 (\frac{y}{4} - x)\right) &= 4x - y = H(y-4x).
+    \end{align*}
+    Y al usar a condición inicial sobre $u$ tenemos
+    \begin{align*}
+        u(x,8x) &= e^{-2x}(H(4x) + C(8x)) = 0
+    \end{align*}
+    Como el factor exponencial nunca es cero, entonces $(H(4x) + C(8x)) = 0$, luego $4x = C(8x)$, por lo que $C\left(8(\dfrac{x}{8})\right) = 4\left(\dfrac{x}{8}\right) = \dfrac{x}{2} = C(x)$.\\
+
+    Por lo tanto la solución específica $u(x,y) = e^{-\frac{y}{4}}(4x -  \frac{y}{2})$
+    \demostrado
+\end{solucion}
+\end{homeworkProblem}
+\newpage
+
+\begin{homeworkProblem}
+Sea $U\subset \mathbb{R}^2$ un abierto. Considere la ecuación de segundo orden:
+\begin{align*}
+    a(x,y)u_{xx}+2bu_{xy}+cu_{yy}=0
+\end{align*}
+    Donde $u:U\rightarrow \mathbb{R}$ pertenece a $C^{2}(U)$ y los términos $a,b,c$ son funciones $C^{1}(U)$.\\
+    Definimos el determinante de la ecuación por:
+    \begin{align*}
+        \delta(x,y)=b^2(x,y)-a(x,y)c(x,y)
+    \end{align*}
+    Considere el cambio de variable:
+    \begin{align*}
+        \xi&=\xi(x,y)\\
+        \eta&=\eta(x,y)
+    \end{align*}
+    Donde las funciones son de clase $C^{2}(U)$ y el Jacobiano $det\parauto{(\xi\eta)_{(x,y)}}\neq 0$ en todo punto $(x,y)\in U$.\\
+    Muestre que el signo del determinante $\delta(x,y)$ es invariante por el cambio de variables $(\xi,\eta)$. Es decir, considere $u(x,y)=v(\xi,\eta)$, usando que $u$ satisface la ecuación  muestre que $v$ satisface la siguiente ecuación:
+    \begin{align*}
+        A(\xi,\eta)v_{\xi\xi}+2B(\xi,\eta)v_{\xi\eta}+C(\xi,\eta)=G(\xi,\eta,v,v_{\xi},v_{\eta})
+    \end{align*}
+    Para agunas funciones $A,B,C,G$. Luego muestre que el signo de $\delta (\xi,\eta)=B^2(\xi,\eta)-A(\xi,\eta)C(\xi,\eta)$ es igual al signo de $\delta (x,y)=b^2(x,y)-a(x,y)c(x,y)$. 
+\begin{solucion}
+    Suponiendo que $u(x,y)=v(\xi,\eta)$ y que $v(\xi,\eta)$ es $C^{2}(U)$ vamos a calcular sus derivadas de primer y segundo orden, por ende:
+    \begin{itemize}
+        \item $u_{x}=v_{\xi}\xi_{x}+v_{\eta}\eta_{x}$
+        \item $u_{y}=v_{\xi}\xi_{y}+v_{\eta}\eta_{y}$
+        \item $u_{xx}=\xi_{x}^2v_{\xi\xi}+2\xi_{x}\eta_{x}v_{\xi\eta}+\eta_{x}^2v_{\eta\eta}$
+        \item $u_{yy}=\xi_{y}^2v_{\xi\xi}+2\xi_{y}\eta_{y}v_{\xi\eta}+\eta_{y}^2v_{\eta\eta}$
+        \item $u_{xy}=\xi_{x}\xi_{y}v_{\xi\xi}+(\xi_{x}\eta_{y}+\xi_{y}\eta_{x})v_{\xi\eta}+\eta_{x}\eta_{y}v_{\eta\eta}$
+        \end{itemize}
+        Ahora, reemplazando:
+        \begin{align*}
+            au_{xx}+2bu_{xy}+cu_{yy}&=0\\
+            &=a(\xi_{x}^2v_{\xi\xi}+2\xi_{x}\eta_{x}v_{\xi\eta}+\eta_{x}^2v_{\eta\eta})+2b(\xi_{x}\xi_{y}v_{\xi\xi}+(\xi_{x}\eta_{y}+\xi_{y}\eta_{x})v_{\xi\eta}+\eta_{x}\eta_{y}v_{\eta\eta})\\
+            &\hspace{0.3cm}+c(\xi_{y}^2v_{\xi\xi}+2\xi_{y}\eta_{y}v_{\xi\eta}+\eta_{y}^2v_{\eta\eta})\\
+            &=v_{\xi\xi}(a\xi_{x}^{2}+2b\xi_{x}\xi_{y}+c\xi_{y}^{2})+2v_{\xi\eta}(a\xi_{x}\eta_{x}+b(\xi_{x}\eta_{y}+\xi_{y}\eta_{x})+c\xi_{y}\eta_{y})\\
+            &\hspace{0.3cm}+v_{\eta\eta}(a\eta_{x}^{2}+2b\eta_{x}\eta_{y}+c\eta_{y}^{2})
+        \end{align*}
+        De aquí podemos concluir en que:
+        \begin{itemize}
+            \item $A=a\xi_{x}^{2}+2b\xi_{x}\xi_{y}+c\xi_{y}^{2}$
+            \item $B=a\xi_{x}\eta_{x}+b(\xi_{x}\eta_{y}+\xi_{y}\eta_{x})+c\xi_{y}\eta_{y}$
+            \item $C=a\eta_{x}^{2}+2b\eta_{x}\eta_{y}+c\eta_{y}^{2}$
+        \end{itemize}
+        Ahora para calcular el determinante calcularemos las expresiones $B^2$ y $-AC$ (con mucha paciencia en el trabajo borrador), así:
+        \begin{align*}
+            B^2=&(a\xi_{x}\eta_{x}+b(\xi_{x}\eta_{y}+\xi_{y}\eta_{x})+c\xi_{y}\eta_{y})\\
+            =&a^2\xi_{x}^2\eta_{x}^2+2ab\xi_{x}^2\eta_{x}\eta_{y}+2ab\xi_{x}\xi_{y}\eta_{x}^2+2av\xi_{x}\xi_{y}\eta_{x}\eta_{y}+b^2\xi_{x}^2\eta_{y}^2\\
+            &+2b\xi_{x}\xi_{y}\eta_{x}\eta_{y}+b^2\xi_{y}^2\eta_{x}^2+2bc\xi_{x}\xi_{y}\eta_{y}^2+2bc\xi_{y}^2\eta_{x}\eta_{y}+c^2\xi_{y}^2\eta_{y}^2
+        \end{align*}
+        Luego:
+        \begin{align*}
+            -AC=&-(a\xi_{x}^{2}+2b\xi_{x}\xi_{y}+c\xi_{y}^{2})(a\eta_{x}^{2}+2b\eta_{x}\eta_{y}+c\eta_{y}^{2})\\
+            &-a^2\xi_{x}^2\eta_{x}^2-2ab\xi_{x}^2\eta_{x}\eta_{y}-ac\xi_{x}^2\eta_{y}^2-2ab\xi_{x}\xi_{y}\eta_{x}^2\\
+            &-4b^2\xi_{x}\xi_{y}\eta_{x}\eta_{y}-2bc\xi_{x}\xi_{y}\eta_{y}^2-ac\xi_{y}^2\eta_{x}^2-2bc\xi_{y}^2\eta_{x}\eta_{y}-c^2\xi_{y}^2\eta_{y}^2
+        \end{align*}
+        Luego de esto podremos calcular $\delta (\xi,\eta)=B^2-AC$, así:
+        \begin{align*}
+            B^2-AC&=2(ac-b^2)\xi_{x}\xi_{y}\eta_{x}\eta_{y}+(b^2-ac)\xi_{y}^2\eta_{x}^2+(b^2-ac)\xi_{x}^2\eta_{y}^2\\
+            &=(b^2-ac)\xi_{x}^2\eta_{y}^2-2(b^2-ac)\xi_{x}\xi_{y}\eta_{x}\eta_{y}+(b^2-ac)\xi_{y}^2\eta_{x}^2\\
+            &=(b^2-ac)(\xi_{x}^2\eta_{y}^2-2\xi_{x}\xi_{y}\eta_{x}\eta_{y}+\xi_{y}^2\eta_{x}^2)\\
+            &=(b^2-ac)(\xi_{x}\eta_{y}-\xi_{y}\eta_{x})^2
+        \end{align*}
+        Luego como $(\xi_{x}\eta_{y}-\xi_{y}\eta_{x})^2$ es una función siempre positiva (distinta de cero ya que el determinante del Jacobiano es distinto de $0$ en todo punto $(x,y)\in U$), entonces el signo de $\delta (\xi,\eta)$ está totalmente determinado y es igual al signo de $\delta (x,y)=b^2-ac$.
+        \demostrado
+\end{solucion}
+\end{homeworkProblem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

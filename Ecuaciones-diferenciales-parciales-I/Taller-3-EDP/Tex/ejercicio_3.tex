@@ -1,0 +1,42 @@
+\begin{homeworkProblem}
+  Muestre que la ecuación de Laplace $\Delta u = 0$ es invariante por rotaciones. Más precisamente, muestre que si $O$ es una matriz ortogonal de tamaño $n\times n$ y definimos $v(x)=u(Ox)$, entonces $\Delta v = 0$. 
+  \begin{solucion}
+    Suponga $O=(a_{ij})$ matriz ortogonal y $u\in C^2(\mathbb{R}^{n})$, entonces $u$ es armónica y por ende satisface la ecuación de Laplace $\Delta u = 0$. Ahora, suponga $v(x)=u(Ox)=u[(\sum_{i=1}^n a_{1i}x_i,\cdots,\sum_{i=1}^n a_{ni}x_i)]=u(y)$ definiendo $y=(y_1,\cdots,y_n)$ con $y_j=\sum_{i=1}^{n}a_{ji}x_i$:
+    \begin{align*}
+      \frac{\partial v}{\partial x_i}&=\sum_{j=1}^n\frac{\partial u}{\partial y_j}\frac{\partial y_j}{\partial x_i}\\
+      &=\sum_{j=1}^n\frac{\partial u}{\partial y_j}a_{ji}\\
+      &=(a_{1i},\cdots,a_{ni})\left( \frac{\partial u}{\partial y_1}, \cdots, \frac{\partial y}{\partial y_n} \right)^T
+    \end{align*}
+    En general se tendría que:
+    \begin{align*}
+      \nabla_{x} v = \begin{pmatrix}
+        \frac{\partial v}{\partial x_i}\\
+        \vdots,\\
+        \frac{\partial v}{\partial x_n}
+      \end{pmatrix} &= \begin{pmatrix}
+        a_{11} & a_{21} & \cdots & a_{n1}\\
+        \vdots & \vdots & \vdots & \vdots\\
+        a_{1n} & a_{2n} & \cdots & a_{nn}
+      \end{pmatrix}
+      \begin{pmatrix}
+        \frac{\partial u}{\partial y_1}\\
+        \vdots\\
+        \frac{\partial u}{\partial y_n}
+      \end{pmatrix}\\
+      &=O^{T}\nabla_{y} u
+    \end{align*}
+    Ahora note que:
+    \begin{align*}
+      \Delta v &= \nabla_x v \cdot \nabla_x v\\
+      &=(O^{T}\nabla_{y} u)\cdot (O^{T}\nabla_{y} u)\\
+      &=(O^{T}\nabla_y u)^{T}(O^{T})(\nabla_{y} u)\\
+      &=(\nabla_y u)^{T}(O^{T})^T(O^{T})(\nabla_{y} u)\\
+      &=(\nabla_{y} u)^{T}(\nabla_{y} u)\\
+      &=(\nabla_{y} u)\cdot(\nabla_{y} u)\\
+      &=\Delta u\\
+      &=0
+    \end{align*}
+    Por lo que queda demostrado que $v(x)$ satisface la ecuación de Laplace, es decir, que la ecuación de Laplace $\Delta u=0$ es invariante por rotaciones.
+    \demostrado
+  \end{solucion}
+\end{homeworkProblem}

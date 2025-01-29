@@ -1,0 +1,77 @@
+\begin{homeworkProblem}
+  (\textbf{Equipartición de la energía}). Suponga que $u\in C^2(\mathbb{R}\times [0,\infty))$ soluciona el problema de valor inicial:
+  \begin{align*}
+    (1)\hspace{3cm}\begin{cases}
+      u_{tt}-u_{xx}=0, &\text{ en } \mathbb{R}\times (0,\infty) \text{,} \\
+      u(x,0)=g(x), &\text{ en }\mathbb{R} \text{,}\\
+      u_{t}(x,0)=h(x), &\text{ en }\mathbb{R} \text{,}
+    \end{cases}
+  \end{align*}
+  donde $g$ y $h$ tiene  soporte compacto. Definimos la energía cinética $k(t)=\frac{1}{2}\int_{-\infty}^{\infty}u_t^2(x,t)dx$ y la energía potencial $p(t)=\frac{1}{2}\int_{-\infty}^{\infty}u_x^2(x,t)dx$.
+  \begin{enumerate}[i)]
+    \item Muestre que $k(t)+p(t)$ es constante.
+      \begin{solucion}
+        Defina $E(t)$ tal que:
+        \begin{align*}
+          E(t)&=k(t)+p(t),\\
+          &=\frac{1}{2}\int_{-\infty}^{\infty}u_t^2(x,t)+u_x^2dx.
+        \end{align*}
+        Veamos que $\frac{d}{dt}E(t)=0$.\\
+        Note que por el Problema 1, $I)$ tenemos que al ser $g$ y $h$ funciones se soporte compacto (Suponga que para ambas se tiene que $Supp\phantom{x}g,Supp\phantom{x}h\subseteq [-R,R]$), entonces se cumple que dado $t>0$ $u(x,t)=0$ si $|x|>R+t$, por lo que $E(t)$ se encuentra bien definida y además en la integral el dominio de integración en realidad es un conjunto compacto, luego:
+        \begin{align*}
+          \frac{d}{dt}E(t)&=\frac{d}{dt}\int_{-\infty}^{\infty}(u_t^2(x,t)+u_x^2(x,t))dx\\
+          &=\int_{-\infty}^{\infty}\frac{d}{dt}(u_t^2(x,t)+u_x^2(x,t))dx\\
+          &=\int_{-\infty}^{\infty}(2u_t(x,t)u_{tt}(x,t)+2u_x(x,t)u_{tx}(x,t))dx\\
+          &=2\int_{-\infty}^{\infty}u_t(x,t)u_{tt}(x,t)dx + 2\int_{-\infty}^{\infty}u_x(x,t)u_{tx}(x,t)dx\\
+          &=2\int_{-\infty}^{\infty}u_t(x,t)u_{tt}(x,t)dx + 2\left[ u_x(x,t)u_{t}(x,t)\Big|_{-\infty}^{\infty}-\int_{-\infty}^{\infty}u_t(x,t)u_{xx}(x,t)dx\right]\\
+          &=2\int_{-\infty}^{\infty}u_t(x,t)(u_{tt}(x,t)-u_{xx}(x,t))dx\\
+          &=0
+        \end{align*}
+        de lo que se concluye que $E(t)=k(t)+p(t)=c$ con $c$ constante.
+        \demostrado
+      \end{solucion}
+      \newpage
+    \item Muestre que $k(t)=p(t)$ para todo tiempo $t$ suficientemente grande.
+      \begin{solucion}
+        Note que por la existencia y unicidad del problema de Cauchy $(1)$, se tiene que:
+        \begin{align*}
+          u(x,t)&=\frac{1}{2}(g(x+t)+g(x-t))+\frac{1}{2}\int_{x-t}^{x+t}h(y)dy.\\
+        \end{align*}
+        Más aún:
+        \begin{align*}
+          u_x(x,t)&=\frac{1}{2}(g'(x+t)+g'(x-t))+\frac{1}{2}(h(x+t)+h(x-t)),\\
+          u_t(x,t)&=\frac{1}{2}(g'(x+t)-g'(x-t))+\frac{1}{2}(h(x+t)-h(x-t))
+        \end{align*}
+        por lo que:
+        \begin{align*}
+          u_x^2(x,t)&=\frac{1}{4}( g'^2(x+t)+2g'(x+t)g'(x-t)+2g'(x+t)h(x+t)+2g'(x+t)h(x-t)\\
+          &\phantom{=}+g'^2(x-t)+2g'(x-t)h(x+t)+2g'(x-t)h(x-t)\\
+          &\phantom{=}+h^2(x+t)+2h(x+t)h(x-t)+h^2(x-t)).\\
+          u_t^2(x,t)&=\frac{1}{4}( g'^2(x+t)-2g'(x+t)g'(x-t)+2g'(x+t)h(x+t)-2g'(x+t)h(x-t)\\
+          &\phantom{=}+g'^2(x-t)-2g'(x-t)h(x+t)+2g'(x-t)h(x-t)\\
+          &\phantom{=}+h^2(x+t)-2h(x+t)h(x-t)+h^2(x-t)).\\
+        \end{align*}
+        luego:
+        \begin{align*}
+          u_t^2(x,t)-u_x^2(x,t)&=-[g'(x+t)+h(x+t)][g'(x-t)+h(x-t)].
+        \end{align*}
+        Así:
+        \begin{align*}
+          k(t)-p(t)&=\int_{-\infty}^{\infty}(u_t^2(x,t)-u_x^2(x,t))dx\\
+          &=-\int_{-\infty}^{\infty}[g'(x+t)+h(x+t)][g'(x-t)+h(x-t)]dx,
+        \end{align*}
+        luego como $Suppg',Supph\subseteq [-R,R]$, entonces:
+        \begin{align*}
+          k(t)-p(t)&=-\int_{x\in(-R-t,R-t)\cap(-R+t,R+t)}[g'(x+t)+h(x+t)][g'(x-t)+h(x-t)]dx
+        \end{align*}
+        luego para $t\geq R$ se tiene que $(-R-t,R-t)\cap(-R+t,R+t)=\emptyset$, por lo que si tomamos $t\geq R$, se cumple que:
+        \begin{align*}
+          k(t)-p(t)&=-\int_{x\in(-R-t,R-t)\cap(-R+t,R+t)}[g'(x+t)+h(x+t)][g'(x-t)+h(x-t)]dx\\
+          &=-\int_{\emptyset}[g'(x+t)+h(x+t)][g'(x-t)+h(x-t)]dx\\
+          &=0
+        \end{align*}
+        es decir que si $t\geq R$, se satisface que $k(t)-p(t)=0$, en otras palabras, $k(t)=p(t)$ para un $t$ suficientemente grande ($t\geq R$).
+        \demostrado
+      \end{solucion}
+  \end{enumerate}
+\end{homeworkProblem}

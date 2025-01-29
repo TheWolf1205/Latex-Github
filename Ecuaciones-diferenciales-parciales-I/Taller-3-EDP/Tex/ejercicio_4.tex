@@ -1,0 +1,86 @@
+\begin{homeworkProblem}
+  (\textbf{Estimativas sobre derivadas}) Asuma que $u$ es armónica en $U$. Sea $k\in\mathbb{Z}^{+}$, muestre que existe una constante $C_k>0$ tal que:
+  \begin{align*}
+    |\partial_{\alpha}u(x_0)|\leq \frac{C_k}{r^{n+k}}\|u\|_{L^1(B(x_0,r))}
+  \end{align*}
+  Para cada bola $B(x_0,r)\subseteq U$ y cada multi-índice $\alpha$ de orden $|\alpha|=k$. Recuerde que:
+  \begin{align*}
+    \|u\|_{L^1(B(x_0,r))}=\int_{B(x_0,r)}|u(x)|dx
+  \end{align*}
+  \textbf{Sugerencia:} Justificar la demostración hecha en el libro de Evans, Partial Differential Equations, segunda edición página $29$.\\
+  \textbf{Nota:}
+  \begin{itemize}
+    \item $\alpha(n)=\frac{\pi^{n/2}}{\Gamma(\frac{n}{2}+1)}$.
+    \item $\fint_{B(x_0,r)}u(y)dy=\frac{1}{\alpha(n)r^n}\int_{B(x_0,R)}u(y)dy$.
+    \item $\fint_{\partial B(x_0,r)}u(y)dS(y)=\frac{1}{n\alpha(n)r^{n-1}}\int_{\partial B(x_0,r)}u(y)dS(y)$.
+  \end{itemize}
+  \begin{solucion}
+    Para ver esto usaremos un argumento inductivo sobre $k$.
+    \begin{itemize}
+      \item Caso $k=0$.\\
+        Note que como $k=0$, entonces $\alpha=0$, por lo que tenemos que:
+        \begin{align*}
+          |u(x_0)|&=\left|\frac{1}{\alpha(n)r^n}\int_{B(x_0,r)}u(y)dy\right| && \text{Usando el teorema del valor medio de la E.Laplace.}\\
+          &\leq \frac{1}{\alpha(n)r^n}\int_{B(x_0,r)}|u(y)|dy\\
+          &\leq \frac{1}{\alpha(n)r^n}\|u\|_{L^1(B(x_0,r))}\\
+          &\leq \frac{C_0}{r^{n}}\|u\|_{L^1(B(x_0,r))} &&\text{Tomando $C_0=\frac{1}{\alpha(n)}$.}
+        \end{align*}
+      \item Caso $k=1$.\\
+        Note que como $u$ es armónica, por ende $u\in C^{\infty}(\mathbb{R}^{n})$ lo cuál nos permite ver que:
+        \begin{align*}
+          \partial_{x_i}\Delta u&=\partial_{x_i}\sum_{j=1}^n\partial_{x_j}^2u\\
+          &=\sum_{j=1}^{n}\partial_{x_i}\partial_{x_j}^2u &&\text{Como $u\in C^{\infty}$.}\\
+          &=\sum_{j=1}^{n}\partial{x_j}^2\partial_{x_i}u\\
+          &=\Delta \partial_{x_i} u
+        \end{align*}
+        Por lo cuál sabemos que $\partial_{x_i}u$ es armónica.\\
+        Ahora, usando el teorema del valor medio de la E.Laplace se tiene que:
+        \begin{align*}
+          |\partial_{x_i}u(x_0)|&\leq \left| \frac{1}{\alpha(n)\left( \frac{r}{2} \right)^n}\int_{B(x_0,\frac{r}{2})}\partial_{x_i}u(y)dy \right| &&\text{Utilizando la formula de integración por partes.}\\
+          &\leq \left| \frac{2^n}{\alpha(n)r^n}\int_{\partial B(x_0,\frac{r}{2})} u(y)\eta_i dS(y) \right|\\
+          &\leq \left| \frac{2^n}{\alpha(n)r^n}\int_{\partial B(x_0,\frac{r}{2})} u(y)dS(y) \right|\\
+          &\leq \left| \frac{2^n}{\alpha(n)r^n}\|u\|_{L^{\infty}(\partial B(x_0,\frac{r}{2}))}\int_{\partial B(x_0,\frac{r}{2})}dS(y) \right|\\
+          &\leq \left| \frac{2^n}{\alpha(n)r^n}\|u\|_{L^{\infty}(\partial B(x_0,\frac{r}{2}))}n\alpha(n)\left( \frac{r}{2} \right)^{n-1} \right|\\
+          &\leq \frac{2n}{r}\|u\|_{L^{\infty}(\partial B(x_0,\frac{r}{2}))}\\
+        \end{align*}
+        Ahora, si tomamos $x\in \partial B(x_0,\frac{r}{2})$, entonces $B(x,\frac{r}{2})\subset B(x_0,r)\subseteq U$ y usando el caso $k=0$ tenemos que:
+        \begin{align*}
+          |u(x)|&\leq\frac{1}{\alpha(n)}\left( \frac{2}{r} \right)^{n}\|u\|_{L^1(B(x,r))}\\
+          \|u\|_{L^{\infty}(\partial B(x,\frac{r}{2}))}&\leq \frac{1}{\alpha(n)}\left( \frac{2}{r} \right)^{n}\|u\|_{L^1(B(x,r))}
+        \end{align*}
+        Ahora, juntando ambas desigualdades tenemos que:
+        \begin{align}
+          |\partial_{x_i}u(x)|&\leq \frac{2n}{r}\|u\|_{L^{\infty}(\partial B(x_0,\frac{r}{2}))}\\
+          &\leq \frac{2n}{r}\frac{1}{\alpha(n)}\left( \frac{2}{r} \right)^{n}\|u\|_{L^{1}(B(x,r))}\\
+          &\leq \frac{2^{n+1}n}{r^{n+1}\alpha(n)}\|u\|_{L^{1}(B(x,r))} &&\left(\text{Tomando $C_1=\frac{2^{n+1}n}{\alpha(n)}$.}\right)\\
+          &\leq \frac{C_1}{r^{n+1}}\|u\|_{L^{1}(B(x,r))}.
+        \end{align}
+      \item Caso $k\geq 2$.
+        Para esto asuma que las hipótesis se cumplen para todo multi-índice de magnitud $k-1$.\\
+        Tome $B(x,r)$ y $\alpha$ tal que $|\alpha|=k$. Entonces, $\partial^{\alpha}u=\partial_{x_i}(\partial^{\beta}u)$ con $\beta$ tal que $|\beta|=k-1$.\\
+        Si realizamos un procedimiento análogo al que hicimos para el caso $k=1$ podemos llegar a que:
+        \begin{align*}
+          |\partial^{\alpha}u(x_0)|&\leq \frac{nk}{r}\|\partial^{\beta}u\|_{L^{\infty}(\partial B(x_0,\frac{r}{k}))}
+        \end{align*}
+        Análogamente si tomamos $x\in \partial B(x_0,\frac{r}{k})$, entonces $B(x,\frac{k-1}{k}r)\subset B(x_0,r)\subseteq U$ tenemos que:
+        \begin{align*}
+          |\partial^{\beta}u(x)|&\leq\frac{(2^{n+1}n(k-1))^{k-1}}{\alpha(n)\left( \frac{k-1}{k}r \right)^{n+k-1}}\|u\|_{L^{1}(B(x_0,r))}\\
+          \|\partial^{\beta}u\|_{L^{\infty}(\partial B(x,\frac{r}{k}))}&\leq\frac{(2^{n+1}n(k-1))^{k-1}}{\alpha(n)\left( \frac{k-1}{k}r \right)^{n+k-1}}\|u\|_{L^{1}(B(x_0,r))}
+        \end{align*}
+        Ahora, juntando ambas desigualdades tenemos que:
+        \begin{align*}
+          |\partial^{\alpha}u(x_0)|&\leq \frac{nk}{r}\|\partial^{\beta}u\|_{L^{\infty}(\partial B(x_0,\frac{r}{k}))}\\
+          &\leq \frac{nk}{r}\frac{(2^{n+1}n(k-1))^{k-1}}{\alpha(n)\left( \frac{k-1}{k}r \right)^{n+k-1}}\|u\|_{L^{1}(B(x_0,r))}\\
+          &\leq \frac{nk}{r}\frac{(2^{n+1}n(k-1))^{k-1}(k^{n+k-1})}{\alpha(n)(k-1)^{n+k-1}(r)^{n+k-1}}\|u\|_{L^{1}(B(x_0,r))}\\
+          &\leq \frac{n^kk^{n+k}2^{(n+1)(k-1)}}{r^{n+k}\alpha(n)(k-1)^n}\|u\|_{L^{1}(B(x_0,r))}\\
+          &\leq \frac{2^{(n+1)(k-1)}(nk)^{k}}{\alpha(n)r^{n+k}}\left( \frac{k}{k-1} \right)^n\|u\|_{L^{1}(B(x_0,r))}\\
+          &\leq \frac{2^{(n+1)(k-1)}(nk)^k}{\alpha(n)r^{n+k}}(2)^{n}\|u\|_{L^{1}(B(x_0,r))}\\
+          &\leq \frac{2^{(n+1)(k-1)}(nk)^k}{\alpha(n)r^{n+k}}(2)^{n+1}\|u\|_{L^{1}(B(x_0,r))}\\
+          &\leq \frac{(2^{n+1}nk)^{k}}{\alpha(n)r^{n+k}}\|u\|_{L^{1}(B(x_0,r))} &&\left( \text{Tomando $C_k=\frac{(2^{n+1}nk)^k}{\alpha(n)}$.} \right)\\
+          &\leq \frac{C_k}{r^{n+k}}\|u\|_{L^{1}(B(x_0,r))}.
+        \end{align*}
+    \end{itemize}
+    Por lo que las estimativas sobre derivadas quedan demostradas.
+    \demostrado
+  \end{solucion}
+\end{homeworkProblem}

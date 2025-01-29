@@ -1,0 +1,63 @@
+\begin{homeworkProblem}
+  Una onda esférica es una solución $u$ de la ecuación de onda en tres dimensiones que es radial en espacio, es decir, $u(x,t) = u(r,t), r=|x|$.
+  \begin{enumerate}[i)]
+    \item Encuentre la ecuacion que satisfacen las ondas esféricas.
+      \begin{solucion}
+        Note que si $u(x,t)=u(|x|,t)=u(r,t)$, se cumple que:
+        \begin{align*}
+          \Delta u&=\frac{2}{r} \frac{du}{dr} + \frac{d^2 u}{dr^2},
+        \end{align*}
+        por lo que sabemos que $u(r,t)$ debe de solucionar:
+        \begin{align*}
+          u_{tt}(r,t)-\frac{2}{r} u_r(r,t) - u_{rr}(r,t)=0
+        \end{align*}
+        \demostrado
+      \end{solucion}
+    \item Para la ecuación encontrada en $I)$, realice el cambio de variables $v = ru$  para determinar y solucionar la ecuación que satisface $v$. Con esto encuentre una solución de la ecuación de onda radial con datos iniciales $u(r,0) = g(r)$, $u_t(r,0) = h(r)$, donde $g$ y $h$ son funciones pares de $r$.
+      \begin{solucion}
+        Suponga $v=ru$, es decir:
+        \begin{align*}
+          u(x,t)&=\frac{v(x,t)}{r}
+        \end{align*}
+        Note que:
+        \begin{align*}
+          u_r(r,t) &= \frac{1}{r} v_r(r,t) - \frac{1}{r^2}v(r,t)\\
+          u_{rr}(r,t) &= \frac{1}{r} v_{rr}(r,t) - \frac{2}{r^2} v_r(r,t) + \frac{2}{r^3}v(r,t)\\
+          u_{tt}(r,t)&=\frac{v_{tt}(r,t)}{r}
+        \end{align*}
+        sustituyendo en la ecuación del punto $I)$, nos queda:
+        \begin{align*}
+          \frac{1}{r}v_{tt}(x,t)-\frac{2}{r}\left( \frac{1}{r} v_r(r,t) - \frac{1}{r^2}v(r,t) \right)-\left( \frac{1}{r} v_{rr}(r,t) - \frac{2}{r^2} v_r(r,t) + \frac{2}{r^3}v(r,t) \right)&=0\\
+        \end{align*}
+        realizando los cálculos:
+        \begin{align*}
+          v_{tt}-v_{rr}=0
+        \end{align*}
+        luego, si proponemos el siguiente problema de Cauchy:
+        \begin{align*}
+          \begin{cases}
+            v_{tt}-v_{rr}=0, &\text{ en } \mathbb{R}\times (0,\infty) \text{,} \\
+            v(r,0)=rg(r), &\text{ en }\mathbb{R} \text{,}\\
+            v_{t}(r,0)=rh(r), &\text{ en }\mathbb{R} \text{,}
+          \end{cases}
+        \end{align*}
+        por lo realizado en el punto problema $1$, sabemos que:
+        \begin{align*}
+          v(r,t)&=\frac{1}{2}((r+t)g(r+t)+(r-t)g(r-t))+\frac{1}{2}\int_{r-t}^{r+t}yh(y)dy
+        \end{align*}
+        luego como $u=v/r$, entonces:
+        \begin{align*}
+          u(x,t)&=\frac{1}{2r}((r+t)g(r+t)+(r-t)g(r-t))+\frac{1}{2r}\int_{r-t}^{r+t}yh(y)dy
+        \end{align*}
+        es solución del problema de Cauchy:
+        \begin{align*}
+          \begin{cases}
+            u_{tt}-\frac{2}{r} u_r(r,t) - u_{rr}(r,t)=0, &\text{ en } \mathbb{R}\times (0,\infty) \text{,} \\
+            u(r,0)=g(r), &\text{ en }\mathbb{R} \text{,}\\
+            u_{t}(r,0)=h(r), &\text{ en }\mathbb{R} \text{,}
+          \end{cases}
+        \end{align*}
+        \demostrado
+      \end{solucion}
+  \end{enumerate}
+\end{homeworkProblem}

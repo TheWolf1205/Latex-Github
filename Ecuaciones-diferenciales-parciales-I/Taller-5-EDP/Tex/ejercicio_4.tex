@@ -1,0 +1,59 @@
+\begin{homeworkProblem}
+  Sea $u$ solución del problema de valor inicial
+  \begin{align}
+    \begin{cases}
+      u_{tt} - \Delta u = 0, \hspace{1cm} & \text{en } \mathbb{R}^{n} \times (0, \infty),\\ 
+      u(x,0) = g(x), \hspace{1cm} & \text{en } \mathbb{R}^{n},\\
+      u_{t} (x,0) =h(x), \hspace{1cm} & \text{en } \mathbb{R}^{n}.
+    \end{cases}
+  \end{align}
+  Dado $x \in \mathbb{R}^{n}, t>0, r>0$ definimos
+  \begin{align*}
+    U(x;r,t) &:= \dashint _{\partial B(x,r)} u(y,t) dS(y),\\ 
+    G(x;r) &:= \dashint _{\partial B(x,r)} g(y) dS(y)
+   \end{align*}
+   y
+   \begin{align*}
+    H(x;r) := \dashint _{\partial B(x,r)} h(y) dS(y).
+   \end{align*}
+   Sea $x \in \mathbb{R}^{n}$ fijo. Sean $m \geq 2$ entero y $u \in C^{m} (\mathbb{R}^{n} \times [0, \infty))$ solución de (6). Muestre que $U$ dada por (7) es de clase $C^{m}([0, \infty) \times [0, \infty))$ (como función de $r$ y $t$) y $U$ satisface el problema de Cauchy para la ecuación de Euler- Poisson -Darboux
+   \begin{align*}
+    \begin{cases}
+    U_{tt} - U_{rr} - \dfrac{n-1}{r} U_{r} = 0, \hspace{1cm} & \text{en } (0, \infty) \times (0, \infty),\\ 
+    U(r,0) = G(r), \hspace{1cm} & \text{en } (0, \infty),\\
+    U_{t} (r,0) =H(r), \hspace{1cm} & \text{en } (0, \infty).
+    \end{cases}
+  \end{align*}
+  \begin{solucion}
+    Comencemos calculando $U_{r}$:
+    \begin{align*}
+      U(x;r,t) &= \dashint _{\partial B(x,r)} u(y,t) dS(y) \\ 
+      &= \dashint _{\partial B(0,1)} u(x+rz, t)dS(z) \hspace{0.5cm} \text{, de modo que}\\
+      U_{r} &= \dashint _{\partial B(0,1)}\nabla u (x +rz, t) \cdot z dS(z)\\
+      &= \dashint _{\partial B(x,r)} \nabla u(y,t) \cdot \dfrac{y-x}{r} dS(y) \\
+      &= \dfrac{1}{n \alpha (n) r^{n-1}} \int _{B(x,r)} u(y,t) dy \\
+      &= \dfrac{r}{n} \dfrac{1}{\alpha (n) r^{n}} \int _{B(x,r)} u(y,t) dy \\
+      &= \dfrac{r}{n} \dashint _{B(x,r)} \Delta u(y,t) dy \\
+    \end{align*}
+    Con esto concluimos $\lim_{x \rightarrow 0^{+}} U_{r}(x;,r,t) = \lim_{x \rightarrow 0^{+}} \dfrac{r}{n} \displaystyle \dashint _{B(0,1)} \Delta u(x+rz,t) dz = \lim_{x \rightarrow 0^{+}} \dfrac{r}{n} \displaystyle \dashint _{B(0,1)} \Delta u(x+rz,t)$ ya que $\Delta u$ es continua y estamos en un compacto, luego $\lim_{x \rightarrow 0^{+}} U_{r}(x;,r,t) =\lim_{x \rightarrow 0^{+}} \dfrac{r}{n} \Delta u(x,t) \displaystyle \dashint _{B(0,1)} dz = \lim_{x \rightarrow 0^{+}} \dfrac{r}{n} \Delta u(x,t) \frac{n \alpha (n) r^{n}}{n \alpha (n) r^{n}} = 0$  Ahora hemos de calcular $U_{rr}(x;r,t)$.
+    \begin{align*}
+      U_{rr} = (U_{r})_{r} &= \dfrac{\partial}{\partial r} \left( \dfrac{1}{n \alpha (n) r^{n-1}} \int _{B(x,r)} \Delta u(y,t)dy \right)\\ 
+      &= \dfrac{1-n}{n \alpha (n) r^{n}} \int _{B(x,r)} \Delta u(y,t) dy + \dfrac{1}{n\alpha (n) r^{n-1}} \dfrac{\partial}{\partial r} \int _{B(x,r)} \Delta u(y,t)dy,
+    \end{align*}
+    centrémonos en el último término
+    \begin{align*}
+      \dfrac{\partial}{\partial r} \int _{B(x,r)} \Delta u(y,t)dy &= \dfrac{\partial}{\partial r} \int _{B(0,1)} \Delta u(x+rz,t)dz\\ 
+      &= \dfrac{\partial}{\partial r} \int _{\partial B(0,1)} \nabla u(x+rz,t) \cdot z dS(z)\\ 
+      &= \int _{\partial B(x,r)} \Delta u(y,t) \frac{|y-x|^{2}}{r^{2}} dS(y),
+    \end{align*}
+    dado que la región donde estamos integrando es la frontera de la bola con radio $r$ y centro $x$, tenemos $|y-x| = r$, luego
+    \begin{align*}
+      \dfrac{\partial}{\partial r} \int _{B(x,r)} \Delta u(y,t)dy = \int _{\partial B(x,r)} \Delta u(y,t) dS(y)
+    \end{align*}
+    al reemplazar este término en la cuenta que estábamos haciendo para $U_{rr}$ obtenemos
+    \begin{align*}
+      U_{rr} &= \dfrac{1-n}{n \alpha (n) r^{n}} \int _{B(x,r)} \Delta u(y,t) dy + \dfrac{1}{n\alpha (n) r^{n-1}} \int _{\partial B(x,r)} \Delta u(y,t) dS(y)\\ 
+      &= \dashint _{B(x,r)} \Delta u dS + \left(\dfrac{1}{n} - 1 \right) \left( \dashint _{B(x,r)} \Delta u dy \right)
+    \end{align*}
+  \end{solucion}
+\end{homeworkProblem}

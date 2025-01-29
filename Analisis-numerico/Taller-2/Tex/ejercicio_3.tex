@@ -1,0 +1,67 @@
+\begin{homeworkProblem}
+  Sea
+  \begin{align*}
+    A=\begin{pmatrix}
+      a & a \\
+      a & a+\delta
+    \end{pmatrix},
+    \hspace{1cm}a>0\text{ fijo, } \delta>0 \text{ variable.}
+  \end{align*}
+  \begin{enumerate}
+    \item Obtenga el número de condición de $A$. Para los valores de $\delta$ muy pequeños o muy grandes, ¿podemos afirmar que el sistema $Ax=b$ esta mal condicionado? Justifique su respuesta.
+    \item ¿Existe algún valor de $\delta$ que haga óptimo el número de condición de $A$?¿Cuál es este número de condición? 
+  \end{enumerate}
+  \begin{solucion}
+    \begin{enumerate}
+      \item Obtenga el número de condición de $A$. Para los valores de $\delta$ muy pequeños o muy grandes, ¿podemos afirmar que el sistema $Ax=b$ esta mal condicionado? Justifique su respuesta.\\
+        Recordemos que el número de condición de una matriz $A$ es:
+        \begin{align*}
+          K_{\infty}(A)=\|A\|_{\infty}\|A^{-1}\|_{\infty}
+        \end{align*}
+        Así, calculemos estas normas:
+        \begin{align*}
+          \|A\|_{\infty}&= 2a+\delta\\
+          \|A^{-1}\|_{\infty}&=\frac{2a+\delta}{a\delta}
+        \end{align*}
+        Luego:
+        \begin{align*}
+          K_\infty(A)&=(2a+\delta)\left( \frac{2a+\delta}{a\delta} \right)\\
+          &=\frac{4a^2+4a\delta+\delta^2}{a\delta}\\
+          &=\frac{4a}{\delta}+4+\frac{\delta}{a}
+        \end{align*}
+        Ahora, para ver la tendencia del valor de condición para números muy pequeños o muy grandes revisaremos que sucede cuando $\delta\to\infty$ y cuando $\delta\to 0$:
+        \begin{align*}
+          \lim_{\delta \to 0}K_\infty(A)&=\lim_{\delta \to 0}\frac{4a}{\delta}+4+\frac{\delta}{a}\\
+          &=\infty\\
+          \lim_{\delta \to \infty}K_{\infty}(A)&=\lim_{\delta \to \infty}\frac{4a}{\delta}+4+\frac{\delta}{a}\\
+          &=\infty
+        \end{align*}
+        Luego vemos que en general para números muy pequeños o muy grandes $K_{\infty}(A)$ está muy lejana a $1$, por lo que la matriz $A$ estaría mal condicionada y por ende el sistema $Ax=b$ esta mal condicionado, ya que la desigualdad:
+        \begin{align*}
+          \frac{\|x-\tilde{x}\|_{\infty}}{\|x\|_{\infty}}\leq K_{\infty}(A)\frac{\|r\|_{\infty}}{\|b\|_{\infty}}
+        \end{align*}
+        no tendría una cota uniforme para valores pequeños o grandes de $\delta$ y por ende podríamos esperar que las soluciones aproximadas se comporten mal.
+      \item ¿Existe algún valor de $\delta$ que haga óptimo el número de condición de $A$?¿Cuál es este número de condición?\\
+        Para responder la pregunta es necesario estudiar el comportamiento del número de condición como una función de $\delta$, esto es $K_\infty(A)(\delta)=\frac{4a}{\delta}+4+\frac{\delta}{a}$.\\
+        Primero hallemos los puntos críticos de esta función, para esto usemos la derivada:
+        \begin{align*}
+          K_{\infty}(A)'(\delta)&=-\frac{4a}{\delta^2}+\frac{1}{a}
+        \end{align*}
+        igualando a $0$ para encontrar puntos críticos:
+        \begin{align*}
+          -\frac{4a}{\delta^2}+\frac{1}{a}&=0 &&\text{Lo que implica}\\
+          \frac{1}{a}&=\frac{4a}{\delta^2} &&\text{Luego}\\
+          \delta^2&=4a^2 &&\text{así}\\
+          \delta^2-4a^2&=0 &&\text{lo que implica}\\
+          (\delta-2a)(\delta+2a)&=0
+        \end{align*}
+        de lo que podemos concluir que, como $\delta>0$, el único punto crítico es cuando $\delta=2a$, luego como la tendencia de la función es $\infty$ cuando $\delta$ va para $0$ o $\infty$, entonces podemos asegurar que este es un mínimo, siendo así, calculemos el número de condición suponiendo $\delta=2a$.
+        \begin{align*}
+          K_{\infty}(A)&=\frac{4a}{2a}+4+\frac{2a}{a}\\
+          &=2+4+2\\
+          &=8
+        \end{align*}
+        luego el valor de $\delta$ que hace óptimo el número de condición de $A$ es $2a$, que estaría aún así mal condicionando el problema (al ser mayor que $1$). 
+    \end{enumerate}
+  \end{solucion}
+\end{homeworkProblem}

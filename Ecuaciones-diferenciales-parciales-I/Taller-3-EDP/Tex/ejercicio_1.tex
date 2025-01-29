@@ -1,0 +1,85 @@
+\begin{homeworkProblem}
+  Sea $U$ un abierto acotado de $\mathbb{R}^{n}$ tal que su borde $\partial U=\overline{U}\setminus U$ es de clase $C^1$. Muestre:
+  \begin{enumerate}
+    \item \textbf{Formula de integración por partes:} Sean $i=1,\cdots,n$ fijo, $u,v\in C^{1}(\overline{U})$. Entonces:
+      \begin{align*}
+        \int_{U}(\partial_{x_i}u)vdx=\int_{\partial U}(uv)\eta_{i}dS(x)-\int_{U}u(\partial_{x_i}v)dx
+      \end{align*}
+      Donde $\eta_i$ es la i-ésima componente del vector normal a $\partial U$.\\
+      \textbf{Sugerencia:} Asuma sin demostrar que vale el teorema de la divergencia, el cual nos dice que dado $F\in C^1(\overline{U};\mathbb{R}^{n})$ un campo vectorial, se tiene:
+      \begin{align*}
+        \int_{U}div(F)dx=\int_{\partial U} F\cdot \eta dS(x)
+      \end{align*}
+      donde si $F=(F_1,\cdots,F_n)$, $div(F)=\frac{\partial F_1}{\partial x_1}+\cdots+\frac{\partial F_n}{\partial x_n}$.\\
+      Para mostrar $1)$ haga $F=(0,\cdots,\underset{\text{posición $i$}}{\underbrace{uv}},\cdots,0)$ y aplique el teorema de la divergencia.
+      \begin{solucion}
+        Suponga $F=(0,\cdots,\underset{\text{posición $i$}}{\underbrace{uv}},\cdots,0)$ y apliquemos el teorema de la divergencia:
+        \begin{align*}
+          \int_{U}div(F)dx&=\int_{\partial U}F\cdot \eta dx\\
+          &=\int_{\partial U}(uv)\eta_i dS(x).
+        \end{align*}
+        Por otro lado:
+        \begin{align*}
+          \int_{U}div(F)dx&=\int_{U} \partial_{x_i}(uv)dx\\
+          &=\int_{U}(\partial_{x_i}u)v+(\partial_{x_i}v)udx.
+        \end{align*}
+        Luego:
+        \begin{align*}
+          \int_{U}(\partial_{x_i}u)v+u(\partial_{x_i}v)dx&=\int_{\partial U}(uv)\eta_i dS(x)\\
+          \int_{U}(\partial_{x_i}u)vdx&=\int_{\partial U}(uv)\eta_i dS(x)-\int_{U}u(\partial_{x_i}v)dx.
+        \end{align*}
+        \demostrado
+      \end{solucion}
+    \newpage
+    \item \textbf{Formula de Green I:}
+      \begin{align*}
+        \int_{U}\Delta u dx=\int_{\partial U}\nabla u\cdot \eta dS(x)
+      \end{align*}
+      Donde $\eta$ es el vector normal a la superficie $\partial U$.\\
+      Para mostrar $2)$ se sigue de $1)$ haciendo $v=1$ y utilizando la definición del Laplaciano.
+      \begin{solucion}
+        Note que por definición: 
+        \begin{align*}
+          \int_{U}\Delta udx&=\int_{U}\partial_{x_1}^2u +\cdots +\partial_{x_n}^2 u dx.
+        \end{align*}
+        Usando $v=1$ y aplicando la formula de integración por partes en cada sumando tenemos que:
+        \begin{align*}
+          \int_{U}\Delta udx&=\int_{\partial U}\partial_{x_1}u\eta_1+\cdots+\partial_{x_n}u\eta_n dS(x)\\
+          &=\int_{\partial U}\nabla u \cdot \eta dS(x).
+        \end{align*}
+      \end{solucion}
+    \item \textbf{Formula de Green II:}
+      \begin{align*}
+        \int_{U}\nabla u \cdot \nabla v dx=-\int_{U}u\Delta vdx + \int_{\partial U} u(\nabla v\cdot \eta)dS(x).
+      \end{align*}
+      Para mostrar $3)$ también se sigue de $1)$.
+      \begin{solucion}
+        Note que por definición:
+        \begin{align*}
+          \int_{U}u\Delta v dx&=\int_{U}u\partial_{x_1}^2v+\cdots+u\partial_{x_n}^2vdx,
+        \end{align*}
+        Usando la formula de integración por partes en cada sumando tenemos que:
+        \begin{align*}
+          \int_{U}u\Delta v dx&=\int_{\partial U}(u\partial_{x_1}v)\eta_1+\cdots+(u\partial_{x_n}v)dS(x)-\int_{U}\partial_{x_1}u\partial_{x_1}v+\cdots+\partial_{x_n}u\partial_{x_n}v dx\\
+          &=\int_{\partial U}u(\nabla v\cdot \eta)dS(x) - \int_{U}\nabla u\cdot \nabla v dx,
+        \end{align*}
+        Lo que implica:
+        \begin{align*}
+          \int_{U}\nabla u \cdot \nabla v &= -\int_{U}u\Delta v dx + \int_{\partial U} u(\nabla v \cdot \eta)dS(x).
+        \end{align*}
+      \end{solucion}
+    \newpage
+    \item \textbf{Formula de Green III:}
+      \begin{align*}
+        \int_{u}(u\Delta v - v\Delta u)dx=\int_{\partial U}(u(\nabla v \cdot \eta)-v(\nabla u\cdot \eta))dS(x),
+      \end{align*}
+      Para mostrar $4)$ sume las 2 formulas de $3$ obtenidas de intercambiar a $u$ por $v$. 
+      \begin{solucion}
+        De $3)$ sabemos que:
+        \begin{align*}
+          \int_{U}(u\Delta v-v\Delta u)dx&=\int_{\partial U}(u(\nabla v\cdot \eta)-v(\nabla u\cdot \eta))dS(x)-\int_{U}(\nabla u\cdot \nabla v - \nabla v \cdot \nabla u)dx\\
+          &=\int_{\partial U}(u(\nabla v\cdot \eta)-v(\nabla u\cdot \eta))dS(x).
+        \end{align*}
+      \end{solucion}
+  \end{enumerate}
+\end{homeworkProblem}

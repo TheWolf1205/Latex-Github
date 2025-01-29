@@ -1,0 +1,139 @@
+\begin{homeworkProblem}
+  Sea $U$ un abierto cotado de $\mathbb{R}^{n}, T>0.$
+  \begin{itemize}
+    \item Muestre que si $v$ es subsolución, entonces
+    \begin{align*}
+      v(x) \leq \dfrac{1}{4r^{n}} \int \int_{E(x,t;r)} v(y,s) \dfrac{|x-y|^{2}}{(t-s)^{2}}dyds,
+    \end{align*}
+    para todo $E(x,t;r) \subset U_{T}.$
+    \item Como consecuencia muestre que $\max_{\overline{U_{T}}} v = \max_{\Gamma_{T}}v.$
+    \item Sea $\phi : \mathbb{R} \rightarrow \mathbb{R}$ una función suave convexa $(\phi '' \geq 0).$ Demuestre que si $u$ es una solución de la ecuación del calor, entonces la función $v=\phi (u)$ es una subsolución.
+    \item Demuestre que si $u$ soluciona la ecuación del calor, entonces $v = |\nabla u|^{2} + u_{t}^{2}$ es una subsolución.
+  \end{itemize}
+  \begin{solucion}
+    Como en la prueba de Evans, comenzaremos con un desplazamiento para quedar con $x=0, t=0$. Y tomamos
+    \begin{align*}
+      \phi (r) :&= \frac{1}{r^{n}} \int \int_{E(r)} u(y,s) \frac{|y|^{2}}{s^{2}}dyds\\ 
+                &= \int \int_{E(1)} u(ry,r^{2}s)\frac{|y|^{2}}{s^{2}}dyds.
+    \end{align*}
+    Calculamos
+    \begin{align*}
+      \phi'(r)&= \int \int_{E(1)} \sum_{i=1}^{n} u_{y_{i}}y_{i}\frac{|y|^{2}}{s^{2}} + 2ru_{s}\frac{|y|^{2}}{s} dyds\\ 
+              &= \frac{1}{r^n+1} \int \int_{E(r)} \sum_{i=1}^{n} u_{y_{i}}y_{i}\frac{|y|^{2}}{s^{2}} + 2u_{s}\frac{|y|^{2}}{s} dyds\\
+              &:= A+B. 
+    \end{align*}
+    Note que $\partial E(0,0;r) = \left\{ (y,s) \in \mathbb{R}^{n+1}: s \leq 0, \dfrac{1}{(-4\pi s)^{\frac{n}{2}}}e^{- \frac{|y|^{2}}{-4s}} = \frac{1}{r^{n}}\right\}$. Es decir, en $\partial E(r)$ se tiene que
+    \begin{align*}
+      \frac{|y|^{2}}{4s} = -nlog(r) + \frac{n}{2}log(-4\pi s).
+    \end{align*}
+    Por lo que si definimos
+    \begin{align*}
+      \psi : = -\frac{n}{2}log(-4\pi s) + \frac{|y|^{2}}{4s} + nlog(r)
+    \end{align*}
+    Es claro que $\psi = 0$ en $\partial E(r)$. Además note que $\psi_{y_{i}}=\dfrac{y_{i}}{2s}$ para $i=1,...,n$. Luego $\displaystyle \sum_{i=1}^{n} y_{i}\psi_{y_{i}} = \frac{|y|^{2}}{2s}$, por lo que podemos escribir B como sigue
+    \begin{align*}
+      B &= \frac{1}{r^{n+1}} \int \int_{E(r)} 4u_{s} \displaystyle \sum_{i=1}^{n} y_{i}\psi_{y_{i}} dyds\\ 
+        & = \frac{1}{r^{n+1}} \int \int_{E(r)} 4\displaystyle \sum_{i=1}^{n} (u_{s} y_{i}) \psi_{y_{i}} dyds.
+    \end{align*}
+    Integrando por partes respecto a cada $y_{i}$ y teniendo en cuenta que $\psi$ se anula en $\partial E(r)$ siempre se perderá el término de borde y en consecuencia
+    \begin{align*}
+      B &= -\frac{1}{r^{n+1}} \int \int_{E(r)} 4\displaystyle \sum_{i=1}^{n} (u_{s} y_{i})_{y_{i}} \psi dyds\\ 
+        &= -\frac{1}{r^{n+1}} \int \int_{E(r)} 4\displaystyle \sum_{i=1}^{n} (u_{s} + u_{s_{y_{i}}}y_{i})\psi dyds\\ 
+        &= -\frac{1}{r^{n+1}} \int \int_{E(r)} 4n u_{s}\psi + 4\displaystyle \sum_{i=1}^{n} u_{sy_{i}}y_{i}\psi dyds.
+    \end{align*}
+    Ahora integramos por partes respecto a $s$ en el segundo término y obtenemos 
+    \begin{align*}
+      B &= \frac{1}{r^{n+1}} \int \int_{E(r)} -4n u_{s}\psi + 4\displaystyle \sum_{i=1}^{n} u_{y_{i}}y_{i}\psi_{s} dyds\\ 
+        &= \frac{1}{r^{n+1}} \int \int_{E(r)} -4n u_{s}\psi + 4\displaystyle \sum_{i=1}^{n} u_{y_{i}}y_{i} \left( -\frac{n}{2s} - \frac{|y|^{2}}{4s^{2}} \right) dyds\\ 
+        &= \frac{1}{r^{n+1}} \int \int_{E(r)} -4n u_{s}\psi - \frac{2n}{s} \displaystyle \sum_{i=1}^{n} u_{y_{i}}y_{i} dyds - A.
+    \end{align*}
+    Ahora es cuando usaremos que $u$ es subsolución $(u_{t} \leq \Delta u )$.
+    \begin{align*}
+      \phi ' (r) &= A + B\\ 
+                 &= \frac{1}{r^{n+1}} \int \int_{E(r)} -4n u_{s}\psi - \frac{2n}{s} \displaystyle \sum_{i=1}^{n} u_{y_{i}}y_{i} dyds\\ 
+                 &\geq \frac{1}{r^{n+1}} \int \int_{E(r)} -4n \Delta u\psi - \frac{2n}{s} \displaystyle \sum_{i=1}^{n} u_{y_{i}}y_{i} dyds.
+    \end{align*}
+    Donde al usar una fórmula de Green (integrar por partes varias veces) en el primer término obtenemos
+    \begin{align*}
+      \phi ' (r) &\geq \frac{1}{r^{n+1}} \int \int_{E(r)} 4n \nabla u \cdot \nabla \psi - \frac{2n}{s} \displaystyle \sum_{i=1}^{n} u_{y_{i}}y_{i} dyds\\ 
+                 &=\displaystyle \sum_{i=1}^{n} \frac{1}{r^{n+1}} \int \int_{E(r)} 4n u_{y_{i}} \psi_{y_{i}} - \frac{2n}{s} u_{y_{i}}y_{i} dyds\\ 
+                 &= \displaystyle \sum_{i=1}^{n} \frac{1}{r^{n+1}} \int \int_{E(r)} 4n u_{y_{i}} \left( \frac{y_{i}}{2s}\right) - \frac{2n}{s} u_{y_{i}}y_{i} dyds\\ 
+                 &=0.
+    \end{align*} 
+    Si tomamos $0< \delta < r$, se cumple
+    \begin{align*}
+      \int_{\delta}^{r} \phi '(z) dz = \phi(r) - \phi(\delta) \geq 0.
+    \end{align*}
+    Luego, $\phi(r) \geq \lim_{\delta \rightarrow 0} \phi(\delta) = u(0,0) \left(\lim_{\delta \rightarrow 0} \dfrac{1}{\delta ^{n}} \displaystyle \int \displaystyle \int_{E(\delta)} \frac{|y|^{2}}{s^{2}} dyds\right)$.\\ 
+    Solamente nos queda ver el valor de $\lim_{\delta \rightarrow 0} \dfrac{1}{\delta ^{n}} \displaystyle \int \displaystyle \int_{E(\delta)} \frac{|y|^{2}}{s^{2}} dyds = \displaystyle \int \displaystyle \int_{E(1)} \frac{|y|^{2}}{s^{2}} dyds$.\\ 
+    Por como está definida $E(1)$ podemos plantear los límites de integración como sigue:
+    \begin{align*}
+      \int_{-\frac{1}{4\pi}}^{0} \int_{|y| \leq \sqrt{2nslog(-4\pi s)}} \frac{|y|^{2}}{s^{2}} dyds,
+    \end{align*}
+    Hacemos un cambio a coordenadas polares y otro cambio de variable $w = \frac{y}{r}$
+    \begin{align*}
+      &\int_{-\frac{1}{4\pi}}^{0} \int_{0}^{\sqrt{2nslog(-4\pi s)}} \int_{\partial B(0,1)} \frac{|rw|^{2}}{s^{2}} r^{n-1} dS(w)drds\\
+      &= \int_{-\frac{1}{4\pi}}^{0} \int_{0}^{\sqrt{2nslog(-4\pi s)}} \int_{\partial B(0,1)} \frac{r^{n+1}}{s^{2}} dS(w)drds\\
+      &|B(0,1)| \int_{-\frac{1}{4\pi}}^{0} \int_{0}^{\sqrt{2nslog(-4\pi s)}} \frac{r^{n+1}}{s^{2}} drds\\ 
+      &= \frac{|B(0,1)|}{n+2} \int_{-\frac{1}{4\pi}}^{0} \frac{(2nslog(-4\pi s))^{\frac{n}{2} + 1}}{s^{2}} ds\\ 
+      &= \frac{|B(0,1)|(2n)^{\frac{n}{2} + 1}}{n+2} \int_{-\frac{1}{4\pi}}^{0} \frac{(slog(-4\pi s))^{\frac{n}{2} + 1}}{s^{2}} ds\\ 
+    \end{align*}
+    Ahora sigamos viendo esta última integral. Considerando la sustitución $x = -4\pi s$ tenemos:
+    \begin{align*}
+      \int_{-\frac{1}{4\pi}}^{0} \frac{(slog(-4\pi s))^{\frac{n}{2} + 1}}{s^{2}} ds &= \int_{1}^{0} \frac{((-\frac{x}{4\pi})log(x))^{\frac{n}{2}+1}}{(s^\frac{x}{4\pi})^{2}}(- \frac{1}{4\pi})dx,
+    \end{align*}
+    tomando $z = -log(x)$:
+    \begin{align*}
+      &\int_{0}^{\infty} \frac{((-\frac{e^{-z}}{4\pi})log(x))^{\frac{n}{2}+1}}{(-\frac{e^{-z}}{4\pi})^{2}}(-e^{-z})dz\\
+      =& \frac{1}{(4\pi){\frac{n}{2}}} \int_{0}^{\infty} e^{\frac{-nz}{2}}z^{\frac{n}{2}+1}dz
+    \end{align*}
+    Cambiando $w=\frac{nz}{2}$
+    \begin{align*}
+      &= \frac{1}{(4\pi){\frac{n}{2}}} \int_{0}^{\infty} e^{-w}(\frac{2w}{n})^{\frac{n}{2}+1}\frac{2}{n}dw\\ 
+      &= \frac{1}{(4\pi){\frac{n}{2}}} (\frac{2}{n})^{\frac{n}{2}+1} \int_{0}^{\infty} e^{-w} w^{\frac{n}{2}+1}dw\\ 
+      &= \frac{1}{2^{n} \pi{\frac{n}{2}} 2^{-\frac{n}{2}-2} n^{\frac{n}{2}+2}} \int_{0}^{\infty} e^{-w} w^{\frac{n}{2}+2-1}dw  
+    \end{align*}
+    Por como está definida la función $\Gamma$, se tiene que
+    \begin{align*}
+      &= \frac{1}{\pi{\frac{n}{2}} 2^{\frac{n}{2}-2} n^{\frac{n}{2}+2}} \Gamma (2 + \frac{n}{2})
+    \end{align*}
+    Juntando ahora todas las constantes concluimos
+    \begin{align*}
+      si
+    \end{align*}
+    \demostrado
+    Ahora veamos que como consecuencia se tiene que $\max_{\overline{U_T}}v=\max_{\Gamma_T}v$.\\
+    Suponga $v_{\epsilon}(x,t)=u(x,t)-\epsilon t$, con $u$ solución de la ecuación del calor, entonces:
+    \begin{align*}
+      (\partial_t-\Delta)v&=(\partial_t-\Delta)(u-\epsilon t),\\
+      &=(\partial_t-\Delta)u - \epsilon,\\
+      &< 0 .
+    \end{align*}
+    Luego, usando el principio del máximo para soluciones de la ecuación del calor se tiene que:
+    \begin{align*}
+      \max_{\overline{U_T}}u&=\max_{\overline{U_T}}v_\epsilon,\\
+      &=\max_{\Gamma_T}v_\epsilon(u-\epsilon t),\\
+      &\leq \max_{\Gamma_T}u.
+    \end{align*}
+    Luego:
+    \begin{align*}
+      \max_{\overline{U_T}}u&=\max_{\overline{U_T}}u-\epsilon t + \epsilon t,\\
+      &\leq \max_{\overline{U_T}}v_\epsilon -\epsilon T,\\
+    \end{align*}
+    de lo que se sigue que:
+    \begin{align*}
+      \max_{\overline{U_T}}u-\epsilon T&\leq \max_{\overline{U_T}}v,\\
+      &\leq \max_{\Gamma_T}u.
+    \end{align*}
+    Ahora si tomamos $\epsilon\rightarrow 0^+$, se puede concluir que:
+    \begin{align*}
+      \max_{\overline{U_T}}u&\leq \max_{\Gamma_T}u, 
+    \end{align*}
+    de lo que se sigue que:
+    \begin{align*}
+      \max_{\overline{U_T}}v=\max_{\Gamma_T}v.
+    \end{align*}
+    Lo cual concluye la demostración.
+    \demostrado
+  \end{solucion}  
+\end{homeworkProblem}

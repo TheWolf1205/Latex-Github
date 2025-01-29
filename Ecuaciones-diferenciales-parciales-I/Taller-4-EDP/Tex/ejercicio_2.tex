@@ -1,0 +1,116 @@
+\begin{homeworkProblem}
+  Considere el problema de Cauchy
+  \begin{align*}
+    \begin{cases}
+      u_t-\Delta u=0, &\text{ en } \mathbb{R}^{n}\times (0,\infty) \text{,} \\
+      u=g, &\text{ en } \mathbb{R}^{n}\times\{t=0\} .
+    \end{cases}
+  \end{align*}
+  \begin{enumerate}
+    \item Suponga que $g\in C(\mathbb{R}^{n})$ es una función absolutamente integrable, es decir,$\|g\|_{L^1(\mathbb{R}^{n})}< \infty$. Muestre que para $0< \beta < \frac{n}{2}$ existe una solucion $u(x,t)$ del problema de Cauchy anterior que satisface:
+    \begin{align*}
+      \lim_{t\rightarrow\infty}t^{\beta}u(x,t)=0,
+    \end{align*}
+    uniformemente en $x\in\mathbb{R}^{n}$.\\
+    \textbf{Sugerencia.} Considere $u(x,t)=(\phi(\cdot,t)*g)(x)$ y muestre que $|u(x,t)|\leq \frac{\|g\|_{L^1}}{(4\pi t)^{n/2}}$.
+    \begin{solucion}
+      Note que:
+      \begin{align*}
+        |u(x,t)|&\leq \left| \int_{\mathbb{R}^{n}}\frac{e^{-\frac{|x-y|^2}{4t}}}{(4\pi t)^{n/2}}g(y)dy \right|,\\
+        &\leq \frac{1}{(4\pi t)^{n/2}}\int_{\mathbb{R}^{n}}\left| e^{-\frac{|x-y|^2}{4t}}g(y) \right|dy,\\
+        &\leq \frac{1}{(4\pi t)^{n/2}}\int_{\mathbb{R}^{n}}\left| g(y) \right|dy,\\
+        &\leq \frac{\|g\|_{L^1}}{(4\pi t)^{n/2}}.
+      \end{align*}
+      Luego, usando esto sabemos que:
+      \begin{align*}
+        \left|\lim_{t \rightarrow \infty}t^{\beta}u(x,t)\right|&=\lim_{t\rightarrow\infty}t^{\beta}|u(x,t)|,\\
+        &\leq\lim_{t \rightarrow \infty}\frac{t^{\beta}\|g\|_{L^1(\mathbb{R}^{n})}}{(4\pi t)^{n/2}},\\
+        &\leq \lim_{t\rightarrow\infty} \frac{C}{t^{n/2-\beta}},\\
+        &\leq 0.
+      \end{align*}
+      Luego como $|\lim_{t\rightarrow\infty}t^{\beta}u(x,t)|=0$, entonces $\lim_{t\rightarrow \infty}t^{\beta}u(x,t)=0$.
+      \demostrado
+    \end{solucion}
+    \newpage
+    \item Sea $m>n+\frac{1}{4}$, donde $n\geq 1$ denota la dimensión del espacio $\mathbb{R}^{n}$. Suponga que $g\in C(\mathbb{R}^{n})$ es una función tal que $|x|^mg(x)$ es acotada (es decir, $\||x|^mg(x)\|_{L^{\infty}}<\infty$). Muestre que para $0 \leq \beta \leq \frac{n}{2}-\frac{1}{8}$ existe una solucion $u(x,t)$ del problema de Cauchy anterior que satisface:
+      \begin{align*}
+        \lim_{t \rightarrow \infty}t^{\beta}|x|^{\frac{1}{4}}u(x,t)=0,
+      \end{align*}
+      uniformemente en $x\in\mathbb{R}^{n}$.\\
+      \textbf{Sugerencia.} Primero, dado $l>0$, deduzca que existe una constante $c_l>0$ tal que $(a+b)^{l}\leq c_l(a^l+b^l)$, para todo $a,b\in\mathbb{R}^{+}\cup\{0\}$. Con este resultado muestre que para alguna constante $c>0$:
+      \begin{align*}
+        |x|^{\frac{1}{4}}\leq c(|x-y|^{\frac{1}{4}}+|y|^{\frac{1}{4}}),
+      \end{align*}
+      para todo $x,y\in\mathbb{R}^{n}$. Segundo, utlizando la hipótesis sobre $g$, muestre que $|x|^{\frac{1}{4}}g(x)\in L^{1}(\mathbb{R}^{n}).$\\
+      Sea $u(x,t)=(\Phi(\cdot,t)*g)(x)$, por el primer resultado previo, obtenemos que:
+      \begin{align*}
+        ||x|^{\frac{1}{4}}u(x,t)|&\leq \frac{c}{(4\pi t)^{\frac{n}{2}}}\int_{\mathbb{R}^{n}}|x-y|^{\frac{1}{4}}e^{-\frac{|x-y|^2}{4t}}|g(y)|dy\\
+        &\phantom{=} + \frac{c}{(4\pi t)^{\frac{n}{2}}}\int_{\mathbb{R}^{n}}e^{-\frac{|x-y|^2}{4t}}|y|^{\frac{1}{4}}|g(y)|dy.
+      \end{align*}
+      Utilizando la desigualdad anterior y el hecho de que $|x|^{\frac{1}{4}}g(x)\in L^{1}(\mathbb{R}^{n})$ concluya el límite cuanto $t\rightarrow 0^{+}$.
+    \begin{solucion}
+      Note que para el caso $a=0$ o $b=0$, la desigualdad es trivial, por lo que nos concentraremos en el caso $a\neq b\neq 0$:
+      \begin{align*}
+        (a+b)^{l}&=\frac{(a+b)^l}{b^l}b^l,\\
+        &=\left( \frac{a}{b}+1 \right)^{l}b^l.\\
+        a^l+b^l&=\left(\left(\frac{a}{b}\right)^l+1\right)b^l.
+      \end{align*}
+      Suponga $z=\frac{a}{b}$ y note que:
+      \begin{align*}
+        \lim_{z \rightarrow \infty}\frac{(z+1)^l}{z^l+1}&=1,
+      \end{align*}
+      por lo que usando la propiedad arquimediana, podemos asegurar que existe un $c_l$ tal que $(z+1)^{l}\leq c_l(z^l+1)$, lo cuál implica que $(a+b)^{l}\leq c_l(a^l+b^l)$ para todo $a,b\in\mathbb{R}^{+}\cup\{0\}$.\\
+      Luego, utilizando este resultado sabemos que:
+      \begin{align*}
+        |x|^{1/4}&\leq |x-y+y|^{\frac{1}{4}},\\
+        &\leq (|x-y|+|y|)^{\frac{1}{4}},\\
+        &\leq c(|x-y|^{\frac{1}{4}}+|y|^{\frac{1}{4}}),
+      \end{align*}
+      para todo $x,y\in\mathbb{R}^{n}$.\\
+      Ahora, veamos que $|x|^{1/4}g(x)\in L^{1}(\mathbb{R}^{n})$.\\
+      Definimos $k=d(m,\frac{1}{4})$, luego como $n=d(n+\frac{1}{4},n)$ y $n\geq 1$, entonces $k>1$, de lo que sigue que:
+      \begin{align*}
+        \||x|^{\frac{1}{4}g(x)}\|_{L^{1}(\mathbb{R}^{n})}&\leq \int_{\mathbb{R}^{n}}\left| |x|^{\frac{1}{4}}g(x) \right|dx,\\
+        &\leq \int_{\mathbb{R}^{n}}\left| \frac{|x|^{m}g(x)}{|x|^{k}} \right|dx,\\
+        &\leq \||x|^{m}g(x)\|_{L^{\infty}(\mathbb{R}^{n})}\int_{\mathbb{R}^{n}}\frac{1}{|x|^k}dx,\\
+        &< \infty. 
+      \end{align*}
+      Ahora note que:
+      \begin{align*}
+        \left|\lim_{t \rightarrow \infty}t^{\beta}|x|^{\frac{1}{4}}u(x,t)\right|&\leq \lim_{t \rightarrow \infty}\left| t^{\beta}|x|^{\frac{1}{4}}g(x) \right|,\\
+        &\leq \lim_{t \rightarrow \infty}t^{\beta}\left( \frac{c}{(4\pi t)^{\frac{n}{2}}}\int_{\mathbb{R}^{n}}|x-y|^{\frac{1}{4}}e^{-\frac{|x-y|^2}{4t}}|g(y)|dy\right.\\
+        &\phantom{=}\left. + \frac{c}{(4\pi t)^{\frac{n}{2}}}\int_{\mathbb{R}^{n}}e^{-\frac{|x-y|^2}{4t}}|y|^{\frac{1}{4}}|g(y)|dy\right),\\
+        &\leq \lim_{t \rightarrow \infty}\frac{ct^{\beta}}{(4\pi t)^{\frac{n}{2}}}(I+J),
+      \end{align*}
+      de lo cuál nos conviene ver que $I<\infty$ y $J<\infty$.\\
+      Para $I$ note que si suponemos $z=\frac{|x-y|^2}{4t}$ tenemos que:
+      \begin{align*}
+        \||x-y|^\frac{1}{4}e^{-\frac{|x-y|^2}{4t}}\|_{L^{\infty}(\mathbb{R}^{n})}&=ct^{\frac{1}{8}}\||z|^{\frac{1}{4}}e^{-z^2}\|_{L^{\infty}(\mathbb{R}^{n})},
+      \end{align*}
+      de lo que sigue que:
+      \begin{align*}
+        I&\leq \int_{\mathbb{R}^{n}}|x-y|^{\frac{1}{4}}e^{-\frac{|x-y|^2}{4t}}|g(y)|dy,\\
+        &\leq \||x-y|^{\frac{1}{4}e^{-\frac{|x-y|^2}{4t}}}\|_{L^{\infty}(\mathbb{R}^{n})}\int_{\mathbb{R}^{n}}|g(y)|dy,\\
+        &\leq (ct^{\frac{1}{8}}) \int_{\mathbb{R}^{n}}|g(y)|dy\\
+        &\leq (ct^{\frac{1}{8}}) \left( \int_{B(0,1)} |g(y)|+\int_{\mathbb{R}^{n}\setminus B(0,1)}|g(y)|\right),\\
+        &\leq (ct^{\frac{1}{8}}) \left( \int_{B(0,1)} |g(y)|+\int_{\mathbb{R}^{n}\setminus B(0,1)}|y|^{\frac{1}{4}}|g(y)|\right),\\
+        &\leq (ct^{\frac{1}{8}}) \left( k + \||x|^{\frac{1}{4}}g\|_{L^{1}(\mathbb{R}^{n})} \right),\\
+        &\leq kt^{\frac{1}{8}}.
+      \end{align*}
+      Ahora, note que para $J$ tenemos que:
+      \begin{align*}
+        J&\leq \int_{\mathbb{R}^{n}}e^{-\frac{|x-y|^2}{4t}}|y|^{\frac{1}{4}}|g(y)|dy,\\
+        &\leq \int_{\mathbb{R}^{n}}|y|^{\frac{1}{4}}|g(y)|dy,\\
+        &\leq k.
+      \end{align*}
+      Por lo que recordando que $0 \leq \beta \leq \frac{n}{2}-\frac{1}{8}$, es decir $0<\frac{n}{2}-\beta-\frac{1}{8}$, podemos concluir que:
+      \begin{align*}
+        \left| \lim_{t \rightarrow \infty}t^{\beta}|x|^{\frac{1}{4}}u(x,t) \right|&\leq \lim_{t \rightarrow \infty}\frac{ct^{\beta}}{(4\pi t)^{\frac{n}{2}}}(kt^{\frac{1}{8}}+k),\\
+        &\leq \lim_{t\rightarrow \infty} m\frac{1}{t^{\frac{n}{2}-\beta-\frac{1}{8}}},\\
+        &\leq 0.
+      \end{align*}
+      Por lo que se concluye que $\lim_{t\rightarrow \infty}t^{\beta}|x|^{\frac{1}{x}}u(x,t)=0$.
+      \demostrado
+    \end{solucion}
+  \end{enumerate}  
+\end{homeworkProblem}

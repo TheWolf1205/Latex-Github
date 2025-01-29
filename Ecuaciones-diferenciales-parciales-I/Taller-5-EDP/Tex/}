@@ -1,0 +1,87 @@
+\begin{homeworkProblem}
+  (\textbf{Buena colocación de la ecuación de onda en una dimensión}). Considere el problema de Cauchy:
+  \begin{align*}
+    (1)\hspace{3cm}\begin{cases}
+      u_{tt}-u_{xx}=0, &\text{ en } \mathbb{R}\times (0,\infty) \text{,} \\
+      u(x,0)=g(x), &\text{ en }\mathbb{R} \text{,}\\
+      u_{t}(x,0)=h(x), &\text{ en }\mathbb{R} \text{,}
+    \end{cases}
+  \end{align*}
+  donde suponemos que $g\in C^2(\mathbb{R})$ y $h\in C^{1}(\mathbb{R})$.
+  \begin{enumerate}[i]
+    \item Sea $u$ solución de $(1)$ de clase $C^2$. Muestre que si $g(x)$ y $h(x)$ son nulas para $|x|>R$, entonces $u(x,t)=0$ para todo $|x|>R+t$.\\
+    \textbf{Sugerencia.} Utilice el principio de propagación finita.
+      \begin{solucion}
+        Note que como $u$ es solución de la ecuación de onda, entonces se satisface que para cada $x_0\in\mathbb{R}$ y $t_0>0$ podemos definir el siguiente cono de onda:
+        $$K(x_0,t_0):=\{(x,t):0\leq t\leq t_0, |x-x_0|\leq t_0-t\}$$
+        Ahora, por hipótesis tenemos que $Supp\phantom{x}g, Supp\phantom{x}h \subseteq [-R,R]$, por lo que usando el principio el principio de propagación finita tenemos que si suponemos $x_0\notin [-R,R]$ y $t_0>0$ tal que $(x_0-t_0,x_0+t_0)\cap(-R,R)=\emptyset$, entonces $u\equiv u_t\equiv 0$ en $(x_0-t_0,x_0+t_0)\times (t=0)$, y por ende $u\equiv 0$ en el cono $K(x_0,t_0)$.\\
+        Luego, si tomamos $(x,t)$ tal que $|x|>R+t$, entonces $x\notin [-R-t,R+t]$, luego como $[-R,R]\subset[-R-t,R+t]$, entonces $x\notin [-R,R]$ y por ende se satisface que $u(x,t)=0$ 
+      \end{solucion}
+    \item \textbf{(Existencia).} Muestre que existe una solución de clase $C^2$ del problema $(1)$.\\
+    \textbf{Sugerencia.} Verifique que la fórmula de d'Alemberd es en efecto una solución de $(1)$.
+      \begin{solucion}
+        Suponga:
+        \begin{align*}
+          u(x,t)=\frac{1}{2}\left( g(x+t)+g(x-t) \right)+\frac{1}{2}\int_{x-t}^{x+t}h(y)dy.
+        \end{align*}
+        Note que:
+        \begin{align*}
+          \lim_{t \rightarrow 0}u(x,t)&=\lim_{t \rightarrow 0}\frac{1}{2}\left( g(x+t)+g(x-t) \right)+\frac{1}{2}\int_{x-t}^{x+t}h(y)dy,\\
+          &=\frac{1}{2}\left( g(x)+g(x) \right)+\frac{1}{2}\int_{x}^{x}h(y)dy,\\
+          &=g(x),
+        \end{align*}
+        además:
+        \begin{align*}
+          \lim_{t \rightarrow 0}u_t(x,0)&=\lim_{t \rightarrow 0}\frac{1}{2}\left( g'(x+t)-g'(x-t) \right)+\frac{1}{2}\int_{-1}^{1}h'(ut+x)ut+h(ut+x)du,\\
+          &=\frac{1}{2}\int_{-1}^{1}h(x)du,\\
+          &=h(x).
+        \end{align*}
+        Ahora veamos que $u$ es solución de la ecuación de onda.\\
+        Calculando:
+        \begin{align*}
+          u_x(x,t)&=\frac{1}{2}\left( g'(x+t)+g'(x-t) \right)+\frac{1}{2}\left( h(x+t)+h(x-t) \right).\\
+          u_t(x,t)&=\frac{1}{2}\left( g'(x+t)-g'(x-t) \right)+\frac{1}{2}\left( h(x+t)-h(x-t) \right),
+        \end{align*}
+        luego:
+        \begin{align*}
+          u_{xx}(x,t)&=\frac{1}{2}\left( g''(x+t)+g''(x-t) \right)+\frac{1}{2}\left( h'(x+t)+h'(x-t) \right).\\
+          u_{tt}(x,t)&=\frac{1}{2}\left( g''(x+t)+g''(x-t) \right)+\frac{1}{2}\left( h'(x+t)+h'(x-t) \right),\\
+          &=u_{xx}(x,t).
+        \end{align*}
+        De lo que se concluye que $u_{tt}-u_{xx}=0$.\\
+        Por lo que se puede asegurar que el problema $(1)$ tiene solución. 
+      \end{solucion}
+    \item \textbf{(Unicidad).} Muestre que existe una única solución del problema de Cauchy $(1)$ en la clase $C^2(\mathbb{R}\times [0,\infty))$.\\
+    \textbf{Sugerencia.} Es suficiente con mostrar que el problema:
+    \begin{align*}
+      \begin{cases}
+        w_{tt}-w_{xx}=0, &\text{ en } \mathbb{R}\times (0,\infty) \text{,} \\
+        w(x,0)=0, &\text{ en }\mathbb{R} \text{,}\\
+        w_{t}(x,0)=0, &\text{ en }\mathbb{R} \text{,}
+      \end{cases}
+    \end{align*}
+    tiene como única solución $w=0$. Para esto, defina la energía:
+    \begin{align*}
+      E(t)=\int_{-\infty}^{\infty}(w_{t}^2(x,t)+w_{x}^2(x,t))dx.
+    \end{align*}
+    Utilice $I)$ para justificar que la energía anterior está bien definida (como integral en todo $\mathbb{R}$). Luego muestre que $\frac{d}{dt}E(t)=0$.
+      \begin{solucion}
+        Suponga que existen $u_1(x,t),u_2(x,t)$ soluciones del problema $(1)$, entonces sabemos que $w(x,t)=u_1(x,t)-u_2(x,t)$ es solución del problema de Cauchy:
+            \begin{align*}
+              \begin{cases}
+                w_{tt}-w_{xx}=0, &\text{ en } \mathbb{R}\times (0,\infty) \text{,} \\
+                w(x,0)=0, &\text{ en }\mathbb{R} \text{,}\\
+                w_{t}(x,0)=0, &\text{ en }\mathbb{R} \text{,}
+              \end{cases}
+            \end{align*}
+      \end{solucion}
+    \item \textbf{(Tipo de dependencia continua).} Sea $u_j$ solución de $(1)$ con datos iniciales $g_j\in C^2(\mathbb{R})\cap L^{\infty}(\mathbb{R})$ y $h_j\in C^{1}(\mathbb{R})\cap L^{\infty}(\mathbb{R})$, para $j=1,2$. Dado $T>0$ fijo, muestre que:
+    \begin{align*}
+      \sup_{(x,t)\in \mathbb{R}\times [0,T]}|u_1(x,t)-u_2(x,t)|\leq \|g_1-g_2\|_{L^{\infty}}+T\|h_1-h_2\|_{L^{\infty}}.
+    \end{align*}
+    En particular, concluya que datos iniciales próximos en la norma $L^{\infty}(\mathbb{R})$ general soluciones de $(1)$ próximas en la norma $L^{\infty}(\mathbb{R}\times [0,T])$.
+      \begin{solucion}
+        Solución
+      \end{solucion}
+  \end{enumerate}
+\end{homeworkProblem}
