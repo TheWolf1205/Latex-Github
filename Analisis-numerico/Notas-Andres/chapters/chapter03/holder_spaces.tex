@@ -1,0 +1,91 @@
+Supposse $U\subset \mathbb{R}^{n}$ open and $0<\gamma\leq 1$ imitating the condition of continuous Lipschitz functions we want define a variant of these:
+\begin{equation}
+  |u(x)-u(y)|\leq C|x-y|^{\gamma}\hspace{0.5cm}(x,y\in U)\label{eq:holder_condition}
+\end{equation}
+for some constant C. Such a function is said to be \textit{Hölder continuous with exponent $\gamma$}.
+\begin{definition}{}
+  \begin{enumerate}
+    \item If $u:U\to \mathbb{R}$ is bounded and continuos, we write
+      \begin{align*}
+        \|u\|_{C(\overline{U})}:=\sup_{x\in U}|u(x)|.
+      \end{align*}
+    \item The $\gamma$-Hölder seminorm of $u:U\to\mathbb{R}$ is
+      \begin{align*}
+        [u]_{C^{0,\gamma}(\overline{U})}:=\sup_{x,y\in U, x\neq y}\left\{\frac{|u(x)-u(y)|}{|x-y|^{\gamma}}\right\},
+      \end{align*}
+      and the $\gamma$-Hölder norm is
+      \begin{align*}
+        \|u\|_{C^{0,\gamma}(\overline{U})}:=\|u\|_{C(\overline{U})}+[u]_{C^{o,\gamma}(\overline{U})}.
+      \end{align*}
+  \end{enumerate}
+\end{definition}
+\begin{definition}{Hölder Space}
+  The Hölder space
+  \begin{align*}
+    C^{k,\gamma}(\overline{U})
+  \end{align*}
+  consists of all functions $u\in C^{k}(\overline{U})$ for wich the norm
+  \begin{equation}\label{eq:hölder_norm_ck}
+    \|u\|_{C^{k,\gamma}}(\overline{U}):=\sum_{|\alpha|\leq k}\|\partial^{\alpha}u\|_{C(\overline{U})}+\sum_{|\alpha|=k}[\partial^{\alpha}u]_{C^{0,\gamma}(\overline{U})}
+  \end{equation}
+  is finite.
+\end{definition}
+So the space $C^{k,\gamma}(\overline{U})$ consists of those functions $u$ that are $k$-times continuosly differentiable and whose $k^{th}$-partial derivates are bounded and Hölder continuos with exponent $\gamma$. Such functions are well-behaved, and furthermore the space $C^{k,\gamma}(\overline{U})$ itself possesses a good mathematical structure:
+\begin{theorem}{Hölder spaces as functions spaces}
+  The space of functions $C^{k,\gamma}(\overline{U})$ is a Banach space. 
+\end{theorem}
+\begin{proof} 
+  Firts we have to see that $\|\cdot\|_{C^{k,\gamma}(\overline{U})}$ is a norm.
+  \begin{itemize}
+    \item $\|u+v\|_{C^{k,\gamma}(\overline{U})}\leq \|u\|_{C^{k,\gamma}(\overline{U})} + \|v\|_{C^{k,\gamma}(\overline{U})}$.\\
+      Note that:
+      \begin{align*}
+        \|u+v\|_{C^{k,\gamma}(\overline{U})}&\leq \sum_{|\alpha|\leq k}\|\partial^{\alpha}(u+v)\|_{C(\overline{U})}+\sum_{|\alpha|=k}[\partial^{\alpha}(u+v)]_{C^{0,\gamma}(\overline{U})},\\
+        &\leq \sum_{|\alpha|\leq k}\|\partial^{\alpha}(u+v)\|_{C(\overline{U})}\\
+        &\phantom{\leq}+\sum_{|\alpha|=k} \sup_{x,y\in U, x\neq y}\left\{ \frac{|\partial^{\alpha}(u(x)+v(x))-\partial^{\alpha}(u(y)+v(y))|}{|x-y|^{\gamma}} \right\},\\
+        &\leq \sum_{|\alpha|\leq k}\|\partial^{\alpha}u\|_{C(\overline{U})}+\sum_{|\alpha|\leq k}\|\partial^{\alpha}v\|_{C(\overline{U})}\\
+        &\phantom{\leq}+\sum_{|\alpha|= k}\sup_{x,y\in U, x\neq y}\left\{ \frac{|\partial^{\alpha}u(x)-\partial^{\alpha}u(y)|}{|x-y|^{\gamma}} \right\}\\
+        &\phantom{\leq}+ \sum_{|\alpha|=k}\sup_{x,y\in U, x\neq y}\left\{ \frac{|\partial^{\alpha}v(x)-\partial^{\alpha}v(y)|}{|x-y|^{\gamma}} \right\},\\
+        &\leq \sum_{|\alpha|\leq k}\|\partial^{\alpha}u\|_{C(\overline{U})}+\sum_{|\alpha|\leq k}\|\partial^{\alpha}v\|_{C(\overline{U})}\\
+        &\phantom{\leq}+\sum_{|\alpha|=k}[\partial^{\alpha}u]_{C^{0,\gamma}(\overline{U})}+ \sum_{|\alpha|=k}[\partial^{\alpha}v]_{C^{0,\gamma}(\overline{U})}\\
+        &\leq \|u\|_{C^{k,\gamma}(\overline{U})}+\|v\|_{C^{0,\gamma}(\overline{U})}
+      \end{align*}
+    \item $\|u\|_{C^{k,\gamma}(\overline{U})}=0$ if and only if $u=0$.\\
+      If $u=0$, trivially $\|u\|_{C^{0,\gamma}(\overline{U})}=0$, so let's see the other case.\\
+      Suppose $\|u\|_{C^{k,\gamma}(\overline{U})}=0$, then we want see that $u=0$.\\
+      Note that $\|\partial^{\alpha}u\|_{C(\overline{U})}\geq0$ for all $\alpha$ and $[\partial^{\alpha}u]_{C^{0,\gamma}(\overline{U})}\geq 0$ likewise for all $\alpha$ since they are supreme, then if $\|u\|_{C^{k,\gamma}(\overline{U})}=0$ it's satisface that $\|u\|_{C(\overline{U})}=0$, then we can conclude that $u=0$.
+  \end{itemize}
+  Now let's see that all Cauchy secuence $\{u_m\}_{m\in\mathbb{Z}^{+}}\subset C^{k,\gamma}(\overline{U})$ converges to $u\in C^{k,\gamma}(\overline{U})$.\\
+  To see this note that this is that $\lim_{m \rightarrow \infty}\|u_m-u\|_{C^{k,\gamma}(\overline{U})}=0$ with $u\in C^{k,\gamma}(\overline{U})$.\\
+  For this we can use the completeness of $C^{k}(\overline{U})$.\\
+  Firts, Note that $u_m\to u$ when $m\to\infty$ since $C(\overline{U})$ is a Banach space, moreover as $u_m\in C^{k,\gamma}(\overline{U})$, then $\partial^{\beta}u_m$ exist and it's bounded with $\beta$ multi-index such that $|\beta|\leq k$ in $\overline{U}$, then the secuence $\{\partial^{\beta}u_m\}_{m\in \mathbb{Z}^{+}}$ converges uniformly to $g$ when $m\to\infty$  and $g=\partial^{\beta}u$.\\ 
+  Later, we can take $\alpha$ multi-index whit $|\alpha|=k$ then let's see that $u\in C^{k,\gamma}(\overline{U})$:
+  \begin{align*}
+    \hspace{-0.5cm}\frac{|\partial^{\alpha}u(x)-\partial^{\alpha}u(y)|}{|x-y|^{\gamma}}&=\frac{|\partial^{\alpha}u(x)-\partial^{\alpha}u_{m}(x)+\partial^{\alpha}u_{m}u(x)-\partial^{\alpha}u_{m}(y)+\partial^{\alpha}u_{m}(y)-\partial^{\alpha}u(u)|}{|x-y|^{\alpha}}\\
+    &\leq \frac{|\partial^{\alpha}u(x)-\partial^{\alpha}u_{m}(x)|}{|x-y|^{\gamma}}+\frac{|\partial^{\alpha}u_{m}(x)-\partial^{\alpha}u_{m}(y)|}{|x-y|^{\gamma}}+\frac{|\partial^{\alpha}u_{m}(y)-\partial^{\alpha}u(y)|}{|x-y|^{\gamma}}\\
+    &\leq I + J + K
+  \end{align*}
+  where $I$ and $K$ are limited for some $\epsilon$ by completeness of $C^{k}(\overline{U})$, and $J$ are limited since $u_m\in C^{k,\gamma}(\overline{U})$ (Hölder condition), then:
+  \begin{align*}
+    [\partial^{\alpha}u]_{C^{0,\gamma}(\overline{U})}=\frac{|\partial^{\alpha}u(x)-\partial^{\alpha}u(y)|}{|x-y|^{\gamma}}\leq M_{\alpha}
+  \end{align*}
+  Now:
+  \begin{align*}
+    \|u\|_{C^{k,\gamma}(\overline{U})}&=\sum_{|\alpha|\leq k}\|\partial^{\alpha}u\|_{C(\overline{U})}+\sum_{|\alpha|=k}[\partial^{\alpha}u]_{C^{0,\gamma}(\overline{U})}\leq M<\infty
+  \end{align*}
+  then $u\in C^{k,\gamma}(\overline{U})$, now let's see that $u_{m}\to u$ when $m\to \infty$ in $C^{k,\gamma}(\overline{U})$.\\
+  Again let's to see the $\gamma^{th}$-Hölder seminorm:  
+  \begin{align*}
+    [\partial^{\alpha}(u-u_m)]_{C^{0,\gamma}(\overline{U})}&=\frac{|(\partial^{\alpha}u-\partial^{\alpha}u_{m})(x)-(\partial^{\alpha}u-\partial^{\alpha}u_{m})(y)|}{|x-y|^{\gamma}}\\
+    &=\lim_{l \rightarrow \infty}\frac{|(\partial^{\alpha}u_l-\partial^{\alpha}u_{m})(x)-(\partial^{\alpha}u_l-\partial^{\alpha}u_{m})(y)|}{|x-y|^{\gamma}}\\
+    &\leq \epsilon
+  \end{align*}
+  since $\{u_m\}$ is a Cauchy secuence in $C^{k,\gamma}(\overline{U})$ and $m$ is fixed and $u_l-u_m\in C^{k,\gamma}(\overline{U}$.\\
+  Now:
+  \begin{align*}
+    \lim_{m \rightarrow \infty}\|u_m-u\|_{C^{k,\gamma}(\overline{U})}&=\lim_{m \rightarrow \infty}\sum_{|\alpha|\leq k}\|\partial^{\alpha}(u_m-u)\|_{C^{k}(\overline{U})}+\sum_{|\alpha|=k}[\partial^{\alpha}(u_m-u)]_{C^{0,\gamma}(\overline{U})}\\
+    &=0
+  \end{align*}
+  So we can conclude that the Höldes Space is an Banach Space.
+\end{proof}
+

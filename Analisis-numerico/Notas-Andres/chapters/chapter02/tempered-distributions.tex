@@ -1,0 +1,724 @@
+ With the definitions of the Fourier transform that we have developed so far, it is natural to consider what happens with functions in $L^p(\mathbb{R}^n)$ where $1 \leq p \leq 2$. For this, it will be useful to observe the following result.
+\begin{proposition}{}
+  Let $f \in L^p(\mathbb{R}^n)$ with $1 \leq p \leq 2$. Then $f \in L^1(\mathbb{R}^n) + L^2(\mathbb{R}^n)$.
+\end{proposition}
+\begin{proof}{}
+  Let $f \in L^p(\mathbb{R}^n)$. Note that $f$ can be decomposed as $f_1 + f_2$, defined as follows:
+  \begin{align*}
+    f_1(x) &= \begin{cases}
+      f(x),\hspace{1cm} & \text{if } |f(x)| > 1. \\
+      0,\hspace{1cm} & \text{otherwise.}
+    \end{cases} \\
+    f_2(x) &= \begin{cases}
+      f(x),\hspace{1cm} & \text{if } |f(x)| \leq 1. \\
+      0,\hspace{1cm} & \text{otherwise.}
+    \end{cases}
+  \end{align*}
+  Now let's see that $f_1 \in L^1(\mathbb{R}^n)$:
+  \begin{align*}
+    \int_{\mathbb{R}^n}|f_1(x)|dx &\leq \int_{\{x \in \mathbb{R}^n: |f(x)| > 1\}} |f(x)| dx \\
+    &\leq \int_{\{x \in \mathbb{R}^n: |f(x)| > 1\}} |f(x)|^p dx && \text{Since if } |f(x)| > 1, |f(x)| \leq |f(x)|^p \\
+    &\leq \int_{\mathbb{R}^n} |f(x)|^p dx = \|f\|_p^p.
+  \end{align*}
+  Thus, $f_1 \in L^{1}(\mathbb{R}^n)$. \\
+  Now let's see that $f_2 \in L^2(\mathbb{R}^n)$:
+  \begin{align*}
+    \int_{\mathbb{R}^n}|f_2(x)|^2dx &\leq \int_{\{x \in \mathbb{R}^n: |f(x)| \leq 1\}} |f(x)|^2 dx \\
+    &\leq \int_{\{x \in \mathbb{R}^n: |f(x)| \leq 1\}} |f(x)|^p dx && \text{Since if } |f(x)| \leq 1, |f(x)|^2 \leq |f(x)|^p \\
+    &\leq \int_{\mathbb{R}^n} |f(x)|^p dx = \|f\|_p^p.
+  \end{align*}
+  Thus, $f_2 \in L^2(\mathbb{R}^n)$, which allows us to conclude that $f \in L^1(\mathbb{R}^n) + L^2(\mathbb{R}^n)$.
+\end{proof}
+The above allows us to extend our definitions of the Fourier transform to any function $f \in L^p(\mathbb{R}^n)$, with $1 \leq p \leq 2$, since we can write $f = f_1 + f_2 \in L^1(\mathbb{R}^n) + L^2(\mathbb{R}^n)$, using the Fourier transform in the sense of $L^1(\mathbb{R}^n)$ for $f_1$ and the Fourier transform in the sense of $L^2(\mathbb{R}^n)$ for $f_2$. However, we still need to demonstrate the uniqueness of this transform and see to what extent it preserves the properties we developed earlier.\\
+On the other hand, one would like to extend the Fourier transform to spaces $L^p(\mathbb{R}^n)$ with $p > 2$. However, as we have already seen, the Fourier operator is discontinuous in the spaces $L^p(\mathbb{R}^n)$ with $p > 2$, which indicates that we cannot extend our definition in the same way we did with $L^2(\mathbb{R}^n)$. Thus, from now on, we will focus on demonstrating that the Fourier transform for $L^p(\mathbb{R}^n)$ spaces exists in the distributional sense. However, the codomain of this will not be a functional space, but rather a space of distributions, which we will call \textbf{Tempered Distributions}. On the other hand, we will first focus on studying to what extent we can apply \cref{definition:transform-of-f}.
+\begin{example}{}
+  Take $n \geq 1$ and $f(x) = \delta_0(x)$, the delta function, i.e., the measure of a unit mass concentrated at the origin. Using \cref{definition:transform-of-f}, we have that:
+  \begin{align*}
+    \hat{\delta_0}(\xi) &= \int_{\mathbb{R}^n} \delta_0(x)e^{-2\pi i (x \cdot \xi)}dx \\
+    &= e^{-2\pi i (0 \cdot \xi)} \\
+    &= 1.
+  \end{align*}
+  \newline
+  In fact, \cref{definition:transform-of-f} tells us that if $\mu$ is a bounded measure, then $\hat{\mu}$ represents a function in $L^\infty(\mathbb{R}^n)$. \\
+  \begin{align*}
+    \hat{\mu}(\xi) &= \int_{\mathbb{R}^n} e^{-2\pi i (x \cdot \xi)}d\mu(x).
+  \end{align*}
+  Then:
+  \begin{align*}
+    |\hat{\mu}(\xi)| &\leq \int_{\mathbb{R}^n} |e^{-2\pi i (x \cdot \xi)}|d\mu(x) \\
+    &\leq \int_{\mathbb{R}^n} d\mu(x) \\
+    &\leq \mu(\mathbb{R}^n) \\
+    &< \infty.
+  \end{align*}
+  Thus:
+  \begin{align*}
+    \sup_{\xi \in \mathbb{R}^n} |\hat{\mu}| < \infty,
+  \end{align*}
+  meaning $\hat{\mu} \in L^{\infty}(\mathbb{R}^n)$.
+\end{example}
+Now, suppose that given $f \equiv 1$, we want to find $\hat{f}(\xi)$. In this case, \cref{definition:transform-of-f} cannot be used directly, so it will be necessary to introduce the notion of tempered distribution.\\
+To begin with this, we will first study the following family of seminorms.
+\begin{definition}{}
+  For each $(\nu,\beta) \in (\mathbb{Z}^+ \cup \{0\})^{2n}$, we will denote the seminorm $\seminorm{\cdot}_{(\nu,\beta)}$ defined as:
+  $$ \seminorm{f}_{(\nu,\beta)} = \|x^\nu \partial^\beta f\|_{\infty}. $$ 
+\end{definition}
+Now, using this, we will define the Schwartz space $\mathcal{S}(\mathbb{R}^n)$ as the space of functions $C^{\infty}(\mathbb{R}^n)$ with infinite decay, that is:
+\begin{align*}
+  \mathcal{S}(\mathbb{R}^n) := \{\varphi \in C^{\infty}(\mathbb{R}^n): \seminorm{\varphi}_{(\nu,\beta)} < \infty, \text{ for all } (\mathbb{Z}^+ \cup \{0\})^{2n}\}
+\end{align*} 
+In this way, we can verify the following proposition. 
+\begin{proposition}{}
+  $C^{\infty}_{0}(\mathbb{R}^n) \subsetneq \mathcal{S}(\mathbb{R}^n)$.
+\end{proposition}
+\begin{proof}{}
+  First, let's see that $C^{\infty}_{0}(\mathbb{R}^n) \subset \mathcal{S}(\mathbb{R}^n)$.\\
+  Suppose $f \in C^{\infty}_{0}(\mathbb{R}^n)$, now, let's see that $|\|f\||_{(\nu,\beta)} < \infty$ for all $(\nu,\beta) \in (\mathbb{Z}^+ \cup \{0\})$.\\
+  Note that since $Supp(f)$ is compact, there exists an $R > 0$ such that $Supp(f) \subseteq B_{R}(0)$. Furthermore, since $f \in C^{\infty}(\mathbb{R}^n)$, the quantity $|\partial^{\beta}f|$ achieves its maximum (in particular its supremum) in $B_{R}(0)$, thus:
+  \begin{align*}
+    |x^{\nu} \partial^{\beta}f| &\leq |x_1^{\nu_1}x_2^{\nu_2}\cdots x_n^{\nu_n}\partial^{\beta}f| \\
+    &\leq |x_1|^{\nu_1}|x_2|^{\nu_2}|\cdots||x_n|^{\nu_n}|\partial^{\beta}f| \\
+    &\leq |x|^{\nu_1}|x|^{\nu_2}|\cdots||x_n|^{\nu_n}|\partial^{\beta}f| \\
+    &\leq |x|^{\nu_1 + \nu_2 + \cdots + \nu_n}|\partial^{\beta}f| \\
+    &\leq |x|^{|\nu|}|\partial^{\beta}f| \\
+    &\leq R^{|\nu|}\sup_{x \in B_{R}(0)}|\partial^{\beta}f| \\
+    &< \infty
+  \end{align*}
+  Then $\sup_{x \in \mathbb{R}^n} |x^{\nu} \partial^{\beta} f| \leq R^{|\nu|} \sup_{x \in B_{R}(0)} |\partial^{\beta} f| < \infty$, so we can conclude that $f \in \mathcal{S}(\mathbb{R}^n)$.\\
+  Now, we only need to find a function $f \in \mathcal{S}(\mathbb{R}^n)$ such that $f \notin C^{\infty}_{0}(\mathbb{R}^n)$.\\
+  For this, we will use the Gaussian function $f(x) = e^{-|x|^2}$. First, let's see that $f \in \mathcal{S}(\mathbb{R}^n)$:
+  To begin, note that using an inductive argument, we can ensure that:
+  \begin{align*}
+    e^{-|x|^2} &= e^{-(x_1^2 + x_2^2 + \cdots + x_n^2)}\\
+    \frac{\partial (e^{-|x|^2})}{\partial x_i} &= -2x_i e^{-|x|^2}\\
+    \frac{\partial^3 (e^{-|x|^2})}{\partial x_i^2 x_j} &= (4x_i^2 - 2)(-2x_j)e^{-|x|^2}\\
+    &\vdots\\
+    \frac{\partial^{|\beta|} (e^{-|x|^2})}{\partial x^{\beta}} &= P(x)e^{-|x|^2}\\
+  \end{align*}
+  where $P(x)$ is a polynomial.\\
+  Now, let's see that $|\|f\||_{(\nu,\beta)} < \infty$ for all $\nu$ and $\beta$.\\
+  First, note that given a polynomial $q(x)$ of degree $m > 0$, there always exists $c \in \mathbb{R}^+$ such that:
+  \begin{align*}
+    |q(x)| &\leq \left| \sum_{n=0}^{m} a_n x^n \right|\\
+    &\leq \sum_{n=0}^{m} |a_n| |x|^n\\
+    &\leq \begin{cases}
+      \sum_{n=0}^{m} |a_n|, & \text{if } |x| \leq 1\\
+      a_0 + |x|^m \left( \sum_{n=1}^{m} |a_n| \right), & \text{if } |x| > 1.
+    \end{cases}\\
+    &\leq c(1 + |x|^m)\\
+    &\leq c(1 + |x|^2)^{\frac{m}{2}}\\
+    &\leq c \langle x \rangle^m 
+  \end{align*}
+  Now, suppose $c \in \mathbb{R}^+$ and $m \in \mathbb{Z}^+$ is even, such that $c \langle x \rangle^m \geq |x^{\nu} P(x)|$ for all $x \in \mathbb{R}^n$:
+  \begin{align*}
+    |x^{\nu} P(x) e^{-|x|^2}| &\leq c \frac{\langle x \rangle^m}{e^{|x|^2}}
+  \end{align*}
+  Then, since $\left| \frac{c \langle x \rangle^m}{e^{|x|^2}} \right|$ is continuous on all of $\mathbb{R}^n$, it attains its maximum on any compact set. Furthermore:
+  \begin{align*}
+    \lim_{|x| \rightarrow \infty} \left| \frac{c \langle x \rangle^m}{e^{|x|^2}} \right| = 0
+  \end{align*}
+  Thus, we can assume that:
+  \begin{align*}
+    \|x^{\nu} \partial^{\beta} f\|_{\infty} &\leq \sup_{x \in \mathbb{R}^n} \left| \frac{c \langle x \rangle^m}{e^{|x|^2}} \right|\\
+    &< \infty
+  \end{align*}
+  Hence, it has been shown that $f(x) = e^{-|x|^2} \in \mathcal{S}(\mathbb{R}^n)$.\\
+  Then, since $e^{-|x|^2} \neq 0$ for all $x \in \mathbb{R}^n$, we have $Supp(e^{-|x|^2}) = \mathbb{R}^n$, so we can conclude that $e^{-|x|^2} \in \mathcal{S}(\mathbb{R}^n) \setminus C^{\infty}_{0}(\mathbb{R}^n)$.
+  Then $\sup_{x\in\mathbb{R}^n}|x^{\nu}\partial^{\beta}f|\leq R^{|\nu|}\sup_{x\in B_{R}(0)}|\partial^{\beta}f|<\infty$.
+\end{proof}
+Now we will see how the topology of $\mathcal{S}(\mathbb{R}^n)$ is determined by the family of seminorms $|\|\cdot\||_{(\nu,\beta)}$ with $(\nu,\beta)\in(\mathbb{Z}^+\cup\{0\})^{2n}$.
+\begin{definition}{}
+  Let $\{\varphi_j\}\subset \mathcal{S}(\mathbb{R}^n)$, we will say that $\varphi_j \rightarrow 0$ as $j \rightarrow \infty$ if for every $(\nu,\beta)\in(\mathbb{Z}^+\cup\{0\})^{2n}$ it holds that:
+  $$|\|\varphi_j\||_{(\nu,\beta)}\rightarrow 0, \hspace{1cm} \text{as }\hspace{0.5cm}j\rightarrow \infty$$
+\end{definition}
+\begin{note}{}
+  Similarly, we will say that $\varphi_j \rightarrow \varphi$ as $j\rightarrow \infty$ if and only if $|\|\varphi_j - \varphi \||_{(\nu,\beta)}\rightarrow 0$ as $j\rightarrow \infty$.
+\end{note}
+Now we will study the following proposition.
+\begin{proposition}{}
+  Let $d:(\mathcal{S}(\mathbb{R}^n))^2\rightarrow \mathbb{R}^+\cup \{0\}$ defined as follows:
+  \begin{align*}
+    d(\varphi,\psi)=\sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi-\psi\||_{(\nu,\beta)}}{1+|\|\varphi-\psi\||_{(\nu,\beta)}}
+  \end{align*}
+  Then the following conditions hold:
+  \begin{enumerate}
+    \item $d$ defines a metric for $\mathcal{S}(\mathbb{R}^n)$.
+    \item $d$ generates a topology on $\mathcal{S}(\mathbb{R}^n)$ equivalent to the topology generated by the seminorms of $\mathcal{S}(\mathbb{R}^n)$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}{}
+	\begin{enumerate}
+		\item Let us see that $d$ indeed defines a metric for $\mathcal{S}(\mathbb{R}^n)$.\\
+		  \begin{itemize}
+			  \item First, we will show that $d$ is well-defined for any $(\varphi,\psi)\in (\mathcal{S}(\mathbb{R}^n))^2$, which means:
+			    \begin{align*}
+				    d(\varphi,\psi)&\leq\sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi-\psi\||_{(\nu,\beta)}}{1+|\|\varphi-\psi\||_{(\nu,\beta)}}\\
+				    &\leq \sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\\
+				    &\leq \sum_{\nu,\beta}\frac{1}{2^{|\nu|}}\frac{1}{2^{|\beta|}}\\
+				    &\leq \sum_{\nu\in(\mathbb{Z}^+\cup\{0\})^n}\frac{1}{2^{|\nu|}} \sum_{\beta\in(\mathbb{Z}^+\cup\{0\})^n}\frac{1}{2^{|\beta|}}\\
+				    &\leq \left(\sum_{\nu\in(\mathbb{Z}^+\cup\{0\})^n}\frac{1}{2^{|\nu|}}\right)^2\\
+				    &\leq\left( \sum_{\nu_1=0}^{\infty}\sum_{\nu_2=0}^{\infty}\cdots\sum_{\nu_n=0}^{\infty}\frac{1}{2^{\nu_1+\nu_2+\cdots+\nu_n}}\right)^2\\
+				    &\leq\left(\sum_{k=0}^{\infty}\frac{1}{2^k}\right)^{2n}\\
+				    &<\infty
+			    \end{align*}
+			    Therefore, we can ensure that $d$ is well-defined for all $(\varphi,\psi)\in(\mathcal{S}(\mathbb{R}^n))^2$\\
+			  \item Now let us see that $d(\varphi,\psi)=0$ if and only if $\varphi=\psi$.\\
+			    Note that, in the definition of $d$, all summands are positive real numbers, so we can affirm that $d(\varphi,\psi)=0$ if and only if $|\|\varphi-\psi\||_{(\nu,\beta)}=0$ for all $(\nu,\beta)\in(\mathbb{Z}^+\cup \{0\})^{2n}$.\\
+			    Now, assume $\nu=0$ and $\beta=0$, then:
+			    \begin{align*}
+				    |\|\varphi-\psi\||_{(0,0)}&=\|x^{0}\partial^{0}(\varphi-\psi)\|_{\infty}\\
+				    &=\|\varphi-\psi\|_{\infty}\\
+				    &=\sup_{x\in\mathbb{R}^n}|\varphi-\psi|=0
+			    \end{align*}
+			    Then $\varphi(x)=\psi(x)$ for all $x\in\mathbb{R}^n$.
+			  \item Note that $d(\varphi,\psi)=d(\psi,\varphi)$ follows immediately, since $|\|\varphi-\psi\||_{(\nu,\beta)}=|\|\psi-\varphi\||_{(\nu,\beta)}$ for all $\nu$ and $\beta$.
+			  \item Now let us see that $d$ satisfies the triangle inequality.\\
+			    Using the triangle inequality of the seminorms $|\|\cdot\||_{(\nu,\beta)}$, we have:
+		      \begin{align*}
+				    |\|\varphi-\psi\||_{(\nu,\beta)}&\leq |\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}\\
+				    1+|\|\varphi-\psi\||_{(\nu,\beta)}&\leq 1+ |\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}\\
+				    \frac{1}{1+ |\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}}&\leq \frac{1}{1+|\|\varphi-\psi\||_{(\nu,\beta)}}\\
+				    -\frac{1}{1+|\|\varphi-\psi\||_{(\nu,\beta)}}&\leq -\frac{1}{1+ |\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}}
+			    \end{align*}
+			    Then:
+			    \begin{align*}
+				    d(\varphi,\psi)&\leq \sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi-\psi\||_{(\nu,\beta)}}{1+|\|\varphi-\psi\||_{(\nu,\beta)}}\\
+				    &\leq \sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\left(1-\frac{1}{1+|\|\varphi-\psi\||_{(\nu,\beta)}}\right)\\
+				    &\leq \sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\left(1-\frac{1}{1+|\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}}\right)\\
+				    &\leq\sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}}{1+|\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}}\\
+				    &\leq\sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi-\phi\||_{(\nu,\beta)}}{1+|\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}}\\
+            &\phantom{\leq}+\sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\phi-\psi\||_{(\nu,\beta)}}{1+|\|\varphi-\phi\||_{(\nu,\beta)}+|\|\phi-\psi\||_{(\nu,\beta)}}\\
+				    &\leq\sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi-\phi\||_{(\nu,\beta)}}{1+|\|\varphi-\phi\||_{(\nu,\beta)}}+\sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\phi-\psi\||_{(\nu,\beta)}}{1+|\|\phi-\psi\||_{(\nu,\beta)}}\\
+				    &\leq d(\varphi,\phi)+d(\phi,\psi)
+			    \end{align*}
+			    Thus, we can conclude that $d$ is a metric for the space $\mathcal{S}(\mathbb{R}^n)$.\\
+		  \end{itemize}
+		\item Now let us see that $d$ generates the same topology for $\mathcal{S}(\mathbb{R}^n)$ as the seminorms of $\mathcal{S}(\mathbb{R}^n)$.
+		  \begin{itemize}
+			  \item First, we will see that if $\{\varphi_j\}\rightarrow \varphi$ as $j\rightarrow \infty$, then $d(\varphi_j,\varphi)\rightarrow 0$ as $j\rightarrow \infty$.\\
+			    Note that since the series $\sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}$ converges, we can ensure that given $\epsilon >0$, there exists $N>0$ such that:
+			    \begin{align*}
+				    \sum_{|\nu|,|\beta|> N}\frac{1}{2^{|\nu|+|\beta|}}<\frac{\epsilon}{M}
+			    \end{align*}
+			    On the other hand, since $\varphi_j\rightarrow \varphi$, for $j\geq N$ we can obtain:
+			    \begin{align*}
+            d(\varphi_j,\varphi)&\leq \sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi_j-\varphi\|_{(\nu,\beta)}}{1+|\|\varphi_j-\varphi\||_{(\nu,\beta)}}\\
+            &\leq \sum_{|\nu|,|\beta|\leq N}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi_j-\varphi\|_{(\nu,\beta)}}{1+|\|\varphi_j-\varphi\||_{(\nu,\beta)}}\\
+            &\phantom{\leq}+ \sum_{|\nu|,|\beta|>N}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi_j-\varphi\|_{(\nu,\beta)}}{1+|\|\varphi_j-\varphi\||_{(\nu,\beta)}}\\
+            &\leq \sum_{|\nu|,|\beta|\leq N}\frac{1}{2^{|\nu|+|\beta|}}|\|\varphi_j-\varphi\|_{(\nu,\beta)} + \sum_{|\nu|,|\beta|>N}\frac{1}{2^{|\nu|+|\beta|}}\\
+            &<\frac{\epsilon}{M}\left(\sum_{|\nu|,|\beta|\leq N}\frac{1}{2^{|\nu|+|\beta|}}+1\right)\\
+            &\phantom{<}\text{Taking $M=\left(\sum_{|\nu|,|\beta|\leq N}\frac{1}{2^{|\nu|+|\beta|}}+1\right)$.}\\
+            &<\epsilon
+			    \end{align*}
+			    Thus, we can conclude that $d(\varphi_j,\varphi)\rightarrow 0$ as $j\rightarrow \infty$.
+			  \item Now let us see the converse, which means that if $d(\varphi_j,\varphi)\rightarrow 0$ as $j\rightarrow \infty$, then $\varphi_j\rightarrow\varphi$ as $j\rightarrow \infty$.\\
+			    Suppose $d(\varphi_j,\varphi)\rightarrow 0$ when $j\rightarrow \infty$, then given multi-index $(\tilde{\nu},\tilde{\beta})$ exists $j_0> 0$ and $\epsilon\in(0,2^{-(|\nu|+|\beta|+1)})$ such that $d(\varphi_j,\varphi)<\epsilon$, then for everything $j>j_0$ it is true that:
+			    \begin{align*}
+            \frac{1}{2^{|\tilde{\nu}|+|\tilde{\beta}|}}\frac{|\|\varphi_j-\varphi\||_{(\tilde{\nu},\tilde{\beta})}}{1+|\|\varphi_j-\varphi\||_{(\tilde{\nu},\tilde{\beta})}}&\leq \sum_{\nu,\beta}\frac{1}{2^{|\nu|+|\beta|}}\frac{|\|\varphi_j-\varphi\||_{(\nu,\beta)}}{1+|\|\varphi_j-\varphi\||_{(\nu,\beta)}}\\
+    				&< \epsilon
+			    \end{align*}
+			    From here it can be inferred that:
+          \begin{align*}
+            |\|\varphi_j-\varphi\||_{(\tilde{\nu},\tilde{\beta})}&< \epsilon (2^{|\tilde{\nu}|+|\tilde{\beta}|})(1+|\|\varphi_j-\varphi\||_{(\tilde{\nu},\tilde{\beta})})\\
+            &< \epsilon (2^{|\tilde{\nu}|+|\tilde{\beta}|})+\epsilon(2^{|\tilde{\nu}|+|\tilde{\beta}|})(|\|\varphi_j-\varphi\||_{(\tilde{\nu},\tilde{\beta})})\\
+            (|\|\varphi_j-\varphi\||_{(\tilde{\nu},\tilde{\beta})})(1-\epsilon(2^{|\tilde{\nu}|+|\tilde{\beta}|}))&< \epsilon(2^{|\tilde{\nu}|+|\tilde{\beta}|})
+          \end{align*}
+          Then as $\epsilon < 2^{-(|\nu|+|\beta|+1)}$, so $(1-\epsilon(2^{|\tilde{\nu}|+|\tilde{\beta}|}))\geq \frac{1}{2}$, hence:
+          \begin{align*}
+            \frac{1}{2}(|\|\varphi_j-\varphi\||_{(\tilde{\nu},\tilde{\beta})})&< \epsilon (2^{|\tilde{\nu}|+|\tilde{\beta}|})\\
+            (|\|\varphi_j-\varphi\||_{(\tilde{\nu},\tilde{\beta})})&< \epsilon (2^{|\tilde{\nu}|+|\tilde{\beta}|+1})
+          \end{align*}
+          then for $j>j_0$ is true that $\lim_{j\rightarrow \infty}|\|\varphi_j-\varphi\||_{(\nu,\beta)}=0$, so we can assure $\varphi_j \rightarrow \varphi$ as $j\rightarrow \infty$.
+		  \end{itemize}
+	\end{enumerate}
+\end{proof}
+Before going to the main result, let's review the following proposition that will help us to prove the next theorem.
+\begin{proposition}{}
+	Let $\phi\in\mathcal{S}$, then there exists $c>0$, and $m>\frac{n}{2}$ such that:
+	$$\|x^{\nu}\partial^{\beta}\phi\|_{1}\leq c(|\|\phi\||_{(\nu,\beta)}+\sum_{|\gamma|\leq 2m}|\|\phi\||_{(\nu+\gamma,\beta)})$$
+\end{proposition}
+\begin{proof}{}
+	\begin{align*}
+		\|x^{\nu}\partial^{\beta}\phi\|_{1}&\leq \|\frac{1+|x|^{2m}}{1+|x|^{2m}}x^{\nu}\partial^{\beta}\phi\|_{1} &&\text{Using Hölder's inequality.}\\
+		&\leq \|\frac{1}{1+|x|^{2m}}\|_{1}\|(1+|x|^{2m})x^{\nu}\partial^{\beta}\phi\|_{\infty}\\
+		&\leq c(\|x^{\nu}\partial^{\beta}\phi\|_{\infty}+\||x|^{2m}x^{\nu}\partial^{\beta}\phi\|_{\infty})\\
+		&\leq c(|\|\phi\||_{(\nu,\beta)}+\sum_{|\gamma|<2m}\|x^{\nu+\gamma}\partial^{\beta}\phi\|_{\infty})\\
+		&\leq c(|\|\phi\||_{(\nu,\beta)}+\sum_{|\gamma|<2m}|\|\phi\||_{(\nu+\gamma,\beta)})
+	\end{align*}
+\end{proof}
+Now, the relationship between the space of $\mathcal{S}(\mathbb{R}^n)$ and the Fourier transform will be more natural after seeing the following result.
+\begin{theorem}{}
+	The Fourier transform $\phi\rightarrow \hat{\phi}$ is an isomorphism of $\mathcal{S}(\mathbb{R}^n)$ onto itself.
+\end{theorem}
+\begin{proof}{}
+	\begin{itemize}
+		\item First, let's see that if $\phi\in\mathcal{S}(\mathbb{R}^n)$, then $\hat{\phi}\in\mathcal{S}(\mathbb{R}^n)$.\\
+	    Note that since $\mathcal{S}(\mathbb{R}^n)\subsetneq \mathcal{L}^p(\mathbb{R}^n)$ with $1\leq p \leq \infty$, then $\phi\in\mathcal{L}(\mathbb{R}^n)$, so we can use the Fourier transform properties in the sense of $\mathcal{L}(\mathbb{R}^n)$, as follows:
+	    \begin{align*}
+	      \partial^{\beta}\hat{\phi}(\xi)&=[\hat{(-2\pi i x)^{\beta}\phi(x)}](\xi)
+	    \end{align*}
+	    Then, for all $\nu\in(\mathbb{Z}^+\cup\{0\})^n$, we have that $x^\nu \phi \in \mathcal{L}(\mathbb{R}^n)$, so we can affirm that $\hat{\phi}\in C^{\infty}$.\\
+	    Now let's see that $|\|\hat{\phi}\||_{(\nu,\beta)}<\infty$ for all $(\nu,\beta)\in(\mathbb{Z}^+\cup\{0\})^{2n}$.
+	    \begin{align*}
+	    	\sup_{\xi\in\mathbb{R}^n}|\xi^{\nu}\partial^{\beta}\hat{\phi}(\xi)|&\leq \sup_{\xi\in\mathbb{R}^n}|\xi^{\nu}(\hat{(-2\pi i x)^{\beta}\phi(x)})(\xi)|\\
+	    	&\leq \sup_{\xi\in\mathbb{R}^n}\left|\frac{[\hat{\partial^{\nu}(-2\pi i x)^{\beta}\phi(x)}]}{(2\pi i)^{\nu}}(\xi)\right|
+	    \end{align*}
+	    Since $x^{\beta}\phi\in\mathcal{S}(\mathbb{R}^n)$, $\partial^{\nu}(-2\pi ix)^{\beta}\phi\in\mathcal{L}(\mathbb{R}^n)$, we can ensure that $\hat{\partial^{\nu}(-2\pi ix)^{\beta}\phi}\in\mathcal{L}^{\infty}(\mathbb{R}^n)$, meaning that for all $(\nu,\beta)\in(\mathbb{Z}^+\cup\{0\})^{2n}$ we have $|\|\hat{\phi}\||_{(\nu,\beta)}<\infty$.
+		\item Now let's see that the operator is injective.\\
+		  Suppose $\hat{\phi}=\hat{\psi}$, then, since $\phi,\psi\in\mathcal{L}(\mathbb{R}^n)$, using the inversion formula, we have:
+		  \begin{align*}
+			  \phi(x)&=\lim_{t\rightarrow 0}\int_{\mathbb{R}^n}\hat{\phi}(\xi)e^{2\pi i (x\cdot \xi)}e^{-4\pi^2t|\xi|^2}d\xi\\
+			  &=\lim_{t\rightarrow 0}\int_{\mathbb{R}^n}\hat{\psi}(\xi)e^{2\pi i (x\cdot \xi)}e^{-4\pi^2t|\xi|^2}d\xi\\
+			  &=\psi(x)
+		  \end{align*}
+		  Thus, we can conclude that $\phi=\psi$.
+		\item Now, let's see that the operator is surjective.\\
+		  Similarly to how we demonstrated that if $\phi\in\mathcal{S}(\mathbb{R}^n)$, then $\hat{\phi}\in\mathcal{S}(\mathbb{R}^n)$, it can be shown that if $\phi\in\mathcal{S}(\mathbb{R}^n)$, then $\check{\phi}\in\mathcal{S}(\mathbb{R}^n)$, so for every $\phi\in\mathcal{S}(\mathbb{R}^n)$, there exists $\check{\phi}\in\mathcal{S}(\mathbb{R}^n)$ such that $\hat{\check{\phi}}=\phi$, thus demonstrating that the Fourier transform operator is surjective.
+		\item Now let's see that continuity is maintained.\\
+		  This means that if we take $\{\phi_j\}\subset \mathcal{S}(\mathbb{R}^n)$, such that $\phi_j \rightarrow \phi$ when $j\rightarrow \infty$, then $\hat{\phi_j}\rightarrow \hat{\phi}$ when $j\rightarrow \infty$.\\
+		  Thus, we want to see that for all $(\nu,\beta)\in(\mathbb{Z}\cup\{0\})^{2n}$, $|\|\hat{\phi_j}-\hat{\phi}\||_{(\nu,\beta)}\rightarrow 0$ as $j\rightarrow \infty$. Note that:
+      \begin{align*}
+			  \|\xi^{\nu}\partial^{\beta}(\hat{\phi_j}-\hat{\phi})\|_{\infty}&=\|\xi^{\nu}\partial^{\beta}(\hat{\phi_j-\phi})\|_{\infty}\\
+			  &=\|\xi^{\nu}(\hat{(-2\pi ix)^{\beta}(\phi_j-\phi)})\|_{\infty}\\
+			  &=\|\frac{(-2\pi i)^{\beta}\hat{\partial^{\nu}[(x^\beta)(\phi_j-\phi)]}}{(2\pi i)^{\nu}}\|_{\infty}\\
+			  &\leq\|\frac{(-2\pi i)^{\beta}\partial^{\nu}[(x^\beta)(\phi_j-\phi)]}{(2\pi i)^{\nu}}\|_{1}\\
+			  &\leq c\|\partial^{\nu}[(x^\beta)(\phi_j-\phi)]\|_{\infty}+c\sum_{|\gamma|\leq 2m}\|\partial{\nu+\gamma}[(x^\beta)(\phi_j-\phi)]\|_{\infty}\\
+			  &\leq k \sum_{|\gamma_1|,|\gamma_2|\leq2m+|\nu|+|\beta|}|\|\phi_j-\phi\||_{(\gamma_1,\gamma_2)}
+		  \end{align*}
+		  Since for all $(\gamma_1,\gamma_2)\in(\mathbb{Z}\cup\{0\})^{2n}$, $|\|\phi_j-\phi\||_{(\gamma_1,\gamma_2)}\rightarrow 0$ as $j\rightarrow \infty$, then for all $(\nu,\beta)\in(\mathbb{Z}\cup\{0\})^{2n}$, we have that $|\|\hat{\phi_j}-\hat{\phi}\|_{(\nu,\beta)}\rightarrow 0$ as $j\rightarrow \infty$.\\
+      Note that the converse case of continuity is analogous, so it is demonstrated that \phantom{  }$\hat{\empty}:\mathcal{S}(\mathbb{R}^n)\rightarrow\mathcal{S}(\mathbb{R}^n)$ is an isomorphism.
+	\end{itemize}
+\end{proof}
+\begin{definition}{}
+	We will say that $\psi:\mathcal{S}(\mathbb{R}^n)\rightarrow \mathbb{C}$ defines a tempered distribution, that is, $\psi\in\mathcal{S}'(\mathbb{R}^n)$ if:
+	\begin{enumerate}
+		\item $\psi$ is linear.
+		\item $\psi$ is continuous, meaning that if we take $\{\varphi_l\}\subset\mathcal{S}(\mathbb{R}^n)$ such that $\varphi_j\rightarrow 0$ as $j\rightarrow \infty$, then the numerical sequence $\psi(\varphi_j)\rightarrow 0$ as $j\rightarrow \infty$.
+	\end{enumerate}
+\end{definition}
+\begin{proposition}{}
+	Let $\psi\in\mathcal{S}'(\mathbb{R}^n)$ be linear. Then, $\psi$ is continuous if and only if there exist $N\in(\mathbb{Z}^+\cup\{0\}),c>0$ such that for all $\varphi\in\mathcal{S}(\mathbb{R}^n)$, it holds that:
+	$$|\psi(\varphi)|\leq c\sum_{|\nu|,|\beta|\leq N}|\|\varphi\||_{(\nu,\beta)}$$
+\end{proposition}
+\begin{proof}{}
+	$\leftarrow$\\
+	Let $\{\varphi_j\}\subset \mathcal{S}(\mathbb{R}^n)$ such that $\varphi_j\rightarrow \varphi$ as $j\rightarrow \infty$, then:
+	\begin{align*}
+		|\psi(\varphi_j)-\psi(\varphi)|&=|\psi(\varphi_j-\varphi)|\\
+		&\leq c\sum_{|\nu|,|\beta|\leq N}|\|\varphi_j-\varphi\||_{(\nu,\beta)}
+	\end{align*}
+	Since $\varphi_j\rightarrow \varphi$ as $j\rightarrow \infty$, the finite sum converges to $0$, and thus $\psi(\varphi_j)\rightarrow 0$ as $j\rightarrow \infty$.\\
+	$\rightarrow$\\
+	By contradiction, suppose that if we take $\{\varphi_j\}\subset \mathcal{S}(\mathbb{R}^n)$ such that $\varphi_j\rightarrow \varphi$ as $j\rightarrow \infty$, then $\psi(\varphi_j)\rightarrow 0$ as $j\rightarrow \infty$, and that for all $N\in\mathbb{Z}^+\cup\{0\}$ and any constant $c>0$, we have:
+	\begin{align*}
+		|\psi(\varphi)|>c\sum_{|\nu|,|\beta|\leq N}|\|\varphi\||_{(\nu,\beta)}
+	\end{align*}
+	Let:
+	\begin{align*}
+		g_j=\frac{\varphi_j}{j(\sum_{|\nu|,|\beta|\leq J}|\|\varphi_j\||_{(\nu,\beta)})}
+	\end{align*}
+	Note that:
+	\begin{itemize}
+		\item $g_j\in\mathcal{S}(\mathbb{R}^n)$ since it is simply $\varphi_j$ scaled by a constant.
+		\item $\psi(g_j)>1$ by the inequality of the hypothesis.
+		\item $g_j\rightarrow 0$ as $j\rightarrow \infty$.\\
+		  Let $\tilde{\nu}$ and $\tilde{\beta}$ be multi-indices such that $|\|g_j\||_{(\tilde{\nu},\tilde{\beta})}\rightarrow 0$ as $j\rightarrow \infty$, and take $j_0>|\tilde{\nu}|+|\tilde{\beta}|$. If we take $j>j_0$, then:
+		\begin{align*}
+			|\|g_j\||_{\tilde{\nu},\tilde{\beta}}&=\frac{|\|\varphi_j\||_{(\tilde{\nu},\tilde{\beta})}}{j\sum_{|\nu|,|\beta|\leq j}|\|\varphi_j\||_{(\nu,\beta)}}\\
+			&\leq \frac{1}{j}
+		\end{align*}
+		Thus as $j\rightarrow \infty$, $g_j\rightarrow 0$
+	\end{itemize}
+	Therefore:
+	$$|\psi(g_j)|\rightarrow 0 \hspace{1cm}\text{as $j\rightarrow \infty$}$$
+	\textbf{Contradiction}, since $|\psi(g_j)|>1$ for all $j$.\\
+	Hence, if $\psi$ is continuous, there exists $N\in\mathbb{Z}^+\cup\{0\}$ and $c>0$ such that for all $\varphi\in\mathcal{S}(\mathbb{R}^n)$ we have:
+	$$|\psi(\varphi)|\leq c\sum_{|\nu|,|\beta|\leq N}|\|\varphi\||_{\nu,\beta}$$
+\end{proof}
+\begin{example}{}
+	Let's see that every $f\in\mathcal{L}(\mathbb{R}^n)$ defines a tempered distribution.\\
+	Define $\psi_{f}(\varphi)$ as:
+	\begin{align*}
+		\psi_{f}(\varphi)=\int_{\mathbb{R}^n}f(x)\varphi(x)dx
+	\end{align*}
+	Note that linearity is inherited from the linearity of the integral; furthermore, continuity holds because:
+	\begin{align*}
+		|\psi_{f}(\varphi)|&=|\int_{\mathbb{R}^n}f(x)\varphi(x)dx|\\
+		&\leq\int_{\mathbb{R}^n}|f(x)||\varphi(x)|dx\\
+		&\leq\|f\|_{1} \|\varphi\|_{\infty}\\
+		&\leq c|\|\varphi\||_{(0,0)}
+	\end{align*}
+	Thus, it is well-defined, linear, and continuous, so $\psi_{f}(\varphi)\in \mathcal{S}'(\mathbb{R}^n)$.
+\end{example}
+\begin{example}{}
+	In general, every $f\in\mathcal{L}^p(\mathbb{R}^n)$ defines a tempered distribution. If we define $\psi_{f}$ as in the previous example, we see that:
+	\begin{align*}
+		|\psi_{f}(\varphi)|&=|\int_{\mathbb{R}^n}f(x)\varphi(x)dx|\\
+		&\leq\int_{\mathbb{R}^n}|f(x)||\varphi(x)|dx &&\text{Using Hölder's inequality.}\\
+		&\leq\|f\|_{p} \|\varphi\|_{q}\\
+		&\leq\|f\|_{p} \|\frac{1+|x|^{2m}}{1+|x|^{2m}}\varphi\|_{q}\\
+		&\leq\|f\|_{p} \|\frac{1}{1+|x|^{2m}}\|_{q}\|(1+|x|^{2m})\varphi\|_{\infty}
+	\end{align*}
+	Thus, it is well-defined, linear, and continuous, so $\psi_{f}(\varphi)\in \mathcal{S}'(\mathbb{R}^n)$.
+\end{example}
+\begin{example}{}
+	Note that from the previous example, every $\phi\in\mathcal{S}(\mathbb{R}^n)$ defines a tempered distribution.
+\end{example}
+\begin{example}{}
+  Let’s see an example of a function that does not define a tempered distribution.\\
+  Take $f(x)=e^{|x|^2}$ and note that $\psi_f\notin\mathcal{S}(\mathbb{R}^n)$, since otherwise, if we take $\varphi\in\mathcal{S}(\mathbb{R}^n)$ as $\varphi(x)=e^{-\frac{|x|^2}{2}}$, note that:
+  \begin{align*}
+    \psi_{f}(x)&=\int_{\mathbb{R}^n}e^{|x|^2}e^{-\frac{|x|^2}{2}}dx\\
+    &=\int_{\mathbb{R}^n}e^{\frac{|x|^2}{2}}dx\\
+    &=\infty
+  \end{align*}
+  Therefore, $\psi_{f}(\varphi)$ would not be defined and hence $\psi_{f}\notin\mathcal{S}(\mathbb{R}^n)$.
+\end{example}
+\begin{example}{}
+  Let $x\in\mathbb{R}^n$ and define $\delta_x$ as follows:
+  $$\delta_x(\varphi)=\varphi(x)$$
+  Let’s see that $\delta_x\in\mathcal{S}'(\mathbb{R}^n)$.\\
+  Note that $\delta_x$ is well defined since $\varphi$ is well defined for all $x\in\mathbb{R}^n$; on the other hand, the linearity of $\delta_x$ is trivial, and continuity can be easily verified as follows.
+  \begin{align*}
+    |\delta_x(\varphi)|&=|\varphi(x)|\\
+    &\leq\|\varphi\|_{\infty}\\
+    &\leq |\|\varphi\||_{(0,0)}
+  \end{align*}
+  Then, $\delta_x\in\mathcal{S}'(\mathbb{R}^n)$.
+\end{example}
+\begin{proposition}{}
+  Let $a\in\mathbb{R}^n$, then there does not exist $f\in\mathcal{L}_{LOC}(\mathbb{R}^n)$ (measurable function) such that $\psi_{f}=\delta_a$.
+\end{proposition}
+\begin{proof}{}
+  Let’s reason by contradiction.\\
+  Suppose there exists $f\in\mathcal{L}_{LOC}(\mathbb{R}^n)$ such that:
+  $$\int_{\mathbb{R}^n}f(x)\varphi(x)dx=\varphi(a)$$
+  Suppose $r>0$ and $y\neq a$, such that the ball $a\notin B_{r}(y)$, and note that $\chi_{B_{r}(y)}\in\mathcal{L}(\mathbb{R}^n)$; moreover, there exists $\{\phi_j\}\subset C^{\infty}_{C}(\mathbb{R}^n)$ such that $\phi_j\rightarrow \chi_{B_{r}(y)}$ as $j\rightarrow \infty$. Then we will have that as $j\rightarrow \infty$:
+  \begin{align*}
+    \int_{\mathbb{R}^n}f(x)\phi_{j}(x)dx \rightarrow 0
+  \end{align*}
+  Additionally:
+  \begin{align*}
+    \int_{\mathbb{R}^n}f(x)\chi_{B_{r}(y)}(x)dx&=0\\
+    \frac{1}{|B_{r}(y)|}\int_{B_{r}(y)}f(x)dx&=0
+  \end{align*}
+  Then by the Lebesgue differentiation theorem, we have that:
+  \begin{align*}
+    f(x)&=\frac{1}{|B_{r}(y)|}\int_{B_{r}(y)}f(x)dx\\
+    &=0
+  \end{align*}
+  Almost everywhere. Then, since $y$ is arbitrary, we have $f(x)=0$ almost everywhere.
+  Then if we take any $\phi\in\mathcal{S}(\mathbb{R}^n)$ such that $\phi(a)\neq 0$, we will have:
+  $$0\neq \phi(a)=\delta_a(\phi)=\psi_f(\phi)=0$$
+  Which is a \textbf{contradiction}, therefore $\delta_a$ cannot be defined by a function $f\in\mathcal{L}_{LOC}(\mathbb{R}^n)$.
+\end{proof}
+Let’s see another example of a distribution that is not defined from a function:
+\begin{example}{}
+  Let’s show that $v.p \left(\frac{1}{x}\right)\in\mathcal{S}'(\mathbb{R}^n)$.\\
+  Note that $v.p\left(\frac{1}{x}\right)(\varphi)$ is defined as:
+  \begin{align*}
+    v.p\left(\frac{1}{x}\right)(\varphi)&=\lim_{\epsilon\rightarrow 0}\int_{\epsilon<|x|<\frac{1}{\epsilon}}\frac{\varphi(x)}{x}dx
+  \end{align*}
+  Now:
+  \begin{align*}
+    \left|v.p\left(\frac{1}{x}\right)(\varphi)\right|&=\left|\lim_{\epsilon\rightarrow 0}\int_{\epsilon<|x|<\frac{1}{\epsilon}}\frac{\varphi(x)}{x}dx \right|\\
+    &\leq\left|\lim_{\epsilon\rightarrow 0}\int_{\epsilon<|x|<\frac{1}{\epsilon}}\frac{\varphi(x)}{x} dx\right|\\
+    &\leq\left|\lim_{\epsilon\rightarrow 0} \int_{\epsilon<|x|<1}\frac{\varphi(x)}{x}dx+\int_{1<|x|<\frac{1}{\epsilon}}\frac{\varphi(x)}{x}dx\right|\\
+    &\leq\left|\lim_{\epsilon\rightarrow 0} \int_{\epsilon<|x|<1}\frac{\varphi(x)-\varphi(0)}{x}dx+\int_{1<|x|<\frac{1}{\epsilon}}\frac{\varphi(x)}{x}dx\right|\\
+    &\leq\lim_{\epsilon\rightarrow 0} \int_{\epsilon<|x|<1}\left|\frac{\varphi(x)-\varphi(0)}{x}\right|dx+\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{\varphi(x)}{x}\right|dx\\
+    &\phantom{\leq}\text{Using the Mean Value inequality.}\\
+    &\leq\lim_{\epsilon\rightarrow 0} \|\varphi'\|_{\infty}\int_{\epsilon<|x|<1}\frac{|x|}{|x|}dx+\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{\varphi(x)}{x}\right|dx\\
+    &\leq\lim_{\epsilon\rightarrow 0} 2(1-\epsilon)|\|\varphi\||_{(0,1)}+\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{\varphi(x)}{x}\right|dx\\
+    &\leq\lim_{\epsilon\rightarrow 0} 2(1-\epsilon)|\|\varphi\||_{(0,1)}+\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{x\varphi(x)}{x^2}\right|dx\\
+    &\leq\lim_{\epsilon\rightarrow 0} 2(1-\epsilon)|\|\varphi\||_{(0,1)}+\|x\varphi\|_{\infty}\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{1}{x^2}\right|dx\\
+    &\leq \lim_{\epsilon\rightarrow 0}2(1-\epsilon)|\|\varphi\||_{(0,1)}+c\|x\varphi\|_{\infty}\\
+    &\leq \lim_{\epsilon\rightarrow 0}2(1-\epsilon)|\|\varphi\||_{(0,1)}+c|\|\varphi\||_{(1,0)}\\
+    &\leq k(|\|\varphi\||_{(0,1)}+|\|\varphi\||_{(1,0)})
+  \end{align*}
+  Then $v.p\left(\frac{1}{x}\right)(\varphi)$ is well defined, is linear by the linearity of the integral, and is continuous, that is, $v.p\left(\frac{1}{x}\right)\in\mathcal{S}'(\mathbb{R}^n)$.
+\end{example}
+Note that, as we saw in the examples, the Schwartz space is a space that we can associate with many others. This is why the following definition will provide us with the tools that we initially hoped to have.
+\begin{definition}{}
+  Let $\psi\in\mathcal{S}'(\mathbb{R}^n)$, we will define the Fourier transform of $\psi$ as:
+  $$\hat{\psi}(\varphi)=\psi(\hat{\varphi})$$
+\end{definition}
+\begin{note}{}
+  Note that since $\hat{\empty}:\mathcal{S}(\mathbb{R}^n)\rightarrow \mathcal{S}(\mathbb{R}^n)$ is an isomorphism, then $\hat{\psi}\in\mathcal{S}'(\mathbb{R}^n)$.
+\end{note}
+\begin{note}{}
+  Create a correspondence diagram between the Schwartz space, $L^2$, and the space of tempered distributions.
+\end{note}
+\begin{example}{}
+  Let’s show that $\hat{1}=\delta_{0}$ in the sense of tempered distributions.
+  \begin{align*}
+    \hat{\psi_{1}}(\varphi)&=\psi_{1}(\hat{\varphi})\\
+    &=\int_{\mathbb{R}^n}\hat{\varphi}(\xi)e^{2\pi i(0\cdot \xi)}d\xi &&\text{Using the inversion formula.}\\
+    &=\varphi(0)\\
+    &=\delta_{0}(\varphi)
+  \end{align*}
+\end{example}
+\begin{example}{}
+  Let’s calculate $\hat{\delta_a}$.
+  \begin{align*}
+    \hat{\delta_{a}}(\varphi)&=\delta_{a}(\hat{\varphi})\\
+    &=\hat{\varphi}(a)\\
+    &=\int_{\mathbb{R}^n}\varphi(x)e^{-2\pi i (x\cdot a)}dx\\
+    &=\psi_{e^{-2\pi i (x\cdot a)}}(\varphi)
+  \end{align*}
+  Note that if $a=0$, then $\hat{\delta_0}=\psi_{e^{-2\pi i (x\cdot 0)}}(\varphi)=\psi_{1}=1$ as a distribution. 
+\end{example}
+\begin{example}{}
+  Example to fill in, v.p of $1/x$.
+\end{example}
+\begin{definition}{}
+  Let $\{\psi_j\}\subset \mathcal{S}'(\mathbb{R}^n)$. We will say that $\psi_j\rightarrow 0$ as $j \rightarrow \infty$ in $\mathcal{S}'(\mathbb{R}^n)$ if for all $\varphi\in\mathcal{S}(\mathbb{R}^n)$ it follows that $\psi_j(\varphi)\rightarrow 0$ as $j \rightarrow \infty$.
+\end{definition}
+\begin{theorem}{}
+  The operator $\mathcal{F}:\psi\rightarrow \hat{\psi}$ is an isomorphism from $\mathcal{S}'(\mathbb{R}^n)$ onto itself.
+\end{theorem}
+\begin{proof}{}
+  \begin{itemize}
+    \item Let’s show that $\mathcal{F}$ is an injective operator.\\
+      Assume $\psi_1,\psi_2\in\mathcal{S}'(\mathbb{R}^n)$ such that $\hat{\psi_1}(\varphi)=\hat{\psi_2}(\varphi)$ for all $\varphi\in\mathcal{S}(\mathbb{R}^n)$, from which we can deduce that:
+      \begin{align*}
+        \psi_1(\hat{\varphi})&=\hat{\psi_1}(\varphi)\\
+        &=\hat{\psi_2}(\varphi)\\
+        &=\psi_2(\hat{\varphi})				
+      \end{align*}
+      Then, since \hspace*{0.1cm}$\hat{} :\mathcal{S}(\mathbb{R}^n)\rightarrow\mathcal{S}(\mathbb{R}^n)$ is an isomorphism, we can conclude that if $\hat{\psi_1}(\varphi)=\hat{\psi_2}(\varphi)$ for all $\varphi\in\mathcal{S}(\mathbb{R}^n)$, then $\psi_1(\varphi)=\psi_2(\varphi)$ for all $\varphi\in\mathcal{S}(\mathbb{R}^n)$.
+    \item Let’s show that $\mathcal{F}$ is surjective.\\
+      Define $\mathcal{F}^{-1}:\mathcal{S}'(\mathbb{R}^n)\rightarrow\mathcal{S}'(\mathbb{R}^n)$ such that $\widecheck{\psi}(\varphi)=\psi(\widecheck{\varphi})$. Then, similarly to how we did with $\mathcal{F}$, we can see that $\mathcal{F}^{-1}$ is injective, so we can ensure that for every $\psi\in\mathcal{S}'(\mathbb{R}^n)$ there exists $\widecheck{\psi}\in\mathcal{S}'(\mathbb{R}^n)$ such that $\hat{\widecheck{\psi}}=\psi$. Thus, it is demonstrated that $\mathcal{F}$ is a bijective operator.
+    \item Let’s show that $\mathcal{F}$ and $\mathcal{F}^{-1}$ are continuous operators.\\
+      Let $\{\psi_j\}\subset\mathcal{S}'(\mathbb{R}^n)$ and $\psi\in\mathcal{S}'(\mathbb{R}^n)$ such that $\psi_j\rightarrow \psi$ in the sense of $\mathcal{S}'(\mathbb{R}^n)$ as $j\rightarrow \infty$.\\
+      Let’s show that $\hat{\psi}_j\rightarrow \hat{\psi}$ in the sense of $\mathcal{S}'(\mathbb{R}^n)$ as $j\rightarrow \infty$, since for any $\varphi\in\mathcal{S}(\mathbb{R}^n)$ we have:
+      \begin{align*}
+        \lim_{j\rightarrow \infty}\hat{\psi}_j(\varphi)&=\lim_{j\rightarrow \infty}\psi_j(\hat{\varphi})\\
+        &=\psi(\hat{\varphi})\\
+        &=\hat{\psi}(\varphi)
+      \end{align*}
+      Then, by applying the same idea with $\mathcal{F}^{-1}$, we can arrive at an analogous result, allowing us to conclude that $\mathcal{F}$ is an isomorphism from $\mathcal{S}'(\mathbb{R}^n)$ onto itself.
+  \end{itemize}
+\end{proof}
+\begin{example}{}
+  Let’s see that $\hat{e^{-a|x|^2}}(\xi)=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}e^{-\frac{\pi^2|\xi|^2}{a}}$ with $\text{Re}(a)\geq 0$ and $a\neq 0$.
+\end{example}
+\begin{proof}{}
+  We will examine this by cases:
+  \begin{itemize}
+    \item Let $a\in\mathbb{R}^{+}$.\\
+      From example 1.3 in the book by \cite{MR3308874}, it can be deduced that:
+      \begin{align*}
+        \hat{e^{-4\pi^2 t|x|^2}}(\xi)=\left(\frac{1}{4\pi t}\right)^{\frac{n}{2}}e^{-\frac{|\xi|^2}{4t}}
+      \end{align*}
+      for all $t>0$. Then, given $a\in\mathbb{R}^{+}$, making $4\pi^2 t=a$ in the previous identity, we have:
+      \begin{align*}
+        \hat{e^{-a|x|^2}}(\xi)=\left(\frac{1}{4\pi t}\right)^{\frac{n}{2}}e^{-\frac{\pi^2|\xi|^2}{a}}
+      \end{align*}
+    \item Let $a\in\mathbb{C}$ with $\text{Re}(a)>0$.\\
+      Given $\varphi\in\mathcal{S}(\mathbb{R}^n)$ for each $a\in\mathcal{A}:=\{a\in\mathbb{C}:\text{Re}(a)>0\}$, we define the following functions:
+      \begin{align*}
+        F_1(a):=&\langle e^{-a|x|^2},\hat{\varphi}\rangle:=\int_{\mathbb{R}^n}e^{-a|x|^2}\hat{\varphi}(x)dx\\
+        F_2(a):=&\left(\frac{\pi}{a}\right)^{\frac{n}{2}}\langle e^{-\frac{\pi^2|\xi|^2}{a}},\varphi\rangle:=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}\int_{\mathbb{R}^n}e^{-\frac{\pi^2|\xi|^2}{a}}\varphi(\xi) d\xi\\
+      \end{align*}
+      Now, let’s see that these functions are analytic in $\mathcal{A}$.\\
+      To do this, note that for any closed triangle $\Delta$:
+      \begin{align*}
+        \int_{\partial \Delta}F_1(a)da&=\int_{\partial \Delta}\int_{\mathbb{R}^n}e^{-a|x|^2}\hat{\varphi}(x)dxda\\
+        &=\int_{\mathbb{R}^n}\int_{\partial \Delta}e^{-a|x|^2}\hat{\varphi}(x)dadx\\
+        &=\int_{\mathbb{R}^n}\int_{\partial\Delta}e^{-a|x|^2}da\hat{\varphi}(x)dx
+      \end{align*}
+      Then, since $e^{-a|x|^2}$ is an analytic function, using the \textbf{Cauchy-Goursat} theorem, we have that for any closed triangle $\Delta$ contained in $\mathcal{A}$, it holds that:
+      \begin{align*}
+        \int_{\partial\Delta}e^{-a|x|^2}da=0
+      \end{align*}
+      Thus, we can continue with:
+      \begin{align*}
+        \int_{\partial \Delta}F_1(a)da&=\int_{\mathbb{R}^n}\int_{\partial\Delta}e^{-a|x|^2}da\hat{\varphi}(x)dx\\
+        &=\int_{\mathbb{R}^n}(0)\hat{\varphi}(x)dx\\
+        &=0
+      \end{align*}
+      Then, using \textbf{Morera's theorem}, we can conclude that $F_1$ is analytic.\\
+      Similarly, note that:
+      \begin{align*}
+        \int_{\partial\Delta}F_2(a)da&=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}\int_{\partial\Delta}\int_{\mathbb{R}^n}e^{-\frac{\pi^2|\xi|^2}{a}}\varphi(\xi) d\xi da\\
+        &=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}\int_{\mathbb{R}^n}\int_{\partial\Delta}e^{-\frac{\pi^2|\xi|^2}{a}}\varphi(\xi) da d\xi\\
+        &=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}\int_{\mathbb{R}^n}\int_{\partial\Delta}e^{-\frac{\pi^2|\xi|^2}{a}} da \varphi(\xi)d\xi
+      \end{align*}
+      Then, since $e^{-\frac{\pi^2|\xi|^2}{a}}$ is analytic in $\mathcal{A}$ (where $a\neq 0$), by the \textbf{Cauchy-Goursat} theorem, it holds that for any closed triangle $\Delta$ contained in $\mathcal{A}$:
+      \begin{align*}
+        \int_{\partial\Delta}e^{-\frac{\pi^2|\xi|^2}{a}}da=0
+      \end{align*}
+      Thus, we can continue with:
+      \begin{align*}
+        \int_{\partial\Delta}F_2(a)da&=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}\int_{\mathbb{R}^n}\int_{\partial\Delta}e^{-\frac{\pi^2|\xi|^2}{a}} da\varphi(\xi) d\xi\\
+        &=\int_{\mathbb{R}^n}(0)\varphi(\xi)d\xi\\
+        &=0
+      \end{align*}
+      Then, using \textbf{Morera's theorem}, we can conclude that $F_2$ is analytic.\\
+      On the other hand, from the first case, we have that $F_1(a)=F_2(a)$ for all $a\in\mathbb{R}^{+}\setminus\{0\}$, then since $F_1$ and $F_2$ are analytic in $\mathbb{R}^{+}\setminus\{0\}\subset \mathcal{A}$, by the uniqueness theorem of analytic functions, we have that $F_1=F_2$. In other words, we have:
+      \begin{align*}
+      \langle e^{-a|x|^2}, \hat{\varphi} \rangle&=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}\langle e^{-\frac{\pi^2|\xi|^2}{a}}, \varphi \rangle
+      \end{align*}
+      for all $a\in\mathcal{A}=\{a\in\mathbb{C}:\text{Re}(a)>0\}$
+    \item Let $a\in\mathbb{C}$ with $\text{Re}(a)=0$ and $a\neq 0$.\\
+      Let $a\in\mathbb{C}$ with $\text{Re}(a)=0$ and $a\neq 0$, that is $a=yi$ for some $y\in\mathbb{R}\setminus\{0\}$.\\
+      Given $\varphi\in\mathcal{S}(\mathbb{R}^n)$ from the previous case, we can conclude that:
+      \begin{align*}
+        \langle e^{-a|x|^2},\hat{\varphi} \rangle &= \lim_{\epsilon\rightarrow 0}\langle e^{-(a+\epsilon)|x|^2},\hat{\varphi} \rangle\\
+        &=\lim_{\epsilon\rightarrow 0}\left(\frac{\pi}{a+\epsilon}\right)^{\frac{n}{2}}\langle e^{-\frac{\pi^2|\xi|^2}{a+\epsilon}}, \varphi \rangle\\
+        &=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}\langle e^{-\frac{\pi^2|\xi|^2}{a}}, \varphi \rangle
+      \end{align*}
+      Therefore, it is demonstrated that $\hat{e^{-a|x|^2}}(\xi)=\left(\frac{\pi}{a}\right)^{\frac{n}{2}}e^{-\frac{\pi^2|\xi|^2}{a}}$ with $\text{Re}(a)\geq 0$ and $a\neq 0$.
+  \end{itemize}
+\end{proof}
+\begin{note}{}
+  With the theorem and the previous example, we can justify the following calculation related to the fundamental solution of the time-dependent Schrödinger equation.
+\end{note}
+\begin{example}{}
+  Let’s see that $\hat{e^{-4\pi^2it|x|^2}}(\xi)=-\left(\frac{1}{4\pi it}\right)^{\frac{n}{2}}e^{\frac{i|\xi|^2}{4t}}$.\\
+  Note that this is immediate by setting $a=4\pi^2it$ and using the previous example.
+\end{example}
+\begin{definition}{}
+  Let $\psi\in\mathcal{S}'(\mathbb{R}^n)$ and let $\beta$ be a multi-index.\\
+  We define $\partial^{\beta}\psi:\mathcal{S}(\mathbb{R}^n)\rightarrow \mathbb{C}$ as:
+  $$<\partial^{\beta}\psi,\phi>:=(-1)^{|\beta|}<\psi,\partial^{\beta}\phi>$$
+  for all $\phi\in\mathcal{S}(\mathbb{R}^n)$.
+\end{definition}
+\begin{note}{}
+  This definition is motivated by the following procedure:
+  Suppose $\psi\in\mathcal{S}'(\mathbb{R}^n)$ is a function, then using integration by parts we have:
+  \begin{align*}
+    \int_{|x|\leq R}\partial_{x_i}\psi \phi dx &= \int_{|x|= R}(\psi\phi)\eta_i dS(x) - \int_{|x|\leq R} \psi \partial_{x_i}\phi dx
+  \end{align*}
+  where $\eta_i$ is the $i$-th component of the normal vector to $\{x:|x| = R\}$.\\
+  Thus:
+  \begin{align*}
+    \langle \partial_{x_i}\psi,\phi \rangle &= \int_{\mathbb{R}^n}\partial_{x_i}\psi\phi dx \\
+    &= \lim_{R\rightarrow \infty} \int_{|x|\leq R}\partial_{x_i}\psi \phi dx\\
+    &= \lim_{R\rightarrow \infty} \int_{|x|= R}(\psi\phi)\eta_i dS(x) - \int_{|x|\leq R} \psi \partial_{x_i}\phi dx\\
+    &= -\int_{\mathbb{R}^n}\psi\partial_{x_i}\phi dx
+  \end{align*}
+  Then, using an inductive argument, we can conclude the following:
+  \begin{align*}
+    \langle \partial^{\beta}\psi, \phi \rangle &= (-1)^{|\beta|}\int_{\mathbb{R}^n}\psi\partial_{\beta}\phi dx\\
+    &=(-1)^{|\beta|}\langle \psi, \partial_{\beta}\phi \rangle
+  \end{align*}
+\end{note}
+Now let’s see some examples related to this:
+\begin{example}{}
+  Let’s calculate the derivative of $\delta_0$:
+  \begin{align*}
+    \langle \partial^{\alpha}\delta_0, \phi \rangle &= (-1)^{|\alpha|}\langle \delta_0,\partial_{\alpha}\phi \rangle\\
+    &= (-1)^{|\alpha|}\partial_{\alpha}\phi(0)
+  \end{align*}
+\end{example}
+\begin{example}{}
+  Let $H(x)=0\mathcal{X}_{x<0}+1\mathcal{X}_{x\geq 0}$.
+  Note that $H\in L^\infty(\mathbb{R})$ and by previous results we have that $H\in\mathcal{S}'(\mathbb{R})$. Also note that since $H$ is a step function, it does not have a derivative in the weak sense.
+  Now let’s find its derivative in the sense of tempered distributions:
+  \begin{align*}
+    \langle H',\phi \rangle&=-\langle H, \phi'\rangle \\
+    &=-\int_{-\infty}^{\infty}H(x)\phi'(x)dx\\
+    &=-\int_{0}^{\infty}\phi'(x)dx\\
+    &=-\lim_{R\rightarrow\infty}\int_{0}^{R}\phi'(x)dx\\
+    &=-\lim_{R\rightarrow\infty}(\phi(R)-\phi(0))\\
+    &=-(-\phi(0))\\
+    &=\phi(0)\\
+    &=\langle \delta_0, \phi\rangle
+  \end{align*}
+  Therefore, we could conclude that $H^{k}=\delta_0^{k-1}$.
+\end{example}
+Now, in order to give an application to the previous ideas, we will introduce the following definition.
+\begin{definition}{}
+  For $\varphi\in\mathcal{S}(\mathbb{R}^n)$, we define \textbf{The Hilbert transform} $\mathcal{H}(\varphi)$ as:
+  \begin{align*}
+    \mathcal{H}(\varphi)(y)&=\frac{1}{\pi}v.p\frac{1}{x}(\varphi(y-\cdot))=\frac{1}{\pi}(v.p\frac{1}{x}*\varphi)(y)
+  \end{align*}
+\end{definition}
+Note that the previous definition involves a kind of convolution between a tempered distribution and a function from the Schwartz space, for which it will be interesting to prove the following proposition.
+\begin{proposition}{}
+  Let $\psi\in\mathcal{S}'(\mathbb{R}^n)$ and $\varphi\in\mathcal{S}(\mathbb{R}^n)$. If we define:
+  $$(\psi*\varphi)(x)=\psi(\varphi(x-\cdot))$$
+  then, $\psi*\varphi\in C^{\infty}(\mathbb{R}^n)\cap\mathcal{S}'(\mathbb{R}^n)$ and it holds that:
+  $$\hat{\psi*\varphi}=\hat{\psi}\hat{\varphi}$$
+  where $\hat{\psi}\hat{\varphi}$ is defined as $\hat{\psi}\hat{\varphi}(\phi)=\hat{\psi}(\hat{\varphi}\phi)$ for all $\phi\in\mathcal{S}(\mathbb{R}^n)$.
+\end{proposition}{}
+\begin{proof}{}
+  \begin{itemize}
+    \item Let’s show that $\psi*\varphi\in C^{\infty}(\mathbb{R}^n)$.\\
+      We compute:
+      \begin{align*}
+        \lim_{h\rightarrow 0}\frac{(\psi*\varphi)(x+h\epsilon_j)-(\psi*\varphi)(x)}{h}&=\lim_{h\rightarrow 0}\frac{\langle \psi, \varphi(x+h\epsilon_j-\cdot) \rangle-\langle \psi, \varphi(x-\cdot) \rangle}{h}\\
+        &=\lim_{h\rightarrow 0}\langle \psi, \frac{\varphi(x+h\epsilon_j-\cdot)-\varphi(x-\cdot)}{h} \rangle\\
+        &=\langle \psi, \frac{\partial \varphi}{\partial x_j} (x-\cdot) \rangle\\
+        &=(\psi * \partial \varphi_{x_j})(x)
+      \end{align*}
+      This, of course, assumes that $\frac{\varphi(x+h\epsilon_j-\cdot)-\varphi(x-\cdot)}{h} \rightarrow \partial\varphi_{x_j}(x-\cdot)$ in the sense of the Schwartz space as $h\rightarrow 0$. We see that this holds (using Taylor's formula):
+      \begin{align*}
+        \hspace{-1.2cm}\frac{\varphi(x+h\epsilon_j-\cdot)-\varphi(x-\cdot)}{h} - \partial\varphi_{x_j}(x-\cdot)&=\frac{1}{h}(\varphi(x+h\epsilon_j-\cdot)-\varphi(x-\cdot)-h\partial\varphi_{x_j}(x-\cdot))\\
+        &=\frac{1}{h}\left[\int_{0}^{1}(1-t)\partial^{2}\varphi_{x^2_{j}}(x-\cdot+th\epsilon_j)dt\right]h^2\\
+        &=h\left[\int_{0}^{1}(1-t)\partial^{2}\varphi_{x^2_{j}}(x-\cdot+th\epsilon_j)dt\right]\\
+      \end{align*}
+      Now, to conclude, we note that this is equivalent to showing that:
+      \begin{align*}
+        |\|h\left[\int_{0}^{1}(1-t)\partial^{2}\varphi_{x^2_{j}}(x-\cdot+th\epsilon_j)dt\right]\||_{\nu,\beta}\rightarrow 0
+      \end{align*}
+      when $h\rightarrow 0$.
+      \begin{align*}
+        \left|hy^{\nu}\left[\int_{0}^{1}(1-t)\partial^{2}\varphi_{x^2_{j}}(x-\cdot+th\epsilon_j)dt\right]\right|&\leq |h|\int_{0}^{1}(1-t)|y^{\nu}\partial^{2}\varphi_{x^2_{j}}(x-\cdot+th\epsilon_j)|dt
+      \end{align*}
+      Then, since for $0\leq t \leq 1$, we have that $1-t$ is bounded and $|y^{\nu}\partial^2\varphi_{x^2_j}|\leq |\|\varphi\||_{\nu,\beta}$ for some multi-index $\beta$, we can ensure that there exists a constant $M>0$ such that:
+      \begin{align*}
+        \left|hy^{\nu}\left[\int_{0}^{1}(1-t)\partial^{2}\varphi_{x^2_{j}}(x-\cdot+th\epsilon_j)dt\right]\right|&\leq |h|\int_{0}^{1}(1-t)|y^{\nu}\partial^{2}\varphi_{x^2_{j}}(x-\cdot+th\epsilon_j)|dt\\
+        &\leq|h|M
+      \end{align*}
+      This allows us to conclude that $\frac{\varphi(x+h\epsilon_j-\cdot)-\varphi(x-\cdot)}{h} \rightarrow \partial\varphi_{x_j}(x-\cdot)$ in the sense of the Schwartz space as $h\rightarrow 0$.
+      Thus, using an inductive argument, we can reach that $\psi*\varphi\in C^{\infty}$.
+    \item Now let’s show that $\psi*\varphi \in\mathcal{S}'(\mathbb{R}^n)$.\\
+      The linearity is inherited immediately from the linearity of $\psi$, now let’s check the continuity.\\
+      Note that since $\psi\in\mathcal{S}'(\mathbb{R}^n)$, there exists $N>0$ and $C>0$ such that for any $f\in\mathcal{S}(\mathbb{R}^n)$ it holds that:
+      \begin{align*}
+        |\psi(f)|\leq C\sum_{|\nu|,|\beta|\leq N}|\|f\||_{\nu,\beta}
+      \end{align*}
+      Then, since $(\psi*\varphi)(x)=\langle \psi, \varphi(x-\cdot) \rangle$ and $\varphi(x-\cdot)\in\mathcal{S}(\mathbb{R}^n)$, we know that there exists $N>0$ and $C>0$ such that:
+      \begin{align*}
+        |\psi(\varphi(x-\cdot))|\leq C\sum_{|\nu|,|\beta|\leq N}|\|\varphi(x-\cdot)\||_{\nu,\beta}
+      \end{align*}
+      Thus, it is proven that $\psi*\varphi \in\mathcal{S}'(\mathbb{R}^n)$.
+    \item Now let’s show that $\hat{\psi*\varphi}=\hat{\psi}\hat{\varphi}$.\\
+      For this, first let’s prove that $\int_{\mathbb{R}^n}\langle \psi,\varphi(x) \rangle dx=\langle \psi,\int_{\mathbb{R}^n}\varphi(x)dx  \rangle$.\\
+      To do this, assume $\varphi\in C^{\infty}_{c}(\mathbb{R}^n)$. Thus, we know that there exists $R>0$ such that $Supp(\varphi)\subseteq [-R,R]^n$, so we have:
+      \begin{align*}
+        \int_{\mathbb{R}^n}\langle \psi,\varphi(x) \rangle dx&=\int_{[-R,R]^n}\langle \psi,\varphi(x) \rangle dx \hspace{1cm}\text{Taking $\mathcal{P}$ a partition of $[-R,R]^n$}\\
+        &=\lim_{|p|\rightarrow 0}\sum_{p\in\mathcal{P}}\langle \psi,\varphi(x^k) \rangle \Delta x_1\Delta x_2\cdots\Delta x_n\\
+        &=\lim_{|p|\rightarrow 0}\langle \psi,\sum_{p\in\mathcal{P}}\varphi(x^k)\Delta x_1\Delta x_2\cdots\Delta x_n \rangle \\
+        &=\langle \psi, \int_{\mathbb{R}^n}\varphi(x)dx \rangle
+      \end{align*}
+      Now, if $\varphi\notin C^{\infty}_{c}(\mathbb{R}^n)$, we can take $\{\varphi_j\}\subseteq \mathcal{S}'(\mathbb{R}^n)$ such that $\varphi_j\rightarrow \varphi$ as $j\rightarrow \infty$, and the argument would be similar.
+      Now, using this we can perform the following calculation:
+      \begin{align*}
+        \langle \hat{\psi*\varphi},\phi \rangle&=\langle \psi*\varphi,\hat{\phi} \rangle\\
+        &=\int_{\mathbb{R}^n}\langle \psi,\varphi(x-y) \rangle\hat{\phi}(x)dx\\
+        &=\langle \psi, \varphi(x-y)\hat{\phi}(x) \rangle dx\\
+        &=\langle \psi, \int_{\mathbb{R}^n}\varphi(x-y)\hat{\phi}(x)dx \rangle\\
+        &=\langle \psi, \int_{\mathbb{R}^n}\tilde{\varphi}(y-x))\hat{\phi}(x)dx \rangle &&\tilde{\varphi}(x)=\varphi(-x)\\
+        &=\langle \psi, \hat{\phi}*\tilde{\varphi} \rangle\\
+        &=\langle \psi, \hat{\phi\check{\tilde{\varphi}}} \rangle\\
+        &=\langle \hat{\psi}, \phi\check{\tilde{\varphi}} \rangle\\
+        &=\langle \hat{\psi}, \phi\hat{\varphi} \rangle\\
+        &=\langle \hat{\psi}\hat{\varphi},\phi \rangle                
+      \end{align*}
+      Therefore, the proposition is proven.
+  \end{itemize}
+\end{proof}
+With this, it will be interesting to see the following example.
+\begin{example}{}
+  Note that with the previous proposition, it is easy to see that:
+  \begin{align*}
+    \hat{\mathcal{H}(\varphi)}(\xi)&=\hat{\frac{1}{\pi}(v.p\frac{1}{x}*\varphi)(y)}\\
+    &=\frac{1}{\pi}\hat{v.p\frac{1}{x}}\hat{\varphi}(\xi)\\
+    &=-i sgn(\xi) \hat{\varphi}(\xi)
+  \end{align*}
+\end{example}
+Now, based on what has been seen, it will be interesting to show that the Hilbert transform is an isometry in $\mathcal{L}^2(\mathbb{R}^n)$, since it can be verified that:
+$$\|\mathcal{H}(\varphi)\|_2=\|\varphi\|_2 \hspace{1cm}\text{and}\hspace{1cm}\mathcal{H}(\mathcal{H}(\varphi))=-\varphi$$
+It would be interesting to see some other properties of the Hilbert transform.

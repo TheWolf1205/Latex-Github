@@ -1,0 +1,45 @@
+\documentclass[11pt]{report}
+\input{settings}
+
+\pagestyle{fancyplain}% <- use fancyplain instead fancy
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+
+\begin{document}
+
+\pagenumbering{roman} 
+
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Universidad Nacional de Colombia \par}
+\vspace{1cm}
+{\scshape\Large Facultad de Ciencias \par}
+\vspace{3cm}
+{\scshape\Huge Algunas notas de análisis númerico \par}
+\vfill
+{\Large Andrés David Cadena Simons \par}
+\vfill
+{\Large \today \par}
+\end{titlepage}
+
+\tableofcontents
+
+\doublespacing
+\pagenumbering{arabic} 
+
+\chapter{Introduction}
+\input{chapters/introduction}
+
+\singlespacing
+
+\cleardoublepage
+\phantomsection % Crea un punto de referencia para el enlace correcto
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{references}
+
+\end{document}
