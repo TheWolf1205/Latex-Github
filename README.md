@@ -48,3 +48,6 @@ Repositorio para subir trabajos o talleres de la U :p.
         - [Taller](./Ecuaciones-diferenciales-parciales-I/Heat-Equation/Trabajo_EDP_Presentación.pdf)
         - [Solución](./Ecuaciones-diferenciales-parciales-I/Heat-Equation/Tex/main.pdf)
         - [Presentación](./Ecuaciones-diferenciales-parciales-I/Heat-Equation/Beamer_Andres/main.pdf)
+
+- Poster 1st Colombian Workshop in Nonlinear Dispersive Equations
+    - [Poster](./Poster/plantillaposter.pdf)
