@@ -63,7 +63,7 @@ y $\hat{P}$ es una transformación de Householder $(n-1)\times(n-1)$:
 Entonces la ecuación $\ref{eq:m-householder-2}$ se convierte en:\\
 Inserte matrices feas\\ 
 con:
-\begin{equation}
+\begin{equation}\label{eq:m-householder-9.10}
   \hat{P}\hat{y}=(I_{n-1}-2\hat{w}\hat{w}^T)\hat{y}=\hat{y}-2(\hat{w}^T\hat{y})\hat{w}=(\alpha,0,\cdots,0)^T.
 \end{equation}
 Sea $r=\hat{w}^T\hat{y}$. Entonces:
@@ -74,8 +74,45 @@ y podemos determinar todas las $w_i$ una vez que conocemos $\alpha$ y $r$. Al eq
 \begin{align*}
   \alpha=a_{21}-2rw_2
 \end{align*}
-
-
+y
+\begin{align*}
+  0=a_{j1}-2rw_j, \hspace{1cm}\text{para cada }j=3,4\cdots,n.
+\end{align*}
+Por lo tanto:
+\begin{equation}\label{eq:m-householder-3}
+  2rw_2=a_{21}-\alpha,
+\end{equation}
+y
+\begin{equation}\label{eq:m-householder-4}
+  2rw_j=a_{j1},\hspace{1cm}\text{para cada }j=3,4,\cdots,n.
+\end{equation}
+Al elevar al cuadrado ambos lados de cada una de las ecuaciones \ref{eq:m-householder-3}, \ref{eq:m-householder-4} y sumar los términos correspondientes da:
+\begin{align*}
+  4r^2\sum_{j=2}^{n}w_j^2=(a_{21}-\alpha)^{2}+\sum_{j=3}^{n}a_{j1}^{2}
+\end{align*}
+note que como $ww^{T}=1$ y $w_1=0$, entonces $\sum_{j=2}^{n}w_{j}^{2}=1$,
+\begin{equation}\label{eq:m-householder-9.13}
+  4r^{2}=\sum_{j=2}^{n}a_{j1}^{2}-2\alpha a_{21}+\alpha^2.
+\end{equation}
+La ecuación \ref{eq:m-householder-9.10} y el hecho de que $P$ es ortogonal implica que:
+\begin{align*}
+  \alpha^2&=(\alpha,0,\cdots,0)(\alpha,0\cdots,0)^{T},\\
+  &=(\hat{P}\hat{y})^{T}\hat{P}\hat{y},\\
+  &=\hat{y}^{T}\hat{P}^{T}\hat{P}\hat{y},\\
+  &=\hat{y}^T\hat{y}.
+\end{align*}
+Por lo tanto:
+\begin{align*}
+  \alpha^{2}=\sum_{j=2}^{n}a_{j1}^{2},
+\end{align*}
+lo que, al sustituir en la ecuación \ref{eq:m-householder-9.13}, da
+\begin{align*}
+  2r^{2}=\sum_{j=2}^{n}a_{j1}^2-\alpha a_{21}.
+\end{align*}
+Para garantizar $2r^2=0$ si y sólo si $a_{21}=a_{31}=\cdots=a_{n1}=0$ seleccionamos:
+\begin{align*}
+  \alpha=-sgn(a_{21})\left( \sum_{j=2}^{n}a_{j1}^{2} \right),
+\end{align*}
 
 
 
