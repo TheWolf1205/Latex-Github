@@ -4,7 +4,7 @@
 \usepackage{times}
 \usepackage{multicol}
 \usepackage[pdftex]{graphicx}
-\usepackage[pdftex,dvipsnames,usenames]{color}
+\usepackage[pdftex,dvipsnames,usenames]{xcolor}
 \usepackage{epic}%cruces
 %\renewcommand{\familydefault}{\sfdefault}
 %\usepackage{colortbl}
@@ -28,55 +28,55 @@
 \usepackage{bibunits}
 \usepackage[listings]{tcolorbox}
 \advance\textwidth35mm %margen derecha
- \advance\hoffset-15mm %margen izqierda
- \advance\textheight11cm %margen abajo
- \advance\voffset-40mm %margen arriba
+\advance\hoffset-15mm %margen izqierda
+\advance\textheight11cm %margen abajo
+\advance\voffset-40mm %margen arriba
 \parskip5pt plus1pt
 \def\<{\left<}
- \def\>{\right>}
- \def\paren#1{\left(#1\right)}
- \let\fle\to
- \def\sen{\text{sin}}
- \def\senh{\text{sinh}}
- \def\arccosh{\text{arccosh}}
- \def\longi{\text{Length}}
- \def\e{\varepsilon}
- \def\eu{\e_1}
- \def\ed{\e_2}
- \def\et{\e_3}
-  \def\diag{\text{\rm diag}}
- \def\sg{\text{sign}}
- \def\R{\mathbb{R}}
- \def\C{\mathbb{C}}
- \def\d{\text{\rm d}}
- \def\L{\mathbb{L}}
- \def\S{\mathbb{S}}
- \def\H{\mathbb{H}}
- \def\tr{\text{\rm tr}}
- \def\det{\text{\rm det}}
- \def\cm{{\mathcal C}^\infty(M^n_s)}
- \let\ds\displaystyle
- \def\div{\text{\rm div}}
- %\newcommand{\U}[1][k+1]{\mathcal{U}_{#1}}
- \def\card{\text{\rm card}}
- \newcommand{\ol}{\overline}
- \newcommand{\bin}[1]{\mbox{$\binom{n}{#1}$}}
+\def\>{\right>}
+\def\paren#1{\left(#1\right)}
+\let\fle\to
+\def\sen{\text{sin}}
+\def\senh{\text{sinh}}
+\def\arccosh{\text{arccosh}}
+\def\longi{\text{Length}}
+\def\e{\varepsilon}
+\def\eu{\e_1}
+\def\ed{\e_2}
+\def\et{\e_3}
+\def\diag{\text{\rm diag}}
+\def\sg{\text{sign}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\d{\text{\rm d}}
+\def\L{\mathbb{L}}
+\def\S{\mathbb{S}}
+\def\H{\mathbb{H}}
+\def\tr{\text{\rm tr}}
+\def\det{\text{\rm det}}
+\def\cm{{\mathcal C}^\infty(M^n_s)}
+\let\ds\displaystyle
+\def\div{\text{\rm div}}
+%\newcommand{\U}[1][k+1]{\mathcal{U}_{#1}}
+\def\card{\text{\rm card}}
+\newcommand{\ol}{\overline}
+\newcommand{\bin}[1]{\mbox{$\binom{n}{#1}$}}
 \newcommand{\binm}[2]{\mbox{$\binom{#1}{#2}$}}
 \def\hdashline#1#2{%
- \setlength{\unitlength}{1mm}
- \begin{picture}(0,0)
- \dashline[50]{2}(#1,0)(#2,0)
- \end{picture}}
+	\setlength{\unitlength}{1mm}
+	\begin{picture}(0,0)
+		\dashline[50]{2}(#1,0)(#2,0)
+\end{picture}}
 \def\vdashline#1#2{%
- \setlength{\unitlength}{1mm}
- \begin{picture}(0,0)
- \dashline[50]{2}(0,#1)(0,#2)
- \end{picture}}
+	\setlength{\unitlength}{1mm}
+	\begin{picture}(0,0)
+		\dashline[50]{2}(0,#1)(0,#2)
+\end{picture}}
 \def\Dashcruz#1#2#3#4{\setlength{\unitlength}{1mm}%
- \begin{picture}(0,0)
- \dashline[50]{2}(#1,0)(#2,0)
- \dashline[50]{2}(0,#3)(0,#4)
- \end{picture}}
+	\begin{picture}(0,0)
+		\dashline[50]{2}(#1,0)(#2,0)
+		\dashline[50]{2}(0,#3)(0,#4)
+\end{picture}}
 \def\dashcruz#1#2#3#4{\relax}
 
 \def\MatCero{\text{\large\bfseries 0}}
@@ -93,11 +93,11 @@
 \newtheorem{proposition}[theorem]{\color{white}Proposición}
 \newtheorem{corollary}[theorem]{\color{Blue}Corolario}
 \newtheorem{lemma}[theorem]{\color{Blue}Lemma} {\theorembodyfont{\slshape}
-\newtheorem{definition}{\color{Blue}Definición}%\colorbox[cmyk]{0,0,1,0}
-\newtheorem{conjecture}{\color{Blue}Conjetura}
-\newtheorem{example}{\color{Black}Example}
-\newtheorem{remark}{\color{Blue}Nota}
-\newtheorem{problem}{\color{Blue}Problema}
+	\newtheorem{definition}{\color{Blue}Definición}%\colorbox[cmyk]{0,0,1,0}
+	\newtheorem{conjecture}{\color{Blue}Conjetura}
+	\newtheorem{example}{\color{Black}Example}
+	\newtheorem{remark}{\color{Blue}Nota}
+	\newtheorem{problem}{\color{Blue}Problema}
 }
 \definecolor{MiColorw}{rgb}{.50,.90,.70}
 \definecolor{MiColor}{rgb}{.90,.90,.90}
@@ -108,39 +108,47 @@
 \definecolor{gris}{RGB}{230,243,242}
 \definecolor{rosa}{RGB}{255,236,232}
 \definecolor{red}{RGB}{207,76,49}
-
-\pagecolor{white}
+\definecolor{moradoclaro}{RGB}{221, 160, 221}
+\definecolor{verdeagua}{RGB}{173, 216, 230}
+\definecolor{azulcielo}{RGB}{ 135, 206, 250}
+\definecolor{anita1}{HTML}{A62522}
+\definecolor{anita2}{HTML}{80221E}
+\definecolor{anita3}{HTML}{AD7C59}
+\definecolor{anita4}{HTML}{CABCAB}
+\definecolor{anita5}{HTML}{D4B4A1}
+\definecolor{anita6}{HTML}{B85C48}
+\pagecolor{anita4}
 
 \makeatletter
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                  {2.3ex \@plus.2ex}%
-                                 {\normalfont\LARGE\bfseries\textcolor{black}}}
+	{-3.5ex \@plus -1ex \@minus -.2ex}%
+	{2.3ex \@plus.2ex}%
+	{\normalfont\LARGE\bfseries\textcolor{black}}}
 \def\thesection{\arabic{section}}
 \def\thesubsection{\thesection.\arabic{subsection}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                     {1.5ex \@plus .2ex}%
-                                     {\normalfont\Large\bfseries\textcolor{Green}}}
-                                     %\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
- %                                    {-3.25ex\@plus -1ex \@minus -.2ex}%
-  %                                   {1.5ex \@plus .2ex}%
-  %                                   {\normalfont\normalsize\bfseries\color{Green}}}
+	{-3.25ex\@plus -1ex \@minus -.2ex}%
+	{1.5ex \@plus .2ex}%
+	{\normalfont\Large\bfseries\textcolor{Green}}}
+%\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+	%                                    {-3.25ex\@plus -1ex \@minus -.2ex}%
+	%                                   {1.5ex \@plus .2ex}%
+	%                                   {\normalfont\normalsize\bfseries\color{Green}}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                    {3.25ex \@plus1ex \@minus.2ex}%
-                                    {-1em}%
-                                    {\normalfont\normalsize\bfseries\color{Green}}}
+	{3.25ex \@plus1ex \@minus.2ex}%
+	{-1em}%
+	{\normalfont\normalsize\bfseries\color{Green}}}
 \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                       {3.25ex \@plus1ex \@minus .2ex}%
-                                       {-1em}%
-                                      {\normalfont\normalsize\bfseries\color{Green}}}
+	{3.25ex \@plus1ex \@minus .2ex}%
+	{-1em}%
+	{\normalfont\normalsize\bfseries\color{Green}}}
 \makeatother
 \newenvironment{proof}
- {\par\noindent\textbf{Proof.}\quad}
- {\hfill$\blacksquare$\par}
+{\par\noindent\textbf{Proof.}\quad}
+{\hfill$\blacksquare$\par}
 \newenvironment{proof*}
- {\par\noindent\textbf{Proof.}\quad}
- {}
+{\par\noindent\textbf{Proof.}\quad}
+{}
 
 \widowpenalty 10000 \clubpenalty 10000 \skip\footins=2\baselineskip
 \def\baselinestretch{1.05}
@@ -149,11 +157,11 @@
 \def\thepage{}
 
 \renewcommand{\footnoterule}{\textcolor{blue}{\rule{0.587\columnwidth}{0.02in}}\vspace*{5mm}}
-\title{\color{red}\bfseries {\Huge{Sobre una perturbación dispersiva de quinto orden de la ecuación de Benjamin}}\\\
-\normalsize\textcolor{Black}{\huge{Iván Felipe Salamanca Medina}} \\
-\textcolor{Black}{\Large{Trabajo desarrollado por el estudiante Diego Fernando Correa Castañeda bajo de dirección del profesor Ricardo Ariel Pastrán Ramírez }} \\\
-\normalsize \textcolor{Black}{\Large{Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales, Departamento de Matemáticas, Universidad Nacional de Colombia}}\\\
-\textcolor{Black}{\large{8 de Junio de 2023}}\\\    
+\title{\color{White}\bfseries {\huge{Sobre la función máximal de Hardy-Littlewood y un vistazo al trabajo futuro}}\\\
+	\normalsize\textcolor{White}{\huge{Andrés David Cadena Simons}} \\
+	\textcolor{White}{\large{Trabajo realizado bajo la dirección del profesor Ricardo Ariel Pastrán Ramírez y Oscar Guillermo Riaño Castañeda}} \\\
+	\normalsize \textcolor{White}{\large{Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales, Departamento de Matemáticas, Universidad Nacional de Colombia}}\\\
+	\textcolor{White}{\large{01 de diciembre de 2023}}\\\    
 }
 \author{}
 \date{}

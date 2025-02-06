@@ -1,0 +1,252 @@
+\documentclass[a0,portrait]{a0poster}
+\input{configuración}
+
+\begin{document}
+	\pagestyle{empty}
+	%\begin{minipage}{15cm}\ \\ \\ \\\includegraphics[width=9cm,height=10cm]{UNAL1.jpg}\end{minipage}
+        \begin{center}
+        \hspace{-3cm}
+        \begin{minipage}{.20\columnwidth}
+            \vspace{3.5cm} % Ajusta según sea necesario
+            \includegraphics[width=9cm, height=6cm]{logo.png}
+        \end{minipage}%
+        \hspace{-7cm}
+	\begin{minipage}{.80\columnwidth}
+        \vspace{3.5cm}
+            \fboxsep0.5mm
+                \shadowsize5mm
+                    \shadowbox{\fboxsep5mm
+                        \colorbox{anita2}{
+                            \begin{minipage}{\textwidth}
+                            \vspace{-2cm}
+                                \maketitle
+                            \vspace{-5.5cm}
+                            \end{minipage}%
+                        }%
+                    }
+        \end{minipage}            
+        \end{center}
+	\begin{multicols}{2}
+		
+		{\fboxsep0.5mm\shadowsize4mm \shadowbox{\fboxsep5mm\colorbox{anita6}{\color{white}
+					\begin{minipage}{.93\columnwidth}
+						\begin{center}
+							\normalsize{\color{white}\bf {\Large Resumen}}
+						\end{center}
+						El propósito de este póster es presentar uno de los resultados estudiados durante el \emph{Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales} del departamento de matemáticas de la Universidad Nacional de Colombia sede Bogotá, referentes al estudio de la \emph{función maximal de Hardy-Littlewood}.\\ \\
+						En este mismo se presentarán resultados y teoremas preliminares como aproximaciones de la identidad,  convergencia en casi todo punto, desigualdades débiles/fuertes y el teorema de interpolación de Marcinkiewicz, esto con el fin de introducir la función maximal de Hardy-Littlewood y continuar su estudio enfocados a resultados como: mostrar que la función maximal establece un operador acotado en $\mathcal{L}^{\infty}$, un operador $(1,1)$-débil y deducir de esto el teorema de diferenciación de Lebesgue. Como trabajo futuro, se plantea estudiar para cuales espacios de Sobolev la función maximal de Hardy-Littlewood determina un operador continuo.
+
+						
+						
+		\end{minipage}}}}
+		\vspace{-5cm}
+		
+		\section{Conceptos y Definiciones}\vspace{-0.5cm}
+		
+		{\fboxsep0.5mm\shadowsize4mm \shadowbox{\fboxsep5mm\colorbox{anita3}{\color{white}
+					\begin{minipage}{.93\columnwidth}
+							\textbf{Aproximación de la identidad}\\
+							Suponga $\phi$ como una función integrable en $\mathbb{R}^n$ tal que $\int_{\mathbb{R}^n}\phi=1$, y luego definamos para todo $t>0$ a 
+							$$\phi_t(x)=t^{-n}\phi(t^{-1}x).$$ 
+							Si $t\rightarrow 0$, $\phi_t$ converge en el sentido distribucional de $\mathcal{S}'$ a $\delta_0$ (la medida delta de Dirac en el origen), entonces diremos que  $\{\phi_t\, |\, t>0\}$ es una aproximación de la identidad.\\
+							
+						 \textbf{Desigualdades débiles y fuertes}\\
+							Sean $(X,\mu)$ y $(Y, \nu)$ dos espacios de medida y sea $T$ un operador de $\mathcal{L}^{p}(X,\mu)$, en el espacio de funciones medibles de $Y$ en $\mathbb{C}$.
+							$$T:\mathcal{L}^p(X,\mu)\rightarrow\mathcal{M}(Y,\mathbb{C})$$
+							\begin{itemize}
+								\item[i.] Se dice que $T$ es $(p,q)$-débil (con $q<\infty$) si para todo $\lambda>0$ existe $C>0$ tal que:
+								$$\nu(\{y\in Y:|(Tf)(y)|>\lambda\})\leq \left(\frac{C||f||_p}{\lambda}\right)^q.$$
+								\item[ii.] Se dice que $T$ es $(p,\infty)$-débil si está acotado de $\mathcal{L}^p(X,\mu)$ en $\mathcal{L}^{\infty}(Y,\nu)$.
+								\item[iii.] Se dice que $T$ es $(p,q)$-fuerte si está acotado de $\mathcal{L}^p(X,\mu)$ en $\mathcal{L}^q(Y,\nu)$.
+							\end{itemize}
+
+       \vspace{0.3cm}
+							
+							\textbf{Función de distribución}\\
+							Sea $(X,\mu)$ un espacio de medida y sea $f:X\rightarrow \mathbb{C}$ una función medible.\\
+							Se llama función de distribución de $f$ asociadad a $\mu$ a la función:\\
+							\begin{align*}
+								a_f:(0,\infty)&\rightarrow [0,\infty]\\
+								\lambda&\rightarrow \mu(\{x\in X: |f(x)|>\lambda\})	
+							\end{align*}
+							
+							\textbf{Operador sublineal}\\
+							Un operador $T$ de un espacio vectorial de funciones medibles en funciones medibles se dice \emph{sublineal} si
+							\begin{itemize}
+								\item $|T(f_1+f_2)(x)|\leq |T(f_1)(x)|+|T(f_2)(x)|$.\\
+								\item $|T(\lambda f)(x)| = |\lambda||T(f)(x)|$ para todo $\lambda\in\mathbb{C}$
+							\end{itemize}
+       
+							\vspace{1cm}
+							\textbf{Función Maximal de Hardy-Littlewood}\\
+							Sea $B_r$ la bola euclidea centrada en el origen y de radio $r$. Definiremos la función maximal de Hardy-Littlewood de una función localmente integrable $f$ en $\mathbb{R}^n$ como:
+							$$\mathcal{M}f(x)=\sup_{r>0}\frac{1}{|B_r|}\int_{B_r}|f(x-y)|dy$$
+						
+		\end{minipage}}}}
+		\vspace{-5cm}
+		
+		\section{Resultados}\label{s:Newton}
+		
+		{\fboxsep0.5mm\shadowsize4mm \shadowbox{\fboxsep5mm\colorbox{anita2}{\color{white}
+					\begin{minipage}{.93\columnwidth}
+						\textbf{Teorema.}  \emph{	Sea $\{\phi_t\, |\, t>0\}$ una aproximación de la identidad, entonces
+							$$\lim_{t\rightarrow 0}||\phi_t*f-f||_p=0,$$
+							para cualquier $f\in\mathcal{L}^p$, con $1\leq p < \infty$
+							y uniformemente (caso $p=\infty$) si $f$ es continua y tiende a $0$ en infinito, esto es, $f\in C_0(\mathbb{R}^n)$. }\\
+
+       \vspace{0.1cm}
+							Como una consecuencia de este teorema, sabemos que existe una sucesión $\{t_k\}$ que depende de $f$ tal que $t_k\rightarrow 0$ y
+							$$\lim_{k\rightarrow \infty}\phi_{t_k}*f(x)=f(x) \quad \text{c.t.p.}$$
+							Es por esto que si el límite $\lim_{t\to 0} \phi_t*f(x)$ existe, debe de ser igual a $f(x)$ en casi todo punto. Más adelante se estudiar\'a la existencia de este límite en general, no solo para una secuencia $\{t_k\}$.
+
+       \vspace{0.7cm}
+						
+						\textbf{Proposición.} \emph{Sea $T$ un operador $(p,q)$-fuerte, entonces $T$ es $(p,q)$-débil}.\\
+
+
+{\bf Demostracón (idea).} Denotemos por 
+$$E_\lambda=\{ y\in Y: |(Tf)(y)|>\lambda \},$$
+luego se tiene que
+						\begin{align*}
+							\nu(E_\lambda)=\int_{E_\lambda}d_{\nu}&\leq\int_{E_\lambda}\Bigl|\frac{(Tf)(y)}{\lambda}\Bigr|^qd\nu \\
+							&\leq\frac{1}{\lambda^q}\int_{Y}|(Tf)(y)|^qd\nu=\frac{1}{\lambda^q}||Tf||_q^q\\
+							&\leq \frac{1}{\lambda^q}(C||f||_p)^q=\left(\frac{C||f||_p}{\lambda}\right)^q.
+						\end{align*}
+\hfill $\square$						
+						
+						
+		\end{minipage}}}}
+				
+	{\fboxsep0.5mm\shadowsize4mm \shadowbox{\fboxsep5mm\colorbox{anita2}{\color{white}
+
+ 
+	\begin{minipage}{.93\columnwidth}
+  
+						\textbf{Teorema.} \emph{Sea $\{T_t\}$ una familia de operadores lineales en $\mathcal{L}^p(X,\mu)$, es decir, }
+						\begin{align*}
+							T_t:\mathcal{L}^p(X,\mu)&\rightarrow\mathcal{L}^p(X,\mu)\\
+							f&\rightarrow T_tf
+						\end{align*}
+						y definimos
+						$$T^*f(x)=\sup_t|T_tf(x)|.$$
+						\emph{Si $T^*$ es $(p,q)$-débil, el conjunto }
+      $$\{f\in\mathcal{L}^p|\lim_{t\rightarrow t_0} T_tf(x)=f(x)\, \,  \text{c.t.p}\}$$
+      
+    \emph{  es cerrado en $\mathcal{L}^p$.}
+
+\vspace{0.6cm}
+
+{\bf Observaciones:}
+
+      \begin{itemize}
+          \item $T^*$ se llama operador maximal asociado a $\{T_t\}$.
+          \item Como para las aproximaciones de la identidad conocemos la convergencia puntual hacía $f$ para funciones de $\mathcal{S}$, basta probar acotaciones débiles sobre el operador maximal $\sup_{t>0}|\phi_t*f(x)|$ para deducir la convergencia en casi todo punto para $f\in\mathcal{L}^p$, $1\leq p <\infty$, o para $f\in C^0$.
+      \end{itemize}
+
+      \vspace{0.6cm}
+						
+						\textbf{Proposición.} \emph{Sea $\varphi:[0,\infty)\rightarrow[0,\infty)$ una función derivable y creciente tal que $\varphi(0)=0$, entonces:
+						$$\int_X \varphi(|f(x)|)d\mu=\int_0^\infty \varphi'(\lambda)a_f(\lambda)d\lambda.$$
+						Si en particular, $\varphi(\lambda)=\lambda^p$, entonces podemos concluir que:
+						$$||f||_{L^p}^p=p\int_0^\infty \lambda^{p-1}a_f(\lambda)\, d\lambda.$$}
+	      \vspace{0.4cm}
+       
+						\textbf{Teorema (Teorema de interpolación de Marcinkiewicz).} \emph{Sean $(X, \mu)$ y $(Y, \nu)$ espacios medibles, $1 \leq p_0<p_1 \leq \infty$, y tome $T$ como un operador sublineal de $L^{p_0}(X, \mu)+L^{p_1}(X, \mu)$ a las funciones de medida de $Y$ que es débil $\left(p_0, p_0\right)$ y es débil $\left(p_1, p_1\right)$. Entonces $T$ es fuerte $(p, p)$ para $p_0<p<p_1$.}
+
+\vspace{0.6cm}
+
+{\bf Algunas consecuencias:}
+    
+La función maximal establece un operador fuerte $(\infty,\infty)$. Para ver esto, sea $f\in \mathcal{L}^{\infty}$, entonces para $x\in \mathbb{R}^N$ y $r>0$ arbitrarios se tiene
+\begin{equation*}
+    \frac{1}{|B_r|}\int_{B_r} |f(x-y)|\, dy \leq \|f\|_{\infty}.
+\end{equation*}
+Luego tomando el supremo en $r>0$, tenemos $\mathcal{M}f(x)\leq \|f\|_{\infty}$. Ahora, como $x\in \mathbb{R}^N$ es arbitrario, se deduce que
+\begin{equation*}
+  \|\mathcal{M}f\|_{\infty}\leq \|f\|_{\infty}.   
+\end{equation*}
+Luego $\mathcal{M}$ define un operador $(\infty,\infty)$. En trabajos futuros estudiaremos el siguiente resultado.
+
+\vspace{0.6cm}
+
+{\bf Teorema}. {El operador $\mathcal{M}$ es débil $(1,1)$.}
+
+\vspace{0.3cm}
+
+Como consecuencia del teorema de interpolación de Marcinkiewicz y lo anterior, tenemos que $\mathcal{M}$ es un operador fuerte $(p,p)$ para todo $1<p\leq \infty$.
+
+\vspace{0.4cm}
+
+
+Notemos que dada $f\in \mathcal{L}^1$, $\mathcal{M}f \in \mathcal{L}^1$ si y solo si $f=0$. Por lo que no se espera la acotación fuerte en $\mathcal{L}^1$. 
+
+
+
+						
+		\end{minipage}}}}			
+
+    
+				
+		\vspace{-1.3cm}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		\section{Trabajo Futuro}
+		
+		{\fboxsep0.5mm\shadowsize4mm \shadowbox{\fboxsep5mm\colorbox{anita6}{\color{white}
+					\begin{minipage}{.93\columnwidth}
+						
+
+      \begin{itemize}
+        \item Demostrar que $\mathcal{M}$ es débil $(1,1)$. Para esto tendremos que estudiar conceptos como la función maximal diádica y la descomposición de Calderón-Zygmund.
+          \item Una vez tengamos estos resultados, deduciremos el teorema de diferenciación de Lebesgue.  Para esto usaremos el resultado enunciado antes para ver que 
+          $$\mathcal{L}^p=\{f\in \mathcal{L}^p\, |\, \lim_{r\to 0^{+}} \frac{1}{|B_r|}\int_{B_r}f(x-y)\, dy=f(x)\, \,  \text{c.t.p}\},$$
+          para $1\leq p <\infty$.
+          \item Mostraremos que si $\phi$ es una función positiva, radial, decreciente (como función de $(0,\infty)$), entonces $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$. Como consecuencia tenemos que la función maximal $\sup_{t}|\phi_t\ast f(x)|$ es débil $(1,1)$ y fuerte $(p,p)$, $1\leq p \leq \infty$. Este resultado permite generalizar (sin usar secuencias $\{t_n\}$) el resultado de convergencia mencionado anteriormente para aproximaciones de la identidad.
+          \item Dado $1\leq p\leq \infty$. Recordamos que el \emph{espacio de Sobolev} $W^{1,p}(\mathbb{R}^N)$ comprende todas las funciones $f\in \mathcal{L}^p$ tales que $f$ tiene gradiente débil y $\nabla f\in \mathcal{L}^p$. A este espacio se le asigna la norma
+          \begin{equation*}
+              \|f\|_{W^{1,p}}=\|f\|_{L^p}+\|\nabla f\|_{L^p}.
+          \end{equation*}
+
+      La idea es estudiar artículos como el de Kinnunen (1997) donde se verifica  que
+      \begin{equation*}
+          \mathcal{M}:W^{1,p}(\mathbb{R}^N)\rightarrow W^{1,p}(\mathbb{R}^N) 
+      \end{equation*}
+      establece un operador acotado cuando $1<p\leq \infty$.
+
+
+            \end{itemize}
+            
+						\vspace{-0.3cm}
+						
+		\end{minipage}}}}
+		\vspace{-1.5cm}
+		
+		\section{Agradecimientos}
+		
+		{\fboxsep0.5mm\shadowsize4mm \shadowbox{\fboxsep5mm\colorbox{anita3}{\color{white}
+					\begin{minipage}{.93\columnwidth}
+						
+					Agradezco al Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales de la Universidad Nacional de Colombia - Sede Bogotá, especialmente a los docentes Ricardo Ariel Pastrán Ramírez y Oscar Guillermo Riaño Castañeda, quienes orientaron el proceso de desarrollo de este póster, tanto en la parte teórica como en la presentación del mismo.
+						
+						\vspace{-0.3cm}
+						
+		\end{minipage}}}}
+		\vspace{-1.5cm}
+		
+		
+		\begin{thebibliography}{4}
+			{\fboxsep0.5mm\shadowsize4mm \shadowbox{\fboxsep12mm\colorbox{anita2}{\color{white}
+						\begin{minipage}{.87\columnwidth}
+							
+							\bibitem{J1} J. Duoandikoetxea, \textit{Fourier Analysis}, Grad. Stud. Math., vol. 29, American Mathematical Society, Providence, RI, 2001, translated and revised from the 1995 Spanish original by D. Cruz-Uribe.
+
+   \bibitem{K1}    J. Kinnunen, \textit{The Hardy-Littlewood maximal function of a Sobolev function}, Israel J. Math. 100 (1997), 117–124.
+  \bibitem{K2}  J. Kinnunen and P. Lindqvist, \textit{The derivative of the maximal function}, J. Reine Angew. Math. 503 (1998), 161–167.
+							
+			\end{minipage}}}}
+		\end{thebibliography}
+		
+		%\textcolor{Cyan}{
+			%\normalsize H. Fabian Ramírez (hectorfabian.ramirez@um.es) trabajo conjunto con Pascual Lucas (plucas@um.es) \normalsize Departamento de Matemáticas, Universidad de Murcia. Partially supported by MINECO and FEDER project MTM2012-34037.}
+	\end{multicols}
+\end{document}

@@ -79,14 +79,14 @@ y
   0=a_{j1}-2rw_j, \hspace{1cm}\text{para cada }j=3,4\cdots,n.
 \end{align*}
 Por lo tanto:
-\begin{equation}\label{eq:m-householder-3}
+\begin{equation}\label{eq:m-householder-9.11}
   2rw_2=a_{21}-\alpha,
 \end{equation}
 y
-\begin{equation}\label{eq:m-householder-4}
+\begin{equation}\label{eq:m-householder-9.12}
   2rw_j=a_{j1},\hspace{1cm}\text{para cada }j=3,4,\cdots,n.
 \end{equation}
-Al elevar al cuadrado ambos lados de cada una de las ecuaciones \ref{eq:m-householder-3}, \ref{eq:m-householder-4} y sumar los términos correspondientes da:
+Al elevar al cuadrado ambos lados de cada una de las ecuaciones \ref{eq:m-householder-9.11}, \ref{eq:m-householder-9.12} y sumar los términos correspondientes da:
 \begin{align*}
   4r^2\sum_{j=2}^{n}w_j^2=(a_{21}-\alpha)^{2}+\sum_{j=3}^{n}a_{j1}^{2}
 \end{align*}
@@ -111,9 +111,55 @@ lo que, al sustituir en la ecuación \ref{eq:m-householder-9.13}, da
 \end{align*}
 Para garantizar $2r^2=0$ si y sólo si $a_{21}=a_{31}=\cdots=a_{n1}=0$ seleccionamos:
 \begin{align*}
-  \alpha=-sgn(a_{21})\left( \sum_{j=2}^{n}a_{j1}^{2} \right),
+  \alpha=-sgn(a_{21})\left( \sum_{j=2}^{n}a_{j1}^{2} \right)^{\frac{1}{2}},
 \end{align*}
-
+lo cual implica que:
+\begin{align*}
+  2r^{2}=\sum_{j=2}^{n}a_{j1}^{2}+|a_{21}|\left( \sum_{j=2}^{n}a_{j1}^{2} \right)^{\frac{1}{2}}.
+\end{align*}
+Con esta selección de $\alpha$ y $2r^2$, resolvemos las ecuaciones \ref{eq:m-householder-9.11} y \ref{eq:m-householder-9.12} para obtener:
+\begin{align*}
+  w_{2}=\frac{a_{21}-\alpha}{2r}\text{ y }w_{j}=\frac{a_{j1}}{2r},\text{ para cada }j=3,\cdots,n.
+\end{align*}
+para resumir la selección de $P^{(1)}$, tenemos:
+\begin{align*}
+  \alpha&=-sgn(a_{21})\left( \sum_{j=2}^{n}a_{j1}^2 \right)^{\frac{1}{2}},\\
+  r&=\left( \frac{1}{2}\alpha^2-\frac{1}{2}a_{21}\alpha \right)^{\frac{1}{2}},\\
+  w_1&=0,\\
+  w_2&=\frac{a_{21}-\alpha}{2r},
+\end{align*}
+y
+\begin{align*}
+  w_{j}=\frac{a_{j1}}{2r},\text{ por cada }j=3,\cdots,n.
+\end{align*}
+Con esta selección:
+\begin{align*}
+  A^{(2)}&=P^{(1)}AP^{(1)}\\
+  &=\begin{bmatrix}
+    a_{11}^{(2)}& a_{12}^{(2)}& 0 & \cdots & 0 \\
+    a_{21}^{(2)} & a_{22}^{(2)} & a_{23}^{(2)} & \cdots & a_{2n}^{(2)} \\
+    0 & a_{32}^{(2)} & a_{33}^{(2)} & \cdots & a_{3n}^{(2)} \\
+    \vdots & \vdots & \vdots &  & \vdots \\
+    0 & a_{n2}^{(2)} & a_{n3}^{(2)} & \cdots & a_{nn}^{(2)}
+  \end{bmatrix} 
+\end{align*}
+Al haber cálculado $P^{(1)}$ y calculado $A^{(2)}$, el proceso se repite para $k=2,3,\cdots,n-2$ de acuerdo con lo siguiente:
+\begin{align*}
+  \alpha&=-sgn(a_{k+1,k}^{(k)})\left( \sum_{j=k+1}^{n}(a_{jk}^{(k)})^{2} \right)^{\frac{1}{2}},\\
+  r&=\left( \frac{1}{2}\alpha^2-\frac{1}{2}\alpha\alpha_{k+1,k}^{(k)} \right)^{\frac{1}{2}},\\
+  w_1^{(k)}=w_{2}^{(k)}=\cdots=w_{k}^{(k)}=0,\\
+  w_{k+1}&=\frac{a_{k+1,k}^{(k)}-\alpha}{2r},\\
+  w_{j}^{(k)}=\frac{a_{jk}^{(k)}}{2r},\text{ para cada }j=k+2,k+3,\cdots,n,\\
+  P^{(k)}=I-2w^{(k)}\dot(w^{(k)})^T,
+\end{align*}
+y:
+\begin{align*}
+  A^{(k+1)}=P^{(k)}A^{(k)}P^{(k)},
+\end{align*}
+donde
+\begin{center}
+  \includegraphics[scale=0.5]{matrizfea.png}
+\end{center}
 
 
 
