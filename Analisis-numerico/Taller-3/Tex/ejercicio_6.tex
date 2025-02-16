@@ -1,6 +1,406 @@
 \begin{homeworkProblem}
-  Pregunta
+  Reconstrucción de imágenes a partir de sus bordes.\\
+  El operador laplaciano en $2D$ se define como:
+  \begin{align*}
+    \nabla^2 u(x,y)&=\frac{\partial u}{\partial x^2}+\frac{\partial u}{\partial y^2}
+  \end{align*}
+  donde $u(x,y)$ es una función que representa la intensidad de los pixeles de la imagen en el dominio espacial. El operador Laplaciano se utiliza para detectar bordes porque responde a las variaciones de la intensidad de los pixeles en la vecindad de cada punto. En áreas de la imagen donde la intensidad varia rapidamente (bordes), el Laplaciano tiene un valor alto, mientras que en áreas homogéneas (sin bordes) el Laplaciano es cercano a cero. El proceso de detección de bordes implica calcular el Laplaciano de la imagen $u(x,y)$, lo que da como resultado un mapa de bordes.\\
+  En este ejercicio estamos interesados en reconstruir la imágen original $u(x,y)$ a partir de los bordes detectados.\\
+  Para esto debemos resolver la ecuación de Poisson en $2D$
+  \begin{equation}\label{eq:poisson}
+    \nabla^2u(x,y)=f(x,y)
+  \end{equation}
+  donde $f(x,y)$ es el mapa de bordes.\\
+  El problema \ref{eq:poisson} puede ser discretizado en un sistema de ecuaciones lineales de la forma:
+  \begin{align*}
+    Au=f
+  \end{align*}
+  donde $A$ es una matriz que representa el operador Laplaciano discreto, $u$ es el vector que contiene los valores de la imagen original en cada pixel (a reconstruir), y $f$ es el vector que contiene los valores de los bordes detectados.\\
+  \textbf{Instrucciones:}\\
+  Su tarea consiste en reconstruir las imágenes originales. En la pagina web del curso encuentran los archivos en Matlab bordes1.mat y bordes2.mat que contienen los datos de cada fotografía. Siga los pasos descritos a continuación:
   \begin{solucion}
-    Solucion
+    Usando la aproximación de diferencias finitas centrales para la segunda derivada:
+    \begin{align*}
+      \frac{\partial u}{\partial x^2}&\approx \frac{u_{i+1,j}-2u_{i,j}+u_{i-1,j}}{h^2},\\
+      \frac{\partial u}{\partial y^2}&\approx \frac{u_{i,j+1}-2u_{i,j}+u_{i,j-1}}{h^2}.
+    \end{align*}
+    Sumando ambas expresiones obtenemos:
+    \begin{align*}
+      \frac{u_{i+1,j}+u_{i-1,j}+u_{i,j+1}+u_{i,j-1}-4u_{i,j}}{h^2}=f_{i,j}
+    \end{align*}
+    Ahora veamos esto en la practica, daremos $100$ iteraciones a cada método y daremos el tiempo tomado para ejecutarse. 
+    \newpage
+    \begin{enumerate}
+      \item Imágen 1 (Jacobi) $\frac{137}{4514}s\approx 0.0304 s$.
+        \begin{lstlisting}[language = matlab]
+format rational
+%% Construcción de la matriz A usando diferencias finitas
+function A = construir_matriz_A(N, M)
+    num_pixeles = N * M;
+    A = sparse(num_pixeles, num_pixeles); % Matriz dispersa
+
+    for i = 1:N
+        for j = 1:M
+            k = (i-1) * M + j; % Índice en el vector
+
+            A(k, k) = -4; % Píxel central
+
+            if j < M  % Vecino derecho
+                A(k, k + 1) = 1;
+            end
+            if j > 1  % Vecino izquierdo
+                A(k, k - 1) = 1;
+            end
+            if i < N  % Vecino inferior
+                A(k, k + M) = 1;
+            end
+            if i > 1  % Vecino superior
+                A(k, k - M) = 1;
+            end
+        end
+    end
+end
+
+%% Visualizar la solución
+function visualizar(u, N, M, titulo)
+    imagen = reshape(u, [N, M]); % Volver a forma de matriz
+    figure;
+    surf(imagen), shading flat, axis ij, axis equal, view(2);
+    colormap gray;
+    title(titulo);
+end
+
+%% Cargar datos de los bordes
+data1 = load('bordes1.mat'); % Cargar archivo
+
+f = data1.bordes1; % Extraer matriz de bordes
+
+[N, M] = size(f); % Dimensiones de la imagen 1
+
+% Convertir la matriz en un vector columna
+f_vec = f(:);
+
+A = construir_matriz_A(N, M);
+
+%% Métodos Iterativos
+
+D = diag(diag(A)); % Matriz diagonal
+L = -tril(A,-1);   % Parte triangular inferior estricta con signo negativo
+U = -triu(A,1);    % Parte triangular superior estricta con signo negativo
+
+% Jacobi
+
+TJ = inv(D)*(U+L);
+cJ = inv(D)*f_vec;
+[f_size, basura] = size(f_vec);
+
+u = zeros(f_size,1); % u0 inicial
+u_anterior = u+1; % Para comparar iteraciones
+iteraciones = 0;
+
+% Iterar hasta que haga 100 iteraciones del método
+
+tic;
+while (100 >= iteraciones)
+    u_anterior = u; % Guardar el u anterior
+    u = TJ * u + cJ; % Nueva iteración
+    iteraciones = iteraciones + 1;
+end
+
+tiempo = toc;
+
+disp("Tiempo tomado en el método Jacobi:")
+disp(tiempo);
+visualizar(u, N, M, 'Reconstrucción de Imagen 1 con Jacobi');
+        \end{lstlisting}
+        \begin{center}
+          \includegraphics[scale=0.5]{Figures/Figure_1J.png}
+        \end{center}
+        \newpage
+      \item Imágen 1 (Gauss-Seidel) $\frac{1990}{49931}s=0.03985s$.
+        \begin{lstlisting}[language = matlab]
+format rational
+%% Visualizar la solución
+function visualizar(u, N, M, titulo)
+    imagen = reshape(u, [N, M]); % Volver a forma de matriz
+    figure;
+    surf(imagen), shading flat, axis ij, axis equal, view(2);
+    colormap gray;
+    title(titulo);
+end
+
+%% Cargar datos de los bordes
+data1 = load('bordes1.mat'); % Cargar archivo
+
+f = data1.bordes1; % Extraer matriz de bordes
+
+[N, M] = size(f); % Dimensiones de la imagen 1
+
+
+%% Métodos Iterativos
+
+% Inicialización de la solución
+u = zeros(M,N); % x0 inicial
+iteraciones = 0;
+
+tic;
+while (100 >= iteraciones)
+    u_anterior = u;
+    for i=2:M-1
+        for j=2:N-1
+            u(i, j) = (1/4) * (-f(i, j) + u(i-1, j) + u_anterior(i+1, j) + u(i, j-1) + u_anterior(i, j+1));
+        end
+    end
+    iteraciones = iteraciones + 1;
+end
+
+tiempo = toc;
+disp("Tiempo tomado en el método de Gauss-Seidel");
+disp(tiempo);
+visualizar(u, N, M, 'Reconstrucción de Imagen 1 con Gauss-Seidel'); 
+        \end{lstlisting}
+        \begin{center}
+          \includegraphics[scale=0.5]{Figures/Figure_1GS.png}
+        \end{center}
+        \newpage
+      \item Imágen 1 (SOR) $\frac{396}{5729}s\approx 0.06912s$.
+        \begin{lstlisting}[language = matlab]
+format rational
+%% Visualizar la solución
+function visualizar(u, N, M, titulo)
+    imagen = reshape(u, [N, M]); % Volver a forma de matriz
+    figure;
+    surf(imagen), shading flat, axis ij, axis equal, view(2);
+    colormap gray;
+    title(titulo);
+end
+
+%% Cargar datos de los bordes
+data1 = load('bordes1.mat'); % Cargar archivo
+
+f = data1.bordes1; % Extraer matriz de bordes
+w = 1.5;
+[N, M] = size(f); % Dimensiones de la imagen 1
+
+
+%% Métodos Iterativos
+
+% Inicialización de la solución
+u = zeros(M,N); % x0 inicial
+ugs = zeros(M,N);
+iteraciones = 0;
+
+tic;
+while (100 >= iteraciones)
+    u_anterior = u;
+    for i=2:M-1
+        for j=2:N-1
+            ugs(i, j) = (1/4) * (-f(i, j) + u(i-1, j) + u_anterior(i+1, j) + u(i, j-1) + u_anterior(i, j+1));
+            u(i, j) = (1-w)*u(i,j)+w*ugs(i,j);
+        end
+    end
+    iteraciones = iteraciones + 1;
+end
+
+tiempo = toc;
+disp("Tiempo tomado en el método de SOR con w=1.5");
+disp(tiempo);
+visualizar(u, N, M, 'Reconstrucción de Imagen 1 con SOR (w=1.5)');
+        \end{lstlisting}
+        \begin{center}
+          \includegraphics[scale=0.5]{Figures/Figure_1SOR.png}
+        \end{center}
+        \newpage
+      \item Imágen 2 (Jacobi) $\frac{101}{2697}s\approx 0.03745s$.
+        \begin{lstlisting}[language = matlab]
+format rational
+%% Construcción de la matriz A usando diferencias finitas
+function A = construir_matriz_A(N, M)
+    num_pixeles = N * M;
+    A = sparse(num_pixeles, num_pixeles); % Matriz dispersa
+
+    for i = 1:N
+        for j = 1:M
+            k = (i-1) * M + j; % Índice en el vector
+
+            A(k, k) = -4; % Píxel central
+
+            if j < M  % Vecino derecho
+                A(k, k + 1) = 1;
+            end
+            if j > 1  % Vecino izquierdo
+                A(k, k - 1) = 1;
+            end
+            if i < N  % Vecino inferior
+                A(k, k + M) = 1;
+            end
+            if i > 1  % Vecino superior
+                A(k, k - M) = 1;
+            end
+        end
+    end
+end
+
+%% Visualizar la solución
+function visualizar(u, N, M, titulo)
+    imagen = reshape(u, [N, M]); % Volver a forma de matriz
+    figure;
+    surf(imagen), shading flat, axis ij, axis equal, view(2);
+    colormap gray;
+    title(titulo);
+end
+
+%% Cargar datos de los bordes
+data2 = load('bordes2.mat'); % Cargar archivo
+
+f = data2.bordes2; % Extraer matriz de bordes
+
+[N, M] = size(f); % Dimensiones de la imagen 2
+
+% Convertir la matriz en un vector columna
+f_vec = f(:);
+
+A = construir_matriz_A(N, M);
+
+%% Métodos Iterativos
+
+D = diag(diag(A)); % Matriz diagonal
+L = -tril(A,-1);   % Parte triangular inferior estricta con signo negativo
+U = -triu(A,1);    % Parte triangular superior estricta con signo negativo
+
+% Jacobi
+
+TJ = inv(D)*(U+L);
+cJ = inv(D)*f_vec;
+[f_size, basura] = size(f_vec);
+
+u = zeros(f_size,1); % u0 inicial
+u_anterior = u+1; % Para comparar iteraciones
+iteraciones = 0;
+
+% Iterar hasta que haga 100 iteraciones del método
+
+tic;
+while (100 >= iteraciones)
+    u_anterior = u; % Guardar el u anterior
+    u = TJ * u + cJ; % Nueva iteración
+    iteraciones = iteraciones + 1;
+end
+
+tiempo = toc;
+
+disp("Tiempo tomado en el método Jacobi:")
+disp(tiempo);
+visualizar(u, N, M, 'Reconstrucción de Imagen 2 con Jacobi');
+        \end{lstlisting}
+        \begin{center}
+          \includegraphics[scale=0.5]{Figures/Figure_2J.png}
+        \end{center}
+      \item Imágen 2 (Gauss-Seidel) $\frac{159}{2323}s=0.06845s$.
+        \begin{lstlisting}[language = matlab]
+format rational
+%% Visualizar la solución
+function visualizar(u, N, M, titulo)
+    imagen = reshape(u, [N, M]); % Volver a forma de matriz
+    figure;
+    surf(imagen), shading flat, axis ij, axis equal, view(2);
+    colormap gray;
+    title(titulo);
+end
+
+%% Cargar datos de los bordes
+data2 = load('bordes2.mat'); % Cargar archivo
+
+f = data2.bordes2; % Extraer matriz de bordes
+
+[N, M] = size(f); % Dimensiones de la imagen 2
+
+
+%% Métodos Iterativos
+
+% Inicialización de la solución
+u = zeros(M,N); % x0 inicial
+iteraciones = 0;
+
+tic;
+while (100 >= iteraciones)
+    u_anterior = u;
+    for i=2:M-1
+        for j=2:N-1
+            u(i, j) = (1/4) * (-f(i, j) + u(i-1, j) + u_anterior(i+1, j) + u(i, j-1) + u_anterior(i, j+1));
+        end
+    end
+    iteraciones = iteraciones + 1;
+end
+
+tiempo = toc;
+disp("Tiempo tomado en el método de Gauss-Seidel");
+disp(tiempo);
+visualizar(u, N, M, 'Reconstrucción de Imagen 2 con Gauss-Seidel');
+        \end{lstlisting}
+        \begin{center}
+          \includegraphics[scale=0.5]{Figures/Figure_2GS.png}
+        \end{center}
+        \newpage
+      \item Imágen 2 (SOR) $\frac{163}{2617}s \approx 0.06229s$.
+        \begin{lstlisting}[language = matlab]
+format rational
+%% Visualizar la solución
+function visualizar(u, N, M, titulo)
+    imagen = reshape(u, [N, M]); % Volver a forma de matriz
+    figure;
+    surf(imagen), shading flat, axis ij, axis equal, view(2);
+    colormap gray;
+    title(titulo);
+end
+
+%% Cargar datos de los bordes
+data2 = load('bordes2.mat'); % Cargar archivo
+
+f = data2.bordes2; % Extraer matriz de bordes
+w = 1.5;
+[N, M] = size(f); % Dimensiones de la imagen 2
+
+
+%% Métodos Iterativos
+
+% Inicialización de la solución
+u = zeros(M,N); % x0 inicial
+ugs = zeros(M,N);
+iteraciones = 0;
+
+tic;
+while (100 >= iteraciones)
+    u_anterior = u;
+    for i=2:M-1
+        for j=2:N-1
+            ugs(i, j) = (1/4) * (-f(i, j) + u(i-1, j) + u_anterior(i+1, j) + u(i, j-1) + u_anterior(i, j+1));
+            u(i, j) = (1-w)*u(i,j)+w*ugs(i,j);
+        end
+    end
+    iteraciones = iteraciones + 1;
+end
+
+tiempo = toc;
+disp("Tiempo tomado en el método de SOR con w=1.5");
+disp(tiempo);
+visualizar(u, N, M, 'Reconstrucción de Imagen 2 con SOR (w=1.5)');
+        \end{lstlisting}
+        \begin{center}
+          \includegraphics[scale=0.5]{Figures/Figure_2SOR.png}
+        \end{center}
+        \newpage
+    \end{enumerate}
+    \textbf{Comparación:}
+    \begin{center}
+      \includegraphics[scale=0.6]{Figures/Figure_1J.png}
+      \includegraphics[scale=0.6]{Figures/Figure_1GS.png}
+      \includegraphics[scale=0.6]{Figures/Figure_1SOR.png}
+      \includegraphics[scale=0.6]{Figures/Figure_1J.png}\\
+      \includegraphics[scale=0.6]{Figures/Figure_2J.png}
+      \includegraphics[scale=0.6]{Figures/Figure_2GS.png}
+      \includegraphics[scale=0.6]{Figures/Figure_2SOR.png}
+      \includegraphics[scale=0.6]{Figures/Figure_2J.png}
+    \end{center}
   \end{solucion}
 \end{homeworkProblem}

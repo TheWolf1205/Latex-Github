@@ -1,6 +1,260 @@
 \begin{homeworkProblem}
-  Pregunta
-  \begin{solucion}
-    Solucion
-  \end{solucion}
+  Considere el sistema $Ax=b$ donde
+  \begin{align*}
+    A:=\begin{pmatrix}
+      3 & -1 & -1 & 0 & 0 \\
+      -1 & 4 & 0 & -2 & 0 \\
+      -1 & 0 & 3 & -1 & 0 \\
+      0 & -2 & -1 & 5 & -1 \\
+      0 & 0 & 0 & -1 & 2
+    \end{pmatrix}
+    \quad b:=\begin{pmatrix}
+      2 \\
+      -26 \\
+      3 \\
+      47 \\
+      -10 
+    \end{pmatrix}
+  \end{align*}
+  \begin{enumerate}
+    \item Investigue la convergencia de los métodos de Jacobi, Gauss-Seidel y sobrerelajación.
+      \begin{solucion}
+        \begin{enumerate}
+          \item Convergencia en Jacobi.\\
+            Note que $A$ es una matriz diagonal dominante, por lo que se puede asegurar que el método converge desde cualquier solución inicial $\textbf{x}^{0}$.
+          \item Convergencia en Gauss-Seidel.\\
+            Note que $T_{GS}$ es:
+            \begin{align*}
+              T_{GS}=(D-L)^{-1}U=\begin{pmatrix}
+                0 & \frac{1}{3}  & \frac{1}{3}  & 0            & 0\\
+                0 & \frac{1}{12} & \frac{1}{12} & \frac{1}{2}  & 0\\
+                0 & \frac{1}{9}  & \frac{1}{9}  & \frac{1}{3}  & 0\\
+                0 & \frac{1}{18} & \frac{1}{18} & \frac{4}{15} & \frac{1}{5}\\
+                0 & \frac{1}{36} & \frac{1}{36} & \frac{2}{15} & \frac{1}{10}
+              \end{pmatrix}
+            \end{align*}
+            Luego el radio espectral de $T_{GS}$ es $1061/2071\approx 0.51 < 1$, por lo que sabemos que la sucesión converge con cualquier $\textbf{c}$ y $\textbf{x}^0$.\\
+            Estos cálculos se ayudaron de matlab
+            \newpage
+            \begin{lstlisting}[language = matlab]
+% Definir la matriz
+A = [ 3  -1  -1   0   0;
+     -1   4   0  -2   0;
+     -1   0   3  -1   0;
+      0  -2  -1   5  -1;
+      0   0   0  -1   2];
+D = [ 3   0   0   0   0;
+      0   4   0   0   0;
+      0   0   3   0   0;
+      0   0   0   5   0;
+      0   0   0   0   2];
+L = [ 0   0   0   0   0;
+      1   0   0   0   0;
+      1   0   0   0   0;
+      0   2   1   0   0;
+      0   0   0   1   0];
+U = [ 0   1   1   0   0;
+      0   0   0   2   0;
+      0   0   0   1   0;
+      0   0   0   0   1;
+      0   0   0   0   0];
+
+TGS = inv(D-L)*U;
+latex_codigo = latex(sym(TGS));
+
+% Obtener valores propios
+valores_propiosGS = eig(TGS);
+
+% Calcular el radio espectral
+radio_espectralGS = max(abs(valores_propiosGS));
+
+% Mostrar resultado
+disp('Radio espectral en Gauss-Seidel:')
+disp(radio_espectral)
+            \end{lstlisting}
+          \item Convergencia en SOR.\\
+            Note que $A$ es una matriz simétrica definida positiva, ya que el polinomio carácteristico es $P_A(x)=167 - 373 x + 295 x^2 - 105 x^3 + 17 x^4 - x^5$, el cuál tiene raíces reales, positivas (esto se puede comprobar utilizando graficadoras o un programa de cómputo de factorización, omitiremos ese paso ya que lo único importante es saber que son reales), por lo que sabemos que si tomamos $0<w<2$ entonces el método SOR converge a la única solución del sistema $Ax=b$ desde cualquier solución inicial $\textbf{x}^{0}$. 
+        \end{enumerate}
+      \end{solucion}
+      \newpage
+    \item ¿Cuál es el radio espectral de la matriz $J$ y de la matriz $S$?
+      \begin{solucion}
+        \begin{enumerate}
+          \item Jacobi.\\
+          La matriz $T_J$ es:
+          \begin{align*}
+            \begin{pmatrix}
+              0           & \frac{1}{3} & \frac{1}{3} & 0           & 0\\
+              \frac{1}{4} & 0           & 0           & \frac{1}{2} & 0\\
+              \frac{1}{3} & 0           & 0           & \frac{1}{3} & 0\\
+              0           & \frac{2}{5} & \frac{1}{5} & 0           & \frac{1}{5}\\
+              0           & 0           & 0           & \frac{1}{2} & 0 
+            \end{pmatrix}
+          \end{align*}
+          Luego el radio espectral de $T_J$ es $\frac{1040}{1453}\approx 0.72 < 1$.
+          \item SOR.\\
+          La matriz $T_{SOR}$ que depende de $w$ es:
+          \begin{align*}
+            \begin{pmatrix}
+              1-w & \frac{w}{3} & \frac{w}{3} & 0 & 0\\
+              -\frac{w\,\left(3\,w-3\right)}{12} & \frac{w^2}{12}-w+1 & \frac{w^2}{12} & \frac{w}{2} & 0\\
+              -\frac{w\,\left(3\,w-3\right)}{9} & \frac{w^2}{9} & \frac{w^2}{9}-w+1 & \frac{w}{3} & 0\\
+              -\frac{w^2\,\left(3\,w-3\right)}{18} & \frac{w^3}{18}-\frac{w\,\left(4\,w-4\right)}{10} & \frac{w^3}{18}-\frac{w\,\left(3\,w-3\right)}{15} & \frac{4\,w^2}{15}-w+1 & \frac{w}{5}\\
+              -\frac{w^3\,\left(3\,w-3\right)}{36} & \frac{w^4}{36}-\frac{w^2\,\left(4\,w-4\right)}{20} & \frac{w^4}{36}-\frac{w^2\,\left(3\,w-3\right)}{30} & \frac{2\,w^3}{15}-\frac{w\,\left(5\,w-5\right)}{10} & \frac{w^2}{10}-w+1 
+            \end{pmatrix}
+          \end{align*}
+          así, usemos el $w^*$ encontrado en el siguiente item para cálcular el radio espectral, por lo que $T_{SOR}(w^*)$ sería:
+          \begin{align*}
+            \begin{pmatrix}
+              -\frac{17}{100} & \frac{39}{100} & \frac{39}{100} & 0 & 0\\
+              -\frac{1989}{40000} & -\frac{2237}{40000} & \frac{4563}{40000} & \frac{117}{200} & 0\\
+              -\frac{663}{10000} & \frac{1521}{10000} & -\frac{179}{10000} & \frac{39}{100} & 0\\
+              -\frac{698697453389513}{18014398509481984} & \frac{678674449446225}{72057594037927936} & \frac{7090251080549995}{144115188075855872} & \frac{1219}{6250} & \frac{117}{500}\\
+              -\frac{3269904081862921}{144115188075855872} & \frac{794049105852083}{144115188075855872} & \frac{8295593764243493}{288230376151711744} & \frac{4110828093788559}{36028797018963968} & -\frac{3311}{100000} 
+            \end{pmatrix}
+          \end{align*}
+          Luego el radio espectral de $T_{SOR}(w^*)$ es $\frac{918}{3797}\approx 0.24 < 1$. 
+        \end{enumerate}
+      \end{solucion}
+    \item Aproxime con dos cifras decimales el parámetro de sobrerelajación $w^*$.
+      \begin{solucion}
+        Utilizemos la fórmula:
+        \begin{align*}
+          w^*&=\frac{2}{1+\sqrt{1-\rho(J)^2}}\\
+            &\approx 1.17
+        \end{align*}
+      \end{solucion}
+    \item ¿Qué reducción en el costo operacional ofrece el método de sobrerelajación con el parámetro $w^*$, en comparación con el método de Gauss-Seidel?
+      \begin{solucion}
+        Note que como $w^*\approx 1,17$, o sea $1<w^*<2$, es decir el método sería de sobrerelajación que debería de acelerar la convergencia del método original (Gauss-Seidel).  
+      \end{solucion}
+    \item ¿Cuántas iteraciones más requiere el método de Gauss-Seidel para lograr una precisión mejorada en una cifra decimal? ¿Cuántas necesita el método de sobrerelajación con $w^*$?
+      \begin{solucion}
+        \begin{enumerate}
+          \item Gauss-Seidel.\\
+            Aquí para llegar al $x$ esperado realizó $9$ iteraciones, en donde
+            \begin{align*}
+              x=\begin{pmatrix}
+                \frac{4306}{1367}\\  
+                \frac{615}{617}\\
+                \frac{4142}{635}\\
+                \frac{2205}{164}\\
+                \frac{3845}{328}     
+              \end{pmatrix}
+            \end{align*}
+          \item SOR.\\
+            Aquí para llegar al $x$ esperado realizó $7$ iteraciones, en donde
+            \begin{align*}
+              \begin{pmatrix}
+                \frac{1867}{585}\\
+                \frac{509}{493}\\
+                \frac{1219}{186}\\
+                \frac{5173}{384}\\
+                \frac{2711}{231}     
+              \end{pmatrix}
+            \end{align*}
+        \end{enumerate}
+        Con lo que podemos concluir que Gauss-Seidel realizó $2$ iteraciones más que $SOR$ y el método de sobrerelajación con $w^*$ necesitó $7$ iteraciones. 
+      \end{solucion}
+      Para realizar el ejercicio se usó el siguiente script de matlab
+      \begin{lstlisting}
+% Definir la matriz
+A = [ 3  -1  -1   0   0;
+     -1   4   0  -2   0;
+     -1   0   3  -1   0;
+      0  -2  -1   5  -1;
+      0   0   0  -1   2];
+b = [ 2;
+    -26;
+      3;
+     47;
+     10;
+    ];
+D = [ 3   0   0   0   0;
+      0   4   0   0   0;
+      0   0   3   0   0;
+      0   0   0   5   0;
+      0   0   0   0   2];
+L = [ 0   0   0   0   0;
+      1   0   0   0   0;
+      1   0   0   0   0;
+      0   2   1   0   0;
+      0   0   0   1   0];
+U = [ 0   1   1   0   0;
+      0   0   0   2   0;
+      0   0   0   1   0;
+      0   0   0   0   1;
+      0   0   0   0   0];
+% Jacobi y Gauss-Seidel
+
+TGS = inv(D-L)*U;
+TJ = inv(D)*(U+L);
+
+latex_codigo = latex(sym(TGS));
+latex_codigo = latex(sym(TJ));
+
+% Obtener valores propios
+valores_propiosGS = eig(TGS);
+valores_propiosJ = eig(TJ);
+
+% Calcular el radio espectral
+radio_espectralGS = max(abs(valores_propiosGS));
+radio_espectralJ = max(abs(valores_propiosJ));
+
+% Mostrar resultado
+disp('Radio espectral en Gauss-Seidel:')
+disp(radio_espectralGS)
+disp('Radio espectral en Jacobi:')
+disp(radio_espectralJ)
+
+% SOR
+w = 2 / (1+sqrt(1-(radio_espectralJ^2)));
+woptimo = 1.17;
+TSOR = inv(D-woptimo*L)*((1-woptimo)*D+woptimo*U);
+latex_codigo = latex(sym(TSOR));
+valores_propiosSOR = eig(TSOR);
+radio_espectralSOR = max(abs(valores_propiosSOR));
+disp('Radio espectral en SOR:')
+disp(radio_espectralSOR)
+
+% Encontremos el valor de x en ambos métodos, Gauss-Seidel y SOR con woptimo
+
+cGS = inv(D-L)*b;
+cSOR = woptimo*inv(D-woptimo*L)*b
+
+% Gauss-Seidel
+
+x = zeros(5,1); % x0 inicial
+x_anterior = x+1; % Para comparar iteraciones
+tolerancia = 0.05; % Para una cifra decimal
+iteraciones = 0;
+
+% Iterar hasta que cada componente de x tenga precisión de una cifra decimal
+while any(abs(x - x_anterior) > tolerancia)
+    x_anterior = x; % Guardar el x anterior
+    x = TGS * x + cGS; % Nueva iteración
+    iteraciones = iteraciones + 1;
+end
+
+iteraciones
+x
+
+% SOR
+
+x = zeros(5,1); % x0 inicial
+x_anterior = x+1; % Para comparar iteraciones
+tolerancia = 0.05; % Para una cifra decimal
+iteraciones = 0;
+
+% Iterar hasta que cada componente de x tenga precisión de una cifra decimal
+while any(abs(x - x_anterior) > tolerancia)
+    x_anterior = x; % Guardar el x anterior
+    x = TSOR * x + cSOR; % Nueva iteración
+    iteraciones = iteraciones + 1;
+end
+
+iteraciones
+x  
+      \end{lstlisting}
+  \end{enumerate}
 \end{homeworkProblem}

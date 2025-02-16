@@ -1,6 +1,17 @@
 \begin{homeworkProblem}
-  Pregunta
+  Sea $A \in \mathbb{R}^{n\times n}$. Probar que $ \lambda= 1$ es un vector propio de la matriz de iteración del método de Jacobi (o Gauss-Seidel) de $A$ si y solo si $A$ no es invertible.
   \begin{solucion}
-    Solucion
+    Sea \( A = D - L - U \), donde \( D \) es la matriz diagonal de \( A \), \( L \) es la matriz que contiene los elementos debajo de la diagonal con signo invertido, y \( U \) es la matriz con los elementos por encima de la diagonal también con signo invertido.  
+
+Supongamos que \( \lambda = 1 \) es un valor propio de la matriz de iteración de Jacobi, \( T_J = -D^{-1}(L+U) \). Por definición, esto significa que:
+\begin{align*}
+    0 &= \det(D^{-1}(L+U) - I) \\
+      &= \det(D^{-1}(L+U) - D^{-1}D) \\
+      &= \det(D^{-1}(L+U - D)) \\
+      &= \det(D^{-1}) \det(-(D - L - U)) \\
+      &= \det(D^{-1}) (-1)^n \det(A).
+\end{align*}
+Dado que \( D \) es invertible, se sigue que \( \det(A) = 0 \), lo que implica que \( A \) no es invertible.  
+Recíprocamente, si \( A \) no es invertible, entonces \( \det(A) = 0 \). A partir de la ecuación anterior, esto implica que \( \det(D^{-1}(L+U) - I) = 0 \), lo que prueba que \( \lambda = 1 \) es un valor propio de la matriz de iteración del método de Jacobi.
   \end{solucion}
 \end{homeworkProblem}

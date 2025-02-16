@@ -1,6 +1,292 @@
 \begin{homeworkProblem}
-  Pregunta
-  \begin{solucion}
-    Solucion
-  \end{solucion}
+  \begin{align*}
+    A =  
+\begin{pmatrix}  
+a & 0 & 0 \\  
+a\delta & a & 0 \\  
+0 & a\delta & a  
+\end{pmatrix}, \quad a < 0, \quad \delta > 0
+\quad\text{y}\quad  b =  
+\begin{pmatrix}  
+-1 \\  
+-1.1 \\  
+0  
+\end{pmatrix}.
+\end{align*}
+
+
+\begin{enumerate}
+    \item[(a)] Obtenga el número de condición de \( A \).
+    \begin{solucion}
+      Hallemos el número de condición $\kappa_\infty(A) = \|A^{-1}\|_\infty\|A\|_\infty $.Para ello,  encontremos la inversa de $A$:
+        
+
+
+\[
+\left(
+\begin{array}{ccc|ccc}
+a & 0 & 0 & 1 & 0 & 0 \\
+a\delta & a & 0 & 0 & 1 & 0 \\
+0 & a\delta & a & 0 & 0 & 1
+\end{array}
+\right)
+R_2 \rightarrow R_2 - \delta R_1,\\
+\quad R_3 \rightarrow R_3 - \delta R_2
+\]
+
+\[
+\left(
+\begin{array}{ccc|ccc}
+a & 0 & 0 & 1 & 0 & 0 \\
+0 & a & 0 & -\delta & 1 & 0 \\
+0 & 0 & a & \delta^2 & -\delta & 1
+\end{array}
+\right)
+R_1 \rightarrow \frac{R_1}{a}, \quad R_2 \rightarrow \frac{R_2}{a}, \quad R_3 \rightarrow \frac{R_3}{a}
+\]
+
+\[
+\left(
+\begin{array}{ccc|ccc}
+1 & 0 & 0 & \frac{1}{a} & 0 & 0 \\
+0 & 1 & 0 & -\frac{\delta}{a} & \frac{1}{a} & 0 \\
+0 & 0 & 1 & \frac{\delta^2}{a} & -\frac{\delta}{a} & \frac{1}{a}
+\end{array}
+\right)\hspace{0.5cm}\Longrightarrow \hspace{0.5cm}
+A^{-1} =
+\begin{pmatrix}
+\frac{1}{a} & 0 & 0 \\
+-\frac{\delta}{a} & \frac{1}{a} & 0 \\
+\frac{\delta^2}{a} & -\frac{\delta}{a} & \frac{1}{a}
+\end{pmatrix}
+\]
+Ahora calculemos las normas correspondientes,
+\begin{align*}
+    \kappa_\infty(A) = \|A^{-1}\|_\infty\|A\|_\infty &=\left(\left|\frac{\delta^2}{a}\right|+\left|\frac{-\delta}{a}\right|+\left|\frac{1}{a}\right|\right)\left(|a\delta|+|a|\right)\\
+    &=(\delta+1)(\delta^2+\delta+1) \hspace{1cm},\delta>0\\
+    &=\delta^3+2\delta^2+2\delta+1
+\end{align*}
+Por consiguiente, $\kappa_\infty(A)=\delta^3+2\delta^2+2\delta+1$, con $\delta>0$.  
+    \end{solucion}
+    
+    \item[(b)] Estudiar el condicionamiento del sistema \( Ax = b \) en función de los valores de \( \delta \). Interprete su resultado.
+    \begin{solucion}
+      Como $\kappa_\infty(A) = \delta^3 + 2\delta^2 + 2\delta + 1$ con $\delta > 0$, notemos que:  
+\begin{itemize}
+    \item Si $\delta \rightarrow 0$, entonces $\kappa_\infty(A) \rightarrow 1$.  
+    \item Si $\delta \rightarrow \infty$, entonces $\kappa_\infty(A) \rightarrow \infty$. 
+\end{itemize}
+
+Por consiguiente, si $\delta \ll 1$, la matriz estará bien condicionada, lo que implica que los cambios relativos en $b$ controlan los cambios relativos en $x$. En cambio, si $\delta \gg 1$, el sistema será mal condicionado, es decir, pequeños cambios en los datos pueden generar grandes errores en la solución.    
+    \end{solucion}
+    \item[(c)] Si \( a = -1 \), \( \delta = 0.1 \) y se considera $x^* =  \left(1, \frac{9}{10},  1 \right)^T$ como solución aproximada del sistema \( Ax = b \) (sin obtener la solución exacta), determine un intervalo en el que esté comprendido el error relativo. ¿Es coherente con la respuesta dada en el apartado anterior?
+    \begin{solucion}
+      Reemplazando $a=-1$ y $\delta=-0.1$ en la matriz y tomando $x^* =  \left(1, \frac{9}{10},  1 \right)^T$, obtenemos:
+
+\begin{align*}
+    \underbrace{
+        \begin{pmatrix}
+            -1 & 0 & 0\\
+            -0.1 & -1 & 0\\
+            0 & -0.1 & -1
+        \end{pmatrix}
+        }_{A}
+        \underbrace{
+        \begin{pmatrix}
+            1  \\
+            \frac{9}{10}  \\
+            1 
+        \end{pmatrix}
+        }_{x^*}=
+        \underbrace{
+        \begin{pmatrix}
+            -1 \\
+            -1 \\
+            -\frac{109}{100}
+        \end{pmatrix}
+        }_{b^*}\approx \underbrace{
+        \begin{pmatrix}
+            -1 \\
+            -1.1 \\
+            0
+        \end{pmatrix}
+        }_{b}
+\end{align*}
+
+Usemos la siguiente expresión para encontrar una cota para el error relativo:
+\begin{align*}
+    \frac{1}{\kappa_\infty(A)}\frac{\|b-b^*\|}{\|b\|} \leq \frac{\|x-x^*\|}{\|x\|} \leq \kappa_\infty(A)\frac{\|b-b^*\|}{\|b\|}
+\end{align*}
+
+Antes de reemplazar, calculemos algunos valores:
+\begin{align*}
+    \kappa_\infty(A) &= \delta^3 + 2\delta^2 + 2\delta + 1\\
+    &= \left(\frac{1}{10}\right)^3 + 2\left(\frac{1}{10}\right)^2 + 2\left(\frac{1}{10}\right) + 1 = \frac{1221}{1000}\\
+    \|b\|_\infty &= \left|-1.1\right| = 1.1\\
+    \|b^*\|_\infty &= \left|\frac{-109}{100}\right| = \frac{109}{100}    
+\end{align*}
+
+Reemplazando, la cota del error relativo queda de la siguiente forma:
+\begin{align*}
+    \frac{1}{1.221} \frac{|1.1 - 1.09|}{|1.1|} &\leq \frac{\|x-x^*\|}{\|x\|} \leq (1.221) \frac{|1.1 - 1.09|}{|1.1|}\\
+    0.00744 &\leq \frac{\|x-x^*\|}{\|x\|} \leq 0.0111
+\end{align*}
+
+Es decir, el error relativo está entre $0.74\%$ y $1.11\%$, lo cual considero coherente con los resultados encontrados en el ítem anterior. En este caso, se está tomando un $\delta \ll 1$, por lo que el error es pequeño y, en consecuencia, la aproximación es buena.  
+    \end{solucion}
+    \item[(d)] Si \( a = -1 \) y \( \delta = 0.1 \), ¿es convergente el método de Jacobi aplicado a la resolución del sistema \( Ax = b \)?  
+    Realice tres iteraciones a partir de $x^* =  \left(0, 0,  0\right)^T$.
+    \begin{solucion}
+      Sea
+\[
+A = \begin{pmatrix}
+            -1 & 0 & 0\\
+            -0.1 & -1 & 0\\
+            0 & -0.1 & -1
+        \end{pmatrix}
+\]
+Reescribamos la matriz como $ A = D + L + U $, donde $ D $ es la matriz diagonal de $ A $, $ L $ es la matriz con los elementos debajo de la diagonal, y $ U $ es la matriz con los elementos por encima de la diagonal:
+
+\[
+A = \begin{pmatrix}
+            -1 & 0 & 0\\
+            0 & -1 & 0\\
+            0 & 0 & -1
+        \end{pmatrix}+
+        \begin{pmatrix}
+            0 & 0 & 0\\
+            -0.1 & 0 & 0\\
+            0 & -0.1 & 0
+        \end{pmatrix}+
+        \begin{pmatrix}
+            0 & 0 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{pmatrix}
+\]
+
+Ahora, calculemos la matriz de iteración $ T_J $ para el método iterativo de Jacobi, dada por:
+\[
+T_J = -D^{-1}(L+U).
+\]
+Dado que en este caso $ U = 0 $, la expresión se reduce a $ T_J = -D^{-1} L $:
+\[
+T_J = -D^{-1} L =
+\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+            0 & 0 & 0\\
+            -0.1 & 0 & 0\\
+            0 & -0.1 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+            0 & 0 & 0\\
+            0.1 & 0 & 0\\
+            0 & 0.1 & 0
+\end{pmatrix}
+\]
+Como $ \|T_J\|_\infty = 0.1 < 1 $, el método de Jacobi converge según el criterio de la norma.
+
+A continuación, escribamos explícitamente la forma matricial de las iteraciones, que se define como:
+\[
+x^{(k+1)} = -D^{-1} L x^{(k)} + D^{-1} b.
+\]
+Sustituyendo los valores:
+\[
+\begin{pmatrix}
+            x_1^{(k+1)} \\
+            x_2^{(k+1)} \\
+            x_3^{(k+1)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+            0 & 0 & 0\\
+            -0.1 & 0 & 0\\
+            0 & -0.1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+            x_1^{(k)} \\
+            x_2^{(k)} \\
+            x_3^{(k)}
+\end{pmatrix}
++
+\begin{pmatrix}
+            1 \\
+            1.1 \\
+            0
+\end{pmatrix}.
+\]
+
+Ahora, realicemos tres iteraciones del método de Jacobi:
+
+\[
+\begin{pmatrix}
+            x_1^{(1)} \\
+            x_2^{(1)} \\
+            x_3^{(1)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+            1 \\
+            1.1 \\
+            0
+\end{pmatrix}.
+\]
+
+\[
+\begin{pmatrix}
+            x_1^{(2)} \\
+            x_2^{(2)} \\
+            x_3^{(2)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+            1 \\
+            1 \\
+            -0.11
+\end{pmatrix}.
+\]
+
+\[
+\begin{pmatrix}
+            x_1^{(3)} \\
+            x_2^{(3)} \\
+            x_3^{(3)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+            1 \\
+            1 \\
+            -0.1
+\end{pmatrix}.
+\]
+
+Notemos que:
+
+\[
+Ax^{(3)} = \begin{pmatrix}
+            -1 & 0 & 0\\
+            -0.1 & -1 & 0\\
+            0 & -0.1 & -1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 \\
+            1 \\
+            -0.1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            -1 \\
+            -1.1 \\
+            0
+        \end{pmatrix}.
+\]
+
+Por lo tanto, el método de Jacobi no solo converge, sino que lo hace rápidamente y en solo tres iteraciones alcanza la solución exacta.  
+    \end{solucion}
+\end{enumerate}
 \end{homeworkProblem}
