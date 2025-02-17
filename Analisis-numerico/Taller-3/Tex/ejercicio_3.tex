@@ -123,16 +123,17 @@ Antes de reemplazar, calculemos algunos valores:
     \kappa_\infty(A) &= \delta^3 + 2\delta^2 + 2\delta + 1\\
     &= \left(\frac{1}{10}\right)^3 + 2\left(\frac{1}{10}\right)^2 + 2\left(\frac{1}{10}\right) + 1 = \frac{1221}{1000}\\
     \|b\|_\infty &= \left|-1.1\right| = 1.1\\
-    \|b^*\|_\infty &= \left|\frac{-109}{100}\right| = \frac{109}{100}    
+    \|b-b^*\|_\infty &= \left|\frac{-109}{100}\right| = \frac{109}{100}\\
+    \frac{\|b-b^{*}\|_{\infty}}{\|b\|_{\infty}}&=\frac{109}{110}
 \end{align*}
 
 Reemplazando, la cota del error relativo queda de la siguiente forma:
 \begin{align*}
-    \frac{1}{1.221} \frac{|1.1 - 1.09|}{|1.1|} &\leq \frac{\|x-x^*\|}{\|x\|} \leq (1.221) \frac{|1.1 - 1.09|}{|1.1|}\\
-    0.00744 &\leq \frac{\|x-x^*\|}{\|x\|} \leq 0.0111
+    \frac{1}{1.221} \frac{109}{110} &\leq \frac{\|x-x^*\|}{\|x\|} \leq (1.221) \frac{109}{110}\\
+    0.81156 &\leq \frac{\|x-x^*\|}{\|x\|} \leq 1.2099
 \end{align*}
 
-Es decir, el error relativo está entre $0.74\%$ y $1.11\%$, lo cual considero coherente con los resultados encontrados en el ítem anterior. En este caso, se está tomando un $\delta \ll 1$, por lo que el error es pequeño y, en consecuencia, la aproximación es buena.  
+Es decir, el error relativo está entre $81.16\%$ y $120.99\%$, lo cual considero que no hace perder coherencia con los resultados anteriores, ya que si bien el error relativo parece ser grande, aunque se está tomando un $\delta \ll 1$, que deja la matriz bien condicionada, la matriz no puede controlar lo malas que seas las soluciones aproximadas propuestas, como lo es en este caso.  
     \end{solucion}
     \item[(d)] Si \( a = -1 \) y \( \delta = 0.1 \), ¿es convergente el método de Jacobi aplicado a la resolución del sistema \( Ax = b \)?  
     Realice tres iteraciones a partir de $x^* =  \left(0, 0,  0\right)^T$.
