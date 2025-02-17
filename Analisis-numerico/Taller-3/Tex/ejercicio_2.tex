@@ -5,6 +5,22 @@
       \item Usando Cholesky.\\
         \begin{lstlisting}[language = matlab]
 format rational
+function L = descomposicion_de_cholesky(A)
+    % Descomposición de Cholesky de una matriz A sin usar la función chol
+    [n, ~] = size(A);
+    L = zeros(n);
+    
+    for i = 1:n
+        for j = 1:i
+            if i == j
+                L(i, j) = sqrt(A(i, i) - sum(L(i, 1:j-1) .^ 2));
+            else
+                L(i, j) = (A(i, j) - sum(L(i, 1:j-1) .* L(j, 1:j-1))) / L(j, j);
+            end
+        end
+    end
+end
+
 n = 5; %Grado del polinómio
 x = (0:1:20)';
 y = [75901, -204794, 204863, -204436, 253665, -200894, 214131, -185192, 221249, -138370, 315911, -27644, 455253, 197434, 783995, 608816, 1370781, 1303798, 2205519, 2408860, 3444321]';
@@ -21,12 +37,14 @@ B = A' * A;
 z = A' * y;
 
 % Descomposición de Cholesky
-L = chol(B, 'lower'); % Matriz triangular inferior
+L = descomposicion_de_cholesky(B); % Matriz triangular inferior
 
 % Resolver el sistema de ecuaciones
 sol1chol = L \ z;      
 solchol = L' \ sol1chol;
 tiempo_chol = toc
+
+residual_cholesky = norm(A * solchol - y, 2)
 
 % Mostrar solución final
 disp(solchol);
@@ -56,6 +74,34 @@ hold off;
       \item Usando la factorización QR.\\
         \begin{lstlisting}[language = matlab]
 format rational
+% Implementación del método de Householder
+function [Q, R] = householder(A)
+    [m, n] = size(A);
+    Q = eye(m);
+    R = A;
+
+    for k = 1:n
+        x = R(k:m, k);
+        norm_x = norm(x);
+        e1 = zeros(length(x), 1); 
+        e1(1) = norm_x;
+        
+        % Evitar sign(0) = 0 asegurando una buena dirección de reflexión
+        sign_x1 = sign(x(1)) + (x(1) == 0);
+        
+        v = x + sign_x1 * norm_x * e1;
+        v = v / norm(v);
+        
+        % Construir la matriz de Householder
+        Hk = eye(m);
+        Hk(k:m, k:m) = eye(length(x)) - 2 * (v * v');
+        
+        % Aplicar la transformación
+        R = Hk * R;
+        Q = Q * Hk';
+    end
+end
+
 n = 5; %Grado del polinómio
 x = (0:1:20)';
 y = [75901, -204794, 204863, -204436, 253665, -200894, 214131, -185192, 221249, -138370, 315911, -27644, 455253, 197434, 783995, 608816, 1370781, 1303798, 2205519, 2408860, 3444321]';
@@ -68,20 +114,24 @@ A = vander(x);
 A = A(:, end-n:end); % Tomar las n+1 columnas necesarias
 
 % Factorización QR
-[Q,R] = qr(A);
+[Q,R] = householder(A);
 
 % Ecuaciones QR
 
 b = Q'*y;
 solqr = R \ b;
-tiempo_qr = toc
+tiempo_qr = toc;
+
+residual_qr = norm(A * solqr - y, 2);
+disp("Residual QR:")
+disp(residual_qr)
 
 % Mostrar solución final
-disp(solchol);
+disp(solqr);
 
 xx = linspace(min(x), max(x), 100); % Puntos más finos para la curva
 AA = xx(:).^(0:n); % Matriz de diseño para interpolación
-yy = AA * solchol; % Evaluación del polinomio
+yy = AA * solqr; % Evaluación del polinomio
 
 plot(x, y, 'ro', 'MarkerSize', 8, 'DisplayName', 'Datos originales'); % Puntos originales
 hold on;
