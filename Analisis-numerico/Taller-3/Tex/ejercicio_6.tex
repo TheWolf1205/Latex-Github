@@ -16,6 +16,9 @@
     Au=f
   \end{align*}
   donde $A$ es una matriz que representa el operador Laplaciano discreto, $u$ es el vector que contiene los valores de la imagen original en cada pixel (a reconstruir), y $f$ es el vector que contiene los valores de los bordes detectados.\\
+  \begin{center}
+    \includegraphics[scale=0.8]{Figures/imagenesproblema5.png}
+  \end{center} 
   \textbf{Instrucciones:}\\
   Su tarea consiste en reconstruir las imágenes originales. En la pagina web del curso encuentran los archivos en Matlab bordes1.mat y bordes2.mat que contienen los datos de cada fotografía. Siga los pasos descritos a continuación:
   \begin{solucion}
@@ -28,7 +31,10 @@
     \begin{align*}
       \frac{u_{i+1,j}+u_{i-1,j}+u_{i,j+1}+u_{i,j-1}-4u_{i,j}}{h^2}=f_{i,j}
     \end{align*}
-    Ahora veamos esto en la practica, daremos $100$ iteraciones a cada método y daremos el tiempo tomado para ejecutarse. 
+    lo que nos ayudará a construir la matriz $A$ en el ejercicio.\\
+    \textbf{Nota:} Profesor Mauricio, el tamaño de la matriz parece ser un gran problema para Matlab a la hora de calcular inversas en los métodos de Gauss-Seidel y SOR, por lo que nos fue necesaria buscar una forma de optimizar el proceso, a lo que decidimos investigar y encontrar una fuente en la que dan las fórmulas exactas de manera que "de alguna manera" optimiza el tiempo de o al menos facilita a matlab en el cálculo de los valores, dejamos la cita de la información a la que nos referimos \href{https://github.com/reece-iriye/Solving-2D-Poissons-Equation-Using-Finite-Difference-Method-and-Iterative-Solvers/tree/main}{Solving-2D-Poissons-Equation-Using-Finite-Difference-Method-and-Iterative-Solvers}, esperamos entienda la situación, de lo contrario simplemente usábamos el código que usamos en Jacobi modificando las $T$ y las $c$.
+    Ahora veamos esto en la practica, daremos $100$ iteraciones a cada método y daremos el tiempo tomado para ejecutarse.\\
+    Siendo así, a continuación dejaremos los códigos y las gráficas generadas.
     \newpage
     \begin{enumerate}
       \item Imágen 1 (Jacobi) $\frac{137}{4514}s\approx 0.0304 s$.
@@ -114,7 +120,7 @@ disp(tiempo);
 visualizar(u, N, M, 'Reconstrucción de Imagen 1 con Jacobi');
         \end{lstlisting}
         \begin{center}
-          \includegraphics[scale=0.5]{Figures/Figure_1J.png}
+          \includegraphics[scale=1]{Figures/Figure_1J.png}
         \end{center}
         \newpage
       \item Imágen 1 (Gauss-Seidel) $\frac{1990}{49931}s=0.03985s$.
@@ -160,7 +166,7 @@ disp(tiempo);
 visualizar(u, N, M, 'Reconstrucción de Imagen 1 con Gauss-Seidel'); 
         \end{lstlisting}
         \begin{center}
-          \includegraphics[scale=0.5]{Figures/Figure_1GS.png}
+          \includegraphics[scale=1]{Figures/Figure_1GS.png}
         \end{center}
         \newpage
       \item Imágen 1 (SOR) $\frac{396}{5729}s\approx 0.06912s$.
@@ -208,7 +214,7 @@ disp(tiempo);
 visualizar(u, N, M, 'Reconstrucción de Imagen 1 con SOR (w=1.5)');
         \end{lstlisting}
         \begin{center}
-          \includegraphics[scale=0.5]{Figures/Figure_1SOR.png}
+          \includegraphics[scale=1]{Figures/Figure_1SOR.png}
         \end{center}
         \newpage
       \item Imágen 2 (Jacobi) $\frac{101}{2697}s\approx 0.03745s$.
@@ -294,7 +300,7 @@ disp(tiempo);
 visualizar(u, N, M, 'Reconstrucción de Imagen 2 con Jacobi');
         \end{lstlisting}
         \begin{center}
-          \includegraphics[scale=0.5]{Figures/Figure_2J.png}
+          \includegraphics[scale=1]{Figures/Figure_2J.png}
         \end{center}
       \item Imágen 2 (Gauss-Seidel) $\frac{159}{2323}s=0.06845s$.
         \begin{lstlisting}[language = matlab]
@@ -339,7 +345,7 @@ disp(tiempo);
 visualizar(u, N, M, 'Reconstrucción de Imagen 2 con Gauss-Seidel');
         \end{lstlisting}
         \begin{center}
-          \includegraphics[scale=0.5]{Figures/Figure_2GS.png}
+          \includegraphics[scale=1]{Figures/Figure_2GS.png}
         \end{center}
         \newpage
       \item Imágen 2 (SOR) $\frac{163}{2617}s \approx 0.06229s$.
@@ -387,7 +393,7 @@ disp(tiempo);
 visualizar(u, N, M, 'Reconstrucción de Imagen 2 con SOR (w=1.5)');
         \end{lstlisting}
         \begin{center}
-          \includegraphics[scale=0.5]{Figures/Figure_2SOR.png}
+          \includegraphics[scale=1]{Figures/Figure_2SOR.png}
         \end{center}
         \newpage
     \end{enumerate}
