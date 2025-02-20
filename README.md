@@ -16,6 +16,9 @@ Repositorio para subir trabajos o talleres de la U :p.
     - Taller 3
         - [Taller](./Analisis-numerico/Taller-3/Taller3.pdf)
         - [Solución](./Analisis-numerico/Taller-3/Tex/main.pdf)
+    - Parcial III
+        - [Parcial](./Analisis-numerico/Parcial-III/parcial3.pdf)
+        - [Solución](./Analisis-numerico/Parcial-III/Tex/main.pdf)
 
 - Variable Compleja
     - Taller 1
@@ -24,6 +27,9 @@ Repositorio para subir trabajos o talleres de la U :p.
     - Taller 7
         - [Taller](./V-Compleja/Taller-7/taller7.pdf)
         - [Solución](./V-Compleja/Taller-7/main.pdf)
+    - Quiz III
+        - [Quiz](./V-Compleja/Quiz-3/Quiz3.pdf)
+        - [Solución](./V-Compleja/Quiz-3/main.pdf)
 
 - Ecuaciones diferenciales parciales I
     - Taller 1
