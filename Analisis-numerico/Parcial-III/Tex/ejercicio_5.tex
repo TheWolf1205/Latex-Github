@@ -1,6 +1,77 @@
 \begin{homeworkProblem}
-  Pregunta
-  \begin{solution}
-    Solución
-  \end{solution}
+  Observe que
+  \begin{align*}
+    I=\int_{0}^{1}\frac{4}{1+x^2}=\pi 
+  \end{align*}
+  \begin{enumerate}
+    \item Use las reglas compuestas del punto medio, del trapecio y de Simpson para aproximar $I$ para varios tamaños de paso de integración $h= \frac{1}{n}, n = 10,50, 100, 250, 500, 1000, 1500, 2000$. Grafique el logaritmo del error absoluto versus $n$ para cada paso. Describa el efecto de redondeo de los errores cuando $i\to 0$.
+      \begin{solucion}
+        Veamos lo que sucede para cada caso:
+        \begin{itemize}
+          \item Punto Medio.\\
+            Note que al aplicar el algoritmo para la integral obtenemos la siguiente gráfica de errores:
+            \begin{figure}[H]
+            \begin{center}
+              \includegraphics[scale=0.7]{Figures/puntomedio.png}
+            \end{center}
+            \caption{Error absoluto en el método del punto medio.}
+            \end{figure}
+            Aquí cabe recordar que el método del punto medio tiene convergencia de orden $O(h^2)$ y su implementación es bastante sencilla, la podremos ver en el siguiente código que aplicando el método se tomo $0.001995$ segundos.
+            \newpage
+            \lstinputlisting[language=Matlab]{scripts/puntomedio.m}
+            \newpage
+          \item Trapecio.\\
+            Note que al aplicar el algoritmo para la integral obtenemos la siguiente gráfica de errores:
+            \begin{figure}[H]
+            \begin{center}
+              \includegraphics[scale=0.7]{Figures/trapecio.png}
+            \end{center}
+            \caption{Error absoluto en el método del trapecio.}
+            \end{figure}
+            Aquí cabe recordar que el método del trapecio tiene convergencia de orden $O(h^2)$ y su implementación es (en cuestiones de operaciones) sencilla, la podremos ver en el siguiente código que aplicando el método se tomo $0.002719$ segundos.
+            \newpage
+            \lstinputlisting[language=Matlab]{scripts/trapecio.m}
+            \newpage
+          \item Simpson.\\
+            Note que al aplicar el algoritmo para la integral obtenemos la siguiente gráfica de errores:
+            \begin{figure}[H]
+            \begin{center}
+              \includegraphics[scale=0.7]{Figures/simpson.png}
+            \end{center}
+            \caption{Error absoluto en el método de Simpson.}
+            \end{figure}
+            Aquí cabe recordar que el método tiene convergencia de orden $O(h^4)$ y su implementación es aunque un poco más compleja en la teoría, sigue siendo eficiente cuando hablamos computacionalmente, la podremos ver en el siguiente código que aplicando el método se tomo $0.003878$ segundos.
+            \newpage
+            \lstinputlisting[language=Matlab]{scripts/simpson.m}
+            \newpage
+        \end{itemize}
+        Ahora sería interesante ver la comparación entre los $3$ métodos en la siguiente figura y la tabla de tiempos:
+        \begin{figure}[H]
+        \begin{center}
+          \includegraphics[scale=0.7]{Figures/comparacion.png}
+        \end{center}
+        \caption{Comparación de los métodos.}
+        \end{figure}
+        \begin{center}
+        \begin{tabular}{|c|c|}
+          \hline
+          Método & Tiempo ($s$)\\
+          \hline
+          Punto medio & $0,001995$\\
+          \hline
+          Trapecio & $0,002719$\\
+          \hline
+          Simpson & $0,003878$\\
+          \hline
+        \end{tabular}
+        \end{center}
+        De lo que podemos concluir lo siguiente:
+        \begin{itemize}
+          \item En la aplicación el método del punto medio aparenta ser superior al método del trapecio en cuestiones de errores y tiempo, no obstante la diferencia entre estos aparenta ser bastante baja para tenerlo en cuenta a la hora de realizar los cálculos y favorecer alguna de las $2$, por lo que no se descarta que el uso del método del trapecio sea más efectivo en otro tipos de problemas en los que quizás sea mejor considerar los términos de borde en la función.
+          \item Es claro que el método de Simpson es mucho más preciso al momento de aproximar el resultado, pues, desde la propia teoría (la convergencia en orden $O(h^4)$) vimos que al refinar la malla el error se reduciría bastante rápido, por lo que vemos que rápidamente con tomar $n=250$ ya este había superado la precisión numérica de maquina al ser tan cercano a $0$ el error absoluto, situación que con los otros $2$ métodos no se alcanzó a concluir de igual forma.
+          \item Si bien en cuestión de tiempo vemos que aún podríamos permitirles a los métodos tener un refinamiento de malla aún más grande, es claro que al método de Simpson le fue suficiente con muy poco y que a los restantes $2$ métodos aparenta aún faltarle mucho al refinamiento de la malla para alcanzar la precisión numérica que tiene el método de Simpson. 
+        \end{itemize}
+      \end{solucion}
+    \item Implemente el método de integración de Romberg para calcular $I$. Grafiqué el logaritmo del error en los términos diagonales en la tabla de extrapolación versus $log h$. Verifique sus resultados con la teoría.
+  \end{enumerate}
 \end{homeworkProblem}
