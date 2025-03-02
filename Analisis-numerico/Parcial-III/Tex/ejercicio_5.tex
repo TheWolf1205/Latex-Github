@@ -72,6 +72,37 @@
           \item Si bien en cuestión de tiempo vemos que aún podríamos permitirles a los métodos tener un refinamiento de malla aún más grande, es claro que al método de Simpson le fue suficiente con muy poco y que a los restantes $2$ métodos aparenta aún faltarle mucho al refinamiento de la malla para alcanzar la precisión numérica que tiene el método de Simpson. 
         \end{itemize}
       \end{solucion}
-    \item Implemente el método de integración de Romberg para calcular $I$. Grafiqué el logaritmo del error en los términos diagonales en la tabla de extrapolación versus $log h$. Verifique sus resultados con la teoría.
+    \item Implemente el método de integración de Romberg para calcular $I$. Grafiqué el logaritmo del error en los términos diagonales en la tabla de extrapolación versus $log(h)$. Verifique sus resultados con la teoría.
+      \begin{solucion}
+        Note que al aplicar el algoritmo para la integral obtenemos la siguiente gráfica de errores:
+        \begin{figure}[H]
+        \begin{center}
+          \includegraphics[scale=0.7]{Figures/Romberg.png}
+        \end{center}
+        \caption{Error en los términos diagonales en la tabla de extrapolación versus $log h$.}
+        \end{figure}
+        El cuál se tardó $0.004838$ segundos en ejecutarse.
+        \newpage
+        De aquí podemos concluir lo siguiente:
+        \begin{itemize}
+          \item Respecto a la teoría, en efecto a valores pequeños de $h$ mejora la aproximación del valor de la integral (más refinamiento, mejor aproximación).
+          \item Note que la curva es "casi" una recta, de lo cuál podemos deducir al estar en escala logaritmica que el error $E(h)\approx Ch^{p}$ en donde el valor de $p$ aumenta cada vez más con cada nivel de la extrapolación.
+          \item Se alcanzan errores de hasta $10^{-10}$, lo que indica que el método logra una precisión bastante alta con relativamente pocas iteraciones.
+        \end{itemize}
+        A continuación podemos ver la matriz:
+        \begin{align*}
+          \begin{pmatrix}
+            3.00000000 & 0 & 0 & 0 & 0 & 0\\
+            3.10000000 & 3.13333333 & 0 & 0 & 0 & 0\\
+            3.13117647 & 3.14156863 & 3.14211765 & 0 & 0 & 0\\
+            3.13898849 & 3.14159250 & 3.14159409 & 3.14158578 & 0 & 0\\
+            3.14094161 & 3.14159265 & 3.14159266 & 3.14159264 & 3.14159267 & 0\\
+          3.14142989 & 3.14159265 & 3.14159265 & 3.14159265 & 3.14159265 & 3.14159265
+          \end{pmatrix}
+        \end{align*}
+        Y en la siguiente página se podrá encontrar el código.
+        \newpage
+        \lstinputlisting[language=Matlab]{scripts/Romberg.m}
+      \end{solucion}
   \end{enumerate}
 \end{homeworkProblem}

@@ -35,30 +35,30 @@
 \usepackage[most]{tcolorbox}
 \usepackage{listings}
 
-
 \lstset{
-    language=Python,                        % Lenguaje de programación
-    basicstyle=\ttfamily\small\color[HTML]{F8F8F2}, % Fuente monoespaciada y texto blanco claro
-    backgroundcolor=\color[HTML]{282A36},   % Fondo oscuro (Dracula)
-    keywordstyle=\color[HTML]{FF79C6}\bfseries, % Palabras clave en rosa y negrita
-    commentstyle=\color[HTML]{6272A4}\itshape, % Comentarios en gris azulado y cursiva
-    stringstyle=\color[HTML]{F1FA8C},       % Cadenas en amarillo
-    numberstyle=\tiny\color[HTML]{BD93F9}, % Números en lila
-    identifierstyle=\color[HTML]{8BE9FD},  % Identificadores en azul claro
+    language=Python,                         % Lenguaje de programación
+    basicstyle=\ttfamily\small\color{black}, % Fuente monoespaciada y texto negro
+    backgroundcolor=\color{white},           % Fondo blanco
+    keywordstyle=\color[HTML]{0077BB}\bfseries, % Palabras clave en azul fuerte y negrita
+    commentstyle=\color[HTML]{555555}\itshape, % Comentarios en gris oscuro y cursiva
+    stringstyle=\color[HTML]{DD8800},        % Cadenas en naranja
+    numberstyle=\tiny\color[HTML]{666666},   % Números en gris medio
+    identifierstyle=\color[HTML]{333333},    % Identificadores en gris oscuro
     emph={xlabel, ylabel, title, legend, grid}, % Destaca palabras específicas
-    emphstyle=\color[HTML]{50FA7B},        % Color verde brillante para palabras destacadas
-    numbers=left,                           % Números de línea a la izquierda
-    stepnumber=1,                           % Mostrar número en cada línea
-    numbersep=10pt,                         % Separación de los números de línea
-    showstringspaces=false,                 % No marcar los espacios en las cadenas
-    frame=note,                           % Marco alrededor del código
-    framexleftmargin=20pt,                  % Espacio a la izquierda del marco para los números
-    rulecolor=\color[HTML]{F8F8F2},         % Color del borde del marco
-    breaklines=true,                        % Rompe líneas largas
-    breakatwhitespace=true,                 % Rompe en los espacios
-    tabsize=4,                              % Tamaño de tabuladores
-    escapeinside={\%*}{*)}                  % Permite la inserción de LaTeX dentro del código
+    emphstyle=\color[HTML]{117733},          % Color verde oscuro para palabras destacadas
+    numbers=left,                            % Números de línea a la izquierda
+    stepnumber=1,                            % Mostrar número en cada línea
+    numbersep=10pt,                          % Separación de los números de línea
+    showstringspaces=false,                  % No marcar los espacios en las cadenas
+    frame=single,                            % Marco alrededor del código
+    framexleftmargin=20pt,                   % Espacio a la izquierda del marco para los números
+    rulecolor=\color{black},                 % Color del borde del marco
+    breaklines=true,                         % Rompe líneas largas
+    breakatwhitespace=true,                  % Rompe en los espacios
+    tabsize=4,                               % Tamaño de tabuladores
+    escapeinside={\%*}{*)}                   % Permite la inserción de LaTeX dentro del código
 }
+
 
 \lstset{literate=
   {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
