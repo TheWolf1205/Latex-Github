@@ -1,6 +1,197 @@
 \begin{homeworkProblem}
-  Pregunta
-  \begin{solution}
-    Solución
-  \end{solution}
+  Sea
+\[
+f(x) = (x - r_1)(x - r_2) \dots (x - r_d),\quad \text{donde} \quad r_1 < r_2 < \dots < r_d
+\]
+  \begin{solucion}
+    \begin{itemize}
+      \item[(a)] Probar que si \( x_0 > r_d \) la sucesión de Newton-Raphson converge a \( r_d \).
+    \end{itemize}
+    Sea \( f(x) \)  la función definida por
+\[
+f(x) = (x - r_1)(x - r_2) \cdots (x - r_d),
+\]
+    donde \( r_1, r_2, \dots, r_d \) son raíces reales distintas y están ordenadas de manera creciente, es decir, \( r_1 < r_2 < \dots < r_d \). Queremos analizar el comportamiento de la sucesión generada por el método de Newton-Raphson cuando el valor inicial \( x_0 \) es mayor que \( r_d \) y demostrar que converge a \( r_d \).
+
+    Para aplicar el método de Newton-Raphson, primero derivamos la función \( f(x) \). La derivada se obtiene como la suma de términos en los cuales se excluye un factor en cada producto:
+\[
+f'(x) = \sum_{i=1}^{d} \prod_{j \neq i} (x - r_j).
+\]
+    El método de Newton-Raphson define la sucesión:
+\[
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
+\]
+    Sustituyendo las expresiones de \( f(x) \) y \( f'(x) \), se obtiene
+\[
+x_{n+1} = x_n - \frac{(x_n - r_1)(x_n - r_2) \cdots (x_n - r_d)}{\sum_{i=1}^{d} \prod_{j \neq i} (x_n - r_j)}.
+\]
+
+    Ahora analizamos el comportamiento de esta sucesión cuando \( x_0 > r_d \). En este caso, para todo \( i \), se cumple que \( x_0 - r_i > 0 \), por lo que el producto \( f(x_0) \) es positivo. Además, dado que cada término en la suma de \( f'(x_0) \) también es positivo, se concluye que \( f'(x_0) > 0 \), lo que implica que el cociente \( \frac{f(x_0)}{f'(x_0)} > 0 \). Por lo tanto, la actualización en Newton-Raphson cumple que:
+\[
+x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} < x_0.
+\]
+    Esto indica que la sucesión \( \{x_n\} \) es estrictamente decreciente. Ahora probamos por inducción que \( x_n > r_d \) para todo \( n \). Para \( n = 0 \), se cumple por hipótesis que \( x_0 > r_d \). Supongamos que \( x_n > r_d \) y probemos que \( x_{n+1} > r_d \).
+
+    Definimos la función auxiliar:
+\[
+g(x) = x - \frac{f(x)}{f'(x)}.
+\]
+    Se tiene que \( g(r_d) = r_d \), ya que \( f(r_d) = 0 \). Además, podemos demostrar que \( g(x) \) es una función creciente para \( x > r_d \). Para ello, derivamos \( g(x) \):
+\[
+g'(x) = 1 - \frac{d}{dx} \left( \frac{f(x)}{f'(x)} \right).
+\]
+    Aplicando la regla del cociente,
+\[
+g'(x) = 1 - \frac{f'(x) f'(x) - f(x) f''(x)}{[f'(x)]^2} = \frac{f(x) f''(x)}{[f'(x)]^2}.
+\]
+    Dado que para \( x > r_d \), se cumple que \( f(x) > 0 \) y \( f''(x) > 0 \), se concluye que \( g'(x) > 0 \), lo que significa que \( g(x) \) es estrictamente creciente en \( x > r_d \). Como \( x_n > r_d \), entonces \( x_{n+1} = g(x_n) > g(r_d) = r_d \), completando la inducción.
+
+    Finalmente, observamos que la sucesión \( \{x_n\} \) es monótona decreciente y está acotada inferiormente por \( r_d \), por lo que converge a un límite \( L \geq r_d \). Evaluando el límite en la ecuación de Newton-Raphson,
+\[
+L = L - \frac{f(L)}{f'(L)}.
+\]
+    Dado que \( f'(L) > 0 \), se deduce que \( f(L) = 0 \), lo que implica que \( L \) es una raíz de \( f(x) \). Como \( r_d \) es la única raíz mayor o igual a \( r_d \), concluimos que \( L = r_d \), demostrando que la sucesión de Newton-Raphson converge a \( r_d \).
+
+    Este resultado se tiene porque la función auxiliar \( g(x) = x - \frac{f(x)}{f'(x)} \), que define la iteración de Newton-Raphson, es continua para \( x > r_d \), garantizando que el comportamiento monótono de la sucesión se mantenga y que su límite sea efectivamente \( r_d \).
+
+
+    \begin{itemize}
+      \item[(b)] Para un polinomio,
+      \[
+      P(x) = a_d x^d + \dots + a_0, \quad a_d \neq 0,
+      \]
+        tal que sus \( d \) raíces son reales y distintas, se propone el siguiente método que aproxima los valores de todas sus raíces:
+        \begin{itemize}
+          \item[(a)] Se comienza con un valor \( x_0 \) mayor que
+          \[
+            M = \max \left( 1, \sum_{i=0}^{d-1} \frac{|a_i|}{|a_d|} \right).
+          \]
+          (Nota: \( M \) es una cota para el módulo de todas las raíces del polinomio).
+          \item[(b)] Se genera a partir de \( x_0 \) la sucesión de Newton-Raphson, que, según el ítem anterior, converge a la raíz más grande de \( P \), llamémosla \( r_d \); obteniéndose de este modo un valor aproximado \( \tilde{r}_d \).
+          \item[(c)] Se divide \( P \) por \( x - \tilde{r}_d \) y se desprecia el resto, dado que \( r_d \approx \tilde{r}_d \). Se redefine ahora \( P \) como el resultado de esta división y se comienza nuevamente desde el primer ítem, para hallar las otras raíces.
+        \end{itemize}  
+    Aplicar este método para aproximar todas las raíces del polinomio
+  \[
+    P(x) = 2x^3 - 4x + 1.
+  \]
+  \textbf{Solución:}\\
+  A continuación, se implementará el algoritmo descrito en MATLAB para el polinomio \( P(x) = 2x^3 - 4x + 1 \), utilizando el método de Newton-Raphson combinado con división polinómica para encontrar sus raíces reales.
+  \begin{lstlisting}
+% Programa para encontrar todas las raíces reales de un polinomio usando el método descrito
+
+% Definir el polinomio P(x) mediante sus coeficientes en orden descendente
+% Ejemplo: P(x) = 2x^3 -4x +1 (raíces: 1, 2, 3)
+original_coeffs = [2, 0, -4, 1]; % Guardar coeficientes originales
+
+% Parámetros
+tol = 1e-6;       % Tolerancia para la convergencia de Newton-Raphson
+max_iter = 100;   % Máximo número de iteraciones por raíz
+
+% Inicializar vectores
+d = length(original_coeffs) - 1;    % Grado inicial del polinomio
+current_coeffs = original_coeffs;   % Coeficientes del polinomio actual
+roots_approx = zeros(1, d);         % Almacenar las raíces aproximadas
+
+% Bucle para encontrar todas las raíces
+for k = d:-1:1
+    % Verificar que current_coeffs sea válido
+    if isempty(current_coeffs) || length(current_coeffs) < 2
+        error('Error: Coeficientes inválidos en iteración %d', k);
+    end
+    
+    % Paso (a): Calcular la cota M
+    ad = abs(current_coeffs(1));         % Coeficiente principal |a_d|
+    sum_abs = sum(abs(current_coeffs(2:end))) / ad;  % Sum |a_i|/|a_d|
+    M = max(1, sum_abs);
+    x0 = M + 1;  % Elegir x0 mayor que M
+    
+    fprintf('Iteración %d: M = %f, x0 = %f\n', k, M, x0);
+    
+    % Paso (b): Método de Newton-Raphson
+    x = x0;
+    for iter = 1:max_iter
+        % Evaluar P(x) y P'(x)
+        Px = polyval(current_coeffs, x);
+        P_prime_coeffs = polyder(current_coeffs);
+        P_prime_x = polyval(P_prime_coeffs, x);
+        
+        % Verificar derivada no nula
+        if abs(P_prime_x) < eps
+            error('Derivada cercana a cero en x = %f, iteración %d', x, k);
+        end
+        
+        % Actualizar x
+        x_new = x - Px / P_prime_x;
+        
+        % Comprobar convergencia
+        if abs(x_new - x) < tol
+            break;
+        end
+        x = x_new;
+        
+        if iter == max_iter
+            warning('Máximo de iteraciones alcanzado para la raíz %d.', k);
+        end
+    end
+    
+    % Guardar la raíz aproximada
+    r_tilde = x_new;
+    roots_approx(k) = r_tilde;
+    
+    % Paso (c): Dividir P(x) por (x - r_tilde)
+    [Q, R] = deconv(current_coeffs, [1, -r_tilde]);
+    current_coeffs = Q;  % Redefinir P(x) como el cociente
+    
+    fprintf('Raíz %d aproximada: %f\n', k, r_tilde);
+end
+
+% Mostrar resultados
+disp('Raíces aproximadas del polinomio:');
+disp(roots_approx);
+
+% Verificación con raíces exactas usando los coeficientes originales
+if ~isempty(original_coeffs)
+    exact_roots = roots(original_coeffs);
+    disp('Raíces exactas (para comparación):');
+    disp(sort(exact_roots)); % Ordenadas de menor a mayor
+else
+    disp('No se pueden calcular raíces exactas: coeficientes originales inválidos.');
+end
+  \end{lstlisting}
+  La implementación del algoritmo en MATLAB para el polinomio \( P(x) = 2x^3 - 4x + 1 \) produce los siguientes resultados:
+
+  \[
+  \begin{array}{ll}
+  \text{Iteración 3:} & M = 2.500000, \quad x_0 = 3.500000 \\
+                       & \text{Raíz 3 aproximada: } 1.267035 \\[5pt]
+  \text{Iteración 2:} & M = 1.661657, \quad x_0 = 2.661657 \\
+                       & \text{Raíz 2 aproximada: } 0.258652 \\[5pt]
+  \text{Iteración 1:} & M = 1.525687, \quad x_0 = 2.525687 \\
+                       & \text{Raíz 1 aproximada: } -1.525687 \\[5pt]
+  \end{array}
+  \]
+
+  Las raíces aproximadas del polinomio son:
+
+  \[
+  \begin{array}{ccc}
+    -1.5257 & 0.2587 & 1.2670
+  \end{array}
+  \]    
+
+  Para comparación, las raíces exactas son:
+
+  \[
+  \begin{array}{c}
+  -1.5257 \\
+  0.2587 \\
+  1.2670
+  \end{array}
+  \]
+
+  Por consiguiente, el método propuesto es una estrategia eficiente y ordenada para determinar todas las raíces reales de un polinomio. Al iniciar con un valor \( x_0 > M \), donde \( M \) es una cota basada en los coeficientes del polinomio, se garantiza la convergencia de la sucesión de Newton-Raphson hacia la raíz más grande. Posteriormente, al dividir el polinomio por \( (x - \tilde{r}_d) \), el problema se reduce de manera progresiva, transformándolo en una secuencia de cálculos más simples y asegurando que cada raíz se encuentre de manera estructurada.
+
+  Además, este enfoque aprovecha la convergencia cuadrática de Newton-Raphson, lo que permite obtener aproximaciones precisas en pocas iteraciones. A diferencia de otros métodos como la bisección, que requiere definir intervalos específicos, aquí se trabaja con una cota general basada en los coeficientes del polinomio, lo que lo hace práctico incluso sin un análisis previo. Su eficiencia y precisión lo convierten en una herramienta útil para calcular raíces de manera sistemática y sin depender de estimaciones iniciales cercanas a cada una.
+    \end{itemize}
+  \end{solucion}
 \end{homeworkProblem}
