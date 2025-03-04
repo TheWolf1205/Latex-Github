@@ -1,6 +1,56 @@
 \begin{homeworkProblem}
-  Pregunta
-  \begin{solution}
-    Solución
-  \end{solution}
+  Sea $f \in C[a,b]$, y sean $x_0= a,x_1 = a + h,\cdots,x_n=b$, donde $h=\frac{b-a}{n}$. Considerar la poligonal $l(x)$ que interpola a $f$ en los puntos $x_i,i=0,1,\cdots,n$. Probar que
+  \begin{enumerate}
+    \item \begin{align*}
+      |f(x)-l(x)|\leq \frac{h^2}{2}\max_{x\in[a,b]}|f^{\prime\prime}(x)|
+    \end{align*}
+      \begin{solucion}
+        Suponga el intervalo $[x_{i},x_{i+1}]$, entonces
+        \begin{align*}
+          l(x)&=\frac{f(x_{i+1})-f(x_i)}{h}(x-x_{i})+f(x_i),
+        \end{align*}
+        luego
+        \begin{align*}
+          l(x)=f(x_i)+f^{\prime}(x_i)(x-x_{i})+\frac{f^{\prime\prime}(\xi_1)}{2}(x_{i+1}-x_{i})(x-x_{i})
+        \end{align*}
+        de dónde podemos deducir
+        \begin{align*}
+          f(x)-l(x)=(f(x)-f(x_i))-(f^{\prime}(x_i)(x-x_i)+\frac{f^{\prime\prime}(\xi_1)}{2}(x_{i+1}-x_{i})(x-x_{i})
+        \end{align*}
+        Aplicando el teorema de Taylor en $f(x)$
+        \begin{align*}
+          f(x)-l(x)&=f^{\prime}(x_i)(x-x_i)+\frac{f^{\prime\prime}(\xi_2)}{2}(x-x_i)^2
+        \end{align*}
+        de lo que se puede afirmar que
+        \begin{align*}
+          f(x)-f(x_i)&=\frac{f^{\prime\prime}(\xi_2)}{2}(x-x_i)^2-\frac{f^{\prime\prime}(\xi_1)}{2}(x_{i+1}-x_{i})(x-x_i)\\
+          &=\frac{(x-x_i)}{2}\left( f^{\prime\prime}(\xi_2)(x-x_i)-f^{\prime\prime}(\xi_1)(x_{i+1}-x_{i}) \right) &&\text{Pero como $f\in C^2[a,b]$.}\\
+          &=\frac{(x-x_i)}{2}f^{\prime\prime}(\xi)((x-x_i)-(x_{i+1}-x_{i}))\\
+          &=\frac{f^{\prime\prime}(\xi)}{2}(x-x_i)(x-x_{i+1})
+        \end{align*}
+        luego usando esto se puede concluir que
+        \begin{align*}
+          |f(x)-l(x)|&=\left| \frac{f^{\prime\prime}(\xi)}{2}(x-x_i)(x-x_{i+1}) \right|\\
+          &=\frac{h^2}{2}\max_{x\in[a,b]}|f^{\prime\prime}(\xi)|
+        \end{align*}
+        lo que concluye el resultado.
+      \end{solucion}
+    \item \begin{align*}
+      |f^{\prime}(x)-l^{\prime}(x)|\leq h\max_{x\in[a,b]}|f^{\prime\prime}(x)|.
+    \end{align*}
+      \begin{solucion}
+        Recordemos que $l(x)=\frac{f(x_{i+1})-f(x_i)}{h}(x-x_{i})+f(x_i)$, luego  $l^{\prime}(x)=\frac{f(x_{i+1})-f(x_i)}{h}=f^{\prime}(c)$ para algún $c\in [x_{i},x_{i+1}]$. Ahora, aplicando el teorema de Taylor se tiene que:
+        \begin{align*}
+          f'(x)&=f'(x_i)+f^{\prime\prime}(\xi_1)(x-x_{i}),
+        \end{align*}
+        de lo que se sigue que
+        \begin{align*}
+          |f^{\prime}(x)-l^{\prime}(x)|&=|f^{\prime}(x_i)+f^{\prime\prime}(\xi_1)(x-x_i)-f^{\prime}(c)|\\
+          &=|f^{\prime}(x_i)+f^{\prime\prime}(\xi_1)(x-x_i)-f^{\prime}(x_i)-f^{\prime\prime}(\xi_2)(x-x_i)|\\
+          &=|f^{\prime\prime}(\xi_1)(x-x_i)-f^{\prime\prime}(\xi_2)(c-x_i)|\\
+          &\leq h\max_{x\in[a,b]}|f^{\prime\prime}|
+        \end{align*}
+        lo que concluye el resultado.
+      \end{solucion}
+  \end{enumerate}
 \end{homeworkProblem}
