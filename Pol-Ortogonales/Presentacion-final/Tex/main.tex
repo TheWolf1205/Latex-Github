@@ -1,0 +1,66 @@
+\documentclass{beamer}
+\usepackage{amsmath, amssymb, graphicx}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\title{Aplicaci\'on de los Polinomios de Zernike en la Resoluci\'on de EDPs}
+\author{Expositor: [Tu Nombre]}
+\date{[Fecha de la exposición]}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Introducción}
+    \begin{itemize}
+        \item ¿Por qué resolver EDPs en regiones circulares?
+        \item Aplicaciones en óptica, fluidos, electromagnetismo.
+        \item Métodos tradicionales y sus limitaciones.
+        \item Se propone el uso de los polinomios de Zernike, que son ortogonales en el disco unitario y permiten una mejor representación de soluciones en regiones circulares.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Polinomios de Zernike}
+    \begin{itemize}
+        \item Definición y propiedades.
+        \item Expansión en términos de \textbf{parte radial} y \textbf{parte azimutal}.
+        \item Comparación con bases ortogonales en el disco unitario.
+        \item \textbf{Animación}: Expansión de una función con polinomios de Zernike.
+    \end{itemize}
+    \centering
+    \includegraphics[width=0.7\textwidth]{zernike_expansion.png} % Incluir imagen de la animación
+\end{frame}
+
+\begin{frame}{Resolución de EDPs de Primer Orden}
+    \begin{itemize}
+        \item Forma general: $\alpha(x, y) \frac{\partial u}{\partial x} + \beta(x, y) \frac{\partial u}{\partial y} + \gamma(x, y) u = f(x, y)$.
+        \item Transformación a coordenadas polares.
+        \item Uso de matrices operacionales de integración.
+        \item Comparación con métodos tradicionales.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Resolución de EDPs de Segundo Orden}
+    \begin{itemize}
+        \item Caso especial: ecuación de Laplace en el disco unitario.
+        \item Transformación a un sistema de ecuaciones lineales $Ax = b$.
+        \item Comparación de métodos $l_1$ y $l_2$.
+        \item Estudio de errores y convergencia.
+        \item \textbf{Animación}: Solución numérica de una EDP con polinomios de Zernike.
+    \end{itemize}
+    \centering
+    \includegraphics[width=0.7\textwidth]{zernike_edp_solution.png} % Incluir imagen de la animación
+\end{frame}
+
+\begin{frame}{Conclusiones}
+    \begin{itemize}
+        \item Ventajas del método: manejo de discontinuidades, convergencia rápida.
+        \item Desafíos computacionales y posibles mejoras.
+        \item Aplicaciones futuras en modelado numérico.
+    \end{itemize}
+\end{frame}
+
+\end{document}
+

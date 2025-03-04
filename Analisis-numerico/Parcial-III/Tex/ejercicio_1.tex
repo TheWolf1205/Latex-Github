@@ -65,19 +65,27 @@
     \item Dar un algoritmo para aproximar la raíz de $f$ que converja cuadráticamente.
       \begin{solucion}
         Ahora veamos un algoritmo de convergencia cuadrática que nos permita aproximar la raíz.\\
-        Para obtener un algoritmo que converja cuadráticamente a la raíz $x = 1$, podemos usar el \textbf{método de Newton}:
+        Primero note que la raíz tiene multiplicidad 2, pues
         \begin{align*}
-            x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
+          x+\frac{1}{x}-2=&0\\
+          x^2-2x+1&=0\\
+          (x-1)^2&=0
         \end{align*}
-        Calculamos $f(x) = x + \frac{1}{x} - 2$ y su derivada:
+        Entonces, para obtener un algoritmo que converja cuadráticamente a la raíz $x = 1$, podemos usar el \textbf{método de Newton modificado}:
         \begin{align*}
-          f'(x) = 1 - \frac{1}{x^2}.
+          x_{n+1} = x_n - \frac{f(x_n)f^{\prime}(x_n)}{(f^{\prime}(x_n))^2-f(x_n)f^{\prime\prime}(x_n)}.
+        \end{align*}
+        Calculamos $f(x) = x + \frac{1}{x} - 2$ y sus derivadas:
+        \begin{align*}
+          f^{\prime}(x) = 1 - \frac{1}{x^2},\\
+          f^{\prime\prime}(x) = \frac{2}{x^{3}}.
         \end{align*}
         Aplicamos la fórmula de Newton:
         \begin{align*}
-          x_{n+1} = x_n - \frac{x_n + \frac{1}{x_n} - 2}{1 - \frac{1}{x_n^2}}.
+          x_{n+1} &= x_n - \frac{\left(x_n + \frac{1}{x_n} - 2\right)\left( 1-\frac{1}{x_n^2} \right)}{\left(1 - \frac{1}{x_n^2}\right)^2-\left( x_n-\frac{1}{x_n}-2 \right)\left( \frac{2}{x_n^3} \right)},\\
+          &=x_n - \frac{(x_n^2 + 1 - 2x_n) x_n^2 (x_n^2 - 1)}{(x_n^4 - 2x_n^2 + 1) - 2(x_n^2 + 1 - 2x_n)}.
         \end{align*}
-        Este método tiene \textbf{convergencia cuadrática}, lo que significa que el error disminuye aproximadamente como el cuadrado del error anterior en cada iteración. 
+        Este método tiene \textbf{convergencia cuadrática}, pues cumple que su raíz es de multiplicidad $2$, $f\in C^2$ para $x>0$, en particular para una vecindad de $1$ y los únicos problemas de divergencia se encuentran directamente en la raíz $1$ y $0$, por lo que no tendremos que preocuparnos por fallos en las iteraciones, así podemos estar seguros de la convergencia cuadrática del método, lo que significa que el error disminuye aproximadamente como el cuadrado del error anterior en cada iteración. 
       \end{solucion}
   \end{enumerate}
 \end{homeworkProblem}
