@@ -4,7 +4,7 @@
     I=\int_{0}^{1}\frac{4}{1+x^2}=\pi 
   \end{align*}
   \begin{enumerate}
-    \item Use las reglas compuestas del punto medio, del trapecio y de Simpson para aproximar $I$ para varios tamaños de paso de integración $h= \frac{1}{n}, n = 10,50, 100, 250, 500, 1000, 1500, 2000$. Grafique el logaritmo del error absoluto versus $n$ para cada paso. Describa el efecto de redondeo de los errores cuando $i\to 0$.
+    \item Use las reglas compuestas del punto medio, del trapecio y de Simpson para aproximar $I$ para varios tamaños de paso de integración $h= \frac{1}{n}, n = 10,50, 100, 250, 500, 1000, 1500, 2000$. Grafique el logaritmo del error absoluto versus $n$ para cada paso. Describa el efecto de redondeo de los errores cuando $h\to 0$.
       \begin{solucion}
         Veamos lo que sucede para cada caso:
         \begin{itemize}
@@ -69,7 +69,12 @@
         \begin{itemize}
           \item En la aplicación el método del punto medio aparenta ser superior al método del trapecio en cuestiones de errores y tiempo, no obstante la diferencia entre estos aparenta ser bastante baja para tenerlo en cuenta a la hora de realizar los cálculos y favorecer alguna de las $2$, por lo que no se descarta que el uso del método del trapecio sea más efectivo en otro tipos de problemas en los que quizás sea mejor considerar los términos de borde en la función.
           \item Es claro que el método de Simpson es mucho más preciso al momento de aproximar el resultado, pues, desde la propia teoría (la convergencia en orden $O(h^4)$) vimos que al refinar la malla el error se reduciría bastante rápido, por lo que vemos que rápidamente con tomar $n=250$ ya este había superado la precisión numérica de maquina al ser tan cercano a $0$ el error absoluto, situación que con los otros $2$ métodos no se alcanzó a concluir de igual forma.
-          \item Si bien en cuestión de tiempo vemos que aún podríamos permitirles a los métodos tener un refinamiento de malla aún más grande, es claro que al método de Simpson le fue suficiente con muy poco y que a los restantes $2$ métodos aparenta aún faltarle mucho al refinamiento de la malla para alcanzar la precisión numérica que tiene el método de Simpson. 
+          \item Si bien en cuestión de tiempo vemos que aún podríamos permitirles a los métodos tener un refinamiento de malla aún más grande, es claro que al método de Simpson le fue suficiente con muy poco y que a los restantes $2$ métodos aparenta aún faltarle mucho al refinamiento de la malla para alcanzar la precisión numérica que tiene el método de Simpson.
+          \item Hablando sobre el efecto de redondeo de los errores cuando $h\to 0$ podemos ver mucho más claro lo que sucede en el método Simpson, pues como antes comentamos, cuando $n=250$ ya alcanza el límite de precisión de maquina, no obstante en otros momentos vemos que el error se eleva, por lo que sería interesante ver que sucede con esto, veamos los errores imprimidos por el código.\\
+          $errores\, simpson =$1.0e-07, *, 0.396505779320933, 0.000025401902803, 0.000000390798505, 0, 0.000000004440892, 0, 0.000000004440892, 0.000000004440892\\
+          Podemos observar que, conforme $h$ disminuye, el error de redondeo comienza a jugar un papel crucial. En particular, en el método de Simpson, notamos que el error se reduce progresivamente hasta alcanzar el límite de precisión de la máquina, momento en el cual se observa un error de  $0$. Sin embargo, a pesar de llegar a este aparente "cero", el error vuelve a incrementarse en pasos posteriores.\\
+          Este comportamiento se debe a la acumulación de errores de redondeo en los cálculos numéricos. A medida que $h$ se hace más pequeño, el número de operaciones aritméticas necesarias para evaluar la integral aumenta, lo que introduce errores debidos a la precisión finita de la máquina. En consecuencia, en lugar de seguir disminuyendo indefinidamente, el error empieza a oscilar e incluso a aumentar en ciertos puntos debido a la pérdida de precisión numérica.
+          En resumen, aunque disminuir $h$ en principio reduce el error de truncamiento del método, llega un punto en el que el error de redondeo se vuelve dominante, lo que limita la precisión alcanzable en los cálculos numéricos.
         \end{itemize}
       \end{solucion}
     \item Implemente el método de integración de Romberg para calcular $I$. Grafiqué el logaritmo del error en los términos diagonales en la tabla de extrapolación versus $log(h)$. Verifique sus resultados con la teoría.
