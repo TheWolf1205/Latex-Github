@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\begin{document}
+
+Considere la funci\'on en $\mathbb{R}$ definida por
+\begin{equation*}
+    f(x) =
+    \begin{cases}
+        \frac{1}{|x| \ln^2 \left(\frac{1}{|x|}\right)}, & \text{si } |x| \leq \frac{1}{2}, x \neq 0, \\
+        0, & \text{en otro caso}.
+    \end{cases}
+\end{equation*}
+
+\textbf{(a)} Muestre que $f$ es integrable.
+
+\textbf{(b)} Muestre que dado $|x| \leq \frac{1}{2}$, existe $c > 0$ tal que
+\begin{equation*}
+    f^*(x) \geq \frac{c}{|x| \ln \left(\frac{1}{|x|}\right)}
+\end{equation*}
+para concluir que la funci\'on maximal $f^*$ no es localmente integrable.
+
+\textbf{Soluci\'on:}
+
+\textbf{(a)} Tenemos
+\begin{equation*}
+    \int_{\mathbb{R}} |f(x)| dx = 2 \int_{0}^{1/2} \frac{1}{x \ln^2 \left(\frac{1}{x}\right)} dx.
+\end{equation*}
+Usando $u = \ln \left(\frac{1}{x}\right)$, tenemos $du = -\frac{dx}{x}$, entonces
+\begin{equation*}
+    2 \int_{0}^{1/2} \frac{1}{x \ln^2 \left(\frac{1}{x}\right)} dx = -2 \int_{\ln(2)}^{\infty} \frac{1}{u^2} du = 2 \int_{\ln(2)}^{\infty} \frac{1}{u^2} du = -\frac{2}{u} \Big|_{\ln(2)}^{\infty} = \frac{2}{\ln(2)}.
+\end{equation*}
+
+\textbf{(b)} Para $0 < |x| < \frac{1}{2}$, tomemos $B = B(x; |x|)$, la bola centrada en $x$ y radio $|x|$, tenemos
+\begin{equation*}
+    \frac{1}{\mu(B)} \int_{B} |f(y)| dy = \frac{1}{2|x|} \int_{x - |x|}^{x + |x|} |f(y)| dy.
+\end{equation*}
+Si $0 < x < \frac{1}{2}$, entonces
+\begin{equation*}
+    \frac{1}{2|x|} \int_{x - |x|}^{x + |x|} |f(y)| dy = \frac{1}{2|x|} \int_{0}^{2|x|} |f(y)| dy \geq \frac{1}{2|x|} \int_{0}^{|x|} |f(y)| dy.
+\end{equation*}
+Evaluando la integral:
+\begin{equation*}
+    \frac{1}{2|x|} \int_{0}^{|x|} \frac{1}{y \ln \left(\frac{1}{y}\right)} dy = \frac{1}{2|x|} \int_{\ln(1/|x|)}^{\infty} \frac{1}{u^2} du = \frac{1}{2|x|} \left(-\frac{1}{u} \Big|_{\ln(1/|x|)}^{\infty}\right) = \frac{1}{2|x| \ln(1/|x|)}.
+\end{equation*}
+
+Si $-\frac{1}{2} < x < 0$, entonces el c\'alculo es an\'alogo, obteniendo el mismo resultado. Luego, por la definici\'on de funci\'on maximal, para $0 < |x| < \frac{1}{2}$,
+\begin{equation*}
+    f^*(x) \geq \frac{1}{2|x| \ln \left(\frac{1}{|x|}\right)}.
+\end{equation*}
+
+Integrando en una vecindad del $0$ de radio $\delta > 0$ tenemos
+\begin{equation*}
+    \int_{-\delta}^{\delta} f^*(x) dx \geq \int_{0}^{\delta} \frac{1}{x \ln \left(\frac{1}{x}\right)} dx.
+\end{equation*}
+Cambiando de variable $u = \ln(1/x)$,
+\begin{equation*}
+    \int_{0}^{\delta} \frac{1}{x \ln \left(\frac{1}{x}\right)} dx = \int_{\ln(1/\delta)}^{\infty} \frac{1}{u} du = \ln u \Big|_{\ln(1/\delta)}^{\infty} = \infty.
+\end{equation*}
+De manera que $f^*$ no es localmente integrable.\\
+
+Sea \( f: \mathbb{R}^n \to \mathbb{R} \) una función diferenciable en un punto \( x \in \mathbb{R}^n \). Queremos demostrar que:
+
+\[
+\lim_{r \to 0} \frac{1}{|B(x,r)|} \int_{B(x,r)} f(y) \, dy = f(x),
+\]
+
+donde \( B(x,r) \) es la bola de radio \( r \) centrada en \( x \) y \( |B(x,r)| \) denota su volumen.
+
+\subsection*{Demostración}
+
+Dado que \( f \) es diferenciable en \( x \), podemos escribir el desarrollo de Taylor de primer orden alrededor de \( x \):
+
+\[
+f(y) = f(x) + \nabla f(x) \cdot (y - x) + R(y),
+\]
+
+donde \( \nabla f(x) \) es el gradiente de \( f \) en \( x \) y \( R(y) \) es el término de residuo que satisface:
+
+\[
+\lim_{y \to x} \frac{R(y)}{|y - x|} = 0.
+\]
+
+Integrando sobre la bola \( B(x,r) \):
+
+\[
+\int_{B(x,r)} f(y) \, dy = \int_{B(x,r)} \left[ f(x) + \nabla f(x) \cdot (y - x) + R(y) \right] dy.
+\]
+
+Separando los términos:
+
+\[
+\int_{B(x,r)} f(y) \, dy = \int_{B(x,r)} f(x) \, dy + \int_{B(x,r)} \nabla f(x) \cdot (y - x) \, dy + \int_{B(x,r)} R(y) \, dy.
+\]
+
+Calculamos cada integral por separado:
+
+1. **Primer término:**
+
+\[
+\int_{B(x,r)} f(x) \, dy = f(x) \int_{B(x,r)} dy = f(x) |B(x,r)|.
+\]
+
+2. **Segundo término:**
+
+Dado que la bola \( B(x,r) \) es simétrica respecto a \( x \), la integral del término lineal se anula:
+
+\[
+\int_{B(x,r)} \nabla f(x) \cdot (y - x) \, dy = \nabla f(x) \cdot \int_{B(x,r)} (y - x) \, dy = \nabla f(x) \cdot 0 = 0.
+\]
+
+3. **Tercer término:**
+
+Para el término de residuo, utilizamos la condición de diferenciabilidad:
+
+\[
+\left| \int_{B(x,r)} R(y) \, dy \right| \leq \int_{B(x,r)} |R(y)| \, dy.
+\]
+
+Dado que \( \lim_{y \to x} \frac{R(y)}{|y - x|} = 0 \), para cualquier \( \epsilon > 0 \), existe \( \delta > 0 \) tal que si \( |y - x| < \delta \), entonces \( |R(y)| < \epsilon |y - x| \). Para \( r \) suficientemente pequeño, \( |R(y)| < \epsilon r \) para todo \( y \in B(x,r) \). Por lo tanto:
+
+\[
+\left| \int_{B(x,r)} R(y) \, dy \right| \leq \int_{B(x,r)} \epsilon r \, dy = \epsilon r |B(x,r)|.
+\]
+
+Dividiendo por \( |B(x,r)| \):
+
+\[
+\left| \frac{1}{|B(x,r)|} \int_{B(x,r)} R(y) \, dy \right| \leq \epsilon r.
+\]
+
+Tomando el límite cuando \( r \to 0 \):
+
+\[
+\lim_{r \to 0} \left| \frac{1}{|B(x,r)|} \int_{B(x,r)} R(y) \, dy \right| = 0.
+\]
+
+Sumando los términos:
+
+\[
+\frac{1}{|B(x,r)|} \int_{B(x,r)} f(y) \, dy = f(x) + \frac{1}{|B(x,r)|} \int_{B(x,r)} R(y) \, dy.
+\]
+
+Tomando el límite cuando \( r \to 0 \):
+
+\[
+\lim_{r \to 0} \frac{1}{|B(x,r)|} \int_{B(x,r)} f(y) \, dy = f(x).
+\]
+
+\subsection*{Conclusión}
+
+Hemos demostrado que el promedio de una función diferenciable sobre una bola centrada en \( x \) tiende al valor de la función en \( x \) cuando el radio de la bola tiende a cero.
+
+
+
+\end{document}
+
