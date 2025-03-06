@@ -1,132 +1,25 @@
 \documentclass{beamer}
-\mode<presentation>
-{
-  \usetheme{Boadilla}       % or try default, Darmstadt, Warsaw, ...
-  \usecolortheme{beaver} % or try albatross, beaver, crane, ...
-  \usefonttheme{serif}    % or try default, structurebold, ...
-  \setbeamertemplate{navigation symbols}{}
-  \setbeamertemplate{caption}[numbered]
-} 
-\setbeamertemplate{footline}
-{
-  \leavevmode%
-  \hbox{%
-  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}{Andrés Cadena (UNAL)}
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.37\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}{Polinomios de Zernikel}
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.28\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}{Marzo 4, 2025}
-  \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
-  \end{beamercolorbox}}%
-  \vskip0pt%
-}
-\def\Xint#1{\mathchoice
-{\XXint\displaystyle\textstyle{#1}}%
-{\XXint\textstyle\scriptstyle{#1}}%
-{\XXint\scriptstyle\scriptscriptstyle{#1}}%
-{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
-\!\int}
-\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
-\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
-\def\ddashint{\Xint=}
-\def\dashint{\Xint-}
-
-\newcommand{\norma}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
-    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\supp}{supp}
-
-%%%%%%%%Tikz stuff
-\usepackage{tikz} 
-\usepackage{pgfplots}
-\usepackage{hyperref}
-\usepackage{ upgreek }
-\usepackage{enumitem}
-\usepackage{enumerate}
-\usepackage{tcolorbox}
-\usetikzlibrary{intersections, pgfplots.fillbetween}
-\usepackage{tikz-3dplot}
-\pgfplotsset{compat=1.7}
-\usetikzlibrary{patterns}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, graphicx}
 \usepackage{natbib}
 \setcitestyle{year,open={(},close={)}}
 
-%Simbolo demostración
-\newcommand{\heart}{\begin{tikzpicture}[scale=0.001cm,rotate=180]
-\fill[black] (0,0) 
-        .. controls (0,-0.5) and (0.3,-1.8) .. (2,-2)
-        .. controls (4.2,-2) and (5.5,0) .. (5.5,3)
-        .. controls (5.5,5.5) and (3.5,7.5) .. (0,10)
-        .. controls (-3.5,7.5) and (-5.5,5.5) .. (-5.5,3)
-        .. controls (-5.5,0) and (-4.2,-2) .. (-2,-2)
-        .. controls (-0.3,-1.8) and (0,-0.5) .. (0,0);
-\end{tikzpicture}}
 
-\newcommand{\demostrado}[0]{ \begin{flushright} $\heart{}$ \end{flushright}}
+% Configuración del tema
+\usetheme{Madrid}
+\usecolortheme{seahorse}
 
-%sagetex
-%\usepackage{sagetex}
-
-\AtBeginSection[]
-  {
-     \begin{frame}<beamer>
-     \frametitle{Content}
-     \tableofcontents[currentsection]
-     \end{frame}
-  }
-  
- 
-  
-  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%New commands
-
-\newcommand{\sech}{\operatorname{sech}}
-%\DeclareMathOperator{\supp}{supp}
-\usepackage{xcolor}
-\usepackage{enumitem}
-\definecolor{mirojo}{RGB}{160,0,0}
-\setbeamercolor{section number projected}{bg=mirojo,fg=white}
-\setbeamercolor{subsection number projected}{bg=mirojo,fg=white}
-\setlist[enumerate]{label=\textcolor{mirojo}{\arabic*.}}
-\setbeamercolor{block title}{bg=mirojo,fg=white}
-\setbeamercolor{block body}{bg=mirojo!20,fg=black}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\title{Sobolev Spaces}
-\author{\texorpdfstring{ 
-Andrés David Cadena Simons \\
-Universidad Nacional de Colombia, Bogotá}{A}}
-
-\institute{ }
-\date{\footnotesize Marzo 4, 2025}
-
-\setbeamertemplate{itemize items}[default]
-\setbeamertemplate{enumerate items}[default]
+\title{Resolución de Ecuaciones Diferenciales Parciales con Polinomios de Zernike}
+\author{Andrés David Cadena Simons}
+\institute{Universidad Nacional de Colombia}
+\date{\today}
 
 \begin{document}
 
+% Portada
 \begin{frame}
-  \titlepage
-
-\end{frame}
-
-
-\begin{frame}{Content}
-  \tableofcontents
+    \titlepage
 \end{frame}
 
 \begin{frame}{Introducción}
@@ -136,6 +29,7 @@ Universidad Nacional de Colombia, Bogotá}{A}}
         \item Métodos espectrales tradicionales tienen dificultades con condiciones de frontera discontinuas.
         \item Se propone el uso de los polinomios de Zernike, que son ortogonales en el disco unitario y permiten una mejor representación de soluciones en regiones circulares.
     \end{itemize}
+    \cite{Datta2022}
 \end{frame}
 
 \begin{frame}{Polinomios de Zernike}
@@ -298,7 +192,6 @@ Para transformar la ecuación en un sistema lineal \( Ax = b \), utilizamos matr
 \end{figure}  
 \end{frame}
 
-
 % Ejemplo y Comparación de Métodos
 
 % Solución de PDEs de segundo orden
@@ -350,14 +243,11 @@ Para transformar la ecuación en un sistema lineal \( Ax = b \), utilizamos matr
 	\bibliography{references}
 \end{frame}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Fin de la presentación
 \begin{frame}
-\begin{center}
-  \Huge {\color{red} Thanks for your attention.} 
-\end{frame}
-\begin{frame}{Board}
+    \centering
+    \Huge ¡Gracias!
 \end{frame}
 
 \end{document}
+

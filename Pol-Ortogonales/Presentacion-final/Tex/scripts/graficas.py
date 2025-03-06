@@ -24,7 +24,7 @@ def u_zernike(r, theta, n_max=3):
     for n in range(n_max + 1):
         for m in range(0, n + 1, 2):  # Solo términos válidos
             R_nm = zernike_radial(n, m, r)
-            u_approx += R_nm * np.cos(m * theta)  # Aproximación
+            u_approx += R_nm * np.exp(r*np.cos(theta))  # Aproximación
     return u_approx
 
 # Crear malla en coordenadas polares
@@ -33,9 +33,11 @@ theta = np.linspace(0, 2 * np.pi, 100)
 R, Theta = np.meshgrid(r, theta)
 X, Y = R * np.cos(Theta), R * np.sin(Theta)
 
+n_dado = int(input("Escriba el grado del polinomio:"))
+
 # Evaluar soluciones
 U_exact = u_exact(R, Theta)
-U_approx = u_zernike(R, Theta, n_max=5)  # Mayor orden para mejor precisión
+U_approx = u_zernike(R, Theta, n_max=n_dado)  # Mayor orden para mejor precisión
 
 # Graficar soluciones
 fig = plt.figure(figsize=(12, 6))
