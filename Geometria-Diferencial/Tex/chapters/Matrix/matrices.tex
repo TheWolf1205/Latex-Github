@@ -1,0 +1,61 @@
+Una gran cantidad de los problemas que quizás el lector ha visto hasta el día de hoy tienen que ver con ecuaciones que relacionan variables entre sí. Una ecuación de este estilo es
+\begin{align*}
+  ax=b,
+\end{align*}
+que lo que busca es expresar la variable $b$ en términos de la variable $x$ y la constante $a$, se denomina \textbf{ecuación lineal}. El término lineal viene de como se puede representar gráficamente la ecuación anterior.\\
+Note que problemas similares se pueden extender a más variables de la siguiente forma:
+\begin{equation}\label{eq:1-lineal-n}
+  a_1x_1+a_2x_2+\cdots+a_nx_n=b,
+\end{equation}
+que expresa a $b$ en términos de $x_1,x_2,\cdots$ y $x_n$ junto a las constantes $a_1,a_2,\cdots$ y $a_n$, de nuevo a este tipo de problemas se les denomina \textbf{ecuación lineal}.\\
+Durante el desarrollo de estas notas nuestra intención será resolver problemas en los que se nos da $b$ y las constantes $a_1,a_2,\cdots$ y $a_n$ con el fin de encontrar $x_1,x_2,\cdots$ y $x_n$ denominados \textbf{incógnitas}, que resuelvan la ecuación $(\ref{eq:1-lineal-n})$.\\
+Diremos que una colección de números $s_1,s_2,\cdots$ y $s_n$ son solución de $(\ref{eq:1-lineal-n})$ si al tomar $x_1=s_1,x_2=s_2,\cdots$ y $x_n=s_n$ se satisface que:
+\begin{align*}
+  a_1s_1+a_2s_2+\cdots+a_ns_n=b,
+\end{align*}
+Un breve ejemplo de esto podría ser tomar $x_1=2$ y $x_2=9$ en la ecuación
+\begin{align*}
+  2x_1+3x_2=31,
+\end{align*}
+ya que
+\begin{align*}
+  2(2)+3(9)&=4+27\\
+  &=31.
+\end{align*}
+Ahora, con el fin de continuar con el desarrollo de manera más general diremos que un \textbf{sistema de $m$ ecuaciones lineales con $n$ incógnitas $x_1,x_2,\cdots$ y $x_n$} al que le llamaremos simplemente un \textbf{sistema lineal}, es un conjunto de $m$ ecuaciones lineales, cada una con $n$ incógnitas. Este mismo se podrá representar de la siguiente forma
+\begin{equation}\label{eq:1-sistema-lineal}
+  \begin{split}
+    a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=b_1\\
+    a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n&=b_2\\
+    \vdots \hspace{1.3cm} \vdots \hspace{1.3cm} \vdots \hspace{1.3cm} \vdots &\phantom{=} \hspace{0.2cm}\vdots\\ 
+    a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n&=b_m
+  \end{split}
+\end{equation}
+En dónde los subíndices $i$ y $j$ se usarán para mencionar la $i$-ésima ecuación y la $j$-ésima variable.\\
+De nuevo diremos que una colección de $n$ números es solución de $(\ref{eq:1-sistema-lineal})$ si estás son a su vez solución de cada una de las $m$ ecuaciones.\\
+Durante el desarrollo de las notas veremos algunos métodos que nos ayudarán a encontrar soluciones (en caso de haberlas) para problemas de este estilo, por ahora veamos un ejemplo.
+\begin{example}
+  El director de un fondo de inversión tiene \$100,000 para invertir. Las reglas del fondo establecen que la inversión debe hacerse tanto en certificados de depósito (CD), como a largo plazo. El objetivo del director es obtener un rendimiento de \$7,800 sobre las inversiones al cabo de un año. Los CD elegidos tienen un rendimiento de 5\% anual, mientras que el bono ofrece 9\% al año. El director determina cómo sigue la cantidad \( x \) que debe invertir en los CD, y la cantidad \( y \) que dedicará a comprar bonos:\\
+  Como la inversión total es de \$100,000, debemos tener \( x + y = 100,000 \). Toda vez que el rendimiento deseado es de \$7,800, obtenemos la ecuación \( 0.05x + 0.09y = 7,800 \). Por lo tanto, tenemos el sistema lineal
+  \begin{equation}\label{eq:1-3}
+    \begin{aligned}
+      x + y &= 100,000 \\
+      0.05x + 0.09y &= 7,800.
+    \end{aligned}
+  \end{equation}
+  Para eliminar \( x \), sumamos \( (-0.05) \) veces la primera ecuación a la segunda, para obtener
+  \begin{align*}
+    x + y &= 100,000 \\
+    0.04y &= 2,800,
+  \end{align*}
+  en donde la segunda ecuación no tiene término \( x \); en otras palabras, hemos eliminado la incógnita \( x \). Después despejamos \( y \) en la segunda ecuación, para obtener
+  \begin{align*}
+    y=70,000,
+  \end{align*}
+  y sustituyendo \( y \) en la primera ecuación de $(\ref{eq:1-3})$, obtenemos
+  \begin{align*}
+    x=30,000.
+  \end{align*}
+  Para comprobar que \( x = 30,000, y = 70,000 \) es una solución de (3), verificamos que estos valores de \( x \) y \( y \) satisfagan \textit{cada una} de las ecuaciones del sistema lineal dado. En consecuencia, el director del fondo debe invertir \$30,000 en los CD y \$70,000 en bonos a largo plazo.
+\end{example}
+

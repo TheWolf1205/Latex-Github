@@ -1,0 +1,33 @@
+\documentclass[a4paper,12pt]{book}
+\input{settings}
+
+\begin{document}
+
+% Portada
+\begin{titlepage}
+    \centering
+    {\Huge \textbf{Notas de Álgebra Lineal}}\\[2cm]
+    {\Large Autor: Andrés David Cadena Simons}\\[1cm]
+    {\Large \today}
+\end{titlepage}
+
+\chapter*{Introducción.}
+\input{introduction}
+
+% Índice
+\tableofcontents
+
+\chapter{Matrices.}
+\input{./chapters/Matrix/matrices.tex}
+\chapter{Determinantes.}
+\chapter{Vectores en $\mathbb{R}^{n}$.}
+\chapter{Espacios vectoriales reales.}
+\chapter{Valores propios, vectores propios y diagonalización.}
+\input{./chapters/V-Propios/v-propios.tex}
+
+% Bibliografía
+\bibliographystyle{plainnat}
+\bibliography{references}  
+
+\end{document}
+

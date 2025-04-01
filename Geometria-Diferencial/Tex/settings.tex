@@ -1,0 +1,80 @@
+% Paquetes esenciales
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{csquotes}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}  % Enlaces internos
+\usepackage{graphicx}  % Para incluir imágenes
+\usepackage{geometry}  % Márgenes más cómodos
+\usepackage[numbers]{natbib} % Bibliografía
+\geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+% Comandos renombrados o nuevos
+\newcommand{\x}{\textbf{x}}
+
+% norma 3 lineas
+\newcommand{\seminorm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+% norma alargada
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+% Definir colores personalizados para las cajas
+\definecolor{mygrayback}{RGB}{245, 245, 245}
+\definecolor{mygrayframe}{RGB}{80, 80, 80}
+\definecolor{mygrayframeproof}{RGB}{140, 140, 140}
+
+% Redefinir el ambiente de Teorema
+\newtcolorbox[auto counter, number within=section]{theorem}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Teorema~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Lema
+\newtcolorbox[auto counter, number within=section]{lemma}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Lema~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Proposición
+\newtcolorbox[auto counter, number within=section]{proposition}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Proposición~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Nota
+\newtcolorbox[auto counter, number within=section]{note}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Nota~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Corolario
+\newtcolorbox[auto counter, number within=section]{corollary}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Corolario~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Ejemplo
+\newtcolorbox[auto counter, number within=section]{example}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Ejemplo~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Definición
+\newtcolorbox[auto counter, number within=section]{definition}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Definición~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Notación
+\newtcolorbox[auto counter, number within=section]{notation}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Notación~\thetcbcounter: #2,#1, breakable}
+
+\renewenvironment{proof}[1][\proofname]{%
+  \begin{tcolorbox}[colback=mygrayback, colframe=mygrayframeproof, fonttitle=\bfseries, title=Demostración, breakable, #1]%
+}{%
+  \end{tcolorbox}
+}
+
+% Redefinir el ambiente de Solución
+\newtcolorbox{solution}[1][]{%
+  colback=mygrayback, colframe=mygrayframeproof, fonttitle=\bfseries, title=Solución,#1, breakable}
+
