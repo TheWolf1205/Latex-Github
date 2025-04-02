@@ -1,5 +1,5 @@
 \section{Transformada de Fourier.}
-  Insertar historía de la transformada de Fourier (1807) y la vida de Fourier (1768-1830).\\
+  Insertar historia de la transformada de Fourier (1807) y la vida de Fourier (1768-1830).\\
   Todo esto inspirado en la ecuación del calor
   \begin{align*}
     \begin{cases}
@@ -37,7 +37,7 @@
     \end{equation}
     donde $\xi\in\mathbb{R}^{n}$ y $x\cdot\xi$ es el producto punto entre $x$ y $\xi$. 
   \end{definition}
-  \begin{note}{}
+  \begin{note}{}\label{note:f-tranformada-sentido}
     Veamos que $\hat{f}$ tiene sentido como integral.\\
     Para ver esto note que
     \begin{align*}
@@ -52,7 +52,16 @@
     \end{align*}
     Lo que nos permite definir la transformada de Fourier como un operador $\hat{\phantom{f}}:L^{1}(\mathbb{R}^{n})\to L^{\infty}(\mathbb{R}^{n})$.
   \end{note}
-  Veamos el comportamiento de la transformada de Fourier anteriormente definida.
+  Para ver el comportamiento de la transformada de Fourier anteriormente definida en $L^{p}(\mathbb{R}^{n})$, veamos la siguiente definición.
+  \begin{definition}{}
+    Una función $f\in L^{p}(\mathbb{R}^{n})$ es diferenciable en $L^{p}(\mathbb{R}^{n})$ con respecto a la $k$-ésima variable si existe $g\in L^{p}(\mathbb{R}^{n})$ tal que
+    \begin{align*}
+      \lim_{|h| \to 0}\norm{\frac{f(x+he_{k}-f(x))}{h}-g(x)}_{p}=0,
+    \end{align*}
+    en donde $e_k$ es el vector $k$-ésimo de la base canónica de $\mathbb{R}^{n}$.
+    Si tal función $g$ existe es llamada la derivada parcial respecto a la $k$-ésima variable de $f$ en $L^{p}(\mathbb{R}^{n})$, lo denotaremos por $\frac{\partial f}{\partial x_{k}}$. 
+  \end{definition}
+  Ahora sí veamos el siguiente resultado.
   \begin{theorem}{}
     Sean $f,g\in L^{1}(\mathbb{R}^{n})$, entonces se satisface que
     \begin{enumerate}
@@ -60,7 +69,7 @@
       \item Si $\tau_{h}f(x)=f(x-h)$ con $h\in\mathbb{R}^{n}$, entonces
         \begin{align*}
           \hat{\tau_{h}f}(\xi)&=e^{-2\pi ih\cdot \xi}\hat{f}(\xi),\\
-          \tau_{h}\hat{f}(\xi)&=\hat{e^{2\pi ih\cdot x}f}(\xi).
+          \tau_{h}\hat{f}(\xi)&=\hat{e^{2\pi ix\cdot h}f}(\xi).
         \end{align*}
       \item $T:\mathbb{R}^{n}\to\mathbb{R}^{n}$ es transformación lineal invertible y $S=\left( T^{-1} \right)^{t}=\left( T^{t} \right)^{-1}$, entonces
         \begin{align*}
@@ -75,5 +84,86 @@
           \hat{f\circ T}(\xi)=\frac{1}{r^{n}}\hat{f}\left( \frac{\xi}{r} \right).
         \end{align*}
       \item Si $x^{\alpha}f\in L^{1}(\mathbb{R}^{n})$, para $|\alpha|\leq k$ entonces $\hat{f}\in C^{k}(\mathbb{R}^{n})$ y $\partial^{\alpha}\hat{f}=\hat{(-2\pi ix)^{\alpha}f}$.
+      \begin{itemize}
+        \item Si $f\in L^{1}(\mathbb{R}^{n})$ y $x_{k}f\in L^{1}(\mathbb{R}^{n})$, entonces 
+          \begin{align*}
+            \frac{\partial \hat{f}}{\partial \xi_k}=\hat{-2\pi ix_{k}f}(\xi)
+          \end{align*}
+          en la norma de $L^1(\mathbb{R}^{n})$.
+      \end{itemize}
+      \item Si $f\in C^{k}(\mathbb{R}^{n})$, $\partial^{\alpha}f\in L^{1}(\mathbb{R}^{n})$ para todo $|\alpha|\leq k$ y $\partial^{\alpha}f\in C^{0}_{\infty}(\mathbb{R}^{n})$ para todo $|\alpha|\leq k-1$, entonces
+        \begin{align*}
+          \hat{\partial^{\alpha}f}(\xi)=(2\pi i\xi)^{\alpha}\hat{f}(\xi).
+        \end{align*}
+        \begin{itemize}
+          \item Si $f\in L^{1}(\mathbb{R}^{n})$ y $g=\frac{\partial f}{\partial x_k}$ en la norma de $L^1(\mathbb{R}^{n})$, entonces
+            \begin{align*}
+              \hat{g}(\xi)=\hat{\frac{\partial f}{\partial x_k}}(\xi)=2\pi i\xi_{k}\hat{f}(\xi)
+            \end{align*}
+        \end{itemize}
     \end{enumerate}
   \end{theorem}
+  \begin{proof} 
+    \begin{enumerate}
+      \item $\norm{\hat{f}}_{\infty}\leq\norm{f}_{1}$.\\
+        Demostrado en la nota (\ref{note:f-tranformada-sentido}).
+      \item Si $\tau_{h}f(x)=f(x-h)$ con $h\in\mathbb{R}^{n}$, entonces
+        \begin{align*}
+          \hat{\tau_{h}f}(\xi)&=e^{-2\pi ih\cdot \xi}\hat{f}(\xi),\\
+          \tau_{h}\hat{f}(\xi)&=\hat{e^{2\pi ix\cdot h}f}(\xi).
+        \end{align*}
+        Note que
+        \begin{align*}
+          \hat{\tau_{h}f}(\xi)&=\int_{\mathbb{R}^{n}}f(x-h)e^{-2\pi ix\cdot\xi}\,dx &&\text{Haciendo $u=x-h$},\\
+          &=\int_{\mathbb{R}^{n}}f(u)e^{-2\pi i (u+h)\cdot\xi}\,du,\\
+          &=e^{-2\pi ih\cdot\xi}\int_{\mathbb{R}^{n}}f(u)e^{-2\pi i u\cdot\xi}\,du,\\
+          &=e^{-2\pi ih\cdot\xi} \hat{f}(\xi).
+        \end{align*}
+        Por otro lado
+        \begin{align*}
+          \tau_{h}\hat{f}(\xi)&=\hat{f}(\xi-h),\\
+          &=\int_{\mathbb{R}^{n}}f(x)e^{-2\pi ix\cdot (\xi-h)}\,dx,\\
+          &=\int_{\mathbb{R}^{n}}e^{2\pi ix\cdot h}f(x)e^{-2\pi ix\cdot \xi}\,dx,\\
+          &=\hat{e^{2\pi ix\cdot h}f}(\xi).
+        \end{align*}
+      \item $T:\mathbb{R}^{n}\to\mathbb{R}^{n}$ es transformación lineal invertible y $S=\left( T^{-1} \right)^{t}=\left( T^{t} \right)^{-1}$, entonces
+        \begin{align*}
+          \hat{f\circ T}=|det(T)|^{-1}\left( \hat{f}\circ S \right).
+        \end{align*}
+        En particular, si $T$ es una rotación
+        \begin{align*}
+          \hat{f\circ T}=\hat{f}\circ T.
+        \end{align*}
+        Si $T$ es dilatación (o contracción) $Tx=rx$, entonces
+        \begin{align*}
+          \hat{f\circ T}(\xi)=\frac{1}{r^{n}}\hat{f}\left( \frac{\xi}{r} \right).
+        \end{align*}
+        Note que
+        \begin{align*}
+          \hat{f\circ T}(\xi)&=\int_{\mathbb{R}^{n}}f(Tx)e^{-2\pi ix\cdot\xi}\,dx &&\text{Haciendo $u=Tx$,}\\
+          &=\int_{\mathbb{R}^{n}}f(u)e^{-2\pi i u\cdot S\xi}\,\frac{du}{|det(T)|},\\
+          &=|det(T)|^{-1}\hat{f}(S\xi),\\
+          &=|det(T)|^{-1}(\hat{f}\circ S)(\xi).
+        \end{align*}
+        Ahora, note que si $T$ es una rotación, entonces $|det(T)|=1$ 
+      \item Si $x^{\alpha}f\in L^{1}(\mathbb{R}^{n})$, para $|\alpha|\leq k$ entonces $\hat{f}\in C^{k}(\mathbb{R}^{n})$ y $\partial^{\alpha}\hat{f}=\hat{(-2\pi ix)^{\alpha}f}$.
+      \begin{itemize}
+        \item Si $f\in L^{1}(\mathbb{R}^{n})$ y $x_{k}f\in L^{1}(\mathbb{R}^{n})$, entonces 
+          \begin{align*}
+            \frac{\partial \hat{f}}{\partial \xi_k}=\hat{-2\pi ix_{k}f}(\xi)
+          \end{align*}
+          en la norma de $L^1(\mathbb{R}^{n})$.
+      \end{itemize}
+      \item Si $f\in C^{k}(\mathbb{R}^{n})$, $\partial^{\alpha}f\in L^{1}(\mathbb{R}^{n})$ para todo $|\alpha|\leq k$ y $\partial^{\alpha}f\in C^{0}_{\infty}(\mathbb{R}^{n})$ para todo $|\alpha|\leq k-1$, entonces
+        \begin{align*}
+          \hat{\partial^{\alpha}f}(\xi)=(2\pi i\xi)^{\alpha}\hat{f}(\xi).
+        \end{align*}
+        \begin{itemize}
+          \item Si $f\in L^{1}(\mathbb{R}^{n})$ y $g=\frac{\partial f}{\partial x_k}$ en la norma de $L^1(\mathbb{R}^{n})$, entonces
+            \begin{align*}
+              \hat{g}(\xi)=\hat{\frac{\partial f}{\partial x_k}}(\xi)=2\pi i\xi_{k}\hat{f}(\xi)
+            \end{align*}
+        \end{itemize}       
+    \end{enumerate} 
+  \end{proof}
+

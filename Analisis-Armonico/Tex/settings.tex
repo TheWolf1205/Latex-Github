@@ -78,11 +78,14 @@
   colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
   title=Notación~\thetcbcounter: #2,#1, breakable}
 
-\renewenvironment{proof}[1][\proofname]{%
-  \begin{tcolorbox}[colback=mygrayback, colframe=mygrayframeproof, fonttitle=\bfseries, title=Demostración, breakable, #1]%
-}{%
-  \end{tcolorbox}
-}
+% Eliminar la definición original de \proof
+\let\proof\relax
+\let\endproof\relax
+
+% Redefinir el ambiente de Demostración (sin usar caracteres especiales en la clave)
+\newtcolorbox{proof}[1][]{%
+  colback=mygrayback, colframe=mygrayframeproof, fonttitle=\bfseries,
+  title=Demostración, #1, breakable}
 
 % Redefinir el ambiente de Solución
 \newtcolorbox{solution}[1][]{%
