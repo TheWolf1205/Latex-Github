@@ -1,0 +1,79 @@
+\section{Transformada de Fourier.}
+  Insertar historía de la transformada de Fourier (1807) y la vida de Fourier (1768-1830).\\
+  Todo esto inspirado en la ecuación del calor
+  \begin{align*}
+    \begin{cases}
+      \partial_{t}U=\partial^{2}_{x}u,&\text{con $(x,t)\in(0,\pi)\times (0,\infty)$,}\\
+      u(0,t)=u(\pi,t)=0, &\text{para todo $t\geq 0$ },\\
+      u(x,0)=f(x)&f(0)=f(\pi)=0.
+    \end{cases}
+  \end{align*}
+  Fourier se inspira en buscar una solución de la forma separación de variables
+  \begin{align*}
+    u(x,t)&=X(x)T(t).
+  \end{align*}
+  Esto motiva a pensar en qué condiciones tiene que cumplir una función $f$ periódica de periodo $2\pi$ para poderla escribir como combinación lineal de funciones trigonométricas, es decir
+  \begin{align*}
+    f(x)=\sum_{k=0}^{\infty}a_{k}\cos(kx)+b_k\sen(kx).
+  \end{align*}
+  Por cuestiones de facilidad en la escritura vamos a pensar el problema en funciones de periodo $1$, para esto recordemos que
+  \begin{align*}
+    e^{ixk}=\cos(kx)+i\sen(kx),
+  \end{align*}
+  luego podemos reescribir la expresión anterior de la forma
+  \begin{align*}
+    f(x)=\sum_{k=-\infty}^{\infty}c_{k}e^{2\pi ixk}
+  \end{align*}
+  donde
+  \begin{align*}
+    c_{k}=\hat{f}(k)=\int_{0}^{1}f(x)e^{-2\pi i xk}\,dx,\quad\text{para todo $k\in\mathbb{Z}$.}
+  \end{align*}
+  El restante de teoría de Fourier se deja como lectura o motivante para entrar al curso de Series de Fourier.
+\section{La transformada de Fourier en $L^{p}(\mathbb{R}^{n})$.}
+  \begin{definition}{Transformada de Fourier en $L^{1}(\mathbb{R}^{n})$}
+    Sea $f\in L^{1}(\mathbb{R}^{n})$, llamaremos la transformada de Fourier de $f$ a $\hat{f}$ definida por
+    \begin{equation}
+      \hat{f}(\xi)=\int_{\mathbb{R}^{n}}f(x)e^{-2\pi i x\cdot \xi}\,dx,
+    \end{equation}
+    donde $\xi\in\mathbb{R}^{n}$ y $x\cdot\xi$ es el producto punto entre $x$ y $\xi$. 
+  \end{definition}
+  \begin{note}{}
+    Veamos que $\hat{f}$ tiene sentido como integral.\\
+    Para ver esto note que
+    \begin{align*}
+      \left| \hat{f}(\xi) \right|&\leq\left| \int_{\mathbb{R}^{n}}f(x)e^{-2\pi ix\cdot\xi}\,dx \right|,\\
+      &\leq \int_{\mathbb{R}^{n}}\left| f(x)e^{2\pi ix\cdot\xi} \right|\,dx,\\
+      &\leq \int_{\mathbb{R}^{n}}\left| f(x) \right|\,dx,\\
+      &\leq \norm{f}_{1}.
+    \end{align*}
+    luego se puede ver que
+    \begin{align*}
+      \norm{\hat{f}}_{\infty}\leq \norm{f}_{1}<\infty.
+    \end{align*}
+    Lo que nos permite definir la transformada de Fourier como un operador $\hat{\phantom{f}}:L^{1}(\mathbb{R}^{n})\to L^{\infty}(\mathbb{R}^{n})$.
+  \end{note}
+  Veamos el comportamiento de la transformada de Fourier anteriormente definida.
+  \begin{theorem}{}
+    Sean $f,g\in L^{1}(\mathbb{R}^{n})$, entonces se satisface que
+    \begin{enumerate}
+      \item $\norm{\hat{f}}_{\infty}\leq\norm{f}_{1}$.
+      \item Si $\tau_{h}f(x)=f(x-h)$ con $h\in\mathbb{R}^{n}$, entonces
+        \begin{align*}
+          \hat{\tau_{h}f}(\xi)&=e^{-2\pi ih\cdot \xi}\hat{f}(\xi),\\
+          \tau_{h}\hat{f}(\xi)&=\hat{e^{2\pi ih\cdot x}f}(\xi).
+        \end{align*}
+      \item $T:\mathbb{R}^{n}\to\mathbb{R}^{n}$ es transformación lineal invertible y $S=\left( T^{-1} \right)^{t}=\left( T^{t} \right)^{-1}$, entonces
+        \begin{align*}
+          \hat{f\circ T}=|det(T)|^{-1}\left( \hat{f}\circ S \right).
+        \end{align*}
+        En particular, si $T$ es una rotación
+        \begin{align*}
+          \hat{f\circ T}=\hat{f}\circ T.
+        \end{align*}
+        Si $T$ es dilatación (o contracción) $Tx=rx$, entonces
+        \begin{align*}
+          \hat{f\circ T}(\xi)=\frac{1}{r^{n}}\hat{f}\left( \frac{\xi}{r} \right).
+        \end{align*}
+      \item Si $x^{\alpha}f\in L^{1}(\mathbb{R}^{n})$, para $|\alpha|\leq k$ entonces $\hat{f}\in C^{k}(\mathbb{R}^{n})$ y $\partial^{\alpha}\hat{f}=\hat{(-2\pi ix)^{\alpha}f}$.
+    \end{enumerate}
+  \end{theorem}
