@@ -5,6 +5,40 @@
   \end{align*}
   Demuestre que $E$ es de Banach si y solamente si $\mathcal{K}$ es completo. 
   \begin{solution}
-    Solución
+    Supongamos que $E$ es de Banach y veamos que $\mathcal{K}$ es completo.\\
+    Razonemos por contradicción.\\
+    Suponga $\{x_n\}\subset \mathcal{K}$ sucesión de Cauchy que converge a $x\notin \mathcal{K}$ cuando $n\to\infty$, es decir, $\norm{x}\neq 1$.\\
+    Primero, note que como $\{x_n\}$ es una sucesión de Cauchy, dado $\epsilon>0$ existe $N>0$ tal que si $n>N$, entonces 
+    \begin{align*}
+      \norm{x-x_n}<\epsilon.
+    \end{align*}
+    Suponga $\epsilon<\left|\norm{x}-1\right|$, luego sabemos que existe $N>0$ tal que si $n>N$ se satisface que 
+    \begin{align*}
+      \left| \norm{x}-1 \right|&\leq\left| \norm{x}-\norm{x_n} \right|,\\
+      &\leq\norm{x-x_n},\\
+      &< \epsilon,\\
+      &< \left| \norm{x}-1 \right|.
+    \end{align*}
+    Lo cual es una contradicción, luego $x\in\mathcal{K}$ y por ende $\mathcal{K}$ es completo.\\
+    Por otro lado, supongamos que $\mathcal{K}$ es completo y veamos que esto implica que $E$ es de Banach.\\
+    Primero, recuerde que $0\in E$, por lo que si tomamos $\{x_k\}\subset E$ sucesión de Cauchy obviaremos el caso en el que esta converge a $0$.\\ 
+    De nuevo, razonemos por contradicción.\\
+    Suponga que $E$ no es de Banach, entonces existe $\{x_n\}\subset E$ sucesión de Cauchy tal que $x_n\to x$ con $x\notin E$ cuando $n\to\infty$.\\
+    Ahora, como $\{x_n\}$ es de Cauchy, entonces se tiene que dado $\epsilon>0$ existe $N>0$ tal que si $n,m>N$ entonces
+    \begin{align*}
+      \norm{x_n-x_m}<\epsilon.
+    \end{align*}
+    Siendo así, suponga $\epsilon_0$ tal que se obtiene un $N_0>0$ adecuado que le satisface que existe $m>N_0$ que cumpla que $x_m=0$, luego
+    \begin{align*}
+      \norm{x_n-x_m}=\norm{x_n}<\epsilon_0.
+    \end{align*}
+    Tome $\{x_k\}$ como esa subsucesión que le satisface que $\norm{x_k}<\epsilon_0$.\\
+    Note que $\{\norm{x_k}\}\subset \mathbb{R}$ es una sucesión acotada y por ende convergente a algún $l\in\mathbb{R}$.
+    Ahora suponga $\{y_k\}=\left\{\frac{x_k}{\norm{x_k}}\right\}\subset\mathcal{K}$ y note que como $\mathcal{K}$ es completo, entonces existe $y\in \mathcal{K}$ tal que $y_k\to y\in \mathcal{K}$ cuando $k\to\infty$, luego
+    \begin{align*}
+      y&=\lim_{k \to \infty}\frac{x_k}{\norm{x_k}},\\
+      &=\frac{x}{l}.
+    \end{align*}
+    De lo que se puede concluir que $ly=x$, luego como $(E,\norm{\cdot})$ es un espacio vectorial, entonces $ly\in E$, luego $x\in E$. 
   \end{solution}
 \end{homeworkProblem}
