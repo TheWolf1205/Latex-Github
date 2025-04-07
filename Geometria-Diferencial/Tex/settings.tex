@@ -11,10 +11,20 @@
 \usepackage{graphicx}  % Para incluir imágenes
 \usepackage{geometry}  % Márgenes más cómodos
 \usepackage[numbers]{natbib} % Bibliografía
+\usepackage{pdfpages}
 \geometry{left=3cm, right=3cm, top=3cm, bottom=3cm}
 
 % Comandos renombrados o nuevos
 \newcommand{\x}{\textbf{x}}
+
+% widehat y widecheck
+\DeclareFontFamily{U}{mathx}{}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+\renewcommand{\check}{\widecheck}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\check}{\widecheck}
 
 % norma 3 lineas
 \newcommand{\seminorm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
@@ -68,11 +78,14 @@
   colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
   title=Notación~\thetcbcounter: #2,#1, breakable}
 
-\renewenvironment{proof}[1][\proofname]{%
-  \begin{tcolorbox}[colback=mygrayback, colframe=mygrayframeproof, fonttitle=\bfseries, title=Demostración, breakable, #1]%
-}{%
-  \end{tcolorbox}
-}
+% Eliminar la definición original de \proof
+\let\proof\relax
+\let\endproof\relax
+
+% Redefinir el ambiente de Demostración (sin usar caracteres especiales en la clave)
+\newtcolorbox{proof}[1][]{%
+  colback=mygrayback, colframe=mygrayframeproof, fonttitle=\bfseries,
+  title=Demostración, #1, breakable}
 
 % Redefinir el ambiente de Solución
 \newtcolorbox{solution}[1][]{%

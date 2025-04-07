@@ -1,5 +1,7 @@
 \section{Transformada de Fourier.}
-  Insertar historia de la transformada de Fourier (1807) y la vida de Fourier (1768-1830).\\
+  La transformada de Fourier tiene sus orígenes a principios del siglo XIX, cuando el matemático y físico francés Joseph Fourier (1768–1830) introdujo una revolucionaria idea al estudiar la propagación del calor. En 1807, presentó ante la Academia de Ciencias de París un manuscrito titulado \emph{Théorie de la propagation de la chaleur dans les solides}, en el cual proponía que cualquier función, bajo ciertas condiciones, podía expresarse como una serie infinita de senos y cosenos. Aunque sus ideas no fueron inmediatamente aceptadas —en parte por las dudas de sus contemporáneos sobre la legitimidad de representar funciones discontinuas mediante series trigonométricas—, con el tiempo se reconoció la profundidad de su enfoque y su enorme potencial analítico.\\
+  Joseph Fourier nació en Auxerre, Francia, en 1768. Huérfano desde pequeño, ingresó a una escuela militar donde recibió una sólida formación matemática. Participó activamente en los cambios políticos de su época, y más tarde acompañó a Napoleón en la expedición a Egipto, donde mostró gran interés por la ciencia y la cultura de aquel país. A su regreso a Francia, ocupó diversos cargos administrativos y académicos, y fue nombrado prefecto del departamento de Isère. Durante su estancia en Grenoble desarrolló gran parte de sus investigaciones sobre la ecuación del calor, trabajo que culminó en su obra maestra \emph{Théorie analytique de la chaleur}, publicada en 1822.\\
+  El impacto de las ideas de Fourier ha sido inmenso, extendiéndose mucho más allá de la física del calor. La noción de representar funciones como sumas de funciones armónicas abrió las puertas al análisis de señales, la mecánica cuántica, la teoría de la información, y múltiples ramas de la matemática pura y aplicada. La transformada de Fourier, como se conoce hoy en día, constituye una herramienta esencial en análisis armónico, proporcionando un puente entre el dominio temporal o espacial y el dominio frecuencial.\\
   Todo esto inspirado en la ecuación del calor
   \begin{align*}
     \begin{cases}
@@ -101,18 +103,14 @@
               \hat{g}(\xi)=\hat{\frac{\partial f}{\partial x_k}}(\xi)=2\pi i\xi_{k}\hat{f}(\xi)
             \end{align*}
         \end{itemize}
+      \item $\hat{f*g}=\hat{f}\hat{g}$.
+      \item $\int_{\mathbb{R}^{n}}\hat{\xi}g(\xi)\,d\xi=\int_{\mathbb{R}^{n}}f(x)\hat{g}(x)\,ds$
     \end{enumerate}
   \end{theorem}
   \begin{proof} 
     \begin{enumerate}
-      \item $\norm{\hat{f}}_{\infty}\leq\norm{f}_{1}$.\\
-        Demostrado en la nota (\ref{note:f-tranformada-sentido}).
-      \item Si $\tau_{h}f(x)=f(x-h)$ con $h\in\mathbb{R}^{n}$, entonces
-        \begin{align*}
-          \hat{\tau_{h}f}(\xi)&=e^{-2\pi ih\cdot \xi}\hat{f}(\xi),\\
-          \tau_{h}\hat{f}(\xi)&=\hat{e^{2\pi ix\cdot h}f}(\xi).
-        \end{align*}
-        Note que
+      \item Demostrado en la nota (\ref{note:f-tranformada-sentido}).
+      \item Note que
         \begin{align*}
           \hat{\tau_{h}f}(\xi)&=\int_{\mathbb{R}^{n}}f(x-h)e^{-2\pi ix\cdot\xi}\,dx &&\text{Haciendo $u=x-h$},\\
           &=\int_{\mathbb{R}^{n}}f(u)e^{-2\pi i (u+h)\cdot\xi}\,du,\\
@@ -126,19 +124,7 @@
           &=\int_{\mathbb{R}^{n}}e^{2\pi ix\cdot h}f(x)e^{-2\pi ix\cdot \xi}\,dx,\\
           &=\hat{e^{2\pi ix\cdot h}f}(\xi).
         \end{align*}
-      \item $T:\mathbb{R}^{n}\to\mathbb{R}^{n}$ es transformación lineal invertible y $S=\left( T^{-1} \right)^{t}=\left( T^{t} \right)^{-1}$, entonces
-        \begin{align*}
-          \hat{f\circ T}=|det(T)|^{-1}\left( \hat{f}\circ S \right).
-        \end{align*}
-        En particular, si $T$ es una rotación
-        \begin{align*}
-          \hat{f\circ T}=\hat{f}\circ T.
-        \end{align*}
-        Si $T$ es dilatación (o contracción) $Tx=rx$, entonces
-        \begin{align*}
-          \hat{f\circ T}(\xi)=\frac{1}{r^{n}}\hat{f}\left( \frac{\xi}{r} \right).
-        \end{align*}
-        Note que
+      \item Note que
         \begin{align*}
           \hat{f\circ T}(\xi)&=\int_{\mathbb{R}^{n}}f(Tx)e^{-2\pi ix\cdot\xi}\,dx &&\text{Haciendo $u=Tx$,}\\
           &=\int_{\mathbb{R}^{n}}f(u)e^{-2\pi i u\cdot S\xi}\,\frac{du}{|det(T)|},\\
@@ -146,13 +132,9 @@
           &=|det(T)|^{-1}(\hat{f}\circ S)(\xi).
         \end{align*}
         Ahora, note que si $T$ es una rotación, entonces $|det(T)|=1$ 
-      \item Si $x^{\alpha}f\in L^{1}(\mathbb{R}^{n})$, para $|\alpha|\leq k$ entonces $\hat{f}\in C^{k}(\mathbb{R}^{n})$ y $\partial^{\alpha}\hat{f}=\hat{(-2\pi ix)^{\alpha}f}$.
+      \item Note que esto se puede reducir a verlo en una primera derivada y de manera inductiva se concluye el resultado, por lo que será suficiente ver el siguiente ítem.
       \begin{itemize}
-        \item Si $f\in L^{1}(\mathbb{R}^{n})$ y $x_{k}f\in L^{1}(\mathbb{R}^{n})$, entonces 
-          \begin{align*}
-            \frac{\partial \hat{f}}{\partial \xi_k}=\hat{-2\pi ix_{k}f}(\xi)
-          \end{align*}
-          en la norma de $L^1(\mathbb{R}^{n})$.
+        \item X
       \end{itemize}
       \item Si $f\in C^{k}(\mathbb{R}^{n})$, $\partial^{\alpha}f\in L^{1}(\mathbb{R}^{n})$ para todo $|\alpha|\leq k$ y $\partial^{\alpha}f\in C^{0}_{\infty}(\mathbb{R}^{n})$ para todo $|\alpha|\leq k-1$, entonces
         \begin{align*}
@@ -164,6 +146,7 @@
               \hat{g}(\xi)=\hat{\frac{\partial f}{\partial x_k}}(\xi)=2\pi i\xi_{k}\hat{f}(\xi)
             \end{align*}
         \end{itemize}       
+      \item $\hat{f*g}=\hat{f}\hat{g}$.
     \end{enumerate} 
   \end{proof}
-
+Continuará...
