@@ -7,19 +7,19 @@ Repositorio para subir trabajos o talleres de la U :p.
 # Contenido
 <details>
 <summary><strong>Análisis Numérico</strong></summary>
-  - Taller 1. 
-    - [Taller.](./Analisis-numerico/Taller-1/Taller1.pdf) 
-    - [Colab.](./Analisis-numerico/Taller-1/Tarea1_númerico.ipynb)
-    - [Solución.](./Analisis-numerico/Taller-1/Taller1-Solucion.pdf) 
-  - Taller 2
-    - [Taller.](./Analisis-numerico/Taller-2/Taller2.pdf) 
-    - [Solución.](./Analisis-numerico/Taller-2/Tex/main.pdf)
-  - Taller 3
-    - [Taller.](./Analisis-numerico/Taller-3/Taller3.pdf)
-    - [Solución.](./Analisis-numerico/Taller-3/Tex/main.pdf)
-  - Parcial III
-    - [Parcial.](./Analisis-numerico/Parcial-III/parcial3.pdf)
-    - [Solución.](./Analisis-numerico/Parcial-III/Tex/main.pdf)
+- Taller 1. 
+  - [Taller.](./Analisis-numerico/Taller-1/Taller1.pdf) 
+  - [Colab.](./Analisis-numerico/Taller-1/Tarea1_númerico.ipynb)
+  - [Solución.](./Analisis-numerico/Taller-1/Taller1-Solucion.pdf) 
+- Taller 2
+  - [Taller.](./Analisis-numerico/Taller-2/Taller2.pdf) 
+  - [Solución.](./Analisis-numerico/Taller-2/Tex/main.pdf)
+- Taller 3
+  - [Taller.](./Analisis-numerico/Taller-3/Taller3.pdf)
+  - [Solución.](./Analisis-numerico/Taller-3/Tex/main.pdf)
+- Parcial III
+  - [Parcial.](./Analisis-numerico/Parcial-III/parcial3.pdf)
+  - [Solución.](./Analisis-numerico/Parcial-III/Tex/main.pdf)
 </details>
 
 - Variable Compleja.
