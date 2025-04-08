@@ -7,6 +7,39 @@
     \item $\norm{T}=\inf\{M>0:\norm{Tx}_{F}\leq M\norm{x}_{E}, \text{ para todo }x\in E\}$.
   \end{enumerate}
   \begin{solution}
-    Solución
+    \begin{enumerate}[(i)]
+      \item Note que como $T$ es un operador lineal, podemos obviar el caso en el que $x=0$, pues $\norm{Tx}_{F}=0\leq 0=\norm{T}\norm{x}_{E}$.\\
+        Ahora, con el fin de simplificar la idea, si tomamos $x\neq 0$, entonces podemos reescribir $y=\frac{x}{\norm{x}_{E}}$.\\
+        Siendo así, note que dado $y$ por propiedades del supremo se satisface que
+        \begin{align*}
+          \norm{Ty}_{F}&\leq \sup_{\substack{y\in E\\ \norm{y}_{E}\leq 1}}\norm{Ty}_{F} &&\text{Reescribiendo la norma y multiplicando a la derecha por $\norm{y}_{E}=1$,}\\
+          \norm{Ty}_{F}&\leq \norm{T}\norm{y}_{E} &&\text{Reescribiendo $y=\frac{x}{\norm{x}_{E}}$ y usando la linealidad de la norma y el operador,}\\
+          \frac{1}{\norm{x}_{E}}\norm{Tx}_{E}&\leq \frac{1}{\norm{x}_{E}}\norm{T}\norm{x}_{E},
+        \end{align*}
+        Lo que implica que $\norm{Tx}_{F}\leq \norm{T}\norm{x}_{E}$, luego como se toma $y$ arbitrario se extiende el resultado a todo $x\in E$ y por ende se concluye el resultado.
+      \item Note que por la linealidad de la norma y el operador podemos asegurar que
+        \begin{align*}
+          \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}&=\sup_{\substack{x\in E\\x\neq 0}}\left\|T\frac{x}{\norm{x}_{E}}\right\|_{F},\\
+          &=\sup_{\substack{x\in E\\x\neq 0}}\norm{Ty}_{F} &&\text{como $y$ es unitario y distinto de $0$},\\
+          &\leq \sup_{\substack{x\in E\\\norm{x}\leq 1}}\norm{Tx}_{F},\\
+          &\leq \norm{T}.
+        \end{align*}
+        Por otro lado veamos que si asumimos que $\norm{x}\leq 1$, entonces
+        \begin{align*}
+          \norm{T}&= \sup_{\substack{x\in E\\\norm{x}_{E}\leq 1}}\norm{Tx}_{F},\\
+          &\leq \sup_{\substack{x\in E\\ \norm{x}_{E}\leq 1}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}},\\
+          &\leq \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}.
+        \end{align*}
+        Ya que $\{x\in E:\norm{x}_{E}\leq 1\}\subset E$ y omitimos el caso en el que $x=0$ ya que $Tx=0$ y por ende no es el supremo del conjunto a menos de que $T$ sea el operador nulo.
+      \item Note que si usamos la linealidad del operador y de la norma podemos ver que
+        \begin{align*}
+          \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}=\sup_{\substack{x\in E\\\norm{x}=1}}\norm{Tx}_{F}
+        \end{align*}
+        luego usando (II) podemos afirmar que
+        \begin{align*}
+          \norm{T}=\sup_{\substack{x\in E\\\norm{x}=1}}\norm{Tx}_{F}.
+        \end{align*}
+      \item Note que el conjunto de los $M$ que satisfacen la condición del conjunto no son afectados cuando se divide por la norma de $x$ en ambos lados de la desigualdad, es decir, podemos suponer que los $x$ dados en la condición del conjunto son unitarios. Luego la condición se transforma en ver el menor de los $M>0$ que satisface $\norm{Tx}_{F}\leq M$ para todo $x\in E$ que satisface $\norm{x}_{E}=1$, luego por (III) podemos afirmar que este $M$ es precisamente $\norm{T}$. 
+    \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
