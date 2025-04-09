@@ -1,6 +1,19 @@
 \begin{homeworkProblem}
   Sean $(E,\norm{\cdot}_{E})$, $(F,\norm{\cdot}_{F})$ espacios vectoriales normales. Suponga que $F$ es un espacio de Banach. Muestre que $L(E,F)$ es un espacio de Banach con la norma usual de $L(E,F)$. En particular, $E^{*}=L(E,\mathbb{R}),E^{**}=L(E^{*},\mathbb{R})$ son espacios de Banach. 
   \begin{solution}
-    Solución
+    Dado $T\in L(E,F)$ definimos la norma de $L(E,F)$ como
+    \begin{align*}
+      \norm{T}&=\sup_{\substack{x\in E\\\norm{x}_{E}=1}}\norm{Tx}_{F}.
+    \end{align*}
+    Suponga $\{T_n\}\subset L(E,F)$ sucesión de Cauchy y veamos que esta converge a $T\in L(E,F)$.\\
+    Note que como $\{T_n\}$ es sucesión de Cauchy, entonces se cumple que dado $\epsilon>0$ existe $N>0$ tal que si $n,m>N$, entonces
+    \begin{align*}
+      \norm{T_n-T_m}<\epsilon
+    \end{align*}
+    Pero note que
+    \begin{align*}
+      \norm{T_n-T_m}&=\sup_{\substack{x\in E\\ \norm{x}_{E}=1}}\norm{T_{n}x-T_{m}x}_{F}<\epsilon.
+    \end{align*}
+    Luego dado $x\in E$ unitario se cumple que $\{T_nx\}\subset F$ es una sucesión de Cauchy, pero como $F$ es Banach, se puede concluir que $\{T_nx\}\to g\in F$ cuando $n\to\infty$. 
   \end{solution}
 \end{homeworkProblem}
