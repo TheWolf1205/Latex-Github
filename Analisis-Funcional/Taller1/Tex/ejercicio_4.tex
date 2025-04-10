@@ -10,10 +10,21 @@
     \begin{align*}
       \norm{T_n-T_m}<\epsilon
     \end{align*}
-    Pero note que
+    Pero note que dado $x\in E$ (distinto del nulo) podemos tomar $\epsilon$ de la forma $\frac{\epsilon}{\norm{x}_{E}}>0$ que nos permite afirmar que 
     \begin{align*}
-      \norm{T_n-T_m}&=\sup_{\substack{x\in E\\ \norm{x}_{E}=1}}\norm{T_{n}x-T_{m}x}_{F}<\epsilon.
+      \norm{T_nx-T_mx}_{F}&\leq \norm{T_n-T_m}\norm{x}_{E},\\
+      &<\frac{\epsilon}{\norm{x}_{E}}\norm{x}_{E},\\
+      &<\epsilon.
     \end{align*}
-    Luego dado $x\in E$ unitario se cumple que $\{T_nx\}\subset F$ es una sucesión de Cauchy, pero como $F$ es Banach, se puede concluir que $\{T_nx\}\to g\in F$ cuando $n\to\infty$. 
+    Luego $\{T_nx\}\subset F$ es una sucesión de Cauchy, luego como $F$ es Banach, podemos afirmar que $T_{n}x\to g_x\in F$ cuando $n\to \infty$.\\
+    Siendo así, dado $x$ podemos definir un $g_x$ de la forma anterior, por lo que vamos a definir $T:E\to F$ como $Tx=g_x$, luego podemos afirmar que $T_n\to T$ cuando $n\to \infty$. Ahora, veamos que $T\in L(E,F)$.\\
+    Sea $\alpha$ un escalar y $x,y\in E$, entonces 
+    \begin{align*}
+      T(\alpha x+y)&=\lim_{n \to \infty}T_{n}(\alpha x+y),\\
+      &=\lim_{n \to \infty}\alpha T_{n}(x)+T_{n}(y),\\
+      &=\alpha \lim_{n \to \infty}T_{n}(x)+\lim_{n \to \infty}T_{n}(y),\\
+      &=\alpha Tx + Ty.
+    \end{align*}
+    Luego $T\in L(E,F)$ lo que concluye el resultado esperado. 
   \end{solution}
 \end{homeworkProblem}
