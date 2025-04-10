@@ -33,12 +33,12 @@
       \norm{x_n-x_m}=\norm{x_n}<\epsilon_0.
     \end{align*}
     Tome $\{x_k\}$ como esa subsucesión que le satisface que $\norm{x_k}<\epsilon_0$.\\
-    Note que $\{\norm{x_k}\}\subset \mathbb{R}$ es una sucesión acotada y por ende convergente a algún $l\in\mathbb{R}$.
+    Note que $\{\norm{x_k}\}\subset \mathbb{R}$ es una sucesión acotada en un compacto, luego sabemos que existe una subsucesión convergente, con la intención de no saturar la notación la tomaremos indexada por $k$ y convergente a algún $l\in\mathbb{R}$.\\
     Ahora suponga $\{y_k\}=\left\{\frac{x_k}{\norm{x_k}}\right\}\subset\mathcal{K}$ y note que como $\mathcal{K}$ es completo, entonces existe $y\in \mathcal{K}$ tal que $y_k\to y\in \mathcal{K}$ cuando $k\to\infty$, luego
     \begin{align*}
       y&=\lim_{k \to \infty}\frac{x_k}{\norm{x_k}},\\
       &=\frac{x}{l}.
     \end{align*}
-    De lo que se puede concluir que $ly=x$, luego como $(E,\norm{\cdot})$ es un espacio vectorial, entonces $ly\in E$, luego $x\in E$. 
+    De lo que se puede concluir que $ly=x$, luego como $(E,\norm{\cdot})$ es un espacio vectorial, entonces $ly\in E$, luego $x\in E$, lo que es una contradicción, pues desde un principio establecimos que $x\notin E$. Luego podemos concluir que $x\in E$ y por ende que $E$ es un espacio de Banach. 
   \end{solution}
 \end{homeworkProblem}

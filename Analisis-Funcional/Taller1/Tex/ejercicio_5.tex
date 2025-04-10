@@ -56,7 +56,40 @@
         \end{align*}
         es decir, las normas $\norm{\cdot}_{2}$ y $\norm{\cdot}_{3}$ son equivalentes, luego como estas son arbitrarias se puede concluir que todas las normas asignadas a $E$ son equivalentes.
       \item Suponga $T:E\to F$ transformación lineal.\\
-        Note que como $E$ es de dimensión finita, podemos asumir que existe una base $\mathcal{B}:=\{e_1,e_2,\cdot,e_n\}$ 
+        Note que como $E$ es de dimensión finita, podemos asumir que existe una base $\mathcal{B}:=\{e_1,e_2,\cdot,e_n\}$, luego dado $x\in E$ lo podemos expresar de la forma
+        \begin{align*}
+          x=\sum_{i=1}^{n}x_ie_i.
+        \end{align*}
+        Ahora, note que como $T$ es una transformación lineal entonces se cumple que
+        \begin{align*}
+          \norm{Tx}_{F}&=\norm{T\left( \sum_{i=1}^{n}x_ie_i \right)}_{F},\\
+          &\leq\sum_{i=1}^{n}|x_i|\norm{Te_i}_{F},\\
+          &\leq\sum_{i=1}^{n}|x_i|\max_{i=1,\cdots,n}\norm{Te_i}_{F},\\
+          &\leq \max_{i=1,\cdots,n}\norm{Te_i}_{F} \norm{x}_{E},\\
+          &\leq M\norm{x}_{E}.
+        \end{align*}
+        Si tomamos $M=\max_{i=1,\cdots,n}\norm{Te_i}_{F}$, luego $\norm{Tx}_{F}\leq M\norm{x}_{E}$ y por ende el operador es continuo, luego como se tomó $T$ arbitrario se concluye que toda transformación lineal de $E$ a $F$ con $E$ de dimensión finita es continua.
+      \item Suponga $T:(C[0,2],\norm{\cdot}_{1}\to(C[0,2],\norm{\cdot}_{\infty}))$ tal que $Tf=f$.\\
+      Suponga 
+      \begin{align*}
+        f_k(x)= 
+        \begin{cases}
+          0, &\text{ si } x\in[0,\frac{2k-1}{2k}]\cup[\frac{2k+1}{2k},2] \text{,} \\
+          2k^2x-2a^2+a, &\text{ si } x\in[\frac{2k-1}{2k},1],\\
+          -2k^2x+2a^2+a, &\text{ si } x\in[1,\frac{2k+1}{2k}].
+        \end{cases}
+      \end{align*}
+      Se puede verificar que $\norm{f_k}_{1}=1$, no obstante note que $f_{k}(1)=k$, por lo que funciona como ejemplo para verificar que
+      \begin{align*}
+        \sup_{\substack{f\in C[0,1]\\ \norm{f}_{1}=1}}\norm{f}_{\infty}=\infty.
+      \end{align*}
+      Con la intención de ser gráfico con el ejercicio veamos la gráfica para algunos valores de $k$.
+      \begin{figure}[H]
+      \begin{center}
+        \includegraphics[scale=0.3]{Figures/graficacontraejemplo.png}
+      \end{center}
+        \caption{$f_k(x)$ con $k=1,2,5$ y $10$.}
+      \end{figure} 
     \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
