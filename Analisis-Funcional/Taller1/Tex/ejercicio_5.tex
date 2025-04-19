@@ -8,11 +8,12 @@
   \begin{solution}
     \begin{enumerate}[(i)]
       \item Suponga $\norm{\cdot}_{1}$ y $\norm{\cdot}_{2}$ normas de $E$ espacio vectorial de dimensión finita.\\
-        En particular, como $E$ es de dimensión finita sabemos que existe una base $\mathcal{B}=\{e_1,e_2,\cdot,e_n\}\subset E$ tal que si tomamos $x\in E$, entonces
+        En particular, como $E$ es de dimensión finita sabemos que existe una base\\
+        $\mathcal{B}=\{e_1,e_2,\cdots,e_n\}\subset E$ tal que si tomamos $x\in E$, entonces
         \begin{align*}
           x=\sum_{i=1}^{n}x_ie_i, &&\text{con $x_i$ escalares de $E$.}
         \end{align*}
-        Ahora, fijemos $\norm{x}_1$ como $\norm{e_i}_1=1$, luego 
+        Ahora, fijemos $\norm{x}_1$ como 
         \begin{align*}
           \norm{x}_{1}=\sum_{i=1}^{n}|x_i|
         \end{align*}
@@ -24,7 +25,7 @@
           &\leq \max_{i=1,\cdot,n}\norm{e_i}_{2}\sum_{i=1}^{n}|x_i|,\\
           &\leq c_{2}\norm{x}_{1}.
         \end{align*}
-        Por otro lado, queremos ver que existe $c_1>0$ tal que $c_1\norm{x}_{1}\leq \norm{x}_{2}$ para todo $x\in E$, en particular, note que si definimos $A=\{x\in E: \norm{x}_{1}\}$, nos queda que $c_1\leq \norm{x}_{2}$ para todo $x\in A$.\\
+        Por otro lado, queremos ver que existe $c_1>0$ tal que $c_1\norm{x}_{1}\leq \norm{x}_{2}$ para todo $x\in E$, en particular, note que si definimos $A=\{x\in E: \norm{x}_{1}=1\}$, nos queda que esperamos que se cumpla $c_1\leq \norm{x}_{2}$ para todo $x\in A$.\\
         Note que como $A$ es cerrado y acotado (en $\norm{\cdot}_{1}$) y $E$ es de dimensión finita, entonces $A$ es compacto, además, veamos que $\norm{x}_{2}$ es continua en la topología de $\norm{\cdot}_{1}$.
         Note que dado $\epsilon>0$ existe $\delta=\frac{\epsilon}{c_2}>0$ tal que si
         \begin{align*}
@@ -56,7 +57,8 @@
         \end{align*}
         es decir, las normas $\norm{\cdot}_{2}$ y $\norm{\cdot}_{3}$ son equivalentes, luego como estas son arbitrarias se puede concluir que todas las normas asignadas a $E$ son equivalentes.
       \item Suponga $T:E\to F$ transformación lineal.\\
-        Note que como $E$ es de dimensión finita, podemos asumir que existe una base $\mathcal{B}:=\{e_1,e_2,\cdot,e_n\}$, luego dado $x\in E$ lo podemos expresar de la forma
+        Note que como $E$ es de dimensión finita, podemos asumir que existe una base\\
+        $\mathcal{B}:=\{e_1,e_2,\cdots,e_n\}$, luego dado $x\in E$ lo podemos expresar de la forma
         \begin{align*}
           x=\sum_{i=1}^{n}x_ie_i.
         \end{align*}
@@ -69,14 +71,14 @@
           &\leq M\norm{x}_{E}.
         \end{align*}
         Si tomamos $M=\max_{i=1,\cdots,n}\norm{Te_i}_{F}$, luego $\norm{Tx}_{F}\leq M\norm{x}_{E}$ y por ende el operador es continuo, luego como se tomó $T$ arbitrario se concluye que toda transformación lineal de $E$ a $F$ con $E$ de dimensión finita es continua.
-      \item Suponga $T:(C[0,2],\norm{\cdot}_{1}\to(C[0,2],\norm{\cdot}_{\infty}))$ tal que $Tf=f$.\\
+      \item Suponga $T:(C[0,2],\norm{\cdot}_{1})\to(C[0,2],\norm{\cdot}_{\infty})$ tal que $Tf=f$.\\
       Suponga 
       \begin{align*}
         f_k(x)= 
         \begin{cases}
-          0, &\text{ si } x\in[0,\frac{2k-1}{2k}]\cup[\frac{2k+1}{2k},2] \text{,} \\
-          2k^2x-2a^2+a, &\text{ si } x\in[\frac{2k-1}{2k},1],\\
-          -2k^2x+2a^2+a, &\text{ si } x\in[1,\frac{2k+1}{2k}].
+          0, &\text{ si } x\in\left[0,\frac{2k-1}{2k}\right]\cup\left[\frac{2k+1}{2k},2\right] \text{,} \\
+          2k^2x-2k^2+k, &\text{ si } x\in\left[\frac{2k-1}{2k},1\right],\\
+          -2k^2x+2k^2+k, &\text{ si } x\in\left[1,\frac{2k+1}{2k}\right].
         \end{cases}
       \end{align*}
       Se puede verificar que $\norm{f_k}_{1}=1$, no obstante note que $f_{k}(1)=k$, por lo que funciona como ejemplo para verificar que
@@ -86,7 +88,7 @@
       Con la intención de ser gráfico con el ejercicio veamos la gráfica para algunos valores de $k$.
       \begin{figure}[H]
       \begin{center}
-        \includegraphics[scale=0.3]{Figures/graficacontraejemplo.png}
+        \includegraphics[scale=0.33]{Figures/graficacontraejemplo.png}
       \end{center}
         \caption{$f_k(x)$ con $k=1,2,5$ y $10$.}
       \end{figure} 

@@ -13,11 +13,11 @@
         Siendo así, note que dado $y$ por propiedades del supremo se satisface que
         \begin{align*}
           \norm{Ty}_{F}&\leq \sup_{\substack{y\in E\\ \norm{y}_{E}\leq 1}}\norm{Ty}_{F} &&\text{Reescribiendo la norma y multiplicando a la derecha por $\norm{y}_{E}=1$,}\\
-          \norm{Ty}_{F}&\leq \norm{T}\norm{y}_{E} &&\text{Reescribiendo $y=\frac{x}{\norm{x}_{E}}$ y usando la linealidad de la norma y el operador,}\\
+          \norm{Ty}_{F}&\leq \norm{T}\norm{y}_{E} &&\text{Reescribiendo $y=\frac{x}{\norm{x}_{E}}$ y usando la sublinealidad de la norma y el operador,}\\
           \frac{1}{\norm{x}_{E}}\norm{Tx}_{E}&\leq \frac{1}{\norm{x}_{E}}\norm{T}\norm{x}_{E},
         \end{align*}
         Lo que implica que $\norm{Tx}_{F}\leq \norm{T}\norm{x}_{E}$, luego como se toma $y$ arbitrario se extiende el resultado a todo $x\in E$ y por ende se concluye el resultado.
-      \item Note que por la linealidad de la norma y el operador podemos asegurar que
+      \item Note que por la sublinealidad de la norma y el operador podemos asegurar que
         \begin{align*}
           \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}&=\sup_{\substack{x\in E\\x\neq 0}}\left\|T\frac{x}{\norm{x}_{E}}\right\|_{F},\\
           &=\sup_{\substack{x\in E\\x\neq 0}}\norm{Ty}_{F} &&\text{como $y$ es unitario y distinto de $0$},\\
@@ -31,7 +31,7 @@
           &\leq \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}.
         \end{align*}
         Ya que $\{x\in E:\norm{x}_{E}\leq 1\}\subset E$ y omitimos el caso en el que $x=0$ ya que $Tx=0$ y por ende no es el supremo del conjunto a menos de que $T$ sea el operador nulo.
-      \item Note que si usamos la linealidad del operador y de la norma podemos ver que
+      \item Note que si usamos la sublinealidad del operador y de la norma podemos ver que
         \begin{align*}
           \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}=\sup_{\substack{x\in E\\\norm{x}=1}}\norm{Tx}_{F}
         \end{align*}
