@@ -17,7 +17,19 @@
       &<\epsilon.
     \end{align*}
     Luego $\{T_nx\}\subset F$ es una sucesión de Cauchy, luego como $F$ es Banach, podemos afirmar que $T_{n}x\to g_x\in F$ cuando $n\to \infty$.\\
-    Siendo así, dado $x$ podemos definir un $g_x$ de la forma anterior, por lo que vamos a definir $T:E\to F$ como $Tx=g_x$, luego podemos afirmar que $T_n\to T$ cuando $n\to \infty$. Ahora, veamos que $T\in L(E,F)$.\\
+    Siendo así, dado $x$ podemos definir un $g_x$ de la forma anterior, por lo que vamos a definir $T:E\to F$ como $Tx=g_x$, luego podemos afirmar que $T_n\to T$ puntualmente cuando $n\to \infty$.\\
+    Ahora veamos que la convergencia realmente es uniforme, es decir que $\norm{T-T_n}\to 0$ cuando $n\to \infty$.\\
+    Para eso, tomamos un $\epsilon > 0$, y como $\{T_n\}$ es Cauchy en $L(E,F)$, existe $N$ tal que para todo $n, m > N$,
+    $$\|T_n - T_m\| < \frac{\epsilon}{2}.$$
+    En particular, fijando $m$ y tomando el límite cuando $n \to \infty$, usando la convergencia puntual $T_n \to T$, podemos aplicar lo siguiente:\\
+    Sea $x \in E$ con $\|x\|_E \leq 1$, entonces
+    $$\|T_n x - T x\|_F = \lim_{m \to \infty} \|T_n x - T_m x\|_F \leq \limsup_{m \to \infty} \|T_n - T_m\| \cdot \|x\|_E < \frac{\epsilon}{2}.$$
+    Tomando el supremo sobre todas las $x$ con $\|x\|_E \leq 1$, se obtiene:
+    $$\|T_n - T\| = \sup_{\|x\|_E \leq 1} \|T_n x - T x\|_F < \frac{\epsilon}{2},$$
+    para todo $n$ suficientemente grande. Por tanto,
+    $$\|T_n - T\| \to 0,$$
+    lo cual muestra que la convergencia es uniforme.\\
+    Ahora, veamos que $T\in L(E,F)$.\\
     Sea $\alpha$ un escalar y $x,y\in E$, entonces 
     \begin{align*}
       T(\alpha x+y)&=\lim_{n \to \infty}T_{n}(\alpha x+y),\\

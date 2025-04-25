@@ -12,25 +12,27 @@
         Ahora, con el fin de simplificar la idea, si tomamos $x\neq 0$, entonces podemos reescribir $y=\frac{x}{\norm{x}_{E}}$.\\
         Siendo así, note que dado $y$ por propiedades del supremo se satisface que
         \begin{align*}
-          \norm{Ty}_{F}&\leq \sup_{\substack{y\in E\\ \norm{y}_{E}\leq 1}}\norm{Ty}_{F} &&\text{Reescribiendo la norma y multiplicando a la derecha por $\norm{y}_{E}=1$,}\\
-          \norm{Ty}_{F}&\leq \norm{T}\norm{y}_{E} &&\text{Reescribiendo $y=\frac{x}{\norm{x}_{E}}$ y usando la sublinealidad de la norma y el operador,}\\
-          \frac{1}{\norm{x}_{E}}\norm{Tx}_{E}&\leq \frac{1}{\norm{x}_{E}}\norm{T}\norm{x}_{E},
+          \norm{Ty}_{F}&\leq \sup_{\substack{y\in E\\ \norm{y}_{E}\leq 1}}\norm{Ty}_{F} &&\text{Reescribiendo la norma.}\\
+          \norm{Ty}_{F}&\leq \norm{T} &&\text{Reescribiendo $y=\frac{x}{\norm{x}_{E}}$ y usando la sublinealidad de la norma y el operador,}\\
+          \frac{1}{\norm{x}_{E}}\norm{Tx}_{F}&\leq \norm{T},
         \end{align*}
         Lo que implica que $\norm{Tx}_{F}\leq \norm{T}\norm{x}_{E}$, luego como se toma $y$ arbitrario se extiende el resultado a todo $x\in E$ y por ende se concluye el resultado.
       \item Note que por la sublinealidad de la norma y el operador podemos asegurar que
         \begin{align*}
           \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}&=\sup_{\substack{x\in E\\x\neq 0}}\left\|T\frac{x}{\norm{x}_{E}}\right\|_{F},\\
           &=\sup_{\substack{x\in E\\x\neq 0}}\norm{Ty}_{F} &&\text{como $y$ es unitario y distinto de $0$},\\
+          &\leq \sup_{\substack{x\in E\\\norm{x}\leq 1\\ x\neq 0}}\norm{Tx}_{F},\\
           &\leq \sup_{\substack{x\in E\\\norm{x}\leq 1}}\norm{Tx}_{F},\\
           &\leq \norm{T}.
         \end{align*}
-        Por otro lado veamos que si asumimos que $\norm{x}\leq 1$, entonces
+        Por otro lado veamos que 
         \begin{align*}
           \norm{T}&= \sup_{\substack{x\in E\\\norm{x}_{E}\leq 1}}\norm{Tx}_{F},\\
-          &\leq \sup_{\substack{x\in E\\ \norm{x}_{E}\leq 1}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}},\\
+          &=\sup_{\substack{x\in E\\\norm{x}_{E}\leq 1\\x\neq 0}}\norm{Tx}_{F}\\
+          &\leq \sup_{\substack{x\in E\\ \norm{x}_{E}\leq 1\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}},\\
           &\leq \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}.
         \end{align*}
-        Ya que $\{x\in E:\norm{x}_{E}\leq 1\}\subset E$ y omitimos el caso en el que $x=0$ ya que $Tx=0$ y por ende no es el supremo del conjunto a menos de que $T$ sea el operador nulo.
+        Ya que $\{x\in E:\norm{x}_{E}\leq 1\}\subset E$.
       \item Note que si usamos la sublinealidad del operador y de la norma podemos ver que
         \begin{align*}
           \sup_{\substack{x\in E\\x\neq 0}}\frac{\norm{Tx}_{F}}{\norm{x}_{E}}=\sup_{\substack{x\in E\\\norm{x}=1}}\norm{Tx}_{F}
@@ -39,7 +41,17 @@
         \begin{align*}
           \norm{T}=\sup_{\substack{x\in E\\\norm{x}=1}}\norm{Tx}_{F}.
         \end{align*}
-      \item Note que el conjunto de los $M$ que satisfacen la condición del conjunto no son afectados cuando se divide por la norma de $x$ en ambos lados de la desigualdad, es decir, podemos suponer que los $x$ dados en la condición del conjunto son unitarios. Luego la condición se transforma en ver el menor de los $M>0$ que satisface $\norm{Tx}_{F}\leq M$ para todo $x\in E$ que satisface $\norm{x}_{E}=1$, luego por (III) podemos afirmar que este $M$ es precisamente $\norm{T}$. 
+      \item Note que el conjunto de los $M$ que satisfacen la condición del conjunto no son afectados cuando se divide por la norma de $x$ en ambos lados de la desigualdad, es decir, podemos suponer que los $x$ dados en la condición del conjunto son unitarios. Luego la condición se transforma en ver el ínfimo de los $M>0$ que satisface $\norm{Tx}_{F}\leq M$ para todo $x\in E$ que satisface $\norm{x}_{E}=1$. Luego por (III) podemos afirmar que $\norm{T}$ satisface la condición de que $\norm{Tx}_{F}\leq \norm{T}$ para todo $x$ tal que $\norm{x}=1$.\\
+      Ahora veamos que este es el ínfimo de los $M$.\\
+      Note que como
+      \begin{align*}
+        \sup_{\substack{x\in E\\\norm{x}=1}}\norm{Tx}_{F}=\norm{T}
+      \end{align*}
+      Por caracterización del supremo se cumple que dado $\epsilon>0$ arbitrario se cumple que siempre existe algún $x\in E$ tal que
+      \begin{align*}
+        \norm{T}-\epsilon < \norm{Tx}_{F} \leq \norm{T}
+      \end{align*}
+      Luego, si suponemos $M_0$ cómo el ínfimo del conjunto inicial tal que $M_0<\norm{T}$, entonces por la caracterización del supremo mencionada anteriormente existe un $x\in E$ tal que $M_0\leq \norm{Tx}_{F}\leq \norm{T}$, lo que sería una contradicción, pues $M_0$ cumple que $\norm{Tx}_{F}\leq M_0$ para todo $x\in E$ tal que $\norm{x}=1$, por lo que podemos afirmar que $\norm{T}=\inf\{M>0:\norm{Tx}_{F}\leq M\norm{x},\text{ para todo $x\in E$ }\}$, lo que concluye el ejercicio. 
     \end{enumerate}
   \end{solution}
 \end{homeworkProblem}

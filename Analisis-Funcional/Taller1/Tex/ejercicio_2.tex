@@ -12,7 +12,7 @@
   \begin{solution}
     \begin{itemize}
       \item (I)$\to$(II).\\
-        Este sentido es trivial.
+        Note que el hecho de que $T$ sea una tranformación lineal continua es lo mismo que decir que es continua en todo punto $x\in E$, en particular, si tomamos $x=0\in E$ podemos concluir que $T$ es continua en cero.
       \item (II)$\to$(III).\\
         Note que si tomamos $\epsilon=1$ tenemos que existe un $\delta>0$ tal que si $\norm{x}_{E}<\delta$, entonces $\norm{Tx}_{F}<1$.\\
         Ahora, dado $x\in E$ arbitrario suponga $y=\frac{\delta}{2\norm{x}}x$, note que $\norm{y}<\delta$ y por ende $\norm{Ty}_{F}<1$, luego se sigue que
@@ -21,27 +21,27 @@
         \end{align*}
         lo que implica que
         \begin{align*}
-          \norm{Tx}_{F}<M\norm{x}_{E}
+          \norm{Tx}_{F}\leq M\norm{x}_{E}
         \end{align*}
-        En dónde $M$ es una constante tal que $M\leq\frac{2}{\delta}$, lo que concluye en que el operador $T$ es acotado.
+        En dónde $M$ es una constante tal que $M=\frac{2}{\delta}$, lo que concluye en que el operador $T$ es acotado.
       \item (III)$\to$(IV).\\
         Note que como $T$ es un operador acotado, significa que para todo $x\in \overline{B(0,1)}$ se cumple que $\norm{Tx}_{F}\leq M$, luego podemos asegurar que $T\left( \overline{B(0,1)} \right)\subseteq B_{F}(0,M)$, lo que concluye el resultado esperado.
       \item (IV)$\to$(I).\\
         Note que (IV) nos dice que la imagen directa $T\left( \overline{B(0,1)} \right)\subseteq B_{F}(0,M)$, en particular $T\left( B(0,1) \right)\subseteq B_{F}(0,M)$, es decir, que para todo $x\in B(0,1)$ se satisface que $\norm{Tx}_{F}\leq M$, ahora, veamos que dados $u,v\in E$ y $\epsilon>0$ existe $\delta=\frac{\epsilon}{M}>0$ tal que si:
         \begin{align*}
-          \norm{u-v}_{E}<\delta
+          \norm{u-v}_{E}\leq\delta
         \end{align*}
         entonces
         \begin{align*}
-          \norm{\frac{1}{\delta}u-v}_{E}<1
+          \norm{\frac{1}{\delta}\left(u-v\right)}_{E}\leq 1
         \end{align*}
         luego
         \begin{align*}
-          \norm{T\left( \frac{1}{\delta}u-v \right)}_{F}<M
+          \norm{T\left( \frac{1}{\delta}\left(u-v\right) \right)}_{F}\leq M
         \end{align*}
         lo que implica que
         \begin{align*}
-          \norm{Tu-Tv}_{F}<M\delta=\epsilon.
+          \norm{Tu-Tv}_{F}\leq M\delta=\epsilon.
         \end{align*}
         Lo que nos permite concluir que $T$ es un operador continuo. 
     \end{itemize}

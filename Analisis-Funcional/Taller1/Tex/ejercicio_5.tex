@@ -40,7 +40,7 @@
         \end{align*}
         Luego, como $\norm{\cdot}_{2}$ es continua en $\norm{\cdot}_{1}$, como $A$ es compacto, entonces $\norm{x}_{2}$ alcanza su mínimo en $A$, es decir, existe $z\in A$ tal que $\norm{z}_{2}\leq \norm{x}_{2}$ para todo $x\in A$, luego podemos definir $c_1=\norm{z}_{2}$, por lo que podemos concluir que existen constantes $c_1,c_2>0$ tales que
         \begin{align*}
-          c_1\norm{x}\leq \norm{x}_{2}\leq c_2\norm{x}_{1} &&\text{para todo $x\in E$.}
+          c_1\norm{x}_1\leq \norm{x}_{2}\leq c_2\norm{x}_{1} &&\text{para todo $x\in E$.}
         \end{align*}
         Ahora, note que esto nos permite concluir que dadas $2$ normas cualesquiera estas con equivalentes, ya que mediante $\norm{x}_1$ se puede realizar el siguiente cálculo.\\
         Suponga $c_{21}$ y $c_{22}$ las constantes respectivas a la equivalencia entre una norma $\norm{x}_{1}$ y la norma $\norm{x}_{2}$ y por otro lado suponga $c_{31}$ y $c_{32}$ las constantes respectivas a la equivalencia entre la norma $\norm{x}_{1}$ y la norma $\norm{x}_{3}$, veamos que podemos concluir que $\norm{x}_{2}$ y $\norm{x}_{3}$ son equivalentes 
@@ -49,11 +49,11 @@
         \end{align*}
         por otro lado
         \begin{align*}
-          \norm{x}_{3}\leq c_{32}\norm{x}_{1}\leq \frac{c_{32}}{c_{21}}\norm{x}_{2}
+          \norm{x}_{3}\leq c_{32}\norm{x}_{1}\leq \frac{c_{32}}{c_{21}}\norm{x}_{2},
         \end{align*}
         de lo que se puede concluir que
         \begin{align*}
-          \frac{c_{31}}{c_{22}}\norm{x}_{2}\leq\norm{x}_{3}\leq \frac{c_{32}}{c_{21}}\norm{x}_{3},
+          \frac{c_{31}}{c_{22}}\norm{x}_{2}\leq\norm{x}_{3}\leq \frac{c_{32}}{c_{21}}\norm{x}_{2},
         \end{align*}
         es decir, las normas $\norm{\cdot}_{2}$ y $\norm{\cdot}_{3}$ son equivalentes, luego como estas son arbitrarias se puede concluir que todas las normas asignadas a $E$ son equivalentes.
       \item Suponga $T:E\to F$ transformación lineal.\\
@@ -83,7 +83,11 @@
       \end{align*}
       Se puede verificar que $\norm{f_k}_{1}=1$, no obstante note que $f_{k}(1)=k$, por lo que funciona como ejemplo para verificar que
       \begin{align*}
-        \sup_{\substack{f\in C[0,1]\\ \norm{f}_{1}=1}}\norm{f}_{\infty}=\infty.
+        \sup_{\substack{f_k}}\norm{f_{k}}_{\infty}=\infty.
+      \end{align*}
+      Luego no existe $M>0$ tal que 
+      \begin{align*}
+        \norm{f}_{\infty}\leq M\norm{f}_{1}.
       \end{align*}
       Con la intención de ser gráfico con el ejercicio veamos la gráfica para algunos valores de $k$.
       \begin{figure}[H]
