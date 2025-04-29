@@ -1,0 +1,128 @@
+\begin{homeworkProblem}
+  El objetivo de este ejercicio es probar que la transformada de Fourier
+  \begin{align*}
+    \hat{\phantom{f}}=\mathcal{F}:L^{1}(\mathbb{R})&\to C^{0}_{\infty}(\mathbb{R})\\
+    f&\to\hat{f}
+  \end{align*}
+  no es sobreyectiva.
+  \begin{enumerate}[(i)]
+    \item Pruebe que $(C^{0}_{\infty}(\mathbb{R}),\norm{\cdot})$ es un espacio de Banach.
+    \item Use la fórmula de inversión de Fourier para probar que $\mathcal{F}$ es inyectiva.
+    \item Suponga que $\mathcal{F}$ es sobreyectiva. Use el teorema de la aplicación abierta para deducir que existe una constante $C>0$ tal que
+      \begin{align*}
+        \norm{f}_{1}\leq C\norm{\hat{f}}_{\infty},\text{ para toda $f\in L^1(\mathbb{R})$.}
+      \end{align*}
+    \item Sea $A\leq 1$, definase
+      \begin{align*}
+        \phi_{A}:=\chi_{[-A,A]},\quad\psi_{A}:=\phi_{A}*\phi_{1}\quad\text{y}\quad g_{A}:=\hat{\psi_{A}}.
+      \end{align*}
+      Pruebe que
+      \begin{align*}
+        \norm{\hat{g_A}}_{\infty}<\infty,\quad g_{A}(x)=\frac{\sin\left( 2\pi Ax \right)\sin(2\pi x)}{(\pi x)^2},\quad\norm{g_{A}}_{1}\to +\infty\text{ cuando }A\to +\infty,
+      \end{align*}
+      y concluya una contradicción con (III).
+  \end{enumerate}
+  \begin{solution}
+    \begin{enumerate}[(i)]
+      \item Sea $\{\phi_{n}\}\subset C^{0}_{\infty}(\mathbb{R})$ una sucesión de Cauchy que converge a $\phi$ cuando $n\to \infty$, veamos que $\phi\to C^{0}_{\infty}(\mathbb{R})$.\\
+        Sabemos que dado $\epsilon>0$ existe $N>0$ tal que si $n,m>N$, entonces
+        \begin{align*}
+          \norm{\phi_{n}-\phi_{m}}_{\infty}=\sup_{x\in\mathbb{R}}|\phi_{n}(x)-\phi_{m}(x)|<\epsilon,
+        \end{align*}
+        Veamos primero que $\phi\in C^{0}(\mathbb{R})$.\\
+        Note que
+        \begin{align*}
+          \left|\phi(x)-\phi(y)\right|&\leq\left| \phi(x)-\phi_{n}(x) \right|+\left| \phi_{n}(x)-\phi_{n}(y) \right|+\left| \phi_{n}(y)-\phi(y) \right|,\\
+          &\leq\norm{\phi-\phi_{n}}_{\infty}+\left|\phi_{n}(x)-\phi_{n}(y)\right|+\norm{\phi_{n}-\phi}_{\infty},\\
+          &\leq 2I + J.
+        \end{align*}
+        Note que como $\{\phi_{n}\}\subset C^{0}_{\infty}(\mathbb{R})$, entonces estas son continuas, por lo que sabemos que dado $\frac{\epsilon}{3}>0$ existe $\delta>0$ tal que si $|x-y|<\delta$, entonces $\left| \phi_{n}(x)-\phi_{n}(y) \right|<\frac{\epsilon}{3}$. 
+        Por otro lado note que como $\{\phi_{n}\}$ es de Cauchy, entonces dado $\frac{\epsilon}{3}>0$ existe $N>0$ tal que si $n,m>N$, entonces
+        \begin{align*}
+          \norm{\phi_{m}-\phi_{n}}_{\infty}<\frac{\epsilon}{3}.
+        \end{align*}
+        Fije $n$ y haga $m\to\infty$, luego
+        \begin{align*}
+          I = \norm{\phi-\phi_{n}}_{\infty}<\frac{\epsilon}{3}.
+        \end{align*}
+        Ahora, sabemos que dado $\epsilon>0$ existe $\delta>0$ tal que si tomamos $n$ fijo y adecuado se satisface que
+        \begin{align*}
+          \left| \phi(x)-\phi(y) \right|&\leq 2I+J,\\
+          &<\frac{2\epsilon}{3}+\frac{\epsilon}{3},\\
+          &<\epsilon.
+        \end{align*}
+        Lo que concluye que $\phi\in C^{0}(\mathbb{R})$.\\
+        Ahora veamos que $\phi\to 0$ cuando $x\to\infty$.\\
+        Note que dado $\frac{\epsilon}{2}>0$ existe $N>0$ y $R>0$ tal que si $|x|>R$, entonces 
+        \begin{align*}
+          \left| \phi_{N}(x) \right|<\frac{\epsilon}{2}.
+        \end{align*}
+        Luego note que fijando ese $N$ y $R$ se cumple que
+        \begin{align*}
+          \left| \phi(x) \right|&\leq \left| \phi(x)-\phi_{N}(x) \right|+\left| \phi_{N}(x) \right|,\\
+          &\leq \norm{\phi-\phi_{N}}_{\infty}+\left| \phi_{N}(x) \right|,\\
+          &\leq \frac{\epsilon}{2}+\frac{\epsilon}{2},\\
+          &\leq \epsilon.
+        \end{align*}
+        Lo que termina por concluir que $\phi\in C^{0}_{\infty}(\mathbb{R})$.
+      \item Suponga $f,g\in L^1(\mathbb{R})$ tales que $\hat{f}=\hat{g}$, entonces veamos que $f=g$ en casi toda parte.
+        Como $\hat{f}=\hat{g}$, entonces $\hat{f}-\hat{g}=\hat{f-g}=0$, luego usando la fórmula de inversión de Fourier
+        \begin{align*}
+          (f-g)(x)&=\int_{-\infty}^{\infty}\hat{f-g}(\xi)e^{2\pi i x\xi}\, d\xi,\\
+          &=\int_{-\infty}^{\infty}0\, d\xi,\\
+          &=0.
+        \end{align*}
+        De lo que se puede concluir que $f=g$ bajo la medida de Lebesgue, es decir, en casi toda parte.
+      \item Teorema en cuestión.\begin{theorem}{Teorema de la aplicación abierta}
+          Si $T:X\to Y$ es un operador lineal, continuo y biyectivo entre espacios de Banach, entonces la inversa $T^{-1}$ es también continua, es decir que existe $C>0$ tal que
+          \begin{align*}
+            \norm{T^{-1}f}_{X}\leq C\norm{f}_{Y}.
+          \end{align*}
+        \end{theorem}
+        Suponga que $\mathcal{F}$ es sobreyectiva, entonces como $L^{1}(\mathbb{R})$ es Banach, $C^{0}_{\infty}(\mathbb{R})$ es Banach, $\mathcal{F}$ satisface ser un operador lineal y además
+        \begin{align*}
+          \norm{\hat{f}}_{\infty}\leq \norm{f}_{1},
+        \end{align*}
+        es decir, es continua, por el teorema de la aplicación abierta se satisface que $\mathcal{F}^{-1}$ es también continua, es decir que existe $C>0$ tal que
+        \begin{align*}
+          \norm{f}_{1}\leq C\norm{\hat{f}}_{\infty}.
+        \end{align*}
+      \item calculemos $g_{A}(x)$, para esto
+        \begin{align*}
+          g_{A}(x)&=\hat{\psi_{A}}(x),\\
+          &=\hat{\phi_{A}*\phi_{1}}(x),\\
+          &=\hat{\phi_{A}}(x)\hat{\phi_{1}}(x).
+        \end{align*}
+        Siendo así, hallemos $\hat{\phi_{A}}$, será útil recordar que $\phi_{A}$ es una función par, luego
+        \begin{align*}
+          \hat{\phi_{A}}(x)&=\int_{-A}^{A}\cos(2\pi x\xi)\, d\xi,\\
+          &=\frac{\sin(2\pi \xi x)}{2\pi x}\Bigg|_{-A}^{A},\\
+          &=\frac{\sin(2\pi Ax)}{\pi x}.
+        \end{align*}
+        Por lo que podemos afirmar que
+        \begin{align*}
+          g_{A}(x)=\frac{\sin(2\pi Ax)\sin(2\pi x)}{(\pi x)^2}
+        \end{align*}
+        Ahora, veamos que $\norm{g_A}_{\infty}<\infty$.\\
+        Note que
+        \begin{align*}
+          g_{A}(x)=\frac{\sin(2\pi Ax)}{2\pi Ax}\cdot\frac{\sin(2\pi x)}{2\pi x}\cdot 4A.
+        \end{align*}
+        Luego es claro que $g_{A}\to 0$ cuando $|x|\to\infty$, además así como $\frac{\sin(x)}{x}\to 1$ cuando $x\to 0$, también se tiene que $g_{A}\to 4A$ cuando $x\to 0$, luego $g_{A}$ es continua (en casi toda parte) y es acotada en el infinito, entonces $\norm{g_{A}}_{\infty}<\infty$.
+        Ahora veamos que $\norm{\psi_{A}}_{1}\to\infty$ cuando $A\to \infty$.\\
+        \begin{align*}
+          \norm{\psi_{A}}_{1}&=\norm{\phi_{A}*\phi_{1}}_{1},\\
+          &=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\phi_{A}(y)\phi_{1}(x-y)\, dy\, dx,\\
+          &=\int_{-\infty}^{\infty}\phi_{A}(x)\int_{-\infty}^{\infty}\phi_{1}(x-y)\, dy\, dx,\\
+          &=\int_{-\infty}^{\infty}\phi_{A}(x)\int_{y-1}^{y+1}\, dx\, dy,\\
+          &=2\int_{-\infty}^{\infty}\phi_{A}(x)\, dx,\\
+          &=4A.
+        \end{align*}
+        Luego $\norm{\psi_{A}}_{1}\to \infty$ cuando $A\to \infty$, entonces por (III) se cumple que
+        \begin{align*}
+          \norm{\psi_A}_{1}\leq C\norm{g_A}_{\infty},\quad\text{para toda $A$ con $C$ uniforme.}
+        \end{align*}
+        lo que nos lleva a una contradicción de la forma $\infty < M < \infty$, por lo que podemos concluir que (III) es falsa y por ende $\mathcal{F}$ no es sobreyectiva. 
+    \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}

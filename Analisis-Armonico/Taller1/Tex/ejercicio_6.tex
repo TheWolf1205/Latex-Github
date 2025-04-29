@@ -1,0 +1,49 @@
+\begin{homeworkProblem}
+  Considere $E=c_0$ donde
+  \begin{align*}
+    c_0=\{u=\{u_n\}_{n\geq 1}: \text{ tales que }u_{n}\in\mathbb{R},n\geq 1,\lim_{n \to \infty}u_{n}=0\}.
+  \end{align*}
+  Es decir, $c_0$ es el conjunto de las secuencias reales que tienden a $0$. Dotamos a este espacio con la norma $\norm{u}_{l^{\infty}}=\displaystyle \sup_{n\in\mathbb{Z}^{+}}|u_{n}|$. Considere el funcional $f:E\to \mathbb{R}$ dado por
+  \begin{align*}
+    f(u)=\sum_{n=1}^{\infty}\frac{1}{2^{n}}u_{n}.
+  \end{align*}
+  \begin{enumerate}[(i)]
+    \item Muestre que $f\in E^{*}$ y calcule $\norm{f}_{E^{*}}$.
+    \item ¿Es posible encontrar $u\in E$ tal que $\norm{u}=1$ y $f(u)=\norm{f}_{E^{*}}$? 
+  \end{enumerate}
+  \begin{solution}
+    \begin{enumerate}[(i)]
+      \item Veamos que $f\in E^{*}$ es decir, que $f$ es una transformación lineal de $E$ en $\mathbb{R}$.\\
+        Antes de empezar, note que como la serie $\sum_{n=1}^{\infty}\frac{1}{2^{n}}$ es absolutamente convergente y $u_n$ es una sucesión que tiende a $0$, entonces la serie determinada por $f$ es absolutamente convergente y por ende permite reordenamientos, siendo así, continuemos.\\
+        Dadas $u,v\in E$ y $c\in \mathbb{R}$ note que
+        \begin{align*}
+          f(cu+v)&=\sum_{n=1}^{\infty}\frac{1}{2^{n}}\left( cu_n+v_n \right),\\
+          &= c\sum_{n=1}^{\infty}\frac{1}{2^{n}}u_{n}+\sum_{n=1}^{\infty}\frac{1}{2^n}v_n,\\
+          &=cf(u)+f(v).
+        \end{align*}
+        lo que nos permite concluir que $f$ es una transformación lineal en $E^*$.\\
+        Ahora para calcular $\norm{f}_{E^{*}}$ nos será de gran utilidad pensar en los $u\in E$ tales que $\norm{u}_{E}=1$, ya que si bien le estamos pidiendo converger a $0$, no estamos exigiendo que sea de alguna forma especifica si no en el infinito, por lo que sabremos que el supremo que estamos buscando se encontrará justamente en la sucesión constante $1$ (esto ya que podemos pedirle a la sucesión ser $1$ hasta un punto arbitrario y luego si decaimiento a $0$), es por esto que 
+        \begin{align*}
+          \norm{f}_{E^{*}}&=\sup_{\substack{u\in E\\ \norm{u}_{E}=1}}f(u),\\
+          &=\sup_{\substack{u\in E\\\norm{u}_{E}=1}}\sum_{n=1}^{\infty}\frac{1}{2^n}u_n,\\
+          &=\sum_{n=1}^{\infty}\frac{1}{2^n},\\
+          &=\sum_{n=0}^{\infty}\frac{1}{2^{n}} - 1,\\
+          &=\frac{1}{1-\frac{1}{2}}-1,\\
+          &=2-1,\\
+          &=1.
+        \end{align*}
+        lo que concluye el numeral.
+      \item \textbf{No}, note que esto es claro por el comentario que realizamos para calcular la norma de $f$, puesto que de lo contrario ese supremo realmente sería un máximo, es por esto que si existiera $u$ de norma $1$ con tendencia a $0$ tal que $\norm{f}_{E^*}$ fuera exactamente $f(u)$, se cumpliría que
+        \begin{align*}
+          \norm{f}_{E^{*}}&=f(u),\\
+          &=\sum_{n=1}^{\infty}\frac{1}{2^n}u_n,\\
+          &<\sum_{n=1}^{\infty}\frac{1}{2^n},\\
+          &<\sum_{n=0}^{\infty}\frac{1}{2^{n}} - 1,\\
+          &<\frac{1}{1-\frac{1}{2}}-1,\\
+          &<2-1,\\
+          &<1.
+        \end{align*}
+      entonces $f(u)=\norm{f}_{E^{*}}<1$, lo que nos lleva a una contradicción de la forma $1<1$, puesto que ya verificamos que $\norm{f}_{E^{*}}=1$.   
+    \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}
