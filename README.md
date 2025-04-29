@@ -15,6 +15,14 @@ Repositorio para subir trabajos o talleres de la U :p.
 </details>
 
 <details>
+<summary><strong>Análisis Armónico</strong></summary>
+
+- Taller 1.
+  - [Taller.](./Analisis-Armonico/Taller1/ejercicios1.pdf)
+  - [Solución](./Analisis-Armonico/Taller1/Tex/main.pdf)
+</details>
+
+<details>
 <summary><strong>Análisis Numérico</strong></summary>
 
 - Taller 1.  
