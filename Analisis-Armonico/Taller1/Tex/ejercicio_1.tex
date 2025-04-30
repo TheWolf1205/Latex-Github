@@ -119,17 +119,25 @@
           \norm{\hat{g_A}}_{\infty}\leq 2,
         \end{align*}
         por lo que podemos concluir que $\norm{\hat{g_A}}_{\infty}<\infty$ para todo $A\geq 1$.\\
-        Ahora calculemos $\norm{g_A}_{1}$, para esto usaremos el comportamiento del seno alrededor de una vecindad cercana a $0$ en la que $\frac{\sin(2\pi x)}{\pi x}$ es positivo, decreciente y acotado inferiormente
+        Ahora acotemos inferiormente $\norm{g_A}_{1}$, para esto usaremos el comportamiento del seno alrededor de una vecindad cercana a $0$ en la que $\frac{\sin(2\pi x)}{\pi x}$ es positivo, decreciente y acotado inferiormente
         \begin{align*}
           \norm{g_A}_{1}&=\int_{-\infty}^{\infty}|g_{A}(x)|\, dx,\\
-          &=\int_{-\infty}^{\infty}\left| \frac{\sin(2\pi Ax)\sin(2\pi x)}{(\pi x)^2} \right|\, dx\\
-          &\geq \int_{0}^{3/8}\frac{|\sin(2\pi Ax)|}{\pi x}\cdot\frac{\sin(2\pi x)}{\pi x}\cdot \frac{4A}{4A}\, dx,\\
-          &\geq \int_{0}^{3/8}\frac{|\sin(2\pi Ax)|}{2\pi Ax}\cdot \frac{4\sqrt{2}}{3\pi}\cdot 4A\, dx,\\
-          &\geq \frac{4\sqrt{2}}{3\pi}\cdot 4A\int_{0}^{3/8}\frac{|\sin(2\pi Ax)|}{2\pi Ax}\, dx, &&\text{Haciendo $u=2\pi Ax$.}\\
-          &\geq \frac{4\sqrt{2}}{3\pi}\cdot 4A \int_{0}^{3\pi A/4}\frac{|\sin(u)|}{u}\, du,\\
-          &\geq \frac{4\sqrt{2}}{3\pi}\cdot 4A \int_{\pi/2}^{3\pi/4}\frac{|\sin(u)|}{u}\, du,\\
-          &\geq \frac{4\sqrt{2}}{3\pi}\cdot 4A\cdot \frac{\sqrt{2}}{2} \int_{\pi/2}^{3\pi/4}\frac{1}{u}\, du,\\
-          &\geq M\cdot A &&\text{con $M$ constante positiva}.
+          &=\int_{-\infty}^{\infty}\left| \frac{\sin(2\pi Ax)\sin(2\pi x)}{(\pi x)^2} \right|\, dx,\\
+          &=2\int_{0}^{\infty}\frac{|\sin(2\pi Ax)|}{\pi x}\frac{|\sin(2\pi x)|}{\pi x}\, dx&&\text{Haciendo $u=2\pi Ax$},\\
+          &=\frac{4}{\pi} \int_{0}^{\infty}\frac{|\sin(u)|}{u}\frac{\left| \sin(\frac{u}{A}) \right|}{\frac{u}{A}}\, du,\\
+          &\geq \frac{4}{\pi}\int_{0}^{A}\frac{|\sin(u)|}{u}\frac{\left| \sin(\frac{u}{A}) \right|}{\frac{u}{A}}\, du,
+        \end{align*}
+        note que como $u\in (0,A)$, entonces $\frac{u}{A}\in(0,1)$, luego $\frac{|\sin\left( \frac{u}{A} \right)|}{\frac{u}{A}}$ es decreciente y positiva, por lo que sabemos que $\frac{|\sin\left( \frac{u}{A} \right)|}{\frac{u}{A}}\geq \sin(1)$. Luego
+        \begin{align*}
+          \norm{g_A}_{1}&\geq \frac{4\sin(1)}{\pi}\int_{0}^{A}\frac{|\sin(u)|}{u}\, du,\\
+          &\geq M \int_{0}^{A}\frac{|\sin(u)|}{u}\, du.
+        \end{align*}
+        Ahora, si $A\to\infty$, entonces
+        \begin{align*}
+          \lim_{A \to \infty}\norm{g_A}_{1}&\geq C \int_{0}^{\infty}\frac{|\sin(x)|}{x}\, dx,\\
+          &\geq \sum_{n=0}^{\infty}\int_{n\pi}^{(n+1)\pi}\frac{|\sin(x)|}{x}\, dx,\\
+          &\geq\sum_{n=0}^{\infty}\frac{1}{(n+1)\pi}\int_{n\pi}^{(n+1)\pi}|\sin(x)|\, dx,\\
+          &\geq\sum_{n=0}^{\infty}\frac{2}{(n+1)\pi}\, dx = \infty.
         \end{align*}
         Luego si $A\to \infty$, entonces $\norm{g_A}_{1}\to\infty$.\\
         Pero note que usando (III) se debe de satisfacer que
