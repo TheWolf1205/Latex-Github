@@ -1,6 +1,72 @@
 \begin{homeworkProblem}
-  Pregunta
+  Muestre que $f(x)=\frac{1}{\pi}\frac{x}{1+x^2}\in L^2(\mathbb{R})-L^1(\mathbb{R})$. Además, pruebe que:
+  \begin{align*}
+    \frac{1}{\pi}\hat{\frac{x}{1+x^2}}(\xi)=-isgn(\xi)e^{-2\pi|\xi|}.
+  \end{align*}
   \begin{solution}
-    Solución
+    Veamos que $f\notin L^{1}(\mathbb{R}^{n})$.\\
+    Para esto note que
+    \begin{align*}
+      \norm{f}_{1}&=\int_{-\infty}^{\infty}\frac{1}{\pi}\left| \frac{x}{1+x^2} \right|\, dx,\\
+      &=\frac{2}{\pi}\int_{0}^{\infty}\frac{x}{1+x^2}\, dx,\\
+      &=\frac{1}{\pi}\int_{0}^{\infty}\frac{2x}{1+x^{2}}\, dx, &&\text{Haciendo $u=1+x^{2}$,}\\
+      &=\frac{1}{\pi}\int_{1}^{\infty}\frac{1}{u}\, du,\\
+      &=\frac{1}{\pi}\ln(u)\Bigg|_{1}^{\infty},\\
+      &=\infty.
+    \end{align*}
+    Ahora veamos que $f\in L^{2}(\mathbb{R})$.\\
+    Para esto note que
+    \begin{align*}
+      \norm{f}_{2}^2&=\frac{1}{\pi^{2}}\int_{-\infty}^{\infty}\left| \frac{x}{1+x^2} \right|^{2}\, dx,\\
+      &=\frac{2}{\pi^2}\int_{0}^{\infty}\frac{x^2}{(1+x^2)^2}\, dx &&\text{Haciendo $x=\tan(\theta)$,}\\
+      &=\frac{2}{\pi^2}\int_{0}^{\pi/2}\frac{\tan^2(\theta)}{\sec^{4}(\theta)}\sec^{2}(\theta)\, d\theta,\\
+      &=\frac{2}{\pi^2}\int_{0}^{\pi/2}\frac{\tan^{2}(\theta)}{\sec^2(\theta)}\, d\theta,\\
+      &=\frac{2}{\pi^{2}}\int_{0}^{\pi/2}\sin^2(\theta)\, d\theta,\\
+      &=\frac{2}{\pi^{2}}\int_{0}^{\pi/2}\frac{1-\cos(2\theta)}{2}\, d\theta,\\
+      &=\frac{2}{\pi^{2}}\left( \frac{\pi}{4}-\int_{0}^{\pi/2}\cos(2\theta)\, d\theta \right)&&\text{Haciendo $u=2\theta$},\\
+      &=\frac{2}{\pi^2}\left( \frac{\pi}{4}-\frac{1}{2}\int_{0}^{\pi}\cos(u)\, du \right),\\
+      &=\frac{1}{2\pi}-\frac{1}{2}\left( \sin(x)\Bigg|_{0}^{\pi} \right),\\
+      &=\frac{1}{2\pi}.
+    \end{align*}
+    Ahora calculemos su transformada, para esto vamos a usar que $\hat{xg(x)}=(-2\pi i)^{-1}\frac{d}{d\xi}\hat{g}(\xi)$, entonces
+    \begin{align*}
+      \hat{\frac{1}{1+x^2}}(\xi)&=\int_{-\infty}^{\infty}\frac{e^{-2\pi ix\xi}}{1+x^2}\, dx.
+    \end{align*}
+    Para hallar esta transformada usaremos variable compleja usando $h(x)=\frac{e^{-2\pi ix\xi}}{(x+i)(x-i)}$.\\
+    Tenemos 2 casos, primero pensemos cuando $\xi\geq 0$, para esto consideraremos el contorno semicircular en el semiplano inferior, aquí, el único polo existente es cuando $x=-i$, por lo que estudiaremos su residuo ahí
+    \begin{align*}
+      Res(h,-i)&=\lim_{x \to -i}\frac{e^{-2\pi ix\xi}}{x-i},\\
+      &=-\frac{e^{-2\pi \xi}}{2i}.
+    \end{align*}
+    Luego usando el teorema de los residuos podemos concluir que
+    \begin{align*}
+      \hat{\frac{1}{1+x^2}}(\xi)&=\int_{-\infty}^{\infty}\frac{e^{-2\pi ix\xi}}{1+x^2}\, dx,\\
+      &=(-2\pi i)\cdot Res(h,-i),\\
+      &=(-2\pi i)\left( -\frac{e^{-2\pi\xi}}{2i} \right),\\
+      &=\pi e^{-2\pi\xi}.
+    \end{align*}
+    Veamos el caso contrario, en el que $\xi<0$, para esto consideraremos el contorno semicircular en el semiplano superior, aquí el único polo existente es cuando $x=i$, por lo que estudiaremos su residuo ahí
+    \begin{align*}
+      Res(h,i)&=\lim_{x \to i}\frac{e^{-2\pi ix\xi}}{x+i},\\
+      &=\frac{e^{2\pi \xi}}{2i}.
+    \end{align*}
+    Luego usando el teorema de los residuos podemos concluir que
+    \begin{align*}
+      \hat{\frac{1}{1+x^2}}(\xi)&=\int_{-\infty}^{\infty}\frac{e^{-2\pi ix\xi}}{1+x^2}\, dx,\\
+      &=(2\pi i)\cdot Res(h,i),\\
+      &=(2\pi i)\left( \frac{e^{2\pi\xi}}{2i} \right),\\
+      &=\pi e^{2\pi\xi}.
+    \end{align*}
+    Luego podemos afirmar que en general
+    \begin{align*}
+      \hat{\frac{1}{1+x^2}}&=\pi e^{-2\pi|\xi|}.
+    \end{align*}
+    Luego
+    \begin{align*}
+      \frac{1}{\pi}\hat{\frac{x}{1+x^2}}&=\frac{1}{\pi}(-2\pi i)^{-1}\frac{d}{d\xi}\pi e^{-2\pi|\xi|},\\
+      &=\frac{1}{\pi}(-2i)^{-1}(-2\pi sgn(\xi))e^{-2\pi|\xi|},\\
+      &=-i sgn(\xi)e^{-2\pi|\xi|}.
+    \end{align*}
+    Lo que concluye el ejercicio.
   \end{solution}
 \end{homeworkProblem}
