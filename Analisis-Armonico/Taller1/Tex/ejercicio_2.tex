@@ -1,6 +1,83 @@
 \begin{homeworkProblem}
-  Pregunta
+  Sean $B_R := \{x \in \mathbb{R}^n : |x| < R\}$ y $\chi_{B_R}$ la función característica del conjunto $B_R$. Se define
+  \begin{align*}
+    \mathcal{S}_{R}:L^2(\mathbb{R}^n) &\longrightarrow L^2(\mathbb{R}^n)\\
+    f &\longmapsto \check{\left(\chi_{B_R} \hat{f} \right)}.   
+  \end{align*}
+  \begin{enumerate}[(i)]
+    \item Probar que $\mathcal{S}_{R} \in \mathcal{B}(L^2(\mathbb{R}^n))$ y que $\|\mathcal{S}_{R}\|_{\mathcal{B}(L^2(\mathbb{R}^n))} \leq 1$.
+    \item Mostrar que para todo $f \in L^2(\mathbb{R}^n)$, $\mathcal{S}_R f \to f$ en $L^2(\mathbb{R}^n)$ cuando $R \to +\infty$.
+    \item Deducir que para cualquier $f \in L^2(\mathbb{R}^n)$, existe una sucesión $R_n \to +\infty$ cuando $n \to +\infty$ tal que
+      \begin{align*}
+        \int_{B_{R_n}} \widehat{f}(\xi) e^{2\pi i x \cdot \xi} \, d\xi \longrightarrow f(x), \quad \text{cuando } n \to +\infty, \quad \text{c.t.p. } x \in \mathbb{R}^n.
+      \end{align*}
+    \item Probar que para cualquier $f \in L^2(\mathbb{R}^n)$,
+      \begin{align*}
+        \xi \longmapsto \int_{B_R} f(x) e^{-2\pi i x \cdot \xi} \, dx \longrightarrow \hat{f}, \quad \text{cuando } R \to +\infty, \text{ en } L^2(\mathbb{R}^n).
+      \end{align*}
+  \end{enumerate}
   \begin{solution}
-    Solución
+    \begin{note}{}
+      $\mathcal{B}(L^2(\mathbb{R}^{n}))$ es el espacio de los operadores lineales acotados de $L^2(\mathbb{R}^{n})$ en $L^2(\mathbb{R}^{n})$.  
+    \end{note}
+    \begin{enumerate}[(i)]
+      \item Sea $f,g\in L^2(\mathbb{R}^{n})$ y $\alpha$ escalar, entonces
+        \begin{align*}
+          \mathcal{S}_{R}\left( \alpha f+g \right)&=\check{\left( \chi_{B_{R}}(\hat{\alpha f+g}) \right)},\\
+          &= \left( \check{\alpha\chi_{B_{R}}\hat{f}+\chi_{B_{R}}\hat{g}} \right),\\
+          &=\alpha \left( \check{\chi_{B_{R}}\hat{f}} \right)+\left( \check{\chi_{B_{R}}\hat{g}} \right),\\
+          &=\alpha \mathcal{S}_{R}(f)+\mathcal{S}_{R}(g).
+        \end{align*}
+        Ahora veamos que este es un operador acotado
+        \begin{align*}
+          \norm{\mathcal{S}_{R}(f)}_{2}&=\norm{\left( \check{\chi_{B_{R}}\hat{f}} \right)}_{2},\\
+          &=\norm{\chi_{B_{R}}\hat{f}}_{2},\\
+          &\leq\norm{\hat{f}}_{2},\\
+          &\leq \norm{f}_{2}.
+        \end{align*}
+        Por lo que podemos concluir que $\mathcal{S}_{R}\in \mathcal{B}(L^2(\mathbb{R}^{n}))$.
+      \item Note que lo que buscamos es equivalente a
+        \begin{align*}
+          \lim_{R \to \infty}\norm{\mathcal{S}_{R}f-f}_{2}&=\lim_{R \to \infty}\norm{\left( \left( \check{\chi_{B_{R}}\hat{f}} \right)-\check{\hat{f}} \right)}_{2},\\
+          &=\lim_{R \to \infty}\norm{\chi_{B_{R}}\hat{f}-\hat{f}}_{2},\\
+          &=\lim_{R \to \infty}\norm{\left( \chi_{B_{R}-1} \right)\hat{f}}_{2},\\
+          &=\lim_{R \to \infty}\norm{\chi_{B_{R}^{c}}\hat{f}}_{2},\\
+          &=0.
+        \end{align*}
+        Siendo así, note que como $f\in L^2(\mathbb{R}^{n})$, entonces $\hat{f}\in L^2(\mathbb{R}^{n})$. Además, esto implica que dado $\epsilon>0$ existe $R>0$ tal que si $r\geq R$, entonces
+        \begin{align*}
+          \left(\int_{|x|\geq r}|\hat{f}(x)|^2\, dx\right)^{\frac{1}{2}} <\epsilon.
+        \end{align*}
+        Note que esto implica que
+        \begin{align*}
+          \norm{\chi_{B_{r}^c}\hat{f}}_{2}&=\left(\int_{\mathbb{R}^{n}}\left|\chi_{B_{r}^c}(x)\hat{f}(x)\right|^2\, dx\right)^{\frac{1}{2}},\\
+          &=\left(\int_{|x|\geq r}|\hat{f}(x)|^2\, dx\right)^{\frac{1}{2}},\\
+          &< \epsilon.
+        \end{align*}
+        Lo que implica que $\chi_{B_{R}^{c}}\hat{f}\to 0$ y por ende $\mathcal{S}_{R}f\to f$ en $L^2(\mathbb{R}^{n})$ cuando $R\to\infty$ para toda $f\in L^2(\mathbb{R}^{n})$.
+      \item Note que como $\mathcal{S}_{R}f\to f$ en $L^2(\mathbb{R}^{n})$ cuando $R\to \infty$, entonces existe una sucesión $\{R_n\}\subset \mathbb{R}$ tal que $\mathcal{S}_{R_{n}}f\to g$ en $L^2(\mathbb{R}^{n})$, luego $f-g=0$ en $L^2(\mathbb{R}^{n})$, es decir:
+        \begin{align*}
+          \int_{\mathbb{R}^{n}}|f(x)-g(x)|^2\, dx&=\int_{\mathbb{R}^{n}}|0|^2\, dx,\\
+          &=0.
+        \end{align*}
+      Luego $f=g$ bajo la medida de Lebesgue, es decir, $f(x)=g(x)$ en casi toda parte.
+      \item Note que
+        \begin{align*}
+          \int_{B_{R}}f(x)e^{-2\pi ix\cdot \xi}\, dx&=\int_{\mathbb{R}^{n}}\chi_{B_{R}}(x)f(x)e^{-2\pi ix\cdot\xi}\, dx,\\
+          &=\hat{\chi_{B_{R}}f}(\xi).
+        \end{align*}
+        Luego lo que buscamos es equivalente a
+        \begin{align*}
+          \lim_{R \to \infty}\norm{\hat{\chi_{B_{R}}f}-\hat{f}}_{2}&=\lim_{R \to \infty}\norm{\chi_{B_{R}}f-f}_2,\\
+          &=\lim_{R \to \infty}\norm{\left( \chi_{B_{R}}-1 \right)f}_{2},\\
+          &=\lim_{R \to \infty}\norm{\chi_{B_{R}^{c}}f}_{2},\\
+          &=0.
+        \end{align*}
+        posteriormente podemos ver que si razonamos similarmente a (II) podemos ver que dado $\epsilon>0$ existe $R>0$ tal que si $r\geq R$, entonces
+        \begin{align*}
+          \norm{\chi_{B_{r}^{c}}f}<\epsilon.
+        \end{align*}
+        Lo que nos permite concluir el ejercicio.
+    \end{enumerate}    
   \end{solution}
 \end{homeworkProblem}

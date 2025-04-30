@@ -273,14 +273,24 @@
 % Redefinir el ambiente de Teorema
 \newtcolorbox[auto counter]{theorem}[2][]{%
   colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
-  title=Theorem~\thetcbcounter: #2,#1, breakable}
+  title=Teorema~\thetcbcounter: #2,#1, breakable}
 
-\newtheorem{proposicion}{Proposición}[section] % Vinculado a la sección
-\newtheorem{nota}{Nota}[section] % Vinculado a la sección
-\newtheorem{ejemplo}{Ejemplo}[section] % Vinculado a la sección
-\newtheorem{lema}{Lema}[section] % Vinculado a la sección
-\newtheorem{axioma}{Axioma}[section] % Vinculado a la sección
-\newtheorem{definicion}{Definición}[section] % Vinculado a la sección
+% Redefinir el ambiente de Nota
+\newtcolorbox[auto counter]{note}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Nota~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Lema
+\newtcolorbox[auto counter]{lemma}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Lema~\thetcbcounter: #2,#1, breakable}
+
+% Redefinir el ambiente de Proposición
+\newtcolorbox[auto counter]{proposition}[2][]{%
+  colback=mygrayback, colframe=mygrayframe, fonttitle=\bfseries,
+  title=Proposición~\thetcbcounter: #2,#1, breakable}
+
+
 
 
 

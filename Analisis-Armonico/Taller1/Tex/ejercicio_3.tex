@@ -1,6 +1,25 @@
 \begin{homeworkProblem}
-  Pregunta
+  Pruebe que para todo $\lambda>0$
+  \begin{align*}
+    \hat{e^{-\lambda\pi|x|^2}}(\xi)=\lambda^{-\frac{n}{2}}e^{-\pi\frac{|x|^2}{\lambda}}.
+  \end{align*}
   \begin{solution}
-    Solución
+    Para esto veamos el caso base $g(x)=e^{-\pi|x|^2}$ ($\lambda=1$), aquí completando cuadrados y usando el teorema de Fubinni se cumple que
+    \begin{align*}
+      \hat{e^{-\pi|x|^2}}(\xi)&=\int_{\mathbb{R}^{n}}e^{-\pi|x^2|}e^{-2\pi ix\cdot\xi}\, dx,\\
+      &=\int_{\mathbb{R}^{n}}e^{-\pi(|x|^2+2ix\cdot\xi)}\, dx,\\
+      &=\int_{\mathbb{R}^{n}}e^{-\pi(|x|^2+2ix\cdot\xi-|\xi|^2)}e^{-\pi|\xi|^2}\, dx,\\
+      &=e^{-\pi|\xi|^2}\int_{\mathbb{R}^{n}}e^{-\pi(x+i\xi)\cdot(x+i\xi)}\, dx,\\
+      &=e^{-\pi|\xi|^2}\prod_{j=1}^{n}\int_{-\infty}^{\infty}e^{-\pi(x_j+i\xi_j)^{2}}\, dx,\\
+      &=e^{-\pi|\xi|^2}\prod_{j=1}^{n}1,\\
+      &=e^{-\pi|\xi|^2}.
+    \end{align*}
+    Ahora, suponga $f(x)=e^{-\pi\lambda|x^2|}$ y note que $f(x)=g\left(\lambda^{\frac{1}{2}}x\right)$, entonces, haciendo uso de la propiedad de las dilataciones en la transformada de Fourier sabemos que se cumple que
+    \begin{align*}
+      \hat{f}(\xi)&=\hat{g\left( \lambda^{\frac{1}{2}}x \right)}(\xi),\\
+      &=\frac{1}{\lambda^{\frac{n}{2}}}\hat{g}\left( \frac{\xi}{\lambda^{\frac{1}{2}}} \right),\\
+      &=\lambda^{-\frac{n}{2}}e^{-\pi\frac{|\xi|^2}{\lambda}}.
+    \end{align*}
+    Lo que concluye el resultado.
   \end{solution}
 \end{homeworkProblem}

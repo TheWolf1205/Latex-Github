@@ -1,6 +1,85 @@
 \begin{homeworkProblem}
-  Pregunta
+  Pruebe que para todo $\lambda>0$
+  \begin{align*}
+    \hat{e^{-2\pi\lambda|x|}}(\xi)=c_{n}\frac{\lambda}{(\lambda^2+|\xi|^2)^{\frac{n+1}{2}}},
+  \end{align*}
+  donde $c_n=\Gamma\left( \frac{n+1}{2} \right)\pi^{-\frac{n+1}{2}}$.
+  \begin{lemma}{}
+    Sea $f\in L^1(\mathbb{R}^{n})$, entonces
+    \begin{align*}
+      \int_{-\infty}^{\infty}f\left( x-\frac{1}{x} \right)\, dx=\int_{-\infty}^{\infty}f(u)\, du.
+    \end{align*}
+  \end{lemma}
+  Note que
+  \begin{align*}
+    \int_{-\infty}^{\infty}f\left( x-\frac{1}{x} \right)\, dx&=\int_{-\infty}^{0}f\left( x-\frac{1}{x} \right)\, dx+\int_{0}^{\infty}f\left( x-\frac{1}{x} \right)\, dx,\\
+    &= I + J.
+  \end{align*}
+  Luego realizando el cambio de variable $u=x-\frac{1}{x}$ se tiene que
+  \begin{align*}
+    ux&=x^2-1,\\
+    0&=x^2-ux-1.
+  \end{align*}
+  Así
+  \begin{align*}
+    x&=\frac{1}{2}\left( u\pm \sqrt{u^2+4} \right),\\
+    dx&=\frac{1}{2}\left( 1\pm \frac{u}{\sqrt{u^2+4}} \right)du.
+  \end{align*}
+  Tomamos $x=\frac{1}{2}\left( u-\sqrt{u^2+4} \right)$ para $I$, luego
+  \begin{align*}
+    \int_{-\infty}^{0}f\left( x-\frac{1}{x} \right)\, dx&=\frac{1}{2}\int_{-\infty}^{\infty}f(u)\left( 1-\frac{u}{\sqrt{u^2+4}}\right)\, du,\\
+    &=\frac{1}{2}\int_{-\infty}^{\infty}f(u)\, du - \frac{1}{2}\int_{-\infty}^{\infty}f(u)\frac{u}{\sqrt{u^2+4}}\, du,\\
+    &=\frac{1}{2}\int_{-\infty}^{\infty}f(u)\, du - K.
+  \end{align*}
+  Por otro lado tomamos $x=\frac{1}{2}\left( u+\sqrt{u^2+4} \right)$ para $J$, luego
+  \begin{align*}
+    \int_{0}^{\infty}f\left( x-\frac{1}{x} \right)\, dx&=\frac{1}{2}\int_{-\infty}^{\infty}f(u)\left( 1+\frac{u}{\sqrt{u^2+4}}\right)\, du,\\
+    &=\frac{1}{2}\int_{-\infty}^{\infty}f(u)\, du + \frac{1}{2}\int_{-\infty}^{\infty}f(u)\frac{u}{\sqrt{u^2+4}}\, du,\\
+    &=\frac{1}{2}\int_{-\infty}^{\infty}f(u)\, du + K.
+  \end{align*}
+  Luego
+  \begin{align*}
+    \int_{-\infty}^{\infty}f\left( x-\frac{1}{x} \right)\, dx&=\frac{1}{2}\int_{-\infty}^{\infty}f(u)\, du-K+\frac{1}{2}\int_{-\infty}^{\infty}f(u)\, du+K,\\
+    &=\int_{-\infty}^{\infty}f(u)\, du.
+  \end{align*}
+  Lo que demuestra el Lema planteado.
+  \begin{lemma}{Identidad de subordinación}\label{lemma:2}
+    \begin{align*}
+      e^{-2t}=\frac{1}{\sqrt{\pi}}\int_{0}^{\infty}\frac{e^{-y-\frac{t^2}{y}}}{\sqrt{y}}\, dy,\quad\text{ donde $t>0$.}
+    \end{align*}
+  \end{lemma}
+  Note que si suponemos $f(x)=e^{-tx^2}\in L^1(\mathbb{R})$, entonces
+  \begin{align*}
+    \frac{\sqrt{\pi}}{\sqrt{t}}&=\int_{-\infty}^{\infty}f(x)\, dx,\\
+    &=\int_{-\infty}^{\infty}e^{-t\left( x-\frac{1}{x} \right)^2}\, dx,\\
+    &=2\int_{0}^{\infty}e^{-t\left( x-\frac{1}{x} \right)^2}\, dx &&\text{Hacemos $x=\sqrt{y}$},\\
+    &=\int_{0}^{\infty}e^{-t\left( \sqrt{y}-\frac{1}{\sqrt{y}}\right)^2}\frac{1}{\sqrt{y}}\, dy,\\
+    &=\int_{0}^{\infty}e^{-t\left( y-2+\frac{1}{y} \right)}\frac{1}{\sqrt{y}}\, dy,\\
+    &=e^{2t}\int_{0}^{\infty}e^{-t\left( y+\frac{1}{y} \right)}\frac{1}{\sqrt{y}}\, dy.
+  \end{align*}
+  \vspace{-0.5cm}
+  Lo que implica que
+  \begin{align*}
+    e^{-2t}&=\frac{\sqrt{t}}{\sqrt{\pi}}\int_{0}^{\infty}e^{-t\left( y+\frac{1}{y} \right)}\frac{1}{\sqrt{y}}\, dy&&\text{Hacemos $u=ty$,}\\
+    &=\frac{\sqrt{t}}{\sqrt{\pi}}\int_{0}^{\infty}e^{-u-\frac{t^2}{u}}\frac{\sqrt{t}}{\sqrt{u}}\frac{1}{t}\, du,\\
+    &=\frac{1}{\sqrt{\pi}}\int_{0}^{\infty}\frac{e^{-y-\frac{t^2}{y}}}{\sqrt{y}}\, dy.
+  \end{align*}
+  Con $t>0$, lo que concluye el lema previamente mencionado.
   \begin{solution}
-    Solución
+    Note que usando el lema de la identidad de subordinación, el teorema de Fubinni  y el ejercicio (3) se tiene que
+    \begin{align*}
+      \hat{e^{-2\pi\lambda|x|}}(\xi)&=\int_{\mathbb{R}^{n}}e^{-2\pi\lambda|x|}e^{-2\pi ix\cdot\xi}\, dx,\\
+      &=\int_{\mathbb{R}^{n}}\int_{0}^{\infty}\frac{1}{\sqrt{\pi}}\frac{e^{-y-\frac{(\lambda\pi|x|)^2}{y}}}{\sqrt{y}}\, dy e^{-2\pi ix\cdot\xi}\, dx,\\
+      &=\frac{1}{\sqrt{\pi}}\int_{0}^{\infty}\frac{e^{-y}}{\sqrt{y}}\int_{\mathbb{R}^{n}}e^{-\frac{(\lambda\pi|x|)^2}{y}}e^{-2\pi ix\cdot\xi}\, dxdy,\\
+      &=\frac{1}{\sqrt{\pi}}\int_{0}^{\infty}\frac{e^{-y}}{\sqrt{y}}\int_{\mathbb{R}^{n}}e^{-\pi\left|\sqrt{\frac{\lambda^2\pi}{y}}x\right|^2}e^{-2\pi ix\cdot\xi}\, dxdy,\\
+      &=\frac{1}{\sqrt{\pi}}\int_{0}^{\infty}\frac{e^{-y}}{\sqrt{y}}\left( \frac{\lambda^2\pi}{y} \right)^{-\frac{n}{2}}e^{-\pi\frac{y|\xi|^2}{\lambda^2\pi}}\, dy,\\
+      &=\pi^{-\frac{n+1}{2}}\lambda^{-n}\int_{0}^{\infty}y^{\frac{n-1}{2}}e^{-y\left( 1+\frac{|\xi|^2}{\lambda^2} \right)}\, dy &&\text{Haciendo $u=y\left( 1+\frac{|\xi|^2}{\lambda^2} \right)$,}\\
+      &=\pi^{-\frac{n+1}{2}}\lambda^{-n}\int_{0}^{\infty}\frac{u^{\frac{n-1}{2}}}{\left( 1+\frac{|\xi|^2}{\lambda^2} \right)^{\frac{n-1}{2}}}e^{-u}\frac{1}{\left(1+\frac{|\xi|^2}{\lambda^2}\right)}\, du,\\
+      &=\pi^{-\frac{n+1}{2}}\lambda^{-n}\frac{1}{\left( 1+ \frac{|\xi|^2}{\lambda^2}\right)^{\frac{n+1}{2}}}\int_{0}^{\infty}u^{\frac{n-1}{2}}e^{-u}\, du,\\
+      &=\pi^{-\frac{n+1}{2}}\frac{\lambda}{\left( \lambda^2+|\xi|^2 \right)^{\frac{n+1}{2}}}\Gamma\left( \frac{n+1}{2} \right),\\
+      &=\Gamma\left( \frac{n+1}{2} \right)\pi^{-\frac{n+1}{2}}\frac{\lambda}{\left( \lambda^2+|\xi|^2 \right)^{\frac{n+1}{2}}},\\
+      &=c_n\frac{\lambda}{\left( \lambda^2+|\xi|^{2} \right)^{\frac{n+1}{2}}}.
+    \end{align*}
+    Lo que nos permite concluir el ejercicio.
   \end{solution}
 \end{homeworkProblem}

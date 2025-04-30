@@ -12,7 +12,7 @@
       \begin{align*}
         \norm{f}_{1}\leq C\norm{\hat{f}}_{\infty},\text{ para toda $f\in L^1(\mathbb{R})$.}
       \end{align*}
-    \item Sea $A\leq 1$, definase
+    \item Sea $A\geq 1$, definase
       \begin{align*}
         \phi_{A}:=\chi_{[-A,A]},\quad\psi_{A}:=\phi_{A}*\phi_{1}\quad\text{y}\quad g_{A}:=\hat{\psi_{A}}.
       \end{align*}
@@ -103,26 +103,44 @@
         \begin{align*}
           g_{A}(x)=\frac{\sin(2\pi Ax)\sin(2\pi x)}{(\pi x)^2}
         \end{align*}
-        Ahora, veamos que $\norm{g_A}_{\infty}<\infty$.\\
+        Ahora, veamos que $\norm{\hat{g_A}}_{\infty}<\infty$.\\
         Note que
         \begin{align*}
-          g_{A}(x)=\frac{\sin(2\pi Ax)}{2\pi Ax}\cdot\frac{\sin(2\pi x)}{2\pi x}\cdot 4A.
+          \left|\hat{g_{A}}(x)\right|&=\left|\hat{\hat{\psi_{A}}}(x)\right|,\\
+          &=\left|\psi_{A}(-x)\right|,\\
+          &=\left|\int_{-\infty}^{\infty}\phi_{A}(y)\phi_{1}(-x-y)\, dy\right|,\\
+          &=\int_{-\infty}^{\infty}\phi_{A}(y)\phi_{1}(x+y)\, dy,\\
+          &=\int_{-x-1}^{-x+1}\phi_{A}(y)\, dy,\\
+          &\leq \int_{-x-1}^{-x+1}\, dy,\\
+          &\leq 2.
         \end{align*}
-        Luego es claro que $g_{A}\to 0$ cuando $|x|\to\infty$, además así como $\frac{\sin(x)}{x}\to 1$ cuando $x\to 0$, también se tiene que $g_{A}\to 4A$ cuando $x\to 0$, luego $g_{A}$ es continua (en casi toda parte) y es acotada en el infinito, entonces $\norm{g_{A}}_{\infty}<\infty$.
-        Ahora veamos que $\norm{\psi_{A}}_{1}\to\infty$ cuando $A\to \infty$.\\
+        Luego es claro que
         \begin{align*}
-          \norm{\psi_{A}}_{1}&=\norm{\phi_{A}*\phi_{1}}_{1},\\
-          &=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\phi_{A}(y)\phi_{1}(x-y)\, dy\, dx,\\
-          &=\int_{-\infty}^{\infty}\phi_{A}(x)\int_{-\infty}^{\infty}\phi_{1}(x-y)\, dy\, dx,\\
-          &=\int_{-\infty}^{\infty}\phi_{A}(x)\int_{y-1}^{y+1}\, dx\, dy,\\
-          &=2\int_{-\infty}^{\infty}\phi_{A}(x)\, dx,\\
-          &=4A.
+          \norm{\hat{g_A}}_{\infty}\leq 2,
         \end{align*}
-        Luego $\norm{\psi_{A}}_{1}\to \infty$ cuando $A\to \infty$, entonces por (III) se cumple que
+        por lo que podemos concluir que $\norm{\hat{g_A}}_{\infty}<\infty$ para todo $A\geq 1$.\\
+        Ahora calculemos $\norm{g_A}_{1}$, para esto usaremos el comportamiento del seno alrededor de una vecindad cercana a $0$ en la que $\frac{\sin(2\pi x)}{\pi x}$ es positivo, decreciente y acotado inferiormente
         \begin{align*}
-          \norm{\psi_A}_{1}\leq C\norm{g_A}_{\infty},\quad\text{para toda $A$ con $C$ uniforme.}
+          \norm{g_A}_{1}&=\int_{-\infty}^{\infty}|g_{A}(x)|\, dx,\\
+          &=\int_{-\infty}^{\infty}\left| \frac{\sin(2\pi Ax)\sin(2\pi x)}{(\pi x)^2} \right|\, dx\\
+          &\geq \int_{0}^{3/8}\frac{|\sin(2\pi Ax)|}{\pi x}\cdot\frac{\sin(2\pi x)}{\pi x}\cdot \frac{4A}{4A}\, dx,\\
+          &\geq \int_{0}^{3/8}\frac{|\sin(2\pi Ax)|}{2\pi Ax}\cdot \frac{4\sqrt{2}}{3\pi}\cdot 4A\, dx,\\
+          &\geq \frac{4\sqrt{2}}{3\pi}\cdot 4A\int_{0}^{3/8}\frac{|\sin(2\pi Ax)|}{2\pi Ax}\, dx, &&\text{Haciendo $u=2\pi Ax$.}\\
+          &\geq \frac{4\sqrt{2}}{3\pi}\cdot 4A \int_{0}^{3\pi A/4}\frac{|\sin(u)|}{u}\, du,\\
+          &\geq \frac{4\sqrt{2}}{3\pi}\cdot 4A \int_{\pi/2}^{3\pi/4}\frac{|\sin(u)|}{u}\, du,\\
+          &\geq \frac{4\sqrt{2}}{3\pi}\cdot 4A\cdot \frac{\sqrt{2}}{2} \int_{\pi/2}^{3\pi/4}\frac{1}{u}\, du,\\
+          &\geq M\cdot A &&\text{con $M$ constante positiva}.
         \end{align*}
-        lo que nos lleva a una contradicción de la forma $\infty < M < \infty$, por lo que podemos concluir que (III) es falsa y por ende $\mathcal{F}$ no es sobreyectiva. 
+        Luego si $A\to \infty$, entonces $\norm{g_A}_{1}\to\infty$.\\
+        Pero note que usando (III) se debe de satisfacer que
+        \begin{align*}
+          \norm{g_A}_{1}\leq C\norm{\hat{g_A}}_{\infty},
+        \end{align*}
+        para todo $A$, lo que nos lleva a
+        \begin{align*}
+          \norm{g_A}_{1}\to \infty \leq C\norm{\hat{g_A}}_{\infty}\to 2.
+        \end{align*}
+        Contradicción ($\infty < 2C < \infty $), luego podemos concluir que $\mathcal{F}$ no puede ser sobreyectiva. 
     \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
