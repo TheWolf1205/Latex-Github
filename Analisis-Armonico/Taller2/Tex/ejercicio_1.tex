@@ -1,0 +1,144 @@
+\begin{homeworkProblem}
+  \textbf{Convolución} 
+  \begin{enumerate}[(i)]
+    \item Pruebe que si $f \in L^1(\mathbb{R}^{n})$ y $g \in L^p(\mathbb{R}^{n})$, con $1 \leq p \leq 2$, entonces
+      \begin{align*}
+        \hat{f * g} (\xi) = \hat{f}(\xi)\hat{g}(\xi)
+      \end{align*}
+      en $L^{p'}(\mathbb{R}^{n})$, donde $\frac{1}{p} + \frac{1}{p'} = 1$.
+    \item Si $f \in L^p(\mathbb{R}^{n})$ y $g \in L^{p'}(\mathbb{R}^{n})$, con $\frac{1}{p} + \frac{1}{p'} = 1$, donde $1 < p < \infty$, entonces $f * g \in C_\infty(\mathbb{R}^{n})$. ¿Qué se puede afirmar cuando $p = 1$ o $p = \infty$?
+  \end{enumerate}
+  Antes de comenzar será de utilidad demostrar la siguiente desigualdad.
+  \begin{lemma}{Desigualdad de Young}
+    Suponga $p,q,r\leq 1$, tales que $\frac{1}{p}+\frac{1}{q}=\frac{1}{r}+1$. Luego dadas $f\in L^{p}(\mathbb{R}^{n})$ y $g\in L^{q}(\mathbb{R}^{n})$, entonces
+    \begin{align*}
+      \norm{f*g}_{r}\leq \norm{f}_{p}\norm{g}_{q}.
+    \end{align*}
+  \end{lemma}
+  Definamos $T_g$ al operador
+  \begin{align*}
+    T_g(f)&=f*g.
+  \end{align*}
+  Veamos que $T_g:L^{1}(\mathbb{R}^{n})\to L^{q}(\mathbb{R}^{n})$ es un operador acotado ya que usando la desigualdad de Minkowski.
+  \begin{align*}
+    \norm{T_{g}(f)}_{q}&=\left( \int_{\mathbb{R}^{n}}\left|(f*g)(x)\right|^{q}\, dx \right)^{\frac{1}{q}},\\
+    &=\left( \int_{\mathbb{R}^{n}}\left|\int_{\mathbb{R}^{n}}f(y)g(x-y)\, dy\right|^{q}\, dx \right)^{\frac{1}{q}},\\
+    &\leq \int_{\mathbb{R}^{n}}\left( \int_{\mathbb{R}^{n}}\left| f(y)g(x-y) \right|^{q}\, dx \right)^{\frac{1}{q}}\, dy,\\
+    &\leq \int_{\mathbb{R}^{n}}|f(y)|\left(\int_{\mathbb{R}^{n}}|g(x-y)|^{q}\, dx\right)^{\frac{1}{q}}\, dy,\\
+    &\leq \norm{g}_{q}\norm{f}_{1}.
+  \end{align*}
+  Por otro lado también podemos ver que $T_{g}:L^{q'}(\mathbb{R}^{n})\to L^{\infty}(\mathbb{R}^{n})$ ya que usando la desigualdad de Hölder podemos ver que 
+  \begin{align*}
+    \norm{T_{g}(f)}_{\infty}&=\sup_{x\in\mathbb{R}^{n}}\left| \int_{\mathbb{R}^{n}}f(y)g(x-y)\, dx \right|,\\
+    &\leq \sup_{x\in\mathbb{R}^{n}}\left|\int_{\mathbb{R}^{n}}|f(y)g(x-y)|\, dy\right|,\\
+    &\leq \sup_{x\in\mathbb{R}^{n}}\left( \int_{\mathbb{R}^{n}}|f(y)|^{q'}\, dy \right)^{\frac{1}{q'}}\left( \int_{\mathbb{R}^{n}}|g(x-y)|^{q}\, dy \right)^{\frac{1}{q}},\\
+    &\leq \norm{g}_{q}\norm{f}_{q'}.
+  \end{align*}
+  Luego, usando el teorema de interpolación de Riesz-Thorin sabemos que podemos definir $T_g:L^{p}(\mathbb{R}^{n})\to L^{r}(\mathbb{R}^{n})$ con
+  \begin{align*}
+    \frac{1}{p}&=\frac{1-t}{1}+\frac{t}{q'},\\
+    \frac{1}{r}&=\frac{1-t}{q}.
+  \end{align*}
+  Lo que implica
+  \begin{align*}
+    \frac{1}{p}+\frac{1}{q}=\frac{1}{r}+1,
+  \end{align*}
+  lo que concluye el lema.
+  \begin{solution}
+    \begin{enumerate}[(i)]
+      \item Veamos que $f*g\in L^{p}(\mathbb{R}^{n})$ ya que usando la desigualdad integral de Minkowski's se cumple que
+        \begin{align*}
+          \norm{f*g}_p&=\left(\int_{\mathbb{R}^{n}}|(f*g)(x)|^{p}\, dx\right)^{\frac{1}{p}},\\
+          &=\left(\int_{\mathbb{R}^{n}}\left| \int_{\mathbb{R}^{n}}f(y)g(x-y)\, dy \right|^{p}\, dx\right)^{\frac{1}{p}},\\
+          &\leq \int_{\mathbb{R}^{n}}\left(\int_{\mathbb{R}^{n}}|f(y)g(x-y)|^{p}\, dx\right)^{\frac{1}{p}}\, dy,\\
+          &\leq \int_{\mathbb{R}^{n}}|f(y)|\left(\int_{\mathbb{R}^{n}}|g(x-y)|^{p}\, dx\right)^{\frac{1}{p}}\, dy,\\
+          &\leq \int_{\mathbb{R}^{n}}|f(y)|\norm{g}_{p}\, dy,\\
+          &\leq \norm{f}_{1}\norm{g}_{p}.
+        \end{align*}
+        Ahora veamos que $\hat{f*g}\in L^{p'}(\mathbb{R}^{n})$, ya que usando el teorema de interpolación de Riesz-Thorin podemos ver que como
+        \begin{align*}
+          \mathcal{F}:L^{1}(\mathbb{R}^{n})\to L^{\infty}(\mathbb{R}^{n}),\\
+          \mathcal{F}:L^{2}(\mathbb{R}^{n})\to L^{2}(\mathbb{R}^{n}).
+        \end{align*}
+        Luego podemos definir $\mathcal{F}:L^{p}\to L^{q}(\mathbb{R}^{n})$ con
+        \begin{align*}
+          \frac{1}{p}&=\frac{1-t}{1}+\frac{t}{2},\\
+          \frac{1}{q}&=\frac{t}{2}.
+        \end{align*}
+        Lo que implica que
+        \begin{align*}
+          \frac{1}{p}-1+\frac{2}{q}&=\frac{1}{q},
+        \end{align*}
+        que a su vez implica que
+        \begin{align*}
+          \frac{1}{p}+\frac{1}{q}&=1.
+        \end{align*}
+        en donde sabemos que $q=p'$, lo que nos permite concluir que $\hat{f*g}\in L^{p'}(\mathbb{R}^{n})$.\\
+        Ahora veamos que se cumple la propiedad.\\
+        Recuerde que si $g\in L^{p}(\mathbb{R}^{n})$, entonces $g\in L^1(\mathbb{R}^{n})+L^{2}(\mathbb{R}^{n})$, suponga $g_1\in L^1(\mathbb{R}^{n})$ y $g_2\in L^2(\mathbb{R}^{n})$ tales que $g=g_1+g_2$, además, suponga $\{g_k\}\subseteq L^1(\mathbb{R}^{n})\cap L^2(\mathbb{R}^{n})$ tales que $g_k\to g_2$ cuando $k\to\infty$, entonces
+        \begin{align*}
+          \hat{f*g}(\xi)&=\hat{\left(f*(g_1+g_2)\right)}(\xi),\\
+          &=\hat{f*g_1}(\xi)+\hat{f*g_2}(\xi),\\
+          &=\hat{f*g_1}(\xi)+\lim_{k \to \infty}\hat{f*g_k}(\xi),\\
+          &=\hat{f}(\xi)\hat{g_1}(\xi)+\lim_{k \to \infty}\hat{f}(\xi)\hat{g_k}(\xi),\\
+          &=\hat{f}(\xi)\hat{g_1}(\xi)+\hat{f}(\xi)\hat{g_2}(\xi),\\
+          &=\hat{f}(\xi)\left( \hat{g_1}(\xi)+\hat{g_2}(\xi) \right),\\
+          &=\hat{f}(\xi)\hat{g_1+g_2}(\xi),\\
+          &=\hat{f}(\xi)\hat{g}(\xi).
+        \end{align*}
+        Lo que concluye el resultado.
+      \item Veamos que $f*g\in C(\mathbb{R}^{n})$.\\
+        Dado $\epsilon>0$ existe $\delta=\frac{\epsilon}{\norm{f}_{p}\norm{g}_{p'}}>0$ tal que si
+        \begin{align*}
+          |x-y|< \delta = \frac{\epsilon}{\norm{f}_p\norm{g}_{p'}}, 
+        \end{align*}
+        entonces usando la desigualdad de Young y la continuidad de la norma en $L^{p'}(\mathbb{R}^{n})$ se tiene que
+        \begin{align*}
+          |(f*g)(x)-(f*g)(y)|&=\left| \int_{\mathbb{R}^{n}}f(z)g(x-z)\, dz-\int_{\mathbb{R}^{n}}f(z)g(y-z)\, dz \right|,\\
+          &= \left| \int_{\mathbb{R}^{n}}f(z)\left( g(x-z)-g(y-z) \right)\, dz \right|,\\
+          &\leq \sup_{x\in\mathbb{R}^{n}}\left| \int_{\mathbb{R}^{n}}f(z)\left( g(x-z)-g(y-z) \right)\, dz \right|,\\
+          &\leq \norm{f*(g(y-\cdot)-g(x-\cdot))}_{\infty},\\
+          &\leq \norm{f}_{p}\norm{g(y)-g(x)}_{p'}\\
+          &\leq \norm{f}_{p}\norm{g}_{p'}|x-y|,\\
+          &< \epsilon. 
+        \end{align*}
+        Por lo que podemos concluir que $f*g\in C(\mathbb{R}^{n})$.\\
+        Ahora veamos que $f*g(x)\to 0$ cuando $|x|\to\infty$.\\
+        Suponga $\{g_{k}\}\subset C_{c}(\mathbb{R}^{n})$ (continua de soporte compacto) tal que $g_k\to g$ cuando $k\to\infty$, sin pérdida de generalidad suponga $supp(g_k)\subset B_{k}(0)$, luego dado $\epsilon>0$ existe $N>0$ tal que si $k>N$, entonces
+        \begin{align*}
+          \norm{g-g_k}_{p'}<\epsilon.
+        \end{align*}
+        Además, note que como $f\in L^{p}(\mathbb{R}^{n})$, podemos asegurar que dado $\epsilon>0$ existe $R>0$ tal que si $k>R$, entonces
+        \begin{align*}
+          \left(\int_{|x|>k}|f(x)|^{p}\, dx\right)^{\frac{1}{p}}<\epsilon.
+        \end{align*}
+        Luego tomando $k$ adecuado que cumpla las 2 condiciones anteriores se cumple que 
+        \begin{align*}
+          \left| (f*g)(x) \right|&=\left| (f*(g_k+g-g_k))(x) \right|,\\
+          &=\left| (f*g_{k}(x)) \right|+\left| (f*(g-g_{k}))(x) \right|,\\
+          &= I + J.
+        \end{align*}
+        Estudiemos $I$ y supongamos $|x|>2k$, entonces 
+        \begin{align*}
+          \left| (f*g_k)(x) \right|&=\left| \int_{\mathbb{R}^{n}}f(y)g_{k}(x-y)\, dy \right|,\\
+          &\leq \int_{B_{k}(x)}\left| f(y)g_{k}(x-y) \right|\, dy,\\
+          &\leq \norm{g_k}_{\infty}\int_{B_{k}(x)}|f(y)|\, dy,\\
+          &\leq \norm{g_k}_{\infty}\int_{|y|\geq k}|f(y)|\, dy,\\
+          &< \norm{g_k}\epsilon.
+        \end{align*}
+        Ahora estudiemos $J$, usando la desigualdad de Young se tiene que
+        \begin{align*}
+          \left| (f*(g-g_k))(x) \right|&\leq \norm{(f*(g-g_k))}_{\infty},\\
+          &\leq \norm{f}_{p}\norm{g-g_k}_{p'},\\
+          &< \norm{f}_{p}\epsilon.
+        \end{align*}
+        luego tenemos que tomando $x$ suficientemente grande y un $k$ adecuado se cumple que 
+        \begin{align*}
+          \left| (f*g)(x) \right|&= I+J,\\
+          &<\norm{g_k}\epsilon + \norm{f}\epsilon,\\
+          &<M\epsilon.
+        \end{align*}
+        Por lo que podemos asegurar que $(f*g)(x)\to 0$ cuando $|x|\to \infty$, lo que concluye el ejercicio. 
+    \end{enumerate}   
+  \end{solution}
+\end{homeworkProblem}

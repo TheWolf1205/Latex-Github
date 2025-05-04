@@ -1,0 +1,28 @@
+\begin{homeworkProblem}
+  \textbf{Producto de convolución $\mathcal{S}'*\mathcal{S}$}.
+  \begin{enumerate}[(i)]
+    \item Sean $f, \phi$ y $\psi \in \mathcal{S}(\mathbb{R}^{n})$, pruebe que
+      \begin{align*}
+        \int_{\mathbb{R}^{n}} f * \phi(x) \psi(x) \, dx = \int_{\mathbb{R}^{n}} f(x) \tilde{\phi} * \psi(x) \, dx,
+      \end{align*}
+      donde $\tilde{\phi}(x) = \phi(-x)$. Esto motiva la siguiente definición: Sean $T \in \mathcal{S}'(\mathbb{R}^{n})$ y $\phi \in \mathcal{S}(\mathbb{R}^{n})$,
+      \begin{align*}
+        T * \phi : \mathcal{S}(\mathbb{R}^{n}) \longrightarrow \mathbb{C}, \quad \psi \longmapsto T * \phi(\psi) := T(\tilde{\phi} * \psi).
+      \end{align*}
+      Pruebe que $T * \phi \in \mathcal{S}'(\mathbb{R}^{n})$ y que
+      \begin{align*}
+        \hat{(T * \phi)} = \hat{T} \hat{\phi} \quad \text{en} \quad \mathcal{S}'(\mathbb{R}^{n}).
+      \end{align*}
+    \item Por otro lado, si $T \in \mathcal{S}'(\mathbb{R}^{n})$ y $\phi \in \mathcal{S}(\mathbb{R}^{n})$, se define:
+      \begin{align*}
+        T *_1 \phi : \mathbb{R}^{n} \longrightarrow \mathbb{C}, \quad x \longmapsto T *_1 \phi(x) := T(\tau_x \tilde{\phi}),
+      \end{align*}
+      donde $\tau_x \phi(y) = \phi(y - x)$. Pruebe entonces que
+      \begin{align*}
+        T *_1 \phi \in C^\infty(\mathbb{R}^{n}) \cap \mathcal{S}'(\mathbb{R}^{n}) \quad \text{y} \quad T *_1 \phi = T * \phi.
+      \end{align*}
+  \end{enumerate}
+  \begin{solution}
+    Solución
+  \end{solution}
+\end{homeworkProblem}
