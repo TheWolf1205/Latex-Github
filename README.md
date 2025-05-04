@@ -12,6 +12,10 @@ Repositorio para subir trabajos o talleres de la U :p.
 - Taller 1.
   - [Taller.](./Analisis-Funcional/Taller1/ejercicios1.pdf)
   - [Solución](./Analisis-Funcional/Taller1/Tex/main.pdf)
+
+- Taller 2.
+  - [Taller.](./Analisis-Funcional/Taller2/ejercicios1.pdf)
+  - [Solución](./Analisis-Funcional/Taller2/Tex/main.pdf)
 </details>
 
 <details>
