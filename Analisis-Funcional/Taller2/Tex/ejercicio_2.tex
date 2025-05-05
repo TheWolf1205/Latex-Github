@@ -5,6 +5,66 @@
     \item Sea $W\subset E$ un subespacio propio cerrado de $E$ y $x_0\in E\setminus W$. Demuestre que existe $f\in E^{*}$ tal que $f=0$ restricto a $W$ y $f(x_0)\neq 0$. 
   \end{enumerate}
   \begin{solution}
-    Solución.
+    \begin{enumerate}
+      \item Suponga $V=W\times \{tx_0\}$ y definamos el siguiente funcional
+        \begin{align*}
+          g:V=W\times \{tx_0\}&\to \mathbb{R},\\
+          (x,tx_0)&\to td.
+        \end{align*}
+        Note que si tomamos $x+(0)x_0\in V$ tal que $t=0$ (es decir $x\in W$), entonces
+        \begin{align*}
+          g(x+(0)x_0)=(0)d=0.
+        \end{align*}
+        Por otro lado si tomamos $0+(1)x_0\in V$ (es decir $x_0\in E\setminus W$), entonces 
+        \begin{align*}
+          g(0+(1)x_0)=(1)d=d.
+        \end{align*}
+        Se puede verificar que $g$ es lineal ya que si suponemos $x,y\in V$ con sus $t_1$ y  $t_2$ respectivos y $\lambda$ escalar, entonces
+        \begin{align*}
+          g(x+\lambda y)&=(t_1+\lambda t_2)d,\\
+          &=t_1d+\lambda t_2d,\\
+          &=g(x)+\lambda g(y).
+        \end{align*}
+        Ahora veamos que $\norm{g}_{V^{*}}=1$.\\
+        Primero tome $a=x+tx_0\in V$ arbitrario, entonces
+        \begin{align*}
+          \left| g(a) \right|&=\left| td \right|,\\
+          &=\left| t\inf_{y\in W}\norm{x_0-y} \right|,\\
+          &\leq \left| t\norm{x_0-\left( -\frac{x}{t} \right)} \right|,\\
+          &\leq \norm{tx_0+x},\\
+          &\leq \norm{a}.
+        \end{align*}
+        Por lo que podemos asegurar que $\norm{g}_{V^{*}}\leq 1$. Pero note que como $d=\inf_{y\in W}\norm{x_0-y}$, entonces podemos escoger una sucesión $\{y_n\}\subset W$ tal que $\norm{x_0-y_n}\to d$ por encima cuando $n\to \infty$.\\
+        Suponga $\{v_n\}=\left\{\frac{x_0-y_n}{\norm{x_0-y_n}}\right\}$ y note que
+        \begin{align*}
+          \norm{g}_{V^*}&=\sup_{\substack{x\in V,\\\norm{x}=1}}|g(x)|,\\
+          &\geq \lim_{v_n \to \infty}|g(v_n)|,\\
+          &\geq \lim_{v_n \to \infty}\frac{\left| g(x_0)-g(y_n)\right|}{\norm{x_0-y_n}},\\
+          &\geq \lim_{n \to \infty}\frac{d}{\norm{x_0-y_n}},\\
+          &\geq 1.
+        \end{align*}
+        Luego podemos asegurar que $\norm{g}_{V^*}=1$.\\
+        Ahora, definamos
+        \begin{align*}
+          \rho(x)=\norm{x}\quad,x\in E.
+        \end{align*}
+        Veamos que $\rho$ domina a $g$, es decir, $g(x)\leq \rho(x)$ para todo $x\in V$.\\
+        Suponga $a=x+tx_0\in V$, entonces
+        \begin{align*}
+          g(a)&=td,\\
+          &\leq \norm{tx_0},\\
+          &\leq \norm{x+tx_0},\\
+          &\leq \norm{a}=\rho(a).
+        \end{align*}
+        lo que nos permite concluir que $\rho$  domina a $g$.\\
+        Ahora tenemos que
+        \begin{itemize}
+          \item $g\in V^{*}$.\\
+          \item $\norm{g}_{V^*}=1$.\\
+          \item $g|_{w}=0$ y $g(x_0)=d$.\\
+          \item $\rho$ es un funcional de Minkowski que domina a $g$.
+        \end{itemize}
+        Luego, usando el teorema de Helly,Hahn-Banach en su forma analítica podemos asegurar que existe $f\in E^{*}$ tal que $f=0$ restricto a $W$, $f(x_0)=d$ y $\norm{f}_{E^{*}}=1$.
+    \end{enumerate}
   \end{solution}
 \end{homeworkProblem}

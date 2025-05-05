@@ -1,6 +1,51 @@
 \begin{homeworkProblem}
-  Sea $(E,\norm{\cdot})$ un espacio vectorial normado. Dado $r>0$, considere $C=B(0,r)=\{y\in E:\norm{y}<r\}$. Determine el funcional de Minkowski\footnote{Recuerde que dado $C$ abierto, convexo con $0\in C$, el funcional de Minkowski se define como $p(x)=\inf\{\alpha>0: \alpha^{-1}x\in C\},x\in E$.} de $C$.
+  Sea $(E,\norm{\cdot})$ un espacio vectorial normado. Dado $r>0$, considere $C=B(0,r)=\{y\in E:\norm{y}<r\}$. Determine el funcional de Minkowski\footnote{Recuerde que dado $C$ abierto, convexo con $0\in C$, el funcional de Minkowski se define como $\rho(x)=\inf\{\alpha>0: \alpha^{-1}x\in C\},x\in E$.} de $C$.
   \begin{solution}
-    Solución.
+    Note que $C$ es abierto ya que $C=B(0,r)$, veamos que es convexo.\\
+    Sean $x,y\in C$, entonces el camino convexo entre ellos es $(1-t)x+ty$, ahora veamos que para todo $t\in[0,1]$ se cumple que $(1-t)x+ty=z\in C$ ya que
+    \begin{align*}
+      \norm{z}&=\norm{(1-t)x+ty},\\
+      &\leq(1-t)\norm{x}+t\norm{y},\\
+      &<(1-t)r+tr,\\
+      &<r.
+    \end{align*}
+    Luego podemos afirmar que $C$ es un conjunto abierto, convexo y además que $0\in C$, por lo que definiremos 
+    \begin{align*}
+      \rho:E &\to \mathbb{R},\\
+      x &\to\inf\{\alpha>0:\alpha^{-1}x\in C\}.
+    \end{align*}
+    Note que si $\alpha^{-1}x\in C$, entonces
+    \begin{align*}
+      \norm{\alpha^{-1}x}=\frac{\norm{x}}{\alpha}< r. 
+    \end{align*}
+    Lo que implica que $\alpha>\frac{\norm{x}}{r}$, lo que nos permite razonar de la siguiente manera
+    \begin{align*}
+      \rho:E &\to \mathbb{R},\\
+      x &\to\inf\{\alpha>0:\alpha^{-1}x\in C\}=\inf\left\{\alpha>0:\alpha>\frac{\norm{x}}{r}\right\}.\\
+      &\hspace{4cm}=\frac{\norm{x}}{r}.
+    \end{align*}
+    Es decir
+    \begin{align*}
+      \rho(x)&=\frac{\norm{x}}{r}.
+    \end{align*}
+    Veamos que este es un funcional de Minkowski.\\
+    Dado $x\in E$ y $\lambda>0$ se satisface que
+    \begin{align*}
+      \rho(\lambda x)&=\frac{\norm{\lambda x}}{r},\\
+      & =\lambda \frac{\norm{x}}{r},\\
+      &=\lambda \rho(x).
+    \end{align*}
+    Además dados $x,y\in E$ se cumple que
+    \begin{align*}
+      \rho(x+y)&=\frac{\norm{x+y}}{r},\\
+      &\leq \frac{\norm{x}+\norm{y}}{r},\\
+      &\leq \frac{\norm{x}}{r}+\frac{y}{r},\\
+      &\leq \rho(x)+\rho(y).
+    \end{align*}
+    Por lo que podremos afirmar que el funcional de Minkowski de $C$ es
+    \begin{align*}
+      \rho(x)=\frac{\norm{x}}{r}.
+    \end{align*}
+    Lo que nos permite concluir el ejercicio.
   \end{solution}
 \end{homeworkProblem}

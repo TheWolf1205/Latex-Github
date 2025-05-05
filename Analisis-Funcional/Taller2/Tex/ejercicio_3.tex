@@ -17,6 +17,19 @@
       para todo $x\in E$. Si $K$ denota el espacio nulo de $T$ y $R(T)$ el rango de $T$, muestre que $\overline{T}:E/K\to R(T)$ dada por $\tilde{T}(x+K)=T(x),x\in E$, está bien definida y es un isomorfismo. Esto es $\tilde{T}\in L(E/K,R(T))$ y $\tilde{T}^{-1}\in L(R(T),E/K)$.  
   \end{enumerate}
   \begin{solution}
-    Solución.
+    \begin{enumerate}[(i)]
+      \item $\phantom{x}$\\
+      \begin{enumerate}[(a)]
+        \item Veamos que $\sim_{K}$ es una relación de equivalencia sobre $E$.
+          \begin{itemize}
+            \item Reflexiva.\\
+              Note que $x\sim_{K}x$, ya que $x-x=0\in K$ por ser $K$ subespacio de $E$ para todo $x\in E$, lo que nos permite concluir la reflexividad.
+            \item Simétrica.\\
+              Note que si asumimos que $x\sim_{K}y$, entonces $x-y\in K$, pero como $K$ es subespacio, entonces $-(x-y)=y-x\in K$, por lo que podemos asegurar que $y\sim_{K}x$, lo que nos permite concluir la simetría en la relación. 
+            \item Transitiva.\\
+              Note que si asumimos que $x\sim_{K}y$ y $y\sim_{K}z$, entonces $x-y\in K$ y $y-z\in K$, pero como $K$ es un subespacio cerrado, entonces $(x-y)+(y-z)=x-z\in K$ y por ende $x\sim_{K}z$, lo que nos permite concluir la transitividad. 
+          \end{itemize}
+      \end{enumerate}
+    \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
