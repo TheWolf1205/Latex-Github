@@ -27,8 +27,127 @@
             \item Simétrica.\\
               Note que si asumimos que $x\sim_{K}y$, entonces $x-y\in K$, pero como $K$ es subespacio, entonces $-(x-y)=y-x\in K$, por lo que podemos asegurar que $y\sim_{K}x$, lo que nos permite concluir la simetría en la relación. 
             \item Transitiva.\\
-              Note que si asumimos que $x\sim_{K}y$ y $y\sim_{K}z$, entonces $x-y\in K$ y $y-z\in K$, pero como $K$ es un subespacio cerrado, entonces $(x-y)+(y-z)=x-z\in K$ y por ende $x\sim_{K}z$, lo que nos permite concluir la transitividad. 
+              Note que si asumimos que $x\sim_{K}y$ y $y\sim_{K}z$, entonces $x-y\in K$ y $y-z\in K$, pero como $K$ es un subespacio cerrado, entonces $(x-y)+(y-z)=x-z\in K$ y por ende $x\sim_{K}z$, lo que nos permite concluir la transitividad.
           \end{itemize}
+        \item Veamos que el espacio $(E/K,\norm{\cdot}_{E/K})$ es Banach.
+          \begin{itemize}
+            \item Veamos que $(E/K,\norm{\cdot}_{E/K})$ es un espacio vectorial normado.\\
+              Note que si $y-x=k\in K$, entonces $y=x+k$ con $x\in E$ y cualquier $k\in K$, por lo que escribiremos a $y=x+K$, luego los elementos de $E/K$ serán de la forma $[a]=\{a=x+k:k\in K, x\in E\}$, además podemos afirmar que $E/K$ es cerrado, ya que $K$ es cerrado, entonces $\lambda[a]+[b]=\lambda (x+k_1)+y+k_2=(\lambda x+y)+\tilde{k}=[\lambda a+b]$. 
+              Veamos que la norma está bien definida, es decir, dados $x+K,y+K\in E/K$ y $\lambda$ escalar, entonces
+              \begin{align*}
+                \norm{\lambda(x+K)}_{E/K}&=\inf_{k\in K}\norm{\lambda(x-k)},\\
+                &=\lambda\inf_{k\in K}\norm{x-k},\\
+                &=\lambda \norm{x+K}_{E/K}.
+              \end{align*}
+              Además si tomamos $0\in E/K$, es decir, $x\in K$, como $K$ es subespacio cerrado, entonces $x-k,0\in K$ y por ende podemos afirmar que
+              \begin{align*}
+                \norm{x+K}_{E/K}&=\inf_{k\in K}\norm{x-k},\\
+                &=\inf_{k\in K}\norm{k},\\
+                &= 0.
+              \end{align*}
+              Y por último sabemos que la desigualdad triangular se cumple por las propiedades de la norma en $E$ y del ínfimo, primero note que dado $\epsilon>0$ existe $k_1,k_2\in K$ tales que
+              \begin{align*}
+                \norm{x+K}_{E/K}&=\inf_{k\in K}\norm{x-k},\\
+                &\leq \norm{x-k_1},\\
+                &\leq \norm{x+K}_{E/K}+\epsilon/2,\\
+                \norm{y+K}_{E/K}&=\inf_{k\in K}\norm{y-k},\\
+                &\leq \norm{y-k_2},\\
+                &\leq \norm{y+K}_{E/K}+\epsilon/2.
+              \end{align*}
+              Luego
+              \begin{align*}
+                \norm{x+K+y+K}_{E/K}&=\norm{(x+y)+K}_{E/K},\\
+                &\leq \inf_{k\in K}\norm{x+y-k},\\
+                &\leq \norm{x+y-(k_1+k_2)},\\
+                &\leq \norm{x-k_1}+\norm{y-k_2},\\
+                &\leq \norm{x+K}_{E/K}+\norm{y+K}_{E/K}+\epsilon.
+              \end{align*}
+              Pero como la desigualdad se tiene para $\epsilon>0$ arbitrario, entonces
+              \begin{align*}
+                \norm{(x+y)+K}_{E/K}&\leq \norm{x+K}_{E/K}+\norm{y+K}_{E/K}.
+              \end{align*}
+              Lo que concluye la desigualdad triangular y a su vez nos permite afirmar que $(E/K,\norm{\cdot}_{E/K})$ es un espacio vectorial normado.
+            \item Ahora veamos que $(E/K,\norm{\cdot}_{E/K})$ es Banach.\\
+              Suponga $\{a_{n}\}\subset E/K$ sucesión de Cauchy, por facilidad tomaremos al representante $a_{n}=x_{n}+k$ con $k$ fijo, entonces note que dado $\epsilon > 0$ existe $N>0$ tal que si $n,m>N$ entonces
+                \begin{align*}
+                  \norm{a_{n}-a_{m}}_{E/K}&=\norm{(x_n-x_m)+K},\\
+                  &=\inf_{k\in K}\norm{x_n-x_m-k}<\epsilon.
+                \end{align*}
+                Vamos a tomar una subsucesión $\{a_{j}\}$ tal que para todo $j\in \mathbb{Z}$ se tenga que
+                \begin{align*}
+                  \norm{a_{j}-a_{j+1}}_{E/K}<\frac{1}{2^{j}}.
+                \end{align*}
+                ¿Por qué se puede obtener esta subsucesión? Note que si tomamos $\epsilon=\frac{1}{2^{j}}$ existe $N_0>0$ tal que si $n_0,m_0>N_0$, entonces $\norm{x_{n_0}-x_{m_0}}<\frac{1}{2^{j}}$, luego si tomamos por otro lado $\epsilon=\frac{1}{2^{j-1}}$, note que para todo $n,m$ tal que $n,m>N_0$ se satisface la condición, ya que $\frac{1}{2^{j}}<\frac{1}{2^{j-1}}$, la idea es tomar $n,m$ adecuados que cumplan de forma consecutiva las condiciones.\\
+                Siendo así, note que razonando de forma análoga a cuando demostramos la desigualdad triangular por propiedades del ínfimo se tiene que dado $\delta>0$ existe $k\in K$ tal que 
+                \begin{align*}
+                  \norm{a_{j}-a_{j+1}}_{E/K} &= \inf_{k\in K}\norm{(x_{j}-x_{j+1})-k},\\
+                  &\leq \norm{(x_{j}-x_{j+1})-k},\\
+                  &\leq \norm{a_{j}-a_{j+1}}_{E/K}+\delta,\\
+                  &< \frac{1}{2^{j}}+\delta. 
+                \end{align*}
+                Tome $\delta>0$ tal que $\frac{1}{2^{j}}+\delta=\frac{1}{2^{j-1}}$, entonces tomando ese $k=k_j-k_{j+1}$ tenemos que para cada $j$ se cumple que tomando $y_j=x_j-k_j$ se tiene que 
+                \begin{align*}
+                  \norm{(x_j-x_{j+1}-k)}&=\norm{(x_{j}-k_{j})-(x_{j+1}-k_{j+1})},\\
+                  &=\norm{y_j-y_{j+1}},\\
+                  &\leq \frac{1}{2^{j-1}}.
+                \end{align*}
+                Luego, es claro que $\{y_j\}\subset E$ es una sucesión de Cauchy y por ende como $E$ es Banach, entonces existe $y\in E$ tal que $y_j\to y=x+k_0$ para algún $k_0\in K$ (esto porque $K$ es subespacio, entonces en el peor de los casos $k_0=0$.) cuando $j\to \infty$.
+                Ahora, tome $a=x+K\in E/K$, y luego dadas las condiciones anteriores, dado $\epsilon>0$ existe $J>0$ tal que si $j>J$, entonces
+                \begin{align*}
+                  \norm{a_{j}-a}_{E/K}&=\inf_{k\in K}\norm{(x_j-x)-k},\\
+                  &\leq \norm{(x_{j}-k_{j})-(x-k_{0})},\\
+                  &\leq \norm{y_{j}-y},\\
+                  &< \epsilon.
+                \end{align*}
+                Luego podemos afirmar que $a_j\to a$ cuando $j\to \infty$ y por ende $a_{n}\to a$ cuando $n\to\infty$, lo que nos permite concluir que $(E/K,\norm{\cdot}_{E/K})$ es un espacio de Banach. 
+          \end{itemize}
+        \item Veamos que $\tilde{T}$ está bien definido.\\
+          Note que si tomamos $x\sim_{K}x'$ entonces $x-x'\in K$ por lo que se cumple que $x=x'+K$, luego
+          \begin{align*}
+            \tilde{T}(x+K)&=T(x),\\
+            &=T(x'+K),\\
+            &=T(x')+T(K) &&\text{como $K$ es el espacio nulo},\\
+            &=T(x'),\\
+            &=\tilde{T}(x'+K).
+          \end{align*}
+          Lo que nos asegura que $\tilde{T}$ está bien definida.\\
+          Veamos que $\tilde{T}\in L(E/K,R(T))$.\\
+          Veamos que es lineal gracias a la linealidad de $T$ ya que si tomamos $x+K,y+K\in E/K$ y $\lambda$ entonces
+          \begin{align*}
+            \tilde{T}(x+K+\lambda(y+K))&=\tilde{T}((x+\lambda y)+K),\\
+            &=T(x+\lambda y),\\
+            &=T(x)+\lambda T(y),\\
+            &=\tilde{T}(x+K)+\lambda T(y+K).
+          \end{align*}
+          Veamos que $\tilde{T}$ es continua gracias a la continuidad de $T$ ya que se puede ver que $\norm{x+K}_{E/K}\leq 1$, entonces $\norm{x}\leq 1$ ya que $0\in K$, luego 
+          \begin{align*}
+            \norm{\tilde{T}}&=\sup_{\substack{x\in E,\\\norm{x+K}_{E/K}\leq 1}}\norm{\tilde{T}(x+K)}_{R(T)},\\
+            &\leq \sup_{\substack{x\in E,\\ \norm{x}\leq 1}}\norm{T(x)}_{W},\\
+            &\leq \norm{T}.
+          \end{align*}
+          Lo que concluye que $\tilde{T}\in L(E/K,R(T))$.\\
+          Veamos ahora que $\tilde{T}^{-1}\in L(R(T),E/K)$, note que
+          \begin{align*}
+            \tilde{T}^{-1}:R(T)&\to E/K,\\
+            y=T(x)&\to x+K.
+          \end{align*}
+          Sean $y_1,y_2\in R(T)$ y $\lambda$ escalar, entonces
+          \begin{align*}
+            \tilde{T}^{-1}(y_1+\lambda y_{2})&=\tilde{T}^{-1}\left( T(x_1)+\lambda T(x_2) \right),\\
+            &=\tilde{T}^{-1}(T(x_1+\lambda x_2)),\\
+            &=\tilde{T}^{-1}(\tilde{T}((x_1+\lambda x_2)+K),\\
+            &=(x_1+\lambda x_{2})+ K,\\
+            &=(x_1+K)+\lambda (x_{2}+K),\\
+            &=\tilde{T}^{-1}(y_1)+\lambda \tilde{T}^{-1}(y_2).
+          \end{align*}
+          Y veamos que la hipótesis faltante nos da la continuidad, ya que si suponemos $\tilde{T}^{-1}(y)=x+K$, entonces
+          \begin{align*}
+            \norm{\tilde{T}^{-1}(y)}_{E/K}&=\norm{x+K}_{E/K},\\
+            &\leq \norm{x}_{E},\\
+            &\leq \frac{1}{c}\norm{T(x)}_{F},\\
+            &\leq \frac{1}{c}\norm{y}_{R(T)}.
+          \end{align*}
+          Luego podemos afirmar que $\tilde{T}^{-1}\in L(R(T),E/K)$ y por ende es un isomorfismo. 
       \end{enumerate}
     \end{enumerate}
   \end{solution}
