@@ -1,6 +1,62 @@
 \begin{homeworkProblem}
   Considere los espacios $C([0,1])$ y $C^{1}([0,1])$ ambos equipados con la norma del supremo $\norm{f}_{L^{\infty}}=\sup_{x\in [0,1]}|f(x)|$. Definimos el operador derivada $D:C^{1}([0,1])\to C([0,1])$ dado por $f\to f'$. Muestre que $D$ es un operador no acotado, pero su gráfico $G(D)$ es cerrado. 
   \begin{solution}
-    Solución.
+    Para ver que $D$ es un operador no acotado suponga $f_{n}=x^{n}$, note que
+    \begin{align*}
+      \norm{f_n}_{\infty}&=\sup_{x\in [0,1]}\left| x^{n} \right|,\\
+      &=1.
+    \end{align*}
+    Luego sabemos que $f'_{n}(x)=nx^{n-1}$, luego
+    \begin{align*}
+      \norm{f'_{n}}_{\infty}&=\sup_{x\in [0,1]}\left| nx^{n-1} \right|,\\
+      &=n.
+    \end{align*}
+    Ahora note que
+    \begin{align*}
+      \infty&=\sup_{n\in \mathbb{N}}n,\\
+      &=\sup_{n\in \mathbb{N}}\norm{f'_{n}}_{\infty},\\
+      &\leq \sup_{\substack{f\in C([0,1]),\\\norm{f}_{\infty}=1}}\norm{f'}_{\infty},\\
+      &\leq \norm{D}.
+    \end{align*}
+    De lo que podemos concluir que $D$ es un operador no acotado.\\
+    Ahora veamos que su gráfic $G(D)$ es cerrado.\\
+    Suponga $\{(f_{n},f'_{n})\}\subset G(D)$ sucesión convergente a $(f,f')$ cuando $n\to\infty$, nuestra intención será ver que $(f,f')\in G(D)$.\\
+    Entonces, dado $\epsilon>0$ existe $N>0$ tal que si $n>N$, entonces se satisface que
+    \begin{align*}
+      \norm{(f,f')-(f_{n},f'_{n})}&=\norm{(f-f_{n},f'-f_{n'})},\\
+      &=\norm{f-f_{n}}_{\infty}+\norm{f'-f_{n}'}_{\infty}<\epsilon.
+    \end{align*}
+    Luego
+    \begin{align*}
+      \norm{f-f_{n}}_{\infty}&<\epsilon.\\
+      \norm{f'-f'_{n}}_{\infty}&<\epsilon.
+    \end{align*}
+    Luego, como se tiene convergencia uniforme tanto en $f$ como en $f'$, podemos asegurar que las funciones $f,f'\in C([0,1])$ y tienen convergencia puntual (visto en clase y ejercicios anteriores), por lo que solo nos queda ver que $D(f)=f'$, para ver esto veamos que usando el teorema fundamental del cálculo se cumple que
+    \begin{align*}
+      f(x)=f(0)+\int_{0}^{x}D(f)(x)\, dx,\\
+    \end{align*}
+    por otro lado
+    \begin{align*}
+      f(x)&=\lim_{n \to \infty}f_{n}(x),\\
+      &=\lim_{n \to \infty}f_{n}(0)+\int_{0}^{x}f_{n}'(x)\, dx,\\
+      &=\lim_{n \to \infty}f_{n}(0)+\lim_{n \to \infty}\int_{0}^{x}f_{n}'(x)\, dx,\\
+      &=f(0)+\lim_{n \to \infty}\int_{0}^{x}f_{n}'(x)\, dx
+    \end{align*}
+    Ahora, como la integral $\int_{0}^{x}f_{n}'(x)\, dx<\infty$ para todo $n>N$, y además sabemos que $f_{n}$ converge a $f$ en todo el intervalo $[0,1]$, es particular el intervalo $[0,x]$, además como $\norm{f'-f'_{n}}_{\infty}<\epsilon$, entonces sabemos que para cada $n$
+    \begin{align*}
+      \left| f'(x)-f_{n}'(x) \right|&\leq \epsilon.
+    \end{align*}
+    De lo que podemos concluir que
+    \begin{align*}
+      |f_{n}(x)|&\leq \left| f'(x)-f_{n}'(x) \right|+|f'(x)|,\\
+      &\leq |f'(x)|+\epsilon.
+    \end{align*}
+    Por lo que para todo $n>N$ sabemos que $g(t)=|f(x)|+\epsilon\geq |f_{n}'(x)|$, luego usando el teorema de la convergencia dominada de Lebesgue sabemos que
+    \begin{align*}
+      f(x)&=f(0)+\lim_{n \to \infty}\int_{0}^{x}f_{n}'(x)\, dx,\\
+      &=f(0)+\int_{0}^{x}\lim_{n \to \infty}f_{n}'(x)\, dx,\\
+      &=f(0)+\int_{0}^{x}f'(x)\, dx.
+    \end{align*}
+    Lo que nos permite concluir que $D(f)(x)=f'(x)$ para todo $x\in [0,1]$ (ya que ambas son continuas) y por ende $(f_{n},f'_{n})\to (f,f')$ cuando $n\to\infty$ con $(f,f')\in G(D)$, es decir $G(D)$ es cerrado. 
   \end{solution}
 \end{homeworkProblem}
