@@ -1,6 +1,30 @@
 \begin{homeworkProblem}
   Si $f\in L^1(\mathbb{R}^{n})$, $f$ es continua en $0$ y $\hat{f}\geq 0$ entonces $\hat{f}\in L^{1}(\mathbb{R}^{n})$. 
   \begin{solution}
-    Solución
+    Usemos el núcleo del calor
+    \begin{align*}
+      g_{t}(x)=\frac{1}{(4\pi t)^{n/2}}e^{-\frac{|x|}{4t}},
+    \end{align*}
+    en donde
+    \begin{align*}
+      \hat{g_t}(\xi)=e^{-4\pi^2t|\xi|^2}.
+    \end{align*}
+    Note que usando que $g_t$ es par y propiedades de la transformada de Fourier se cumple que 
+    \begin{align*}
+      \int_{\mathbb{R}^{n}}f(x)g_{t}(x)\, dx&=\int_{\mathbb{R}^{n}}f(x)g_{t}(-x)\, dx,\\
+      &=\int_{\mathbb{R}^{n}}f(x)\hat{\hat{g_{t}}}(x)\, dx,\\
+      &=\int_{\mathbb{R}^{n}}\hat{f}(\xi)\hat{g_t}(\xi)\, d\xi.
+    \end{align*}
+    Además si tomamos $t\to 0$, entonces
+    \begin{align*}
+      \int_{\mathbb{R}^{n}}f(x)g_t(x)\, dx&=f(0).
+    \end{align*}
+    Luego como $\hat{f}\geq 0$ y $\hat{f}(\xi)e^{-4\pi^2t|\xi|^2}\to \hat{f}(\xi)\to \hat{f}(\xi)$ de manera creciente y monótona cuando $t\to 0$, usando el teorema de la convergencia monótona tenemos que 
+    \begin{align*}
+      \norm{\hat{f}}_{1}&=\int_{\mathbb{R}^{n}}\hat{f}(\xi)\, d\xi,\\
+      &=\lim_{t \to 0}\int_{\mathbb{R}^{n}}\hat{f}(\xi)\hat{g_{t}}(\xi)\, d\xi,\\
+      &=\lim_{t \to 0}\int_{\mathbb{R}^{n}}f(x)g_t(x)\, dx,\\
+      &=f(0).
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}

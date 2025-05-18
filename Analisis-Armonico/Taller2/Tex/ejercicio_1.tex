@@ -88,18 +88,18 @@
         \end{align*}
         Lo que concluye el resultado.
       \item Veamos que $f*g\in C(\mathbb{R}^{n})$.\\
-        Dado $\epsilon>0$ existe $\delta=\frac{\epsilon}{\norm{f}_{p}\norm{g}_{p'}}>0$ tal que si
+        Dado $\epsilon>0$ existe $\delta>0$ (este viene dado por la continuidad de las traslaciones en $L^{p'}(\mathbb{R}^{n})$, es decir que $\lim_{h \to 0}\norm{g(x+h)-g(x)}_{p'}=0$) tal que si
         \begin{align*}
-          |x-y|< \delta = \frac{\epsilon}{\norm{f}_p\norm{g}_{p'}}, 
+          |x-y|< \delta, 
         \end{align*}
-        entonces usando la desigualdad de Young y la continuidad de la norma en $L^{p'}(\mathbb{R}^{n})$ se tiene que
+        entonces usando la desigualdad de Young y la continuidad de las traslaciones de la norma en $L^{p'}(\mathbb{R}^{n})$ (es este caso tomamos ese $\epsilon$ como $\frac{\epsilon}{\norm{f}_{p}}$) se tiene que
         \begin{align*}
           |(f*g)(x)-(f*g)(y)|&=\left| \int_{\mathbb{R}^{n}}f(z)g(x-z)\, dz-\int_{\mathbb{R}^{n}}f(z)g(y-z)\, dz \right|,\\
           &= \left| \int_{\mathbb{R}^{n}}f(z)\left( g(x-z)-g(y-z) \right)\, dz \right|,\\
-          &\leq \sup_{x\in\mathbb{R}^{n}}\left| \int_{\mathbb{R}^{n}}f(z)\left( g(x-z)-g(y-z) \right)\, dz \right|,\\
+          &\leq \sup_{z\in\mathbb{R}^{n}}\left| \int_{\mathbb{R}^{n}}f(z)\left( g(x-z)-g(y-z) \right)\, dz \right|,\\
           &\leq \norm{f*(g(y-\cdot)-g(x-\cdot))}_{\infty},\\
           &\leq \norm{f}_{p}\norm{g(y)-g(x)}_{p'}\\
-          &\leq \norm{f}_{p}\norm{g}_{p'}|x-y|,\\
+          &< \norm{f}_{p}\frac{\epsilon}{\norm{f}_{p}},\\
           &< \epsilon. 
         \end{align*}
         Por lo que podemos concluir que $f*g\in C(\mathbb{R}^{n})$.\\
