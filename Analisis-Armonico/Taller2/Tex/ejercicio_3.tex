@@ -23,6 +23,79 @@
       \end{align*}
   \end{enumerate}
   \begin{solution}
-    Solución
+    (I)\\
+    Veamos que $T*\phi \in \mathcal{S}'(\mathbb{R}^{n})$.\\
+    Por claridad defina el operador $T_{T}(\phi)=T*\phi$, note que como $T\in\mathcal{S}'(\mathbb{R}^{n})$ y la convolución para funciones en $\mathcal{S}(\mathbb{R}^{n})$ es lineal, entonces $T_{T}$ es lineal, ya que si tomamos $\phi,\psi\in\mathcal{S}(\mathbb{R}^{n})$ y $\lambda$ escalar, entonces 
+    \begin{align*}
+      T_{T}(\phi+\lambda\psi)&=\left(T*\left( \phi+\lambda\psi \right)\right)(f),\\
+      &=T\left( \tilde{\left( \phi+\lambda\psi \right)}*f \right),\\
+      &=T\left( \tilde{\phi}*f+\lambda\tilde{\psi}*f \right),\\
+      &=\left( T*\phi \right)(f)+\lambda\left( T*\psi \right)(f),\\
+      &=T_{T}(\phi)+\lambda T_{T}(\psi).
+    \end{align*}
+    \newpage
+    Ahora veamos que $T_T$ es un operador acotado, para esto recuerde que como $T\in\mathcal{S}(\mathbb{R}^{n})$ entonces se satisface que existe una constante $C>0$ y enteros $m,l$ tales que
+    \begin{align*}
+      |T(\phi)|\leq C\sum_{\substack{|\alpha|\leq l\\|\beta|\leq m}}\rho_{\alpha,\beta}(\phi)
+    \end{align*}
+    para toda $\phi\in\mathcal{S}(\mathbb{R}^{n})$.\\
+    Asumiendo esto podemos ver que como $\tilde{\phi}*f\in \mathcal{S}(\mathbb{R}^{n})$, entonces
+    \begin{align*}
+      |T_{T}(\phi)|&=\left| \left( T*\phi \right)(f) \right|,\\
+      &=\left| T\left( \tilde{\phi}*f \right) \right|,\\
+      &\leq C\sum_{\substack{|\alpha|\leq l\\|\beta|\leq m}}\rho_{\alpha,\beta}(\tilde{\phi}*f)
+    \end{align*}
+    Lo que concluye que $T_{T}$ es un operador lineal continuo, es decir, $T*\phi\in\mathcal{S}'(\mathbb{R}^{n})$.\\
+    Ahora, veamos que $(\hat{T*\phi})=\hat{T}\hat{\phi}$ en $\mathcal{S}'(\mathbb{R}^{n})$.\\
+    Note que
+    \begin{align*}
+      (\hat{T*\phi})(f)&=(T*\phi)(\hat{f}),\\
+      &=T\left( \tilde{\phi}*\hat{f} \right),\\
+      &=T\left( \hat{\hat{\phi}}*\hat{f} \right),\\
+      &=T\left( \hat{\left(\hat{\phi}f\right)} \right),\\
+      &=\hat{T}\left( \hat{\phi}f \right),\\
+      &=\hat{T}\hat{\phi}(f).
+    \end{align*}
+    Lo que concluye el ejercicio.\\
+    (II)\\
+    Veamos que $T*_{1}\phi\in C^{\infty}(\mathbb{R}^{n})\cup \mathcal{S}'(\mathbb{R}^{n})$.\\
+    Primero veamos que $T*_{1}\phi\in C^{\infty}(\mathbb{R}^{n})$, para esto note que como $T$ es continuo, entonces 
+      \begin{align*}
+        \partial_{x_j}\left(T*_{1}\phi\right)(x)&=\lim_{h\rightarrow 0}\frac{(T*_{1}\phi)(x+h\epsilon_j)-(T*\phi)(x)}{h},\\
+        &=\lim_{h \to 0}\frac{T\left( \tau_{x+h\epsilon_{j}}\tilde{\phi}(y)\right)-T\left( \tau_{x}\tilde{\phi}(y) \right)}{h},\\
+        &=\lim_{h\rightarrow 0}\frac{T\left( \phi\left( x+h\epsilon_{j}-y \right) \right)-T\left( \phi\left( x-y \right) \right)}{h},\\
+        &=\lim_{h \to 0}T\left( \frac{\phi(x+h\epsilon-y)-\phi(x-y)}{h} \right),\\
+        &=T\left( \lim_{h \to 0}\frac{\phi(x+h\epsilon_{j}-y)-\phi(x-y)}{h}\right),\\
+        &=T\left( \partial_{x_{j}}\phi(x-y) \right),\\
+        &=T\left( \tau_{x}\tilde{\partial_{x_j}\phi}(y) \right),\\
+        &= \left(T*_{1}\partial_{x_j}\phi\right)(x),
+      \end{align*}
+      luego usando un argumento inductivo, como $\phi\in\mathcal{S}(\mathbb{R}^{n})$ podemos concluir que $T*_{1}\phi\in C^{\infty}(\mathbb{R}^{n})$.\\
+      Ahora veamos que $T*_{1}\phi\in\mathcal{S}'(\mathbb{R}^{n})$, para esto con el fin de ser más claros definiremos el operador $T_{T}(\phi)=T*_{1}\phi$, note que como las traslaciones y reflexiones son lineales, entonces dadas $\phi,\varphi\in\mathcal{S}(\mathbb{R}^{n})$ con $\lambda$ escalar se cumple que
+      \begin{align*}
+        T_{T}(\phi+\lambda\varphi)&=T*_{1}\left( \phi+\lambda\varphi \right),\\
+        &=T\left( \tau_{x}\tilde{\phi+\lambda\varphi} \right),\\
+        &=T\left( \tau_{x}\tilde{\phi}+\lambda\tau_{x}\tilde{\varphi} \right),\\
+        &=T\left( \tau_{x}\tilde{\phi} \right)+\lambda T\left( \tau_{x}\tilde{\varphi} \right),\\
+        &=T*_{1}\phi+\lambda T*_{1}\varphi.
+      \end{align*}
+      Ahora veamos la continuidad, note que como $T\in\mathcal{S}'(\mathbb{R}^{n})$, entonces existe una constante $C>0$ y enteros $m$ y $l$ tales que para toda $\phi\in \mathcal{S}(\mathbb{R}^{n})$ se cumple que
+      \begin{align*}
+        |T(\phi)|\leq C\sum_{\substack{|\alpha|\leq l\\ |\beta|\leq m}}\rho_{\alpha,\beta}(\phi),
+      \end{align*}
+      usando esto se puede ver que
+      \begin{align*}
+        |T_{T}(\phi)|&=\left| T*_{1}\phi(x) \right|,\\
+        &=\left| T\left( \tau_{x}\tilde{\phi}(y) \right) \right|,\\
+        &\leq C\sum_{\substack{|\alpha|\leq l\\|\beta|\leq m}}\rho_{\alpha,\beta}(\tau_{x}\tilde{\phi}),
+      \end{align*}
+      lo que nos permite concluir que $T_{T}\in\mathcal{S}'(\mathbb{R}^{n})$, es decir que $T*_{1}\phi\in\mathcal{S}'(\mathbb{R}^{n})$.\\
+      Ahora, con el fin de ver que $T*_{1}\phi=T*\phi$, usaremos que la transformada de Fourier es un isomorfismo en $\mathcal{S}'(\mathbb{R}^{n})$, es decir, demostraremos que $\left(\hat{T*_{1}\phi}\right)=\hat{T}\hat{\phi}$ en $\mathcal{S}'(\mathbb{R}^{n})$ y como la transformada de Fourier es un isomorfismo en $\mathcal{S}'(\mathbb{R}^{n})$, entonces $T*_{1}\phi=T*\phi$ en $\mathcal{S}'(\mathbb{R}^{n})$.\\
+      Siendo así, note que
+      \begin{align*}
+        \left( T*_{1}\phi \right)(f)&=\left( T(\tau_{x}\tilde{\phi}) \right)(f),\\
+        &=T(\tau_{x}\tilde{\phi}f),\\
+        &=
+      \end{align*}
   \end{solution}
 \end{homeworkProblem}

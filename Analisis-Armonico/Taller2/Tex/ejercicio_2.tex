@@ -15,11 +15,11 @@
       &=\int_{\mathbb{R}^{n}}f(x)\hat{\hat{g_{t}}}(x)\, dx,\\
       &=\int_{\mathbb{R}^{n}}\hat{f}(\xi)\hat{g_t}(\xi)\, d\xi.
     \end{align*}
-    Además si tomamos $t\to 0$, entonces
+    Además si tomamos $t\to 0$, como $f$ es continua en $0$ (es decir que $0$ es un punto de Lebesgue) entonces
     \begin{align*}
       \int_{\mathbb{R}^{n}}f(x)g_t(x)\, dx&=f(0).
     \end{align*}
-    Luego como $\hat{f}\geq 0$ y $\hat{f}(\xi)e^{-4\pi^2t|\xi|^2}\to \hat{f}(\xi)\to \hat{f}(\xi)$ de manera creciente y monótona cuando $t\to 0$, usando el teorema de la convergencia monótona tenemos que 
+    Luego como $\hat{f}\geq 0$ y $\hat{f}(\xi)e^{-4\pi^2t|\xi|^2}\to \hat{f}(\xi)$ de manera creciente y monótona cuando $t\to 0$, usando el teorema de la convergencia monótona tenemos que 
     \begin{align*}
       \norm{\hat{f}}_{1}&=\int_{\mathbb{R}^{n}}\hat{f}(\xi)\, d\xi,\\
       &=\lim_{t \to 0}\int_{\mathbb{R}^{n}}\hat{f}(\xi)\hat{g_{t}}(\xi)\, d\xi,\\
