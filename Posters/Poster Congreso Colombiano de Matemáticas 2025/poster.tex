@@ -165,35 +165,45 @@
       \begin{equation*}
           \mathcal{M}:W^{1,p}(\mathbb{R}^n)\rightarrow W^{1,p}(\mathbb{R}^n) 
       \end{equation*}
-      establece un operador acotado cuando $1<p\leq \infty$.
+      establece un operador acotado cuando $1<p\leq \infty$.\\
+      \vspace{0.2cm}
+      \textbf{(Demostración (idea))} Es suficiente con mostrar que si $u\in W^{1,p}(\mathbb{R}^{n})$ con $1<p< \infty$, entonces $\mathcal{M}f(x)$ tiene derivada débil y se satisface que
+      \begin{align*}
+        |\partial_{x_i}(\mathcal{M}u)|\leq \mathcal{M}\partial_{x_i}u.
+      \end{align*}
+      Por otro lado, cuando $p=\infty$ se vale que
+      \begin{align*}
+        \norm{\mathcal{M}u}_{\infty}+\norm{\partial_{x_i}\mathcal{M}u}_{\infty}\leq \norm{u}_{\infty}+\norm{\mathcal{M}|\partial_{x_i}u|}_{\infty}.
+      \end{align*}
+      Para ver la primera desigualdad, es suficiente con ver que si $u\in W^{1,p}(\mathbb{R}^{n})$, entonces $|u|\in W^{1,p}(\mathbb{R}^{n})$ y que se satisface
+      \begin{align*}
+        \partial_{x_i}\left( |u|*\chi_{r} \right)=\partial_{x_i}|u|*\chi_{r}.
+      \end{align*}
+      con $\chi_{r}(x)=\frac{\chi_{B_{r}(0)}}{|B_{r}(0)|}(x)$, para todo $i=1,\cdots,n$.\\
+      Tome una sucesión de $r_{j}>0$ con $j=1,2,\cdots$ como una enumeración de racionales positivos y definamos las funciones $v_{k}:\mathbb{R}^{n}\to\mathbb{R}$, con $k=1,2\cdots$ por 
+      \begin{align*}
+        v_{k}(x)=\max_{1\leq j\leq k}\left( |u|*\chi_{r_{j}} \right)(x).
+      \end{align*}
+      Note que la sucesión de funciones $\{v_{k}\}\subset W^{1,p}(\mathbb{R}^{n})$ es creciente y acotada, luego por construcción se tiene la convergencia puntual a $\mathcal{M}\partial_{x_i}u$ ya que
+      \begin{align*}
+        \sup_{k}|\partial_{x_i}v_{k}|\leq\sup_{k}\max_{1\leq j\leq k}|\partial_{x_i}|u|*\chi_{r_{j}}|\leq \mathcal{M}\partial_{x_i}u.
+      \end{align*}
+      Así, tomando norma en $L^{p}(\mathbb{R}^{n})$ se cumple que
+      \begin{align*}
+        \norm{\partial v_{k}}_{p}\leq\sum_{i=1}^{n}\norm{\partial_{x_{i}}v_k}_{p}\leq\sum_{i=1}^{n}\norm{\mathcal{M}\partial_{x_i} u}_{p}.
+      \end{align*}
+      Luego, usando el teorema de Hardy-Littlewood se satisface que
+      \begin{align*}
+        \norm{v_k}_{1,p}&\leq \norm{\mathcal{M}u}_{p}+\sum_{i=1}^{n}\norm{\mathcal{M}\partial_{x_{i}}u}_{p}\leq c_p\norm{u}_{p}+c_{p}\sum_{i=1}^{n}\norm{\partial_{x_{i}}u}_{p}<\infty,
+      \end{align*}
+      de esta manera, para todo $k=1,2,\cdots$, se cumple que la sucesión $\{v_{k}\}\subset W^{1,p}(\mathbb{R}^{n})$ es una sucesión creciente y acotada en $W^{1,p}(\mathbb{R}^{n})$. Por tanto, como el espacio $W^{1,p}(\mathbb{R}^{n})$ es reflexivo, entonces existe una subsucesión $\{v_{k_{i}}\}$ convergente, pero como la sucesión $\{v_{k}\}$ es creciente, entonces la sucesión completa converge débilmente a $\mathcal{M}|u|$, por la misma razón $\{\partial_{x_{i}}v_{k}\}$ converge débilmente a $\mathcal{M}\partial_{x_i}|u|$. Lo que nos permite concluir que
+      \begin{align*}
+        |\partial_{x_i}\mathcal{M}u|\leq \mathcal{M}\partial_{x_i}u
+      \end{align*}
   \end{alertblock}
 
   \begin{exampleblock}{Trabajo Futuro}
-
-    A different kind of highlighted block.
-
-    $$
-    \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
-    $$
-
-    Interdum et malesuada fames $\{1, 4, 9, \ldots\}$ ac ante ipsum primis in
-    faucibus. Cras eleifend dolor eu nulla suscipit suscipit. Sed lobortis non
-    felis id vulputate.
-
-    \heading{A heading inside a block}
-
-    Praesent consectetur mi $x^2 + y^2$ metus, nec vestibulum justo viverra
-    nec. Proin eget nulla pretium, egestas magna aliquam, mollis neque. Vivamus
-    dictum $\mathbf{u}^\intercal\mathbf{v}$ sagittis odio, vel porta erat
-    congue sed. Maecenas ut dolor quis arcu auctor porttitor.
-
-    \heading{Another heading inside a block}
-
-    Sed augue erat, scelerisque a purus ultricies, placerat porttitor neque.
-    Donec $P(y \mid x)$ fermentum consectetur $\nabla_x P(y \mid x)$ sapien
-    sagittis egestas. Duis eget leo euismod nunc viverra imperdiet nec id
-    justo.
-
+    Trabajo Futuro.
   \end{exampleblock}
 
   \begin{block}{Agradecimientos}
