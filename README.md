@@ -90,9 +90,10 @@ Repositorio para subir trabajos o talleres de la U :p.
 </details>
 
 <details>
-<summary><strong>Poster 1st Colombian Workshop in Nonlinear Dispersive Equations</strong></summary>
+<summary><strong>Posters</strong></summary>
 
-- [Poster.](./Poster/plantillaposter.pdf)
+- [Poster 1st Colombian Workshop in Nonlinear Dispersive Equations.](./Posters/Poster 1st Colombian Workshop in Nonlinear Dispersive Equations/plantillaposter.pdf)
+- [Poster Congreso Colombiano de Matemáticas 2025.](./Posters/Poster Congreso Colombiano de Matemáticas 2025/poster.pdf)
 </details>
 
 <details>
