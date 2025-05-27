@@ -23,6 +23,9 @@
 \pgfplotsset{compat=1.14}
 \usepackage{anyfontsize}
 
+\providecommand{\abs}[1]{\left|#1\right|}
+\providecommand{\norm}[1]{\left\|#1\right\|}
+
 
 % ====================
 % Lengths
@@ -134,22 +137,36 @@
       \vspace{0.2cm}
       Notemos que dada $f\in \mathcal{L}^1$, $\mathcal{M}f \in \mathcal{L}^1$ si y solo si $f=0$. Por lo que no se espera la acotación fuerte en $\mathcal{L}^1$.\\
       \vspace{0.2cm}
-    \textbf{Teorema (Teorema de diferenciación de Lebesgue).}\\
+    \textbf{Teorema (Teorema de diferenciación de Lebesgue).} Sea $f\in L^{1}_{loc}(\mathbb{R}^{n})$, entonces
+      \begin{align*}
+        \lim_{r \to 0^{+}}\frac{1}{|B_{r}(x)|}\int_{B_{r}(x)}|f(y)|\, dy=f(x)\quad c.t.p.
+      \end{align*}
       \vspace{0.2cm}
-    \textbf{Teorema} Si $\phi$ es una función positiva, radial, decreciente (como función de $(0,\infty)$), entonces $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$. Como consecuencia tenemos que la función maximal $\sup_{t}|\phi_t\ast f(x)|$ es débil $(1,1)$ y fuerte $(p,p)$, $1\leq p \leq \infty$. Este resultado permite generalizar (sin usar secuencias $\{t_n\}$) el resultado de convergencia mencionado anteriormente para aproximaciones de la identidad.\\ 
+    \textbf{Teorema} Si $\phi$ es una función positiva, radial, decreciente (como función de $(0,\infty)$), entonces $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$.\\
+      Supongamos $\phi$ función simple, entonces
+      \begin{align*}
+        \left|\phi*f(x)\right|&=\left|\left(\sum_{j=1}^{\infty}c_j\chi_{B_{r_j}(x_j)}*f\right)(x)\right|,\\
+        &=\left|\sum_{j=1}^{\infty}c_{j}|B_{r_j}(x_j)|\left( \frac{1}{|B_{r_{j}}(x_j)|}\chi_{B_{r_j}(x_j)}*f \right)(x)\right|,\\
+        &\leq\norm{\phi}_{1}\mathcal{M}f(x).
+      \end{align*}
+      Luego como $\phi_{t}$ es una dilatación de $\phi$ se puede hacer el mismo procedimiento y concluir el mismo resultado.\\
       \vspace{0.2cm}
+      Como consecuencia tenemos que la función maximal $\sup_{t}|\phi_t\ast f(x)|$ es débil $(1,1)$ y fuerte $(p,p)$, $1\leq p \leq \infty$.
+      Este resultado permite generalizar (sin usar secuencias $\{t_n\}$) el resultado de convergencia mencionado anteriormente para aproximaciones de la identidad.\\ 
+  \end{alertblock}
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{alertblock}{}
       \textbf{Teorema \cite{MR1469106}} Se verifica  que
       \begin{equation*}
           \mathcal{M}:W^{1,p}(\mathbb{R}^n)\rightarrow W^{1,p}(\mathbb{R}^n) 
       \end{equation*}
       establece un operador acotado cuando $1<p\leq \infty$.
   \end{alertblock}
-
-\end{column}
-
-\separatorcolumn
-
-\begin{column}{\colwidth}
 
   \begin{exampleblock}{Trabajo Futuro}
 
