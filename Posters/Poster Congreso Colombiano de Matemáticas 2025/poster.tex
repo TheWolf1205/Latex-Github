@@ -45,16 +45,15 @@
 
 \author{Andrés David Cadena Simons \and Oscar Riaño}
 
-\institute[shortinst]{Universidad Nacional de Colombia sede Bogotá}
+\institute[shortinst]{Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales, Departamento de Matemáticas, Universidad Nacional de Colombia}
 
 % ====================
 % Footer (optional)
 % ====================
 
 \footercontent{
-  \href{https://utfpr.edu.br/ct/ppgca}{utfpr.edu.br/ct/ppgca} \hfill
-  Mostra de Trabalhos do PPGCA --- TechTalks 2024 \hfill
-  \href{mailto:ppgca-ct@utfpr.edu.br}{ppgca-ct@utfpr.edu.br}}
+  Congreso Colombiano de Matemáticas --- 2025 \hfill
+  \href{mailto:acadenas@unal.edu.co}{acadenas@unal.edu.co}}
 % (can be left out to remove footer)
 
 
@@ -63,8 +62,8 @@
 % ====================
 
 % use this to include logos on the left and/or right side of the header:
-\logoright{\includegraphics[height=2.5cm]{logos/utfpr-logo.png}}
-\logoleft{\hspace{20ex}\includegraphics[height=3.5cm]{logos/ppgca-logo.png}}
+\logoright{\includegraphics[height=2.5cm]{logos/logo.png}}
+%\logoleft{\hspace{20ex}\includegraphics[height=3.5cm]{logos/ppgca-logo.png}}
 
 % ====================
 % Body
@@ -88,104 +87,63 @@
 
 \begin{column}{\colwidth}
 
-  \begin{block}{A block title}
-
-    Some block contents, followed by a diagram, followed by a dummy paragraph.
-
-    \begin{figure}
-      \centering
-      \begin{tikzpicture}[scale=3]
-        \draw[step=0.25cm,color=gray] (-1,-1) grid (1,1);
-        \draw (1,0) -- (0.2,0.2) -- (0,1) -- (-0.2,0.2) -- (-1,0)
-          -- (-0.2,-0.2) -- (0,-1) -- (0.2,-0.2) -- cycle;
-      \end{tikzpicture}
-      \caption{A figure caption.}
-    \end{figure}
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies
-    eget libero ac ullamcorper. Integer et euismod ante. Aenean vestibulum
-    lobortis augue, ut lobortis turpis rhoncus sed. Proin feugiat nibh a
-    lacinia dignissim. Proin scelerisque, risus eget tempor fermentum, ex
-    turpis condimentum urna, quis malesuada sapien arcu eu purus.
-
+  \begin{block}{Conceptos y definiciones}
+    \textbf{Función de distribución}\\
+		  Sea $(X,\mu)$ un espacio de medida y sea $f:X\rightarrow \mathbb{C}$ una función medible.\\
+			Se llama función de distribución de $f$ asociadad a $\mu$ a la función:
+			\begin{align*}
+				a_f:(0,\infty)&\rightarrow [0,\infty]\\
+				\lambda&\rightarrow \mu(\{x\in X: |f(x)|>\lambda\})	
+				\end{align*}
+    \textbf{Desigualdades débiles y fuertes}\\
+			Sean $(X,\mu)$ y $(Y, \nu)$ dos espacios de medida y sea $T$ un operador de $\mathcal{L}^{p}(X,\mu)$, en el espacio de funciones medibles de $Y$ en $\mathbb{C}$.
+			$$T:\mathcal{L}^p(X,\mu)\rightarrow\mathcal{M}(Y,\mathbb{C})$$
+			\begin{itemize}
+				\item[i.] Se dice que $T$ es $(p,q)$-débil (con $q<\infty$) si para todo $\lambda>0$ existe $C>0$ tal que:
+				  $$\nu(\{y\in Y:|(Tf)(y)|>\lambda\})\leq \left(\frac{C||f||_p}{\lambda}\right)^q.$$
+				\item[ii.] Se dice que $T$ es $(p,\infty)$-débil si está acotado de $\mathcal{L}^p(X,\mu)$ en $\mathcal{L}^{\infty}(Y,\nu)$.
+				\item[iii.] Se dice que $T$ es $(p,q)$-fuerte si está acotado de $\mathcal{L}^p(X,\mu)$ en $\mathcal{L}^q(Y,\nu)$.
+			\end{itemize}				
+ 		\textbf{Función Maximal de Hardy-Littlewood}\\
+			Sea $B_r$ la bola euclidea centrada en el origen y de radio $r$. Definiremos la función maximal de Hardy-Littlewood de una función localmente integrable $f$ en $\mathbb{R}^n$ como:
+			$$\mathcal{M}f(x)=\sup_{r>0}\frac{1}{|B_r|}\int_{B_r}|f(x-y)|dy$$
+    \textbf{Espacios de Sobolev}\\
+      Dado $1\leq p\leq \infty$. Recordamos que el \emph{espacio de Sobolev} $W^{1,p}(\mathbb{R}^N)$ comprende todas las funciones $f\in \mathcal{L}^p$ tales que $f$ tiene gradiente débil y $\nabla f\in \mathcal{L}^p$. A este espacio se le asigna la norma
+          \begin{equation*}
+              \|f\|_{W^{1,p}}=\|f\|_{L^p}+\|\nabla f\|_{L^p}.
+          \end{equation*}
   \end{block}
 
-  \begin{block}{A block containing a list}
-
-    Nam vulputate nunc felis, non condimentum lacus porta ultrices. Nullam sed
-    sagittis metus. Etiam consectetur gravida urna quis suscipit.
-
-    \begin{itemize}
-      \item \textbf{Mauris tempor} risus nulla, sed ornare
-      \item \textbf{Libero tincidunt} a duis congue vitae
-      \item \textbf{Dui ac pretium} morbi justo neque, ullamcorper
-    \end{itemize}
-
-    Eget augue porta, bibendum venenatis tortor.
-
-  \end{block}
-
-  \begin{alertblock}{A highlighted block}
-
-    This block catches your eye, so \textbf{important stuff} should probably go
-    here.
-
-    Curabitur eu libero vehicula, cursus est fringilla, luctus est. Morbi
-    consectetur mauris quam, at finibus elit auctor ac. Aliquam erat volutpat.
-    Aenean at nisl ut ex ullamcorper eleifend et eu augue. Aenean quis velit
-    tristique odio convallis ultrices a ac odio.
-
-    \begin{itemize}
-      \item \textbf{Fusce dapibus tellus} vel tellus semper finibus. In
-        consequat, nibh sed mattis luctus, augue diam fermentum lectus.
-      \item \textbf{In euismod erat metus} non ex. Vestibulum luctus augue in
-        mi condimentum, at sollicitudin lorem viverra.
-      \item \textbf{Suspendisse vulputate} mauris vel placerat consectetur.
-        Mauris semper, purus ac hendrerit molestie, elit mi dignissim odio, in
-        suscipit felis sapien vel ex.
-    \end{itemize}
-
-    Aenean tincidunt risus eros, at gravida lorem sagittis vel. Vestibulum ante
-    ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
-
+  \begin{alertblock}{Resultados}
+    \textbf{Teorema (Teorema de interpolación de Marcinkiewicz).} \emph{Sean $(X, \mu)$ y $(Y, \nu)$ espacios medibles, $1 \leq p_0<p_1 \leq \infty$, y tome $T$ como un operador sublineal de $L^{p_0}(X, \mu)+L^{p_1}(X, \mu)$ a las funciones de medida de $Y$ que es débil $\left(p_0, p_0\right)$ y es débil $\left(p_1, p_1\right)$. Entonces $T$ es fuerte $(p, p)$ para $p_0<p<p_1$.}\\
+      \vspace{0.2cm}
+      {\bf Algunas consecuencias:}\\
+      La función maximal establece un operador fuerte $(\infty,\infty)$. Para ver esto, sea $f\in \mathcal{L}^{\infty}$, entonces para $x\in \mathbb{R}^N$ y $r>0$ arbitrarios se tiene
+      \begin{equation*}
+        \frac{1}{|B_r|}\int_{B_r} |f(x-y)|\, dy \leq \|f\|_{\infty}.
+      \end{equation*}
+      Luego tomando el supremo en $r>0$, tenemos $\mathcal{M}f(x)\leq \|f\|_{\infty}$. Ahora, como $x\in \mathbb{R}^N$ es arbitrario, se deduce que
+      \begin{equation*}
+        \|\mathcal{M}f\|_{\infty}\leq \|f\|_{\infty}.   
+      \end{equation*}
+      Luego $\mathcal{M}$ define un operador $(\infty,\infty)$.\\
+      \vspace{0.2cm}
+      {\bf Teorema}. {El operador $\mathcal{M}$ es débil $(1,1)$.} Para ver esto $\cdots$\\
+      \vspace{0.2cm}
+      Como consecuencia del teorema de interpolación de Marcinkiewicz y lo anterior, tenemos que $\mathcal{M}$ es un operador fuerte $(p,p)$ para todo $1<p\leq \infty$.\\
+      \vspace{0.2cm}
+      Notemos que dada $f\in \mathcal{L}^1$, $\mathcal{M}f \in \mathcal{L}^1$ si y solo si $f=0$. Por lo que no se espera la acotación fuerte en $\mathcal{L}^1$.\\
+      \vspace{0.2cm}
+    \textbf{Teorema (Teorema de diferenciación de Lebesgue).}\\
+      \vspace{0.2cm}
+    \textbf{Teorema} Si $\phi$ es una función positiva, radial, decreciente (como función de $(0,\infty)$), entonces $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$. Como consecuencia tenemos que la función maximal $\sup_{t}|\phi_t\ast f(x)|$ es débil $(1,1)$ y fuerte $(p,p)$, $1\leq p \leq \infty$. Este resultado permite generalizar (sin usar secuencias $\{t_n\}$) el resultado de convergencia mencionado anteriormente para aproximaciones de la identidad.\\ 
+      \vspace{0.2cm}
+      \textbf{Teorema \cite{MR1469106}} Se verifica  que
+      \begin{equation*}
+          \mathcal{M}:W^{1,p}(\mathbb{R}^n)\rightarrow W^{1,p}(\mathbb{R}^n) 
+      \end{equation*}
+      establece un operador acotado cuando $1<p\leq \infty$.
   \end{alertblock}
-
- \begin{block}{Nullam vel erat at velit convallis laoreet}
-
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-    inceptos himenaeos. Phasellus libero enim, gravida sed erat sit amet,
-    scelerisque congue diam. Fusce dapibus dui ut augue pulvinar iaculis.
-
-    \begin{table}
-      \centering
-      \begin{tabular}{l r r c}
-        \toprule
-        \textbf{First column} & \textbf{Second column} & \textbf{Third column} & \textbf{Fourth} \\
-        \midrule
-        Foo & 13.37 & 384,394 & $\alpha$ \\
-        Bar & 2.17 & 1,392 & $\beta$ \\
-        Baz & 3.14 & 83,742 & $\delta$ \\
-        Qux & 7.59 & 974 & $\gamma$ \\
-        \bottomrule
-      \end{tabular}
-      \caption{A table caption.}
-    \end{table}
-
-    Donec quis posuere ligula. Nunc feugiat elit a mi malesuada consequat. Sed
-    imperdiet augue ac nibh aliquet tristique. Aenean eu tortor vulputate,
-    eleifend lorem in, dictum urna. Proin auctor ante in augue tincidunt
-    tempor. Proin pellentesque vulputate odio, ac gravida nulla posuere
-    efficitur. Aenean at velit vel dolor blandit molestie. Mauris laoreet
-    commodo quam, non luctus nibh ullamcorper in. Class aptent taciti sociosqu
-    ad litora torquent per conubia nostra, per inceptos himenaeos.
-
-    Nulla varius finibus volutpat. Mauris molestie lorem tincidunt, iaculis
-    libero at, gravida ante. Phasellus at felis eu neque suscipit suscipit.
-    Integer ullamcorper, dui nec pretium ornare, urna dolor consequat libero,
-    in feugiat elit lorem euismod lacus. Pellentesque sit amet dolor mollis,
-    auctor urna non, tempus sem.
-
-  \end{block}
 
 \end{column}
 
@@ -193,80 +151,6 @@
 
 \begin{column}{\colwidth}
 
-  \begin{block}{A block containing an enumerated list}
-
-    Vivamus congue volutpat elit non semper. Praesent molestie nec erat ac
-    interdum. In quis suscipit erat. \textbf{Phasellus mauris felis, molestie
-    ac pharetra quis}, tempus nec ante. Donec finibus ante vel purus mollis
-    fermentum. 
-
-    \begin{enumerate}
-      \item \textbf{Morbi mauris purus}, egestas at vehicula et, convallis
-        accumsan orci. Orci varius natoque penatibus et magnis dis parturient
-        montes, nascetur ridiculus mus.
-      \item \textbf{Cras vehicula blandit urna ut maximus}. Aliquam blandit nec
-        massa ac sollicitudin. Curabitur cursus, metus nec imperdiet bibendum,
-        velit lectus faucibus dolor, quis gravida metus mauris gravida turpis.
-      \item \textbf{Vestibulum et massa diam}. Phasellus fermentum augue non
-        nulla accumsan, non rhoncus lectus condimentum.
-    \end{enumerate}
-
-  \end{block}
-
-  \begin{block}{Fusce aliquam magna velit}
-
-    Et rutrum ex euismod vel. Pellentesque ultricies, velit in fermentum
-    vestibulum, lectus nisi pretium nibh, sit amet aliquam lectus augue vel
-    velit. Suspendisse rhoncus massa porttitor augue feugiat molestie. Sed
-    molestie ut orci nec malesuada. Sed ultricies feugiat est fringilla
-    posuere.
-
-    \begin{figure}
-      \centering
-      \begin{tikzpicture}[scale=0.75]
-        \begin{axis}[
-            scale only axis,
-            no markers,
-            domain=0:2*pi,
-            samples=100,
-            axis lines=center,
-            axis line style={-},
-            ticks=none]
-          \addplot[red] {sin(deg(x))};
-          \addplot[blue] {cos(deg(x))};
-        \end{axis}
-      \end{tikzpicture}
-      \caption{Another figure caption.}
-    \end{figure}
-
-  \end{block}
-
-  \begin{block}{Nam cursus consequat egestas}
-
-    Etiam sit amet tempus lorem, aliquet condimentum velit. Donec et nibh
-    consequat, sagittis ex eget, dictum orci. Etiam quis semper ante. Ut eu
-    mauris purus. Proin nec consectetur ligula. Mauris pretium molestie
-    ullamcorper. Integer nisi neque, aliquet et odio non, sagittis porta justo.
-
-    \begin{itemize}
-      \item \textbf{Sed consequat} id ante vel efficitur. Praesent congue massa
-        sed est scelerisque, elementum mollis augue iaculis.
-        \begin{itemize}
-          \item In sed est finibus, vulputate
-            nunc gravida, pulvinar lorem. In maximus nunc dolor, sed auctor eros
-            porttitor quis.
-          \item Fusce ornare dignissim nisi. Nam sit amet risus vel lacus
-            tempor tincidunt eu a arcu.
-          \item Donec rhoncus vestibulum erat, quis aliquam leo
-            gravida egestas.
-        \end{itemize}
-      \item \textbf{Pellentesque facilisis dolor in leo} bibendum congue.
-        Maecenas congue finibus justo, vitae eleifend urna facilisis at.
-    \end{itemize}
-
-  \end{block}
-
-  
   \begin{exampleblock}{A highlighted block containing some math}
 
     A different kind of highlighted block.
@@ -297,7 +181,7 @@
 
  
 
-  \begin{block}{References (opcional)}
+  \begin{block}{Referencias}
 
     \nocite{*}
     \footnotesize{
