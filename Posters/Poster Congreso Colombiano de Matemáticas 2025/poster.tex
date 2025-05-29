@@ -12,7 +12,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[orientation=portrait,size=a2,scale=1.15]{beamerposter}
+\usepackage[orientation=portrait,size=a2,scale=1]{beamerposter}
 \usetheme{gemini}
 \usecolortheme{nott}
 \usepackage{graphicx}
@@ -44,7 +44,7 @@
 % Title
 % ====================
 
-\title{Sobre el operador maximal de Hardy-Littlewood}
+\title{Sobre la función maximal de Hardy-Littlewood en espacios de Sobolev}
 
 \author{Andrés David Cadena Simons \and Oscar Riaño}
 
@@ -131,18 +131,21 @@
       \end{equation*}
       Luego $\mathcal{M}$ define un operador $(\infty,\infty)$.\\
       \vspace{0.2cm}
-      {\bf Teorema}. {El operador $\mathcal{M}$ es débil $(1,1)$.} Para ver esto $\cdots$\\
+      {\bf Teorema}. {El operador $\mathcal{M}$ es débil $(1,1)$.} \emph{Es decir, sea $f\in L^{1}(\mathbb{R}^{n})$, entonces
+      \begin{align*}
+        a_{\mathcal{M}f}(\lambda)\leq \frac{C\norm{f}_{1}}{\lambda}.
+      \end{align*}}
       \vspace{0.2cm}
       Como consecuencia del teorema de interpolación de Marcinkiewicz y lo anterior, tenemos que $\mathcal{M}$ es un operador fuerte $(p,p)$ para todo $1<p\leq \infty$.\\
       \vspace{0.2cm}
       Notemos que dada $f\in \mathcal{L}^1$, $\mathcal{M}f \in \mathcal{L}^1$ si y solo si $f=0$. Por lo que no se espera la acotación fuerte en $\mathcal{L}^1$.\\
       \vspace{0.2cm}
-    \textbf{Teorema (Teorema de diferenciación de Lebesgue).} Sea $f\in L^{1}_{loc}(\mathbb{R}^{n})$, entonces
+    \textbf{Teorema (Teorema de diferenciación de Lebesgue).} \emph{Sea $f\in L^{1}_{loc}(\mathbb{R}^{n})$, entonces
       \begin{align*}
         \lim_{r \to 0^{+}}\frac{1}{|B_{r}(x)|}\int_{B_{r}(x)}|f(y)|\, dy=f(x)\quad c.t.p.
-      \end{align*}
+      \end{align*}}
       \vspace{0.2cm}
-    \textbf{Teorema} Si $\phi$ es una función positiva, radial, decreciente (como función de $(0,\infty)$), entonces $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$.\\
+    \textbf{Teorema.} \emph{Si $\phi$ es una función positiva, radial, decreciente (como función de $(0,\infty)$), entonces $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$.}\\
       Supongamos $\phi$ función simple, entonces
       \begin{align*}
         \left|\phi*f(x)\right|&=\left|\left(\sum_{j=1}^{\infty}c_j\chi_{B_{r_j}(x_j)}*f\right)(x)\right|,\\
@@ -153,19 +156,11 @@
       \vspace{0.2cm}
       Como consecuencia tenemos que la función maximal $\sup_{t}|\phi_t\ast f(x)|$ es débil $(1,1)$ y fuerte $(p,p)$, $1\leq p \leq \infty$.
       Este resultado permite generalizar (sin usar secuencias $\{t_n\}$) el resultado de convergencia mencionado anteriormente para aproximaciones de la identidad.\\ 
-  \end{alertblock}
-\end{column}
-
-\separatorcolumn
-
-\begin{column}{\colwidth}
-
-  \begin{alertblock}{}
-      \textbf{Teorema \cite{MR1469106}} Se verifica  que
+    \textbf{Teorema \cite{MR1469106}.} \emph{Se verifica  que
       \begin{equation*}
           \mathcal{M}:W^{1,p}(\mathbb{R}^n)\rightarrow W^{1,p}(\mathbb{R}^n) 
       \end{equation*}
-      establece un operador acotado cuando $1<p\leq \infty$.\\
+      establece un operador acotado cuando $1<p\leq \infty$.}\\
       \vspace{0.2cm}
       \textbf{(Demostración (idea))} Es suficiente con mostrar que si $u\in W^{1,p}(\mathbb{R}^{n})$ con $1<p< \infty$, entonces $\mathcal{M}f(x)$ tiene derivada débil y se satisface que
       \begin{align*}
@@ -175,6 +170,14 @@
       \begin{align*}
         \norm{\mathcal{M}u}_{\infty}+\norm{\partial_{x_i}\mathcal{M}u}_{\infty}\leq \norm{u}_{\infty}+\norm{\mathcal{M}|\partial_{x_i}u|}_{\infty}.
       \end{align*}
+  \end{alertblock}
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{alertblock}{}
       Para ver la primera desigualdad, es suficiente con ver que si $u\in W^{1,p}(\mathbb{R}^{n})$, entonces $|u|\in W^{1,p}(\mathbb{R}^{n})$ y que se satisface
       \begin{align*}
         \partial_{x_i}\left( |u|*\chi_{r} \right)=\partial_{x_i}|u|*\chi_{r}.
@@ -200,10 +203,49 @@
       \begin{align*}
         |\partial_{x_i}\mathcal{M}u|\leq \mathcal{M}\partial_{x_i}u
       \end{align*}
+    \textbf{Teorema.}\emph{ Sea $f\in W^{1,\infty}(\mathbb{R}^n)$. Veamos que $\mathcal{M}(f)$ es Lipschitz continua.} Para esto, sean $x,y\in \mathbb{R}^n$ y $r>0$. Haciendo un cambio de variables para centrar las bolas en $0$ y algunas propiedades del valor absoluto, tenemos que
+      \begin{align*}
+        \frac{1}{|B_{r}(x)|}\int_{B_r(x)} |f(z)|\, dz-\mathcal{M}f(y)\leq \frac{1}{|B_{r}(0)|}\int_{B_{r}(0)} \Big||f(x+w)-f(y+w)|\Big|\, dw.
+      \end{align*}
+      Como $f\in W^{1,\infty}(\mathbb{R}^n)$, por el teorema del valor intermedio se sigue que
+      \begin{equation*}
+      \big|f(x+w)-f(y+w)\big|\leq \|\nabla f\|_{L^{\infty}} |x-y|.   
+      \end{equation*}
+      Concluimos que 
+      \begin{equation*}
+      \begin{aligned}
+      \frac{1}{|B(x,r)|}&\int_{B(x,r)} |f(z)|\, dz-\mathcal{M}f(y)\leq & \|\nabla f\|_{L^{\infty}} |x-y|.
+      \end{aligned}
+      \end{equation*}
+      Tomando el supremo sobre $r>0$, se sigue de la desigualdad anterior 
+      \begin{equation*}
+      \begin{aligned}
+      \mathcal{M}f(x)-\mathcal{M}f(y)\leq & \|\nabla f\|_{L^{\infty}} |x-y|.
+      \end{aligned}
+      \end{equation*}
+      Y cambiando los papeles de $x$ y $y$, se llega a
+      \begin{equation*}
+      \big|\mathcal{M}f(y)-\mathcal{M}f(x)\big| \leq \|\nabla f\|_{L^{\infty}} |x-y|.    
+      \end{equation*}
+      De lo anterior, se sigue que $\mathcal{M}f$ es Lipschitz continua. Por tanto, la caracterización de $W^{1,\infty}(\mathbb{R}^{n})$ muestra que $\mathcal{M}f\in W^{1,\infty}(\mathbb{R}^n)$ y
+      \begin{equation*}
+        \|\nabla \mathcal{M}f\|_{L^{\infty}}\leq \|\nabla f\|_{L^{\infty}}.  
+      \end{equation*}
   \end{alertblock}
 
   \begin{exampleblock}{Trabajo Futuro}
-    Trabajo Futuro.
+   \begin{itemize}
+     \item Estudiar propiedades adicionales de la función maximal de Hardy–Littlewood en espacios de Sobolev. Por ejemplo, consultar los resultados presentados en \cite{Mazya2009}, páginas 25–67.
+     \item Analizar otros tipos de funciones maximales. Por ejemplo, considerar el núcleo del calor
+     \begin{equation*}
+        K_t(x)=\frac{1}{(4\pi t)^{\frac{d}{2}}}e^{-\frac{|x|^2}{4t}}. 
+     \end{equation*}
+     Estudiar el operador maximal asociado,
+     \begin{equation*}
+         \mathcal{K} f(x):=\sup_{t>0}\big(f\ast K_t\big)(x),
+     \end{equation*}
+     en espacios de Sobolev $W^{1,p}(\mathbb{R}^n)$. Para ello, se pueden consultar los artículos \cite{CarneiroFinderSousa2018,CarneiroBenar2013}.
+  \end{itemize}
   \end{exampleblock}
 
   \begin{block}{Agradecimientos}
