@@ -46,9 +46,9 @@
 
 \title{Sobre la función maximal de Hardy-Littlewood en espacios de Sobolev}
 
-\author{Andrés David Cadena Simons \and Oscar Riaño}
+\author{Andrés David Cadena Simons}
 
-\institute[shortinst]{Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales, Departamento de Matemáticas, Universidad Nacional de Colombia}
+\institute[shortinst]{Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales, Departamento de Matemáticas, Universidad Nacional de Colombia sede Bogotá.}
 
 % ====================
 % Footer (optional)
@@ -93,14 +93,14 @@
   \begin{block}{Conceptos y definiciones}
     \textbf{Función de distribución}\\
 		  Sea $(X,\mu)$ un espacio de medida y sea $f:X\rightarrow \mathbb{C}$ una función medible.\\
-			Se llama función de distribución de $f$ asociadad a $\mu$ a la función:
+			Se llama función de distribución de $f$ asociada a $\mu$ a la función:
 			\begin{align*}
-				a_f:(0,\infty)&\rightarrow [0,\infty]\\
-				\lambda&\rightarrow \mu(\{x\in X: |f(x)|>\lambda\})	
+				a_f:(0,\infty)&\rightarrow [0,\infty],\\
+				\lambda&\rightarrow \mu(\{x\in X: |f(x)|>\lambda\}).	
 				\end{align*}
     \textbf{Desigualdades débiles y fuertes}\\
 			Sean $(X,\mu)$ y $(Y, \nu)$ dos espacios de medida y sea $T$ un operador de $\mathcal{L}^{p}(X,\mu)$, en el espacio de funciones medibles de $Y$ en $\mathbb{C}$.
-			$$T:\mathcal{L}^p(X,\mu)\rightarrow\mathcal{M}(Y,\mathbb{C})$$
+			$$T:\mathcal{L}^p(X,\mu)\rightarrow\mathcal{M}(Y,\mathbb{C}).$$
 			\begin{itemize}
 				\item[i.] Se dice que $T$ es $(p,q)$-débil (con $q<\infty$) si para todo $\lambda>0$ existe $C>0$ tal que:
 				  $$\nu(\{y\in Y:|(Tf)(y)|>\lambda\})\leq \left(\frac{C||f||_p}{\lambda}\right)^q.$$
@@ -108,8 +108,8 @@
 				\item[iii.] Se dice que $T$ es $(p,q)$-fuerte si está acotado de $\mathcal{L}^p(X,\mu)$ en $\mathcal{L}^q(Y,\nu)$.
 			\end{itemize}				
  		\textbf{Función Maximal de Hardy-Littlewood}\\
-			Sea $B_r$ la bola euclidea centrada en el origen y de radio $r$. Definiremos la función maximal de Hardy-Littlewood de una función localmente integrable $f$ en $\mathbb{R}^n$ como:
-			$$\mathcal{M}f(x)=\sup_{r>0}\frac{1}{|B_r|}\int_{B_r}|f(x-y)|dy$$
+			Sea $B_r$ la bola euclídea centrada en el origen y de radio $r$. Definiremos la función maximal de Hardy-Littlewood de una función localmente integrable $f$ en $\mathbb{R}^n$ como:
+			$$\mathcal{M}f(x)=\sup_{r>0}\frac{1}{|B_r|}\int_{B_r}|f(x-y)|dy.$$
     \textbf{Espacios de Sobolev}\\
       Dado $1\leq p\leq \infty$. Recordamos que el \emph{espacio de Sobolev} $W^{1,p}(\mathbb{R}^N)$ comprende todas las funciones $f\in \mathcal{L}^p$ tales que $f$ tiene gradiente débil y $\nabla f\in \mathcal{L}^p$. A este espacio se le asigna la norma
           \begin{equation*}
@@ -145,7 +145,7 @@
         \lim_{r \to 0^{+}}\frac{1}{|B_{r}(x)|}\int_{B_{r}(x)}|f(y)|\, dy=f(x)\quad c.t.p.
       \end{align*}}
       \vspace{0.2cm}
-    \textbf{Teorema.} \emph{Si $\phi$ es una función positiva, radial, decreciente (como función de $(0,\infty)$), entonces $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$.}\\
+    \textbf{Teorema.} \emph{Si $\phi$ es una función positiva, radial, decreciente (como función de $(0,\infty)$), entonces tomando $\phi_{t}(x)=t^{-n}\phi(t^{-1}x)$ se cumple que $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$.}\\
       Supongamos $\phi$ función simple, entonces
       \begin{align*}
         \left|\phi*f(x)\right|&=\left|\left(\sum_{j=1}^{\infty}c_j\chi_{B_{r_j}(x_j)}*f\right)(x)\right|,\\
@@ -158,7 +158,7 @@
       Este resultado permite generalizar (sin usar secuencias $\{t_n\}$) el resultado de convergencia mencionado anteriormente para aproximaciones de la identidad.\\ 
     \textbf{Teorema \cite{MR1469106}.} \emph{Se verifica  que
       \begin{equation*}
-          \mathcal{M}:W^{1,p}(\mathbb{R}^n)\rightarrow W^{1,p}(\mathbb{R}^n) 
+          \mathcal{M}:W^{1,p}(\mathbb{R}^n)\rightarrow W^{1,p}(\mathbb{R}^n). 
       \end{equation*}
       establece un operador acotado cuando $1<p\leq \infty$.}\\
       \vspace{0.2cm}
@@ -166,10 +166,7 @@
       \begin{align*}
         |\partial_{x_i}(\mathcal{M}u)|\leq \mathcal{M}\partial_{x_i}u.
       \end{align*}
-      Por otro lado, cuando $p=\infty$ se vale que
-      \begin{align*}
-        \norm{\mathcal{M}u}_{\infty}+\norm{\partial_{x_i}\mathcal{M}u}_{\infty}\leq \norm{u}_{\infty}+\norm{\mathcal{M}|\partial_{x_i}u|}_{\infty}.
-      \end{align*}
+      Por otro lado, cuando $p=\infty$ vamos a mostrar que $\mathcal{M}f$ es Lipschitz. 
   \end{alertblock}
 \end{column}
 
@@ -199,11 +196,11 @@
       \begin{align*}
         \norm{v_k}_{1,p}&\leq \norm{\mathcal{M}u}_{p}+\sum_{i=1}^{n}\norm{\mathcal{M}\partial_{x_{i}}u}_{p}\leq c_p\norm{u}_{p}+c_{p}\sum_{i=1}^{n}\norm{\partial_{x_{i}}u}_{p}<\infty,
       \end{align*}
-      de esta manera, para todo $k=1,2,\cdots$, se cumple que la sucesión $\{v_{k}\}\subset W^{1,p}(\mathbb{R}^{n})$ es una sucesión creciente y acotada en $W^{1,p}(\mathbb{R}^{n})$. Por tanto, como el espacio $W^{1,p}(\mathbb{R}^{n})$ es reflexivo, entonces existe una subsucesión $\{v_{k_{i}}\}$ convergente, pero como la sucesión $\{v_{k}\}$ es creciente, entonces la sucesión completa converge débilmente a $\mathcal{M}|u|$, por la misma razón $\{\partial_{x_{i}}v_{k}\}$ converge débilmente a $\mathcal{M}\partial_{x_i}|u|$. Lo que nos permite concluir que
+      de esta manera, para todo $k=1,2,\cdots$, se cumple que la sucesión $\{v_{k}\}\subset W^{1,p}(\mathbb{R}^{n})$ es una sucesión creciente y acotada en $W^{1,p}(\mathbb{R}^{n})$. Por tanto, como el espacio $W^{1,p}(\mathbb{R}^{n})$ es reflexivo, entonces existe una subsucesión $\{v_{k_{i}}\}$ débilmente convergente, pero como la sucesión $\{v_{k}\}$ es creciente, entonces la sucesión completa converge débilmente a $\mathcal{M}|u|$, por la misma razón $\{\partial_{x_{i}}v_{k}\}$ converge débilmente a $\mathcal{M}\partial_{x_i}|u|$. Lo que nos permite concluir que
       \begin{align*}
-        |\partial_{x_i}\mathcal{M}u|\leq \mathcal{M}\partial_{x_i}u
+        |\partial_{x_i}\mathcal{M}u|\leq \mathcal{M}\partial_{x_i}u.
       \end{align*}
-    \textbf{Teorema.}\emph{ Sea $f\in W^{1,\infty}(\mathbb{R}^n)$. Veamos que $\mathcal{M}(f)$ es Lipschitz continua.} Para esto, sean $x,y\in \mathbb{R}^n$ y $r>0$. Haciendo un cambio de variables para centrar las bolas en $0$ y algunas propiedades del valor absoluto, tenemos que
+      \emph{ Sea $f\in W^{1,\infty}(\mathbb{R}^n)$. Veamos que $\mathcal{M}(f)$ es Lipschitz continua.} Para esto, sean $x,y\in \mathbb{R}^n$ y $r>0$. Haciendo un cambio de variables para centrar las bolas en $0$ y algunas propiedades del valor absoluto, tenemos que
       \begin{align*}
         \frac{1}{|B_{r}(x)|}\int_{B_r(x)} |f(z)|\, dz-\mathcal{M}f(y)\leq \frac{1}{|B_{r}(0)|}\int_{B_{r}(0)} \Big||f(x+w)-f(y+w)|\Big|\, dw.
       \end{align*}
