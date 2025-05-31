@@ -111,7 +111,7 @@
 			Sea $B_r$ la bola euclídea centrada en el origen y de radio $r$. Definiremos la función maximal de Hardy-Littlewood de una función localmente integrable $f$ en $\mathbb{R}^n$ como:
 			$$\mathcal{M}f(x)=\sup_{r>0}\frac{1}{|B_r|}\int_{B_r}|f(x-y)|dy.$$
     \textbf{Espacios de Sobolev}\\
-      Dado $1\leq p\leq \infty$. Recordamos que el \emph{espacio de Sobolev} $W^{1,p}(\mathbb{R}^N)$ comprende todas las funciones $f\in \mathcal{L}^p$ tales que $f$ tiene gradiente débil y $\nabla f\in \mathcal{L}^p$. A este espacio se le asigna la norma
+      Dado $1\leq p\leq \infty$. Recordamos que el \emph{espacio de Sobolev} $W^{1,p}(\mathbb{R}^n)$ comprende todas las funciones $f\in \mathcal{L}^p$ tales que $f$ tiene gradiente débil y $\nabla f\in \mathcal{L}^p$. A este espacio se le asigna la norma
           \begin{equation*}
               \|f\|_{W^{1,p}}=\|f\|_{L^p}+\|\nabla f\|_{L^p}.
           \end{equation*}
@@ -121,11 +121,11 @@
     \textbf{Teorema (Teorema de interpolación de Marcinkiewicz).} \emph{Sean $(X, \mu)$ y $(Y, \nu)$ espacios medibles, $1 \leq p_0<p_1 \leq \infty$, y tome $T$ como un operador sublineal de $L^{p_0}(X, \mu)+L^{p_1}(X, \mu)$ a las funciones de medida de $Y$ que es débil $\left(p_0, p_0\right)$ y es débil $\left(p_1, p_1\right)$. Entonces $T$ es fuerte $(p, p)$ para $p_0<p<p_1$.}\\
       \vspace{0.2cm}
       {\bf Algunas consecuencias:}\\
-      La función maximal establece un operador fuerte $(\infty,\infty)$. Para ver esto, sea $f\in \mathcal{L}^{\infty}$, entonces para $x\in \mathbb{R}^N$ y $r>0$ arbitrarios se tiene
+      La función maximal establece un operador fuerte $(\infty,\infty)$. Para ver esto, sea $f\in \mathcal{L}^{\infty}$, entonces para $x\in \mathbb{R}^n$ y $r>0$ arbitrarios se tiene
       \begin{equation*}
         \frac{1}{|B_r|}\int_{B_r} |f(x-y)|\, dy \leq \|f\|_{\infty}.
       \end{equation*}
-      Luego tomando el supremo en $r>0$, tenemos $\mathcal{M}f(x)\leq \|f\|_{\infty}$. Ahora, como $x\in \mathbb{R}^N$ es arbitrario, se deduce que
+      Luego tomando el supremo en $r>0$, tenemos $\mathcal{M}f(x)\leq \|f\|_{\infty}$. Ahora, como $x\in \mathbb{R}^n$ es arbitrario, se deduce que
       \begin{equation*}
         \|\mathcal{M}f\|_{\infty}\leq \|f\|_{\infty}.   
       \end{equation*}
