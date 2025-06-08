@@ -1,0 +1,174 @@
+\thispagestyle{empty}
+
+\begin{minipage}{0.3\textwidth}
+  \includegraphics[scale=0.35]{logounal.png}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.65\textwidth}
+  \begin{center}
+    \scshape
+    \Large \textsc{Universidad Nacional de Colombia} \\
+    \textcolor{white}{\tiny.} \Large \textsc{Departamento de Matemáticas} \\
+    \textcolor{white}{\tiny.} \large \textsc{Análisis Funcional} \\
+    \textcolor{white}{\tiny.} \large \textsf{Taller 1: Espacios vectoriales normados} \normalsize (I-2025)
+  \end{center}
+\end{minipage}
+
+\vspace{0.3cm}
+\normalfont
+
+\textbf{Profesor:} Oscar Guillermo Riaño Castañeda\\
+\textbf{Integrantes:} Jairo Sebastián Niño Castro\hspace{2.8cm}
+Iván Felipe Salamanca Medina\\
+\hspace*{2.1cm}\hspace{2.25cm}\textbf{Fecha:} 03 de Junio del 2025\\
+\vspace{0.25cm}\\
+
+
+\textbf{Ejercicio 2.} Sea $E$ un espacio vectorial y $g,f_1,...,f_k$, $k+1$ funcionales lineales sobre $E$ tales que
+\begin{align*}
+    \langle f_i;x\rangle=0 \text{ para todo } i=1,...,k \Longrightarrow \langle g;x\rangle=0.
+\end{align*}
+Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que $\displaystyle g=\sum_{i=1}^k \lambda_if_i$. Es decir, $g$ es combinación lineal de los $f_i$'s.
+\begin{proof}
+    
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\textbf{Ejercicio 9.} Sea $E$ un espacio de Banach de dimensión infinita. Muestre que cada vecindad débil$\empty^*$ del origen de $E^*$ es no acotada.
+
+\begin{proof}
+    Sea $V$ una vecindad del origen de $E^*$ con la topología $\sigma(E^*,E)$. Sin pérdida de generalidad, podemos suponer que
+    \begin{align*}
+        V=\{f \in E^*:|\langle f;x_i\rangle|<\varepsilon \text{ para todo } i=1,...,k\},
+    \end{align*}
+    para algunos $x_1,...,x_k\in E$ y $\varepsilon>0$. Si $x_i=\z$ para todo $i=1,..,k$, entonces $V=E^*$ y queda claro que $V$ es no acotado.
+    
+    Supongamos que no todos los $x_i$'s son nulos. Considere $W=\text{gen}\{x_1,...,x_k\}$. Como $E$ es de dimensión infinita, tenemos que $W\subset E$ estrictamente. Queremos usar la segunda forma geométrica del Teorema de Hahn-Banach para garantizar que existe $g\in E^*$ con $g\neq 0$ tal que $\langle g;v\rangle=0$ para todo $v \in W$, pero para esto, debemos ver que $W$ es cerrado.
+    
+    Sea $(w_n)_{n \in \mathbb{Z}^+}\subset W$ una sucesión convergente y sea $\{v_1,...,v_l\}$ una base de $W$. Como $(w_n)$ es convergente, en particular, es una sucesión de Cauchy, por tanto, dad $\varepsilon>0$ existe $N\in \mathbb{Z}^+$ tal que si $n,m\geq N$, entonces
+    \begin{align*}
+        \norm{w_n-w_m}<\epsilon.
+    \end{align*}
+    Como $w_n,w_m\in W$, estos se pueden expresar de manera única como
+    \begin{align*}
+        w_n=\sum_{i=1}^l \lambda_{i,n} v_i, \hspace{5mm} w_m=\sum_{i=1}^l \lambda_{i,m}v_i 
+    \end{align*}
+    con $\lambda_{i,n},\lambda_{i,m}\in \mathbb{R}$ para todo $i=1,...,k$, luego
+    \begin{align*}
+        \norm{w_n-w_m}=\norm{\sum_{i=1}^l(\lambda_{i,n}-\lambda_{i,m})v_i}.
+    \end{align*}
+    Como $W$ es de dimensión finita, existe una constante $C_1>0$ tal que $C_1\norm{\cdot}_\infty\leq \norm{v}$ para todo $v \in W$, donde que no depende del vector tal que 
+
+    \begin{align*}
+        \norm{v}_\infty=\max_{1\leq i\leq l} |\lambda_i| \hspace{3mm} \text{ y } \hspace{3mm} v=\sum_{i=1}^l \lambda_i v_i,
+    \end{align*}
+    por tanto
+    \begin{align*}
+        C_1\norm{w_n-w_m}_\infty\leq \norm{w_n-w_m},
+    \end{align*}
+    
+    de esta manera
+    \begin{align*}
+        C_1\norm{w_n-w_m}_\infty=C_1\max_{1\leq i\leq l}|\lambda_{i,n}-\lambda_{i,m}|\leq \norm{w_n-w_m}<\epsilon,
+    \end{align*}
+    así, para cada $i=1,...,l$, las sucesiones $(\lambda_{i,n})_{n \in \mathbb{Z}^+}$ son de Cauchy en $\mathbb{R}$ y, por ser $\mathbb{R}$ completo, son sucesiones convergentes. Así, $\lambda_{i,n}\to \lambda_i$ para algunos $\lambda_i \in \mathbb{R}$ para todo $i=1,...,l$. Entonces, $w_n\to w$ en la norma $\norm{\cdot}_\infty$ donde 
+    \begin{align*}
+        w=\sum_{i=1}^l \lambda_i v_i,
+    \end{align*}
+    en efecto
+    \begin{align*}
+        \norm{w_n-w}_\infty=\norm{\sum_{i=1}^l (\lambda_{i,n}-\lambda_i)v_i}_\infty=\max_{1\leq i \leq l}|\lambda_{n,i}-\lambda_i|\xrightarrow{n\to \infty} 0.
+    \end{align*}
+    Ahora, nuevamente por ser $W$ de dimensión finita, también existe $C_2$ tal que $\norm{v}\leq C_2\norm{v}_\infty$ para todo $v \in W$, entonces 
+    \begin{align*}
+        \norm{w_n-w}\leq C_2\norm{w_n-w}_\infty,
+    \end{align*}
+    así, $w_n\to w \in W$ en la norma $\norm{\cdot}$. Tenemos entonces que $W$ es cerrado. Sea $x_0 \in E\setminus W$, así, por la segunda forma geométrica del Teorema de Hahn-Banach, existe un hiperplano que separa estrictamente a $W$ y a $\{x_0\}$, más precisamente, existe $g \in E^*$ y $\alpha\in \mathbb{R}$ tal que 
+    \begin{align*}
+        \langle g:v\rangle<\alpha<\langle g;x_0\rangle,
+    \end{align*}
+    para todo $v \in W$. Como $W$ es un subespacio, tenemos que $|\langle g;v\rangle|<\alpha$ para todo $v \in W$, ya que podemos cambiar $v$ por $-v$. Además, para todo $n \in \mathbb{Z}^+$, tenemos
+    \begin{align*}
+        |\langle g;nv\rangle|=n|\langle g;v\rangle|<\alpha \Longrightarrow |\langle g;v\rangle|<\dfrac{\alpha}{n}
+    \end{align*}
+    de manera que $\langle g;v\rangle=0$ para todo $v \in W$, y $g\neq 0$, dado que $\langle g;x_0\rangle>\alpha>0$. Así, por la definición de $W$, $x_1,...,x_k\in W$ y tenemos que $|\langle g;x_i\rangle|=0<\epsilon$ para todo $i=1,...,k$, es decir, $g \in V$, más aún para todo $n\in \mathbb{Z}^+$, $|\langle ng;v\rangle|=n|\langle g;v\rangle|=0$, es decir, $ng \in V$ para todo $n \in \mathbb{Z}^+$. Como $g\neq 0$, $\norm{g}_{E^*}>0$ y así, $\norm{ng}_{E^*}=n\norm{g}_{E^*}$. Así, por la propiedad Arquimediana de $\mathbb{R}$, $\norm{ng}_{E^*}$ es ``tan grande como se quiera'', para $n\in \mathbb{Z}^+$ suficientemente grande. Así, tenemos que $V$ no es acotado.
+    
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Ejercicio 11.} Sea $K$ un espacio métrico compacto infinito. Demuestre que $C(K)$ (con la norma del supremo $\norm{\cdot}_{L^\infty}$) no es reflexivo.
+\begin{proof}
+  Primero veamos que $(C(K),\norm{\cdot}_{L^{\infty}})$ es un espacio de Banach.\\
+  Primero, note que como $K$ es un espacio métrico compacto infinito, las funciones continuas con dominio en $K$ alcanzan su máximo y su mínimo en $K$, por lo que sabemos que la norma $\norm{\cdot}_{L^{\infty}}$ se encuentra bien definida en el espacio.\\
+  Por otro lado verificar que las propiedades de norma se dan, es suficiente con notar que estas se cumplen bajo las propiedades del $\max$ (recordando que $\norm{f}_{L^{\infty}}=\max_{x\in K}|f(x)|$) y de ser funciones continuas, por lo que solo nos centraremos en ver que es un espacio completo.\\
+  Sea $\{f_{k}\}\subset C(K)$ una sucesión de Cauchy, es decir, dado $\epsilon>0$ sabemos que existe $N>0$ tal que si $n,m>N$, entonces
+  \begin{align*}
+    \norm{f_{n}-f_{m}}_{L^{\infty}}<\epsilon.
+  \end{align*}
+  Veamos que $f_{k}\to f\in C(K)$ cuando $k\to\infty$.\\
+  Note que dado $x\in K$ se cumple que
+  \begin{equation}\label{eq:puntual-f}
+    |f_{n}(x)-f_{m}(x)|\leq \norm{f_{n}-f_{m}}_{L^\infty}<\epsilon. 
+  \end{equation}
+  Luego $\{f_{k}(x)\}\subset \mathbb{R}$ es una sucesión de Cauchy, por lo tanto existe $a\in \mathbb{R}$ tal que $f_{k}(x)\to a$ cuando $k\to \infty$, luego como se puede realizar el mismo razonamiento para todo $x\in K$, definamos
+  \begin{align*}
+    f:K&\to \mathbb{R},\\
+      x\to\lim_{k \to \infty}f_{k}(x).
+  \end{align*}
+  Ahora veamos que $f\in C(K)$, entonces, dado $\epsilon>0$ existe $\delta>0$ (este $\delta$ depende de la continuidad de las funciones $f_{k}$) tal que si tomamos $x,y\in K$ que satisfacen
+  \begin{align*}
+    |x-y|<\delta,
+  \end{align*}
+  entonces, si tomamos un $k$ adecuado (de la condición $\label{eq:puntual-f}$) y aprovechando que las funciones $f_{k}$ con continuas en $K$, sabemos que
+  \begin{align*}
+    |f(x)-f(y)|&\leq|f(x)-f_{m}(x)+f_{m}(x)-f_{m}(y)+f_{m}(y)-f(y)|,\\
+    &\leq |f(x)-f_{k}(x)|+|f_{k}(x)-f_{k}(y)|+|f_{k}(y)-f(y)|,\\
+    &\leq \frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3},\\
+    &\leq \epsilon.
+  \end{align*}
+  Lo que nos permite concluir que $f\in C(K)$.\\
+  Ahora veamos que $f_{k}\to f$ en la norma de $L^{\infty}(K)$ cuando $k\to\infty$.\\
+  Note que como $\{f_{k}\}$ es una sucesión de Cauchy, entonces dado $\epsilon>0$ existe $N>0$ tal que si $n,m>N$ se satisface que
+  \begin{align*}
+    \norm{f_{n}-f_{m}}_{L^{\infty}}=\max_{x\in K}|f_{n}(x)-f_{m}(x)|<\epsilon.
+  \end{align*}
+  Luego, si fijamos $n$ y hacemos que $m\to \infty$, entonces $f_{m}(x)\to f(x)$, por lo que podemos asegurar que
+  \begin{align*}
+    \norm{f_{n}-f}_{L^{\infty}}&=\max_{x\in K}|f_{n}(x)-f(x)|,\\
+    &<\epsilon,
+  \end{align*}
+  lo que nos permite concluir que $f_{k}\to f$ cuando $k\to \infty$ en la norma de $L^{\infty}$, es decir, el espacio $(C(K),\norm{\cdot}_{L^{\infty}})$ es Banach. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Ejercicio 15.} Sea $E$ un espacio de Banach reflexivo. Sea $a:E\times E\to \mathbb{R}$ una forma bilineal continua, es decir, existe $M>0$ tal que $|a(x,y)|\leq M\norm{x}\norm{y}$ para todo $x,y \in E$. Asuma que $a$ es coerciva, esto es, existe $\alpha>0$ tal que para todo $x \in E$
+\begin{align*}
+    a(x,x)\geq \alpha\norm{x}^2.
+\end{align*}
+\begin{enumerate}
+    \item[(a)] Dado $x \in E$, defina $A_x(y)=a(x,y)$ para todo $y \in E$. Muestre que $A_x\in E^*$ para cada $x \in E$. Además, concluya que la función $x\mapsto A(x)=A_x$ satisface que $A\in \mathcal{L}(E,E^*)$.
+    \item[(b)] Muestre que $A$ definida como en (a) es una función sobreyectiva.
+    \item[(c)] Deduzca que para $f \in E^*$, existe un único $x \in E$ tal que $a(x,y)=\langle f;y\rangle$, para todo $y \in E$. Esto es, la forma bilineal coerciva $a$ representa todo funcional lineal continuo.
+\end{enumerate}
+
+
+\begin{proof}
+    
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Ejercicio 18.} Sea $E$ un espacio de Banach.
+\begin{enumerate}
+    \item[(a)] Demuestre que existe un espacio topológico compacto $K$ y una isometría de $E$ en $(C(K),\norm{\cdot}_\infty)$. 
+
+    \item[(b)] Asuma que $E$ es separable y muestre que existe una isometría de $E$ en $l^\infty$.
+\end{enumerate}
