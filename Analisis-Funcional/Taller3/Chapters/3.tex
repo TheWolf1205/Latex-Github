@@ -18,7 +18,7 @@
 \normalfont
 
 \textbf{Profesor:} Oscar Guillermo Riaño Castañeda\\
-\textbf{Integrantes:} Jairo Sebastián Niño Castro\hspace{2.8cm}
+\textbf{Integrantes:} Andrés David Cadena Simons \hspace{2.8cm}  Jairo Sebastián Niño Castro\hspace{2.8cm}
 Iván Felipe Salamanca Medina\\
 \hspace*{2.1cm}\hspace{2.25cm}\textbf{Fecha:} 03 de Junio del 2025\\
 \vspace{0.25cm}\\
@@ -30,27 +30,63 @@ Iván Felipe Salamanca Medina\\
 \end{align*}
 Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que $\displaystyle g=\sum_{i=1}^k \lambda_if_i$. Es decir, $g$ es combinación lineal de los $f_i$'s.
 \begin{proof}
-    
+Considere
+\begin{align*}
+    H:&E\longrightarrow\mathbb{R}^{k+1} \\&x \longrightarrow(g(x),f_1(x),...,f_k(x))
+\end{align*}
+Y sea el rango de $H$, $ran(H):=V$. En primer lugar, note que $V$ es un subespacio de $\mathbb{R}^{k+1}$, lo cual sigue de la linealidad de los $f_i$ y $g$. Para ello: \\
+\checkmark Sea $u,v \in V$, $\lambda \in \mathbb{R}$. Así, existen $x,y \in E$ tales que $u=(g(x),f_1(x),...,f_k(x))$ y $v=(g(y),f_1(y))...,f_k(y))$. Luego, usando que $x+\lambda y \in E$ y la linealidad de los $f_i$ y $g$, se sigue que 
+\begin{align*}
+ u+\lambda v&=(g(x),f_1(x),...,f_k(x))+\lambda (g(y),f_1(y))...,f_k(y)) \\ &=(g(x+\lambda y),f_1(x+\lambda y),...,f_k(x+ \lambda y)) \in V.
+\end{align*}
+De esta forma, como $V$ es subespacio, se sigue que es conexo. Además, siendo $V$ subespacio de dimensión finita, se tiene que $V$ es cerrado. Por otro lado, se tiene que $u_0=(1,0,...0)\notin V$: en caso contrario, existiria $x \in E$ tal que $H(x)=(g(x),f_1(x),...,f_k(x))=u_0$ lo que querría decir que $g(x)=1$ y $f_i(x)=0$ para todo $i=1,..,k$, lo cual contradice la hipótesis. 
+\\
+Así, por Teorema Hahn- Banach, existe $h \in (\mathbb{R}^{k+1})^\bigstar$ tal que 
+\[
+h(x)<h(u_0) \qquad \forall x \in V
+\]
+Como $h\in (\mathbb{R}^{k+1})^\bigstar$, existe $r=(\lambda,\lambda_1,...,\lambda_k)\in \mathbb{R}^{k+1}$ tal que $h(x)=\langle r,x\rangle$ (producto interno usual en $\mathbb{R}^{k+1}$) para todo $x\in V$. Así:
+\[
+\lambda g(x)+\sum_{i=1}^{k}\lambda_if_i(x)<\lambda \qquad\forall x \in E
+\]
+Como $V$ es subespacio, tomando $t>0$
+\begin{align*}
+    \lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)&<\lambda \\
+    \lambda g(x)+\sum_{i=1}^{k}\lambda_if_i(x)&<\lambda/t
+\end{align*}
+y haciendo $t\to \infty$, se tiene que $\lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)\leq 0$. Similarmente, tomando $t<0$
+\begin{align*}
+    \lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)&<\lambda \\
+    \lambda g(x)+\sum_{i=1}^{k}\lambda_if_i(x)&>\lambda/t
+\end{align*}
+y haciendo $t\to -\infty$, se tiene que $\lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)\geq 0$. De modo que
+\[
+\lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)= 0
+\]
+y como $\lambda>0$, se tiene que
+\[
+g(x)=\sum_{i=1}^{k}\tilde{\lambda_i}f_i(x) \quad \tilde{\lambda_i}=-\frac{\lambda_i}{\lambda}
+\]
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-\textbf{Ejercicio 9.} Sea $E$ un espacio de Banach de dimensión infinita. Muestre que cada vecindad débil$\empty^*$ del origen de $E^*$ es no acotada.
+\textbf{Ejercicio 9.} Sea $E$ un espacio de Banach de dimensión infinita. Muestre que cada vecindad débil$\empty^\bigstar$ del origen de $E^\bigstar$ es no acotada.
 
 \begin{proof}
-    Sea $V$ una vecindad del origen de $E^*$ con la topología $\sigma(E^*,E)$. Sin pérdida de generalidad, podemos suponer que
+    Sea $V$ una vecindad del origen de $E^\bigstar$ con la topología $\sigma(E^\bigstar,E)$. Sin pérdida de generalidad, podemos suponer que
     \begin{align*}
-        V=\{f \in E^*:|\langle f;x_i\rangle|<\varepsilon \text{ para todo } i=1,...,k\},
+        V=\{f \in E^\bigstar:|\langle f;x_i\rangle|<\varepsilon \text{ para todo } i=1,...,k\},
     \end{align*}
-    para algunos $x_1,...,x_k\in E$ y $\varepsilon>0$. Si $x_i=\z$ para todo $i=1,..,k$, entonces $V=E^*$ y queda claro que $V$ es no acotado.
+    para algunos $x_1,...,x_k\in E$ y $\varepsilon>0$. Si $x_i=\z$ para todo $i=1,..,k$, entonces $V=E^\bigstar$ y queda claro que $V$ es no acotado.
     
-    Supongamos que no todos los $x_i$'s son nulos. Considere $W=\text{gen}\{x_1,...,x_k\}$. Como $E$ es de dimensión infinita, tenemos que $W\subset E$ estrictamente. Queremos usar la segunda forma geométrica del Teorema de Hahn-Banach para garantizar que existe $g\in E^*$ con $g\neq 0$ tal que $\langle g;v\rangle=0$ para todo $v \in W$, pero para esto, debemos ver que $W$ es cerrado.
+    Supongamos que no todos los $x_i$'s son nulos. Considere $W=\text{gen}\{x_1,...,x_k\}$. Como $E$ es de dimensión infinita, tenemos que $W\subset E$ estrictamente. Queremos usar la segunda forma geométrica del Teorema de Hahn-Banach para garantizar que existe $g\in E^\bigstar$ con $g\neq 0$ tal que $\langle g;v\rangle=0$ para todo $v \in W$, pero para esto, debemos ver que $W$ es cerrado.
     
-    Sea $(w_n)_{n \in \mathbb{Z}^+}\subset W$ una sucesión convergente y sea $\{v_1,...,v_l\}$ una base de $W$. Como $(w_n)$ es convergente, en particular, es una sucesión de Cauchy, por tanto, dad $\varepsilon>0$ existe $N\in \mathbb{Z}^+$ tal que si $n,m\geq N$, entonces
+    Sea $(w_n)_{n \in \mathbb{Z}^+}\subset W$ una sucesión convergente y sea $\{v_1,...,v_l\}$ una base de $W$. Como $(w_n)$ es convergente, en particular, es una sucesión de Cauchy, por tanto, dado $\delta>0$ existe $N\in \mathbb{Z}^+$ tal que si $n,m\geq N$, entonces
     \begin{align*}
-        \norm{w_n-w_m}<\epsilon.
+        \norm{w_n-w_m}<\delta.
     \end{align*}
     Como $w_n,w_m\in W$, estos se pueden expresar de manera única como
     \begin{align*}
@@ -60,7 +96,7 @@ Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que
     \begin{align*}
         \norm{w_n-w_m}=\norm{\sum_{i=1}^l(\lambda_{i,n}-\lambda_{i,m})v_i}.
     \end{align*}
-    Como $W$ es de dimensión finita, existe una constante $C_1>0$ tal que $C_1\norm{\cdot}_\infty\leq \norm{v}$ para todo $v \in W$, donde que no depende del vector tal que 
+    Como $W$ es de dimensión finita, existe una constante $C_1>0$ tal que $C_1\norm{v}_\infty\leq \norm{v}$ para todo $v \in W$, donde $C_1$ no depende del vector $v$, con 
 
     \begin{align*}
         \norm{v}_\infty=\max_{1\leq i\leq l} |\lambda_i| \hspace{3mm} \text{ y } \hspace{3mm} v=\sum_{i=1}^l \lambda_i v_i,
@@ -72,7 +108,7 @@ Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que
     
     de esta manera
     \begin{align*}
-        C_1\norm{w_n-w_m}_\infty=C_1\max_{1\leq i\leq l}|\lambda_{i,n}-\lambda_{i,m}|\leq \norm{w_n-w_m}<\epsilon,
+        C_1\norm{w_n-w_m}_\infty=C_1\max_{1\leq i\leq l}|\lambda_{i,n}-\lambda_{i,m}|\leq \norm{w_n-w_m}<\delta,
     \end{align*}
     así, para cada $i=1,...,l$, las sucesiones $(\lambda_{i,n})_{n \in \mathbb{Z}^+}$ son de Cauchy en $\mathbb{R}$ y, por ser $\mathbb{R}$ completo, son sucesiones convergentes. Así, $\lambda_{i,n}\to \lambda_i$ para algunos $\lambda_i \in \mathbb{R}$ para todo $i=1,...,l$. Entonces, $w_n\to w$ en la norma $\norm{\cdot}_\infty$ donde 
     \begin{align*}
@@ -82,19 +118,21 @@ Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que
     \begin{align*}
         \norm{w_n-w}_\infty=\norm{\sum_{i=1}^l (\lambda_{i,n}-\lambda_i)v_i}_\infty=\max_{1\leq i \leq l}|\lambda_{n,i}-\lambda_i|\xrightarrow{n\to \infty} 0.
     \end{align*}
-    Ahora, nuevamente por ser $W$ de dimensión finita, también existe $C_2$ tal que $\norm{v}\leq C_2\norm{v}_\infty$ para todo $v \in W$, entonces 
+    Ahora, nuevamente por ser $W$ de dimensión finita, también existe $C_2>0$ tal que $\norm{v}\leq C_2\norm{v}_\infty$ para todo $v \in W$, entonces 
     \begin{align*}
         \norm{w_n-w}\leq C_2\norm{w_n-w}_\infty,
     \end{align*}
-    así, $w_n\to w \in W$ en la norma $\norm{\cdot}$. Tenemos entonces que $W$ es cerrado. Sea $x_0 \in E\setminus W$, así, por la segunda forma geométrica del Teorema de Hahn-Banach, existe un hiperplano que separa estrictamente a $W$ y a $\{x_0\}$, más precisamente, existe $g \in E^*$ y $\alpha\in \mathbb{R}$ tal que 
+    así, $w_n\to w \in W$ en la norma $\norm{\cdot}$. Tenemos entonces que $W$ es cerrado.
+    
+    Sea $x_0 \in E\setminus W$, así, por la segunda forma geométrica del Teorema de Hahn-Banach, existe un hiperplano que separa estrictamente a $W$ y a $\{x_0\}$, más precisamente, existe $g \in E^\bigstar$ y $\alpha\in \mathbb{R}$ tal que 
     \begin{align*}
-        \langle g:v\rangle<\alpha<\langle g;x_0\rangle,
+        \langle g;v\rangle<\alpha<\langle g;x_0\rangle,
     \end{align*}
     para todo $v \in W$. Como $W$ es un subespacio, tenemos que $|\langle g;v\rangle|<\alpha$ para todo $v \in W$, ya que podemos cambiar $v$ por $-v$. Además, para todo $n \in \mathbb{Z}^+$, tenemos
     \begin{align*}
         |\langle g;nv\rangle|=n|\langle g;v\rangle|<\alpha \Longrightarrow |\langle g;v\rangle|<\dfrac{\alpha}{n}
     \end{align*}
-    de manera que $\langle g;v\rangle=0$ para todo $v \in W$, y $g\neq 0$, dado que $\langle g;x_0\rangle>\alpha>0$. Así, por la definición de $W$, $x_1,...,x_k\in W$ y tenemos que $|\langle g;x_i\rangle|=0<\epsilon$ para todo $i=1,...,k$, es decir, $g \in V$, más aún para todo $n\in \mathbb{Z}^+$, $|\langle ng;v\rangle|=n|\langle g;v\rangle|=0$, es decir, $ng \in V$ para todo $n \in \mathbb{Z}^+$. Como $g\neq 0$, $\norm{g}_{E^*}>0$ y así, $\norm{ng}_{E^*}=n\norm{g}_{E^*}$. Así, por la propiedad Arquimediana de $\mathbb{R}$, $\norm{ng}_{E^*}$ es ``tan grande como se quiera'', para $n\in \mathbb{Z}^+$ suficientemente grande. Así, tenemos que $V$ no es acotado.
+    de manera que $\langle g;v\rangle=0$ para todo $v \in W$, y $g\neq 0$, dado que $\langle g;x_0\rangle>\alpha>0$. Así, por la definición de $W$, $x_1,...,x_k\in W$ y tenemos que $|\langle g;x_i\rangle|=0<\varepsilon$ para todo $i=1,...,k$, es decir, $g \in V$, más aún para todo $n\in \mathbb{Z}^+$, $|\langle ng;v\rangle|=n|\langle g;v\rangle|=0$, es decir, $ng \in V$ para todo $n \in \mathbb{Z}^+$. Como $g\neq 0$, $\norm{g}_{E^\bigstar}>0$ y así, $\norm{ng}_{E^\bigstar}=n\norm{g}_{E^\bigstar}$. Así, por la propiedad Arquimediana de $\mathbb{R}$, $\norm{ng}_{E^\bigstar}$ es ``tan grande como se quiera'', para $n\in \mathbb{Z}^+$ suficientemente grande. Así, tenemos que $V$ no es acotado.
     
 \end{proof}
 
@@ -142,7 +180,43 @@ Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que
     \norm{f_{n}-f}_{L^{\infty}}&=\max_{x\in K}|f_{n}(x)-f(x)|,\\
     &<\epsilon,
   \end{align*}
-  lo que nos permite concluir que $f_{k}\to f$ cuando $k\to \infty$ en la norma de $L^{\infty}$, es decir, el espacio $(C(K),\norm{\cdot}_{L^{\infty}})$ es Banach. 
+  lo que nos permite concluir que $f_{k}\to f$ cuando $k\to \infty$ en la norma de $L^{\infty}$, es decir, el espacio $(C(K),\norm{\cdot}_{L^{\infty}})$ es Banach.\\
+  Ahora veamos que $(C(K),\norm{\cdot}_{L^{\infty}})$ no es un espacio reflexivo.\\
+  Note que como $K$ es compacto, entonces podemos construir una sucesión $\{a_{k}\}\subset K$ tal que $a_{k}\to a$ con $a_{k}\neq a$ para todo $k$, esto ya que como $K$ es un espacio métrico compacto el teorema de Bolzano-Weierstrass nos afirma que en un espacio métrico compacto toda sucesión tiene una subsucesión convergente en la que se pueden tomar puntos distintos que convergen a un punto límite que no pertenece al conjunto de sucesión de puntos.\\
+  Ahora, definamos $g_{n}\in C(K)$ tal que 
+  \begin{align*}
+    g_{n}(x)= 
+    \begin{cases}
+      1, &\text{ Si $x=a_{m}$ con } 1\leq m\leq n \text{,} \\
+      0, &\text{ Si $x=a_{m}$ con } m>n,\\
+      0, &\text{ Si $x=a$}.
+    \end{cases}
+  \end{align*}
+  Con $\norm{g_{n}}_{\infty}=1$, esto se puede ya que como $K$ es un espacio normal (pues este es métrico y admite la propiedad de separación normal) y los conjuntos $A=\{a_{1},a_{2},\cdots,a_{n}\}$ y $B=\{a_{n+1},a_{n+2},\cdots\}\cup \{a\}$ son disyuntos y cerrados ya que $A$ es un conjunto finito y $B$ son los puntos de la sucesión convergente con su punto límite $a$, entonces por el lema de Urysohn si lo aplicamos en el subespacio normal $A\cup B$, sabemos que existe nuestra función continua $g_{n}$ tal que $g_{n}(A)=\{1\}$ y $g_{n}(B)=\{0\}$, luego $\norm{g_{n}}_{L^{\infty}(A\cup B)}=1$, además usando el teorema de extensión de Tietze–Urysohn–Brouwer esta se puede extender de forma continua y que preserve la norma en todo el espacio $K$ el cual es compacto y normal.\\
+  Ahora, razonaremos por contradicción y vamos a suponer que $C(K)$ es un espacio reflexivo.\\
+  Como anteriormente demostramos que $C(K)$ es de Banach y la sucesión $\{g_{n}\}\subset C(K)$ es acotada, entonces como $C(K)$ es un espacio reflexivo, debe de existir una subsucesión $\{g_{n_{k}}\}\subset C(K)$ débilmente convergente a una función $g\in C(K)$, es decir que para todo funcional $\phi\in C(K)^{*}$ se satisface que $\phi(g_{n_{k}})\to\phi(g)$. En particular, definamos para cada $a_{n}$
+  \begin{align*}
+    \pi_{a_{n}}:C(K)&\to \mathbb{R},\\
+    f&\to f(a_{n}).
+  \end{align*}
+  Note que $\pi_{a_{n}}\in C(K)^{*}$ ya que la linealidad del operador se da por la suma y producto por escalar de evaluaciones en funciones continuas y la continuidad de que $|\pi_{a_{n}}(f)|\leq f(a_{n})\leq \norm{f}_{L^{\infty}}$.\\
+  Siendo así, es fácil ver que dado $a_{n}$
+  \begin{align*}
+    \pi_{a_{n}}(g_{n_{k}})&=g_{n_{k}}(a_{n})= 
+    \begin{cases}
+      1, &\text{ si } n\leq n_{k} \text{,} \\
+      0, &\text{ si } n>n_{k}.
+    \end{cases}
+  \end{align*}
+  Luego se puede calcular que si tomamos $k\to \infty$, entonces eventualmente $n\leq n_{k}$, por lo que se puede afirmar que
+  \begin{align*}
+    \pi_{a_{n}}(g)=g(a_{n})=1. 
+  \end{align*}
+  para todo $a_{n}$ dado, en particular si tomamos $n\to\infty$, entonces se concluye que
+  \begin{align*}
+    \pi_{a}(g)=g(a)=1.
+  \end{align*}
+  \textbf{contradicción}, pues en un principio por construcción $g(a)=0$, lo que nos permite concluir que la sucesión acotada $\{g_{n}\}\subset C(K)$ no tiene una subsucesión débilmente convergente, es decir, el espacio $(C(K),\norm{\cdot}_{L^{\infty}})$ no es reflexivo. 
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -153,14 +227,95 @@ Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que
     a(x,x)\geq \alpha\norm{x}^2.
 \end{align*}
 \begin{enumerate}
-    \item[(a)] Dado $x \in E$, defina $A_x(y)=a(x,y)$ para todo $y \in E$. Muestre que $A_x\in E^*$ para cada $x \in E$. Además, concluya que la función $x\mapsto A(x)=A_x$ satisface que $A\in \mathcal{L}(E,E^*)$.
+    \item[(a)] Dado $x \in E$, defina $A_x(y)=a(x,y)$ para todo $y \in E$. Muestre que $A_x\in E^\bigstar$ para cada $x \in E$. Además, concluya que la función $x\mapsto A(x)=A_x$ satisface que $A\in \mathcal{L}(E,E^\bigstar)$.
     \item[(b)] Muestre que $A$ definida como en (a) es una función sobreyectiva.
-    \item[(c)] Deduzca que para $f \in E^*$, existe un único $x \in E$ tal que $a(x,y)=\langle f;y\rangle$, para todo $y \in E$. Esto es, la forma bilineal coerciva $a$ representa todo funcional lineal continuo.
+    \item[(c)] Deduzca que para $f \in E^\bigstar$, existe un único $x \in E$ tal que $a(x,y)=\langle f;y\rangle$, para todo $y \in E$. Esto es, la forma bilineal coerciva $a$ representa todo funcional lineal continuo.
 \end{enumerate}
 
 
 \begin{proof}
-    
+    \begin{enumerate}
+        \item[(a)] Sea $x \in E$ cualquiera. Como $a$ es una forma bilineal, dados $y_1,y_2\in E$ y $\lambda\in \mathbb{R}$
+        \begin{align*}
+            A_x(y_1+y_2)&=a(x,y_1+y_2)=a(x,y_1)+a(x,y_2)=A_x(y_1)+A_x(y_2)\\
+            A_x(\lambda y_1)&=a(x,\lambda y_1)=\lambda a(x,y_1)=\lambda A_x(y_1),
+        \end{align*}
+        es decir, $A_x$ es lineal para todo $x \in E$. Además, por hipótesis, dado $y \in E$
+        \begin{align*}
+            |A_x(y)|=|a(x,y)|\leq M\norm{x}\norm{y},
+        \end{align*}
+        es decir, $A_x\in E^\bigstar$ y $\norm{A_x}_{E^\bigstar}\leq M\norm{x}$. Consideremos ahora la aplicación
+        \begin{align*}
+            A:E &\longrightarrow E^\bigstar\\
+             x &\longmapsto A(x)=A_x.
+        \end{align*}
+        Veamos que $A$ es lineal. Sean $x_1,x_2,y \in E$ y $\lambda\in \mathbb{R}$, entonces, dado que $a$ es bilineal
+        \begin{align*}
+            [A(x_1+x_2)](y)&=A_{x_1+x_2}(y)\\
+            &=a(x_1+x_2,y)\\
+            &=a(x_1,y)+a(x_2,y)\\
+            &=A_{x_1}(y)+A_{x_2}(y)\\
+            &=[A(x_1)+A(x_2)](y)
+        \end{align*}
+        \begin{align*}
+            [A(\lambda x_1)](y)&=A_{\lambda x_1}(y)\\
+            &=a(\lambda x_1,y)\\
+            &=\lambda a(x_1,y)\\
+            &=\lambda A_{x_1}(y)\\
+            &=[\lambda A(\lambda x_1)](y),
+        \end{align*}
+        es decir, $A(x_1+x_2)=A(x_1)+A(x_2)$ y $A(\lambda x_1)=\lambda A(x_1)$ para todo $x_1,x_2 \in E$ y $\lambda \in \mathbb{R}$, así, $A$ es lineal. Veamos ahora que $A$ es acotada (y por tanto continua). Por lo que vimos anteriormente,
+        \begin{align*}
+            \norm{A(x)}_{E^{\bigstar}}=\norm{A_x}_{E^{\bigstar}}\leq M\norm{x},
+        \end{align*}
+        por tanto, $A\in \mathcal{L}(E,E^\bigstar)$ y $\norm{A}\leq M$ (la norma de operador).
+
+        \item[(b)] Veamos que
+        \begin{align}\label{eq: 1}
+            \norm{A_x}_{E^\bigstar}\geq \alpha\norm{x} \hspace{5mm} \text{ para todo } x \in E.
+        \end{align}
+        Si $x=\z$, la desigualdad se tiene de manera inmediata. Si $x\neq \z$, como $a$ es bilineal y coerciva
+        \begin{align*}
+            \left|A_x\left(\dfrac{x}{\norm{x}}\right)\right|=\left|a\left(x,\frac{x}{\norm{x}}\right)\right|=\dfrac{1}{\norm{x}}|a(x,x)|\geq \dfrac{1}{\norm{x}}\alpha\norm{x}^2=\alpha\norm{x},
+        \end{align*}
+        de manera que
+        \begin{align*}
+            \norm{A_x}_{E^\bigstar}=\sup_{\substack{z \in E\\ \norm{z}=1}}|A_x(z)|\geq \left|A_x\left(\dfrac{x}{\norm{x}}\right)\right|\geq \alpha\norm{x}.
+        \end{align*}
+        Queremos probar que $F=A(E)$, la imagen del operador $A$, es cerrado, viendo que $\overline{F}=F$. Recordemos que, por ser $A$ lineal, $F$ es un subespacio de $E^\bigstar$.
+
+        Sea $f \in \overline{F}$, entonces existe una sucesión $(f_n)_{n \in \mathbb{Z}^+}\subset F$ tal que $f_n\to f$. Por la definición de $F$, existen $x_n \in E$ tales que $f_n=A_{x_n}$ para todo $n\in \mathbb{Z}^+$. Como la sucesión $(A_{x_n})_{n \in \mathbb{Z}^+}$ es convergente, en particular, es de Cauchy, entonces, dado $\varepsilon>0$ existe $N\in \mathbb{Z}^+$ tal que si $n,m\geq N$, entonces $\norm{A_{x_n}-A_{x_m}}_{E^\bigstar}<\varepsilon$. Por la desigualdad (\ref{eq: 1}), tenemos que para $n,m\geq N$
+        \begin{align*}
+            \varepsilon>\norm{A_{x_n}-A_{x_m}}_{E^\bigstar}=\norm{A_{x_n-x_m}}_{E^\bigstar}\geq \alpha\norm{x_n-x_m},
+        \end{align*}
+        por tanto, la sucesión $(x_n)_{n \in \mathbb{Z}^+}$ es de Cauchy en $E$, y como $E$ es un espacio de Banach, existe $x \in E$ tal que $x_n\to x$ cuando $n\to \infty$. Consideremos entonces el operador $A_x$ y veamos que $A_{x_n}\to A_x$ en $E^\bigstar$. Por lo que probamos en la parte (a), se tiene que
+        \begin{align*}
+            \norm{A_{x_n}-A_x}_{E^\bigstar}=\norm{A_{x_n-x}}_{E^\bigstar}\leq M\norm{x_n-x},
+        \end{align*}
+        entonces, como $x_n\to x$, la desigualdad anterior nos garantiza que $A_{x_n}\to A_x \in E^{\bigstar}$. Por la unicidad del límite, se debe tener que $f=A_x$ y por tanto $f \in F$. De esta manera, $F=\overline{F}$, es decir, $F$  es cerrado. Supongamos por contradicción que $F\subset E^\bigstar$ estrictamente y sea $f_0 \in E^{\bigstar}\setminus F$, entonces, por la segunda forma geométrica del Teorema de Hahn-Banach, análogamente a lo hecho en el \textbf{Ejercicio 9}, existe $\xi \in E^{\bigstar\bigstar}$ con $\xi \neq 0$ tal que $\langle \xi;A_x\rangle=0$ para todo $x \in E$.
+        
+        Como $E$ es reflexivo, existe un único $x_0 \in E$ tal que $\xi=Jx_0$, por tanto
+        \begin{align*}
+            \langle \xi;A_x\rangle=\langle Jx_0;A_x\rangle=\langle A_x;x_0\rangle=A_x(x_0)=a(x,x_0)=0.
+        \end{align*}
+        para todo $x \in E$. Como $\xi\neq 0$, entonces $x_0\neq \z$, y por ser $a$ coerciva, para el caso en que $x=x_0$
+        \begin{align*}
+            a(x_0,x_0)\geq \alpha\norm{x_0}^2>0,
+        \end{align*}
+        lo cuál contradice que $a(x,x_0)=0$ para todo $x \in E$. De esta manera, concluimos que $F=E^\bigstar$.
+
+        \item[(c)] Sea $x \in E$ tal que $A_x=0$, por la desigualdad (\ref{eq: 1}), tenemos
+        \begin{align*}
+            0=\norm{A_x}_{E^\bigstar}\geq \alpha\norm{x},
+        \end{align*}
+        luego $\norm{x}=0$, es decir, $x=\z$. Esto quiere decir que el núcleo del operador lineal $A$ es $\{\z\}$, o lo que es lo mismo, $A$ es inyectivo.
+        
+        Por el ítem (b) concluimos que $A:E\to E^\bigstar$ es una biyección, en otras palabras, para todo $f\in E^\bigstar$ existe un único $x \in E$ tal que 
+        \begin{align*}
+            \langle f;y\rangle=f(y)=A_x(y)=a(x,y),
+        \end{align*}
+        que es lo que se quería probar.
+    \end{enumerate}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,3 +327,77 @@ Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que
 
     \item[(b)] Asuma que $E$ es separable y muestre que existe una isometría de $E$ en $l^\infty$.
 \end{enumerate}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] En primer lugar, se tiene que 
+    \begin{align*}
+        \{f\in E^{\bigstar}:\norm{f}\leq 1\}
+    \end{align*}
+    es compacto en la topología $\sigma(E^{\bigstar},E)$. Considere ahora $(C(K),\norm{\cdot}_{\infty}$. Ahora, note que $\norm{\cdot}_\infty$ está bien definida, pues dada
+    \begin{align*}
+        f\in C(K)=\{f:K\to \mathbb{R} |f \text{ es continua}\}
+    \end{align*}
+    Como $f$ es continua, $f(K)$ es compacto es $\mathbb{R}$, y por tanto, $f(K)$ es cerrado y acotado. Esto garantiza que
+    \begin{align*}
+        \norm{f}_{\infty}=\sup_{x\in K}|f(x)| \quad \text{existe}
+    \end{align*}
+    Ahora, defina la función $T:E\to C(K)$ dada por $x\mapsto Tx$, donde $(Tx)(f)=\langle f,x\rangle$ para $f\in K$. Así, dado $x\in E$
+    \begin{align*}
+        \norm{Tx}_{\infty}=\sup_{f\in K}|(Tx)(f)| =\sup_{f\in K}|\langle f,x\rangle|=\sup_{\substack{f \in E^{\bigstar}\\ \norm{f}\leq1}}|\langle f,x\rangle|=\norm{x}
+    \end{align*}
+    donde la última igualdad se sigue del coralario visto en clase: "Para todo $x\in E$, 
+    \begin{align*}
+        \max_{\substack{f \in E^{\bigstar}\\ \norm{f}\leq1}}|\langle f,x\rangle|=\sup_{\substack{f \in E^{\bigstar}\\ \norm{f}\leq1}}|\langle f,x\rangle|=\norm{x}
+    \end{align*}
+    \item[(b)] Recordamos que 
+    \begin{align*}
+        l^{\infty}=\{\{a_n\}_{n=1}^{\infty}:a_n\in \mathbb{R},\;\forall n\geq1,\;\sup_{n\geq 1}|a_n|<\infty\}
+    \end{align*}
+    con la norma $\norm{\{a_n\}_{n=1}^{\infty}}_{l^{\infty}}=\sup_{n\geq 1}|a_n|$. Con el objetivo de simplificar la notación, escribiremos $\{a_n\}:=\{a_n\}_{n=1}^{\infty}$. \\
+    Ahora, como $E$ es separable, entonces $K$ es metrizable en $\sigma(E^{\bigstar},E)$ y además es compacto. Así, usando que "\textit{Todo espacio métrico compacto es separable}", se tiene que $K$ es separable, de modo que existe un subconjunto denso contable $\{f_n\}\subseteq K $. Definimos
+    \begin{align*}
+        F:&E\longrightarrow l^{\infty} \\ &x \longmapsto F(x)=\{\langle f_n,x\rangle\}
+    \end{align*}
+    En primer lugar, $F$ está bien definida pues como $f_n \in K$ para todo $n\geq1$, $\norm{f_n}\leq 1$ (norma en $E^{\bigstar}$) y por tanto
+    \begin{align*}
+        |\langle f_n,x\rangle|\leq \norm{f_n}\norm{x} \leq \norm{x} \qquad \forall n\geq1
+    \end{align*}
+    lo que garantiza que $\sup_{n\geq 1}|\langle f_n,x\rangle|<\infty$, o lo que es lo mismo, $\{\langle f_n,x\rangle\} \in l^{\infty}$. Además, $F$ resulta lineal, pues $f_n \in E^{\bigstar}$ para todo $n\geq 1$. Veamos que $F$ es una isometría. Por lo hecho en el numeral (a), $\norm{x}=\norm{Tx}_{\infty}$ para todo $x\in E$. Veremos que 
+    \begin{align*}
+        \norm{Tx}_{\infty}=\sup_{f\in K}|(Tx)(f)|=\sup_{n\geq 1}|(Tx)(f_n)|
+    \end{align*}
+    lo que permitirá concluir que $F$ es una isometría. Sea $x\in E$.
+    \\
+    \checkmark Como $\{f_n\}\subseteq K$, se tiene que
+    \begin{align*}
+        \sup_{n\geq 1}|(Tx)(f_n)| \leq \sup_{f\in K}|(Tx)(f)|
+    \end{align*}
+    \checkmark Por la definición de supremo, dado $\varepsilon>0$, existe $g \in K$ tal que
+    \begin{align*}
+    \sup_{f\in K}|(Tx)(f)|&<(Tx)(g)+\varepsilon \\
+    \sup_{f\in K}|(Tx)(f)|-\varepsilon&<(Tx)(g)
+    \end{align*}
+    Como $Tx$ es continua (recuerde que $Tx \in C(K)$), existe $U\subseteq K$ vecindad de $g$ (en $\sigma(E^{\bigstar},E)$ tal que
+    \begin{align*}
+        \forall f \in U: \quad|(Tx)(f)-(Tx)(g)|<\varepsilon
+    \end{align*}
+    Como $\{f_n\}$ es denso en $K$, existe $f_k \in U\cap \{f_n\}$ de modo que,
+    \begin{align*}
+        |(Tx)(f_k)-(Tx)(g)|<\varepsilon
+    \end{align*}
+    Por lo tanto
+    \begin{align*}
+    \sup_{f\in K}|(Tx)(f)|-2\varepsilon<(Tx)(g)-\varepsilon<(Tx)(f_k)\leq \sup_{n\geq 1}|(Tx)(f_n)|
+    \end{align*}
+    Así, haciendo $\varepsilon \to 0$, se tiene 
+    \begin{align*}
+    \sup_{f\in K}|(Tx)(f)|\leq \sup_{n\geq 1}|(Tx)(f_n)| 
+    \end{align*}
+    Con lo cual,$\norm{Tx}_{\infty}=\sup_{f\in K}|(Tx)(f)|=\sup_{n\geq 1}|(Tx)(f_n)|$. Así:
+    \begin{align*}
+        \norm{Fx}_{l^{\infty}}=\norm{\{\langle f_n,x\rangle\}}&=\sup_{n\geq 1}|\langle f_n,x\rangle|\\&=\sup_{n\geq1}|(Tx)(f_n)|\\&=\sup_{f\in K}|(Tx)(f)|\\&=\norm{Tx}_{\infty}\\&=\norm{x}
+    \end{align*}
+    \end{enumerate}
+
+\end{proof}
+
