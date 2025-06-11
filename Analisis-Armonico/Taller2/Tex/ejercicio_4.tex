@@ -22,6 +22,64 @@
       es un isomorfismo topológico.
   \end{enumerate}
   \begin{solution}
-    Solución
+    (I)\\
+    Primero veamos que $d$ está bien definida, ya que
+    \begin{align*}
+			d(\phi,\psi)&\leq\sum_{\alpha,\beta\in \mathbb{N}^{n}}\frac{1}{2^{|\alpha|+|\beta|}}\frac{|\|\phi-\psi\||_{(\alpha,\beta)}}{1+|\|\phi-\psi\||_{(\alpha,\beta)}},\\
+			&\leq \sum_{\alpha,\beta\in\mathbb{N}^{n}}\frac{1}{2^{|\alpha|+|\beta|}},\\
+			&\leq \sum_{\alpha,\beta\in\mathbb{N}^{n}}\frac{1}{2^{|\alpha|}}\frac{1}{2^{|\beta|}},\\
+			&\leq \sum_{\alpha\in\mathbb{N}^{n}}\frac{1}{2^{|\alpha|}} \sum_{\beta\in\mathbb{N}^{n}}\frac{1}{2^{|\beta|}},\\
+			&\leq \left(\sum_{\alpha\in\mathbb{N}^{n}}\frac{1}{2^{|\alpha|}}\right)^2,\\
+			&\leq\left( \sum_{\alpha_1=0}^{\infty}\sum_{\alpha_2=0}^{\infty}\cdots\sum_{\alpha_n=0}^{\infty}\frac{1}{2^{\alpha_1+\alpha_2+\cdots+\alpha_n}}\right)^2,\\
+			&\leq\left(\sum_{k=0}^{\infty}\frac{1}{2^k}\right)^{2n},\\
+			&<\infty.
+    \end{align*}
+    Ahora veamos que $d(\phi,\psi)=0$ si y sólo si $\phi=\psi$.\\
+		Note que, en la definición de $d$, todos los sumandos son reales positivos, nosotros afirmamos que $d(\phi,\psi)=0$ si y sólo si $|\|\phi-\psi\||_{(\alpha,\beta)}=0$ para todo $(\alpha,\beta)\in\mathbb{N}^{2n}$.\\
+		Ahora, suponga que $\alpha=0$ y $\beta=0$, entonces:
+		\begin{align*}
+			|\|\phi-\psi\||_{(0,0)}&=\|x^{0}\partial^{0}(\phi-\psi)\|_{\infty},\\
+			&=\|\phi-\psi\|_{\infty},\\
+			&=\sup_{x\in\mathbb{R}^n}|\phi-\psi|=0.
+		\end{align*}
+		Entonces, $\phi(x)=\psi(x)$ para todo $x\in\mathbb{R}^n$.\\
+    Por otro lado, note que $d(\phi,\psi)=d(\psi,\phi)$ es inmediato, ya que $|\|\phi-\psi||_{(\alpha,\beta)}=|\|\psi-\phi\||_{(\alpha,\beta)}$ para todo $\alpha$ y $\beta$.\\
+    Ahora veamos que $d$ satisface la desigualdad triangular.\\
+		Usando las desigualdades triangulares de las seminormas $|\|\cdot\||_{(\alpha,\beta)}$, nosotros tenemos que
+		\begin{align*}
+			|\|\phi-\psi\||_{(\alpha,\beta)}&\leq |\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)},\\
+			1+|\|\phi-\psi\||_{(\alpha,\beta)}&\leq 1+ |\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)},\\
+			\frac{1}{1+ |\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)}}&\leq \frac{1}{1+|\|\phi-\psi\||_{(\alpha,\beta)}},\\
+			-\frac{1}{1+|\|\phi-\psi\||_{(\alpha,\beta)}}&\leq -\frac{1}{1+ |\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)}}.
+		\end{align*}
+		Entonces:
+		\begin{align*}
+		  d(\phi,\psi)&\leq \sum_{\alpha,\beta}\frac{1}{2^{|\alpha|+|\beta|}}\frac{|\|\phi-\psi\||_{(\alpha,\beta)}}{1+|\|\phi-\psi\||_{(\alpha,\beta)}},\\
+			&\leq \sum_{\alpha,\beta}\frac{1}{2^{|\alpha|+|\beta|}}\left(1-\frac{1}{1+|\|\phi-\psi\||_{(\alpha,\beta)}}\right),\\
+			&\leq \sum_{\alpha,\beta}\frac{1}{2^{|\alpha|+|\beta|}}\left(1-\frac{1}{1+|\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)}}\right),\\
+			&\leq\sum_{\alpha,\beta}\frac{1}{2^{|\alpha|+|\beta|}}\frac{|\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)}}{1+|\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)}},\\
+			&\leq\sum_{\alpha,\beta}\frac{1}{2^{|\alpha|+|\beta|}}\frac{|\|\phi-\varphi\||_{(\alpha,\beta)}}{1+|\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)}}\\
+      &\phantom{\leq}+\sum_{\alpha,\beta}\frac{1}{2^{|\alpha|+|\beta|}}\frac{|\|\varphi-\psi\||_{(\alpha,\beta)}}{1+|\|\phi-\varphi\||_{(\alpha,\beta)}+|\|\varphi-\psi\||_{(\alpha,\beta)}},\\
+			&\leq\sum_{\alpha,\beta}\frac{1}{2^{|\alpha|+|\beta|}}\frac{|\|\phi-\varphi\||_{(\alpha,\beta)}}{1+|\|\phi-\varphi\||_{(\alpha,\beta)}}+\sum_{\alpha,\beta}\frac{1}{2^{|\alpha|+|\beta|}}\frac{|\|\varphi-\psi\||_{(\alpha,\beta)}}{1+|\|\varphi-\psi\||_{(\alpha,\beta)}},\\
+			&\leq d(\phi,\varphi)+d(\varphi,\psi).
+		\end{align*}
+		Luego, podemos concluir que $d$ es una métrica para el espacio $\mathcal{S}(\mathbb{R}^n)$.\\
+    Ahora veamos que $(\mathcal{S}(\mathbb{R}^{n}),d)$ es un espacio completo.\\
+    Suponga $\{f_{k}\}\subset\mathcal{S}(\mathbb{R}^{n})$ una sucesión de Cauchy, es decir que dado $\epsilon>0$ existe $N>0$ tal que si $k,l>N$, entonces
+    \begin{align*}
+      d(f_{n},f_{m})<\epsilon.
+    \end{align*}
+
+    (II)\\
+    Note que si $\norm{\phi_{k}-\phi}\to 0$, para todo $\alpha,\beta\in\mathbb{N}^{n}$, entonces como $d$ está bien definida es válido afirmar que
+    \begin{align*}
+      \lim_{k \to \infty}d(\phi_{k},\phi)&=\lim_{k \to \infty}\sum_{\alpha,\beta\in\mathbb{N}^{n}}\frac{1}{2^{|\alpha|+|\beta|}}\frac{\norm{\phi-\psi}_{\alpha,\beta}}{1+\norm{\phi-\psi}_{\alpha,\beta}},\\
+      &=\sum_{\alpha,\beta\in\mathbb{N}^{n}}\frac{1}{2^{|\alpha|+|\beta|}}\lim_{k \to \infty}\frac{\norm{\phi_{k}-\phi}_{\alpha,\beta}}{1+\norm{\phi_{k}-\phi}_{\alpha,\beta}},\\
+      &=\sum_{\alpha,\beta\in\mathbb{N}^{n}}\frac{1}{2^{|\alpha|+|\beta|}}\left( 0 \right),\\
+      &=0.
+    \end{align*}
+    Luego podemos afirmar que $\phi_{k}\overset{d}{\to}\phi$ cuando $k\to\infty$.\\
+    Ahora veamos que si $\phi_{k}\overset{d}{\to}\phi$, entonces $\norm{\phi_{k}-\phi}_{\alpha,\beta}\to 0$, para todo $\alpha,\beta\in\mathbb{N}^{n}$.\\
+    Razonemos por contradicción, suponga que existe $\alpha_{0},\beta_{0}\in\mathbb{N}^{n}$ tal que $\norm{\phi_{k}-\phi}_{\alpha_{0},\beta_{0}}\cancel{\to} 0$. 
   \end{solution}
 \end{homeworkProblem}
