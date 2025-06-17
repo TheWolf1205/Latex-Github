@@ -7,6 +7,49 @@
   \end{align*}
   Pruebe que $v.p.\left( \frac{1}{x} \right)\in\mathcal{S}'(\mathbb{R}^{n})$ y calcule $\hat{\left( v.p.\left( \frac{1}{x} \right) \right)}$. 
   \begin{solution}
-    Solución
+    Note que la linealidad se rescata de la linealidad de la integral y del límite, ya que si tomamos $\phi,\psi\in\mathcal{S}(\mathbb{R}^{n})$ y $\lambda$ escalar, entonces
+    \begin{align*}
+      v.p.\left( \frac{1}{x} \right)\left( \phi +\lambda\psi \right)&=\lim_{\epsilon \to 0}\int_{|x|>\epsilon}\frac{\phi(x)+\lambda\psi(x)}{x}\, dx,\\
+      &=\lim_{\epsilon \to 0}\int_{|x|>\epsilon}\frac{\phi(x)}{x}+\lambda\frac{\psi(x)}{x}\, dx,\\
+      &=\lim_{\epsilon \to 0}\int_{|x|>\epsilon}\frac{\phi(x)}{x}\, dx+\lambda\int_{|x|>\epsilon}\frac{\psi(x)}{x}\, dx,\\
+      &=\lim_{\epsilon \to 0}\int_{|x|>\epsilon}\frac{\phi(x)}{x}\, dx + \lambda \lim_{\epsilon \to 0}\int_{|x|>\epsilon}\frac{\psi(x)}{x}\, dx,\\
+      &=v.p.\left( \frac{1}{x} \right)(\phi)+\lambda v.p.\left( \frac{1}{x} \right)(\psi).
+    \end{align*}
+    Ahora veamos que $v.p.\left( \frac{1}{x} \right)$ es un operador acotado, ya que 
+    \begin{align*}
+      \left|v.p.\left(\frac{1}{x}\right)(\phi)\right|&=\left|\lim_{\epsilon\rightarrow 0}\int_{\epsilon<|x|<\frac{1}{\epsilon}}\frac{\phi(x)}{x}dx \right|,\\
+      &\leq\left|\lim_{\epsilon\rightarrow 0} \int_{\epsilon<|x|<1}\frac{\phi(x)}{x}dx+\int_{1<|x|<\frac{1}{\epsilon}}\frac{\phi(x)}{x}dx\right|,\\
+      &\leq\left|\lim_{\epsilon\rightarrow 0} \int_{\epsilon<|x|<1}\frac{\phi(x)-\phi(0)}{x}dx+\int_{1<|x|<\frac{1}{\epsilon}}\frac{\phi(x)}{x}dx\right|,\\
+      &\leq\lim_{\epsilon\rightarrow 0} \int_{\epsilon<|x|<1}\left|\frac{\phi(x)-\phi(0)}{x}\right|dx+\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{\phi(x)}{x}\right|dx,\\
+      &\phantom{\leq}\hspace{0.2cm}\text{Usando la desigualdad del valor medio.}\\
+      &\leq\lim_{\epsilon\rightarrow 0} \|\phi'\|_{\infty}\int_{\epsilon<|x|<1}\frac{|x|}{|x|}dx+\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{\phi(x)}{x}\right|dx,\\
+      &\leq\lim_{\epsilon\rightarrow 0} 2(1-\epsilon)|\|\phi\||_{(0,1)}+\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{\phi(x)}{x}\right|dx,\\
+      &\leq\lim_{\epsilon\rightarrow 0} 2(1-\epsilon)|\|\phi\||_{(0,1)}+\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{x\phi(x)}{x^2}\right|dx,\\
+      &\leq\lim_{\epsilon\rightarrow 0} 2(1-\epsilon)|\|\phi\||_{(0,1)}+\|x\phi\|_{\infty}\int_{1<|x|<\frac{1}{\epsilon}}\left|\frac{1}{x^2}\right|dx,\\
+      &\leq \lim_{\epsilon\rightarrow 0}2(1-\epsilon)|\|\phi\||_{(0,1)}+c\|x\phi\|_{\infty},\\
+      &\leq \lim_{\epsilon\rightarrow 0}2(1-\epsilon)|\|\phi\||_{(0,1)}+c|\|\phi\||_{(1,0)},\\
+      &\leq k(|\|\phi\||_{(0,1)}+|\|\phi\||_{(1,0)}).
+    \end{align*}
+    Lo que nos permite concluir que $v.p.\left( \frac{1}{x} \right)\in\mathcal{S}'(\mathbb{R})$.
+    \newpage
+    Ahora calculemos $\hat{\left(v.p.\left( \frac{1}{x} \right)\right)}$, note que realizando un par de manipulaciones algebraicas se puede asegurar que
+    \begin{align*}
+      \hat{\left( v.p.\left( \frac{1}{x} \right) \right)}(\phi)&=v.p.\left( \frac{1}{x} \right)(\hat{\phi}),\\
+      &=\lim_{\epsilon \to 0}\int_{|\xi|>\epsilon}\frac{\hat{\phi}(\xi)}{\xi}\, d\xi,\\
+      &=\lim_{\epsilon \to 0}\int_{|\xi|>\epsilon}\int_{\mathbb{R}}\frac{\phi(x)}{\xi}e^{-2\pi ix\xi}\, dx\, d\xi,\\
+      &=\lim_{\epsilon \to 0}\int_{\mathbb{R}}\int_{|\xi|>\epsilon}\frac{\phi(x)}{\xi}e^{-2\pi ix\xi}\, d\xi\, dx,\\
+      &=\lim_{\epsilon \to 0}\int_{\mathbb{R}}\phi(x)\left(\int_{-\infty}^{-\epsilon}\frac{1}{\xi}e^{-2\pi ix\xi}\, d\xi+\int_{\epsilon}^{\infty}\frac{1}{\xi}e^{-2\pi ix\xi}\, d\xi\right)\, dx,\\
+      &\phantom{=}\hspace{0.2cm}\text{Haciendo el cambio de variable $u=-\xi$ en la primera integral de $\xi$.}\\
+      &=\lim_{\epsilon \to 0}\int_{\mathbb{R}}\phi(x)\left(-\int_{\epsilon}^{\infty}\frac{1}{\xi}e^{2\pi ix\xi}\, d\xi+\int_{\epsilon}^{\infty}\frac{1}{\xi}e^{-2\pi ix\xi}\, d\xi\right)\, dx,\\
+      &=\lim_{\epsilon \to 0}\int_{\mathbb{R}}\phi(x)\int_{\epsilon}^{\infty}\frac{e^{-2\pi ix\xi}-e^{2\pi ix\xi}}{\xi}\, d\xi\, dx,\\
+      &=\lim_{\epsilon \to 0}\int_{\mathbb{R}}\phi(x)\int_{\epsilon}^{\infty}-\frac{2i\sen(2\pi x\xi)}{\xi}\, d\xi\, dx,\\
+      &=\int_{\mathbb{R}}\phi(x)\lim_{\epsilon \to 0}\int_{\epsilon}^{\infty}-\frac{2i\sen(2\pi x\xi)}{\xi}\, d\xi\, dx,\\
+      &=\int_{\mathbb{R}}\phi(x)\int_{0}^{\infty}-\frac{2i\sen(2\pi x\xi)}{\xi}\, d\xi\, dx,\\
+      &=\int_{\mathbb{R}}\phi(x)(-2i)\int_{0}^{\infty}\frac{\sen(2\pi x\xi)}{\xi}\, d\xi\, dx,\\
+      &=\int_{\mathbb{R}}\phi(x)(-2i)\frac{\pi}{2}sgn(2\pi x)\, dx,\\
+      &=\int_{\mathbb{R}}\left( -i\pi sgn(x) \right)\phi(x)\, dx,\\
+      &=-i\pi sgn(x)\left( \phi \right).
+    \end{align*}
+    Lo que nos permite concluir que $\hat{\left(v.p.\left( \frac{1}{x} \right)\right)}=-i\pi sgn(x)$ en el sentido de las distribuciones temperadas.
   \end{solution}
 \end{homeworkProblem}

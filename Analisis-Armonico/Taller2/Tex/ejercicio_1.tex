@@ -138,7 +138,30 @@
           &<\norm{g_k}\epsilon + \norm{f}\epsilon,\\
           &<M\epsilon.
         \end{align*}
-        Por lo que podemos asegurar que $(f*g)(x)\to 0$ cuando $|x|\to \infty$, lo que concluye el ejercicio. 
+        Por lo que podemos asegurar que $(f*g)(x)\to 0$ cuando $|x|\to \infty$, lo que concluye el ejercicio.\\
+        ¿Qué podemos afirmar cuando $p=1$ o $p=\infty$?\\
+        Veamos que si $p=1$, entonces $p'=\infty$, luego se puede ver que $f*g\in L^{\infty}(\mathbb{R}^{n})$ ya que
+        \begin{align*}
+          \norm{f*g}_{\infty}&=\sup_{x\in\mathbb{R}^{n}}\left| \int_{\mathbb{R}^{n}}f(y)g(x-y)\, dy \right|,\\
+          &=\sup_{x\in\mathbb{R}^{n}}\norm{g}_{\infty}\left| \int_{\mathbb{R}^{n}}f(y)\, dy \right|,\\
+          &=\sup_{x\in\mathbb{R}^{n}}\norm{g}_{\infty}\norm{f}_{1},\\
+          &=\norm{f}_{1}\norm{g}_{\infty}.
+        \end{align*}
+        Además, se puede rescatar con un argumento similar a cuando $1<p<\infty$ que $f*g\in C(\mathbb{R}^{n})$, ya que
+        \begin{align*}
+          |(f*g)(x)-(f*g)(y)|&=\left| \int_{\mathbb{R}^{n}}f(z)\left( g(x-z)-g(y-z) \right)\, dz \right|,\\
+          &\leq \int_{\mathbb{R}^{n}}|f(z)|\norm{g(x-\cdot)-g(z-\cdot)}_{\infty}\, dz,\\
+          &\leq \norm{f}_{1}\frac{\epsilon}{\norm{f}_{1}}.
+        \end{align*}
+        Lo que nos permite concluir que $f*g\in C(\mathbb{R}^{n})$.\\
+        Por otro lado también se puede ver que $f*g\in C_{\infyt}(\mathbb{R}^{n})$, ya que, de nuevo, se puede repetir el mismo argumento realizado anteriormente hasta la parte en la que se estudia la integral $J$, en este caso se procede con
+        \begin{align*}
+          |(f*(g-g_k))(x)|&\leq\norm{f*(g-g_{k})}_{\infty},\\
+          &\leq \norm{f}_{1}\norm{g-g_{k}}_{\infty},\\
+          &\leq \norm{f}_{1}\epsilon.
+        \end{align*}
+        Lo que de nuevo nos permite concluir que $f*g\in C_{\infty}(\mathbb{R}^{n})$.\\
+        Note que si $p=\infty$, $p'=1$, por lo que se puede concluir lo mismo que en el caso anterior cambiando los papeles de $f$ y $g$. 
     \end{enumerate}   
   \end{solution}
 \end{homeworkProblem}
