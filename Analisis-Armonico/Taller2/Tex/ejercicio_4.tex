@@ -87,8 +87,65 @@
       &=\sum_{\alpha,\beta\in\mathbb{N}^{n}}\frac{1}{2^{|\alpha|+|\beta|}}\lim_{k \to \infty}\frac{\norm{\phi_{k}-\phi}_{\alpha,\beta}}{1+\norm{\phi_k-\phi}_{\alpha,\beta}},\\
       &=\frac{1}{2^{|\alpha_{0}|+|\beta_{0}|}}\frac{\norm{\phi_{k}-\phi}_{\alpha_0,\beta_0}}{1+\norm{\phi_k-\phi}_{\alpha_0,\beta_0}}\neq 0.
     \end{align*}
-    Lo cuál es una contradicción, por lo que podemos afirmar que si $\phi_{k}\overset{d}{\to}\phi$, entonces $\norm{\phi_k-\phi}_{\alpha,\beta}\to 0$ para todo $\alpha,\beta\in\mathbb{N}^{n}$, lo que concluye el resultado.
+    Lo cuál es una contradicción, por lo que podemos afirmar que si $\phi_{k}\overset{d}{\to}\phi$, entonces $\norm{\phi_k-\phi}_{\alpha,\beta}\to 0$ para todo $\alpha,\beta\in\mathbb{N}^{n}$, lo que concluye el resultado.\\
     (III)\\
+    Note que si $f\in \mathcal{S}(\mathbb{R}^{n})$, entonces dados $\alpha,\beta\in\mathbb{N}^{n}$ se cumple que 
+    \begin{align*}
+      \sup_{x\in\mathbb{R}^{n}}|x^{\alpha}\partial^{\beta}f(x)|< C. 
+    \end{align*}
+    Luego, como también se satisface que dado $\gamma\in\mathbb{N}^{n}$ con $|\gamma|>|\alpha|$ se cumple que 
+    \begin{align*}
+      \sup_{x\in\mathbb{R}^{n}}|x^{\gamma}\partial^{\beta}f(x)|<C.
+    \end{align*}
+    Podemos deducir que $x^{\alpha}\partial^{\beta}f(x)$ además de ser acotada es una función que decrece más rápido que cualquier polinomio, es decir, dado $\alpha$ existe un $N>0$ suficientemente grande que satisface que
+    \begin{align*}
+      |x^{\alpha}\partial^{\beta}f(x)|\leq \frac{C}{(1+|x|)^{N}},
+    \end{align*}
+luego usando cambio a coordenadas polares y algunos cálculos se puede ver que
+    \begin{align*}
+      \norm{x^{\alpha}\partial^{\beta}f}_{2}^{2}&\leq \int_{\mathbb{R}^{n}}|x^{\alpha}\partial^{\beta}f(x)|^2\, dx,\\
+      &\leq \int_{\mathbb{R}^{n}}\frac{C}{(1+|x|)^{N}}\, dx<\infty.
+    \end{align*}
+    Lo que concluye una dirección de la implicación.
+    Ahora veamos que si $f\in C^{\infty}(\mathbb{R}^{n})$ y $x^{\alpha}\partial^{\beta}f\in L^{2}(\mathbb{R}^{n})$ para todo $\alpha,\beta\in\mathbb{N}^{n}$, entonces $f\in\mathcal{S}(\mathbb{R}^{n})$.\\
+    Razonemos por contradicción, suponga que $f\notin\mathcal{S}(\mathbb{R}^{n})$, es decir que existe $\alpha_{0},\beta_{0}\in\mathbb{N}^{n}$ tales que $x^{\alpha_{0}}\partial^{\beta_{0}}f\notin L^{\infty}(\mathbb{R}^{n})$, luego existe una subsucesión $\{x_{k}\}\subset\mathbb{R}^{n}$ que satisface que
+    \begin{align*}
+      |x_{k}^{\alpha_{0}}\partial^{\beta_{0}}f(x_{k})|\geq k,
+    \end{align*}
+    pero note que como $f\in C^{\infty}(\mathbb{R}^{n})$, entonces $x^{\alpha}\partial^{\beta}f\in C^{\infty}(\mathbb{R}^{n})$, luego sabemos que esta función debe de ser localmente acotada y además uniformemente continua en compactos, por lo que podemos asegurar que en compactos la función es Lipschitz, por lo que si tomamos $R>0$ sabemos que dado $x\in \overline{B_{R}(x_{k})}$ entonces
+    \begin{align*}
+      |x^{\alpha_0}\partial^{\beta}f(x)-x_{k}^{\alpha_{0}}\partial^{\beta}f(x_{k})|<L(x-x_{k}),
+    \end{align*}
+    luego si tomamos $x\in \overline{B_{\epsilon}(x_{k})}$, entonces
+    \begin{align*}
+      |x^{\alpha_{0}}\partial^{\beta_{0}}f(x)|&\geq|x_{k}^{\alpha_{0}}\partial^{\beta_{0}}f(x_{k})|-|x^{\alpha_{0}}\partial^{\beta_{0}}f(x)-x_{k}^{\alpha_{0}}\partial^{\beta_{0}}f(x_{k})|,\\
+      &\geq |x_{k}^{\alpha_{0}}\partial^{\beta_{0}}f(x_{k})|-L(x-x_{k}),\\
+      &\geq |x_{k}^{\alpha_{0}}\partial^{\beta_{0}}f(x_{k})|-L\epsilon.
+    \end{align*}
+    Ahora, tomando $\epsilon_{k}=\min\{\frac{|x_{k}^{\alpha_{0}}\partial^{\beta_{0}}f(x_{k})|}{2L},R\}$ se satisface que para todo $x\in \overline{B_{\epsilon_{k}}(x_{k})}$ se cumple que 
+    \begin{align*}
+      |x^{\alpha_{0}}\partial^{\beta_{0}}f(x)|\geq \frac{|x_{k}^{\alpha_{0}}\partial^{\beta_{0}}f(x_{k})|}{2}.
+    \end{align*}
+    Luego note que
+    \begin{align*}
+      \norm{x^{\alpha_{0}}\partial^{\beta_{0}}f}_{2}^{2}&\geq \int_{\mathbb{R}^{n}}|x^{\alpha_{0}}\partial^{\beta_{0}}f(x)|^2\, dx,\\
+      &\geq \int_{\overline{B_{\epsilon_{k}}(x_{k})}}|x^{\alpha_{0}}\partial^{\beta_{0}}f(x)|^2\, dx,\\
+      &\geq \int_{\overline{B_{\epsilon_{k}}(x_{k})}}\frac{|x_{k}^{\alpha_{0}}\partial^{\beta_{0}}f(x_{k})|^2}{4}\, dx,\\
+      &\geq \frac{k^2}{4}|\overline{B_{\epsilon_{k}}(x_{k})}|
+    \end{align*}
+    Ahora bien, como $\epsilon_k = \min\{ \frac{|x_k^{\alpha_0} \partial^{\beta_0} f(x_k)|}{2L_k}, R \}$ y $|x_k^{\alpha_0} \partial^{\beta_0} f(x_k)| \geq k$, entonces para $k$ suficientemente grande:
+    \begin{align*}
+      \epsilon_k \geq \frac{k}{2L_k}, \quad \text{y por tanto } \quad \varepsilon_k^n \geq \left( \frac{k}{2L_k} \right)^n.
+    \end{align*}
+    Así,
+    \begin{align*}
+      \|x^{\alpha_0} \partial^{\beta_0} f\|_2^2 \geq \frac{k^2}{4} \cdot C_n \left( \frac{k}{2L_k} \right)^n = C'_n \cdot \frac{k^{n+2}}{L_k^n}.
+    \end{align*}
+    Como $L_k$ depende solo de derivadas de $f$ en bolas de radio fijo (y por tanto acotadas por ser $f \in C^\infty(\mathbb{R}^{n})$), el cociente anterior crece como una potencia de $k$, y en particular tiende a infinito cuando $k\to\infty$, lo que nos permite concluir que
+    \begin{align*}
+      \|x^{\alpha_0} \partial^{\beta_0} f\|_2^2 = \infty,
+    \end{align*}
+    lo cual contradice la hipótesis, lo que nos permite concluir que $x^\alpha \partial^\beta f \in L^\infty(\mathbb{R}^n)$ para todo $\alpha, \beta$, y por ende $f \in \mathcal{S}(\mathbb{R}^n)$.
     (IV)\\
     Primero veamos que si $\phi\in\mathcal{S}(\mathbb{R}^n)$, entonces $\hat{\phi}\in\mathcal{S}(\mathbb{R}^n)$.\\
 	    Note que como $\mathcal{S}(\mathbb{R}^n)\subsetneq \mathcal{L}^p(\mathbb{R}^n)$ con $1\leq p \leq \infty$, entonces $\phi\in L(\mathbb{R}^n)$, por lo que nosotros podremos usar las propiedades de la transformada de Fourier en el sentido de $L(\mathbb{R}^n)$, así se sigue que
