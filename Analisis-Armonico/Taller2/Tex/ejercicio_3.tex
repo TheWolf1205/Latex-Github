@@ -90,15 +90,16 @@
         &\leq C\sum_{\substack{|\alpha|\leq l\\|\beta|\leq m}}\rho_{\alpha,\beta}(\tau_{x}\tilde{\phi}),
       \end{align*}
       lo que nos permite concluir que $T_{T}\in\mathcal{S}'(\mathbb{R}^{n})$, es decir que $T*_{1}\phi\in\mathcal{S}'(\mathbb{R}^{n})$.\\
-      Ahora, con el fin de ver que $T*_{1}\phi=T*\phi$, usaremos que la transformada de Fourier es un isomorfismo en $\mathcal{S}'(\mathbb{R}^{n})$, es decir, demostraremos que $\left(\hat{T*_{1}\phi}\right)=\hat{T}\hat{\phi}$ en $\mathcal{S}'(\mathbb{R}^{n})$ y como la transformada de Fourier es un isomorfismo en $\mathcal{S}'(\mathbb{R}^{n})$, entonces $T*_{1}\phi=T*\phi$ en $\mathcal{S}'(\mathbb{R}^{n})$.\\
-      Siendo así, note que como $T*_{1}\phi\in C^{\infty}(\mathbb{R}^{n})$ es localmente integrable, entonces si tomamos $f\in C^{\infty}_{c}(\mathbb{R}^{n})$
+      Ahora, con el fin de ver que $T*_{1}\phi=T*\phi$, note que como $T*_{1}\phi\in C^{\infty}(\mathbb{R}^{n})$ es localmente integrable, entonces si tomamos $f\in C^{\infty}_{c}(\mathbb{R}^{n})$
       \begin{align*}
         \left( T*_{1}\phi \right)(f)&=\left( T(\tau_{x}\tilde{\phi}) \right)(f),\\
-        &=\int_{\mathbb{R}^{n}}T(\tau_{x}\tilde{\phi})(y)f(y)\, dy,\\
-        &=T\left( \int_{\mathbb{R}^{n}}\tau_{x}\tilde{\phi}(y)f(y)\, dy \right),\\
-        &=T\left( \int_{\mathbb{R}^{n}}\phi(x-y)f(y)\, dy \right),\\
-        &=T\left( \int_{\mathbb{R}^{n}}\phi(y)f(x-y)\, dy \right),\\
-        &=T\left( \int_{\mathbb{R}^{n}}\phi(y)f(y)\, dy \right),\\
+        &=\int_{\mathbb{R}^{n}}T(\tau_{x}\tilde{\phi})(y)f(x)\, dx,\\
+        &=T\left( \int_{\mathbb{R}^{n}}\tau_{x}\tilde{\phi}(y)f(x)\, dx \right),\\
+        &=T\left( \int_{\mathbb{R}^{n}}\phi(x-y)f(x)\, dx \right),\\
+        &=T\left( \int_{\mathbb{R}^{n}}\tilde{\phi}(y-x)f(x)\, dx \right),\\
+        &=T\left( \tilde{\phi}*f \right),\\
+        &=(T*\phi)(f).
       \end{align*}
+      Lo que concluye el resultado.
   \end{solution}
 \end{homeworkProblem}
