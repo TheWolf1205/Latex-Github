@@ -32,6 +32,10 @@ Repositorio para subir trabajos o talleres de la U :p.
 - Taller 2.
   - [Taller.](./Analisis-Armonico/Taller2/ejercicios2.pdf)
   - [Solución](./Analisis-Armonico/Taller2/Tex/main.pdf)
+
+- Taller 3.
+  - [Taller.](./Analisis-Armonico/Taller3/ejercicios3.pdf)
+  - [Solución](./Analisis-Armonico/Taller3/Tex/main.pdf)
 </details>
 
 <details>
