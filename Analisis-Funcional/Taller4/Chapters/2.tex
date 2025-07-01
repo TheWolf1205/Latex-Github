@@ -1,0 +1,386 @@
+\thispagestyle{empty}
+
+\begin{minipage}{0.3\textwidth}
+  \includegraphics[scale=0.35]{logounal.png}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.65\textwidth}
+  \begin{center}
+    \scshape
+    \Large \textsc{Universidad Nacional de Colombia} \\
+    \textcolor{white}{\tiny.} \Large \textsc{Departamento de Matemáticas} \\
+    \textcolor{white}{\tiny.} \large \textsc{Análisis Funcional} \\
+    \textcolor{white}{\tiny.} \large \textsf{Taller 2} \normalsize (I-2025)
+  \end{center}
+\end{minipage}
+
+\vspace{0.3cm}
+\normalfont
+
+\textbf{Profesor:} Oscar Guillermo Riaño Castañeda\\
+\textbf{Integrantes:} Jairo Sebastián Niño Castro\hspace{2.8cm}
+Iván Felipe Salamanca Medina\\
+\hspace*{2.1cm} Yessica Vanessa Trujillo Ladino\hspace{2.25cm}\textbf{Fecha:} 08 de mayo del 2025\\
+\vspace{0.25cm}\\
+\textbf{Ejercicio 9:} Sea$(E, \norm{\cdot})$un espacio vectorial normado. Dado$r>0$, considere\\
+$C=B(0,r)=\{y\in E:\norm{y}<r\}$. Determine el funcional de Minkowski de$C$.\\
+\begin{solution}
+Sea $(E, \norm{\cdot})$ un espacio vectorial normado y\\
+$C = B(0,r) = \{ y \in E : \|y\| < r \}$ la bola abierta centrada en el origen con radio $r > 0$. 
+
+Veamos que $C$ es convexo. Sean $y_1, y_2 \in C$, tenemos que $\|y_1\| < r$ y $\|y_2\| < r$. Note que
+$$\|\lambda y_1 + (1 - \lambda) y_2\| \leq \|\lambda y_1\| + \|(1 - \lambda) y_2\| = \lambda \|y_1\| + (1 - \lambda) \|y_2\|.$$
+Como $\|y_1\| < r$ y $\|y_2\| < r$, entonces
+$$\lambda \|y_1\| + (1 - \lambda) \|y_2\| < \lambda r + (1 - \lambda) r = r (\lambda + 1 - \lambda) = r.$$
+Por lo tanto
+$$\|\lambda y_1 + (1 - \lambda) y_2\| < r.$$
+Esto implica que $\lambda y_1 + (1 - \lambda) y_2 \in C$. Por lo tanto el conjunto $C$ es convexo.
+
+Dado que $C$ es un conjunto abierto, convexo y contiene al origen ($0 \in C$, ya que \\
+$\|0\| = 0 < r$), el funcional de Minkowski de $C$ está definido de la siguiente manera
+$$p(x) = \inf \left\{ \alpha > 0 : \alpha^{-1} x \in C \right\}, \quad \forall x \in E.$$
+Note que si no existe $\alpha> 0$ tal que $\alpha^{-1} x \in C$, se define $p(x) = \infty$.
+
+Hallemos $p(x)$, consideremos la condición $\alpha^{-1} x \in C$. Esto implica que
+\begin{equation}
+    \norm{\alpha^{-1} x}< r.
+    \label{eq1}
+\end{equation}
+Como
+\begin{equation}
+    \norm{\alpha^{-1} x}= \norm{\frac{x}{\alpha}} = \frac{1}{\alpha} \norm{x} = \frac{\norm{x}}{\alpha}.
+    \label{eq2}
+\end{equation}
+Por lo tanto, de la ecuación \ref{eq1} y \ref{eq2} se sigue que
+$$\frac{\norm{x}}{\alpha} < r.$$
+Observe que
+$$\frac{\|x\|}{\alpha} < r \quad \Leftrightarrow \quad \|x\| < \alpha r \quad \Leftrightarrow \quad \frac{\|x\|}{r}<\alpha.$$
+
+De lo anterior se tiene que $\alpha^{-1} x \in C$ si y solo si $\dfrac{\|x\|}{r}<\alpha$. Así, el conjunto de todos los $\alpha > 0$ que satisfacen la condición es el siguiente
+
+$$\left\{ \alpha > 0 : \frac{\|x\|}{r} < \alpha\right\}.$$
+
+Luego, el funcional de Minkowski es el ínfimo de este conjunto, es decir
+
+$$p(x) = \inf \left\{ \alpha > 0 : \frac{\|x\|}{r} < \alpha\right\}.$$
+
+Dado que el conjunto $\{\alpha > 0 : \frac{\norm{x}}{r} <\alpha\}$ está acotado inferiormente por $\dfrac{\norm{x}}{r}$ y es un intervalo abierto en $\mathbb{R}^+$, el ínfimo es exactamente $\dfrac{\norm{x}}{r}$, ya que para cualquier $\dfrac{\norm{x}}{r}<\alpha$, se tiene $\dfrac{\norm{x}}{\alpha} > r$, y por lo tanto $\alpha^{-1} x \notin C$.
+
+Consideremos ahora el caso en el que $x = 0$, note que
+$$\norm{\alpha^{-1} \cdot 0} = \norm{0} = 0 < r,$$
+lo cual es cierto para todo $\alpha > 0$. Por lo tanto, el conjunto de $\alpha$ que satisfacen la condición es $\{ \alpha > 0 \}$, y el ínfimo es
+$$p(0) = \inf \{ \alpha> 0 \} = 0.$$
+
+Así, podemos escribir el funcional de Minkowski para todo $x \in E$ de la siguiente forma
+$$p(x) = \frac{\|x\|}{r}.$$
+
+Verifiquemos que en efecto es un funcional de Minkowski. Dado que $C$ es convexo, $p$ es subaditivo, y dado que $C$ es una bola abierta, $p$ debe ser proporcional a la norma. Veamos
+\begin{itemize}
+    \item \textbf{Homogeneidad:} Para $\lambda > 0$,
+    $$ p(\lambda x) = \frac{\norm{\lambda x}}{r} = \frac{\lambda \norm{x}}{r} = \lambda \cdot \frac{\norm{x}}{r} = \lambda p(x).$$
+
+    \item \textbf{Subaditividad:} Como $p(x) = \frac{\norm{x}}{r}$ es una norma escalada, satisface la desigualdad triangular:
+    $$p(x + y) = \frac{\norm{x + y}}{r} \leq \frac{\norm{x} + \norm{y}}{r} = \frac{\norm{x}}{r} + \frac{\norm{y}}{r} = p(x) + p(y).$$
+\end{itemize}
+Por lo tanto, el funcional de Minkowski de $C = B(0,r)$ es
+$$ \boxed{p(x) = \frac{\|x\|}{r}}$$
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+\textbf{Ejercicio 12:} Sea $E$ un espacio vectorial normado.
+\begin{itemize}
+    \item[(i)] Sea $W\subset E$ un subespacio propio de $E$ y $x_0\in E\setminus W$, tal que $d:=\text{dist}(x_0,W)>0$. Demuestre que existe $f\in E^*$ tal que $f=0$ restricto a $W$, $f(x_0)=d$ y $\norm{f}_{E^*}=1$.
+    \item[(ii)] Sea $W\subset E$ un subespacio propio cerrado de $E$ y $x_0\in E\setminus W$. Demuestre que existe $f\in E^*$ tal que $f=0$ restricto a $W$ y $f(x_0)\neq 0.$ 
+\end{itemize}
+\begin{proof}
+    \begin{enumerate}
+        \item[(i)] Considere $x_0 \in E\setminus W$ con $d=\text{dist}(x_0,W)>0$. Consideremos el subespacio $V=\text{gen}\{W,x_0\}$, y definimos 
+        \begin{align*}
+            g:V &\longrightarrow \mathbb{R}\\
+            w+tx_0 &\longmapsto g(w+tx_0)=td,
+        \end{align*}
+        para todo $w \in W$ y $t \in \mathbb{R}$. Dados $w_1,w_2 \in W$, $t_1,t_2\in \mathbb{R}$, y $\alpha\in \mathbb{R}$ se tiene que
+        \begin{align*}
+            g(\alpha(w_1+t_1x_0)+(w_2+t_2)x_0)&=g((\alpha w_1+w_2)+(\alpha t_1+t_2)x_0)\\
+            &=(\alpha t_1+t_2)d\\
+            &=\alpha t_1 d+t_2d\\
+            &=\alpha g(w_1+t_1x_0)+g(w_2+t_2x_0),
+        \end{align*}
+        es decir, $g$ define un funcional lineal en $V$. Note que $g(x_0)=g(\z+1\cdot x_0)=d$ y $g(w)=g(w+0\cdot x_0)=0$ para todo $w \in W$. Si $t=0$, entonces $|g(w+0\cdot x_0)|=0\leq \norm{w}$, para todo $w\in W$. Si $t \neq 0$ note que
+        \begin{align*}
+            |td|=|t|\cdot d=|t|\text{dist}(x_0,W)\leq |t|\norm{x_0-\frac{w}{t}}_E=\norm{tx_0-w}_E,
+        \end{align*}
+        como esto se tiene para todo $w\in W$, si se toma, en lugar de $w$, $-w$ tenemos que
+        \begin{align*}
+            |g(tx_0+w)|\leq \norm{tx_0+w}_E,
+        \end{align*}
+        es decir
+        \begin{align*}
+            \norm{g}_{V^*}\leq 1,
+        \end{align*}
+        como consecuencia del Teorema de Hahn-Banach versión analítica, existe un funcional $f\in E^*$ que extiende a $g$ y es tal que $\norm{f}_{E^*}= \norm{g}_{V^*}$, por tanto $\norm{f}_{E^*}\leq 1$ y dado que $f$ extiende a $g$, $f(w)=0$ para todo $w \in W$ y $f(x_0)=d$. 
+        
+        Veamos que $\norm{f}_{E^*}=1$. Por definición $\displaystyle d=\inf_{w \in W}\norm{x_0-w}_E$, por tanto, existe un elemento $w_0 \in \overline{W}$ tal que $d=\norm{w_0-x_0}_E$. Considere $(w_n)_{n \in \mathbb{Z}^+}\subset W$ una sucesión tal que $w_n\to w_0$ cuando $n \to \infty$, por tanto, $\norm{w_n-x_0}_E\to d$ cuando $n \to \infty$ y considere los vectores 
+        \begin{align*}
+            z_n=\dfrac{w_n-x_0}{\norm{w_n-x_0}_E},
+        \end{align*}
+        Note que los vectores $z_n$ están bien definidos dado que, como $x_0\notin W$, entonces $\norm{w_n-x_0}_E\neq 0$ para todo $n\in \mathbb{Z}^+$ y $\norm{z_n}_E=1$ para todo $n \in \mathbb{Z}^+$, además, por ser $V$ un subespacio, $(z_n)_{n \in \mathbb{Z}^+}\subset V$, entonces al ser $f$ una extensión de $g$
+        \begin{align*}
+            |f(z_n)|=|g(z_n)|=\frac{|g(w_n-x_0)|}{\norm{w_n-x_0}_E}=\frac{d}{\norm{w_n-x_0}_E},
+        \end{align*}
+        por tanto, como $\norm{w_n-x_0}_E \to d$ cuando $n \to \infty$, tenemos que
+        \begin{align*}
+            \lim_{n\to \infty}|f(z_n)|=\lim_{n\to \infty}\frac{d}{\norm{w_n-x_0}_E}=1,
+        \end{align*}
+        más precisamente, acabamos de mostrar que para todo $\varepsilon>0$ existe $z \in V$ con $\norm{z}_E=1$ tal que $|1-f(z)|<\varepsilon$, de esta manera, concluimos que $\norm{f}_{E^*}=1$.
+
+        \item[(ii)] Note que, si $W$ es un subespacio propio cerrado de $E$, entonces dado $x_0 \in E\setminus W$, existe $r>0$ tal que $B(x_0;r)\subseteq E-W$, es decir, $d=\text{dist}(x_0;W)\geq r>0$. Usando el ítem (i), existe $f\in E^*$ tal que $f=0$ para todo $f \in W$, y $f(x_0)=d\neq 0$.
+    \end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+\textbf{Ejercicio 13:} Sean $(E,\|\cdot\|_E)$ y $(F,\|\cdot\|_F)$ espacios de Banach.
+\begin{itemize}
+    \item[(i)] Sea $K\subset E$ un subespacio cerrado de $E$. Definimos la relación sobre $E$ dada por $x\sim_K y$ si y solo si $x-y\in K$.
+    \begin{itemize}
+        \item[(a)] Muestre que $\sim_K$ es una relación de equivalencia sobre $E$.
+        \item[(b)] Muestre que el espacio cociente $E/K$ es un espacio de Banach con la norma
+        $$\norm{x+K}_{E/K} = \inf_{k\in K} \norm{x-k}, \quad x\in E.$$
+        Es decir, debe verificar que el espacio cociente es un espacio vectorial, normado, cuya norma lo hace completo.
+    \end{itemize}
+    \item[(ii)] Sea $T\in L(E,W)$ tal que existe $c>0$ para el cual
+    $$\|Tx\|_F \geq c \|x\|_E,$$
+    para todo $x\in E$. Si $K$ denota le espacio nulo de $T$ y $R(T)$ el rango de $T$, muestre que $\widetilde{T}:E/K\to R(T)$ dada por $\widetilde{T}(x+K)=T(x)$, $x\in E$, está bien definida y es un isomorfismo. Esto es $\widetilde{T}\in L(E/K,R(T))$ y $\widetilde{T}^{-1}\in L(R(T),E/K)$.
+\end{itemize}
+\begin{proof}
+    \begin{enumerate}
+    \item[(i)] Veamos las propiedades.
+    \begin{enumerate}
+        \item[(a)] Probemos que $\sim_K$ es una relación de equivalencia.
+        \begin{itemize}
+            \item \textbf{Reflexividad.} Sea $x\in E$ arbitrario pero fijo, entonces $x-x=\z\in K$ donde $\z$ denota el vector nulo en $E$, dado que $K$ es un subespacio de $E$, es decir, $x\sim_K x$ para todo $x \in E$.
+            \item \textbf{Simetría.} Sean $x,y \in E$ cualesquiera tales que $x\sim_K y \in K$, por definición $x-y \in K$, por tanto, al ser $K$ un subespacio, tenemos que $-(x-y)=y-x \in K$, es decir, $y\sim_K x$.
+            \item \textbf{Transitividad.} Sean $x,y,z\in E$ tales que $x\sim_E y$ y $y\sim_E z$, por definición $x-y \in K$ y $y-z\in K$. Dado que $K$ es un subespacio de $E$, se tiene que $(x-y)+(y-z)=x-z\in K$, es decir, $x\sim_K z$.
+        \end{itemize}
+        De esta manera, hemos probado que, en efecto, la relación $\sim_K$ es una relación de equivalencia.
+        \item[(b)] Dado que $\sim_K$ define una relación de equivalencia en $E$, esta determina una partición de $E$ que, a su vez, está determinada por las clases de equivalencia de $\sim_K$. Sea $x \in E$ cualquiera y sea $y \in E$ tal que $x\sim_K y$, por definición, $x-y=-k \in K$, por tanto, $y=x+k$ para algún $k \in K$, por tanto, dado $x \in E$, denotamos su clase de equivalencia por $x+K$ y por tanto
+        \begin{align*}
+            E/K=\{x+K:x \in E\}.
+        \end{align*}
+        $E/K$ es un espacio vectorial con las operaciones 
+        \begin{align*}
+            (x+K)\oplus (y+K):= (x+y)+K \hspace{10mm} \alpha\odot(x+K):=\alpha x+K,
+        \end{align*}
+        para todo $x,y \in E$ y $\alpha\in \mathbb{R}$, esto se hereda de las propiedades de espacio vectorial de $E$. Veamos que $\norm{\cdot}_{E/K}$, en efecto, define una norma en $E/K$.
+        \begin{itemize}
+            \item Supongamos que $\norm{x+K}_{E/K}=0$, por definición $\displaystyle \inf_{k\in K}\norm{x-k}=0$. Dado que $K$ es cerrado, existe $k_x \in K$ tal que $\displaystyle\inf_{k \in K}\norm{x-k}=\norm{x-k_x}$, es decir, $x=k_x$, por tanto $x \in K$, lo que quiere decir, que $x+K=\z+K$. Recíprocamente, $\displaystyle \norm{\z+K}_{E/K}=\inf_{k \in K}\norm{\z-k}=\inf_{k \in K}\norm{k}=0$, dado que $\z \in K$ por ser $K$ un subespacio.
+            \item Sea $x \in E$ y $\alpha \in \mathbb{R}$. Si $\alpha=0$
+            \begin{align*}
+                \norm{0\odot (x+K)}_{E/K}=\norm{\z+K}_{E/K}=0=0\cdot\norm{x+K}_{E/K},
+            \end{align*}
+            si $\alpha\neq 0$
+            \begin{align*}
+                \norm{\alpha\odot(x+K)}_{E/K}&=\norm{\alpha x+K}_{E/K}\\
+                &=\inf_{k \in K}\norm{\alpha x-k}\\
+                &=|\alpha|\inf_{k \in K}\norm{x-\frac{k}{\alpha}}\\
+                &=|\alpha|\inf_{k \in K}\norm{x-k}\\
+                &=|\alpha|\norm{x+K}_{E/K}.
+            \end{align*}
+            \item Dados $x,y \in E$
+            \begin{align*}
+                \norm{(x+K)\oplus(y+K)}_{E/K}&=\norm{(x+y)+K}_{E/K}\\
+                &=\inf_{k\in K}\norm{(x+y)-k}\\
+                &=\inf_{k \in K}\norm{\left(x-\frac{k}{2}\right)+\left(y-\dfrac{k}{2}\right)}\\
+                &\leq \inf_{k \in K}\norm{x-\frac{k}{2}}+\inf_{k \in K}\norm{y-\frac{k}{2}}\\
+                &=\inf_{k \in K}\norm{x-k}+\inf_{k \in K}\norm{y-k}\\
+                &=\norm{x+K}_{E/F}+\norm{y+K}_{E/F}.
+            \end{align*}
+        \end{itemize}
+        De manera que $\norm{\cdot}_{E/K}$ define una norma en $E/K$. Ahora, dados $x,y \in E$, denotamos 
+        \begin{align*}
+            (x+K)\oplus(-y+K)=(x-y)+K=(x+K)\ominus (y+K).
+        \end{align*}
+        Veamos que $(E/K,\norm{\cdot}_{E/K})$ es un espacio completo. Sea $(x_n+K)_{n \in \mathbb{N}}$ una sucesión de Cauchy en $E/K$, es decir, para todo $\varepsilon>0$ existe $N\in \mathbb{N}$ tal que si $m,n\geq N$, entonces
+        \begin{align*}
+            \norm{(x_n+K)\ominus(x_m+K)}_{E/K}<\varepsilon.
+        \end{align*}
+        Para $\varepsilon=\dfrac{1}{2}$, existe $n_1\in \mathbb{N}$ tal que si $m\geq n_1$
+        \begin{align*}
+            \norm{(x_{n_1}+K)\ominus(x_{m}+K)}_{E/K}<\dfrac{1}{2},
+        \end{align*}
+        Similarmente, para $\varepsilon=\dfrac{1}{4}$, existe $n_2\in \mathbb{N}$ con $n_2>n_1$ tal que si $m\geq n_2$, entonces
+        \begin{align*}
+            \norm{(x_{n_2}+K)\ominus
+            (x_m+K)}_{E/K}<\dfrac{1}{4},
+        \end{align*}
+        de manera análoga, para $\varepsilon=\dfrac{1}{8}$ es posible encontrar $n_3\in \mathbb{N}$ con $n_3>n_2$ tal que si $m\geq n_3$, entonces
+        \begin{align*}
+            \norm{(x_{n_3}+K)\ominus(x_m+K)}_{E/K}<\dfrac{1}{8},
+        \end{align*}
+        realizando este proceso $j$-veces, existe $n_j\in \mathbb{N}$ con $n_{j}>n_{j-1}$ tal que si $m\geq n_j$, entonces
+        \begin{align*}
+            \norm{(x_{n_j}+K)\ominus(x_m+K)}_{E/K}<\dfrac{1}{2^j},
+        \end{align*}
+        en particular, si realizamos una iteración más de este proceso, para $n_{j+1}>n_j$, obtenemos que
+        \begin{align*}
+            \norm{(x_{n_j}+K)\ominus(x_{n_{j+1}}+K)}_{E/K}<\dfrac{1}{2^j},
+        \end{align*}
+        así, hemos encontrado una subsucesión $(x_{n_j})_{j \in \mathbb{Z}^+}$ tal que 
+        \begin{align*}
+            \norm{(x_{n_j}+K)\ominus(x_{n_{j+1}}+K)}_{E/K}<\dfrac{1}{2^j},
+        \end{align*}
+        para todo $j \in \mathbb{Z}^+$. Ahora, para cada $j \in \mathbb{Z}^+$, escogemos $y_j \in x_{n_j}+K$ con la propiedad de que $\norm{y_j-y_{j+1}}<\dfrac{1}{2^j}$. Es importante ver que, en efecto, podemos encontrar tales $y_j$. Por definición 
+        \begin{align*}
+            \frac{1}{2^j}>\norm{(x_{n_j}+K)\ominus(x_{n_{j+1}}+K)}_{E/K}&=\norm{(x_{n_j}-x_{n_{j+1}})+K}_{E/K}\\
+            &=\inf_{k \in K} \norm{(x_{n_j}-x_{n_{j+1}})-k}\\
+            &=\inf_{k,k'\in K}\norm{(x_{n_j}-x_{n_{j+1}})-(k-k')}\\
+            &=\inf_{k,k'\in K}\norm{(x_{n_j}-k)-(x_{n_{j+1}}-k')}.
+        \end{align*}
+        como $K$ es cerrado, existen $k_j,k_{j+1}\in K$ tales que 
+        \begin{align*}
+            \inf_{k,k'}\norm{(x_{n_j}-k)-(x_{n_{j+1}}-k')}=\norm{(x_{n_j}-k_j)-(x_{j+1}-k_{j+1})},
+        \end{align*}
+        entonces podemos tomar $y_j=x_{n_j}-k_j$ para todo $j \in \mathbb{Z}^+$. Por esta elección tenemos que la sucesión $(y_j)_{j \in \mathbb{Z}^+}$ es de Cauchy en $E$. En efecto, sea $\varepsilon>0$, y $j,m \in \mathbb{Z}^+$. Sin pérdida de generalidad, supongamos que $m\geq j$, entonces $m=j+l$ para algún $l \in \mathbb{N}$, por tanto
+        \begin{align*}
+            \norm{y_j-y_m}&=\norm{y_j-y_{j+l}}\\
+            &=\norm{(y_j-y_{j+1})+(y_{j+1}-y_{j+2})+\dots +(y_{j+l-2}-y_{j+l-1})+(y_{j+l-1}-y_{j+l})}\\
+            &\leq \sum_{i=j}^{j+l-1}\norm{y_i-y_{i+1}}\\
+            &<\sum_{i=j}^{j+l-1}\frac{1}{2^{i}}\\
+            &<\sum_{i=j}^\infty \frac{1}{2^{i}},
+        \end{align*}
+        dado que la serie $\displaystyle \sum_{i=1}^\infty \frac{1}{2^{i}}$ es absolutamente convergente, existe $N\in \mathbb{Z}^+$ tal que si $j\geq N$, entonces
+        \begin{align*}
+            \sum_{i=j}^{\infty}\frac{1}{2^{i}}<\varepsilon,
+        \end{align*}
+        probando así que $(y_j)_{j \in \mathbb{Z}^+}$ es una sucesión de Cauchy en $E$. Dado que $E$ es de Banach, existe $y \in E$ tal que $y_j\to y$ cuando $j \to \infty$ en $E$, de manera que, recordando la manera como se escogió $y_j$
+        \begin{align*}
+            \norm{(x_{n_j}+K)\ominus(y+K)}_{E/K}&=\inf_{k \in K}\norm{(x_{n_j}-y)-k}\\
+            &=\inf_{k \in K}\norm{(x_{n_j}-k)-y}\\
+            &\leq \norm{y_j-y},
+        \end{align*}
+        y como $y_j\to y$ cuando $j\to \infty$ en $E$, entonces $x_{n_j}+K\to y+K$ cuando $j\to \infty$ en $E/K$. De esta manera, hemos probado que la sucesión $(x_n+K)$ tiene una subsucesión convergente, pero al ser una sucesión de Cauchy, esto quiere decir que la sucesión es convergente y converge al mismo límite que su subsucesión. Así, probamos que, en efecto $(E/K,\norm{\cdot}_{E/K})$ es un espacio de Banach.
+     \end{enumerate}
+     \item[(ii)] Se prueban cuatro propiedades: 
+    \begin{enumerate}
+        \item[(a)] $\widetilde{T}$ está bien definida: Sea $x+K=y+K \in E/K$. De esta forma, $x-y\in K=ker(T)$ pues $x\sim_K y$ si y solo si $x-y\in K$. Por tanto
+        \begin{align*}
+            T(x-y)=0 \\ Tx-Ty=0,
+        \end{align*}
+        de esta forma, $\widetilde{T}(x+K)=Tx=Ty=\widetilde{T}(y+K)$ lo que muestra que $\widetilde{T}$ está bien definida.
+        \item[(b)] $\widetilde{T}$ es lineal: Sean $x+K, y+K \in E/K$ y $\lambda\in \mathbb{R}$. Así
+        \begin{align*}
+            \widetilde{T}((x+K)\oplus(\lambda\odot(y+K))) =&\widetilde{T}((x+K)\oplus(\lambda y+K))\\=&\widetilde{T}((x+\lambda y)+K)\\=&T(x+\lambda y)\\=&Tx+\lambda Ty\\=&\widetilde{T}(x+K)+\lambda\widetilde{T}(y+K).
+        \end{align*}
+        \item[(c)]$\widetilde{T}$ es acotada: Sea $x+K \in E/K$ y $w \in K$. Así, usando que $T \in L(E,W)$, existe $M>0$ tal que
+        \begin{align*}
+            \norm{\widetilde{T}(x+K)}_F=\norm{Tx}_F&=\norm{Tx-Tw}_F \\&=\norm{T(x-w)}_F \leq M \norm{x-w}_E,
+        \end{align*}
+      de modo que $\norm{\widetilde{T}(x+K)}_F \leq M \norm{x-w}_E$ para todo $w \in K$. Luego, por definición de ínfimo, se tiene que
+      \[
+      \norm{\widetilde{T}(x+K)}_F\leq M \inf_{w\in K}\{\norm{x-w}_F\}=M\norm{x+K}_{E/K},
+      \]
+      lo cual muestra que $\widetilde{T}$ es acotada y por tanto, $\widetilde{T}\in L(E/K,R(T))$ 
+      \item[(d)] $\widetilde{T}^{-1}$ es acotada: Vale la pena antes de iniciar, mencionar que por la definición de $\widetilde{T}$, se tiene que $ker(\widetilde{T})=\z+K=K$ pero $K$ justamente es el elemento nulo en el espacio $E/K$ y por tanto, $\widetilde{T}$ es 1-1. Además, como $\widetilde{T}:E/K \to R(T)$ y $\widetilde{T}(x+K)=Tx$ para todo $x\in E$, se sigue que $\widetilde{T}$ es sobreyectiva. Por lo anterior, tiene sentido considerar $\widetilde{T}^{-1}:R(T)\to E/K$. \\
+      Ahora, sea $y \in R(T)$. Luego existe $x+K \in E/K$ tal que $\widetilde{T}(x+K)=y$. De este modo, usando que $\norm{x}_E\leq \dfrac{1}{c}\norm{Tx}_F$ para todo $x \in E$, se tiene que
+      \begin{align*}
+          \norm{\widetilde{T}^{-1}(y)}_{E/K}&=\norm{x+K}_{E/K} \\&=\inf_{w\in K}\{\norm{x-w}_E\} \\&\leq \inf_{w\in K}\left\{\frac{1}{c}\norm{T(x-w)}_E\right\}\\&\leq \inf_{w\in K}\left\{\frac{1}{c}\norm{Tx-Tw}_E\right\}\\&= \inf_{w\in K}\left\{\frac{1}{c}\norm{Tx}_E\right\}\\&=\frac{1}{c}\norm{\widetilde{T}(x+K)}_F \\&=\frac{1}{c}\norm{y}_F,
+      \end{align*}
+      lo cual muestra que $\widetilde{T}^{-1}$ es acotado y por tanto, $\widetilde{T}^{-1} \in L(R(T),E/K)$.
+    \end{enumerate}
+\end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+\textbf{Ejercicio 15:} Considere los espacios $C([0,1])$ y $C^1([0,1])$ ambos equipados con la norma del supremo $||f||_{\mathcal{L}^{\infty}} = \sup_{x \in [0,1]} |f(x)|$. Definimos el operador derivada $D: C^1([0,1]) \to C([0,1])$ dado por $f \mapsto f'$. Muestre que $D$ es un operador no acotado, pero su gráfico $G(D)$ es cerrado.
+\begin{proof}
+Para mostrar que $D$ no es acotado, debemos probar que no existe una constante $M \geq 0$ tal que $\|f'\|_{\mathcal{L}^\infty} \leq M \|f\|_{\mathcal{L}^\infty}$ para toda $f \in C^1([0,1])$. Una forma de hacerlo es construir una sucesión de funciones $\{f_n\} \subset C^1([0,1])$ tal que $\|f_n\|_{\mathcal{L}^\infty}$ esté acotada (o incluso $\|f_n\|_{\mathcal{L}^\infty} = 1$), pero $\|f_n'\|_{\mathcal{L}^\infty}$ crezca sin límite.\\
+
+Consideremos la siguiente sucesión de funciones
+$$f_n(x) = \frac{\sin(nx)}{n}, \quad x \in [0,1], \quad n \geq 2.$$
+Note que $f_n \in C^1([0,1])$, esto dado que $f_n(x) = \frac{\sin(nx)}{n}$ es continua, ya que $\sin(nx)$ es continua. Además su derivada esta dada por
+$$f_n'(x) = \frac{d}{dx} \left( \frac{\sin(nx)}{n} \right) = \frac{n \cos(nx)}{n} = \cos(nx).$$
+Como $\cos(nx)$ es continua, $f_n' \in C([0,1])$, y por lo tanto $f_n \in C^1([0,1])$.
+
+La norma de $f_n$ en $C^1([0,1])$ es la siguiente
+  $$\|f_n\|_{\mathcal{L}^\infty} = \sup_{x \in [0,1]} \left| \frac{\sin(nx)}{n} \right| = \frac{1}{n} \sup_{x \in [0,1]} |\sin(nx)| \leq \frac{1}{n} \cdot 1 = \frac{1}{n}.$$
+Dado que $|\sin(nx)| \leq 1$, y en $x = \frac{\pi}{2n}$, tenemos $\sin\left(n \cdot \frac{\pi}{2n}\right) = \sin\left(\frac{\pi}{2}\right) = 1$, por lo que
+  $$
+  \|f_n\|_{\mathcal{L}^\infty} = \frac{1}{n}.
+  $$
+
+Por otro lado, la norma de $f_n' = D(f_n)$ en $C([0,1])$ es
+  $$\|f_n'\|_{\mathcal{L}^\infty} = \sup_{x \in [0,1]} |\cos(nx)| = 1.$$
+
+Ahora bien, note que si $D$ fuera acotado, existiría $M \geq 0$ tal que
+$$\|f_n'\|_{\mathcal{L}^\infty} \leq M \|f_n\|_{\mathcal{L}^\infty},$$
+así,
+$$1 = \|f_n'\|_{\mathcal{L}^\infty} \leq M \cdot \|f_n\|_{\mathcal{L}^\infty} = M \cdot \frac{1}{n},$$
+de esto se sigue que
+$$1 \leq \frac{M}{n} \implies n \leq M,$$
+pero como $n\in \mathbb{Z}^+$ con $n\geq 2$ puede ser arbitrariamente grande, no existe una constante $M$ que satisfaga esta desigualdad para todo $n$. Por lo tanto, $D$ no es acotado.\\
+
+Veamos ahora que el gráfico $G(D)$ es cerrado.\\
+
+Sea $\{(f_n, f_n')\} \subset G(D)$, y supongamos que $f_n \to f$ en $C^1([0,1])$, es decir,
+    $$\|f_n - f\|_{\mathcal{L}^\infty} = \sup_{x \in [0,1]} |f_n(x) - f(x)| \to 0,$$
+esto implica que $f_n \to f$ uniformemente en \([0,1]\). Supongamos también que $f_n' \to g$ en $C([0,1])$, es decir,
+    $$\|f_n' - g\|_{\mathcal{L}^\infty} = \sup_{x \in [0,1]} |f_n'(x) - g(x)| \to 0.$$
+Esto implica que $f_n' \to g$ uniformemente en \([0,1]\).
+
+Dado que $f_n \to f$ uniformemente y cada $f_n \in C^1([0,1])$, necesitamos verificar si $f$ es diferenciable y si $f' = g$. Por el teorema fundamental del cálculo sabemos que para cualquier $x \in [0,1]$, se tiene que
+$$f_n(x) = f_n(0) + \int_0^x f_n'(t) \, dt,$$
+porque $f_n$ es diferenciable y $f_n'$ es continua. Como $f_n \to f$ uniformemente y $f_n' \to g$ uniformemente, tomemos el límite en esta ecuación. Así como $f_n \to f$ uniformemente, en particular en $x = 0$, entonces
+  $$f_n(0) \to f(0).$$
+
+Ahora bien, consideremos
+  $$\int_0^x f_n'(t) \, dt.$$
+  Dado que $f_n' \to g$ uniformemente, para cualquier $\varepsilon > 0$, existe $N$ tal que para $n \geq N$:
+  $$
+  \sup_{t \in [0,1]} |f_n'(t) - g(t)| < \varepsilon,
+  $$
+  entonces se tiene que
+  \begin{align*}
+      \left| \int_0^x f_n'(t) \, dt - \int_0^x g(t) \, dt \right| &\leq \int_0^x |f_n'(t) - g(t)| \, dt\\
+      &\leq \int_0^x \sup_{t \in [0,1]} |f_n'(t) - g(t)| \, dt\\
+      &< \int_0^x \varepsilon dt\\
+      &= \varepsilon \cdot x,
+  \end{align*}
+como $x\leq 1$ se tiene que $\left| \int_0^x f_n'(t) \, dt - \int_0^x g(t) \, dt \right|\leq \varepsilon$
+ Por lo tanto
+  $$
+  \int_0^x f_n'(t) \, dt \to \int_0^x g(t) \, dt,
+  $$
+  y la convergencia es uniforme en $x \in [0,1]$.
+
+Tomando el límite en
+$$
+f_n(x) = f_n(0) + \int_0^x f_n'(t) \, dt,
+$$
+obtenemos lo siguiente
+$$
+f(x) = f(0) + \int_0^x g(t) \, dt.
+$$
+Como $g \in C([0,1])$, la función $x \mapsto \int_0^x g(t) \, dt$ es diferenciable (por el teorema fundamental del cálculo), y su derivada es
+$$
+\frac{d}{dx} \left( \int_0^x g(t) \, dt \right) = g(x).
+$$
+Además, $f(0)$ es una constante, por lo que:
+$$
+f(x) = f(0) + \int_0^x g(t) \, dt,
+$$
+es diferenciable, y
+$$
+f'(x) = \frac{d}{dx} \left( f(0) + \int_0^x g(t) \, dt \right) = g(x).
+$$
+Como $g$ es continua, $f' = g \in C([0,1])$, lo que implica que $f \in C^1([0,1])$. Por lo tanto
+$$
+(f, g) = (f, f') \in G(D).
+$$
+Esto muestra que el límite de cualquier sucesión convergente en $G(D)$ pertenece a $G(D)$, y por lo tanto, $G(D)$ es cerrado.\\
+
+Quedando así demostrado que $D$ es un operador no acotado con gráfico cerrado.
+
+
+\end{proof}
