@@ -22,7 +22,7 @@ Repositorio para subir trabajos o talleres de la U :p.
   - [Solución](./Analisis-Funcional/Taller3/main.pdf)
 
 - Taller 4.
-  - [Taller.](./Analisis-Funcional/Taller3/ejercicios2.pdf)
+  - [Taller.](./Analisis-Funcional/Taller4/ejercicios3.pdf)
   - [Solución](./Analisis-Funcional/Taller4/main.pdf)
 </details>
 

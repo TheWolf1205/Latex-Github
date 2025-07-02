@@ -23,7 +23,6 @@ Iván Felipe Salamanca Medina\\
 \hspace*{2.1cm}\hspace{2.25cm}\textbf{Fecha:} 03 de Junio del 2025\\
 \vspace{0.25cm}\\
 
-
 \textbf{Ejercicio 1}.
 
 \begin{enumerate}
@@ -45,7 +44,8 @@ Iván Felipe Salamanca Medina\\
         \end{align*}
     \end{enumerate}
 \end{enumerate}
-
+\begin{enumerate}
+\item[(I)]\phantom{I}\\
 \begin{proof}
   \begin{enumerate}
     \item[(a)] Veamos que $\delta_{x_0}$ es una medida.\\
@@ -124,8 +124,55 @@ Iván Felipe Salamanca Medina\\
       por lo cual podemos afirmar que $|x|$ no es integrable respecto a Lebesgue, pero si respecto a la medida de Dirac centrada en $0$. 
   \end{enumerate} 
 \end{proof}
-
-
+\item[(II)]\phantom{I}\\
+\begin{proof} 
+  \begin{enumerate}
+    \item[(a)] Veamos que $\mu$ es medida.\\
+      Note que si tomamos $\emptyset\in P(\mathbb{N})$ como $cardinal(\emptyset)=0$, entonces $\mu(\emptyset)=0$.\\
+      Por otro lado, veamos que dados $\{A_{n}\}_{n\in\mathbb{N}}$ conjuntos disjuntos $2$ a $2$ se satisface que
+      \begin{align*}
+        \mu\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)&=\sum_{n\in\mathbb{N}}\mu\left( A_{n} \right).
+      \end{align*}
+      Esto ya que, si suponemos que $cardinal\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)=n<\infty$, entonces podemos afirmar que todos los conjuntos $A_{n}$ son finitos, pues $cardinal\left( A_{n} \right)\leq cardinal\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)$, además, sabemos que los conjuntos $A_{n}$ con cardinal distinto a $0$ deben de ser finitos, de lo contrario $cardinal\left(\bigcup_{n\in\mathbb{N}}(A_{n})\right)=\infty$, por lo que podemos asumir que para cierta selección de $n_{j}$ se tiene que usando el principio de inclusión-exclusión y que la familia de conjuntos $\{A_{n}\}_{n\in\mathbb{N}}$ es disjunta $2$ a $2$ se cumple que
+      \begin{align*}
+        \mu\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)&=cardinal\left(\bigcup_{n\in\mathbb{N}}(A_{n})\right),\\
+        &=cardinal\left( \bigcup_{n_{j}=0}^{m}(A_{n_{j}}) \right),\\
+        &=\sum_{n_{j}}cardinal\left( A_{n_{j}} \right),\\
+        &=\sum_{n\in\mathbb{N}}cardinal\left( A_{n} \right),\\
+        &=\sum_{n\in\mathbb{N}}\mu(A_{n}).
+      \end{align*}
+      Caso contrario, si $cardinal\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)=\infty$, entonces sabemos que existe al menos un $A_{I}$ tal que $cardinal(A_I)=\infty$ o que existe una subcolección $\{A_{n_{j}}\}_{n_{j}\in\mathbb{N}}\subset \{A_{n}\}_{n\in\mathbb{N}}$ tal que para todo $n_{j}$ se satisface que $cardinal\left( A_{n_{j}} \right)\leq 1$, supongamos que $A_I\notin \{A_{n_{j}}\}_{n_j\in\mathbb{N}}$, por lo que podemos afirmar en ambos casos que
+      \begin{align*}
+        \mu\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)&=cardinal\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right),\\
+        &=\infty,\\
+        &=\sum_{n_{j}\in\mathbb{N}}cardinal\left( A_{n_{j}} \right)+A_{I},\\
+        &=\sum_{n\in\mathbb{N}}cardinal\left( A_{n} \right),\\
+        &=\sum_{n\in\mathbb{N}}\mu(A_{n}).
+      \end{align*}
+      Lo que nos permite concluir que $\mu$ es una medida.\\
+    \item[(b)] Vemos que si $f$ es integrable, entonces
+      \begin{align*}
+        \int_{\mathbb{N}}f\, dx&=\sum_{j=1}^{\infty}a_{j}.
+      \end{align*}
+      Para esto, usaremos un argumento similar al numeral anterior, demostraremos el resultado para funciones simples positivas, este se podrá extender a las funciones medibles no negativas por densidad y el teorema de la convergencia monótona para en el final descomponer a la $f$ como suma de $2$ funciones medibles no negativas, por lo que se demostrará para funciones positivas y se procederá con la descomposición con el fin de no aburrir al profesor.\\
+      Suponga $f$ función simple medible y positiva, es decir que existen $a_{i}\in\mathbb{R}$ tales que $a_{i}>0$ y además tomemos la colección de conjuntos $A_{i}$ medibles como conjuntos unitarios, luego $f(x)=\sum_{i=1}^{n}a_{i}\chi_{A_{i}}(x)$, luego
+      \begin{align*}
+        \int_{\mathbb{N}}f\, dx&=\int_{\mathbb{N}}\left( \sum_{i=1}^{n}a_{i}\chi_{A_{i}}(x) \right)\, dx,\\
+        &=\sum_{i=1}^{n}a_{i}\mu(A_{i}),\\
+        &=\sum_{i=1}^{n}a_{i}.
+      \end{align*}
+      Lo que demuestra que el resultado se cumple para funciones medibles simples y positivas, luego por densidad este resultado se puede extender a funciones medibles no negativas.\\
+      Siendo así, suponga $f$ función medible, note que como lo hicimos anteriormente podemos descomponer a $f$ como $f=f^{+} + (-f^{-})$, luego
+      \begin{align*}
+        \int_{\mathbb{N}}f\, dx&=\int_{\mathbb{N}}f^{+}+(-f^-)\, dx,\\
+        &=\int_{\mathbb{N}}f^+\, dx + \int_{\mathbb{N}}(-f^-)\, dx,\\
+        &=\sum_{i^+=1}^{n}a_{i^{+}}+\sum_{i^{-}=1}^{n}a_{i^{-}},\\
+        &=\sum_{i=1}^{m}a_{i}.
+      \end{align*}
+      Lo que nos permite concluir el ejercicio.
+  \end{enumerate}
+\end{proof}
+\end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
