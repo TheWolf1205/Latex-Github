@@ -1,6 +1,20 @@
 \begin{homeworkProblem}
-  Pregunta
+  Pruebe que el operador $\mathcal{F}$ de la transformada de Fourier es un isomorfismo de $\mathcal{S}'(\mathbb{R}^{n})$ en si mismo. Dada $\Psi \in \mathcal{S}'(\mathbb{R}^{n})$ y $\alpha\in\mathbb{N}^{n}$ multi-índice, pruebe que:
+  \begin{enumerate}[(i)]
+    \item $\hat{\partial^{\alpha}\Psi}=(2\pi i)^{|\alpha|}\xi^{\alpha}\hat{\Psi}$;
+    \item $(-2\pi i)^{|\alpha|}\hat{x^{\alpha}\Psi}=\partial^{\alpha}\hat{\Psi}$;
+    \item $\check{\hat{\Psi}}=\Psi=\hat{\check{\Psi}}$;
+    \item $\mathcal{F}^{4}=Id$.
+  \end{enumerate}
   \begin{solution}
-    Solución
+    Veamos que el operador $\mathcal{F}$ de la transformada de Fourier es un isomorfismo de $\mathcal{S}'(\mathbb{R}^{n})$ en si mismo.\\
+    Para esto primero mostremos que es un operador inyectivo, esto ya que si suponemos que dados $\Psi_{1},\Psi_{2}\in\mathcal{S}'(\mathbb{R}^{n})$ tales que $\hat{\Psi_{1}}=\hat{\Psi_{2}}$ se puede concluir que para toda $\phi\in\mathcal{S}(\mathbb{R}^{n})$ se cumple que
+    \begin{align*}
+      \Psi_{1}(\hat{\phi})&=\hat{\Psi_{1}}(\phi),\\
+      &=\hat{\Psi_{2}}(\phi),\\
+      &=\Psi_{2}(\hat{\phi}).
+    \end{align*}
+    De lo que se puede afirmar que $\Psi_{1}=\Psi_{2}$, lo que demuestra que $\mathcal{F}$ es un operador inyectivo.\\
+    Ahora veamos que $\mathcal{F}$ es un operador sobreyectivo, ya que si definimos $\mathcal{F}^{-1}:\mathcal{S}'(\mathbb{R}^{n})\to\mathcal{S}'(\mathbb{R}^{n})$ tal que si tomamos $\Psi\in\mathcal{S}'(\mathbb{R}^{n})$, entonces $\check{\Psi}(\phi)=\Psi(\check{\phi})$, entonces de forma análoga a $\mathcal{F}$ se puede demostrar que $\mathcal{F}^{-1}$ es un operador inyectivo, luego dado $\Psi\in\mathcal{S}'(\mathbb{R}^{n})$ se sabe que existe $\check{\Psi}\in\mathcal{S}'(\mathbb{R}^{n})$ tal que $\hat{\check{\Psi}}=\Psi$, lo que demuestra que $\mathcal{F}$ es un operador sobreyectivo y por ende biyectivo. 
   \end{solution}
 \end{homeworkProblem}

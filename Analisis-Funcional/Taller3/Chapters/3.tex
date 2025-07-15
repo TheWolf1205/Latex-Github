@@ -20,384 +20,535 @@
 \textbf{Profesor:} Oscar Guillermo Riaño Castañeda\\
 \textbf{Integrantes:} Andrés David Cadena Simons \hspace{2.8cm}  Jairo Sebastián Niño Castro\hspace{2.8cm}
 Iván Felipe Salamanca Medina\\
-\hspace*{2.1cm}\hspace{2.25cm}\textbf{Fecha:} 03 de Junio del 2025\\
+\hspace*{2.1cm}\hspace{2.25cm}\textbf{Fecha:} 02 de Julio del 2025\\
 \vspace{0.25cm}\\
 
+\textbf{Ejercicio 1}.
 
-\textbf{Ejercicio 2.} Sea $E$ un espacio vectorial y $g,f_1,...,f_k$, $k+1$ funcionales lineales sobre $E$ tales que
-\begin{align*}
-    \langle f_i;x\rangle=0 \text{ para todo } i=1,...,k \Longrightarrow \langle g;x\rangle=0.
-\end{align*}
-Muestre que existen constantes $\lambda_1,...,\lambda_k\in \mathbb{R}$ tales que $\displaystyle g=\sum_{i=1}^k \lambda_if_i$. Es decir, $g$ es combinación lineal de los $f_i$'s.
-\begin{proof}
-Considere
-\begin{align*}
-    H:&E\longrightarrow\mathbb{R}^{k+1} \\&x \longrightarrow(g(x),f_1(x),...,f_k(x))
-\end{align*}
-Y sea el rango de $H$, $ran(H):=V$. En primer lugar, note que $V$ es un subespacio de $\mathbb{R}^{k+1}$, lo cual sigue de la linealidad de los $f_i$ y $g$. Para ello: \\
-\checkmark Sea $u,v \in V$, $\lambda \in \mathbb{R}$. Así, existen $x,y \in E$ tales que $u=(g(x),f_1(x),...,f_k(x))$ y $v=(g(y),f_1(y))...,f_k(y))$. Luego, usando que $x+\lambda y \in E$ y la linealidad de los $f_i$ y $g$, se sigue que 
-\begin{align*}
- u+\lambda v&=(g(x),f_1(x),...,f_k(x))+\lambda (g(y),f_1(y))...,f_k(y)) \\ &=(g(x+\lambda y),f_1(x+\lambda y),...,f_k(x+ \lambda y)) \in V.
-\end{align*}
-De esta forma, como $V$ es subespacio, se sigue que es conexo. Además, siendo $V$ subespacio de dimensión finita, se tiene que $V$ es cerrado. Por otro lado, se tiene que $u_0=(1,0,...0)\notin V$: en caso contrario, existiria $x \in E$ tal que $H(x)=(g(x),f_1(x),...,f_k(x))=u_0$ lo que querría decir que $g(x)=1$ y $f_i(x)=0$ para todo $i=1,..,k$, lo cual contradice la hipótesis. 
-\\
-Así, por Teorema Hahn- Banach, existe $h \in (\mathbb{R}^{k+1})^\bigstar$ tal que 
-\[
-h(x)<h(u_0) \qquad \forall x \in V
-\]
-Como $h\in (\mathbb{R}^{k+1})^\bigstar$, existe $r=(\lambda,\lambda_1,...,\lambda_k)\in \mathbb{R}^{k+1}$ tal que $h(x)=\langle r,x\rangle$ (producto interno usual en $\mathbb{R}^{k+1}$) para todo $x\in V$. Así:
-\[
-\lambda g(x)+\sum_{i=1}^{k}\lambda_if_i(x)<\lambda \qquad\forall x \in E
-\]
-Como $V$ es subespacio, tomando $t>0$
-\begin{align*}
-    \lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)&<\lambda \\
-    \lambda g(x)+\sum_{i=1}^{k}\lambda_if_i(x)&<\lambda/t
-\end{align*}
-y haciendo $t\to \infty$, se tiene que $\lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)\leq 0$. Similarmente, tomando $t<0$
-\begin{align*}
-    \lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)&<\lambda \\
-    \lambda g(x)+\sum_{i=1}^{k}\lambda_if_i(x)&>\lambda/t
-\end{align*}
-y haciendo $t\to -\infty$, se tiene que $\lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)\geq 0$. De modo que
-\[
-\lambda g(x/t)+\sum_{i=1}^{k}\lambda_if_i(x/t)= 0
-\]
-y como $\lambda>0$, se tiene que
-\[
-g(x)=\sum_{i=1}^{k}\tilde{\lambda_i}f_i(x) \quad \tilde{\lambda_i}=-\frac{\lambda_i}{\lambda}
-\]
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\textbf{Ejercicio 9.} Sea $E$ un espacio de Banach de dimensión infinita. Muestre que cada vecindad débil$\empty^\bigstar$ del origen de $E^\bigstar$ es no acotada.
-
-\begin{proof}
-    Sea $V$ una vecindad del origen de $E^\bigstar$ con la topología $\sigma(E^\bigstar,E)$. Sin pérdida de generalidad, podemos suponer que
-    \begin{align*}
-        V=\{f \in E^\bigstar:|\langle f;x_i\rangle|<\varepsilon \text{ para todo } i=1,...,k\},
-    \end{align*}
-    para algunos $x_1,...,x_k\in E$ y $\varepsilon>0$. Si $x_i=\z$ para todo $i=1,..,k$, entonces $V=E^\bigstar$ y queda claro que $V$ es no acotado.
-    
-    Supongamos que no todos los $x_i$'s son nulos. Considere $W=\text{gen}\{x_1,...,x_k\}$. Como $E$ es de dimensión infinita, tenemos que $W\subset E$ estrictamente. Queremos usar la segunda forma geométrica del Teorema de Hahn-Banach para garantizar que existe $g\in E^\bigstar$ con $g\neq 0$ tal que $\langle g;v\rangle=0$ para todo $v \in W$, pero para esto, debemos ver que $W$ es cerrado.
-    
-    Sea $(w_n)_{n \in \mathbb{Z}^+}\subset W$ una sucesión convergente y sea $\{v_1,...,v_l\}$ una base de $W$. Como $(w_n)$ es convergente, en particular, es una sucesión de Cauchy, por tanto, dado $\delta>0$ existe $N\in \mathbb{Z}^+$ tal que si $n,m\geq N$, entonces
-    \begin{align*}
-        \norm{w_n-w_m}<\delta.
-    \end{align*}
-    Como $w_n,w_m\in W$, estos se pueden expresar de manera única como
-    \begin{align*}
-        w_n=\sum_{i=1}^l \lambda_{i,n} v_i, \hspace{5mm} w_m=\sum_{i=1}^l \lambda_{i,m}v_i 
-    \end{align*}
-    con $\lambda_{i,n},\lambda_{i,m}\in \mathbb{R}$ para todo $i=1,...,k$, luego
-    \begin{align*}
-        \norm{w_n-w_m}=\norm{\sum_{i=1}^l(\lambda_{i,n}-\lambda_{i,m})v_i}.
-    \end{align*}
-    Como $W$ es de dimensión finita, existe una constante $C_1>0$ tal que $C_1\norm{v}_\infty\leq \norm{v}$ para todo $v \in W$, donde $C_1$ no depende del vector $v$, con 
-
-    \begin{align*}
-        \norm{v}_\infty=\max_{1\leq i\leq l} |\lambda_i| \hspace{3mm} \text{ y } \hspace{3mm} v=\sum_{i=1}^l \lambda_i v_i,
-    \end{align*}
-    por tanto
-    \begin{align*}
-        C_1\norm{w_n-w_m}_\infty\leq \norm{w_n-w_m},
-    \end{align*}
-    
-    de esta manera
-    \begin{align*}
-        C_1\norm{w_n-w_m}_\infty=C_1\max_{1\leq i\leq l}|\lambda_{i,n}-\lambda_{i,m}|\leq \norm{w_n-w_m}<\delta,
-    \end{align*}
-    así, para cada $i=1,...,l$, las sucesiones $(\lambda_{i,n})_{n \in \mathbb{Z}^+}$ son de Cauchy en $\mathbb{R}$ y, por ser $\mathbb{R}$ completo, son sucesiones convergentes. Así, $\lambda_{i,n}\to \lambda_i$ para algunos $\lambda_i \in \mathbb{R}$ para todo $i=1,...,l$. Entonces, $w_n\to w$ en la norma $\norm{\cdot}_\infty$ donde 
-    \begin{align*}
-        w=\sum_{i=1}^l \lambda_i v_i,
-    \end{align*}
-    en efecto
-    \begin{align*}
-        \norm{w_n-w}_\infty=\norm{\sum_{i=1}^l (\lambda_{i,n}-\lambda_i)v_i}_\infty=\max_{1\leq i \leq l}|\lambda_{n,i}-\lambda_i|\xrightarrow{n\to \infty} 0.
-    \end{align*}
-    Ahora, nuevamente por ser $W$ de dimensión finita, también existe $C_2>0$ tal que $\norm{v}\leq C_2\norm{v}_\infty$ para todo $v \in W$, entonces 
-    \begin{align*}
-        \norm{w_n-w}\leq C_2\norm{w_n-w}_\infty,
-    \end{align*}
-    así, $w_n\to w \in W$ en la norma $\norm{\cdot}$. Tenemos entonces que $W$ es cerrado.
-    
-    Sea $x_0 \in E\setminus W$, así, por la segunda forma geométrica del Teorema de Hahn-Banach, existe un hiperplano que separa estrictamente a $W$ y a $\{x_0\}$, más precisamente, existe $g \in E^\bigstar$ y $\alpha\in \mathbb{R}$ tal que 
-    \begin{align*}
-        \langle g;v\rangle<\alpha<\langle g;x_0\rangle,
-    \end{align*}
-    para todo $v \in W$. Como $W$ es un subespacio, tenemos que $|\langle g;v\rangle|<\alpha$ para todo $v \in W$, ya que podemos cambiar $v$ por $-v$. Además, para todo $n \in \mathbb{Z}^+$, tenemos
-    \begin{align*}
-        |\langle g;nv\rangle|=n|\langle g;v\rangle|<\alpha \Longrightarrow |\langle g;v\rangle|<\dfrac{\alpha}{n}
-    \end{align*}
-    de manera que $\langle g;v\rangle=0$ para todo $v \in W$, y $g\neq 0$, dado que $\langle g;x_0\rangle>\alpha>0$. Así, por la definición de $W$, $x_1,...,x_k\in W$ y tenemos que $|\langle g;x_i\rangle|=0<\varepsilon$ para todo $i=1,...,k$, es decir, $g \in V$, más aún para todo $n\in \mathbb{Z}^+$, $|\langle ng;v\rangle|=n|\langle g;v\rangle|=0$, es decir, $ng \in V$ para todo $n \in \mathbb{Z}^+$. Como $g\neq 0$, $\norm{g}_{E^\bigstar}>0$ y así, $\norm{ng}_{E^\bigstar}=n\norm{g}_{E^\bigstar}$. Así, por la propiedad Arquimediana de $\mathbb{R}$, $\norm{ng}_{E^\bigstar}$ es ``tan grande como se quiera'', para $n\in \mathbb{Z}^+$ suficientemente grande. Así, tenemos que $V$ no es acotado.
-    
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\textbf{Ejercicio 11.} Sea $K$ un espacio métrico compacto infinito. Demuestre que $C(K)$ (con la norma del supremo $\norm{\cdot}_{L^\infty}$) no es reflexivo.
-\begin{proof}
-  Primero veamos que $(C(K),\norm{\cdot}_{L^{\infty}})$ es un espacio de Banach.\\
-  Primero, note que como $K$ es un espacio métrico compacto infinito, las funciones continuas con dominio en $K$ alcanzan su máximo y su mínimo en $K$, por lo que sabemos que la norma $\norm{\cdot}_{L^{\infty}}$ se encuentra bien definida en el espacio.\\
-  Por otro lado verificar que las propiedades de norma se dan, es suficiente con notar que estas se cumplen bajo las propiedades del $\max$ (recordando que $\norm{f}_{L^{\infty}}=\max_{x\in K}|f(x)|$) y de ser funciones continuas, por lo que solo nos centraremos en ver que es un espacio completo.\\
-  Sea $\{f_{k}\}\subset C(K)$ una sucesión de Cauchy, es decir, dado $\epsilon>0$ sabemos que existe $N>0$ tal que si $n,m>N$, entonces
-  \begin{align*}
-    \norm{f_{n}-f_{m}}_{L^{\infty}}<\epsilon.
-  \end{align*}
-  Veamos que $f_{k}\to f\in C(K)$ cuando $k\to\infty$.\\
-  Note que dado $x\in K$ se cumple que
-  \begin{equation}\label{eq:puntual-f}
-    |f_{n}(x)-f_{m}(x)|\leq \norm{f_{n}-f_{m}}_{L^\infty}<\epsilon. 
-  \end{equation}
-  Luego $\{f_{k}(x)\}\subset \mathbb{R}$ es una sucesión de Cauchy, por lo tanto existe $a\in \mathbb{R}$ tal que $f_{k}(x)\to a$ cuando $k\to \infty$, luego como se puede realizar el mismo razonamiento para todo $x\in K$, definamos
-  \begin{align*}
-    f:K&\to \mathbb{R},\\
-      x\to\lim_{k \to \infty}f_{k}(x).
-  \end{align*}
-  Ahora veamos que $f\in C(K)$, entonces, dado $\epsilon>0$ existe $\delta>0$ (este $\delta$ depende de la continuidad de las funciones $f_{k}$) tal que si tomamos $x,y\in K$ que satisfacen
-  \begin{align*}
-    |x-y|<\delta,
-  \end{align*}
-  entonces, si tomamos un $k$ adecuado (de la condición $\label{eq:puntual-f}$) y aprovechando que las funciones $f_{k}$ con continuas en $K$, sabemos que
-  \begin{align*}
-    |f(x)-f(y)|&\leq|f(x)-f_{m}(x)+f_{m}(x)-f_{m}(y)+f_{m}(y)-f(y)|,\\
-    &\leq |f(x)-f_{k}(x)|+|f_{k}(x)-f_{k}(y)|+|f_{k}(y)-f(y)|,\\
-    &\leq \frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3},\\
-    &\leq \epsilon.
-  \end{align*}
-  Lo que nos permite concluir que $f\in C(K)$.\\
-  Ahora veamos que $f_{k}\to f$ en la norma de $L^{\infty}(K)$ cuando $k\to\infty$.\\
-  Note que como $\{f_{k}\}$ es una sucesión de Cauchy, entonces dado $\epsilon>0$ existe $N>0$ tal que si $n,m>N$ se satisface que
-  \begin{align*}
-    \norm{f_{n}-f_{m}}_{L^{\infty}}=\max_{x\in K}|f_{n}(x)-f_{m}(x)|<\epsilon.
-  \end{align*}
-  Luego, si fijamos $n$ y hacemos que $m\to \infty$, entonces $f_{m}(x)\to f(x)$, por lo que podemos asegurar que
-  \begin{align*}
-    \norm{f_{n}-f}_{L^{\infty}}&=\max_{x\in K}|f_{n}(x)-f(x)|,\\
-    &<\epsilon,
-  \end{align*}
-  lo que nos permite concluir que $f_{k}\to f$ cuando $k\to \infty$ en la norma de $L^{\infty}$, es decir, el espacio $(C(K),\norm{\cdot}_{L^{\infty}})$ es Banach.\\
-  Ahora veamos que $(C(K),\norm{\cdot}_{L^{\infty}})$ no es un espacio reflexivo.\\
-  Note que como $K$ es compacto, entonces podemos construir una sucesión $\{a_{k}\}\subset K$ tal que $a_{k}\to a$ con $a_{k}\neq a$ para todo $k$, esto ya que como $K$ es un espacio métrico compacto el teorema de Bolzano-Weierstrass nos afirma que en un espacio métrico compacto toda sucesión tiene una subsucesión convergente en la que se pueden tomar puntos distintos que convergen a un punto límite que no pertenece al conjunto de sucesión de puntos.\\
-  Ahora, definamos $g_{n}\in C(K)$ tal que 
-  \begin{align*}
-    g_{n}(x)= 
-    \begin{cases}
-      1, &\text{ Si $x=a_{m}$ con } 1\leq m\leq n \text{,} \\
-      0, &\text{ Si $x=a_{m}$ con } m>n,\\
-      0, &\text{ Si $x=a$}.
-    \end{cases}
-  \end{align*}
-  Con $\norm{g_{n}}_{\infty}=1$, esto se puede ya que como $K$ es un espacio normal (pues este es métrico y admite la propiedad de separación normal) y los conjuntos $A=\{a_{1},a_{2},\cdots,a_{n}\}$ y $B=\{a_{n+1},a_{n+2},\cdots\}\cup \{a\}$ son disyuntos y cerrados ya que $A$ es un conjunto finito y $B$ son los puntos de la sucesión convergente con su punto límite $a$, entonces por el lema de Urysohn si lo aplicamos en el subespacio normal $A\cup B$, sabemos que existe nuestra función continua $g_{n}$ tal que $g_{n}(A)=\{1\}$ y $g_{n}(B)=\{0\}$, luego $\norm{g_{n}}_{L^{\infty}(A\cup B)}=1$, además usando el teorema de extensión de Tietze–Urysohn–Brouwer esta se puede extender de forma continua y que preserve la norma en todo el espacio $K$ el cual es compacto y normal.\\
-  Ahora, razonaremos por contradicción y vamos a suponer que $C(K)$ es un espacio reflexivo.\\
-  Como anteriormente demostramos que $C(K)$ es de Banach y la sucesión $\{g_{n}\}\subset C(K)$ es acotada, entonces como $C(K)$ es un espacio reflexivo, debe de existir una subsucesión $\{g_{n_{k}}\}\subset C(K)$ débilmente convergente a una función $g\in C(K)$, es decir que para todo funcional $\phi\in C(K)^{*}$ se satisface que $\phi(g_{n_{k}})\to\phi(g)$. En particular, definamos para cada $a_{n}$
-  \begin{align*}
-    \pi_{a_{n}}:C(K)&\to \mathbb{R},\\
-    f&\to f(a_{n}).
-  \end{align*}
-  Note que $\pi_{a_{n}}\in C(K)^{*}$ ya que la linealidad del operador se da por la suma y producto por escalar de evaluaciones en funciones continuas y la continuidad de que $|\pi_{a_{n}}(f)|\leq f(a_{n})\leq \norm{f}_{L^{\infty}}$.\\
-  Siendo así, es fácil ver que dado $a_{n}$
-  \begin{align*}
-    \pi_{a_{n}}(g_{n_{k}})&=g_{n_{k}}(a_{n})= 
-    \begin{cases}
-      1, &\text{ si } n\leq n_{k} \text{,} \\
-      0, &\text{ si } n>n_{k}.
-    \end{cases}
-  \end{align*}
-  Luego se puede calcular que si tomamos $k\to \infty$, entonces eventualmente $n\leq n_{k}$, por lo que se puede afirmar que
-  \begin{align*}
-    \pi_{a_{n}}(g)=g(a_{n})=1. 
-  \end{align*}
-  para todo $a_{n}$ dado, en particular si tomamos $n\to\infty$, entonces se concluye que
-  \begin{align*}
-    \pi_{a}(g)=g(a)=1.
-  \end{align*}
-  \textbf{contradicción}, pues en un principio por construcción $g(a)=0$, lo que nos permite concluir que la sucesión acotada $\{g_{n}\}\subset C(K)$ no tiene una subsucesión débilmente convergente, es decir, el espacio $(C(K),\norm{\cdot}_{L^{\infty}})$ no es reflexivo. 
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\textbf{Ejercicio 15.} Sea $E$ un espacio de Banach reflexivo. Sea $a:E\times E\to \mathbb{R}$ una forma bilineal continua, es decir, existe $M>0$ tal que $|a(x,y)|\leq M\norm{x}\norm{y}$ para todo $x,y \in E$. Asuma que $a$ es coerciva, esto es, existe $\alpha>0$ tal que para todo $x \in E$
-\begin{align*}
-    a(x,x)\geq \alpha\norm{x}^2.
-\end{align*}
 \begin{enumerate}
-    \item[(a)] Dado $x \in E$, defina $A_x(y)=a(x,y)$ para todo $y \in E$. Muestre que $A_x\in E^\bigstar$ para cada $x \in E$. Además, concluya que la función $x\mapsto A(x)=A_x$ satisface que $A\in \mathcal{L}(E,E^\bigstar)$.
-    \item[(b)] Muestre que $A$ definida como en (a) es una función sobreyectiva.
-    \item[(c)] Deduzca que para $f \in E^\bigstar$, existe un único $x \in E$ tal que $a(x,y)=\langle f;y\rangle$, para todo $y \in E$. Esto es, la forma bilineal coerciva $a$ representa todo funcional lineal continuo.
+    \item[(I)] Sea $\mathbb{R}$ con la $\sigma$-álgebra de Borel.
+    \begin{enumerate}
+        \item[(a)] Dado $x_0\in \mathbb{R}$, considere $\delta_{x_0}$ la medida de Dirac centrada en $x_0$ dada por: $\delta_{x_0}(A)=1$ si $x_0\in A$ y $\delta_{x_0}(A)=0$ si $x_0\notin A$ para cada $A\in \mathcal{B}(\mathbb{R})$. Muestre que $x_0$ es una medida.
+        \item[(b)] Sea $f:\mathbb{R}\to \mathbb{R}$ una función medible. Muestre que 
+        \begin{align*}
+            \int_{\mathbb{R}}f(x)\delta_{x_0}=f(x_0).
+        \end{align*}
+        \item[(c)] De un ejemplo de una función que sea integrable con la medida $\delta_{x_0}$ para algún $x_0\in \mathbb{R}$ pero que no sea integrable con la medida de Lebesgue.
+    \end{enumerate}
+    \item[(II)] Sea $\mathbb{N}=\{1,2,3,...\}$ con la $\sigma$-álgebra $\mathcal{P}(\mathbb{N})$.
+    \begin{enumerate}
+        \item[(a)] Considere la medida contadora $\mu$ dada por $\mu(A):=\text{cardinal}(A)$ si $A$ es finito y $\mu(A)=\infty$ si $A$ es infinito, para cada $A \in \mathcal{P}(\mathbb{N})$. Muestre que $\mu$ es una medida.
+        \item[(b)] Dada $f:\mathbb{N}\to \mathbb{R}$ una función medible, es decir, $f$ es una sucesión $f=\{a_j\}_{j\in \mathbb{N}}$ para algunos $a_j\in \mathbb{R}$. Muestre que si $f$ es integrable (es decir, $\displaystyle \int_{\mathbb{N}}|f|\, d\mu<\infty$), entonces
+        \begin{align*}
+            \int_{\mathbb{N}}f\, dx=\sum_{j=1}^\infty a_j.
+        \end{align*}
+    \end{enumerate}
 \end{enumerate}
+\begin{enumerate}
+\item[(I)]\phantom{I}\\
+\begin{proof}
+  \begin{enumerate}
+    \item[(a)] Veamos que $\delta_{x_0}$ es una medida.\\
+      Note que $\delta_{x_0}(\emptyset)=0$ ya que $x_0\notin \emptyset$ por definición del conjunto $\emptyset$.\\
+      Por otro lado, veamos que si tomamos una unión numerable de conjuntos disjuntos y le calculamos su medida, esto va a ser igual que la suma de la medida de cada conjunto, es decir, dados $\{A_{n}\}_{n\in\mathbb{N}}$ conjuntos disjuntos se satisface que
+      \begin{align*}
+        \delta_{x_0}\left( \bigcup_{n\in\mathbb{N}}A_{n} \right)&=\sum_{n\in\mathbb{N}}\delta_{x_0}\left( A_{n} \right), &&\text{para toda familia numerable de conjuntos disjuntos.}
+      \end{align*}
+      Esto ya que si $\delta_{x_0}\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)=0$, significa que $x_0\notin \bigcup_{n\in\mathbb{N}}(A_{n})$, en particular, $x_0\notin A_{n}$ para todo $n\in\mathbb{N}$, luego es válido afirmar que
+      \begin{align*}
+        \delta_{x_0}\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)&=0,\\
+        &=\sum_{n\in\mathbb{N}}\delta_{x_0}(A_{n}).
+      \end{align*}
+      Por otra parte, si $\delta_{x_0}\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)=1$, entonces $x_0\in \bigcup_{n\in\mathbb{N}}(A_{n})$, pero como la familia de conjuntos $\{A_{n}\}$ es disjunta $2$ a $2$, entonces podemos afirmar que existe un único $N\in\mathbb{N}$ tal que $x_0\in A_N$ y $x_0\notin A_n$ para todo $n\neq N$, es decir que $\delta_{x_0}(A_{N})=1$ y $\delta_{x_0}(A_{n})=0$ para todo $n\neq N$, luego
+      \begin{align*}
+        \delta_{x_0}\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)&=1,\\
+        &=\delta_{x_0}(A_{N}),\\
+        &=\sum_{n\in N}\delta_{x_0}(A_{n}).
+      \end{align*}
+      lo que nos permite afirmar que $\delta_{x_0}:\mathbb{R}\to[0,+\infty]$ es una medida.
+    \item[(b)] Veamos que dada $f:\mathbb{R}\to\mathbb{R}$ función medible se cumple que
+      \begin{align*}
+        \int_{\mathbb{R}} f(x) d \delta_{x_0}=f\left(x_0\right).
+      \end{align*}
+      Usaremos funciones simples para demostrar el resultado para funciones simples no negativas, luego usaremos la densidad de las funciones simples no negativas en las funciones medibles no negativas y por último esto nos servirá para concluir el resultado a cualquier función medible.\\
+      Sea $f(x) = \sum_{i=1}^n a_i \chi_{A_i}(x)$, donde $a_i\leq 0$ para todo $i\in\mathbb{N}$, además 
+      \begin{align*}
+        \chi_{A_i}(x) = \begin{cases} 
+          1, & \text{si } x \in A_i,\\
+          0, & \text{si } x \notin A_i
+        \end{cases}
+      \end{align*}
+      para todo $i = 1,\cdots,n$. Además, podemos suponer que los conjuntos sobre los cuales se definen las funciones características son disjuntos $2$ a $2$, es decir, $A_i \cap A_j = \emptyset$ para todo $i \neq j$.\\
+      Note que,
+      \begin{align*}
+        \int_{\mathbb{R}} f(x) \, d\delta_{x_0} &= \int_{\mathbb{R}} \left( \sum_{i=1}^n a_i \chi_{A_i}(x) \right) d\delta_{x_0},\\ 
+        &= \sum_{i=1}^n a_i \delta_{x_0}(A_i),
+      \end{align*}
+      no obstante, como en un principio asumimos que la familia numerable de conjuntos $\{A_i\}$ son disyuntos, entonces $x_0$ solo puede pertenecer a uno de los $A_i$, sin pérdida de generalidad suponga que $x_0\in A_{I}$ (caso contrario $x\notin \bigcup_{i=1}^{n}(A_i)$ y por ende $f(x_0)=0$ lo que concluye el resultado), entonces
+      \begin{align*}
+        \int_{\mathbb{R}} f(x) \, d\delta_{x_0} &= \sum_{i=1}^n a_i \delta_{x_0}(A_i),\\
+        &= a_I,\\
+        &= f(x_0).
+      \end{align*}
+      Lo que nos permite afirmar el resultado para funciones simples no negativas, ahora veamos que esto se repite para funciones no negativas.\\
+      Tomemos $f:\mathbb{R}\to[0, \infty]$ una función medible no negativa.\\ Entonces, como las funciones simples no negativas se pueden aproximar por funciones simples no negativas, sabemos que existe una sucesión monótona de funciones $\{f_n\}_{n\in\mathbb{N}}$ simples positivas tales que
+      \begin{align*}
+        0\leq f_{1}(x)\leq\cdots\leq f_n(x)\leq f_{n+1}(x)\leq \cdots \leq f(x) \text{ y }  \lim_{n \to \infty} f_n(x) = f(x),  
+      \end{align*}
+      para todo $x \in \mathbb{R}$. Luego como cada $f_{n}$ es simple no negativa, es medible y por ende podemos afirmar que
+      \begin{align*}
+        \int_{\mathbb{R}} f(x) \, d\delta_{x_0} &= \lim_{n \to \infty} \int_{\mathbb{R}} f_n(x) \, d\delta_{x_0},\\
+        &= \lim_{n \to \infty} f_n(x_0),\\
+        &= f(x_0),       
+      \end{align*}
+      por lo que podemos afirmar el resultado para funciones medibles no negativas.\\
+      Ahora usemos que las funciones medibles se pueden reescribir como suma de funciones medibles no negativas, sea $f: \mathbb{R} \to \mathbb{R}$ una función medible, vamos a particionar a $f$ como su parte no negativa ($f^{+}$) y su parte negativa $(f^{-})$ de forma que $f = f^+ - f^-$. Luego,
+      \begin{align*}
+        \int_{\mathbb{R}} f(x) \, d\delta_{x_0} &= \int_{\mathbb{R}} f^+(x) \, d\delta_{x_0} + \int_{\mathbb{R}} -f^-(x) \, d\delta_{x_0}.       
+      \end{align*}
+      Pero como el resultado vale para funciones medibles no negativas se puede afirmar que
+      \begin{align*}
+        \int_{\mathbb{R}} f(x) \, d\delta_{x_0} &= f^+(x_0) + -f^-(x_0),\\
+        &= f(x_0).       
+      \end{align*}
+      Lo que concluye el teorema.
+     \item[(c)] Sea $f(x)=|x|$ y $x_0=0$.\\
+      Sabemos que
+      \begin{align*}
+        \int_{\mathbb{R}}|x|\, dx=\infty.
+      \end{align*}
+      pero note que
+      \begin{align*}
+        \int_{\mathbb{R}}|x|\, d\delta_{0}=|0|=0.
+      \end{align*}
+      por lo cual podemos afirmar que $|x|$ no es integrable respecto a Lebesgue, pero si respecto a la medida de Dirac centrada en $0$. 
+  \end{enumerate} 
+\end{proof}
+\item[(II)]\phantom{I}\\
+\begin{proof} 
+  \begin{enumerate}
+    \item[(a)] Veamos que $\mu$ es medida.\\
+      Note que si tomamos $\emptyset\in P(\mathbb{N})$ como $cardinal(\emptyset)=0$, entonces $\mu(\emptyset)=0$.\\
+      Por otro lado, veamos que dados $\{A_{n}\}_{n\in\mathbb{N}}$ conjuntos disjuntos $2$ a $2$ se satisface que
+      \begin{align*}
+        \mu\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)&=\sum_{n\in\mathbb{N}}\mu\left( A_{n} \right).
+      \end{align*}
+      Esto ya que, si suponemos que $cardinal\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)=n<\infty$, entonces podemos afirmar que todos los conjuntos $A_{n}$ son finitos, pues $cardinal\left( A_{n} \right)\leq cardinal\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)$, además, sabemos que los conjuntos $A_{n}$ con cardinal distinto a $0$ deben de ser finitos, de lo contrario $cardinal\left(\bigcup_{n\in\mathbb{N}}(A_{n})\right)=\infty$, por lo que podemos asumir que para cierta selección de $n_{j}$ se tiene que usando el principio de inclusión-exclusión y que la familia de conjuntos $\{A_{n}\}_{n\in\mathbb{N}}$ es disjunta $2$ a $2$ se cumple que
+      \begin{align*}
+        \mu\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)&=cardinal\left(\bigcup_{n\in\mathbb{N}}(A_{n})\right),\\
+        &=cardinal\left( \bigcup_{n_{j}=0}^{m}(A_{n_{j}}) \right),\\
+        &=\sum_{n_{j}}cardinal\left( A_{n_{j}} \right),\\
+        &=\sum_{n\in\mathbb{N}}cardinal\left( A_{n} \right),\\
+        &=\sum_{n\in\mathbb{N}}\mu(A_{n}).
+      \end{align*}
+      Caso contrario, si $cardinal\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)=\infty$, entonces sabemos que existe al menos un $A_{I}$ tal que $cardinal(A_I)=\infty$ o que existe una subcolección $\{A_{n_{j}}\}_{n_{j}\in\mathbb{N}}\subset \{A_{n}\}_{n\in\mathbb{N}}$ tal que para todo $n_{j}$ se satisface que $1  \leq cardinal\left( A_{n_{j}} \right)< \infty$, por lo que podemos afirmar en ambos casos que
+      \begin{align*}
+        \mu\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right)&=cardinal\left( \bigcup_{n\in\mathbb{N}}(A_{n}) \right),\\
+        &=\infty,\\
+        &=\sum_{n_{j}\in\mathbb{N}}cardinal\left( A_{n_{j}} \right)+A_{I},\\
+        &=\sum_{n\in\mathbb{N}}cardinal\left( A_{n} \right),\\
+        &=\sum_{n\in\mathbb{N}}\mu(A_{n}).
+      \end{align*}
+      Lo que nos permite concluir que $\mu$ es una medida.\\
+    \item[(b)] Vemos que si $f$ es integrable, entonces
+      \begin{align*}
+        \int_{\mathbb{N}}f\, dx&=\sum_{j=1}^{\infty}a_{j}.
+      \end{align*}
+      Para esto, usaremos un argumento similar al numeral anterior, demostraremos el resultado para funciones simples no negativas, este se podrá extender a las funciones medibles no negativas por densidad y para en el final descomponer a la $f$ como suma de $2$ funciones medibles no negativas, por lo que se demostrará para funciones simples no negativas y se procederá con la descomposición con el fin de no aburrir al profesor.\\
+      Suponga $f$ función simple medible y no negativa, es decir que existen $a_{i}\in\mathbb{R}$ tales que $a_{i}\leq 0$ y además tomemos la colección de conjuntos $A_{i}$ medibles como conjuntos unitarios, luego $f(x)=\sum_{i=1}^{n}a_{i}\chi_{A_{i}}(x)$, luego
+      \begin{align*}
+        \int_{\mathbb{N}}f\, dx&=\int_{\mathbb{N}}\left( \sum_{i=1}^{n}a_{i}\chi_{A_{i}}(x) \right)\, dx,\\
+        &=\sum_{i=1}^{n}a_{i}\mu(A_{i}),\\
+        &=\sum_{i=1}^{n}a_{i}.
+      \end{align*}
+      Lo que demuestra que el resultado se cumple para funciones medibles simples y no negativas, luego por densidad este resultado se puede extender a funciones medibles no negativas.\\
+      Siendo así, suponga $f$ función medible, note que como lo hicimos anteriormente podemos descomponer a $f$ como $f=f^{+} + (-f^{-})$, luego
+      \begin{align*}
+        \int_{\mathbb{N}}f\, dx&=\int_{\mathbb{N}}f^{+}+(-f^-)\, dx,\\
+        &=\int_{\mathbb{N}}f^+\, dx + \int_{\mathbb{N}}(-f^-)\, dx,\\
+        &=\sum_{i^+=1}^{n}a_{i^{+}}+\sum_{i^{-}=1}^{n}a_{i^{-}},\\
+        &=\sum_{i=1}^{m}a_{i}.
+      \end{align*}
+      Lo que nos permite concluir el ejercicio.
+  \end{enumerate}
+\end{proof}
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\textbf{Ejercicio 3.} Sea $\Omega\subseteq \mathbb{R}^n$ abierto. Sea $1\leq p\leq \infty$. Entonces $L^p(\Omega)$ es un espacio de Banach.
 
 \begin{proof}
-    \begin{enumerate}
-        \item[(a)] Sea $x \in E$ cualquiera. Como $a$ es una forma bilineal, dados $y_1,y_2\in E$ y $\lambda\in \mathbb{R}$
+    Vamos a seguir la prueba como en el libro de Haim Brezis. Veamos dos casos
+    \begin{itemize}
+        \item \textbf{Caso 1:} Si $p=\infty$, sea $(f_j)$ una sucesión de Cauchy en $L^\infty(\Omega)$. Por definición, para todo $\epsilon>0$ existe $N\in \mathbb{Z}^+$ y un conjunto $E_\epsilon$ con $\mu(E_\epsilon)=0$ ($\mu$ es la medida de Lebesgue), tal que si $j,m\geq N$, entonces 
         \begin{align*}
-            A_x(y_1+y_2)&=a(x,y_1+y_2)=a(x,y_1)+a(x,y_2)=A_x(y_1)+A_x(y_2)\\
-            A_x(\lambda y_1)&=a(x,\lambda y_1)=\lambda a(x,y_1)=\lambda A_x(y_1),
+            \norm{f_j-f_m}_\infty=\sup_{x\in \Omega\setminus E_\epsilon}|f_j(x)-f_m(x)|<\epsilon.
         \end{align*}
-        es decir, $A_x$ es lineal para todo $x \in E$. Además, por hipótesis, dado $y \in E$
+        En particular, para todo $k \in \mathbb{Z}^+$ existe $N_k$ y $E_k$ con $\mu(E_k)=0$ tal que si $j,m\geq N_k$, entonces
         \begin{align*}
-            |A_x(y)|=|a(x,y)|\leq M\norm{x}\norm{y},
+            \norm{f_j-f_m}_\infty=\sup_{x \in\Omega\setminus E_k}|f_j(x)-f_m(x)|<\dfrac{1}{k}.
         \end{align*}
-        es decir, $A_x\in E^\bigstar$ y $\norm{A_x}_{E^\bigstar}\leq M\norm{x}$. Consideremos ahora la aplicación
+        Sea $\displaystyle E=\bigcup_{k=1}^\infty E_k$, por tanto
         \begin{align*}
-            A:E &\longrightarrow E^\bigstar\\
-             x &\longmapsto A(x)=A_x.
+            \mu(E)\leq \sum_{k=1}^\infty\mu(E_k)=0,
         \end{align*}
-        Veamos que $A$ es lineal. Sean $x_1,x_2,y \in E$ y $\lambda\in \mathbb{R}$, entonces, dado que $a$ es bilineal
+        por tanto $\mu(E)=0$ y, además, la sucesión $(f_j(x))$ es una sucesión de Cauchy en $\mathbb{R}$ para todo $x\in \Omega\setminus E$, de manera que $f_j(x)\to f(x)$, con $f(x)\in \mathbb{R}$ para todo $x \in \Omega\setminus E$. Sea $x \in \Omega\setminus E$ cualquiera y $j\geq N_{2k}$. Sea $m\geq j$, suficientemente grande para que $|f(x)-f_m(x)|<\dfrac{1}{2k}$, entonces
         \begin{align*}
-            [A(x_1+x_2)](y)&=A_{x_1+x_2}(y)\\
-            &=a(x_1+x_2,y)\\
-            &=a(x_1,y)+a(x_2,y)\\
-            &=A_{x_1}(y)+A_{x_2}(y)\\
-            &=[A(x_1)+A(x_2)](y)
+            |f(x)-f_j(x)|\leq |f(x)-f_m(x)|+|f_m(x)-f_j(x)|<\dfrac{1}{2k}+\dfrac{1}{2k}=\dfrac{1}{k},
         \end{align*}
-        \begin{align*}
-            [A(\lambda x_1)](y)&=A_{\lambda x_1}(y)\\
-            &=a(\lambda x_1,y)\\
-            &=\lambda a(x_1,y)\\
-            &=\lambda A_{x_1}(y)\\
-            &=[\lambda A(\lambda x_1)](y),
-        \end{align*}
-        es decir, $A(x_1+x_2)=A(x_1)+A(x_2)$ y $A(\lambda x_1)=\lambda A(x_1)$ para todo $x_1,x_2 \in E$ y $\lambda \in \mathbb{R}$, así, $A$ es lineal. Veamos ahora que $A$ es acotada (y por tanto continua). Por lo que vimos anteriormente,
-        \begin{align*}
-            \norm{A(x)}_{E^{\bigstar}}=\norm{A_x}_{E^{\bigstar}}\leq M\norm{x},
-        \end{align*}
-        por tanto, $A\in \mathcal{L}(E,E^\bigstar)$ y $\norm{A}\leq M$ (la norma de operador).
+        como $x$ es arbitrario, concluimos que $|f(x)-f_j(x)|<\dfrac{1}{k}$, para todo $x \in \Omega\setminus E$, y como $\mu(E)=0$, concluimos que $\norm{f-f_j}_\infty<\dfrac{1}{k}$ para $j\geq N_k$, es decir, $f_j\to f$ en $L^\infty(\Omega)$.
 
-        \item[(b)] Veamos que
-        \begin{align}\label{eq: 1}
-            \norm{A_x}_{E^\bigstar}\geq \alpha\norm{x} \hspace{5mm} \text{ para todo } x \in E.
+        \item \textbf{Caso 2:} Si $1\leq p<\infty$, sea $(f_j)$ una sucesión de Cauchy en $L^p(\Omega)$. Para todo $\epsilon>0$ existe $N_\epsilon>0$ tal que si $j,m\geq N_\epsilon$, entonces $\norm{f_j-f_m}_p<\epsilon$. Para $\epsilon=\dfrac{1}{2}$, existe $j_1\in \mathbb{Z}^+$ tal que si $m\geq j_1$, entonces
+        \begin{align*}
+            \norm{f_{j_1}-f_m}_p<\dfrac{1}{2}.
+        \end{align*}
+        Ahora, para $\epsilon=\dfrac{1}{4}$, existe $j_2\in \mathbb{Z}^+$, con $j_2>j_1$ tal que si $m\geq j_2$, entonces
+        \begin{align*}
+            \norm{f_{j_2}-f_m}_p\leq \dfrac{1}{4},
+        \end{align*}
+        en particular, $\norm{f_{j_1}-f_{j_2}}_p<\dfrac{1}{2}$. Análogamente, para $\epsilon=\dfrac{1}{8}$, existe $j_3\in \mathbb{Z}^+$ con $j_3>j_2$ tal que si $m\geq j_3$, entonces
+        \begin{align*}
+            \norm{f_{j_3}-f_m}_p<\dfrac{1}{8},
+        \end{align*}
+        en particular $\norm{f_{j_2}-f_{j_3}}<\dfrac{1}{4}$. Realizando un argumento inductivo, encontramos que para todo $k\in \mathbb{Z}^+$, existe una sucesión creciente de enteros positivos $(j_k)$, tal que la subsucesión $(f_{j_k})$ cumple que
+        \begin{align*}
+            \norm{f_{j_k}-f_{j_{k+1}}}_p<\dfrac{1}{2^k}.
+        \end{align*}
+        Veamos que la subsucesión $(f_{j_k})$ converge en $L^p(\Omega)$. Dado $m \in \mathbb{Z}^+$ definimos
+        \begin{align*}
+            g_m(x)=\sum_{k=1}^m |f_{j_{k+1}}(x)-f_{j_k}(x)|,
+        \end{align*}
+        entonces
+        \begin{align*}
+            \norm{g_m}_p=\norm{\sum_{k=1}^m |f_{j_{k+1}}-f_{j_k}|}_p\leq \sum_{k=1}^m\norm{f_{j_{k+1}}-f_{j_k}}_p\leq \sum_{k=1}^m\dfrac{1}{2^k}\leq \sum_{k=1}^\infty\dfrac{1}{2^k}=1,
+        \end{align*}
+        además, si $m_1\leq m_2$, entonces
+        \begin{align*}
+            g_{m_1}(x)=\sum_{k=1}^{m_1} |f_{j_{k+1}}(x)-f_{j_k}(x)|=\sum_{k=1}^{m_2} |f_{j_{k+1}}(x)-f_{j_k}(x)|=g_{m_2}(x),
+        \end{align*}
+        es decir, $g_{m_1}$ es una sucesión monótona creciente. Así, por el Teorema de la Convergencia Monótona, tenemos que 
+        \begin{align*}
+            1=1^p\geq \lim_{m\to \infty}\norm{g_m}_p^p=\lim_{m\to \infty}\int_{\Omega}|g_m(x)|^p\, dx=\int_{\Omega}\lim_{m\to \infty}|g_m(x)|^p\, dx,
+        \end{align*}
+        por tanto, $\displaystyle \lim_{m\to \infty}|g_m(x)|<\infty$ para casi todo $x \in \Omega$, es decir, $\displaystyle \lim_{m\to \infty}|g_m(x)|<\infty$ para todo $x\in \Omega\setminus E$, donde $\mu(E)=0$, definimos
+        \begin{align*}
+            g(x)=\begin{cases}
+                \displaystyle \lim_{m\to \infty}g_m(x), \hspace{3mm} &\text{ si } x\in \Omega\setminus E\\
+                0, &\text{ en otro caso }.
+            \end{cases}
+        \end{align*}
+        Por lo hecho anteriormente, $g\in L^p(\Omega)$ y $\norm{g}_p\leq 1$, además, para $x \in \Omega\setminus E$, podemos escribir
+        \begin{align*}
+            g(x)=\sum_{k=1}^\infty|f_{j_{k+1}}(x)-f_{j_k}(x)|.
+        \end{align*}
+        
+        Sean $m,k\in \mathbb{Z}^+$ con $m\geq k\geq2$, entonces existe $l\in \mathbb{N}$ tal que $m=k+l$ y para $x \in \Omega\setminus E$
+        \begin{align*}
+            |f_{j_m}(x)-f_{j_k}(x)|&=|(f_{j_m}(x)-f_{j_{k+l-1}}(x))+(f_{j_{k+l-1}}(x)-f_{j_{k+l-2}}(x))+\dotsb+(f_{j_{k+1}}(x)-f_{j_{k}}(x))|\\
+            &\leq\sum_{i=1}^l|f_{j_{k+i}}(x)-f_{j_{k+i-1}}(x)|\\
+            &=\sum_{i=k}^{m}|f_{j_{i+1}}(x)-f_{j_i}(x)|\\
+            &\leq \sum_{i=k}^\infty |f_{j_{i+1}}(x)-f_{j_i}(x)|\\
+            &=\sum_{i=1}^\infty |f_{j_{i+1}}(x)-f_{j_i}(x)|-\sum_{i=1}^{k-1} |f_{j_{i+1}}(x)-f_{j_i}(x)|\\
+            &=g(x)-g_{k-1}(x), 
+        \end{align*}
+        por tanto, 
+        \begin{align*}
+            |f_{j_m}(x)-f_{j_k}(x)|\leq g(x)-g_{k-1}(x)\xrightarrow{k\to \infty}0,
+        \end{align*}
+        es decir, la sucesión $(f_{j_k}(x))$ es de Cauchy en $\mathbb{R}$ para casi todo $x \in \Omega$, más precisamente, para $x \in \Omega \setminus E$. Definimos entonces
+        \begin{align*}
+            f(x)=\begin{cases}
+                \displaystyle\lim_{k\to \infty}f_{j_k}(x), \hspace{3mm} &\text{ si } x\in \Omega\setminus E\\
+                0, &\text{ en otro caso.}
+            \end{cases}
+        \end{align*}
+        Sea $x \in \Omega\setminus E$. Vimos que, dados $m\geq k\geq 2$, se tiene que
+        \begin{align*}
+            |f_{j_m}(x)-f_{j_k}(x)|\leq g(x)-g_{k-1}(x)\leq g(x),
+        \end{align*}
+        como esto se tiene para todo $m\geq k\geq 2$, por la definición de $f$ $k\geq 2$ y $x \in \Omega\setminus E$
+        \begin{align}\label{eq: dominada}
+            |f(x)-f_{j_k}(x)|\leq g(x),
         \end{align}
-        Si $x=\z$, la desigualdad se tiene de manera inmediata. Si $x\neq \z$, como $a$ es bilineal y coerciva
+        en particular, como $|f(x)|-|f_{j_k}(x)|\leq |f(x)-f_{j_k}(x)|$, tenemos que
         \begin{align*}
-            \left|A_x\left(\dfrac{x}{\norm{x}}\right)\right|=\left|a\left(x,\frac{x}{\norm{x}}\right)\right|=\dfrac{1}{\norm{x}}|a(x,x)|\geq \dfrac{1}{\norm{x}}\alpha\norm{x}^2=\alpha\norm{x},
+            |f(x)|\leq g(x)+|f_{j_k}(x)|,
         \end{align*}
-        de manera que
+        de manera que $\norm{f}_p\leq \norm{g}_p+\norm{f_{j_k}}_p<\infty$, dado que $g \in L^p(\Omega)$ y $f_{j_k}\in L^p(\Omega)$. Finalmente por la desigualdad (\ref{eq: dominada}) y el Teorema de la Convergencia Dominada, se tiene
         \begin{align*}
-            \norm{A_x}_{E^\bigstar}=\sup_{\substack{z \in E\\ \norm{z}=1}}|A_x(z)|\geq \left|A_x\left(\dfrac{x}{\norm{x}}\right)\right|\geq \alpha\norm{x}.
+            \lim_{k\to \infty}\norm{f_{j_k}-f}_p^p=\lim_{k\to \infty}\int_{\Omega}|f_{j_k}(x)-f(x)|^p\, dx&=\int_{\Omega}\lim_{k\to \infty}|f_{j_k}(x)-f(x)|^p\, dx=0,
         \end{align*}
-        Queremos probar que $F=A(E)$, la imagen del operador $A$, es cerrado, viendo que $\overline{F}=F$. Recordemos que, por ser $A$ lineal, $F$ es un subespacio de $E^\bigstar$.
-
-        Sea $f \in \overline{F}$, entonces existe una sucesión $(f_n)_{n \in \mathbb{Z}^+}\subset F$ tal que $f_n\to f$. Por la definición de $F$, existen $x_n \in E$ tales que $f_n=A_{x_n}$ para todo $n\in \mathbb{Z}^+$. Como la sucesión $(A_{x_n})_{n \in \mathbb{Z}^+}$ es convergente, en particular, es de Cauchy, entonces, dado $\varepsilon>0$ existe $N\in \mathbb{Z}^+$ tal que si $n,m\geq N$, entonces $\norm{A_{x_n}-A_{x_m}}_{E^\bigstar}<\varepsilon$. Por la desigualdad (\ref{eq: 1}), tenemos que para $n,m\geq N$
-        \begin{align*}
-            \varepsilon>\norm{A_{x_n}-A_{x_m}}_{E^\bigstar}=\norm{A_{x_n-x_m}}_{E^\bigstar}\geq \alpha\norm{x_n-x_m},
-        \end{align*}
-        por tanto, la sucesión $(x_n)_{n \in \mathbb{Z}^+}$ es de Cauchy en $E$, y como $E$ es un espacio de Banach, existe $x \in E$ tal que $x_n\to x$ cuando $n\to \infty$. Consideremos entonces el operador $A_x$ y veamos que $A_{x_n}\to A_x$ en $E^\bigstar$. Por lo que probamos en la parte (a), se tiene que
-        \begin{align*}
-            \norm{A_{x_n}-A_x}_{E^\bigstar}=\norm{A_{x_n-x}}_{E^\bigstar}\leq M\norm{x_n-x},
-        \end{align*}
-        entonces, como $x_n\to x$, la desigualdad anterior nos garantiza que $A_{x_n}\to A_x \in E^{\bigstar}$. Por la unicidad del límite, se debe tener que $f=A_x$ y por tanto $f \in F$. De esta manera, $F=\overline{F}$, es decir, $F$  es cerrado. Supongamos por contradicción que $F\subset E^\bigstar$ estrictamente y sea $f_0 \in E^{\bigstar}\setminus F$, entonces, por la segunda forma geométrica del Teorema de Hahn-Banach, análogamente a lo hecho en el \textbf{Ejercicio 9}, existe $\xi \in E^{\bigstar\bigstar}$ con $\xi \neq 0$ tal que $\langle \xi;A_x\rangle=0$ para todo $x \in E$.
-        
-        Como $E$ es reflexivo, existe un único $x_0 \in E$ tal que $\xi=Jx_0$, por tanto
-        \begin{align*}
-            \langle \xi;A_x\rangle=\langle Jx_0;A_x\rangle=\langle A_x;x_0\rangle=A_x(x_0)=a(x,x_0)=0.
-        \end{align*}
-        para todo $x \in E$. Como $\xi\neq 0$, entonces $x_0\neq \z$, y por ser $a$ coerciva, para el caso en que $x=x_0$
-        \begin{align*}
-            a(x_0,x_0)\geq \alpha\norm{x_0}^2>0,
-        \end{align*}
-        lo cuál contradice que $a(x,x_0)=0$ para todo $x \in E$. De esta manera, concluimos que $F=E^\bigstar$.
-
-        \item[(c)] Sea $x \in E$ tal que $A_x=0$, por la desigualdad (\ref{eq: 1}), tenemos
-        \begin{align*}
-            0=\norm{A_x}_{E^\bigstar}\geq \alpha\norm{x},
-        \end{align*}
-        luego $\norm{x}=0$, es decir, $x=\z$. Esto quiere decir que el núcleo del operador lineal $A$ es $\{\z\}$, o lo que es lo mismo, $A$ es inyectivo.
-        
-        Por el ítem (b) concluimos que $A:E\to E^\bigstar$ es una biyección, en otras palabras, para todo $f\in E^\bigstar$ existe un único $x \in E$ tal que 
-        \begin{align*}
-            \langle f;y\rangle=f(y)=A_x(y)=a(x,y),
-        \end{align*}
-        que es lo que se quería probar.
-    \end{enumerate}
+        es decir, $f_{j_k}\to f$ en $L^p(\Omega)$. Como la sucesión $(f_j)$ es de Cauchy, al tener una subsucesión convergente, la sucesión ``completa'' es convergente, con lo que se concluye el resultado.
+     \end{itemize}
 \end{proof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\textbf{Ejercicio 18.} Sea $E$ un espacio de Banach.
+\textbf{Ejercicio 5.} Considere el espacio $L^p$, $1\leq p\leq \infty$. Sean
+\begin{align*}
+    f_0(x)=\begin{cases}
+        |x|^{-\alpha}, \hspace{3mm} &\text{ si } |x|\leq 1,\\
+        0, \hspace{3mm} &\text{ si } |x|>1.
+    \end{cases} \hspace{5mm} f_1(x)=\begin{cases}
+        0, \hspace{3mm} &\text{ si } |x|\leq 1\\
+        |x|^{-\alpha}, \hspace{3mm} &\text{ si } |x|>1.
+    \end{cases}
+\end{align*}
 \begin{enumerate}
-    \item[(a)] Demuestre que existe un espacio topológico compacto $K$ y una isometría de $E$ en $(C(K),\norm{\cdot}_\infty)$. 
-
-    \item[(b)] Asuma que $E$ es separable y muestre que existe una isometría de $E$ en $l^\infty$.
+    \item[(I)] ¿Para qué valores de $\alpha\in \mathbb{R}$, $f_0\in L^p(\mathbb{R}^n)$.
+    \item[(II)] ¿Para qué valores de $\alpha\in \mathbb{R}$, $f_1\in L^p(\mathbb{R}^n)$.
+    \item[(III)] ¿Para qué valores de $\alpha\in \mathbb{R}$, $f_2(x)=\dfrac{1}{1+|x|^\alpha}\in L^p(\mathbb{R}^n)$.
 \end{enumerate}
+
+\begin{proof}
+\begin{enumerate}
+    \item[(I)]Consideramos dos casos acá:\\
+a) $1 \leq p < \infty$ \\
+En primer lugar, haciendo el cambio a coordenadas polares se tiene que
+\[
+\int_{\mathbb{R}^n} f_0(x) d\lambda(x)=\int_0^1\int_{S^{n-1}}(r^{-\alpha})r^{n-1}dSdr=\int_0^1C(r^{-\alpha})r^{n-1}dr,
+\]
+en donde en la primera igualdad se utilizó el cambio a coordenadas polares, y en la segunda igualdad $C$ corresponde a la medida de la $S^{n-1}$ esfera respecto a la medida de Lebesgue. Luego
+\begin{align*}
+\norm{f_0}_{L^p}=\left( \int_{\mathbb{R}^n} (f_0(x))^p d\lambda(x) \right)^{1/p}&= \left( \int_0^1 \int_{S^{n-1}} (r^{-\alpha})^p r^{n-1} dS dr \right)^{1/p}\\&= \left( \int_0^1 C (r^{-\alpha})^p r^{n-1} dr \right)^{1/p}\\&= \left( \int_0^1 C r^{-\alpha p + n - 1} dr \right)^{1/p} 
+\end{align*}
+Veamos cuando $\displaystyle \int_0^1 r^{-\alpha p + n - 1} dr$ converge. Esto ocurre si y sólo si
+\begin{align*}
+-\alpha p + n - 1 &> -1 \\
+-\alpha p + n &> 0 \\
+n &> \alpha p \\
+\frac{n}{p} &> \alpha
+\end{align*}
+b) $p = \infty$ \\ En este caso se tiene que
+
+\[\|f_0\|_{L^\infty} = \inf \{ C \geq 0 : |f_0(x)| \leq C \quad \text{para casi todo } x \in \R^{n}\}.\]
+
+Como $0 \leq C$ para todo $ C \in \mathbb{R}^+$, es suficiente considerar
+cuándo$|x| \leq 1$. De esta forma
+\[\|f_0(x)\|_{L^\infty} = \inf \{ C \geq 0 : |x|^{-\alpha} \leq C \quad \text{para casi todo } x \},\]
+
+luego este ínfimo existe siempre que
+$|x|^{-\alpha}$ sea acotado en $|x| \leq 1$ (para casi todo $x)$.
+Esto se tiene si y solo si $\alpha \leq 0$. \\
+Por tanto, $f_0 \in L^p(\mathbb{R}^n)$ con $1 \leq p < \infty$ si y solo si $\alpha< \dfrac{n}{p}$, y para $p=\infty$, $f_0 \in L^\infty(\mathbb{R}^n)$ si y sólo si $\alpha\leq 0$.
+\item[(II)] Consideramos dos casos \\
+a) $1 \leq p < \infty$ \\
+Al igual que en el item (I), se considera el cambio a coordenadas polares de la misma forma. Así:
+\[
+\int_{\mathbb{R}^n} f_1(x) d\lambda(x)=\int_1^{\infty}\int_{S^{n-1}}(r^{-\alpha})r^{n-1}dSdr=\int_1^{\infty}C(r^{-\alpha)}r^{n-1}dr
+\]
+Esto nos lleva a:
+\begin{align*}
+\norm{f_1}_{L^p}=\left( \int_{\mathbb{R}^n} (f_1(x))^p d\lambda(x) \right)^{1/p}&= \left( \int_1^{\infty} \int_{S^{n-1}} (r^{-\alpha})^p r^{n-1} dS dr \right)^{1/p}\\&= \left( \int_1^{\infty} C (r^{-\alpha})^p r^{n-1} dr \right)^{1/p}\\&= \left( \int_1^{\infty} C r^{-\alpha p + n - 1} dr \right)^{1/p} 
+\end{align*}
+Veamos cuando $\displaystyle\int_1^{\infty} r^{-\alpha p + n - 1} dr$ converge. Esto ocurre si y sólo si
+\begin{align*}
+-\alpha p + n - 1 &< -1 \\
+-\alpha p + n &< 0 \\
+n &< \alpha p \\
+\frac{n}{p} &< \alpha
+\end{align*}
+b) $p = \infty$ \\ En este caso se tiene que
+
+\[\|f_1\|_{L^\infty} = \inf \{ C \geq 0 : |f_1(x)| \leq C \quad \text{para casi todo } x \in \R^{n}\}.\]
+
+Como $0 \leq C$ para todo $ C \in \mathbb{R}^+$, es suficiente considerar
+cuándo$|x| > 1$. De esta forma
+\[\|f_1(x)\|_{L^\infty} = \inf \{ C \geq 0 : |x|^{-\alpha} \leq C \quad \text{para casi todo } x \},\]
+luego este ínfimo existe siempre que
+$|x|^{-\alpha}$ sea acotado en $|x| > 1$.
+Esto se tiene siempre que $\alpha \geq 0$. \\
+Por tanto, $f_1 \in L^p(\mathbb{R}^n)$ con $1 \leq p < \infty$ si y sólo si $\alpha> \frac{n}{p}$, y para $p=\infty$, $f_1 \in L^{\infty}(\R^n)$ si y sólo si $\alpha \geq 0$.\\
+\item[(III)] Consideramos dos casos: \\
+a) $1 \leq p < \infty$ \\
+Queremos ver cuando $f_2 \in L^p$. Esto es, cuando
+\begin{align*}
+\norm{f_2}_{L^p}=\left( \int_{\mathbb{R}^n} (f_2(x))^p d\lambda(x) \right)^{1/p}&= \left( \int_0^{\infty} \int_{S^{n-1}} \left(\frac{1}{1+r^\alpha}\right)^p r^{n-1} dS dr \right)^{1/p}\\&= \left( \int_0^{\infty} C \left(\frac{1}{1+r^\alpha}\right)^p r^{n-1} dr \right)^{1/p}\\&< \infty 
+\end{align*}
+Para ello, veamos cuando $\displaystyle \left( \int_0^{\infty}  \left(\frac{1}{1+r^\alpha}\right)^p r^{n-1} dr \right)$ converge. Como
+\begin{align*}
+\int_0^{\infty}  \left(\frac{1}{1+r^\alpha}\right)^p r^{n-1} dr=\int_0^{1}  \left(\frac{1}{1+r^\alpha}\right)^p r^{n-1} dr+\int_1^{\infty}  \left(\frac{1}{1+r^\alpha}\right)^p r^{n-1} dr      
+\end{align*}
+y la primera integral converge por ser $\left(\dfrac{1}{1+r^\alpha}\right)^pr^{n-1}$ continua en el compacto $[0,1]$, es suficiente estudiar la convergencia de la segunda integral. Para ello, utilizaremos criterio de comparación por paso al límite. Sea $g(r)=\left(\dfrac{1}{1+r^\alpha}\right)^pr^{n-1}$, consideremos los siguientes casos: \\
+\checkmark $\alpha>0$ \\
+ Considerando $h(r)=r^{-\alpha p+n-1}$, se tiene que
+ \begin{align*}
+     \lim_{r\to\infty}\frac{g(r)}{h(r)}=\lim_{r\to\infty}\frac{\left(\dfrac{1}{1+r^\alpha}\right)^pr^{n-1}}{r^{-\alpha p+n-1}}=\lim_{r\to\infty}\left(\dfrac{r^{\alpha}}{1+r^\alpha}\right)^p=1
+ \end{align*}
+ donde la última igualdad se tiene pues al evaluar el límite, $\alpha>0$. Así, 
+ \begin{align*}
+     \int_1^{\infty}h(r)dr \quad \text{ converge si y sólo si} \quad \int_1^{\infty}g(r)dr \quad \text{converge}
+ \end{align*}
+ la primera converge si y sólo si
+ \begin{align*}
+      -\alpha p+n-1&<-1 \\
+    -\alpha p +n&<0 \\
+    \frac{n}{p}&<\alpha
+ \end{align*}
+\checkmark $\alpha=0$ \\
+Para este caso, 
+\begin{align*}
+    \int_1^{\infty}g(r)dr=\int_1^{\infty}\frac{1}{2^p}r^{n-1}dr
+\end{align*}
+la cual diverge pues $n\geq 1$. \\
+\checkmark $\alpha<0$ \\
+Considerando $t(r)=r^{n-1}$, se tiene que
+\begin{align*}
+     \lim_{r\to\infty}\frac{g(r)}{t(r)}=\lim_{r\to\infty}\frac{\left(\dfrac{1}{1+r^\alpha}\right)^pr^{n-1}}{r^{n-1}}=\lim_{r\to\infty}\left(\dfrac{1}{1+r^\alpha}\right)^p=1
+ \end{align*}
+ donde la última igualdad se tiene pues al evaluar el límite, $\alpha<0$. Así, 
+ \begin{align*}
+     \int_1^{\infty}t(r)dr \quad \text{ converge si y sólo si} \quad \int_1^{\infty}g(r)dr \quad \text{converge}
+ \end{align*}
+ la primera converge si y sólo si $n-1<0$. Es decir, cuando $n<1$ lo cual no se tiene dado que $n\geq 0$. Por lo tanto, $\displaystyle\int_1^{\infty}g(r)dr$ diverge. \\
+ b) $p=\infty$
+ En este caso se tiene que
+\begin{align*}
+\|f_2\|_{L^\infty} &= \inf \{ C \geq 0 : |f_2(x)| \leq C \quad \text{para casi todo } x \in \R^{n}\} \\
+&=\inf\{C\geq0: \dfrac{1}{1+|x|^\alpha}\leq C \quad \text{para casi todo $x \in \R^n$}\}
+\end{align*}
+Luego este ínfimo existe siempre pues:
+\begin{align*}
+    |x|^{\alpha}&\geq 0 \\
+    1+|x|^{\alpha} &\geq 1 \\
+    1 &\geq\frac{1}{1+|x|^{\alpha}}
+\end{align*}
+Por lo tanto, $f_2 \in L^{p}(\R^n)$ con $1\leq p < \infty$ si y sólo si $\dfrac{n}{p}<\alpha$, y para $p=\infty$, $f_2\in L^{\infty}(\R^n)$ para todo $\alpha \in \R$.
+\end{enumerate}
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Ejercicio 8.}
+
+\begin{enumerate}
+    \item[(I)] Sea $1<p<\infty$. Considere las secuencias $x_n=\{x_n^j\}_{j=1}^\infty$, para cada $n \in \mathbb{N}$ y $x=\{x^j\}_{j=1}^\infty$. Asuma que $x_n,x\in l^p$, para todo $n \in \mathbb{N}$. Muestre que $x_n\rightharpoonup x$ en $l^p$ si y sólo si $\{x_n\}$ es acotada en $l^p$ y $x_n^j\to x^j$ para cada entero positivo $j$.
+
+    \item[(II)] Considere la secuencia $x_n=\left(1,\dfrac{1}{2},\dfrac{1}{3},...,\dfrac{1}{n},0,0,0,....\right)$. ¿En cuales espacios $l^p$, con $1\leq p\leq \infty$ esta secuencia converge débilmente?
+\end{enumerate}
+
 \begin{proof}
     \begin{enumerate}
-        \item[(a)] En primer lugar, se tiene que 
-    \begin{align*}
-        \{f\in E^{\bigstar}:\norm{f}\leq 1\}
-    \end{align*}
-    es compacto en la topología $\sigma(E^{\bigstar},E)$. Considere ahora $(C(K),\norm{\cdot}_{\infty}$. Ahora, note que $\norm{\cdot}_\infty$ está bien definida, pues dada
-    \begin{align*}
-        f\in C(K)=\{f:K\to \mathbb{R} |f \text{ es continua}\}
-    \end{align*}
-    Como $f$ es continua, $f(K)$ es compacto es $\mathbb{R}$, y por tanto, $f(K)$ es cerrado y acotado. Esto garantiza que
-    \begin{align*}
-        \norm{f}_{\infty}=\sup_{x\in K}|f(x)| \quad \text{existe}
-    \end{align*}
-    Ahora, defina la función $T:E\to C(K)$ dada por $x\mapsto Tx$, donde $(Tx)(f)=\langle f,x\rangle$ para $f\in K$. Así, dado $x\in E$
-    \begin{align*}
-        \norm{Tx}_{\infty}=\sup_{f\in K}|(Tx)(f)| =\sup_{f\in K}|\langle f,x\rangle|=\sup_{\substack{f \in E^{\bigstar}\\ \norm{f}\leq1}}|\langle f,x\rangle|=\norm{x}
-    \end{align*}
-    donde la última igualdad se sigue del coralario visto en clase: "Para todo $x\in E$, 
-    \begin{align*}
-        \max_{\substack{f \in E^{\bigstar}\\ \norm{f}\leq1}}|\langle f,x\rangle|=\sup_{\substack{f \in E^{\bigstar}\\ \norm{f}\leq1}}|\langle f,x\rangle|=\norm{x}
-    \end{align*}
-    \item[(b)] Recordamos que 
-    \begin{align*}
-        l^{\infty}=\{\{a_n\}_{n=1}^{\infty}:a_n\in \mathbb{R},\;\forall n\geq1,\;\sup_{n\geq 1}|a_n|<\infty\}
-    \end{align*}
-    con la norma $\norm{\{a_n\}_{n=1}^{\infty}}_{l^{\infty}}=\sup_{n\geq 1}|a_n|$. Con el objetivo de simplificar la notación, escribiremos $\{a_n\}:=\{a_n\}_{n=1}^{\infty}$. \\
-    Ahora, como $E$ es separable, entonces $K$ es metrizable en $\sigma(E^{\bigstar},E)$ y además es compacto. Así, usando que "\textit{Todo espacio métrico compacto es separable}", se tiene que $K$ es separable, de modo que existe un subconjunto denso contable $\{f_n\}\subseteq K $. Definimos
-    \begin{align*}
-        F:&E\longrightarrow l^{\infty} \\ &x \longmapsto F(x)=\{\langle f_n,x\rangle\}
-    \end{align*}
-    En primer lugar, $F$ está bien definida pues como $f_n \in K$ para todo $n\geq1$, $\norm{f_n}\leq 1$ (norma en $E^{\bigstar}$) y por tanto
-    \begin{align*}
-        |\langle f_n,x\rangle|\leq \norm{f_n}\norm{x} \leq \norm{x} \qquad \forall n\geq1
-    \end{align*}
-    lo que garantiza que $\sup_{n\geq 1}|\langle f_n,x\rangle|<\infty$, o lo que es lo mismo, $\{\langle f_n,x\rangle\} \in l^{\infty}$. Además, $F$ resulta lineal, pues $f_n \in E^{\bigstar}$ para todo $n\geq 1$. Veamos que $F$ es una isometría. Por lo hecho en el numeral (a), $\norm{x}=\norm{Tx}_{\infty}$ para todo $x\in E$. Veremos que 
-    \begin{align*}
-        \norm{Tx}_{\infty}=\sup_{f\in K}|(Tx)(f)|=\sup_{n\geq 1}|(Tx)(f_n)|
-    \end{align*}
-    lo que permitirá concluir que $F$ es una isometría. Sea $x\in E$.
-    \\
-    \checkmark Como $\{f_n\}\subseteq K$, se tiene que
-    \begin{align*}
-        \sup_{n\geq 1}|(Tx)(f_n)| \leq \sup_{f\in K}|(Tx)(f)|
-    \end{align*}
-    \checkmark Por la definición de supremo, dado $\varepsilon>0$, existe $g \in K$ tal que
-    \begin{align*}
-    \sup_{f\in K}|(Tx)(f)|&<(Tx)(g)+\varepsilon \\
-    \sup_{f\in K}|(Tx)(f)|-\varepsilon&<(Tx)(g)
-    \end{align*}
-    Como $Tx$ es continua (recuerde que $Tx \in C(K)$), existe $U\subseteq K$ vecindad de $g$ (en $\sigma(E^{\bigstar},E)$ tal que
-    \begin{align*}
-        \forall f \in U: \quad|(Tx)(f)-(Tx)(g)|<\varepsilon
-    \end{align*}
-    Como $\{f_n\}$ es denso en $K$, existe $f_k \in U\cap \{f_n\}$ de modo que,
-    \begin{align*}
-        |(Tx)(f_k)-(Tx)(g)|<\varepsilon
-    \end{align*}
-    Por lo tanto
-    \begin{align*}
-    \sup_{f\in K}|(Tx)(f)|-2\varepsilon<(Tx)(g)-\varepsilon<(Tx)(f_k)\leq \sup_{n\geq 1}|(Tx)(f_n)|
-    \end{align*}
-    Así, haciendo $\varepsilon \to 0$, se tiene 
-    \begin{align*}
-    \sup_{f\in K}|(Tx)(f)|\leq \sup_{n\geq 1}|(Tx)(f_n)| 
-    \end{align*}
-    Con lo cual,$\norm{Tx}_{\infty}=\sup_{f\in K}|(Tx)(f)|=\sup_{n\geq 1}|(Tx)(f_n)|$. Así:
-    \begin{align*}
-        \norm{Fx}_{l^{\infty}}=\norm{\{\langle f_n,x\rangle\}}&=\sup_{n\geq 1}|\langle f_n,x\rangle|\\&=\sup_{n\geq1}|(Tx)(f_n)|\\&=\sup_{f\in K}|(Tx)(f)|\\&=\norm{Tx}_{\infty}\\&=\norm{x}
-    \end{align*}
+        \item[(I)] \begin{itemize}
+            \item $(\Longrightarrow)$ Supongamos que $x_n\rightharpoonup x$ en $l^p$. Como $l^p$ es un espacio de Banach, sabemos que $\{x_n\}$ es acotada y además, $\norm{x}_{l^p}\leq \liminf\norm{x_n}_{l^p}$.
+
+            Dado $j \in \mathbb{Z}^+$, definimos
+            \begin{align*}
+                \pi_j:l^p &\longrightarrow \mathbb{R}\\
+                y &\longmapsto \pi_j(y)=y^j,
+            \end{align*}
+            donde $y=\{y^i\}_{i=1}^\infty\in l^p$. Veamos que $\pi_j\in (l^p)^{\bigstar}$ para todo $j \in \mathbb{Z}^+$. $\pi_j$ es claramente lineal como consecuencia de la suma y producto por escalar definida en $l^p$, además
+            \begin{align*}
+                |\pi_j(y)|=|y^j|=(|y^j|^p)^{1/p}\leq \left(\sum_{i=1}^\infty |y^{i}|^p\right)^{1/p}=\norm{y}_{l^p},
+            \end{align*}
+            por tanto, $\pi_j$ es continuo y $\norm{\pi_j}_{(l^p)^\bigstar}\leq 1$. Sabemos que $x_n\rightharpoonup x$ si y sólo si $\langle f;x_n\rangle\xrightarrow{n\to \infty} \langle f;x\rangle$ para todo $f\in (l^p)^\bigstar$, en particular para $\pi_j$. En este caso, se obtiene que 
+            \begin{align*}
+                \pi_j(x_n)=x_n^j\xrightarrow{n\to \infty}x^j=\pi_j(x),
+            \end{align*}
+            como $j\in \mathbb{Z}^+$ es arbitrario, se obtiene el resultado.
+
+            \item $(\Longleftarrow)$ Supongamos ahora que $\{x_n\}$ es acotada y que $x_n^j\to x^j$ para todo $j\in \mathbb{Z}^+$. Sea $V$ una vecindad débil de $x$, que sin pérdida de generalidad, podemos expresar como
+            \begin{align*}
+                V=\{y \in l^p:|\langle f_i;y-x\rangle|<\epsilon \text{ para todo } i=1,...,k\},
+            \end{align*}
+            para algunos $f_1,...,f_k \in (l^p)^\bigstar$ y $\epsilon>0$. Queremos ver que existe $N\in \mathbb{Z}^+$ tal que si $n\geq N$, entonces $x_n\in V$. Sea $f_i$ con $1\leq i\leq k$, dado que $1<p<\infty$, por el Teorema de Representación de Riesz, existe una única $y_i=\{y_i^j\}_{j=1}^\infty\in l^{p'}$ con $\dfrac{1}{p}+\dfrac{1}{p'}=1$ tal que 
+            \begin{align*}
+                \langle f_i;z\rangle=\sum_{j=1}^\infty y_i^jz^j,
+            \end{align*}
+            para toda $z=\{z^j\}_{j=1}^\infty\in l^p$. Entonces, dado $n \in \mathbb{N}$
+            \begin{align*}
+                |\langle f_i;x_n-x\rangle|&=\left|\sum_{j=1}^\infty y_i^j(x_n^j-x^j)\right|\leq \sum_{j=1}^\infty |y_i^j||x_n^j-x^j|.
+            \end{align*}
+            Ahora, note que si $z=\{z^j\}_{j=1}^\infty\in l^q$ con $1\leq q<\infty$, entonces, dado $l\geq 1$, la sucesión 
+            \begin{align*}
+                z_l=(\underbrace{0,0,...,0}_{l-1 \text{ ceros}},z^l,z^{l+1},...),
+            \end{align*}
+            también está en $l^q$, dado que 
+            \begin{align*}
+                \norm{z_j}_{l^q}^q=\sum_{j=l}^\infty|z^j|^q\leq \sum_{j=1}^\infty |z^j|^q=\norm{z}_{l^q}^q<\infty,
+            \end{align*}
+            de esta manera, también vale la desigualdad de Hölder para estas sucesiones, en otras palabras, dadas $z=\{z^{j}\}_{j=1}^\infty\in l^q$ y $w=\{w^j\}_{j=1}^\infty \in l^{q'}$ con $\dfrac{1}{q}+\dfrac{1}{q'}=1$, dado $l\geq 1$
+            \begin{align*}
+                \sum_{j=l}^\infty |z^j||w^j|\leq \left(\sum_{j=l}^\infty|z^j|^q\right)^{1/q}\left(\sum_{j=l}^\infty |w^j|^{q'}\right)^{1/q'}.
+            \end{align*}
+            Como $y_i \in l^{p'}$, entonces
+            \begin{align*}
+                \norm{y_i}_{l^{p'}}=\left(\sum_{j=1}^\infty |y_i^j|^{p'}\right)^{1/p'}<\infty,
+            \end{align*}
+            además, como $\{x_n\}$ es una sucesión acotada, podemos definir
+            \begin{align*}
+                M=\sup_{n \in \mathbb{N}} \norm{x_n}+\norm{x}+1,
+            \end{align*}
+            de esta manera, por ser una serie absolutamente convergente, existe $J_i\in \mathbb{Z}^+$ con $J_i\geq 2$ tal que 
+            \begin{align*}
+                \norm{y_i}_{l^{p'}}=\left(\sum_{j=J_i}^\infty |y_i^j|^{p'}\right)^{1/p'}< \dfrac{\epsilon}{2M}.
+            \end{align*}
+            Entonces
+            \begin{align*}
+                |\langle f_i;x_n-x\rangle|\leq \sum_{j=1}^\infty|y_i^j||x_n^j-x^j|=\underbrace{\sum_{j=1}^{J_i-1}|y_i^j||x_n^j-x^j|}_{S_1}+\underbrace{\sum_{j=J_i}^\infty |y_i^j||x_n^j-x^j|}_{S_2},
+            \end{align*}
+
+            Acotemos primero $S_2$, por la observación que hicimos antes con las sucesiones $z_l$, la manera como escogimos $J_i$ y la definición de $M$, tenemos que 
+            \begin{align*}
+                S_2=\sum_{j=J_i}^\infty |y_i^j||x_n^j-x^j|&\leq \left(\sum_{j=J_i}^\infty |y_i^j|^{p'}\right)^{1/p'}\left(\sum_{j=J_i}^\infty|x_n^j-x^j|^p\right)^{1/p}\\
+                &\leq  \left(\sum_{j=J_i}^\infty |y_i^j|^{p'}\right)^{1/p'}\norm{x_n-x}_{l^p}\\
+                &\leq \left(\sum_{j=J_i}^\infty |y_i^j|^{p'}\right)^{1/p'}\left(\norm{x_n}_{l^p}+\norm{x}_{l^p}\right)\\
+                &<\dfrac{\epsilon}{2M}(\norm{x_n}_{l^p}+\norm{x})\\
+                &\leq \dfrac{\epsilon}{2}.
+            \end{align*}
+            Para $S_1$, definamos
+            \begin{align*}
+                N=\max_{1\leq j\leq J_i-1}|y_i^j|+1.
+            \end{align*}
+            Como $x_n^j\to x^j$ para todo $j \in \mathbb{Z}^+$, existe $n_i$ tal que si $n\geq n_i$, entonces 
+            \begin{align*}
+                |x_n^j-x^j|<\dfrac{\epsilon}{2NJ_i},
+            \end{align*}
+            para todo $j=1,...,J_i-1$, de esta manera
+            \begin{align*}
+                S_1=\sum_{j=1}^{J_i-1}|y_i^j||x_n^j-x^j|< N\dfrac{\epsilon}{2NJ_i}\sum_{j=1}^{J_i-1}1=\dfrac{\epsilon}{2J_i}\cdot(J_i-1)<\dfrac{\epsilon}{2}.
+            \end{align*}
+            Así
+            \begin{align*}
+                |\langle f_i;x_n-x\rangle|\leq S_1+S_2<\dfrac{\epsilon}{2}+\dfrac{\epsilon}{2}=\epsilon,
+            \end{align*}
+            para $n\geq n_i$. De esta manera, para $n\geq N=\max_{1\leq i\leq k}n_i$, se tiene que 
+            \begin{align*}
+                |\langle f_i;x_n-x\rangle|<\epsilon \text{ para todo } i=1,...,k,
+            \end{align*}
+            es decir, para $n\geq N$, $x_n\in V$, lo cuál prueba el resultado. 
+        \end{itemize} 
+        \item[(I)] Vamos a dividir la prueba en 3 casos
+        \begin{enumerate}
+            \item[(a)] \textbf{Caso $p=1$}. En este caso, note que 
+            \begin{align*}
+                \norm{x_n}_{l^1}=\sum_{j=1}^n\dfrac{1}{j},
+            \end{align*}
+            como la serie armónica no es convergente, tenemos que la sucesión $\{x_n\}$ es no acotada y, por tanto, no puede converger débilmente en $\sigma(l^1,(l^1)^\bigstar)$.
+
+            \item[(b)] \textbf{Caso $1<p<\infty$} En este caso, tenemos que 
+            \begin{align*}
+                \norm{x_n}_{l^p}^p=\sum_{j=1}^n\dfrac{1}{j^p}\leq \sum_{j=1}^\infty\dfrac{1}{j^p}=C_p<\infty,
+            \end{align*}
+            la convergencia de esta serie se sigue de que $p>1$ y el criterio de la integral para convergencia de series. También se puede ver como la evaluación en $p$ de la función zeta de Riemann. De esta manera, la sucesión $\{x_n\}$ es acotada en $l^p$. Consideremos la sucesión $x=\left\{\dfrac{1}{j}\right\}_{j=1}^\infty$. Por lo que vimos anteriormente, $x \in l^p$ y $\norm{x_n}_{l^p}\leq \norm{x}_{l^p}$ para todo $n \in \mathbb{Z}^+$. Sea $j \in \mathbb{Z}^+$, entonces $x^j=\dfrac{1}{j}$ y
+            \begin{align*}
+                x_n^j=\begin{cases}
+                    \dfrac{1}{j}, \hspace{3mm} &\text{ si } n\geq j,\\
+                    0, &\text{ si } n<j,
+                \end{cases}
+            \end{align*}
+            de manera que, para $n\geq j$ se tiene que $|x_n^j-x^j|=\left|\dfrac{1}{j}-\dfrac{1}{j}\right|=0$, es decir, $x_n^j\to x^j$ para todo $j \in \mathbb{Z}^+$. Usando el ítem (I), tenemos que $x_n\rightharpoonup x$ en $l^p$. 
+
+            \item[(c)] \textbf{Caso $p=\infty$} Consideremos nuevamente la sucesión $x=\left\{\dfrac{1}{j}\right\}_{j=1}^\infty$, claramente $x \in l^\infty$. Sea $\epsilon>0$ y $n\in \mathbb{Z}^+$ tal que $\dfrac{1}{n+1}<\epsilon$, entonces, por la forma de los $x_n^j$'s
+            \begin{align*}
+                \norm{x-x_n}_{l^\infty}=\sup_{j \in \mathbb{Z}^+}|x^j-x_n^j|=\sup_{j\geq n+1}\dfrac{1}{j}=\dfrac{1}{n+1}<\epsilon,
+            \end{align*}
+            es decir, $x_n\to x$ fuertemente en $l^\infty$, y como la convergencia fuerte implica la convergencia débil, tenemos que $x_n\rightharpoonup x$ en $l^\infty$.
+        \end{enumerate}
     \end{enumerate}
-
 \end{proof}
-
