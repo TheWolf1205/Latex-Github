@@ -494,7 +494,7 @@ Por lo tanto, $\norm{A}=\norm{A^{\star}}$
       \begin{align*}
         0&=(f-u_{1},v)+\lambda(g-u_{2},v)=(f+\lambda g-(u_{1}+\lambda u_{2}),v) &&\text{para todo $v\in M$.}
       \end{align*}
-      De lo que se concluye que si $P_{M}(f)=u_{1}, P_{M}(g)=u_{2}$, entonces $P_{M}(f+\lambda g)&=P_{M}(f)+\lambda P_{M}(g)$, es decir, el operador proyección ortogonal $P_{M}$ es un operador lineal. 
+      De lo que se concluye que si $P_{M}(f)=u_{1}, P_{M}(g)=u_{2}$, entonces $P_{M}(f+\lambda g)=P_{M}(f)+\lambda P_{M}(g)$, es decir, el operador proyección ortogonal $P_{M}$ es un operador lineal. 
     \item[(II)] Note que dado $f\in H$, entonces existe un único $u\in M$ tal que $P_{M}(f)=u\in M$, además, como $u\in M$, entonces $P_{M}(u)=u$, ya que
     \begin{align*}
       (u-u,v)=(0,v)&=0&&\text{para todo $v\in M$.}
@@ -508,10 +508,57 @@ Por lo tanto, $\norm{A}=\norm{A^{\star}}$
     \end{align*}
     Lo que concluye el resultado.
     \item[(III)] como $H$ es un espacio de Hilbert y $P_{M}:H\to H$, entonces por el teorema de representación de Riesz sabemos que el operador $P_{M}^{\star}$ cumple que dados $x,y\in H$ se satisface que 
-    \begin{align*}
-      \left(P_{M}(x),y\right)&=\left(x,P_{M}^{\star}(y)\right)
-    \end{align*}
-    \item[(IV)]
+      \begin{align*}
+        \left(P_{M}(x),y\right)&=\left(x,P_{M}^{\star}(y)\right).
+      \end{align*}
+      Ahora, note que $x$ se puede reescribir como $x=P_{M}(x)+\left( x-P_{M}(x) \right)$ y de forma similar $y=P_{M}(y)+\left( y-P_{M}(y) \right)$, en dónde $P_{M}(x),P_{M}(y)\in M$ y $\left( x-P_{M}(x) \right),\left( y-P_{M}(y) \right)\in M^{\perp}$ de lo que usando la linealidad del producto interno y la ortogonalidad se puede concluir que
+      \begin{align*}
+        \left( P_{M}(x),y \right)&=(P_{M}(x),P_{M}(y)+y-P_{M}(y)),\\
+        &=(P_{M}(x),P_{M}(y))+(P_{M}(x),y-P_{M}(y)),\\
+        &=(P_{M}(x),P_{M}(y)),\\
+        &=(P_{M}(x),P_{M}(y))+(x-P_{M}(x),P_{M}(y)),\\
+        &=(P_{M}(x)+x-P_{M}(x),P_{M}(y)),\\
+        &=(x,P_{M}(y)).
+      \end{align*}
+      De lo que se puede concluir que $P_{M}^{\star}=P_{M}$.
+    \item[(IV)] Note que para todo $x\in M$ se cumple que $P_{M}(x)=x$, por lo que se sabe que $M\subseteq Rango(P_M)$, pero por otro lado dado $y\in H$ sabemos que por ser $M$ un subespacio cerrado, entonces $P_{M}(y)\in M$, por lo que se afirma que $Rango(P_{M})\subseteq M$, lo que concluye que $Rango(P_{M})=M$. Por otro lado note que dado $x\in H$ se cumple que $x\in Kernel(P_{M})$ sí y sólo si se satisface que $P_{M}(x)=0$, lo que por definición es
+      \begin{align*}
+        (x-0,v)&=(x,v),\\
+        &=0&&\text{para todo $v\in M$.}
+      \end{align*}
+      que solo es verdadero si y sólo si $x\in M^{\perp}$, lo que nos permite concluir que $Kernel(P_{M})=M^{\perp}$.
+    \item[(V)] Note que por $(I), (II)$ y $(III)$ ya se tiene que si $P\in L(H)$ y $P$ es la proyección sobre un espacio cerrado, entonces $P=P^{2}=P^{\star}$.\\
+      Por otro lado suponga que $P\in L(H)$ y que se cumple que $P=P^{2}=P^{\star}$, luego definamos el conjunto $M=Rango(P)$, por otro lado note que como $P=P^{\star}$
+      \begin{align*}
+        Kernel(P)&=\{x\in H:(P(x),z)=0\text{ para todo $z\in H$.}\},\\
+        &=\{x\in H:(x,P(z))=0\text{ para todo $z\in H$.}\},\\
+        &=\{x\in H:(x,y)=0\text{ para todo $y=P(z)$ para algún $z\in H$.}\},\\
+        &=Rango(P)^{\perp}=M^{\perp}.
+      \end{align*}
+      Además, note que como el $Rango(P)=M$, entonces dados $x,y\in M$ existen $u,v\in H$ tales que $P(u)=x$ y $P(v)=y$, luego como $P^2=P$, entonces $x=P^{2}(u)=P(P(u))=P(x)$, de igual forma se puede concluir que $P(y)=y$, luego como $P$ es lineal, entonces dado $\lambda$ escalar se cumple que $P(x+\lambda y)=x+\lambda y$, de lo que se puede concluir que $x+\lambda y\in M$, es decir que $M$ es un subespacio de $H$. Por otro lado como $P\in L(H)$, entonces $P$ es acotado, luego como $H$ es espacio de Hilbert, sabemos que este es completo, es decir que dada $\{x_{n}\}\subset H$ sucesión de Cauchy, sabemos que $x_{n}\to x$ con $x\in H$, luego $\{P(x_{n})\}$ también es sucesión de Cauchy, ya que dado $\epsilon>0$ existe $N$ tal que si $n,m>N$, entonces $\frac{\norm{x_{n}-x_{m}}}{\norm{P}}<\epsilon$ y por ende 
+      \begin{align*}
+        \norm{P(x_{n})-P(x_{m})}&=\norm{P(x_{n}-x_{m})},\\
+        &\leq \norm{P}\norm{x_{n}-x_{m}},\\
+        &< \epsilon.
+      \end{align*}
+      Luego note que $P(x_{n})\to P(x)$, ya que $P$ es un operador continuo (acotado), luego como $M=Rango(P)$ toda sucesión de Cauchy en $M$ se puede ver como imagen de una sucesión de Cauchy en $H$, lo que nos permite concluir que $M$ es un espacio cerrado.\\
+      Por último, note que dado $x\in H$ se puede verificar que si $x\in M$, entonces 
+      \begin{align*}
+        (x-P(x),v)&=(x-x,v),\\
+        &=(0,v),\\
+        &=0&&\text{ para todo $v\in M$.}
+      \end{align*}
+      Y si $x\notin M$, entonces $x-P(x)\in Kernel(P)$ ya que
+      \begin{align*}
+        P(x-P(x))&=P(x)-P^{2}(x),\\
+        &=P(x)-P(x),\\
+        &=0.
+      \end{align*}
+      Pero como $Kernel(P)=Rango(P)^{\perp}$, entonces sabemos que
+      \begin{align*}
+        (x-P(x),v)&=0&&\text{ para todo $v\in M$.}
+      \end{align*}
+      Lo que concluye que $P$ es el operador proyección ortogonal sobre un espacio cerrado $M$, lo que da por finalizado el ejercicio. 
   \end{enumerate}
 \end{proof}
 
@@ -613,3 +660,47 @@ $S_r$ se conoce como el desplazamiento a derecha y $S_l$ como el desplazamiento 
     \item[(a)] Muestre que $\sigma(M_g)=\overline{\{g(x):x\in \mathbb{R}\}}$.
     \item[(b)] ¿Es el operador $M_g$ compacto?
 \end{enumerate}
+\begin{proof} 
+  \begin{enumerate}
+    \item[(a)] Veamos que $\sigma(M_{g})=\overline{\{g(x):x\in \mathbb{R}\}}$.\\
+      Primero note que como $g\in L^{\infty}(\mathbb{R})\cap C(\mathbb{R})$, entonces sabemos que existen $M,n\in \mathbb{R}$ tales que
+      \begin{align*}
+        g(M)&=\max_{x\in \mathbb{R}}g(x),\\
+        g(m)&=\min_{x\in \mathbb{R}}g(x).
+      \end{align*}
+      Por otro lado note que como $L^2(\mathbb{R})$ es un espacio de Hilbert 
+      \begin{align*}
+        \inf_{\substack{u\in L^2(\mathbb{R})\\\norm{u}=1}}(M_{g}(u),u)&=\inf_{\substack{u\in L^2(\mathbb{R})\\\norm{u}=1}}\int_{-\infty}^{\infty}M_{g}(u)(x)u(x)\, dx,\\
+        &=\inf_{\substack{u\in L^2(\mathbb{R})\\ \norm{u}=1}}\int_{-\infty}^{\infty}g(x)u^2(x)\, dx,\\
+        &=\inf_{x\in\mathbb{R}}g(x)\norm{u}_{2}^2,\\
+        &=\min_{x\in\mathbb{R}}g(x),\\
+        &=g(m).
+      \end{align*}
+      Análogamente
+      \begin{align*}
+        \sup_{\substack{u\in L^2(\mathbb{R})\\ \norm{u}=1}}(M_{g}(u),u)&=g(M). 
+      \end{align*}
+      Además de esto, sabemos que el operador $M_{g}$ es un operador lineal acotado, pues dada $f,h\in L^{2}(\mathbb{R})$ y $\lambda$ escalar se cumple que 
+      \begin{align*}
+        \norm{M_{g}(f+\lambda h)}_{2}&=\norm{g(f+\lambda h)}_{2},\\
+        &=\norm{gf+\lambda gh}_{2},\\
+        &\leq \norm{gf}_{2}+|\lambda|\norm{gh}_{2},\\
+        &=\norm{g(x)}_{\infty}\norm{f(x)}_{2} + |\lambda|\norm{g}_{\infty}\norm{h}_{2}.
+      \end{align*}
+      Luego sabemos que
+      \begin{align*}
+        (M_{g}(f),h)&=\int_{-\infty}^{\infty}M_{g}(f)(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}g(x)f(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}f(x)g(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}f(x)M_g(h)(x)\, dx,\\
+        &=(f,M_{g}h).
+      \end{align*}
+      De lo que se concluye que $M_{g}$ es un operador lineal, acotado y autoadjunto, por lo que podemos afirmar que
+      \begin{align*}
+        \sigma(M_{g})\subseteq [g(m),g(M)]=\overline{\{g(x):x\in\mathbb{R}\}}.
+      \end{align*}
+      Ahora veamos que dado $\lambda\in [m,M]$, entonces $x\in \sigma(M_{g})$.\\
+      Para esto veamos que el operador $(M_g-\lambda I)$ no es biyectivo de $L^2(\mathbb{R})$ a $L^{2}(\mathbb{R})$
+    \item[(b)]
+  \end{enumerate}
+\end{proof}
