@@ -1,0 +1,72 @@
+\documentclass[10pt]{article}
+
+% Paquetes necesarios
+\usepackage[margin=1.5cm]{geometry} % márgenes pequeños
+\usepackage{multicol}               % para múltiples columnas
+\usepackage{amsmath, amssymb}       % para símbolos y fórmulas
+\usepackage{graphicx}               % si deseas incluir imágenes
+\usepackage{parskip}                % para evitar indentación
+
+\pagestyle{empty}                   % sin encabezado ni pie de página
+
+\begin{document}
+
+\scriptsize % Tamaño de letra pequeño (puedes usar \tiny para aún más pequeño)
+
+\begin{multicols}{3} % Cambia el número de columnas aquí
+
+% ============================
+% Empieza tu hoja de fórmulas
+% ============================
+
+\section*{Orientación y superficies}
+\begin{itemize}
+  \item Cambio de coordenadas. 
+    \begin{align*}
+      \begin{pmatrix}
+        \overline{X}_{\overline{u}} \\
+        \overline{X}_{\overline{v}}
+      \end{pmatrix}
+      =\begin{pmatrix}
+        \frac{\partial u}{\partial \overline{u}} & \frac{\partial u}{\partial \overline{v}} \\
+       \frac{\partial v}{\partial \overline{u}}& \frac{\partial v}{\partial \overline{v}}
+      \end{pmatrix}\begin{pmatrix}
+        X_{u} \\
+        X_{v}
+      \end{pmatrix}.
+    \end{align*}
+    \item grafos. 
+      \begin{align*}
+        N(u,v)=\frac{(f_{u},f_{v},1)}{\|(f_{u},f_{v},1)\|}
+      \end{align*}
+    \item Si $S$ es superficie de revolución
+      \begin{align*}
+        N(p)=\frac{\nabla f(p)}{\|\nabla f(p)\|}.
+      \end{align*}
+    \item 
+      \begin{align*}
+        A_{p}=\begin{bmatrix}
+          \left[ -N_{u}\right]_{\{X_{u},X_{v}\}} & \left[ -N_{v}\right]_{\{X_{u},X_{v}\}}
+        \end{bmatrix}
+      \end{align*}
+\end{itemize}
+
+\section*{Cálculo}
+\begin{itemize}
+    \item $\displaystyle \frac{d}{dx}(\sin x) = \cos x$
+    \item $\displaystyle \frac{d}{dx}(\cos x) = -\sin x$
+    \item $\displaystyle \int x^n dx = \frac{x^{n+1}}{n+1} + C$
+\end{itemize}
+
+\section*{Trigonometría}
+\begin{itemize}
+    \item $\sin^2 x + \cos^2 x = 1$
+    \item $1 + \tan^2 x = \sec^2 x$
+\end{itemize}
+
+% Continúa agregando secciones o listas según lo necesites
+
+\end{multicols}
+
+\end{document}
+

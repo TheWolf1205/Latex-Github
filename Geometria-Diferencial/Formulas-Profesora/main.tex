@@ -1,0 +1,241 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{parskip}
+\pagestyle{empty}
+
+\begin{document}
+\scriptsize
+\begin{multicols}{3}
+
+\section*{Curvatura normal}
+\[
+k_n(p, v) = \langle -dN_p(v), v \rangle = k_1 \cos^2(\theta) + k_2 \sin^2(\theta)
+\]
+
+\section*{Fórmulas de Weingarten}
+\[
+e = \langle -dN_p(X_u), X_u \rangle = - \langle N_u, X_u \rangle = \langle N, X_{uu} \rangle
+\]
+\[
+f = \langle -dN_p(X_u), X_v \rangle = - \langle N_u, X_v \rangle = \langle N, X_{uv} \rangle
+\]
+\[
+g = \langle -dN_p(X_v), X_v \rangle = - \langle N_v, X_v \rangle = \langle N, X_{vv} \rangle
+\]
+Si $v = aX_u + bX_v$,
+\[
+II_p(v) = a^2 e + 2abf + b^2 g
+\]
+
+\section*{Operador de forma}
+\[
+A_p(X_u) =
+\frac{eG - fF}{EG - F^2} X_u +
+\frac{fE - eF}{EG - F^2} X_v
+\]
+\[
+A_p(X_v) =
+\frac{fG - Fg}{EG - F^2} X_u +
+\frac{gE - fF}{EG - F^2} X_v
+\]
+
+\section*{Curvaturas}
+\[
+K = \frac{eg - f^2}{EG - F^2}
+\qquad
+H = \frac{eG + gE - 2fF}{2(EG - F^2)}
+\]
+
+\section*{Línea de curvatura}
+Si $\alpha(t) = X(u(t), v(t))$,
+\[
+\begin{vmatrix}
+v'^2 & -u'v' & u'^2 \\
+E & F & G \\
+e & f & g
+\end{vmatrix} = 0
+\]
+
+\section*{Curvatura y torsión (si $\alpha$ es p.p.a.)}
+\[
+k_\alpha^2 = k_n^2 + k_g^2
+\qquad
+\tau_\alpha =
+\frac{k_n' k_g - k_n k_g'}{k_n^2 + k_g^2} + \tau_g
+\]
+
+\section*{Triedro de Frenet}
+\[
+\vec{t}'(s) = k(s) \vec{n}(s)
+\]
+\[
+\vec{b}'(s) = \tau(s) \vec{n}(s)
+\]
+\[
+\vec{n}'(s) = -k(s)\vec{t}(s) - \tau(s)\vec{b}(s)
+\]
+
+\section*{Triedro de Darboux}
+\[
+\vec{t}'(s) = k_g(s) J\vec{t}(s) + k_n(s)\vec{N}(s)
+\]
+\[
+(J\vec{t})'(s) = -k_g(s)\vec{t}(s) + \tau_g(s)\vec{N}(s)
+\]
+\[
+\vec{N}'(s) = -k_n(s)\vec{t}(s) - \tau_g(s) J\vec{t}(s)
+\]
+\[
+\tau_g(s) = \langle A_{\alpha(s)} \vec{t}(s), J\vec{t}(s) \rangle
+\]
+
+\section*{Símbolos de Christoffel}
+\[
+\Gamma^1_{11} E + \Gamma^2_{11} F = E_u
+\quad
+\Gamma^1_{11} F + \Gamma^2_{11} G = F_u - \tfrac{1}{2} E_v
+\]
+\[
+\Gamma^1_{12} E + \Gamma^2_{12} F = \tfrac{1}{2} E_v
+\quad
+\Gamma^1_{12} F + \Gamma^2_{12} G = \tfrac{1}{2} G_u
+\]
+\[
+\Gamma^1_{22} E + \Gamma^2_{22} F = F_v - \tfrac{1}{2} G_u
+\quad
+\Gamma^1_{22} F + \Gamma^2_{22} G = G_v
+\]
+
+\[
+\begin{pmatrix}
+\Gamma^1_{11} & \Gamma^1_{12} & \Gamma^1_{22} \\
+\Gamma^2_{11} & \Gamma^2_{12} & \Gamma^2_{22}
+\end{pmatrix}
+=
+\frac{1}{EG - F^2}
+\begin{pmatrix}
+G & -F \\
+-F & E
+\end{pmatrix}
+\begin{pmatrix}
+E_u \\ E_v \\ F_v - G_u \\
+F_u - E_v \\ G_u \\ G_v
+\end{pmatrix}
+\]
+
+\section*{Si $F = 0$}
+\[
+K = -\frac{1}{2\sqrt{EG}} \left[
+\left( \frac{E_v}{\sqrt{EG}} \right)_v +
+\left( \frac{G_u}{\sqrt{EG}} \right)_u
+\right]
+\]
+
+\section*{Ecuación de Gauss}
+\[
+\Gamma^1_{11} \Gamma^2_{12} + (\Gamma^2_{11})_v + \Gamma^2_{11} \Gamma^2_{22}
+- \Gamma^1_{12} \Gamma^2_{11} - (\Gamma^2_{12})_u - \Gamma^2_{12} \Gamma^2_{12}
+= EK
+\]
+
+\section*{Ecs. de Mainardi-Codazzi}
+\[
+e_v - f_u = e\Gamma^1_{12} + f(\Gamma^2_{12} - \Gamma^1_{11}) - g\Gamma^2_{11}
+\]
+\[
+f_v - g_u = e\Gamma^1_{22} + f(\Gamma^2_{22} - \Gamma^1_{12}) - g\Gamma^2_{12}
+\]
+
+\section*{Campos paralelos}
+Si $V(t) = a(t)X_u + b(t)X_v$, con $V$ paralelo:
+\[
+a' + a u' \Gamma^1_{11} + (a v' + b u') \Gamma^1_{12} + b v' \Gamma^1_{12} = 0
+\]
+\[
+b' + a u' \Gamma^2_{11} + (a v' + b u') \Gamma^2_{12} + b v' \Gamma^2_{22} = 0
+\]
+
+\section*{Geodésicas}
+Si $\gamma(t) = X(u(t), v(t))$:
+\[
+u'' + (u')^2 \Gamma^1_{11} + 2u'v'\Gamma^1_{12} + (v')^2\Gamma^1_{22} = 0
+\]
+\[
+v'' + (u')^2 \Gamma^2_{11} + 2u'v'\Gamma^2_{12} + (v')^2\Gamma^2_{22} = 0
+\]
+
+\section*{Curvatura geodésica}
+\[
+k^g_\alpha(t) =
+\frac{\langle \alpha''(t), J\alpha'(t) \rangle}{|\alpha'(t)|^3}
+=
+\frac{\langle \alpha''(t), N(t) \times \alpha'(t) \rangle}{|\alpha'(t)|^3}
+\]
+
+% ...
+\section*{Curvatura geodésica}
+\[
+k^g_\alpha(t) =
+\frac{\langle \alpha''(t), J\alpha'(t) \rangle}{|\alpha'(t)|^3}
+=
+\frac{\langle \alpha''(t), N(t) \times \alpha'(t) \rangle}{|\alpha'(t)|^3}
+\]
+Curvatura normal
+\begin{align*}
+  k_{n}(v,p)=II_p(h,k)=\begin{pmatrix}
+    h & k
+  \end{pmatrix}\begin{pmatrix}
+    k_{1} & 0 \\
+    0 & k_2
+  \end{pmatrix}\begin{pmatrix}
+    h\\
+    k
+  \end{pmatrix}
+\end{align*}
+\section*{Orientación y superficies}
+\begin{itemize}
+  \item \textbf{Cambio de coordenadas}
+  \[
+  \begin{pmatrix}
+    \overline{X}_{\overline{u}} \\
+    \overline{X}_{\overline{v}}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \frac{\partial u}{\partial \overline{u}} & \frac{\partial u}{\partial \overline{v}} \\
+    \frac{\partial v}{\partial \overline{u}} & \frac{\partial v}{\partial \overline{v}}
+  \end{pmatrix}
+  \begin{pmatrix}
+    X_{u} \\
+    X_{v}
+  \end{pmatrix}
+  \]
+
+  \item \textbf{Grafos} 
+  \[
+  N(u,v)=\frac{(f_{u}, f_{v}, 1)}{\|(f_{u}, f_{v}, 1)\|}
+  \]
+
+  \item \textbf{Superficie de revolución} 
+  \[
+  N(p)=\frac{\nabla f(p)}{\|\nabla f(p)\|}
+  \]
+
+  \item \textbf{Operador de forma vía derivadas de la normal} 
+  \[
+  A_p =
+  \begin{bmatrix}
+    \left[ -N_u \right]_{\{X_u, X_v\}} &
+    \left[ -N_v \right]_{\{X_u, X_v\}}
+  \end{bmatrix}
+  \]
+\end{itemize}
+
+\end{multicols}
+\end{document}
+

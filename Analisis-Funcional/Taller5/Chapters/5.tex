@@ -561,8 +561,6 @@ Por lo tanto, $\norm{A}=\norm{A^{\star}}$
       Lo que concluye que $P$ es el operador proyección ortogonal sobre un espacio cerrado $M$, lo que da por finalizado el ejercicio. 
   \end{enumerate}
 \end{proof}
-
-
 \section{Operadores Compactos y Teorema Espectral}
 
 \textbf{Ejercicio 3.} Considere los operadores de desplazamiento $S_r,S_l\in L(\ell^2)$, donde si\\ $x=(x_1,x_2,x_3,...)\in \ell^2$, estos se definen como
@@ -597,7 +595,11 @@ $S_r$ se conoce como el desplazamiento a derecha y $S_l$ como el desplazamiento 
 
 \begin{proof}
     \begin{enumerate}
-        \item[(a)] Veamos primero que $T\in \mathcal{L}(L^p((0,1)))$. Por simplicidad, denotaremos $\norm{\cdot}_{L^p((0,1))}=\norm{\cdot}_p$. Es claro que $T$ es un operador lineal, además, dada $u \in L^p((0,1))$
+        \item[(a)] Veamos primero que $T\in \mathcal{L}(L^p((0,1)))$. Por simplicidad, denotaremos $\norm{\cdot}_{L^p((0,1))}=\norm{\cdot}_p$. Es claro que $T$ es un operador lineal, además, dada $u \in L^p((0,1))$, por la desigualdad de Hölder
+        \begin{align*}
+            \norm{u}_1=\int_0^1|u(t)|\, dt\leq \norm{1}_{p'}\norm{u}_p=\left(\int_0^1 \, 1^{p'}dt\right)^{1/p'}\norm{u}_p=\norm{u}_p,
+        \end{align*}
+        donde $\dfrac{1}{p}+\dfrac{1}{p'}=1$. De esta manera
         \begin{align*}
             \norm{Tu}_p&=\left(\int_{0}^1 |Tu(x)|^p\, dx\right)^{1/p}\\
             &=\left(\int_0^1 \left|\int_0^x u(t)\, dt\right|^p\, dx\right)^{1/p}\\
@@ -606,15 +608,132 @@ $S_r$ se conoce como el desplazamiento a derecha y $S_l$ como el desplazamiento 
             &=\norm{u}_1\\
             &\leq \norm{u}_p.
         \end{align*}
-        de manera que $T$ es acotado. Veamos ahora que $T \in \mathcal{K}(L^p((0,1)))$. Sea
+        de manera que $T$ es acotado y $\norm{T}\leq 1$. Veamos ahora que $T \in \mathcal{K}(L^p((0,1)))$. Sea
         \begin{align*}
             B=\left\{f \in L^p((0,1)): \norm{f}_p\leq 1\right\}.
         \end{align*}
-        Si $u \in B$, por lo hecho anteriormente, tenemos que $\norm{Tu}_p\leq \norm{u}_p\leq 1$, es decir, $T(B)\subset B$.
+        Queremos ver que $\overline{T(B)}$ es compacto en $L^p((0,1))$, para esto, vamos a usar el siguiente resultado.
+        \begin{theorem}
+            \textbf{(Kolmogorov. Riesz-Frechet).} Sea $\mathcal{F}$ un subconjunto acotado de $L^p(\mathbb{R}^n)$ con $1\leq p<\infty$. Para $f:\mathbb{R}^n\to \mathbb{R}$ y $h \in \mathbb{R}^n$, sea $\tau_h f(x)=f(x+h)$. Asuma que
+            \begin{align*}
+                \lim_{|h|\to 0}\norm{\tau_h f-f}_p=0 \text{ uniformemente en } f \in\mathcal{F},
+            \end{align*}
+            esto es, si para todo $\varepsilon>0$ existe $\delta>0$ tal que si $|h|<\delta$,\\ entonces $\norm{\tau_h f-f}_p<\varepsilon$ para toda $f \in \mathcal{F}$. Entonces la clausura de $\mathcal{F}\big|_{\Omega}$ es compacta en $L^p(\Omega)$, para cualquier $\Omega\subset \mathbb{R}^n$ con medida finita ($\mathcal{F}\big|_\Omega$ denota las restricciones a $\Omega$ de las funciones en $\mathcal{F}$).
+        \end{theorem}
 
-        \item[(b)] Sea $\lambda\in \mathbb{R}$, si $u\in L^p((0,1))$ es diferenciable, tenemos que 
+        Para aplicar el teorema anterior, claramente vamos a tomar\\ $\Omega=(0,1)$ y $\mathcal{F}=T(B)$. Sea $h \in \mathbb{R}$ con $|h|<1$. Para no tener problemas con las expresiones
+        \begin{align*}
+            Tu(x+h)=\int_{0}^{x+h}u(t)\, dt,
+        \end{align*}
+        dado que, en principio, las funciones en $L^p((0,1))$ están definidas únicamente en $(0,1)$, veremos estas funciones como ``extendidas'' fuera del intervalo $(0,1)$ por la función nula, es decir, si $f\in L^p((0,1))$, entonces consideramos la función $\widetilde{f}$ definida en todo $\mathbb{R}$ (aunque en la práctica denotaremos por $f$)
+        \begin{align*}
+            \widetilde{f}(x)=\begin{cases}
+                f(x), \hspace{3mm} &\text{ si } x\in (0,1),\\
+                0, &\text{ si } x \in \mathbb{R}\setminus(0,1).
+            \end{cases}
+        \end{align*}
+        Sea $f \in T(B)$, por definición, existe $u \in B$ tal que $Tu=f$. Tenemos dos casos
+        \begin{itemize}
+            \item Si $h\leq 0$
+            \begin{align*}
+                \norm{\tau_h f-f}_p&=\left(\int_0^1|\tau_h f(x)-f(x)|^p\, dx\right)^{1/p}\\
+                &=\left(\int_0^1\left|\tau_h Tu(x)-Tu(x)\right|^p\, dx\right)^{1/p}\\
+                &=\left(\int_0^1 \left|\int_0^{x+h}u(t)\, dt-\int_0^xu(t)\, dt\right|^p\, dx\right)^{1/p}\\
+                &=\left(\int_0^1 \left|\int_0^{x+h}u(t)\, dt-\int_0^{x+h}u(t)\, dt-\int_{x+h}^x u(t)\, dt\right|^p\, dx\right)^{1/p}\\
+                &=\left(\int_0^1\left|\int_{x+h}^x u(t)\, dt\right|^p\, dx\right)^{1/p}\\
+                &\leq \left(\int_0^1\left(\int_{x+h}^x |u(t)|\, dt\, \right)^pdx\right)^{1/p},
+            \end{align*}
+            Ahora, por la desigualdad de Hölder y usando que $u \in B$, si $\dfrac{1}{p}+\dfrac{1}{p'}=1$, 
+            \begin{align*}
+                \int_{x+h}^x|u(t)|\, dt&=\int_0^1 \chi_{(x+h,x)}(t)|u(t)|\, dt\\
+                &\leq \norm{\chi_{(x+h,x)}}_{p'}\norm{u}_p\\
+                &=\left(\int_{x+h}^x \, dt\right)^{1/p'}\\
+                &=(-h)^{1/p'}\\
+                &=|h|^{1/p'},
+            \end{align*}
+            de manera que
+            \begin{align*}
+                \norm{\tau_hf-f}_p\leq \left(\int_0^1\left(\int_{x+h}^x |u(t)|\, dt\, \right)^pdx\right)^{1/p}\leq \left(|h|^{p/p'}\right)^{1/p}=|h|^{1/p'},
+            \end{align*}
+            por tanto, $\displaystyle 0\leq \lim_{|h|\to 0}\norm{\tau_hf-f}_p\leq \lim_{|h|\to 0}|h|^{1/p'}=0$, para toda $f \in T(B)$. 
 
-        \item[(c)]
+            \item Si $h\geq 0$, análogamente al caso anterior (nos saltaremos algunos pasos que son análogos)
+            \begin{align*}
+                \norm{\tau_hf-f}_p=\left(\int_0^1\left|\int_x^{x+h}u(t)\, dt\right|^p\, dx\right)^{1/p}\leq \left(\int_0^1\left(\int_{x}^{x+h}|u(t)|\, dt\right)^p\, dx\right)^{1/p},
+            \end{align*}
+            de la misma manera, por la desigualdad de Hölder
+            \begin{align*}
+                \int_{x}^{x+h}|u(t)|\, dt&=\int_0^1 \chi_{(x,x+h)}(t)|u(t)|\, dt\\
+                &\leq \norm{\chi_{(x,x+h)}}_{p'}\norm{u}_p\\
+                &=h^{1/p'}\\
+                &=|h|^{1/p'},
+            \end{align*}
+            por tanto
+            \begin{align*}
+                \norm{\tau_hf-f}_p\leq |h|^{1/p'},
+            \end{align*}
+            y nuevamente obtenemos $\displaystyle 0\leq \lim_{|h|\to 0}\norm{\tau_hf-f}_p\leq \lim_{|h|\to 0}|h|^{1/p'}=0$, para toda $f \in T(B)$. 
+        \end{itemize}
+        De esta manera, estamos en las hipótesis del Teorema enunciado anteriormente, por lo que podemos concluir que $T(B)$ tiene clausura compacta en $L^p((0,1))$, es decir, $\overline{T(B)}$ es compacto, concluyendo que $T$ es un operador compacto.
+        
+        \item[(b)] Como $T$ es compacto, sabemos que $0\in\sigma(T)$ y $\sigma(T)\setminus \{0\}=EV\setminus \{0\}$. Sea $\lambda\neq 0$, primero, recordemos que si $u \in L^p((0,1))$, entonces $u \in L^1((0,1))$, por tanto, por el Teorema de Diferenciación de Lebesgue
+        \begin{align*}
+            \lim_{h\to 0}\dfrac{1}{2h}\int_{x-h}^{x+h}f(y)\, dy=\lim_{h\to 0}\dfrac{1}{2h}\left(\int_0^{x+h}f(y)\, dy-\int_{0}^{x-h}f(y)\, dy\right)=f(x),
+        \end{align*}
+        para casi todo $x \in (0,1)$ (para ser más rigurosos, la expresión integral vale cuando $h>0$, pero es análogo cuando $h<0$ pero queda la integral con límites desde $x+h$ hasta $x-h$), es decir, la función
+        \begin{align*}
+            Tf(x)=\int_0^x f(t)\, dt,
+        \end{align*}
+        es derivable en casi todo $x \in (0,1)$, para toda $f \in L^p((0,1))$. Supongamos que $u \in L^p((0,1))$ con $u \neq 0$ es tal que $Tu=\lambda u$. Por la observación anterior, tenemos que $u$ es derivable en casi toda parte, por tanto
+        \begin{align*}
+            Tu(x)=\int_0^x u(t)\, dt=\lambda u(x)\\
+            \Longrightarrow u(x)=\lambda u'(x),
+        \end{align*}
+        además, podemos extender $u$ de manera continua a $[0,1)$ por $u(0)=0$, dado que
+        \begin{align*}
+            \lim_{x\to 0}\int_0^x u(t)\, dt=0,
+        \end{align*}
+        así, estamos buscando solución del problema de Cauchy
+        \begin{align*}
+            \begin{cases}
+                u'=\dfrac{1}{\lambda}u\\
+                u(0)=0,
+            \end{cases}
+        \end{align*}
+        en $[0,1)$. Podemos ver que la solución general de la ecuación diferencial asociada al problema es
+        \begin{align*}
+            u(x)=Ce^{\frac{x}{\lambda}},
+        \end{align*}
+        con $C \in \mathbb{R}$, y como $u(0)=0$, se debe tener que $C=0$, concluyendo que $u=0$, pero en un principio supusimos que $u\neq 0$, lo cuál es una contradicción. De manera $\mathbb{R}\setminus \{0\} \subset \rho(T)$, de manera que $EV(T)=\emptyset$ y $\sigma(T)=\{0\}$.
+        
+
+        \item[(c)] Sea $\lambda\neq 0$ y $u \in L^p((0,1))$. Supongamos que $(T-\lambda I)u=Tu-\lambda u=f$ con $f \in L^p((0,1))$. Sea
+        \begin{align*}
+            v(x)=\int_0^x u(t)\, dt=Tu(x).
+        \end{align*}
+        Análogamente a lo hecho en el ítem anterior, tenemos que $v$ es diferenciable en casi toda parte y $v'=u$ para casi todo $x \in (0,1)$. Además, podemos extender a $v$ por $v(0)=0$, de manera que la ecuación $Tu-\lambda u=f$ nos lleva al problema de Cauchy
+        \begin{align*}
+            \begin{cases}
+                v-\lambda v'=f\\
+                v(0)=0.
+            \end{cases}
+        \end{align*}
+        La única solución de este problema está dada por
+        \begin{align*}
+            v(x)=-\frac{1}{\lambda}e^{\frac{x}{\lambda}}\int_0^x e^{-\frac{t}{\lambda}}f(t)\, dt,
+        \end{align*}
+        y nuevamente, como $f \in L^p((0,1))$ y $e^{-t/\lambda}\in C^\infty((0,1))\cap L^\infty((0,1))$, la función $e^{-\frac{t}{\lambda}}f(t)\in L^1((0,1))$ y el Teorema de Diferenciación de Lebesgue nos garantiza que la función
+        \begin{align*}
+            g(x)=\int_0^x e^{-\frac{t}{\lambda}}f(t)\, dt,
+        \end{align*}
+        es derivable en casi toda parte y $g'(x)=e^{-\frac{x}{\lambda}}f(x)$ en los puntos en donde la derivada tiene sentido, de manera que, usando la regla de Leibniz 
+        \begin{align*}
+            v'(x)=u(x)=-\frac{1}{\lambda^2}e^{\frac{x}{\lambda}}\int_0^x e^{-\frac{t}{\lambda}}f(t)\, dt-\frac{1}{\lambda}f(x).
+        \end{align*}
+        Como $(T-\lambda I)u=f$, entonces $u=(T-\lambda I)^{-1}f$, de manera que
+        \begin{align*}
+            (T-\lambda I)^{-1}f(x)=-\frac{1}{\lambda^2}e^{\frac{x}{\lambda}}\int_0^x e^{-\frac{t}{\lambda}}f(t)\, dt-\frac{1}{\lambda}f(x).
+        \end{align*}
 
         \item[(d)] Por definición, tenemos
         \begin{align*}
@@ -648,7 +767,7 @@ $S_r$ se conoce como el desplazamiento a derecha y $S_l$ como el desplazamiento 
     \end{align*}
     así, 
     \begin{align*}
-        \langle T^\star \xi;f\rangle=\int_0^1 \langle \xi;\chi_{(x,1)}\rangle f(x)\, dx
+        \langle T^\star \xi;f\rangle=\int_0^1 \langle \xi;\chi_{(x,1)}\rangle f(x)\, dx.
     \end{align*}
 \end{proof}
 
@@ -660,47 +779,3 @@ $S_r$ se conoce como el desplazamiento a derecha y $S_l$ como el desplazamiento 
     \item[(a)] Muestre que $\sigma(M_g)=\overline{\{g(x):x\in \mathbb{R}\}}$.
     \item[(b)] ¿Es el operador $M_g$ compacto?
 \end{enumerate}
-\begin{proof} 
-  \begin{enumerate}
-    \item[(a)] Veamos que $\sigma(M_{g})=\overline{\{g(x):x\in \mathbb{R}\}}$.\\
-      Primero note que como $g\in L^{\infty}(\mathbb{R})\cap C(\mathbb{R})$, entonces sabemos que existen $M,n\in \mathbb{R}$ tales que
-      \begin{align*}
-        g(M)&=\max_{x\in \mathbb{R}}g(x),\\
-        g(m)&=\min_{x\in \mathbb{R}}g(x).
-      \end{align*}
-      Por otro lado note que como $L^2(\mathbb{R})$ es un espacio de Hilbert 
-      \begin{align*}
-        \inf_{\substack{u\in L^2(\mathbb{R})\\\norm{u}=1}}(M_{g}(u),u)&=\inf_{\substack{u\in L^2(\mathbb{R})\\\norm{u}=1}}\int_{-\infty}^{\infty}M_{g}(u)(x)u(x)\, dx,\\
-        &=\inf_{\substack{u\in L^2(\mathbb{R})\\ \norm{u}=1}}\int_{-\infty}^{\infty}g(x)u^2(x)\, dx,\\
-        &=\inf_{x\in\mathbb{R}}g(x)\norm{u}_{2}^2,\\
-        &=\min_{x\in\mathbb{R}}g(x),\\
-        &=g(m).
-      \end{align*}
-      Análogamente
-      \begin{align*}
-        \sup_{\substack{u\in L^2(\mathbb{R})\\ \norm{u}=1}}(M_{g}(u),u)&=g(M). 
-      \end{align*}
-      Además de esto, sabemos que el operador $M_{g}$ es un operador lineal acotado, pues dada $f,h\in L^{2}(\mathbb{R})$ y $\lambda$ escalar se cumple que 
-      \begin{align*}
-        \norm{M_{g}(f+\lambda h)}_{2}&=\norm{g(f+\lambda h)}_{2},\\
-        &=\norm{gf+\lambda gh}_{2},\\
-        &\leq \norm{gf}_{2}+|\lambda|\norm{gh}_{2},\\
-        &=\norm{g(x)}_{\infty}\norm{f(x)}_{2} + |\lambda|\norm{g}_{\infty}\norm{h}_{2}.
-      \end{align*}
-      Luego sabemos que
-      \begin{align*}
-        (M_{g}(f),h)&=\int_{-\infty}^{\infty}M_{g}(f)(x)h(x)\, dx,\\
-        &=\int_{-\infty}^{\infty}g(x)f(x)h(x)\, dx,\\
-        &=\int_{-\infty}^{\infty}f(x)g(x)h(x)\, dx,\\
-        &=\int_{-\infty}^{\infty}f(x)M_g(h)(x)\, dx,\\
-        &=(f,M_{g}h).
-      \end{align*}
-      De lo que se concluye que $M_{g}$ es un operador lineal, acotado y autoadjunto, por lo que podemos afirmar que
-      \begin{align*}
-        \sigma(M_{g})\subseteq [g(m),g(M)]=\overline{\{g(x):x\in\mathbb{R}\}}.
-      \end{align*}
-      Ahora veamos que dado $\lambda\in [m,M]$, entonces $x\in \sigma(M_{g})$.\\
-      Para esto veamos que el operador $(M_g-\lambda I)$ no es biyectivo de $L^2(\mathbb{R})$ a $L^{2}(\mathbb{R})$
-    \item[(b)]
-  \end{enumerate}
-\end{proof}
