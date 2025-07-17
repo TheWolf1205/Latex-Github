@@ -779,3 +779,73 @@ $S_r$ se conoce como el desplazamiento a derecha y $S_l$ como el desplazamiento 
     \item[(a)] Muestre que $\sigma(M_g)=\overline{\{g(x):x\in \mathbb{R}\}}$.
     \item[(b)] ¿Es el operador $M_g$ compacto?
 \end{enumerate}
+\begin{proof} 
+  \begin{enumerate}
+    \item[(a)] Veamos que $\sigma(M_{g})=\overline{\{g(x):x\in \mathbb{R}\}}$.\\
+      Primero note que como $g\in L^{\infty}(\mathbb{R})\cap C(\mathbb{R})$, entonces sabemos que existen $M,n\in \mathbb{R}$ tales que
+      \begin{align*}
+        g(M)&=\max_{x\in \mathbb{R}}g(x),\\
+        g(m)&=\min_{x\in \mathbb{R}}g(x).
+      \end{align*}
+      Por otro lado note que como $L^2(\mathbb{R})$ es un espacio de Hilbert 
+      \begin{align*}
+        \inf_{\substack{u\in L^2(\mathbb{R})\\\norm{u}=1}}(M_{g}(u),u)&=\inf_{\substack{u\in L^2(\mathbb{R})\\\norm{u}=1}}\int_{-\infty}^{\infty}M_{g}(u)(x)u(x)\, dx,\\
+        &=\inf_{\substack{u\in L^2(\mathbb{R})\\ \norm{u}=1}}\int_{-\infty}^{\infty}g(x)u^2(x)\, dx,\\
+        &=\inf_{x\in\mathbb{R}}g(x)\norm{u}_{2}^2,\\
+        &=\min_{x\in\mathbb{R}}g(x),\\
+        &=g(m).
+      \end{align*}
+      Análogamente
+      \begin{align*}
+        \sup_{\substack{u\in L^2(\mathbb{R})\\ \norm{u}=1}}(M_{g}(u),u)&=g(M). 
+      \end{align*}
+      Además de esto, sabemos que el operador $M_{g}$ es un operador lineal acotado, pues dada $f,h\in L^{2}(\mathbb{R})$ y $\lambda$ escalar se cumple que 
+      \begin{align*}
+        \norm{M_{g}(f+\lambda h)}_{2}&=\norm{g(f+\lambda h)}_{2},\\
+        &=\norm{gf+\lambda gh}_{2},\\
+        &\leq \norm{gf}_{2}+|\lambda|\norm{gh}_{2},\\
+        &=\norm{g(x)}_{\infty}\norm{f(x)}_{2} + |\lambda|\norm{g}_{\infty}\norm{h}_{2}.
+      \end{align*}
+      Luego sabemos que
+      \begin{align*}
+        (M_{g}(f),h)&=\int_{-\infty}^{\infty}M_{g}(f)(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}g(x)f(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}f(x)g(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}f(x)M_g(h)(x)\, dx,\\
+        &=(f,M_{g}h).
+      \end{align*}
+      De lo que se concluye que $M_{g}$ es un operador lineal, acotado y autoadjunto, por lo que podemos afirmar que
+      \begin{align*}
+        \sigma(M_{g})\subseteq [g(m),g(M)]=\overline{\{g(x):x\in\mathbb{R}\}}.
+      \end{align*}
+      Ahora veamos que dado $\lambda\in [g(m),g(M)]$, entonces $x\in \sigma(M_{g})$.\\
+      Para esto veamos que el operador $(M_g-\lambda I)$ no es biyectivo de $L^2(\mathbb{R})$ a $L^{2}(\mathbb{R})$.\\
+      Note que como $g$ es continua y $\lambda\in [g(m),g(M)]$, entonces existe un valor $c\in \mathbb{R}$ tal que $g(c)=\lambda$, entonces note que dado $\epsilon>0$ se puede construir $h(x)=\chi_{[c-\epsilon,c+\epsilon]}(x)\in L^2(\mathbb{R})$, veamos que no existe $f\in L^2(\mathbb{R})$ tal que $(M_{g}-\lambda I)(f)=h$, ya que
+      \begin{align*}
+        (M_{g}-\lambda I)f&=h,\\
+        M_{g}(f)-\lambda I(f)&=h,\\
+        g(x)f(x)-\lambda f(x)&=h(x),\\
+        f(x)(g(x)-\lambda)&=h(x),\\
+        f(x)&=\frac{h(x)}{g(x)-\lambda}.
+      \end{align*}
+      Luego
+      \begin{align*}
+        f(x)= 
+        \begin{cases}
+          \frac{1}{g(x)-\lambda}, &\text{ si } x\in [c-\epsilon,c+\epsilon] \text{,} \\
+          0, &\text{ en otro caso}.
+        \end{cases}
+      \end{align*}
+      Luego como $g$ es continua, $c\in [c-\epsilon,c+\epsilon]$, entonces $f(x)$ tiene una singularidad no removible en $c$ y por ende $f\notin L^2(\mathbb{R})$, lo que nos permite concluir que dado $\lambda\in \overline{\{g(x):x\in\mathbb{R}\}}$ entonces el operador $(M_{g}-\lambda I)$ no es sobreyectivo y por ende no es biyectivo, lo que a su vez concluye que $\lambda\in \sigma(M_{g})$. 
+    \item[(b)]
+      \textbf{Parcialmente No.}\\
+      Note que si $g(x)=0$, entonces $M_{g}$ es un operador compacto, ya que $M_{g}(B_{L^2})=\{0\}$ el cual es compacto.\\
+      De lo contrario, note que podemos razonar por contradicción, suponga que $M_{g}$ es un operador compacto, entonces como $dim(L^2(\mathbb{R}))=\infty$, entonces
+      \begin{enumerate}
+        \item $0\in \sigma(M_{g})$.
+        \item $\sigma(M_{g})\setminus \{0\}=\overline{\{g(x):x\in\mathbb{R}\}}\setminus \{0\}$ es un conjunto finito (lo cual solo sucede si $g(x)=c$, como ya suponemos que $c\neq 0$, entonces no se puede dar, ya que $0\notin \sigma(M_{g})$).
+        \item $\sigma(M_{g})\setminus \{0\}$ es un conjunto enumerable y una secuencia convergente a $0$, pero note que $\sigma(M_{g})\setminus \{0\}=[g(m),g(M)]\setminus \{0\}$, pero note que como $\sigma(M_{g})=[g(m),g(M)]$ es un intervalo cerrado, $|\sigma(M_{g})\setminus \{0\}|=2^{\aleph_{0}}$.
+      \end{enumerate}
+      En cualquiera de los casos se llega a una contradicción, lo que nos permite afirmar que $M_{g}$ no es un operador compacto si $g\neq 0$. 
+  \end{enumerate}
+\end{proof}
