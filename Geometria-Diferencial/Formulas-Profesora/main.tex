@@ -1,5 +1,5 @@
-\documentclass[10pt]{article}
-\usepackage[margin=1.5cm]{geometry}
+\documentclass[8pt]{article}
+\usepackage[margin=1cm]{geometry}
 \usepackage{multicol}
 \usepackage{amsmath, amssymb}
 \usepackage{mathrsfs}
@@ -50,7 +50,17 @@ K = \frac{eg - f^2}{EG - F^2}
 \qquad
 H = \frac{eG + gE - 2fF}{2(EG - F^2)}
 \]
-
+  si es de revolución y $g$ es de norma $1$ 
+\begin{align*}
+  K=\frac{-f''}{f} \qquad H=\frac{1}{2}\frac{-g'+f(g'f''-g''f')}{f}
+\end{align*}
+si son doblemente ortogonales
+\begin{align*}
+  k_1=\frac{e}{E}\qquad k_2=\frac{g}{G}
+\end{align*}
+\begin{align*}
+  p(x)=x^2-2xH+K=(x-k_1)(x-k_2)
+\end{align*}
 \section*{Línea de curvatura}
 Si $\alpha(t) = X(u(t), v(t))$,
 \[
@@ -127,6 +137,12 @@ E_u \\ E_v \\ F_v - G_u \\
 F_u - E_v \\ G_u \\ G_v
 \end{pmatrix}
 \]
+Si es superficie de revolución
+\begin{align*}
+  \Gamma^{1}_{11}=0 \,& \Gamma^{2}_{11}=-\frac{ff'}{(f')^2+(g')^{2}} \, \Gamma^{1}_{12}=\frac{ff'}{f^2},\\
+  \Gamma^{2}_{12}=0 \,& \Gamma^{1}_{22}=0 \, \Gamma_{22}^{2}=\frac{f'f''+g'g''}{(f')^{2}+(g')^2}
+\end{align*}
+
 
 \section*{Si $F = 0$}
 \[
@@ -150,7 +166,15 @@ e_v - f_u = e\Gamma^1_{12} + f(\Gamma^2_{12} - \Gamma^1_{11}) - g\Gamma^2_{11}
 \[
 f_v - g_u = e\Gamma^1_{22} + f(\Gamma^2_{22} - \Gamma^1_{12}) - g\Gamma^2_{12}
 \]
-
+Si es doblemente ortogonal
+\begin{align*}
+  \Gamma_{11}^{1}=\frac{1}{2}\frac{E_{u}}{E},  \, \Gamma_{11}^{2}=-\frac{1}{2}\frac{E_{v}}{G}, \,\Gamma_{12}^{1}=\frac{1}{2}\frac{E_{v}}{E},\\
+  \Gamma_{12}^{2}=\frac{1}{2}\frac{G_{u}}{G}, \, \Gamma_{22}^{1}=-\frac{1}{2}\frac{G_u}{E}, \, \Gamma_{22}^{2}=\frac{1}{2}\frac{G_{v}}{E}.
+\end{align*}
+\begin{align*}
+  e_{v}=\frac{E_{v}}{2}\left( \frac{e}{E}+\frac{g}{G} \right),\\
+  g_{u}=\frac{G_{u}}{2}\left( \frac{e}{E}+\frac{g}{G} \right).
+\end{align*}
 \section*{Campos paralelos}
 Si $V(t) = a(t)X_u + b(t)X_v$, con $V$ paralelo:
 \[
@@ -235,7 +259,10 @@ Curvatura normal
   \end{bmatrix}
   \]
 \end{itemize}
-
+\section*{Derivada covariante}
+\begin{align*}
+  \frac{DV}{dt}(t):=V'(t)^{\perp}=V'(t)-<V'(t),N(t)>N(t).
+\end{align*}
 \end{multicols}
 \end{document}
 
