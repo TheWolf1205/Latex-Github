@@ -7,6 +7,14 @@ Repositorio para subir trabajos o talleres de la U :p.
 # Contenido
 
 <details>
+<summary><strong>Geometría Diferencial</strong></summary>
+
+- [Trabajo final (Escrito - Inglés).](./Geometria-Diferencial/Trabajo-Final/Escrito/Ingles/main.pdf)
+- [Trabajo final (Escrito - Español).](./Geometria-Diferencial/Trabajo-Final/Escrito/Español/main.pdf)
+- [Trabajo final (Poster).](./Geometria-Diferencial/Trabajo-Final/Escrito/Español/main.pdf)
+</details>
+
+<details>
 <summary><strong>Análisis Funcional</strong></summary>
 
 - Taller 1.
@@ -24,6 +32,11 @@ Repositorio para subir trabajos o talleres de la U :p.
 - Taller 4.
   - [Taller.](./Analisis-Funcional/Taller4/ejercicios3.pdf)
   - [Solución](./Analisis-Funcional/Taller4/main.pdf)
+
+- Taller 5.
+  - [Taller.](./Analisis-Funcional/Taller5/ejercicios3.pdf)
+  - [Taller.](./Analisis-Funcional/Taller5/ejercicios4.pdf)
+  - [Solución](./Analisis-Funcional/Taller5/main.pdf)
 </details>
 
 <details>

@@ -1,0 +1,135 @@
+%!TEX program = lualatex
+\PassOptionsToPackage{usenames, dvipsnames}{color}
+\documentclass{aleph-revista}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{aleph-comandos} 
+\usepackage{multicol}    
+\usepackage[usenames]{color}
+\usepackage{times}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=cyan,
+    pdftitle={Sharelatex Example},
+    pdfpagemode=FullScreen,
+    }
+\addbibresource{bibliografia.bib}
+
+\newcommand{\ident}{\hspace{0.5cm}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\fechapubli{2025}
+\periodouno{July}
+
+\titulo{Models of the universe from differential geometry.}
+
+\tituloingles{Modelos del universo desde la geometría diferencial.}
+
+\autor{Andrés David Cadena Simons}
+\institucion{Universidad Nacional de Colombia, Facultad de ciencias, Sede Bogotá}
+\correo{acadenas@unal.edu.co}
+
+\fecha{\today}
+\resumen{
+The document provides a clear and accessible introduction to the idea that gravity is a manifestation of spacetime curvature, as proposed by Einstein in his theory of general relativity.\\
+– Geodesics and curvature: It explains that the natural path of objects in curved spacetime is a geodesic, which generalizes the concept of a straight line. On curved surfaces like a sphere, geodesics are great circles.\\
+– Gravity as geometry: Instead of viewing gravity as an instantaneous force (as in Newtonian theory), Einstein proposed that objects follow the curvature of spacetime shaped by the presence of matter. An analogy with an elastic membrane deformed by billiard balls is used to illustrate this idea.\\
+– Models of the universe: Three types of universe are presented depending on their curvature:\\
+ • Flat (zero curvature).\\
+ • Spherical (positive curvature, closed universe).\\
+ • Hyperbolic (negative curvature, open universe).\\
+  The sum of the angles in a triangle varies with the type of curvature.\\
+– Escape velocity and black holes: The concept of escape velocity is introduced as the minimum needed to break free from a gravitational field. If this velocity equals the speed of light, a black hole forms. The Schwarzschild radius is derived from this idea, showing its dependence on the object's mass.\\
+}
+\palabrasc{Spacetime curvature, General relativity, Geodesics, Gravity, Newtonian mechanics, Einstein's theory, Elastic membrane analogy, Flat universe, Closed universe, Open universe, Positive curvature, Negative curvature, Escape velocity, Black hole, Schwarzschild radius, Triangle angle sum, Cosmological models, Gravitational attraction, Speed of light, Energy conservation}
+\begin{document}
+\membrete
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+Since ancient times, humans have wondered about the nature of the universe and the forces that govern the motion of celestial bodies. Newton's theory of gravity provided an effective explanation for centuries: an instantaneous force of attraction between masses. However, in the early 20th century, Albert Einstein revolutionized our understanding by proposing that gravity is not a force, but a manifestation of the curvature of spacetime caused by the presence of matter and energy.\\
+This idea profoundly changed our view of the cosmos. Objects no longer “fall” because a force pulls them, but because they follow the shortest path in a curved geometry. This new perspective allowed scientists to explain phenomena that classical physics could not, such as the existence of black holes or the expansion of the universe. Studying different models of the universe based on curvature, and key concepts like escape velocity, becomes essential to understanding the structure and fate of the cosmos.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Theoretical framework}
+Differential geometry studies the local and global properties of differentiable manifolds endowed with geometric structures such as metrics or connections. Within this framework, one of the fundamental concepts is \textit{curvature}, which quantifies how much a space deviates from being flat.\\
+In a Riemannian manifold, the \textit{sectional curvature} measures the curvature of a two-dimensional tangent plane at a point on the manifold. This curvature determines, for instance, how \textit{geodesics} behave — curves that locally minimize the distance between two points. Formally, a geodesic $\gamma(t)$ on a Riemannian manifold $(M,g)$ is a curve that satisfies the equation $\nabla_{\dot{\gamma}}\dot{\gamma} = 0$, meaning its tangent vector is parallel along the curve with respect to the Levi-Civita connection. In Euclidean space, geodesics are straight lines; on a sphere, they correspond to \textit{great circles}.\\
+\textit{General relativity} interprets gravity as a consequence of the curvature of spacetime, which is modeled as a four-dimensional Lorentzian manifold. In this setting, the presence of matter and energy curves spacetime, and objects move along geodesics in this curved geometry. This idea is formalized by the \textit{Einstein field equations}, which relate curvature (represented by the Einstein tensor $G_{\mu\nu}$) to the distribution of matter and energy (the stress-energy tensor $T_{\mu\nu}$) via the equation:
+\begin{align*}
+  G_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}.
+\end{align*}
+From the curvature of spacetime, cosmological models can be derived. In the simplest and most symmetric case, the universe can be classified according to its constant spatial curvature: \textit{positive} (spherical model), \textit{zero} (flat model), or \textit{negative} (hyperbolic model). These models affect geometric properties such as the sum of interior angles in a triangle and also influence the ultimate fate of the universe, as described by cosmological scenarios like the Friedmann–Lemaître–Robertson–Walker (FLRW) model.\\
+Another related concept is the \textit{escape velocity}, which can be derived from the conservation of energy in a classical gravitational field. If the escape velocity equals the speed of light $c$, one obtains the \textit{Schwarzschild radius}:
+\begin{align*}
+  r_s = \frac{2GM}{c^2},
+\end{align*}
+which defines the size of a non-rotating, uncharged black hole. This calculation shows how an energy balance leads to a region of space from which nothing can escape, with deep geometric implications in terms of event horizons and singularities.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Models of the Universe from the Perspective of Differential Geometry}
+The study of the universe cannot be separated from its geometric structure. Since the formulation of general relativity in 1915, differential geometry has played a central role in describing the cosmos. In this theory, spacetime is modeled as a \textit{four-dimensional Lorentzian manifold}, equipped with a non-positive-definite metric that allows for the measurement of distances and angles between events. The presence of mass and energy affects this metric, generating \textit{curvature}, which in turn determines the behavior of matter and light.
+\subsection*{Geodesics as Natural Trajectories}
+One of the most important concepts in this context is the notion of a \textit{geodesic}. In differential geometry, a geodesic on a differentiable manifold with a connection is a curve whose covariant derivative of the tangent vector along itself vanishes:\\
+\begin{align*}
+\nabla_{\dot{\gamma}} \dot{\gamma} = 0.
+\end{align*}
+This means that the curve “does not turn” in space but follows the natural direction defined by the surrounding geometry. In Euclidean space, geodesics are straight lines; on a sphere, they are \textit{great circles}.\\
+General relativity interprets gravity not as a force, but as the tendency of bodies to move along these geodesics in a curved spacetime. For example, the Earth is not pulled toward the Sun by an invisible force but moves freely along a path determined by the geometry that the Sun induces in its vicinity. This resolves contradictions in Newtonian theory with special relativity, such as the assumption of instantaneous interactions.
+\subsection*{Curvature and Global Structure}
+\textit{Curvature} is a tool that characterizes the local geometry of a manifold. There are several notions of curvature (sectional, scalar, Ricci), but in cosmology, the case of manifolds with \textit{constant curvature} is especially relevant. The scalar curvature \(K\) can be positive (as on a sphere), zero (as in Euclidean space), or negative (as on a hyperbolic plane). Each of these geometries gives rise to a different model of the universe:
+\begin{itemize}
+  \item \textbf{Closed universe:} positive curvature (e.g., 3-sphere), triangle angle sum $> 180^\circ$.
+  \item \textbf{Flat universe:} zero curvature ($\mathbb{R}^3$), triangle angle sum = $180^\circ$.
+  \item \textbf{Open universe:} negative curvature (hyperboloid), triangle angle sum $< 180^\circ$.
+\end{itemize}
+This classification is formalized in the FLRW metric:
+\begin{align*}
+ds^2 = -c^2 dt^2 + a(t)^2 \left( \frac{dr^2}{1 - kr^2} + r^2 d\Omega^2 \right),
+\end{align*}
+where $k \in \{-1, 0, 1\}$ represents spatial curvature.
+\subsection*{Light, Curvature, and Black Holes}
+In differential geometry applied to relativity, the trajectory of a light ray is also described by a geodesic, but of \textit{null type}, satisfying:
+\begin{align*}
+g(\dot{\gamma}, \dot{\gamma}) = 0.
+\end{align*}
+This means that light follows “the straightest possible path” according to the geometry of spacetime. A large mass can deflect light, as demonstrated by the phenomenon of \textit{gravitational lensing}.\\
+If a body is so massive and dense that the escape velocity equals the speed of light, a \textit{black hole} is formed. The associated Schwarzschild radius is given by:
+\begin{align*}
+r_s = \frac{2GM}{c^2},
+\end{align*}
+which defines the event horizon, a boundary from which nothing can escape.
+\subsection*{Geometric Analogies and Visualization}
+To make this theory more accessible, an \textit{elastic membrane} analogy is often used. Imagine a rubber sheet with a heavy ball placed on it, deforming the surface. Another ball rolling nearby does not follow a straight path but curves toward the deformation—it follows a geodesic in the curved space. Although oversimplified, this analogy captures the essence of how mass shapes geometry.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implications}
+\subsection*{The geometry of space determines the structure and fate of the universe}
+In differential geometry, the scalar curvature—or more generally, the sectional curvature—directly influences both local and global properties of a manifold. According to the article, depending on whether the curvature of the universe is positive, zero, or negative, the sum of triangle angles, the behavior of geodesics, and the volume of spatial regions vary significantly.\\
+From a cosmological standpoint, this classification has dynamic consequences:
+\begin{itemize}
+  \item A \textbf{closed universe} ($K > 0$) may eventually collapse in a "Big Crunch".
+  \item A \textbf{flat universe} ($K = 0$) expands forever, gradually slowing down.
+  \item An \textbf{open universe} ($K < 0$) expands forever at an accelerating rate.
+\end{itemize}
+Thus, the geometry of space has observable physical consequences. Understanding the curvature of the universe is essential to predicting its long-term evolution.
+\subsection*{Black holes naturally emerge from geometric analysis}
+The article explains that if the escape velocity from a celestial object equals the speed of light, then not even light can escape its gravitational field. This leads to the concept of a \textit{black hole}, a region of spacetime where the curvature is so extreme that all null geodesics converge inward.\\
+This condition is defined by the Schwarzschild radius:
+\begin{align*}
+r_s = \frac{2GM}{c^2}.
+\end{align*}
+Rather than being an exotic physical anomaly, a black hole is a geometric structure arising from Einstein's equations. It represents a region where spacetime curvature forces all causal paths to terminate inward.\\
+Therefore, black holes are not singularities in the sense of breakdowns of physics, but natural consequences of the differential geometry of spacetime under strong gravitational fields.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+The study of the universe through the lens of differential geometry provides a deep and unified understanding of fundamental physical phenomena.\\
+By analyzing geodesics, curvature, and metric structures, gravity is reinterpreted not as a force, but as the result of spacetime curvature induced by matter and energy.\\
+Cosmological models based on constant curvature (closed, flat, and open) show how global geometry determines the dynamic fate of the universe.\\
+Moreover, concepts such as black holes, once considered exotic or paradoxical, arise naturally as geometric solutions within the framework of general relativity.\\
+This approach not only offers theoretical elegance and coherence, but also allows for precise predictions that have been experimentally confirmed, such as the bending of light by gravity and the detection of gravitational waves.\\
+Differential geometry is therefore not just a mathematical tool, but an essential language for describing the physical reality of the cosmos.
+\newpage
+\nocite{*}
+\printbibliography
+
+\end{document}

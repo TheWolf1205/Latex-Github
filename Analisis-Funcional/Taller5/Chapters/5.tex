@@ -10,7 +10,7 @@
     \Large \textsc{Universidad Nacional de Colombia} \\
     \textcolor{white}{\tiny.} \Large \textsc{Departamento de Matemáticas} \\
     \textcolor{white}{\tiny.} \large \textsc{Análisis Funcional} \\
-    \textcolor{white}{\tiny.} \large \textsf{Taller 1: Espacios vectoriales normados} \normalsize (I-2025)
+    \textcolor{white}{\tiny.} \large \textsf{Taller 5: Espacios de Hilbert y Operadores Compactos} \normalsize (I-2025)
   \end{center}
 \end{minipage}
 
@@ -19,7 +19,7 @@
 
 \textbf{Profesor:} Oscar Guillermo Riaño Castañeda\\
 \textbf{Integrantes:} Andrés David Cadena Simons \hspace{2.8cm}  Jairo Sebastián Niño Castro\hspace{2.8cm}
-Iván Felipe Salamanca Medina \hspace{5.05cm}\textbf{Fecha:} 02 de Julio del 2025\\
+Iván Felipe Salamanca Medina \hspace{5.05cm}\textbf{Fecha:} 16 de Julio del 2025\\
 \vspace{0.25cm}\\
 
 \section{Espacios de Hilbert}
@@ -339,7 +339,7 @@ Iván Felipe Salamanca Medina \hspace{5.05cm}\textbf{Fecha:} 02 de Julio del 202
         (Ax,y)=(x,A^\star y) \text{ para todo } x \in H.
     \end{align*}
     \item[(II)] Muestre que $A^\star \in L(H)$. $A^\star$ se llama el adjunto de $A$.
-    \item[(II)] Verifique que $(A^\star)^\star$ y $\norm{A^\star}=\norm{A}$.
+    \item[(III)] Verifique que $(A^\star)^\star=A$ y $\norm{A^\star}=\norm{A}$.
 \end{enumerate}
 \begin{proof}
     \begin{enumerate}
@@ -581,7 +581,87 @@ $S_r$ se conoce como el desplazamiento a derecha y $S_l$ como el desplazamiento 
     \item[(e)] Muestre que $\sigma(S_l)=[-1,1]$.
     \item[(f)] Determine los adjuntos $S_r^\star$ y $S_l^\star$.
 \end{enumerate}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Calculemos $\|S_r\|$ y $\|S_{l}\|$:
+        \begin{itemize}
+            \item $\displaystyle\|S_r\| = \sup_{\substack{x \in l^2 \\ \|x\|=1}} \|S_r x\|$ \\
+Sea $x=(x_{1},x_{2},...)\in l^{2}$ tal que $||x||=1$.
+Entonces $\displaystyle\left(\sum_{i=1}^{\infty}|x_{i}|^{2}\right)^{1/2}=1$.
+Como $S_r x=(0,x_{1},x_{2},...,)$, entonces $\displaystyle||S_r x||=\left(\sum_{i=1}^{\infty}|x_{i}|^{2}\right)^{1/2}=1$.
+Así, $||S_{r}||=1$.
+\item $\displaystyle\|S_{l}\|= \sup_{\substack{x \in l^2  \\\|x\|=1}} ||S_{l}x||$ \\
+Sea $x=(x_{1},x_{2},...)\in l^{2}$ tal que $||x||=1$.
+Entonces \[\left(\sum_{i=1}^{\infty}|x_{i}|^{2}\right)^{1/2}=1\]
+Como $S_{l}x=(x_{2},x_{3},...)$, entonces \[||S_{l}x||=\left(\sum_{i=2}^{\infty}|x_{i}|^{2}\right)^{1/2}\leq 1.\]
+Ahora, considere $y=(0,1,0,0,...,0)$.
+$y\in l^{2}$ y además, $||y||=1$.
+Por otro lado, $S_{l}y=(1,0,0,...,0)$.
+De modo que $||S_{l}y||=1$.
+Con lo anterior, se tiene entonces que $||S_{l}||=1$.
+\end{itemize}
+\item[(b)] Por contradicción, si existiera $\lambda\in\mathbb{R}$ tal que \[N(S_r-\lambda I)\neq\{0\}.\]
+Entonces existiría $x=(x_{1},x_{2},...)\in l^2$ no nulo, tal que 
+\begin{align*}
+(S_{r}-\lambda I)x&=(0,0,...)
+\\(-\lambda x_{1},x_{1}-\lambda x_{2},x_2-\lambda x_3,...) &= (0,0,...)
+\end{align*}
+\begin{itemize}
+    \item Si $\lambda=0$, entonces
+    \[(-\lambda x_{1},x_{1}-\lambda x_{2},x_2-\lambda x_3,...)=(0,x_{1},x_{2},...)=(0,0,...),\] por lo que $x_n=0$ $\forall n\ge 1$.
+\item Si $\lambda\ne0$, se tiene que $-\lambda x_{1}=0$ lo que implica que $x_{1}=0$. Luego \begin{align*}
+    x_{1}-\lambda x_{2}&=0 \\  x_2&=0.
+\end{align*}
+Ahora, por inducción, si $x_n=0$, entonces se tiene que $x_{n}-\lambda x_{n+1}=0$ lo que implica que $x_{n+1}=0$.
+Por lo tanto, $x_{n}=0$ $\forall n\ge1.$
+\end{itemize}
+En cualquier caso, se tiene una contradicción, por lo que $EV(S_{r})=\emptyset$.
+    
+    \item[(c)] Por la proposición 8.3.1 del libro "Functional Analysis" de Kesavan:
+\begin{theorem}[Proposición 8.3.1]
+    
+Sea H espacio de Hilbert y $T\in L(H)$. Entonces $\lambda\in\sigma(T)$ si y sólo si $\bar{\lambda}\in\sigma(T^{\star})$.
+\end{theorem}
+En nuestro caso, como $\lambda \in \R ,S_r \in L(l^2)$ y $l^2$ es de Hilbert, tenemos que $\lambda\in\sigma(S_r)$ si y sólo si $\lambda\in\sigma(S_r^{\star})$. \\
+Ahora, por lo desarrollado en el ítem (f), tenemos que $S_{r}^{\star}=S_l$ y por lo hecho en el ítem (e), $\sigma(S_l)=[-1,1]$. Por lo tanto, \[\sigma(S_{r})=\sigma(S_{r}^{\star})=\sigma(S_{l})=[-1,1].\]
+\item[(d)] Como $\lambda\in EV(S_{l})$ si y sólo si $N(S_{l}-\lambda I)\ne\{0\}$. \\
+Esto es, existe $x=(x_{1},x_{2},...)\in l^{2}$ con $x$ no nulo tal que \begin{align*}
+S_{l}x&=\lambda x \\
+ (x_{2},x_{3},...,x_{n+1},...)&=(\lambda x_{1},\lambda x_{2},...,\lambda x_{n},...).\end{align*}
+De esta forma,
+\begin{align*}
+x_{2}&=\lambda x_{1} \\
+x_{3}&=\lambda x_{2}=\lambda^{2}x_{1}
+\end{align*}
+y en general
+\[x_{n+1}=\lambda^{n}x_{1} \quad \forall n \geq 1\]
+Luego $x\in l^{2}$ si y sólo si \[\sum_{i=0}^{\infty}(\lambda^{i}x_{1})^{2} = \sum_{i=0}^{\infty}x_1^{2}(\lambda^{2})^{i} \quad \text{converge.}\]
+Esto ocurre si y sólo si $|\lambda^{2}|<1$, es decir, cuando $\lambda\in (-1,1)$. \\
+Ahora calculamos el espacio propio correspondiente.
+Como \[x=(x_{1},x_{2},...,x_{n},...)=(x_{1},\lambda x_{1},\lambda^{2}x_{1},...,\lambda^{n}x_{1},...)
+=x_{1}(1,\lambda,\lambda^{2},...,\lambda^{n},...).\]
+Luego el espacio propio correspondiente es \[gen\{(1,\lambda,\lambda^{2},...,\lambda^{n},...)\}.\]
+\item[(e)] Veamos que $\sigma(S_l)=[-1,1]$. Como $||S_{l}||=1$, sabemos que $\sigma(S_{l})\subseteq[-1,1]$.
+Además $\sigma(S_{l})$ es compacto.
+Por otro lado, usando lo desarrollado en el item anterior, $EV(S_l)=(-1,1)$, de modo que $(-1,1)\subseteq\sigma(S_l)$.
+De esto se sigue que\[(-1,1)\subseteq\sigma(S_l)\subseteq[-1,1].\] Como $\sigma(S_{l})$ es compacto, entonces $\sigma(S_l)=[-1,1]$.
+\item[(f)] Calculemos $S_r^{\star}$. \\
+Sea $x\in l^{2}$, donde $x=(x_{1},x_{2},...,x_{n},...)$.
+Como $l^2$ es de Hilbert, sabemos que $S_{r}^{\star}\in L(l^{2})$ donde \[(S_{r}y,x)=(y,S_{r}^{\star}x) \quad\forall y\in l^{2},\]
+donde notamos $S_{r}^{\star}x=(x_{1}^{\star},x_{2}^{\star},...,x_{n}^{\star},...)$. \\
+En particular, consideremos los canónicos $e_{n}$ donde $(e_{n})_{k}=\delta_{nk}$ (es decir, 0 en la posición $k$ si $k\neq n$ y 1 en la posición $n$).
+Luego \begin{align*}
+(S_{r}e_{n},x)&=(e_{n},S_{r}^{\star}x) \\ x_{n+1}&=x ^{\star}_n.
+\end{align*}
+variando $n$, tenemos que $x_{n+1}=x_n^{\star} \quad\forall n \geq 1$. Es decir que
+\[S^{\star}_rx=(x_2,x_3,...,x_{n+1},...)=S_lx.\]
+Por lo tanto, $S^{\star}_r=S_l$. \\
 
+Ahora, calculemos $S_l^{\star}$. Como $l^2$ es de Hilbert, sabemos por el ejercicio 14 del presente taller que \[(S_r^{\star})^{\star} = S_r.\]
+De este modo, usando que $S_r^{\star}=S_l$, se sigue que \[S_{l}^{\star}=(S_{r}^{\star})^{\star}=S_r.\] Entonces $S_l^{\star} = S_r$. 
+
+\end{enumerate}
+\end{proof}
 \textbf{Ejercicio 4.} Sea $1\leq p<\infty$ y consideremos el espacio $L^p((0,1))$. Dado $u \in L^p((0,1))$, definimos
 \begin{align*}
     Tu(x)=\int_{0}^xu(t)\, dt.
