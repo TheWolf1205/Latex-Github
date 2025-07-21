@@ -1,0 +1,931 @@
+\thispagestyle{empty}
+
+\begin{minipage}{0.3\textwidth}
+  \includegraphics[scale=0.35]{logounal.png}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.65\textwidth}
+  \begin{center}
+    \scshape
+    \Large \textsc{Universidad Nacional de Colombia} \\
+    \textcolor{white}{\tiny.} \Large \textsc{Departamento de Matemáticas} \\
+    \textcolor{white}{\tiny.} \large \textsc{Análisis Funcional} \\
+    \textcolor{white}{\tiny.} \large \textsf{Taller 5: Espacios de Hilbert y Operadores Compactos} \normalsize (I-2025)
+  \end{center}
+\end{minipage}
+
+\vspace{0.3cm}
+\normalfont
+
+\textbf{Profesor:} Oscar Guillermo Riaño Castañeda\\
+\textbf{Integrantes:} Andrés David Cadena Simons \hspace{2.8cm}  Jairo Sebastián Niño Castro\hspace{2.8cm}
+Iván Felipe Salamanca Medina \hspace{5.05cm}\textbf{Fecha:} 16 de Julio del 2025\\
+\vspace{0.25cm}\\
+
+\section{Espacios de Hilbert}
+
+\textbf{Ejercicio 13.}
+
+\begin{enumerate}
+    \item[(I)] Muestre que los siguientes conjuntos $M$ son subespacios cerrados no vacíos de $L^2((-1,1))$ y determine explícitamente la proyección $P_M$ en cada caso
+    \begin{enumerate}
+        \item[(a)] $M=\{f \in L^2((-1,1)):f(x)=f(-x) \text{ para casi todo } x \in (-1,1)\}$.
+        \item[(b)] $\displaystyle M=\left\{f \in L^2((-1,1)):\int_{-1}^1f(x)\, dx=0\right\}$.
+        \item[(c)] $M=\{f \in L^2((-1,1)):f(x)=0 \text{ para casi todo } x\in (-1,0)\}$.
+    \end{enumerate}
+    \item[(II)] Sea $\Omega\subset \mathbb{R}^n$ un abierto acotado. Considere
+    \begin{align*}
+        K=\left\{f\in L^2(\Omega):\int_{\Omega}f(x)\, dx\geq 1\right\}.
+    \end{align*}
+    \begin{enumerate}
+        \item[(a)] Demuestre que $K$ es un conjunto cerrado convexo en $L^2(\Omega)$.
+        \item[(b)] Determine la proyección sobre $K$, es decir, el operador $P_K$.
+    \end{enumerate}
+    \end{enumerate}
+
+    \begin{proof}
+    \begin{enumerate}
+        \item[(I)] 
+        \begin{enumerate}
+            \item[(a)] Sea $(f_n)$ una sucesión en $M$ tal que $f_n\to f\in L^2((-1,1))$. Para todo $\varepsilon>0$ existe $N_\varepsilon\in \mathbb{Z}^+$ tal que si $n\geq N_\varepsilon$, entonces
+            \begin{align*}
+                \norm{f_n-f}_{L^2((-1,1))}=\left(\int_{-1}^1 |f_n(x)-f(x)|\, dx\right)^{1/2}<\dfrac{\varepsilon}{2},
+            \end{align*}
+            Para $x \in (-1,1)$, sea $g(x)=f(-x)$ y veamos que $\norm{g-f}_{L^2((-1,1))}=0$. Sea $n\geq N_\varepsilon$, tenemos
+            \begin{align*}
+                \norm{g-f}_{L^2((-1,1))}\leq \norm{g-f_n}_{L^2((-1,1))}+\norm{f_n-f}_{L^2((-1,1))}.
+            \end{align*}
+            Como $n\geq N_\varepsilon$, $\norm{f_n-f}_{L^2((-1,1))}<\dfrac{\varepsilon}{2}$. Ahora, usando que $f_n\in M$ y la sustitución $y=-x$, tenemos
+        \begin{align*}
+            \norm{g-f_n}_{L^2((-1,1))}^2&=\int_{-1}^1|g(x)-f_n(x)|^2\, dx\\
+            &=\int_{-1}^1|f(-x)-f_n(x)|^2\, dx\\
+            &=\int_{-1}^1|f(y)-f_n(y)|^2\, dy\\
+            &=\norm{f-f_n}_{L^2((-1,1))}^2,
+        \end{align*}
+        de esta manera $\norm{g-f_n}_{L^2((-1,1))}=\norm{f-f_n}_{L^2((-1,1))}<\dfrac{\varepsilon}{2}$, de esta manera
+        \begin{align*}
+            \norm{g-f}_{L^2((-1,1))}<\dfrac{\varepsilon}{2}+\dfrac{\varepsilon}{2}=\varepsilon.
+        \end{align*}
+        Como $\varepsilon>0$ es arbitrario, tenemos que $\norm{g-f}_{L^2((-1,1))}=0$, lo que quiere decir que $f(-x)=g(x)=f(x)$ para casi todo $x \in (-1,1)$, es decir, $f \in M$ y de esta manera $M$ es cerrado.
+        
+        Veamos ahora que $M$ es un subespacio. Sean $f,g \in M$ y $\alpha\in \mathbb{R}$. Sean 
+        \begin{align*}
+            E_f&:=\{x \in (-1,1):f(x)\neq f(-x)\}\\
+            E_g&:=\{x \in (-1,1):g(x)\neq g(-x)\},
+        \end{align*}
+        como $f,g \in M$, 
+        \begin{align*}
+            0\leq \mu(E_f\cup E_g)\leq \mu(E_f)+\mu(E_g)=0+0=0.
+        \end{align*}
+        es decir, $\mu(E_f\cup E_g)=0$, además, para todo $x \in (-1,1)\setminus (E_f\cup E_g)$ se tiene que $f(x)=f(-x)$ y $g(x)=g(-x)$, de manera que 
+        \begin{align*}
+            f(x)+g(x)=f(-x)+g(-x) \text{ para todo } x \in (-1,1)\setminus (E_f\cup E_g),
+        \end{align*}
+        como $\mu(E_f\cup E_g)=0$, esto implica que $f+g\in M$. Ahora, si $x \in (-1,1)\setminus E_f$, $f(x)=f(-x)$, por tanto 
+        \begin{align*}
+            \alpha f(x)=\alpha f(-x) \text{ para todo } x \in (-1,1)\setminus E_f,
+        \end{align*}
+        y como $\mu(E_f)=0$, se tiene que $\alpha f\in M$. De esta manera $M$ es un subespacio de $L^2((-1,1))$.
+        Ahora, recordemos que para $f,g \in L^2((-1,1))$, el producto interno $(f;g)$ está dado por 
+        \begin{align*}
+            (f,g)=\int_{-1}^1 f(x)g(x)\, dx.
+        \end{align*}
+        Como $M$ es un subespacio cerrado, para $f \in L^2((-1,1))$, $P_M f$ se caracteriza como la única $g\in M$ tal que $(f-g,h)=0$ para toda $h \in M$, es decir, para toda $h \in M$ se tiene
+        \begin{align*}
+            (f-g,h)=\int_{-1}^1 (f(x)-g(x))h(x)\, dx=0.
+        \end{align*}
+        Tomemos $g(x)=\dfrac{f(x)+f(-x)}{2}\in M$ para $x \in (-1,1)$, y veamos que\\ $g=P_M f$. Primero, es claro que $g \in M$, dado que 
+        \begin{align*}
+            g(-x)=\dfrac{f(-x)+f(-(-x))}{2}=\dfrac{f(x)+f(-x)}{2}=g(x),
+        \end{align*}
+        y para $h \in M$
+        \begin{align*}
+            (f-g,h)&=\int_{-1}^1\left(f(x)-\dfrac{f(x)+f(-x)}{2}\right)h(x)\, dx\\
+            &=\int_{-1}^1\frac{f(x)-f(-x)}{2}h(x)\, dx\\
+            &=\underbrace{\dfrac{1}{2}\int_{-1}^1f(x)h(x)\, dx}_{I_1}-\underbrace{\dfrac{1}{2}\int_{-1}^1 f(-x)h(x)\, dx}_{I_2}.
+        \end{align*}
+        Como $h\in M$, $h(x)=h(-x)$ para casi todo $x \in (-1,1)$, de esta manera, usando la sustitución $y=-x$ tenemos
+        \begin{align*}
+            I_2=\dfrac{1}{2}\int_{-1}^1 f(-x)h(x)\, dx=\dfrac{1}{2}\int_{-1}^1f(y)h(y)\, dy=I_1,
+        \end{align*}
+        de manera que 
+        \begin{align*}
+            (f-g,h)=I_1-I_2=I_1-I_1=0,
+        \end{align*}
+        por tanto, $(P_M f)(x)=g(x)=\dfrac{f(x)+f(-x)}{2}$.
+
+        \item[(b)] Primero, note que podemos expresar $M$ usando el producto interno de $L^2((-1,1))$.
+        \begin{align*}
+            M=\left\{f \in L^2((-1,1)):\int_{-1}^1f(x)\, dx=0\right\}=\left\{f\in L^2((-1,1)): (f;1)=0\right\},
+        \end{align*}
+        donde $1$ denota la función constante $g(x)=1$. Antes de empezar a hacer los trámites, es importante mencionar que para $f \in L^2((-1,1))$, tiene sentido hallar la integral 
+        \begin{align*}
+            \int_{-1}^1f(x)\, dx,
+        \end{align*}
+        porque $\mu((-1,1))=2<\infty$, de donde se obtiene que $L^2((-1,1))\subset L^1((-1,1))$, más precisamente, usando la desigualdad de Cauchy-Schwarz, para \\
+        $f \in L^2((-1,1))$ se tiene que 
+        \begin{align*}
+            \left|\int_{-1}^1f(x)\, dx\right|&=\left|\int_{-1}^1f(x)\cdot 1\, dx\right|\\
+            &\leq \left(\int_{-1}^1|f(x)|^2\, dx\right)^{1/2}\left(\int_{-1}^1 1^2\, dx\right)^{1/2}\\
+            &=\norm{f}_{L^2((-1,1))}(\mu((-1,1)))^{1/2}\\
+            &=\sqrt{2}\norm{f}_{L^2((-1,1))}\\
+            &<\infty.
+        \end{align*}
+        
+        
+        Note que $L^2((-1,1))\setminus M\neq \emptyset$, dado que para la función $g(x)=1$
+        \begin{align*}
+            (g,1)=\int_{-1}^1 g(x)\, dx=\int_{-1}^1 1 \, dx=2\neq 0,
+        \end{align*}
+        es decir, $g(x)=1\in L^2((-1,1))\setminus M$. Si $f \in L^2((-1,1))\setminus M$, entonces 
+        \begin{align*}
+            (f,1)\neq 0,
+        \end{align*}
+        definimos
+        \begin{align*}
+            \alpha=\left|\left(f,\dfrac{1}{\sqrt{2}}\right)\right|=\dfrac{1}{\sqrt{2}}|(f,1)|>0,
+        \end{align*}
+        y sea $B=B\left(f;\dfrac{\alpha}{2}\right)$, la bola en $L^2((-1,1))$ centrada en $f$ con radio $\dfrac{\alpha}{2}$. Sea \\
+        $g \in B$, entonces $\norm{f-g}_{L^2((-1,1))}<\dfrac{\alpha}{2}$, además, por la desigualdad de Cauchy-Schwarz, tenemos que 
+        \begin{align*}
+            \left|\left(g-f,\dfrac{1}{\sqrt{2}}\right)\right|\leq \norm{g-f}_{L^2((-1,1))}\norm{\dfrac{1}{\sqrt{2}}}_{L^2((-1,1))}=\norm{g-f}_{L^2((-1,1))}<\dfrac{\alpha}{2},
+        \end{align*}
+        de esta manera
+        \begin{align*}
+            \left|\left(g,\dfrac{1}{\sqrt{2}}\right)\right|&=\left|\left(f,\dfrac{1}{\sqrt{2}}\right)+\left(g-f,\dfrac{1}{\sqrt{2}}\right)\right|\\
+            &\geq \left|\left(f,\dfrac{1}{\sqrt{2}}\right)\right|-\left|\left(g-f,\dfrac{1}{\sqrt{2}}\right)\right|\\
+            &>\alpha-\dfrac{\alpha}{2}\\
+            &=\dfrac{\alpha}{2},
+        \end{align*}
+        de manera que 
+        \begin{align*}
+            \left|\left(g,\dfrac{1}{\sqrt{2}}\right)\right|>\dfrac{\alpha}{2}>0\\
+            \Longrightarrow |(g,1)|>\dfrac{\sqrt{2}\alpha}{2}>0,
+        \end{align*}
+        luego $(g,1)\neq 0$ y así, $g \notin M$. De esta manera, tenemos que\\ $B\subset L^2((-1,1))\setminus M$, concluyendo que $M$ es cerrado. 
+
+        Veamos ahora que $M$ es un subespacio de $L^2((-1,1))$. Sean $f,g \in M$ y $\alpha\in \mathbb{R}$, entonces
+        \begin{align*}
+            \int_{-1}^1 (f(x)+g(x))\, dx=\int_{-1}^1f(x)\, dx+\int_{-1}^1g(x)\, dx=0+0=0,
+        \end{align*}
+        es decir, $f+g\in M$, además
+        \begin{align*}
+            \int_{-1}^1\alpha f(x)\, dx=\alpha\int_{-1}^1 f(x)\, dx=\alpha\cdot 0=0,
+        \end{align*}
+        por tanto, $\alpha f\in M$. De esta manera, $M$ es un subespacio de $L^2((-1,1))$. 
+
+        Hallemos ahora $P_M$. Sea $f\in L^2((-1,1))$, queremos encontrar $g\in M$ tal que $(f-g,h)=0$ para todo $h \in M$, es decir
+        \begin{align*}
+            \int_{-1}^1 ((f(x)-g(x))h(x)\, dx=0.
+        \end{align*}
+        Tomemos $g(x)=\displaystyle f(x)+C_f$ donde
+        \begin{align*}
+            C_f=-\dfrac{1}{2}\int_{-1}^1 f(y)\, dy,
+        \end{align*}
+        y veamos que $g=P_M f$. Primero veamos que, en efecto, $g \in M$ 
+        \begin{align*}
+            \int_{-1}^1g(x)\, dx&=\int_{-1}^1 (f(x)+C_f)\, dx\\
+            &=\int_{-1}^1f(x)\, dx+C_f\int_{-1}^1\, dx\\
+            &=\int_{-1}^1f(x)\, dx+2C_f\\
+            &=\int_{-1}^1 f(x)\ dx-\int_{-1}^1f(y)\, dy\\
+            &=0,
+        \end{align*}
+        por tanto $g \in M$. Ahora sea $h \in M$
+        \begin{align*}
+            (f-g,h)&=\int_{-1}^1 (f(x)-g(x))h(x)\, dx\\
+            &=\int_{-1}^1 (f(x)-(f(x)+C_f))h(x)\, dx\\
+            &=C_f\int_{-1}^1h(x)\, dx\\
+            &=C_f\cdot 0\\
+            &=0,
+        \end{align*}
+        de esta manera, $g=f+C_f=P_M f$.
+
+        \item[(c)] Note que,
+        \begin{align*}
+            g\in M \Longleftrightarrow g(x)=0\, \text{ c.t.p } \, x\in (-1,0) \Longleftrightarrow \int_{-1}^0|g(x)|^2\, dx=0,
+        \end{align*}
+        además, 
+        \begin{align*}
+            \int_{-1}^0|g(x)|^2\, dx=\int_{-1}^1|g(x)|^2\chi_{(-1,0)}(x)\, dx=\int_{-1}^1|g(x)\chi_{(-1,0)}(x)|^2\, dx=\norm{\chi_{(-1,0)}g}_{L^2((-1,1))}^2.
+        \end{align*}
+        de manera que $g \in M$ si y sólo si $\norm{\chi_{(-1,0)}g}_{L^2((-1,1))}=0$. Sea $(f_n)$ una sucesión de funciones en $M$ tal que $f_n\to f$, Note que 
+        \begin{align*}
+            \norm{\chi_{(-1,0)} f_n-\chi_{(-1,0)}f}_{L^2(-1,1)}&=\norm{\chi_{(-1,0)}(f_n-f)}_{L^2((-1,1))}\\
+            &=\left(\int_{-1}^1\left|\chi_{(-1,0)}(f_n(x)-f(x))\right|^2\right)^{1/2}\\
+            &=\left(\int_{-1}^0 |f_n(x)-f(x)|^2\, dx\right)^{1/2}\\
+            &\leq \left(\int_{-1}^1 |f_n(x)-f(x)|^2\, dx\right)^{1/2}\\
+            &=\norm{f_n-f}_{L^2((-1,1))},
+        \end{align*}
+        de manera que $\chi_{(-1,0)}f_n\to \chi_{(-1,0)}f$ en $L^2((-1,1))$. Para ver que $f \in M$ verificamos que $\norm{\chi_{(-1,0)}f}_{L^2((-1,1))}=0$. Sea $\varepsilon>0$, existe $N_\varepsilon$ tal que si $n\geq N$, entonces 
+        \begin{align*}
+            \norm{\chi_{(-1,0)}f_n-\chi_{(-1,0)}f}_{L^2((-1,1))}=\norm{\chi_{(-1,0)}(f_n-f)}_{L^2((-1,1))}<\varepsilon,
+        \end{align*}
+        Para $n\geq N_\varepsilon$ tenemos
+        \begin{align*}
+            \norm{\chi_{(-1,0)}f}_{L^2((-1,1))}&=\norm{\chi_{(-1,0)}(f-f_n)+\chi_{(-1,0)}f_n}_{L^2((-1,1))}\\
+            &\leq \norm{\chi_{(-1,0)}(f_n-f)}_{L^2((-1,1))}+\norm{\chi_{(-1,0)}f_n}_{L^2((-1,1))}\\
+            &=\norm{\chi_{(-1,0)}(f_n-f)}_{L^2((-1,1))}\\
+            &<\varepsilon,
+        \end{align*}
+        de esta manera $\norm{\chi_{(-1,0)}f}_{L^2((-1,1))}<\varepsilon$, y como $\varepsilon>0$ es arbitrario, obtenemos que 
+        \begin{align*}
+            \norm{\chi_{(-1,0)}f}_{L^2((-1,1))}=0,
+        \end{align*}
+        de donde obtenemos que $f(x)=0$ para casi todo $x \in (-1,0)$ y por tanto, $f\in M$. Así, concluimos que $M$ es cerrado.
+
+        Veamos ahora que $M$ es un subespacio de $L^2((-1,1))$. Sean $f,g \in M$ y $\alpha\in \mathbb{R}$, sean 
+        \begin{align*}
+            E_f&=\{x\in (-1,0):f(x)\neq 0\}\\
+            E_g&=\{x \in (-1,0):g(x)\neq 0\},
+        \end{align*}
+        como $f,g \in M$, $\mu(E_f)=\mu(E_g)=0$ y por tanto
+        \begin{align*}
+            0\leq \mu(E_f\cup E_g)\leq \mu(E_f)+\mu(E_g)=0+0=0,
+        \end{align*}
+        es decir, $\mu(E_f\cup E_g)=0$, entonces, para $x \in (-1,0)\setminus (E_f\cup E_g)$, $f(x)=0$ y $g(x)=0$, por tanto
+        \begin{align*}
+            f(x)+g(x)=0 \text{ para todo } x \in (-1,0)\setminus (E_f\cup E_g),
+        \end{align*}
+        y como $\mu(E_f\cup E_g)=0$, tenemos que $f+g\in M$. Si $x \in (-1,0)\setminus E_f$, entonces $f(x)=0$, por tanto
+        \begin{align*}
+            \alpha f(x)=\alpha\cdot 0=0 \text{ para todo } x \in (-1,0)\setminus E_f,
+        \end{align*}
+        nuevamente, como $\mu(E_f)=0$, se tiene que $f \in M$. De esta manera, concluimos que $M$ es un subespacio de $L^2((-1,1))$. 
+
+        Calculemos la proyección ortogonal $P_M$. Sea $f\in L^2((-1,1))$, queremos encontrar $g \in M$ tal que $(f-g,h)=0$ para toda $h \in M$. Tomemos $g=\chi_{[0,1)}f$ y veamos que $g=P_M f$. Claramente $g(x)=0$ para todo $x \in (-1,0)$, por lo que $g \in M$. Sea $h \in M$, entonces
+        \begin{align*}
+            (f-g,h)&=\int_{-1}^1(f(x)-\chi_{[0,1)}(x)f(x))h(x)\, dx\\
+            &=\int_{-1}^1\chi_{(-1,0)}(x)f(x)h(x)\, dx\\
+            &=\int_{-1}^0f(x)h(x)\, dx\\
+            &=0,
+        \end{align*}
+        dado que $h(x)=0$ para casi todo $x\in (-1,0)$. Así, concluimos que\\ $g=\chi_{[0,1)}f=P_Mf$.
+        \end{enumerate}
+
+        \item[(II)] \begin{enumerate}
+            \item[(a)] Veamos que $K$ es cerrado en $L^2(\Omega)$. Primero, note que
+        \begin{align*}
+            K=\left\{f \in L^2(\Omega):(f;1)\geq 1\right\}.
+        \end{align*}
+        Como $\Omega$ es un abierto acotado, tenemos que $0<\mu(\Omega)<\infty$, además
+        \begin{align*}
+            \norm{1}_{L^2(\Omega)}=\left(\int_{\Omega}|1|^2\, dx\right)^{1/2}=(\mu(\Omega))^{1/2}.
+        \end{align*}
+        
+        Sea $g\in L^2(\Omega)\setminus K$, es decir, $\alpha:=(g,1)<1$. Tomemos $\varepsilon>0$ tal que $\alpha+\varepsilon<1$ y  $\delta=\dfrac{\varepsilon}{(\mu(\Omega))^{1/2}}$. Consideremos $B=B(g,\delta)$, la bola en $L^2(\Omega)$ centrada en $g$ y de radio $\delta$ y sea $f \in B$, entonces $\norm{f-g}_{L^2(\Omega)}<\delta$. Por la desigualdad de Cauchy-Schwarz y lo anterior, se tiene que 
+        \begin{align*}
+            (f,1)&=(f-g,1)+(g,1)\\
+            &\leq \norm{f-g}_{L^2(\Omega)}\norm{1}_{L^2(\Omega)}+\alpha\\
+            &<\delta (\mu(\Omega))^{1/2}+\alpha\\
+            &=\dfrac{\varepsilon}{(\mu(\Omega))^{1/2}}(\mu(\Omega))^{1/2}+\alpha\\
+            &=\varepsilon+\alpha\\
+            &<1,
+        \end{align*}
+        de manera que $(f;1)<1$ y así, $B\subset L^2(\Omega)\setminus K$. De esta manera, concluimos que $K$ es cerrado en $L^2(\Omega)$.
+
+        Veamos que $K$ es convexo. Sean $f,g \in K$ y $t \in [0,1]$, entonces
+        \begin{align*}
+            \int_{\Omega}(tf(x)+(1-t)g(x))\, dx=t\int_{\Omega}f(x)\, dx+(1-t)\int_{\Omega}g(x)\, dx\geq t+(1-t)=1,
+        \end{align*}
+        luego $tf+(1-t)g \in K$, concluyendo que $K$ es convexo. 
+
+        \item[(b)] Procedemos a calcular $P_K$. Sea $f \in L^2(\Omega)$, queremos encontrar $g\in K$ tal que $(f-g;h-g)\leq 0$ para toda $h \in K$. Proponemos 
+        \begin{align*}
+            g(x)=f(x)+\chi_{(-\infty,1)}(C_f)\dfrac{1-C_f}{\mu(\Omega)},
+        \end{align*}
+        donde 
+        \begin{align*}
+            C_f=\int_\Omega f(y)\, dy.
+        \end{align*}
+        Veamos que, en efecto, $g=P_K f$. Tenemos dos casos
+        \begin{itemize}
+            \item Si $f \in K$, tenemos que $C_f\geq 1$ y por tanto $\chi_{(-\infty,1)}(C_f)=0$, por tanto, $g=f$ y así, $g \in K$ y $(f-g,h-g)=(0,h-f)=0\leq 0$, es decir, $g=f=P_Kf$.
+
+            \item Si $f\notin K$, tenemos que $C_f<1$, por tanto $\chi_{(-\infty,1)}(C_f)=1$. Veamos que $g \in K$
+            \begin{align*}
+                \int_{\Omega}g(x)\, dx&=\int_{\Omega}\left(f(x)+\chi_{(-\infty,1)}(C_f)\dfrac{1-C_f}{\mu(\Omega)}\right)\, dx\\
+                &=\int_{\Omega}\left(f(x)+\dfrac{1-C_f}{\mu(\Omega)}\right)\, dx\\
+                &=\int_{\Omega}f(x)\, dx+\dfrac{1-C_f}{\mu(\Omega)}\int_{\Omega}\, dx\\
+                &=C_f+(1-C_f)\\
+                &=1.
+            \end{align*}
+            por tanto, $g\in K$.
+            
+            Note que, como $C_f<1$, entonces $1-C_f>0$ y, por tanto, $\dfrac{1-C_f}{\mu(\Omega)}>0$. Sea $h \in K$ cualquiera, entonces $C_h\geq 1$ y por tanto, $C_h-1\geq 0$
+            \begin{align*}
+                (f-g,h-g)&=\left(-\dfrac{1-C_f}{\mu(\Omega)},h-f-\dfrac{1-C_f}{\mu(\Omega)}\right)\\
+                &=-\dfrac{1-C_f}{\mu(\Omega)}\left(1,h-f-\dfrac{1-C_f}{\mu(\Omega)}\right)\\
+                &=-\dfrac{1-C_f}{\mu(\Omega)}\int_{\Omega}\left(h(x)-f(x)-\dfrac{1-C_f}{\mu(\Omega)}\right)\, dx\\
+                &=-\dfrac{1-C_f}{\mu(\Omega)}\left(\int_{\Omega}h(x)\, dx-\int_{\Omega}f(x)\, dx-\dfrac{1-C_f}{\mu(\Omega)}\int_{\Omega}\, dx\right)\\
+                &=-\dfrac{1-C_f}{\mu(\Omega)}(C_h-C_f-(1-C_f))\\
+                &=-\dfrac{1-C_f}{\mu(\Omega)}(C_h-1)\\
+                &\leq 0.
+            \end{align*}
+            de esta manera $g=P_K f$.
+        \end{itemize}
+        Así, podemos concluir que 
+        \begin{align*}
+            (P_K f)(x)=f(x)+\chi_{(-\infty,1)}(C_f)\dfrac{1-C_f}{\mu(\Omega)}, \hspace{5mm} C_f=\int_{\Omega}f(y)\, dy.
+        \end{align*}
+        \end{enumerate}
+    \end{enumerate}
+    \end{proof}
+
+
+\textbf{Ejercicio 14.} Sea $H$ un espacio de Hilbert y $A\in L(H)=L(H,H)$ (el conjunto de funciones lineales continuas de $H$ en $H$).
+\begin{enumerate}
+    \item[(I)] Para $y \in H$ fijo, muestre que el funcional $\Phi_y:H\to \mathbb{R}$ dado por $(Ax,y)$ es lineal y continuo. Deduzca que existe un único elemento en $H$ que denotaremos por $A^\star y$, tal que 
+    \begin{align*}
+        (Ax,y)=(x,A^\star y) \text{ para todo } x \in H.
+    \end{align*}
+    \item[(II)] Muestre que $A^\star \in L(H)$. $A^\star$ se llama el adjunto de $A$.
+    \item[(III)] Verifique que $(A^\star)^\star=A$ y $\norm{A^\star}=\norm{A}$.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}
+        \item [(I)]Veamos que $\Phi_y$ es lineal. Como H es de Hilbert, y usando que $A \in \mathcal{L}(H)$ se sigue que para todo $x,z \in H$ y $\lambda \in \mathbb{R}$:
+\begin{align*}
+\Phi_y(x+\lambda z) &= ((Ax+\lambda z), y) \\
+&= (Ax+\lambda Az, y) \\
+&= (Ax,y) + (\lambda Az,y) \\
+&= (Ax,y) + \lambda (Az,y) \\
+&= \Phi_y(x) + \lambda \Phi_y(z)
+\end{align*}
+
+Para ver que $\Phi_y$ es continuo, como $A \in \mathcal{L}(H)$, existe una constante $M\geq 0$ tal que $\norm{Ax}\leq M\norm{x}$ para todo $x \in H$. Así, dado $x \in H$
+\begin{align*}
+|\Phi_y x| &= |(Ax, y)| \\
+&\le \|Ax\| \|y\| \\
+&\le M \|x\| \|y\|.
+\end{align*}
+con lo que se concluye que $\Phi_y \in H^{\star}$.
+
+Ahora, por el teorema de representación de Riesz, existe un único elemento en $H$, llámelo $A^{\star}y$, tal que
+\begin{align*}
+(Ax,y) &= \langle \Phi_y, x \rangle \\
+&= (A^{\star}y, x) \\
+&= (x, A^{\star}y) \quad \forall x \in H.
+\end{align*}
+en donde en la última igualdad se usa que $(\cdot, \cdot)$ es simétrico.
+\item[(II)] Primero veamos que $A^\star$ es lineal. Para ello, dados $y, z \in H$ y $\lambda \in \mathbb{R}$,
+queremos ver que
+\[
+(x, A^\star(\lambda y+z)) = (x, \lambda A^\star y + A^\star z) \quad \forall x \in H
+\]
+Así, dado $x \in H$
+\begin{align*}
+(x, A^\star(\lambda y+z)) &= (Ax, \lambda y+z) \\
+&= \lambda (Ax,y) + (Ax,z) \\
+&= \lambda (x, A^\star y) + (x, A^\star z) \\
+&= (x, \lambda A^\star y) + (x, A^\star z) \\
+&= (x, \lambda A^\star y + A^\star z)
+\end{align*}
+Por tanto, como
+\[
+(x, A^\star(\lambda y+z)) = (x, \lambda A^\star y + A^\star z) \quad \forall x \in H
+\]
+entonces $A^\star(\lambda y+z) = \lambda A^\star y + A^\star z$.
+
+Veamos que $A^\star$ es continuo.
+Para esto, usaremos el Teorema del Gráfico cerrado. Con el fin de evitar confusiones en la notación, usaremos $(\cdot,\cdot)_H$ para denotar el producto interior de H, mientras que la notación de pareja ordenada $(\cdot,\cdot) \in H^2$ se mantiene igual.
+
+Sea $(x,y) \in \overline{\mathcal{G}(A^\star)}$. Luego existe una sucesión $\{ (x_n, A^\star x_n) \}$ en $\mathcal{G}(A^\star)$ tal que
+\begin{align*}
+x_n &\xrightarrow{n \to \infty} x \\
+A^\star x_n &\xrightarrow{n \to \infty} y
+\end{align*}
+Sea $z \in H$, luego
+\[
+(Az,x_n)_H = (z, A^\star x_n)_H
+\]
+Ahora, notemos que $(\cdot,\cdot)_H: H^2 \longrightarrow \mathbb{R}$ es continuo; pues dado $\{u_n\}, \{v_n\}$ sucesiones en H tales que
+\begin{align*}
+u_n &\longrightarrow u \\
+v_n &\longrightarrow v
+\end{align*}
+se tiene que
+\begin{align*}
+|(u_n, v_n)_H - (u, v)_H| &= |(u_n, v_n)_H - (u, v_n)_H + (u, v_n)_H - (u, v)_H| \\
+&\le |(u_n - u, v_n)_H| + |(u, v_n - v)_H| \\
+&\le \|u_n - u\| \|v_n\| + \|u\| \|v_n - v\|
+\end{align*}
+Y como dado $\varepsilon>0$, existe $N>0$ tal que $\|u_n - u\| < \varepsilon$, $\|v_n - v\| < \varepsilon$, siempre que $n\geq N$.
+Además, como $\{v_n\}$ es acotada por ser convergente, existe $M>0$ tal que $\|v_n\| \le M \quad \forall n \ge 1$. Entonces
+\[
+|(u_n, v_n)_H - (u, v)_H| < M\varepsilon + \|u\|\varepsilon
+\]
+Y por tanto, $(\cdot,\cdot)_H$ es continuo.
+Usando esto y que
+\[
+(Az, x_n)_H = (z, A^\star x_n)_H
+\]
+haciendo tender $n \to \infty$
+\begin{align*}
+(Az, x)_H &= (z, y)_H \\
+(z, A^\star x)_H &= (z, y)_H \\
+(z, A^\star x - y) &= 0
+\end{align*}
+Como esto ocurre para cualquier $z \in H$,
+\[
+A^\star x = y
+\]
+de modo que $(x,y)=(x, A^\star x) \in \mathcal{G}(A^\star)$ y por tanto, $\mathcal{G}(A^\star)$ es cerrado, con lo cual concluimos que $A^\star$ es continuo y así, $A^\star \in \mathcal{L}(H)$.
+\item[(III)] Sea $y \in H$. Así:
+\begin{align*}
+(((A^\star)^\star - A)y, x) &= ((A^\star)^\star y - Ay, x) \\
+&= ((A^\star)^\star y, x) - (Ay, x) \\
+&= (x, (A^\star)^\star y) - (Ay, x) \\
+&= (A^{\star}x, y) - (y, A^{\star}x) \\
+&= (A^\star x, y) - (A^{\star}x, y)=0
+\end{align*}
+para todo $x \in H$. Por tanto, $(A^\star)^\star y = Ay$. Pero como $y \in H$ es arbitrario, $\displaystyle(A^\star)^\star = A$.
+
+Finalmente, mostremos que $\|A^\star\| \le \|A\|$ y $\|A\| \le \|A^\star\|$. \\
+
+\checkmark$\|A^\star\| \le \|A\|$: Sea $x \in H$, con $\|x\|=1$. Así
+\begin{align*}
+(A^\star x, A^\star x) &= (A A^\star x, x) \\
+&\le \|A A^\star x\| \|x\| \\
+&\le \|A\| \|A^\star x\| 
+\end{align*}
+Como $(A^\star x, A^\star x) = \|A^\star x\|^2$, se sigue que
+\[
+\|A^\star x\| \leq \|A\|
+\]
+pues en el caso que $\|A^\star x\|=0$, la desigualdad se tiene trivialmente. De esta forma
+\[
+\|A^\star\| = \sup_{\substack{x \in H \\ \|x\|=1}} \|A^\star x\| \le \|A\|
+\]
+
+\checkmark$\|A\| \le \|A^\star\|$: 
+Por lo hecho en la primera parte, $A = (A^\star)^\star$.
+Así (y usando lo probado anteriormente)
+\[
+\|A\| = \|(A^\star)^\star\| \le \|A^\star\|. 
+\] 
+Por lo tanto, $\norm{A}=\norm{A^{\star}}$
+ 
+    \end{enumerate}
+\end{proof}
+\textbf{Ejercicio 15.} Sea $H$ un espacio de Hilbert y $M\subseteq H$ un subespacio cerrado. Considere la proyección ortogonal $P_M$. Muestre que 
+\begin{enumerate}
+    \item[(I)] $P_M$ es lineal.
+    \item[(II)] $P_M^2=P_M$.
+    \item[(III)] $P_M^\star=P_M$, donde $P_M^\star$ denota el operador adjunto de $P_M$.
+    \item[(IV)] $\text{Rango}(P_M)=M$ y $\text{Kernel}(P_M)=M^\perp$.
+    \item[(V)] Suponga que $P \in L(H)$. Entonces $P$ es la proyección sobre un subespacio cerrado si y sólo si $P=P^2=P^\star$.
+\end{enumerate}
+\begin{proof} 
+  \begin{enumerate}
+    \item[(I)] Veamos que $P_{M}$ es lineal, note que como $M$ es un subespacio cerrado, sabemos que dado un $f\in H$ existe un único $u\in M$ tal que
+      \begin{align*}
+        |f-u|=\min_{v\in M}|f-v|=dist(f,M).
+      \end{align*}
+      más aún
+      \begin{align*}
+        (f-u,v)&= 0&&\text{para todo $v\in M$.}
+      \end{align*}
+      Siendo así, suponga $f,g\in H$ y $\lambda$ escalar, entonces sabemos que existen $u_{1},u_{2}\in M$ tales que  
+      \begin{align*}
+        (f-u_{1},v)&=0,\\
+        (g-u_{2},v)&=0&&\text{para todo $v\in M$.}
+      \end{align*}
+      Luego se puede inferir usando la linealidad del producto interno que
+      \begin{align*}
+        0&=(f-u_{1},v)+\lambda(g-u_{2},v)=(f+\lambda g-(u_{1}+\lambda u_{2}),v) &&\text{para todo $v\in M$.}
+      \end{align*}
+      De lo que se concluye que si $P_{M}(f)=u_{1}, P_{M}(g)=u_{2}$, entonces $P_{M}(f+\lambda g)=P_{M}(f)+\lambda P_{M}(g)$, es decir, el operador proyección ortogonal $P_{M}$ es un operador lineal. 
+    \item[(II)] Note que dado $f\in H$, entonces existe un único $u\in M$ tal que $P_{M}(f)=u\in M$, además, como $u\in M$, entonces $P_{M}(u)=u$, ya que
+    \begin{align*}
+      (u-u,v)=(0,v)&=0&&\text{para todo $v\in M$.}
+    \end{align*}
+    De lo que se concluye que
+    \begin{align*}
+      P_{M}^{2}(f)&=P_{M}\left( P_{M}(f) \right),\\
+      &=P_{M}(u),\\
+      &=u,\\
+      &=P_{M}(f).
+    \end{align*}
+    Lo que concluye el resultado.
+    \item[(III)] como $H$ es un espacio de Hilbert y $P_{M}:H\to H$, entonces por el teorema de representación de Riesz sabemos que el operador $P_{M}^{\star}$ cumple que dados $x,y\in H$ se satisface que 
+      \begin{align*}
+        \left(P_{M}(x),y\right)&=\left(x,P_{M}^{\star}(y)\right).
+      \end{align*}
+      Ahora, note que $x$ se puede reescribir como $x=P_{M}(x)+\left( x-P_{M}(x) \right)$ y de forma similar $y=P_{M}(y)+\left( y-P_{M}(y) \right)$, en dónde $P_{M}(x),P_{M}(y)\in M$ y $\left( x-P_{M}(x) \right),\left( y-P_{M}(y) \right)\in M^{\perp}$ de lo que usando la linealidad del producto interno y la ortogonalidad se puede concluir que
+      \begin{align*}
+        \left( P_{M}(x),y \right)&=(P_{M}(x),P_{M}(y)+y-P_{M}(y)),\\
+        &=(P_{M}(x),P_{M}(y))+(P_{M}(x),y-P_{M}(y)),\\
+        &=(P_{M}(x),P_{M}(y)),\\
+        &=(P_{M}(x),P_{M}(y))+(x-P_{M}(x),P_{M}(y)),\\
+        &=(P_{M}(x)+x-P_{M}(x),P_{M}(y)),\\
+        &=(x,P_{M}(y)).
+      \end{align*}
+      De lo que se puede concluir que $P_{M}^{\star}=P_{M}$.
+    \item[(IV)] Note que para todo $x\in M$ se cumple que $P_{M}(x)=x$, por lo que se sabe que $M\subseteq Rango(P_M)$, pero por otro lado dado $y\in H$ sabemos que por ser $M$ un subespacio cerrado, entonces $P_{M}(y)\in M$, por lo que se afirma que $Rango(P_{M})\subseteq M$, lo que concluye que $Rango(P_{M})=M$. Por otro lado note que dado $x\in H$ se cumple que $x\in Kernel(P_{M})$ sí y sólo si se satisface que $P_{M}(x)=0$, lo que por definición es
+      \begin{align*}
+        (x-0,v)&=(x,v),\\
+        &=0&&\text{para todo $v\in M$.}
+      \end{align*}
+      que solo es verdadero si y sólo si $x\in M^{\perp}$, lo que nos permite concluir que $Kernel(P_{M})=M^{\perp}$.
+    \item[(V)] Note que por $(I), (II)$ y $(III)$ ya se tiene que si $P\in L(H)$ y $P$ es la proyección sobre un espacio cerrado, entonces $P=P^{2}=P^{\star}$.\\
+      Por otro lado suponga que $P\in L(H)$ y que se cumple que $P=P^{2}=P^{\star}$, luego definamos el conjunto $M=Rango(P)$, por otro lado note que como $P=P^{\star}$
+      \begin{align*}
+        Kernel(P)&=\{x\in H:(P(x),z)=0\text{ para todo $z\in H$.}\},\\
+        &=\{x\in H:(x,P(z))=0\text{ para todo $z\in H$.}\},\\
+        &=\{x\in H:(x,y)=0\text{ para todo $y=P(z)$ para algún $z\in H$.}\},\\
+        &=Rango(P)^{\perp}=M^{\perp}.
+      \end{align*}
+      Además, note que como el $Rango(P)=M$, entonces dados $x,y\in M$ existen $u,v\in H$ tales que $P(u)=x$ y $P(v)=y$, luego como $P^2=P$, entonces $x=P^{2}(u)=P(P(u))=P(x)$, de igual forma se puede concluir que $P(y)=y$, luego como $P$ es lineal, entonces dado $\lambda$ escalar se cumple que $P(x+\lambda y)=x+\lambda y$, de lo que se puede concluir que $x+\lambda y\in M$, es decir que $M$ es un subespacio de $H$. Por otro lado como $P\in L(H)$, entonces $P$ es acotado, luego como $H$ es espacio de Hilbert, sabemos que este es completo, es decir que dada $\{x_{n}\}\subset H$ sucesión de Cauchy, sabemos que $x_{n}\to x$ con $x\in H$, luego $\{P(x_{n})\}$ también es sucesión de Cauchy, ya que dado $\epsilon>0$ existe $N$ tal que si $n,m>N$, entonces $\frac{\norm{x_{n}-x_{m}}}{\norm{P}}<\epsilon$ y por ende 
+      \begin{align*}
+        \norm{P(x_{n})-P(x_{m})}&=\norm{P(x_{n}-x_{m})},\\
+        &\leq \norm{P}\norm{x_{n}-x_{m}},\\
+        &< \epsilon.
+      \end{align*}
+      Luego note que $P(x_{n})\to P(x)$, ya que $P$ es un operador continuo (acotado), luego como $M=Rango(P)$ toda sucesión de Cauchy en $M$ se puede ver como imagen de una sucesión de Cauchy en $H$, lo que nos permite concluir que $M$ es un espacio cerrado.\\
+      Por último, note que dado $x\in H$ se puede verificar que si $x\in M$, entonces 
+      \begin{align*}
+        (x-P(x),v)&=(x-x,v),\\
+        &=(0,v),\\
+        &=0&&\text{ para todo $v\in M$.}
+      \end{align*}
+      Y si $x\notin M$, entonces $x-P(x)\in Kernel(P)$ ya que
+      \begin{align*}
+        P(x-P(x))&=P(x)-P^{2}(x),\\
+        &=P(x)-P(x),\\
+        &=0.
+      \end{align*}
+      Pero como $Kernel(P)=Rango(P)^{\perp}$, entonces sabemos que
+      \begin{align*}
+        (x-P(x),v)&=0&&\text{ para todo $v\in M$.}
+      \end{align*}
+      Lo que concluye que $P$ es el operador proyección ortogonal sobre un espacio cerrado $M$, lo que da por finalizado el ejercicio. 
+  \end{enumerate}
+\end{proof}
+\section{Operadores Compactos y Teorema Espectral}
+
+\textbf{Ejercicio 3.} Considere los operadores de desplazamiento $S_r,S_l\in L(\ell^2)$, donde si\\ $x=(x_1,x_2,x_3,...)\in \ell^2$, estos se definen como
+\begin{align*}
+    S_rx:=(0,x_1,x_2,x_3,...),
+\end{align*}
+y
+\begin{align*}
+    S_lx=(x_2,x_3,x_4,...).
+\end{align*}
+$S_r$ se conoce como el desplazamiento a derecha y $S_l$ como el desplazamiento a izquierda.
+
+\begin{enumerate}
+    \item[(a)] Determinar las normas $\norm{S_r}$ y $\norm{S_l}$.
+    \item[(b)] Muestre que $EV(S_r)=\emptyset$.
+    \item[(c)] Muestre que $\sigma(S_r)=[-1,1]$.
+    \item[(d)] Muestre que $EV(S_l)=(-1,1)$. Encuentre el subespacio propio correspondiente.
+    \item[(e)] Muestre que $\sigma(S_l)=[-1,1]$.
+    \item[(f)] Determine los adjuntos $S_r^\star$ y $S_l^\star$.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Calculemos $\|S_r\|$ y $\|S_{l}\|$:
+        \begin{itemize}
+            \item $\displaystyle\|S_r\| = \sup_{\substack{x \in l^2 \\ \|x\|=1}} \|S_r x\|$ \\
+Sea $x=(x_{1},x_{2},...)\in l^{2}$ tal que $||x||=1$.
+Entonces $\displaystyle\left(\sum_{i=1}^{\infty}|x_{i}|^{2}\right)^{1/2}=1$.
+Como $S_r x=(0,x_{1},x_{2},...,)$, entonces $\displaystyle||S_r x||=\left(\sum_{i=1}^{\infty}|x_{i}|^{2}\right)^{1/2}=1$.
+Así, $||S_{r}||=1$.
+\item $\displaystyle\|S_{l}\|= \sup_{\substack{x \in l^2  \\\|x\|=1}} ||S_{l}x||$ \\
+Sea $x=(x_{1},x_{2},...)\in l^{2}$ tal que $||x||=1$.
+Entonces \[\left(\sum_{i=1}^{\infty}|x_{i}|^{2}\right)^{1/2}=1\]
+Como $S_{l}x=(x_{2},x_{3},...)$, entonces \[||S_{l}x||=\left(\sum_{i=2}^{\infty}|x_{i}|^{2}\right)^{1/2}\leq 1.\]
+Ahora, considere $y=(0,1,0,0,...,0)$.
+$y\in l^{2}$ y además, $||y||=1$.
+Por otro lado, $S_{l}y=(1,0,0,...,0)$.
+De modo que $||S_{l}y||=1$.
+Con lo anterior, se tiene entonces que $||S_{l}||=1$.
+\end{itemize}
+\item[(b)] Por contradicción, si existiera $\lambda\in\mathbb{R}$ tal que \[N(S_r-\lambda I)\neq\{0\}.\]
+Entonces existiría $x=(x_{1},x_{2},...)\in l^2$ no nulo, tal que 
+\begin{align*}
+(S_{r}-\lambda I)x&=(0,0,...)
+\\(-\lambda x_{1},x_{1}-\lambda x_{2},x_2-\lambda x_3,...) &= (0,0,...)
+\end{align*}
+\begin{itemize}
+    \item Si $\lambda=0$, entonces
+    \[(-\lambda x_{1},x_{1}-\lambda x_{2},x_2-\lambda x_3,...)=(0,x_{1},x_{2},...)=(0,0,...),\] por lo que $x_n=0$ $\forall n\ge 1$.
+\item Si $\lambda\ne0$, se tiene que $-\lambda x_{1}=0$ lo que implica que $x_{1}=0$. Luego \begin{align*}
+    x_{1}-\lambda x_{2}&=0 \\  x_2&=0.
+\end{align*}
+Ahora, por inducción, si $x_n=0$, entonces se tiene que $x_{n}-\lambda x_{n+1}=0$ lo que implica que $x_{n+1}=0$.
+Por lo tanto, $x_{n}=0$ $\forall n\ge1.$
+\end{itemize}
+En cualquier caso, se tiene una contradicción, por lo que $EV(S_{r})=\emptyset$.
+    
+    \item[(c)] Por la proposición 8.3.1 del libro "Functional Analysis" de Kesavan:
+\begin{theorem}[Proposición 8.3.1]
+    
+Sea H espacio de Hilbert y $T\in L(H)$. Entonces $\lambda\in\sigma(T)$ si y sólo si $\bar{\lambda}\in\sigma(T^{\star})$.
+\end{theorem}
+En nuestro caso, como $\lambda \in \R ,S_r \in L(l^2)$ y $l^2$ es de Hilbert, tenemos que $\lambda\in\sigma(S_r)$ si y sólo si $\lambda\in\sigma(S_r^{\star})$. \\
+Ahora, por lo desarrollado en el ítem (f), tenemos que $S_{r}^{\star}=S_l$ y por lo hecho en el ítem (e), $\sigma(S_l)=[-1,1]$. Por lo tanto, \[\sigma(S_{r})=\sigma(S_{r}^{\star})=\sigma(S_{l})=[-1,1].\]
+\item[(d)] Como $\lambda\in EV(S_{l})$ si y sólo si $N(S_{l}-\lambda I)\ne\{0\}$. \\
+Esto es, existe $x=(x_{1},x_{2},...)\in l^{2}$ con $x$ no nulo tal que \begin{align*}
+S_{l}x&=\lambda x \\
+ (x_{2},x_{3},...,x_{n+1},...)&=(\lambda x_{1},\lambda x_{2},...,\lambda x_{n},...).\end{align*}
+De esta forma,
+\begin{align*}
+x_{2}&=\lambda x_{1} \\
+x_{3}&=\lambda x_{2}=\lambda^{2}x_{1}
+\end{align*}
+y en general
+\[x_{n+1}=\lambda^{n}x_{1} \quad \forall n \geq 1\]
+Luego $x\in l^{2}$ si y sólo si \[\sum_{i=0}^{\infty}(\lambda^{i}x_{1})^{2} = \sum_{i=0}^{\infty}x_1^{2}(\lambda^{2})^{i} \quad \text{converge.}\]
+Esto ocurre si y sólo si $|\lambda^{2}|<1$, es decir, cuando $\lambda\in (-1,1)$. \\
+Ahora calculamos el espacio propio correspondiente.
+Como \[x=(x_{1},x_{2},...,x_{n},...)=(x_{1},\lambda x_{1},\lambda^{2}x_{1},...,\lambda^{n}x_{1},...)
+=x_{1}(1,\lambda,\lambda^{2},...,\lambda^{n},...).\]
+Luego el espacio propio correspondiente es \[gen\{(1,\lambda,\lambda^{2},...,\lambda^{n},...)\}.\]
+\item[(e)] Veamos que $\sigma(S_l)=[-1,1]$. Como $||S_{l}||=1$, sabemos que $\sigma(S_{l})\subseteq[-1,1]$.
+Además $\sigma(S_{l})$ es compacto.
+Por otro lado, usando lo desarrollado en el item anterior, $EV(S_l)=(-1,1)$, de modo que $(-1,1)\subseteq\sigma(S_l)$.
+De esto se sigue que\[(-1,1)\subseteq\sigma(S_l)\subseteq[-1,1].\] Como $\sigma(S_{l})$ es compacto, entonces $\sigma(S_l)=[-1,1]$.
+\item[(f)] Calculemos $S_r^{\star}$. \\
+Sea $x\in l^{2}$, donde $x=(x_{1},x_{2},...,x_{n},...)$.
+Como $l^2$ es de Hilbert, sabemos que $S_{r}^{\star}\in L(l^{2})$ donde \[(S_{r}y,x)=(y,S_{r}^{\star}x) \quad\forall y\in l^{2},\]
+donde notamos $S_{r}^{\star}x=(x_{1}^{\star},x_{2}^{\star},...,x_{n}^{\star},...)$. \\
+En particular, consideremos los canónicos $e_{n}$ donde $(e_{n})_{k}=\delta_{nk}$ (es decir, 0 en la posición $k$ si $k\neq n$ y 1 en la posición $n$).
+Luego \begin{align*}
+(S_{r}e_{n},x)&=(e_{n},S_{r}^{\star}x) \\ x_{n+1}&=x ^{\star}_n.
+\end{align*}
+variando $n$, tenemos que $x_{n+1}=x_n^{\star} \quad\forall n \geq 1$. Es decir que
+\[S^{\star}_rx=(x_2,x_3,...,x_{n+1},...)=S_lx.\]
+Por lo tanto, $S^{\star}_r=S_l$. \\
+
+Ahora, calculemos $S_l^{\star}$. Como $l^2$ es de Hilbert, sabemos por el ejercicio 14 del presente taller que \[(S_r^{\star})^{\star} = S_r.\]
+De este modo, usando que $S_r^{\star}=S_l$, se sigue que \[S_{l}^{\star}=(S_{r}^{\star})^{\star}=S_r.\] Entonces $S_l^{\star} = S_r$. 
+
+\end{enumerate}
+\end{proof}
+\textbf{Ejercicio 4.} Sea $1\leq p<\infty$ y consideremos el espacio $L^p((0,1))$. Dado $u \in L^p((0,1))$, definimos
+\begin{align*}
+    Tu(x)=\int_{0}^xu(t)\, dt.
+\end{align*}
+\begin{enumerate}
+    \item[(a)] Demuestre que $T \in \mathcal{K}(L^p((0,1)))$. 
+    \item[(b)] Determine $EV(T)$ y $\sigma(T)$.
+    \item[(c)] Dé una fórmula explícita para $(T-\lambda I)^{-1}$ cuando $\lambda\in \rho(T)$.
+    \item[(d)] Determine $T^\star$.
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Veamos primero que $T\in \mathcal{L}(L^p((0,1)))$. Por simplicidad, denotaremos $\norm{\cdot}_{L^p((0,1))}=\norm{\cdot}_p$. Es claro que $T$ es un operador lineal, además, dada $u \in L^p((0,1))$, por la desigualdad de Hölder
+        \begin{align*}
+            \norm{u}_1=\int_0^1|u(t)|\, dt\leq \norm{1}_{p'}\norm{u}_p=\left(\int_0^1 \, 1^{p'}dt\right)^{1/p'}\norm{u}_p=\norm{u}_p,
+        \end{align*}
+        donde $\dfrac{1}{p}+\dfrac{1}{p'}=1$. De esta manera
+        \begin{align*}
+            \norm{Tu}_p&=\left(\int_{0}^1 |Tu(x)|^p\, dx\right)^{1/p}\\
+            &=\left(\int_0^1 \left|\int_0^x u(t)\, dt\right|^p\, dx\right)^{1/p}\\
+            &\leq \left(\int_{0}^1\left(\int_0^1 |u(t)|\, dt\right)^p\, dx\right)^{1/p}\\
+            &=\int_0^1 |u(t)|\, dt\\
+            &=\norm{u}_1\\
+            &\leq \norm{u}_p.
+        \end{align*}
+        de manera que $T$ es acotado y $\norm{T}\leq 1$. Veamos ahora que $T \in \mathcal{K}(L^p((0,1)))$. Sea
+        \begin{align*}
+            B=\left\{f \in L^p((0,1)): \norm{f}_p\leq 1\right\}.
+        \end{align*}
+        Queremos ver que $\overline{T(B)}$ es compacto en $L^p((0,1))$, para esto, vamos a usar el siguiente resultado.
+        \begin{theorem}
+            \textbf{(Kolmogorov. Riesz-Frechet).} Sea $\mathcal{F}$ un subconjunto acotado de $L^p(\mathbb{R}^n)$ con $1\leq p<\infty$. Para $f:\mathbb{R}^n\to \mathbb{R}$ y $h \in \mathbb{R}^n$, sea $\tau_h f(x)=f(x+h)$. Asuma que
+            \begin{align*}
+                \lim_{|h|\to 0}\norm{\tau_h f-f}_p=0 \text{ uniformemente en } f \in\mathcal{F},
+            \end{align*}
+            esto es, si para todo $\varepsilon>0$ existe $\delta>0$ tal que si $|h|<\delta$,\\ entonces $\norm{\tau_h f-f}_p<\varepsilon$ para toda $f \in \mathcal{F}$. Entonces la clausura de $\mathcal{F}\big|_{\Omega}$ es compacta en $L^p(\Omega)$, para cualquier $\Omega\subset \mathbb{R}^n$ con medida finita ($\mathcal{F}\big|_\Omega$ denota las restricciones a $\Omega$ de las funciones en $\mathcal{F}$).
+        \end{theorem}
+
+        Para aplicar el teorema anterior, claramente vamos a tomar\\ $\Omega=(0,1)$ y $\mathcal{F}=T(B)$. Sea $h \in \mathbb{R}$ con $|h|<1$. Para no tener problemas con las expresiones
+        \begin{align*}
+            Tu(x+h)=\int_{0}^{x+h}u(t)\, dt,
+        \end{align*}
+        dado que, en principio, las funciones en $L^p((0,1))$ están definidas únicamente en $(0,1)$, veremos estas funciones como ``extendidas'' fuera del intervalo $(0,1)$ por la función nula, es decir, si $f\in L^p((0,1))$, entonces consideramos la función $\widetilde{f}$ definida en todo $\mathbb{R}$ (aunque en la práctica denotaremos por $f$)
+        \begin{align*}
+            \widetilde{f}(x)=\begin{cases}
+                f(x), \hspace{3mm} &\text{ si } x\in (0,1),\\
+                0, &\text{ si } x \in \mathbb{R}\setminus(0,1).
+            \end{cases}
+        \end{align*}
+        Sea $f \in T(B)$, por definición, existe $u \in B$ tal que $Tu=f$. Tenemos dos casos
+        \begin{itemize}
+            \item Si $h\leq 0$
+            \begin{align*}
+                \norm{\tau_h f-f}_p&=\left(\int_0^1|\tau_h f(x)-f(x)|^p\, dx\right)^{1/p}\\
+                &=\left(\int_0^1\left|\tau_h Tu(x)-Tu(x)\right|^p\, dx\right)^{1/p}\\
+                &=\left(\int_0^1 \left|\int_0^{x+h}u(t)\, dt-\int_0^xu(t)\, dt\right|^p\, dx\right)^{1/p}\\
+                &=\left(\int_0^1 \left|\int_0^{x+h}u(t)\, dt-\int_0^{x+h}u(t)\, dt-\int_{x+h}^x u(t)\, dt\right|^p\, dx\right)^{1/p}\\
+                &=\left(\int_0^1\left|\int_{x+h}^x u(t)\, dt\right|^p\, dx\right)^{1/p}\\
+                &\leq \left(\int_0^1\left(\int_{x+h}^x |u(t)|\, dt\, \right)^pdx\right)^{1/p},
+            \end{align*}
+            Ahora, por la desigualdad de Hölder y usando que $u \in B$, si $\dfrac{1}{p}+\dfrac{1}{p'}=1$, 
+            \begin{align*}
+                \int_{x+h}^x|u(t)|\, dt&=\int_0^1 \chi_{(x+h,x)}(t)|u(t)|\, dt\\
+                &\leq \norm{\chi_{(x+h,x)}}_{p'}\norm{u}_p\\
+                &=\left(\int_{x+h}^x \, dt\right)^{1/p'}\\
+                &=(-h)^{1/p'}\\
+                &=|h|^{1/p'},
+            \end{align*}
+            de manera que
+            \begin{align*}
+                \norm{\tau_hf-f}_p\leq \left(\int_0^1\left(\int_{x+h}^x |u(t)|\, dt\, \right)^pdx\right)^{1/p}\leq \left(|h|^{p/p'}\right)^{1/p}=|h|^{1/p'},
+            \end{align*}
+            por tanto, $\displaystyle 0\leq \lim_{|h|\to 0}\norm{\tau_hf-f}_p\leq \lim_{|h|\to 0}|h|^{1/p'}=0$, para toda $f \in T(B)$. 
+
+            \item Si $h\geq 0$, análogamente al caso anterior (nos saltaremos algunos pasos que son análogos)
+            \begin{align*}
+                \norm{\tau_hf-f}_p=\left(\int_0^1\left|\int_x^{x+h}u(t)\, dt\right|^p\, dx\right)^{1/p}\leq \left(\int_0^1\left(\int_{x}^{x+h}|u(t)|\, dt\right)^p\, dx\right)^{1/p},
+            \end{align*}
+            de la misma manera, por la desigualdad de Hölder
+            \begin{align*}
+                \int_{x}^{x+h}|u(t)|\, dt&=\int_0^1 \chi_{(x,x+h)}(t)|u(t)|\, dt\\
+                &\leq \norm{\chi_{(x,x+h)}}_{p'}\norm{u}_p\\
+                &=h^{1/p'}\\
+                &=|h|^{1/p'},
+            \end{align*}
+            por tanto
+            \begin{align*}
+                \norm{\tau_hf-f}_p\leq |h|^{1/p'},
+            \end{align*}
+            y nuevamente obtenemos $\displaystyle 0\leq \lim_{|h|\to 0}\norm{\tau_hf-f}_p\leq \lim_{|h|\to 0}|h|^{1/p'}=0$, para toda $f \in T(B)$. 
+        \end{itemize}
+        De esta manera, estamos en las hipótesis del Teorema enunciado anteriormente, por lo que podemos concluir que $T(B)$ tiene clausura compacta en $L^p((0,1))$, es decir, $\overline{T(B)}$ es compacto, concluyendo que $T$ es un operador compacto.
+        
+        \item[(b)] Como $T$ es compacto, sabemos que $0\in\sigma(T)$ y $\sigma(T)\setminus \{0\}=EV\setminus \{0\}$. Sea $\lambda\neq 0$, primero, recordemos que si $u \in L^p((0,1))$, entonces $u \in L^1((0,1))$, por tanto, por el Teorema de Diferenciación de Lebesgue
+        \begin{align*}
+            \lim_{h\to 0}\dfrac{1}{2h}\int_{x-h}^{x+h}f(y)\, dy=\lim_{h\to 0}\dfrac{1}{2h}\left(\int_0^{x+h}f(y)\, dy-\int_{0}^{x-h}f(y)\, dy\right)=f(x),
+        \end{align*}
+        para casi todo $x \in (0,1)$ (para ser más rigurosos, la expresión integral vale cuando $h>0$, pero es análogo cuando $h<0$ pero queda la integral con límites desde $x+h$ hasta $x-h$), es decir, la función
+        \begin{align*}
+            Tf(x)=\int_0^x f(t)\, dt,
+        \end{align*}
+        es derivable en casi todo $x \in (0,1)$, para toda $f \in L^p((0,1))$. Supongamos que $u \in L^p((0,1))$ con $u \neq 0$ es tal que $Tu=\lambda u$. Por la observación anterior, tenemos que $u$ es derivable en casi toda parte, por tanto
+        \begin{align*}
+            Tu(x)=\int_0^x u(t)\, dt=\lambda u(x)\\
+            \Longrightarrow u(x)=\lambda u'(x),
+        \end{align*}
+        además, podemos extender $u$ de manera continua a $[0,1)$ por $u(0)=0$, dado que
+        \begin{align*}
+            \lim_{x\to 0}\int_0^x u(t)\, dt=0,
+        \end{align*}
+        así, estamos buscando solución del problema de Cauchy
+        \begin{align*}
+            \begin{cases}
+                u'=\dfrac{1}{\lambda}u\\
+                u(0)=0,
+            \end{cases}
+        \end{align*}
+        en $[0,1)$. Podemos ver que la solución general de la ecuación diferencial asociada al problema es
+        \begin{align*}
+            u(x)=Ce^{\frac{x}{\lambda}},
+        \end{align*}
+        con $C \in \mathbb{R}$, y como $u(0)=0$, se debe tener que $C=0$, concluyendo que $u=0$, pero en un principio supusimos que $u\neq 0$, lo cuál es una contradicción. De manera $\mathbb{R}\setminus \{0\} \subset \rho(T)$, de manera que $EV(T)=\emptyset$ y $\sigma(T)=\{0\}$.
+        
+
+        \item[(c)] Sea $\lambda\neq 0$ y $u \in L^p((0,1))$. Supongamos que $(T-\lambda I)u=Tu-\lambda u=f$ con $f \in L^p((0,1))$. Sea
+        \begin{align*}
+            v(x)=\int_0^x u(t)\, dt=Tu(x).
+        \end{align*}
+        Análogamente a lo hecho en el ítem anterior, tenemos que $v$ es diferenciable en casi toda parte y $v'=u$ para casi todo $x \in (0,1)$. Además, podemos extender a $v$ por $v(0)=0$, de manera que la ecuación $Tu-\lambda u=f$ nos lleva al problema de Cauchy
+        \begin{align*}
+            \begin{cases}
+                v-\lambda v'=f\\
+                v(0)=0.
+            \end{cases}
+        \end{align*}
+        La única solución de este problema está dada por
+        \begin{align*}
+            v(x)=-\frac{1}{\lambda}e^{\frac{x}{\lambda}}\int_0^x e^{-\frac{t}{\lambda}}f(t)\, dt,
+        \end{align*}
+        y nuevamente, como $f \in L^p((0,1))$ y $e^{-t/\lambda}\in C^\infty((0,1))\cap L^\infty((0,1))$, la función $e^{-\frac{t}{\lambda}}f(t)\in L^1((0,1))$ y el Teorema de Diferenciación de Lebesgue nos garantiza que la función
+        \begin{align*}
+            g(x)=\int_0^x e^{-\frac{t}{\lambda}}f(t)\, dt,
+        \end{align*}
+        es derivable en casi toda parte y $g'(x)=e^{-\frac{x}{\lambda}}f(x)$ en los puntos en donde la derivada tiene sentido, de manera que, usando la regla de Leibniz 
+        \begin{align*}
+            v'(x)=u(x)=-\frac{1}{\lambda^2}e^{\frac{x}{\lambda}}\int_0^x e^{-\frac{t}{\lambda}}f(t)\, dt-\frac{1}{\lambda}f(x).
+        \end{align*}
+        Como $(T-\lambda I)u=f$, entonces $u=(T-\lambda I)^{-1}f$, de manera que
+        \begin{align*}
+            (T-\lambda I)^{-1}f(x)=-\frac{1}{\lambda^2}e^{\frac{x}{\lambda}}\int_0^x e^{-\frac{t}{\lambda}}f(t)\, dt-\frac{1}{\lambda}f(x).
+        \end{align*}
+
+        \item[(d)] Por definición, tenemos
+        \begin{align*}
+            T^\star: (L^p((0,1)))^\star &\longrightarrow (L^p((0,1)))^\star\\
+            \xi &\longmapsto T^\star\xi: L^p((0,1)) \longrightarrow \mathbb{R}\\
+            & \hspace{31.5mm} f \longmapsto \langle T^\star\xi; f\rangle:=\langle \xi;Tf\rangle. 
+        \end{align*}
+        Por el Teorema de Representación de Riesz, dado $\xi \in (L^p((0,1)))^\star$, existe una única $g_\xi \in L^{p'}((0,1))$ tal que 
+        \begin{align*}
+            \langle \xi;h\rangle=\int_0^1 g_\xi(x)h(x)\, dx,
+        \end{align*}
+        para toda $h \in L^p((0,1))$, donde $\dfrac{1}{p}+\dfrac{1}{p'}=1$. De manera Análoga, como\\ $T^\star \xi \in (L^p((0,1)))^\star$, existe una única $G_\xi\in L^{p'}((0,1))$, cumpliendo la misma relación con $p$, tal que 
+        \begin{align*}
+            \langle T^\star \xi;h\rangle=\int_0^1 G_\xi(x)h(x)\, dx,
+        \end{align*}
+    \end{enumerate}
+    De esta manera, por la definición del operador adjunto $T^\star$, dada $f \in L^p((0,1))$ se tiene
+    \begin{align*}
+        \langle T^\star \xi;f\rangle=\int_{0}^1G_\xi(x)f(x)\, dx=\int_0^1 g_\xi(x)Tf(x)\, dx=\langle \xi;Tf\rangle,
+    \end{align*}
+    por definición y usando el Teorema de Fubini, dado que $f$ es arbitraria, obtenemos
+    \begin{align*}
+        \int_0^1 g_\xi(x)Tf(x)\, dx&=\int_0^1 g_\xi(x)\int_0^x f(t)\, dt\, dx\\
+        &=\int_0^1 \int_0^x g_\xi(x)f(t)\, dt\, dx\\
+        &=\int_0^1 \int_t^1 g_\xi(x)f(t)\, dx\, dt\\
+        &=\int_0^1f(t)\int_{t}^1g_\xi(x)\, dx\, dt.
+    \end{align*}
+    de manera que
+    \begin{align*}
+        G_\xi(t)=\int_t^1 g_\xi(x)\, dx=\int_{0}^1 g_{\xi}(x)\chi_{(t,1)}(x)\, dx=\langle \xi;\chi_{(t,1)}\rangle,
+    \end{align*}
+    así, 
+    \begin{align*}
+        \langle T^\star \xi;f\rangle=\int_0^1 \langle \xi;\chi_{(x,1)}\rangle f(x)\, dx.
+    \end{align*}
+\end{proof}
+
+\textbf{Ejercicio 6.} Considere $g\in L^\infty(\mathbb{R})\cap C(\mathbb{R})$ (es decir, $g$ es continua y acotada). Definimos el operador de multiplicación $M_g:L^2(\mathbb{R})\to L^2(\mathbb{R})$ dado por
+\begin{align*}
+    M_g(f)(x)=g(x)f(x).
+\end{align*}
+\begin{enumerate}
+    \item[(a)] Muestre que $\sigma(M_g)=\overline{\{g(x):x\in \mathbb{R}\}}$.
+    \item[(b)] ¿Es el operador $M_g$ compacto?
+\end{enumerate}
+\begin{proof} 
+  \begin{enumerate}
+    \item[(a)] Veamos que $\sigma(M_{g})=\overline{\{g(x):x\in \mathbb{R}\}}$.\\
+      Primero note que como $g\in L^{\infty}(\mathbb{R})\cap C(\mathbb{R})$, entonces sabemos que existen $M,n\in \mathbb{R}$ tales que
+      \begin{align*}
+        g(M)&=\max_{x\in \mathbb{R}}g(x),\\
+        g(m)&=\min_{x\in \mathbb{R}}g(x).
+      \end{align*}
+      Por otro lado note que como $L^2(\mathbb{R})$ es un espacio de Hilbert 
+      \begin{align*}
+        \inf_{\substack{u\in L^2(\mathbb{R})\\\norm{u}=1}}(M_{g}(u),u)&=\inf_{\substack{u\in L^2(\mathbb{R})\\\norm{u}=1}}\int_{-\infty}^{\infty}M_{g}(u)(x)u(x)\, dx,\\
+        &=\inf_{\substack{u\in L^2(\mathbb{R})\\ \norm{u}=1}}\int_{-\infty}^{\infty}g(x)u^2(x)\, dx,\\
+        &=\inf_{x\in\mathbb{R}}g(x)\norm{u}_{2}^2,\\
+        &=\min_{x\in\mathbb{R}}g(x),\\
+        &=g(m).
+      \end{align*}
+      Análogamente
+      \begin{align*}
+        \sup_{\substack{u\in L^2(\mathbb{R})\\ \norm{u}=1}}(M_{g}(u),u)&=g(M). 
+      \end{align*}
+      Además de esto, sabemos que el operador $M_{g}$ es un operador lineal acotado, pues dada $f,h\in L^{2}(\mathbb{R})$ y $\lambda$ escalar se cumple que 
+      \begin{align*}
+        \norm{M_{g}(f+\lambda h)}_{2}&=\norm{g(f+\lambda h)}_{2},\\
+        &=\norm{gf+\lambda gh}_{2},\\
+        &\leq \norm{gf}_{2}+|\lambda|\norm{gh}_{2},\\
+        &=\norm{g(x)}_{\infty}\norm{f(x)}_{2} + |\lambda|\norm{g}_{\infty}\norm{h}_{2}.
+      \end{align*}
+      Luego sabemos que
+      \begin{align*}
+        (M_{g}(f),h)&=\int_{-\infty}^{\infty}M_{g}(f)(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}g(x)f(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}f(x)g(x)h(x)\, dx,\\
+        &=\int_{-\infty}^{\infty}f(x)M_g(h)(x)\, dx,\\
+        &=(f,M_{g}h).
+      \end{align*}
+      De lo que se concluye que $M_{g}$ es un operador lineal, acotado y autoadjunto, por lo que podemos afirmar que
+      \begin{align*}
+        \sigma(M_{g})\subseteq [g(m),g(M)]=\overline{\{g(x):x\in\mathbb{R}\}}.
+      \end{align*}
+      Ahora veamos que dado $\lambda\in [g(m),g(M)]$, entonces $x\in \sigma(M_{g})$.\\
+      Para esto veamos que el operador $(M_g-\lambda I)$ no es biyectivo de $L^2(\mathbb{R})$ a $L^{2}(\mathbb{R})$.\\
+      Note que como $g$ es continua y $\lambda\in [g(m),g(M)]$, entonces existe un valor $c\in \mathbb{R}$ tal que $g(c)=\lambda$, entonces note que dado $\epsilon>0$ se puede construir $h(x)=\chi_{[c-\epsilon,c+\epsilon]}(x)\in L^2(\mathbb{R})$, veamos que no existe $f\in L^2(\mathbb{R})$ tal que $(M_{g}-\lambda I)(f)=h$, ya que
+      \begin{align*}
+        (M_{g}-\lambda I)f&=h,\\
+        M_{g}(f)-\lambda I(f)&=h,\\
+        g(x)f(x)-\lambda f(x)&=h(x),\\
+        f(x)(g(x)-\lambda)&=h(x),\\
+        f(x)&=\frac{h(x)}{g(x)-\lambda}.
+      \end{align*}
+      Luego
+      \begin{align*}
+        f(x)= 
+        \begin{cases}
+          \frac{1}{g(x)-\lambda}, &\text{ si } x\in [c-\epsilon,c+\epsilon] \text{,} \\
+          0, &\text{ en otro caso}.
+        \end{cases}
+      \end{align*}
+      Luego como $g$ es continua, $c\in [c-\epsilon,c+\epsilon]$, entonces $f(x)$ tiene una singularidad no removible en $c$ y por ende $f\notin L^2(\mathbb{R})$, lo que nos permite concluir que dado $\lambda\in \overline{\{g(x):x\in\mathbb{R}\}}$ entonces el operador $(M_{g}-\lambda I)$ no es sobreyectivo y por ende no es biyectivo, lo que a su vez concluye que $\lambda\in \sigma(M_{g})$. 
+    \item[(b)]
+      \textbf{Parcialmente No.}\\
+      Note que si $g(x)=0$, entonces $M_{g}$ es un operador compacto, ya que $M_{g}(B_{L^2})=\{0\}$ el cual es compacto.\\
+      De lo contrario, note que podemos razonar por contradicción, suponga que $M_{g}$ es un operador compacto, entonces como $dim(L^2(\mathbb{R}))=\infty$, entonces
+      \begin{enumerate}
+        \item $0\in \sigma(M_{g})$.
+        \item $\sigma(M_{g})\setminus \{0\}=\overline{\{g(x):x\in\mathbb{R}\}}\setminus \{0\}$ es un conjunto finito (lo cual solo sucede si $g(x)=c$, como ya suponemos que $c\neq 0$, entonces no se puede dar, ya que $0\notin \sigma(M_{g})$).
+        \item $\sigma(M_{g})\setminus \{0\}$ es un conjunto enumerable y una secuencia convergente a $0$, pero note que $\sigma(M_{g})\setminus \{0\}=[g(m),g(M)]\setminus \{0\}$, pero note que como $\sigma(M_{g})=[g(m),g(M)]$ es un intervalo cerrado, $|\sigma(M_{g})\setminus \{0\}|=2^{\aleph_{0}}$.
+      \end{enumerate}
+      En cualquiera de los casos se llega a una contradicción, lo que nos permite afirmar que $M_{g}$ no es un operador compacto si $g\neq 0$. 
+  \end{enumerate}
+\end{proof}

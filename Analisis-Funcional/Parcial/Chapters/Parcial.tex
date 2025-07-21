@@ -1,0 +1,229 @@
+\thispagestyle{empty}
+
+\begin{minipage}{0.3\textwidth}
+  \includegraphics[scale=0.35]{logounal.png}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.65\textwidth}
+  \begin{center}
+    \scshape
+    \Large \textsc{Universidad Nacional de Colombia} \\
+    \textcolor{white}{\tiny.} \Large \textsc{Departamento de Matemáticas} \\
+    \textcolor{white}{\tiny.} \large \textsc{Análisis Funcional} \\
+    \textcolor{white}{\tiny.} \large \textsf{Examen Final} \normalsize (I-2025)
+  \end{center}
+\end{minipage}
+
+\vspace{0.3cm}
+\normalfont
+
+\textbf{Profesor:} Oscar Guillermo Riaño Castañeda\\
+\textbf{Integrantes:} Andrés David Cadena Simons \hspace{2.8cm}  Jairo Sebastián Niño Castro\hspace{2.8cm}
+Iván Felipe Salamanca Medina \hspace{5.05cm}\textbf{Fecha:} 16 de Julio del 2025\\
+\vspace{0.25cm}\\
+
+
+\section{Operadores Compactos}
+
+\textbf{Problema 1.} Dado $u \in L^2((0,1))$, definimos el operador $T:L^2((0,1))\to L^2((0,1))$ por
+\begin{align*}
+    Tu(x)=\int_0^x tu(t)\, dt
+\end{align*}
+\begin{enumerate}
+        \item[(a)] Demuestre que $T\in \mathcal{K}(L^2((0,1)))$.
+        \item[(b)] Determine $EV(T)$ y $\sigma(T)$.
+        \item[(c)] ¿Se puede escribir explícitamente $(T-\lambda I)^{-1}$ cuando $\lambda\in \rho(T)$?
+        \item[(d)] Encuentre $T^\star$.
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Por simplicidad, denotaremos $\norm{\cdot}_{L^2((0,1))}=\norm{\cdot}_2$. Veamos que $T$ es acotado. Sea $u \in L^2((0,1))$, usando la desigualdad de Cauchy-Schwarz
+        \begin{align*}
+            \norm{Tu}_2&=\left(\int_0^1\left|\int_0^x tu(t)\, dt\right|^2\, dx\right)^{1/2}\\
+            &\leq \left(\int_0^1 \left(\int_0^x |t||u(t)|\ dt\right)^2\, dx\right)^{1/2}\\
+            &\leq \left(\int_0^1 \left(\int_0^1|t||u(t)|\, dt\right)^2\, dx\right)^{1/2}\\
+            &=\int_0^1 |t||u(t)|\, dt\\
+            &\leq \left(\int_0^1 |t|^2\, dt\right)^{1/2}\norm{u}_2\\
+            &=\dfrac{\sqrt{3}}{3}\norm{u}_2,
+        \end{align*}
+        probando así que $T$ es acotado.
+    \end{enumerate}
+\end{proof}
+
+\section{Ecuaciones Diferenciales en Espacios de Hilbert}
+
+\textbf{Problema 2.}
+
+\textbf{Consideraciones preliminares.} Sea $H$ un espacio de Hilbert separable y $J \subseteq \mathbb{R}$ un intervalo abierto. $C(J;H)$ denota el espacio de todas las funciones $u : J \to H$ que son continuas, es decir, para todo $t \in J$ se tiene que
+\begin{align*}
+  \lim_{t' \to t} \|u(t) - u(t')\|_H = 0.
+\end{align*}
+
+Por otro lado, denotamos por $C^1(J;H)$ el conjunto de las funciones $u \in C(J;H)$ para las cuales
+\begin{align*}
+  u'(t) = \lim_{h \to 0} \frac{u(t+h) - u(t)}{h}
+\end{align*}
+existe para todo $t \in J$ (el límite anterior se toma en $H$) y $u' \in C(J;H)$. Luego, podemos definir $u \in C^2(J;H)$ como la clase de funciones $u$ para las cuales $u' \in C^1(J;H)$. De manera recursiva se define $C^k(J;H)$ para enteros $k \geq 1$.
+
+Note que, definiendo derivadas laterales, podemos considerar el espacio $C^k(J;H)$ donde $J$ es un intervalo cerrado.
+
+\begin{enumerate}
+  \item[(a)] (1.5 puntos) Sea $k \geq 0$ entero. Suponga que el intervalo $J$ es cerrado y acotado. Muestre que $C^k(J;H)$ es un espacio de Banach con la norma
+  \begin{align*}
+    \|u\|_{C^k} = \sum_{l=0}^k \sup_{t \in J} \|u^{(l)}(t)\|_H,
+  \end{align*}
+  donde $u^{(l)}$ denota la $l$-ésima derivada de $u$, $l = 0, \dots, k$.
+  
+  \item[(b)] (1.5 puntos) Sean $a, b \in \mathbb{R}$ con $a < b$. Dada una función $F \in C([a,b];H)$, muestre que podemos definir la integral
+  \begin{align*}
+    \int_a^b F(\tau)\, d\tau \in H
+  \end{align*}
+  como límite de sumas de Riemann en $H$. Además, se sigue que
+  \begin{align*}
+    \left\| \int_a^b F(\tau)\, d\tau \right\|_H \leq \int_a^b \|F(\tau)\|_H\, d\tau.
+  \end{align*}
+  Más precisamente, sea $Z = \{t_0, t_1, \dots, t_n\}$ una partición del intervalo $[a,b]$ dada por $t_0 = a < t_1 < \cdots < t_n = b$. Muestre que las sumas de Riemann
+  \begin{align*}
+    S(F,Z) = \sum_{j=1}^n F(t_j^*)(t_j - t_{j-1}), \quad \text{donde } t_j^* \in [t_{j-1}, t_j],
+  \end{align*}
+  convergen a un límite en $H$ (la integral) cuando el tamaño de la partición
+  \begin{align*}
+    |Z| = \max_j |t_j - t_{j-1}|
+  \end{align*}
+  tiende a cero.
+
+  \item[(c)] (4 puntos) Sea $A \in \mathcal{K}(H)$ un operador autoadjunto tal que $A \geq 0$ (es decir, $(Ax,x) \geq 0$ para todo $x \in H$). Sea $F \in C([0,\infty), H)$. Dado $u_0 \in H$, considere el problema de Cauchy para la ecuación del calor abstracta con término forzante
+  \begin{align*}
+    \begin{cases}
+      u'(t) = -Au(t) + F(t), & t \in (0,\infty), \\
+      u(0) = u_0.
+    \end{cases}
+  \end{align*}
+  \begin{enumerate}
+    \item[(c.1)] (2 puntos) Suponga que $F = 0$. Utilizando el cálculo funcional, que es válido por el teorema espectral (recuerde que $A$ es compacto y autoadjunto), defina el operador $e^{-tA}$ y muestre que
+    \begin{align*}
+      u(t) = e^{-tA} u_0, \quad t > 0,
+    \end{align*}
+    es solución de la ecuación anterior con $F = 0$ y que $u \in C^1((0,\infty), H)$. ¿Es posible concluir que $u \in C^k((0,\infty), H)$ para todo $k \geq 1$ y además
+    \begin{align*}
+      \sup_{t \geq 0} \|u(t)\|_H < \infty?
+    \end{align*}
+
+    \item[(c.2)] (2 puntos) Muestre que en el caso general (con $F$ no necesariamente nula), la función
+    \begin{align*}
+      u(t) = e^{-tA} u_0 + \int_0^t e^{-(t - \tau)A} F(\tau)\, d\tau,
+    \end{align*}
+    pertenece a $C^1((0,\infty), H)$, es solución de la ecuación. ¿Bajo qué condiciones sobre $F$ puede concluir que para un $k \geq 1$ entero dado, $u \in C^k((0,\infty), H)$ y además
+    \begin{align*}
+      \sup_{t \geq 0} \|u(t)\|_H < \infty?
+    \end{align*}
+  \end{enumerate}
+\end{enumerate}
+\begin{proof} 
+  \begin{enumerate}
+    \item[(a)] Veamos que si tomamos $k\geq 0$ entero, entonces $C^{k}(J;H)$ es un espacio de Banach con la norma
+      \begin{align*}
+        \norm{u}_{C^{k}}=\sum_{l=0}^{k}\sup_{t\in J}\norm{u^{(l)}(t)}_{H},
+      \end{align*}
+      Primero veamos que $\norm{\cdot}_{C^{k}}$ en efecto es una norma bien definida.\\
+      Note que como $J$ es ujn intervalo cerrado y acotado, entonces dada $u\in C^{k}(J;H)$ se tiene que $u$ y todas sus derivadas alcanzan su máximo en $J$, por lo que en efecto la suma finita de los supremos de las derivadas de $u$ se encuentra bien definida.
+      Ahora verifiquemos las condiciones de norma, note que dadas $u,v\in C^{k}(J;H)$ y $\lambda$ escalar se tiene que
+      \begin{align*}
+        \norm{u+\lambda v}_{C^{k}}&=\sum_{l=0}^{k}\sup_{t\in J}\norm{(u+\lambda v)^{(l)}(t)}_{H},\\
+        &=\sum_{l=0}^{k}\sup_{t\in J}\norm{u^{(l)}(t)+\lambda v^{(l)}(t)}_{H},\\
+        &\leq\sum_{l=0}^{k}\sup_{t\in J}\norm{u^{(l)}(t)}_{H}+|\lambda| \norm{v^{(l)}(t)}_{H},\\
+        &\leq\sum_{l=0}^{k}\sup_{t\in J}\norm{u^{(l)}(t)}_{H}+|\lambda|\sup_{t\in J} \norm{v^{(l)}(t)}_{H},\\
+        &\leq\sum_{l=0}^{k}\sup_{t\in J}\norm{u^{(l)}(t)}_{H}+|\lambda|\sum_{l=0}^{k}\sup_{t\in J} \norm{v^{(l)}(t)}_{H},\\
+        &=\norm{u}_{C^{k}}+|\lambda|\norm{v}_{C^{k}}.
+      \end{align*}
+      Por otro lado note que $u=0$ sí y sólo si $\norm{u}_{H}=0$, lo que sucede si y sólo si el cociente $\frac{u(t+h)-u(t)}{h}=0$ en $H$ para todo $t$ y $h$, lo que a su vez se da si y sólo si $u'=0$, inductivamente se llega a que $u^{(l)}=0$ para todo $0\leq l\leq k$, lo que se cumple si y sólo si $\norm{u}_{C^{k}}=0$, lo que nos permite concluir que $\norm{\cdot}_{C^{k}}$ en efecto es una norma bien definida.\\
+      Ahora veamos que el espacio antes mencionado es completo, es decir, dada $\{u_{m}\}\subset C^{k}(J:H)$ sucesión de Cauchy esta converge en $C^{k}(J;H)$.\\
+      Note que dado $\epsilon>0$ existe $N>0$ tal que si $n,m>N$ entonces se satisface que
+      \begin{align*}
+        \norm{u_{n}-u_{m}}_{C^{k}}\leq \epsilon.
+      \end{align*}
+      Pero note que esto es lo mismo que
+      \begin{align*}
+        \norm{u_{n}-u_{m}}_{C^{k}}=\sum_{l=0}^{k}\sup_{t\in J}\norm{u_{n}(t)-u_{m}(t)}_{H}&\leq \epsilon.
+      \end{align*}
+      Lo que implica que para todo $t\in J$ y todo $0\leq l\leq k$ se satisface que
+      \begin{align*}
+        \norm{u_{n}^{(l)}(t)-u_{m}^{(l)}(t)}_{H}\leq \epsilon.
+      \end{align*}
+      Pero como $H$ es un espacio de Hilbert, sabemos que la sucesión $\{u_{m}^{(l)}(t)\}\subset H$ de Cauchy, converge a un $u^{(l)}(t)$ cuando $m\to\infty$.\\
+      Por practicidad, veamos que en efecto $u'=u^{(1)}$, las demás derivadas se pueden razonar de forma inductiva.\\
+      Note que como
+      \begin{align*}
+        \sup_{t\in J}\norm{u_{m}(t)-u(t)}_{H}\leq \epsilon,
+      \end{align*}
+      entonces $\{u_{m}\}$ converge uniformemente a $u$, por lo que podremos hacer el siguiente cálculo cambiando el orden de los límites 
+      \begin{align*}
+        u'(t)&=\lim_{h \to 0}\frac{u(t+h)-u(t)}{h},\\
+        &=\lim_{h \to 0}\lim_{m \to \infty}\frac{u_{m}(t+h)-u_{m}(t)}{h},\\
+        &=\lim_{m \to \infty}\lim_{h \to 0}\frac{u_{m}(t+h)-u_{m}(t)}{h},\\
+        &=\lim_{m \to \infty}u_{m}^{(1)},\\
+        &=u^{(1)}(t).
+      \end{align*}
+      Luego $u_{m}^{(l)}(t)\to u^{(l)}(t)$ en $H$ para todo $0\leq l\leq k$ y para cada $t\in J$.\\
+      Veamos que esto implica convergencia en $C^k(J;H)$.\\
+      Note que dado $\epsilon>0$ se puede tomar un $N>0$ adecuado para el cual si tomamos $n,m>N$ se cumple que 
+      \begin{align*}
+        \norm{u_{m}-u}_{C^{k}}&=\sum_{l=0}^{k}\sup_{t\in J}\norm{u_{m}^{(l)}(t)-u^{(l)}(t)}_{H},\\
+        &=\sum_{l=0}^{k}\sup_{t\in J}\lim_{n \to \infty}\norm{u_{m}^{(l)}(t)-u_{n}^{(l)}(t)}_{H},\\
+        &=\lim_{n \to \infty}\sum_{l=0}^{k}\sup_{t\in J}\norm{u_{m}^{(l)}(t)-u_{n}^{(l)}(t)}_{H},\\
+        &\leq\lim_{n \to \infty}\epsilon,\\
+        &\leq \epsilon.
+      \end{align*}
+      Lo que nos permite concluir que $(C^{k}(J;H),\norm{\cdot}_{C^{k}})$ es un espacio de Banach.
+    \item Sean $\mathcal{Z}=\{t_0,t_{1},\cdots,t_{n}\}$ y $\mathcal{Z}'=\{s_0,s_{1},\cdots,s_{m}\}$ particiones del intervalo $[a,b]$, veamos que dado $\epsilon>0$ existe $N>0$ tal que si $|\mathcal{Z}|,|\mathcal{Z}'|< N$, entonces 
+    \begin{align*}
+      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z}')}_{H}<\epsilon. 
+    \end{align*}
+    Para ver esto suponga $\mathcal{Z}''=\mathcal{Z}\cup\mathcal{Z}'=\{q_{0},q_{1},\cdots,q_{l}\}$, note que
+    \begin{align*}
+      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z}')}_{H}\leq\norm{S(f,\mathcal{Z})-S(f,\mathcal{Z}'')}_{H}+\norm{S(f,\mathcal{Z''})-S(f,\mathcal{Z}')}_{H}
+    \end{align*}
+    Luego
+    \begin{align*}
+      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z''})}_{H}&=\norm{\sum_{j=1}^{n}F(t^{*})(t_{j}-t_{j-1})-\sum_{j=1}^{l}F(q^{*})(q_{j}-q_{j-1})}_{H},
+    \end{align*}
+    Note que como $\mathcal{Z}\subset \mathcal{Z}''$, entonces sabemos que existe $r_{j}$ tal que
+    \begin{align*}
+      [t_{j-1},t_{j}]&=\bigcup_{i=0}^{r_{j}} [q_{j-1,i},q_{j,i}] &&\text{con $q_{j,i}\in \mathcal{Z}''$.}
+    \end{align*}
+    De lo que podemos computar que
+    \begin{align*}
+      F(t^{*})(t_{j}-t_{j-1})-\sum_{i=0}^{r_{j}}F(q^*)(q_{j,i}-q_{j-1,i})&=\sum_{i=0}^{r_{j}}(F(t^*)-F(q^*))(q_{j,i}-q_{j-1},i),
+    \end{align*}
+    además, recuerde que como $F$ es uniformemente continua en $[a,b]$, dado $\epsilon>0$ existe $N>0$ tal que si $|t-q|<N$, entonces
+    \begin{align*}
+      \norm{F(t)-F(q)}_{H}< \frac{\epsilon}{2(b-a)}. 
+    \end{align*}
+    Si suponemos que $|\mathcal{Z}''|<|\mathcal{Z}|<N$, entonces
+    \begin{align*}
+      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z''})}_{H}&=\norm{\sum_{j=1}^{n}F(t^{*})(t_{j}-t_{j-1})-\sum_{j=1}^{l}F(q^{*})(q_{j}-q_{j-1})}_{H},\\
+      &=\norm{\sum_{j=1}^{n}\sum_{i=0}^{r_{j}}(F(t^{*})-F(q^{*}))(q_{j,i}-q_{j-1,i})}_{H},\\
+      &\leq \sum_{j=1}^{n}\sum_{i=0}^{r_{j}}(q_{j,i}-q_{j-1,i})\norm{F(t^{*})-F(q^{*})}_{H},\\
+      &\leq \frac{\epsilon}{2(b-a)} \sum_{j=1}^{n}(t_{j}-t_{j-1}),\\
+      &\leq \frac{\epsilon}{2(b-a)} (b-a)=\frac{\epsilon}{2}.
+    \end{align*}
+    Análogamente, si suponemos $|\mathcal{Z}''|<|\mathcal{Z}'|<N$ podemos asegurar que
+    \begin{align*}
+      \norm{S(f,\mathcal{Z}'')-S(f,\mathcal{Z}')}_{H}\leq \frac{\epsilon}{2}.
+    \end{align*}
+    Luego podemos asegurar que dado $\epsilon>0$ existe $N>0$ tal que si $|\mathcal{Z}|,|\mathcal{Z}'|<N$, entonces
+    \begin{align*}
+      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z}')}_{H}&\leq\norm{S(f,\mathcal{Z})-S(f,\mathcal{Z}'')}_{H}+\norm{S(f,\mathcal{Z''})-S(f,\mathcal{Z}')}_{H},\\
+      &\leq \frac{\epsilon}{2}+\frac{\epsilon}{2},\\
+      &\leq \epsilon.
+    \end{align*}
+    Lo que nos permite concluir que $\{S(f,\mathcal{Z})\}\subset H$ es una sucesión de Cauchy, luego como $H$ es Hilbert (por ende completo) sabemos que converge a alguien que denotaremos $\int_{a}^{b}F(\tau)d\tau\in H$.\\
+    Para ver la desigualdad note que
+    \begin{align*}
+      \norm{\int_{a}^{b}F(\tau)\, d\tau}_{H}&=\norm{\lim_{|\mathcal{Z}| \to 0}S(f,\mathcal{Z})},\\
+      &\leq \lim_{|Z| \to 0}\sum_{j=1}^{n}\norm{F(t^{*})}_{H}(t_{j}-t_{j-1}),\\
+      &\leq \int_{a}^{b}\norm{F(\tau)}_{H}\, d\tau.
+    \end{align*}
+  \end{enumerate}
+\end{proof}
