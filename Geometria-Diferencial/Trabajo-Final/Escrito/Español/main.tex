@@ -94,6 +94,95 @@ y corresponde a un horizonte de eventos: una superficie límite donde todas las 
 \subsection*{Analogías geométricas y visualización}
 Para hacer accesible esta teoría, se suele emplear una analogía con una \textit{membrana elástica}. Imaginemos una lona de caucho donde colocamos una bola pesada que deforma su superficie. Si lanzamos otra bola cercana, esta no se moverá en línea recta, sino que seguirá una curva determinada por la deformación: está siguiendo una geodésica en un espacio curvado. Esta imagen, aunque bidimensional y clásica, ayuda a comprender cómo la materia y la geometría están profundamente entrelazadas.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formación de agujeros negros desde la geometría diferencial}
+
+\subsection{Variedades pseudo-riemannianas}
+
+Una \textbf{variedad pseudo-riemanniana} \((M, g)\) es una variedad diferenciable donde el tensor métrico \(g\) es simétrico, no degenerado y no positivo definido. Esto significa que, a diferencia de la métrica riemanniana (positiva definida), la métrica pseudo-riemanniana permite medir intervalos que pueden ser positivos, negativos o nulos, dependiendo de la dirección del vector.
+
+\subsection{Espaciotiempo como variedad lorentziana}
+
+En relatividad general, el espaciotiempo es modelado como una \textbf{variedad lorentziana} de dimensión 4, con una métrica de firma \((-+++) \). Dada esta estructura, el cuadrado del intervalo entre dos eventos está dado por:
+
+\begin{align*}
+ds^2 = g_{\mu\nu} dx^\mu dx^\nu
+\end{align*}
+
+Donde:
+\begin{itemize}
+  \item \(ds^2 < 0\): trayectoria tipo tiempo.
+  \item \(ds^2 = 0\): trayectoria tipo luz.
+  \item \(ds^2 > 0\): trayectoria tipo espacio.
+\end{itemize}
+
+\subsection{Curvatura del espaciotiempo}
+
+La curvatura se describe mediante el \textbf{tensor de Riemann}:
+
+\begin{align*}
+R^\rho_{\ \sigma\mu\nu} = \partial_\mu \Gamma^\rho_{\nu\sigma} - \partial_\nu \Gamma^\rho_{\mu\sigma} + \Gamma^\rho_{\mu\lambda} \Gamma^\lambda_{\nu\sigma} - \Gamma^\rho_{\nu\lambda} \Gamma^\lambda_{\mu\sigma}
+\end{align*}
+
+Este tensor mide cómo cambia un vector cuando se transporta paralelamente a lo largo de un lazo cerrado en la variedad.
+
+Dos contracciones importantes del tensor de Riemann son:
+
+\begin{itemize}
+  \item \textbf{Tensor de Ricci}:
+  \begin{align*}
+  R_{\mu\nu} = R^\lambda_{\ \mu\lambda\nu}
+  \end{align*}
+  \item \textbf{Escalar de curvatura}:
+  \begin{align*}
+  R = g^{\mu\nu} R_{\mu\nu}
+  \end{align*}
+\end{itemize}
+
+\subsection{Ecuaciones de Einstein}
+
+Las ecuaciones de campo de Einstein relacionan la geometría del espaciotiempo con su contenido de materia y energía:
+
+\begin{align*}
+R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}
+\end{align*}
+
+\begin{itemize}
+  \item El lado izquierdo representa la curvatura del espaciotiempo.
+  \item El lado derecho describe el contenido de materia y energía mediante el tensor energía-momento \(T_{\mu\nu}\).
+\end{itemize}
+
+\subsection{Solución de Schwarzschild}
+
+En el caso de simetría esférica en vacío (\(T_{\mu\nu} = 0\)), se obtiene la métrica de Schwarzschild:
+
+\begin{align*}
+ds^2 = -\left(1 - \frac{2GM}{c^2 r} \right)c^2 dt^2 + \left(1 - \frac{2GM}{c^2 r} \right)^{-1} dr^2 + r^2 d\Omega^2
+\end{align*}
+
+donde \(d\Omega^2 = d\theta^2 + \sin^2\theta d\phi^2\) representa el elemento de área de la esfera.
+
+La cantidad:
+
+\begin{align*}
+r_s = \frac{2GM}{c^2}
+\end{align*}
+
+se llama \textbf{radio de Schwarzschild}. Si un cuerpo colapsa bajo este radio, se forma un \textbf{agujero negro}.
+
+\subsection{Horizonte de eventos y singularidad}
+
+\begin{itemize}
+  \item El \textbf{horizonte de eventos} se encuentra en \(r = r_s\). A partir de allí, ninguna señal o partícula puede escapar al infinito.
+  \item En \(r = 0\) hay una \textbf{singularidad} donde las cantidades geométricas como la curvatura se vuelven infinitas.
+\end{itemize}
+
+\subsection{Interpretación geométrica}
+
+Desde la geometría diferencial, un \textbf{agujero negro} es una región del espaciotiempo cuya curvatura es tan intensa que altera la estructura causal. Las geodésicas temporales dentro del horizonte están todas dirigidas hacia la singularidad. Esto implica que, una vez cruzado el horizonte, el “futuro” inevitable de cualquier partícula es alcanzar el centro, lo cual no es una elección sino una consecuencia geométrica.
+
+Así, los agujeros negros no son objetos “físicos” en el sentido clásico, sino regiones definidas por la \textbf{estructura geométrica} del espaciotiempo, determinada por las ecuaciones de Einstein.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \section{Implicaciones}
 \subsection*{La geometría del espacio determina la estructura y el destino del universo}
 En geometría diferencial, la curvatura escalar—o más generalmente, la curvatura seccional—afecta directamente las propiedades locales y globales de una variedad. Según el artículo, dependiendo de si la curvatura del universo es positiva, nula o negativa, varían la suma de los ángulos de un triángulo, el comportamiento de las geodésicas y el volumen de las regiones espaciales.\\

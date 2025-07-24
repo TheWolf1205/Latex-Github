@@ -102,6 +102,95 @@ which defines the event horizon, a boundary from which nothing can escape.
 \subsection*{Geometric Analogies and Visualization}
 To make this theory more accessible, an \textit{elastic membrane} analogy is often used. Imagine a rubber sheet with a heavy ball placed on it, deforming the surface. Another ball rolling nearby does not follow a straight path but curves toward the deformation—it follows a geodesic in the curved space. Although oversimplified, this analogy captures the essence of how mass shapes geometry.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Black Holes from the Perspective of Differential Geometry}
+
+\subsection{Pseudo-Riemannian Manifolds}
+
+A \textbf{pseudo-Riemannian manifold} \((M, g)\) is a differentiable manifold where the metric tensor \(g\) is symmetric, non-degenerate, and not positive-definite. Unlike a Riemannian metric (which is positive-definite), the pseudo-Riemannian metric allows intervals that can be positive, negative, or zero, depending on the direction of the vector.
+
+\subsection{Spacetime as a Lorentzian Manifold}
+
+In general relativity, spacetime is modeled as a \textbf{Lorentzian manifold} of dimension 4, with metric signature \((-+++)\). Given this structure, the squared interval between two events is:
+
+\begin{align*}
+ds^2 = g_{\mu\nu} dx^\mu dx^\nu
+\end{align*}
+
+Where:
+\begin{itemize}
+  \item \(ds^2 < 0\): timelike trajectory.
+  \item \(ds^2 = 0\): lightlike (null) trajectory.
+  \item \(ds^2 > 0\): spacelike trajectory.
+\end{itemize}
+
+\subsection{Curvature of Spacetime}
+
+The curvature is described by the \textbf{Riemann tensor}:
+
+\begin{align*}
+R^\rho_{\ \sigma\mu\nu} = \partial_\mu \Gamma^\rho_{\nu\sigma} - \partial_\nu \Gamma^\rho_{\mu\sigma} + \Gamma^\rho_{\mu\lambda} \Gamma^\lambda_{\nu\sigma} - \Gamma^\rho_{\nu\lambda} \Gamma^\lambda_{\mu\sigma}
+\end{align*}
+
+This tensor measures how a vector changes when parallel transported around a closed loop on the manifold.
+
+Two important contractions of the Riemann tensor are:
+
+\begin{itemize}
+  \item \textbf{Ricci tensor}:
+  \begin{align*}
+  R_{\mu\nu} = R^\lambda_{\ \mu\lambda\nu}
+  \end{align*}
+  \item \textbf{Scalar curvature}:
+  \begin{align*}
+  R = g^{\mu\nu} R_{\mu\nu}
+  \end{align*}
+\end{itemize}
+
+\subsection{Einstein Field Equations}
+
+The Einstein field equations relate the geometry of spacetime to its matter and energy content:
+
+\begin{align*}
+R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}
+\end{align*}
+
+\begin{itemize}
+  \item The left-hand side describes the curvature of spacetime.
+  \item The right-hand side encodes matter and energy via the stress-energy tensor \(T_{\mu\nu}\).
+\end{itemize}
+
+\subsection{Schwarzschild Solution}
+
+In the case of spherical symmetry in vacuum (\(T_{\mu\nu} = 0\)), the solution to the Einstein equations is the \textbf{Schwarzschild metric}:
+
+\begin{align*}
+ds^2 = -\left(1 - \frac{2GM}{c^2 r} \right)c^2 dt^2 + \left(1 - \frac{2GM}{c^2 r} \right)^{-1} dr^2 + r^2 d\Omega^2
+\end{align*}
+
+where $d\Omega^2 = d\theta^2 + \sin^2\theta d\phi^2$ represents the area element of a 2-sphere.
+
+The quantity:
+
+\begin{align*}
+r_s = \frac{2GM}{c^2}
+\end{align*}
+
+is called the \textbf{Schwarzschild radius}. If a body collapses within this radius, a \textbf{black hole} forms.
+
+\subsection{Event Horizon and Singularity}
+
+\begin{itemize}
+  \item The \textbf{event horizon} is located at \(r = r_s\). Beyond this point, no signal or particle can escape to infinity.
+  \item At \(r = 0\), there is a \textbf{singularity} where geometric quantities such as curvature become infinite.
+\end{itemize}
+
+\subsection{Geometric Interpretation}
+
+From the viewpoint of differential geometry, a \textbf{black hole} is a region of spacetime where curvature is so strong that it alters the causal structure. Timelike geodesics inside the horizon are all directed toward the singularity. This means that, once the horizon is crossed, the “future” of any particle inevitably leads to the center, which is not a choice but a geometric consequence.
+
+Thus, black holes are not “physical objects” in the classical sense, but regions defined by the \textbf{geometric structure} of spacetime, as determined by Einstein's equations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implications}
 \subsection*{The geometry of space determines the structure and fate of the universe}
 In differential geometry, the scalar curvature—or more generally, the sectional curvature—directly influences both local and global properties of a manifold. According to the article, depending on whether the curvature of the universe is positive, zero, or negative, the sum of triangle angles, the behavior of geodesics, and the volume of spatial regions vary significantly.\\
