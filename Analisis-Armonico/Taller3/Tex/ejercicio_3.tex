@@ -1,6 +1,59 @@
 \begin{homeworkProblem}
-  Pregunta
+  $[\text{Transformada de Fourier de $|x|^{-\alpha},0<\alpha< n$ }]$\\
+  Pruebe la fórmula
+  \begin{align*}
+    \int_{0}^{\infty}e^{-\pi\delta|x|^2}\delta^{\beta-1}\, d\delta=\frac{c_{\beta}}{|x|^{2\beta}},\text{ para todo $\beta>0$.}
+  \end{align*}
+  Deduzca que existe una constante $c_{n,\alpha}$ tal que
+  \begin{align*}
+    \hat{\frac{1}{|x|^{\alpha}}}(\xi)=c_{n,\alpha}|\xi|^{n-\alpha},\text{ para todo $\alpha\in(0,n)$, en $\mathcal{S}'(\mathbb{R}^{n})$.}
+  \end{align*}
   \begin{solution}
-    Solución
+    Sea $u = \pi \delta |x|^2$. Entonces:
+    \begin{align*}
+      \delta &= \frac{u}{\pi |x|^2}, \\
+      d\delta &= \frac{1}{\pi |x|^2} du.
+    \end{align*}
+    Sustituyendo tenemos que
+    \begin{align*}
+      \int_0^\infty e^{-\pi \delta |x|^2} \delta^{\beta - 1} d\delta
+      &= \int_0^\infty e^{-u} \left(\frac{u}{\pi |x|^2}\right)^{\beta - 1} \frac{1}{\pi |x|^2} \, du \\
+      &= \left(\frac{1}{\pi |x|^2}\right)^\beta \int_0^\infty u^{\beta - 1} e^{-u} du \\
+      &= \left(\frac{1}{\pi |x|^2}\right)^\beta \Gamma(\beta) \\
+      &= \frac{\Gamma(\beta)}{\pi^\beta |x|^{2\beta}}.
+    \end{align*}
+    La identidad anterior sugiere que
+    \begin{align*}
+      \frac{1}{|x|^{2\beta}} = \frac{\pi^\beta}{\Gamma(\beta)} \int_0^\infty e^{-\pi \delta |x|^2} \delta^{\beta - 1} d\delta.      
+    \end{align*}
+    Aplicamos la transformada de Fourier en $\mathcal{S}'(\mathbb{R}^n)$
+    \begin{align*}
+      \hat{ \frac{1}{|x|^{2\beta}} }(\xi)
+      &= \frac{\pi^\beta}{\Gamma(\beta)} \int_0^\infty \hat{ e^{-\pi \delta |x|^2} }(\xi) \, \delta^{\beta - 1} d\delta.
+    \end{align*}
+    Sabemos que
+    \begin{align*}
+      \hat{e^{-\pi \delta |x|^2}}(\xi) &= \delta^{-\frac{n}{2}} e^{-\pi \frac{|\xi|^2}{\delta}}.
+    \end{align*}
+    Entonces
+    \begin{align*}
+      \hat{ \frac{1}{|x|^{2\beta}} }(\xi)
+      &= \frac{\pi^\beta}{\Gamma(\beta)} \int_0^\infty \delta^{\beta - 1 - \frac{n}{2}} e^{-\pi \frac{|\xi|^2}{\delta}} \, d\delta.
+    \end{align*}
+    Sea $u = \frac{\pi |\xi|^2}{\delta}$. Entonces:
+    \begin{align*}
+      \delta &= \frac{\pi |\xi|^2}{u}, \\
+      d\delta &= -\frac{\pi |\xi|^2}{u^2} du.
+    \end{align*}
+    Sustituyendo en la integral (y ajustando el signo por el cambio de extremos):
+    \begin{align*}
+      \hat{ \frac{1}{|x|^{2\beta}} }(\xi)
+      &= \frac{\pi^\beta}{\Gamma(\beta)} \int_0^\infty \left(\frac{\pi |\xi|^2}{u}\right)^{\beta - 1 - \frac{n}{2}} e^{-u}  \frac{\pi |\xi|^2}{u^2} du \\
+      &= \frac{\pi^\beta}{\Gamma(\beta)}  (\pi|\xi|^{2})^{\beta - \frac{n}{2}} \int_0^\infty u^{ (-\beta + \frac{n}{2})-1 } e^{-u} du \\
+      &= \frac{\pi^\beta}{\Gamma(\beta)}(\pi)^{\beta-\frac{n}{2}}\Gamma(-\beta+\frac{n}{2})|\xi|^{2(\beta - \frac{n}{2})} \\
+      &= \pi^{\alpha-\frac{n}{2}}\frac{\Gamma(-\frac{\alpha}{2}+\frac{n}{2})}{\Gamma(\frac{\alpha}{2})}|\xi|^{\alpha-n},\\
+      &=c_{n,\alpha}|\xi|^{\alpha-n},
+    \end{align*}
+    donde tomamos $\alpha := 2\beta \in (0,n)$ y $c_{n,\alpha}=\pi^{\alpha-\frac{n}{2}}\frac{\Gamma(-\frac{\alpha}{2}+\frac{n}{2})}{\Gamma(\frac{\alpha}{2})}$ para todo $\alpha\in (0,n)$ en $\mathcal{S}'(\mathbb{R}^{n})$.
   \end{solution}
 \end{homeworkProblem}

@@ -1,6 +1,153 @@
 \begin{homeworkProblem}
-  Pregunta
+  \text{[Espacios de Lorentz]}\\
+  Sea $f : \mathbb{R}^n \to \mathbb{C}$ una función medible. Para $\alpha \geq 0$, se define la función de distribución de $f$ por
+  \begin{align*}
+    \lambda_f(\alpha) = m\left( \left\{ x \in \mathbb{R}^n : |f(x)| > \alpha \right\} \right).   
+  \end{align*}
+  \begin{itemize}
+    \item[(i)] Pruebe que $\lambda_f$ es una función no creciente y continua por la derecha. 
+    \item[(ii)] Definimos $f^* : (0,\infty) \to [0,\infty) $,  $t \mapsto \inf\{ s > 0 : \lambda_f(s) \leq t \}$. Pruebe que $f^*$ es una función no creciente y continua por la derecha.
+    \item[(iii)] Pruebe que $\lambda_f = \lambda_{f^*}$.
+    \item[(iv)] Para $1 \leq p, q \leq \infty$, se define el espacio de Lorentz $L^{p,q}(\mathbb{R}^n)$ como el conjunto de funciones medibles $f$ tales que $\norm{f}_{p,q} < \infty $, donde
+    \begin{align*}
+      \norm{f}_{p,q} := 
+      \begin{cases}
+        \left( \frac{q}{p} \int_0^\infty \left( t^{1/p} f^*(t) \right)^q \frac{dt}{t} \right)^{1/q}, & \text{si } 1 \leq p, q < \infty, \\
+        \sup_{t > 0} \, t^{1/p} f^*(t), & \text{si } 1 \leq p \leq \infty.
+      \end{cases}
+    \end{align*}
+    Pruebe que $\norm{f}_{p,p} = \|f^*\|_p = \|f\|_p$, para todo $1 \leq p \leq \infty$.
+  \end{itemize}
   \begin{solution}
-    Solución
+    \begin{itemize}
+      \item[(i)] Sea $0 \leq \alpha < \beta$. Como $\{x : |f(x)| > \beta\} \subseteq \{x : |f(x)| > \alpha\}$, se tiene que
+        \begin{align*}
+          \lambda_f(\beta) \leq \lambda_f(\alpha),
+        \end{align*}
+        lo cual prueba que $\lambda_f$ es no creciente.
+      
+        Ahora probemos que $\lambda_f$ es continua por la derecha.\\
+        Sea $\alpha \geq 0$. Para todo $h > 0$, como
+        \begin{align*}
+          \{x : |f(x)| > \alpha + h\} \subseteq \{x : |f(x)| > \alpha\},
+        \end{align*}
+        se tiene que el límite por la derecha existe y
+        \begin{align*}
+          \lim_{h \to 0^+} \lambda_f(\alpha + h) \leq \lambda_f(\alpha).
+        \end{align*}
+        Por otro lado, note que
+        \begin{align*}
+          \{x : |f(x)| > \alpha\} = \bigcup_{n=1}^\infty \{x : |f(x)| > \alpha + \tfrac{1}{n}\}.
+        \end{align*}
+        Como las medidas exteriores son continuas respecto a uniones crecientes, se concluye que
+        \begin{align*}
+          \lambda_f(\alpha) = \lim_{n \to \infty} \lambda_f\left(\alpha + \tfrac{1}{n} \right).
+        \end{align*}
+        Así que
+        \begin{align*}
+          \lambda_f(\alpha) = \lim_{h \to 0^+} \lambda_f(\alpha + h),
+        \end{align*}
+        es decir, $\lambda_f$ es continua por la derecha.
+      \item[(ii)] Sea $0 < t_1 < t_2$. Como $t_1 < t_2$, se tiene que
+        \begin{align*}
+          \{ s > 0 : \lambda_f(s) \leq t_2 \} \subseteq \{ s > 0 : \lambda_f(s) \leq t_1 \}.
+        \end{align*}
+        Por tanto, al tomar ínfimos se obtiene
+        \begin{align*}
+          f^*(t_2) = \inf\{ s > 0 : \lambda_f(s) \leq t_2 \} \leq \inf\{ s > 0 : \lambda_f(s) \leq t_1 \} = f^*(t_1),
+        \end{align*}
+        lo cual demuestra que $f^*$ es no creciente.
+      
+        Ahora, veamos que $f^*$ es continua por la derecha. Sea $t > 0$, y sea $(t_n)$ una sucesión decreciente tal que $t_n \to t$. Como $f^*$ es no creciente, la sucesión $f^*(t_n)$ es creciente y acotada superiormente por $f^*(t_1)$. Definamos
+        \begin{align*}
+          L := \lim_{n \to \infty} f^*(t_n) = \sup_n f^*(t_n).
+        \end{align*}
+        Por la definición de $f^*$, para todo $n$ se tiene $\lambda_f(f^*(t_n)) \leq t_n$. Como $t_n \to t$ y $\lambda_f$ es continua por la derecha, se tiene
+        \begin{align*}
+          \lambda_f(L) = \lim_{n \to \infty} \lambda_f(f^*(t_n)) \leq \lim_{n \to \infty} t_n = t.
+        \end{align*}
+        Por la definición del ínfimo, esto implica que
+        \begin{align*}
+          f^*(t) \leq L = \lim_{n \to \infty} f^*(t_n).
+        \end{align*}
+        Pero como $f^*$ es no creciente,
+        \begin{align*}
+          f^*(t_n) \leq f^*(t) \quad \text{para todo } n,
+        \end{align*}
+        y por tanto también
+        \begin{align*}
+          \lim_{n \to \infty} f^*(t_n) \leq f^*(t).
+        \end{align*}
+        Concluimos que
+        \begin{align*}
+          \lim_{n \to \infty} f^*(t_n) = f^*(t),
+        \end{align*}
+        es decir, $f^*$ es continua por la derecha.
+      \item[(iii)] Recordemos que $f^* : (0,\infty) \to [0,\infty)$ está definido por
+        \begin{align*}
+          f^*(t) := \inf\{ s > 0 : \lambda_f(s) \leq t \},
+        \end{align*}
+        y que la función de distribución de $f^*$ está dada por
+        \begin{align*}
+          \lambda_{f^*}(\alpha) := m\left( \left\{ t > 0 : f^*(t) > \alpha \right\} \right).
+        \end{align*}
+        Veamos que $\lambda_{f^*}(\alpha) = \lambda_f(\alpha)$ para todo $\alpha > 0$. 
+        Sea $\alpha > 0$. Por definición de $f^*$, se tiene que
+        \begin{align*}
+          f^*(t) > \alpha \quad \Leftrightarrow \quad \text{para todo } s \leq \alpha,\ \lambda_f(s) > t.
+        \end{align*}
+        Esto equivale a decir que
+        \begin{align*}
+          t < \lambda_f(s), \quad \text{para todo } s \leq \alpha.
+        \end{align*}
+        En particular, si tomamos el ínfimo sobre todos esos $s \leq \alpha$, se obtiene
+        \begin{align*}
+          t < \inf_{s \leq \alpha} \lambda_f(s) = \lambda_f(\alpha),
+        \end{align*}
+        pues $\lambda_f$ es no creciente.\\
+        Por tanto,
+        \begin{align*}
+          f^*(t) > \alpha \quad \Leftrightarrow \quad t < \lambda_f(\alpha),
+        \end{align*}
+        lo que implica que
+        \begin{align*}
+          \lambda_{f^*}(\alpha) &= m\left( \left\{ t > 0 : f^*(t) > \alpha \right\} \right) \\
+          &= m\left( \left\{ t > 0 : t < \lambda_f(\alpha) \right\} \right) \\
+          &= \lambda_f(\alpha).
+        \end{align*}
+        Esto concluye que $\lambda_{f^*} = \lambda_f$.
+      \item[(iv)] Recordemos que la norma en $L^{p}(\mathbb{R}^{n})$ se puede reescribir en términos de su función de distribución
+        \begin{align*}
+          \int_{\mathbb{R}^n} |f(x)|^p \, dx 
+          &= \int_0^\infty p \alpha^{p-1} \lambda_f(\alpha) \, d\alpha.
+        \end{align*}
+        Por otro lado, tenemos que 
+        \begin{align*}
+          \int_0^\infty (f^*(t))^p \, dt 
+          &= \int_0^\infty p \alpha^{p-1} \lambda_{f^*}(\alpha) \, d\alpha.
+        \end{align*}
+        Pero del ítem anterior sabemos que $\lambda_{f^*} = \lambda_f$, as\'i que:
+        \begin{align*}
+          \int_0^\infty (f^*(t))^p \, dt 
+          &= \int_0^\infty p \alpha^{p-1} \lambda_f(\alpha) \, d\alpha \\
+          &= \int_{\mathbb{R}^n} |f(x)|^p \, dx.
+        \end{align*}
+        Por tanto:
+        \begin{align*}
+          \norm{f^*}_p = \norm{f}_p.
+        \end{align*}
+        Ahora, veamos que esto coincide con la definición de la norma $\norm{f}_{p,p}$. Cuando $q = p$, se tiene:
+        \begin{align*}
+          \norm{f}_{p,p} 
+          &= \left( \frac{p}{p} \int_0^\infty \left( t^{1/p} f^*(t) \right)^p \frac{dt}{t} \right)^{1/p} \\
+          &= \left( \int_0^\infty f^*(t)^p \, dt \right)^{1/p} \\
+          &= \norm{f^*}_p.
+        \end{align*}
+        Por lo tanto:
+        \begin{align*}
+          \norm{f}_{p,p} = \norm{f^*}_p = \norm{f}_p.
+        \end{align*}
+        Lo cual concluye la demostración.
+    \end{itemize}
   \end{solution}
 \end{homeworkProblem}

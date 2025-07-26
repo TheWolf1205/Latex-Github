@@ -1,6 +1,121 @@
 \begin{homeworkProblem}
-  Pregunta
+  Considere la función $f_a(x) = \dfrac{x}{a - x^2}$.
+  \begin{itemize}
+    \item[(i)] Si $a \geq 0$, pruebe que la función valor principal de $f_a(x)$,
+    \begin{align*}
+      \text{v.p.} \frac{x}{a - x^2} (\phi)= \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} \frac{x}{a - x^2} \phi(x) \, dx,
+    \end{align*}
+    con $\phi \in \mathcal{S}(\mathbb{R})$, define una distribución temperada. Más todavía, pruebe que si
+    \begin{align*}
+      \hat{f_a}(\xi) := \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} e^{-2\pi i x \cdot \xi} \frac{x}{a - x^2} \phi(x) \, dx,
+    \end{align*}
+    entonces
+    \begin{align*}
+      \left\| \hat{f_a} \right\|_{\infty} \leq M,
+    \end{align*}
+    donde la constante $M$ es independiente de $a$.  
+    \item[(ii)] Muestre que (i.) también vale si $a < 0$.
+  \end{itemize}
   \begin{solution}
-    Solución
+    \begin{itemize}
+      \item[(i)] Sea $a \geq 0$. Observamos que la funci\'on $x \mapsto \dfrac{x}{a - x^2}$ tiene singularidades en los puntos $x = \pm \sqrt{a}$ (o solo en $x=0$ si $a=0$).\\
+       Sea $\chi \in C_c^{\infty}(\mathbb{R})$ una función suave tal que $\chi(x) = 1$ en un compacto de las singularidades $\pm\sqrt{a}$, entonces $(1 - \chi)$ se anula cerca de esas singularidades. Escribimos:
+        \begin{align*}
+          \phi(x) = \chi(x)\phi(x) + (1 - \chi(x))\phi(x).
+        \end{align*}
+        Definimos:
+        \begin{align*}
+          T_1(\phi) &= \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} \frac{x}{a - x^2} (1 - \chi(x))\phi(x) \, dx, \\
+          T_2(\phi) &= \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} \frac{x}{a - x^2} \chi(x)\phi(x) \, dx.
+        \end{align*}
+        Note que en $T_1(\phi)$ aislamos las singularidades, por lo que podemos afirmar que existe $\delta>0$ tal que $0<\delta\leq |a-x^2|$, por lo que es válido hacer el siguiente cálculo tomando $m=2n$
+        \begin{align*}
+          |T_{1}(\phi)|&\leq \lim_{\epsilon \to 0}\int_{\epsilon<|a-x^2|<\frac{1}{\epsilon}}\left|\frac{x}{a-x^2}(1-\chi(x))\phi(x)\right|\, dx,\\
+          &\leq \lim_{\epsilon \to 0} \int_{\epsilon<|a-x^2|<\frac{1}{\epsilon}}\left|\frac{x}{\delta}(1-\chi(x))\phi(x)\right|\, dx,\\
+          &\leq \lim_{\epsilon \to 0} \int_{\epsilon<|a-x^2|<\frac{1}{\epsilon}}\left|\frac{x}{\delta}(1-\chi(x))\frac{x^{m+1}}{x^{m+1}}\phi(x)\right|\, dx,\\
+          &\leq \lim_{\epsilon \to 0}\frac{1}{\delta}\norm{\phi}_{m+1,0}\int_{\epsilon<|a-x^2|<\frac{1}{\epsilon}}\left|\frac{1}{x^{m}}\right|\, dx,\\
+          &\leq C\norm{\phi}_{m+1,0}.
+        \end{align*}
+        Ahora estudiemos lo que pasa con $T_{2}$, note que como $\chi$ tiene soporte compacto, entonces se cumple que existe una constante $C$ tal que
+        \begin{align*}
+          \left| \frac{x}{a-x^2} \right|\leq \left| \frac{C}{|x-\sqrt{a}|}+\frac{C}{|x+\sqrt{a}|} \right|,
+        \end{align*}
+        Luego tenemos que
+        \begin{align*}
+          |T_{2}(\phi)|&\leq \lim_{\epsilon \to 0}\int_{\epsilon<|a-x^2|<\frac{1}{\epsilon}}\left| \frac{C}{|x-\sqrt{a}|}+\frac{C}{|x+\sqrt{a}|}\chi(x)\phi(x) \right|\, dx,\\
+          &\leq \lim_{\epsilon \to 0}\int_{\epsilon<|a-x^2|<\frac{1}{\epsilon}}\left| \frac{C}{|x-\sqrt{a}|}\chi(x)\phi(x) \right|\, dx + \lim_{\epsilon \to 0}\int_{\epsilon<|a-x^2|<\frac{1}{\epsilon}}\left| \frac{C}{|x+\sqrt{a}|}\chi(x)\phi(x) \right|\, dx,
+        \end{align*}
+        Luego ambos sumandos se comportan como el valor principal de $1/x$ de lo que podemos concluir que existe una constante $C$ y $l$ tal que
+        \begin{align*}
+          |T_{2}(\phi)|\leq C\sum_{i=1}^{l}\norm{\phi}_{\alpha_{i},\beta_{i}}
+        \end{align*}
+        De lo que podemos concluir que para $a\geq 0$ el valor principal anterior define una distribución temperada.\\
+        Ahora estudiemos la transformada de Fourier de $f_a$ definida por:
+        \begin{align*}
+          \hat{f_a}(\xi) = \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} e^{-2\pi i x \xi} \cdot \frac{x}{a - x^2} \cdot \phi(x) \, dx.
+        \end{align*}
+        Nuevamente, usamos la descomposición $\phi(x) = \chi(x)\phi(x) + (1 - \chi(x))\phi(x)$ y definimos:
+        \begin{align*}
+          T_1(\xi) &= \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} e^{-2\pi i x \xi} \cdot \frac{x}{a - x^2} (1 - \chi(x)) \phi(x) \, dx,\\
+          T_2(\xi) &= \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} e^{-2\pi i x \xi} \cdot \frac{x}{a - x^2} \chi(x) \phi(x) \, dx.
+        \end{align*}
+        De nuevo, en $T_{1}$ se cumple que $|a - x^2| \geq \delta$ en el soporte de $(1 - \chi)$, tenemos:
+        \begin{align*}
+          |T_1(\xi)| &\leq \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} \left| e^{-2\pi i x \xi} \cdot \frac{x}{a - x^2} (1 - \chi(x)) \phi(x) \right| \, dx \\
+          &\leq \frac{1}{\delta} \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} |x| \cdot |(1 - \chi(x)) \phi(x)| \, dx.
+        \end{align*}
+        Como antes, usando $\phi(x) = \dfrac{x^{m+1}}{x^{m+1}} \phi(x)$:
+        \begin{align*}
+          |T_1(\xi)| &\leq \frac{1}{\delta} \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} \left| \frac{1}{x^m} \right| \cdot |(1 - \chi(x)) x^{m+1} \phi(x)| \, dx \\
+          &\leq \frac{1}{\delta} \norm{\phi}_{m+1,0} \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} \frac{1}{|x|^m} \, dx \\
+          &\leq C \norm{\phi}_{m+1,0}.
+        \end{align*}
+        Por otro lado Como $\chi \phi$ tiene soporte compacto y razonando como lo hicimos anteriormente
+        \begin{align*} 
+          |T_2(\xi)| &\leq \lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} \left|e^{-2\pi i x \xi} \frac{x}{a - x^2} \chi(x) \phi(x)\right| \, dx,\\
+          &\leq\lim_{\epsilon \to 0} \int_{\epsilon < |a - x^2| < 1/\epsilon} \left| \frac{x}{a - x^2} \chi(x) \phi(x)\right| \, dx,\\
+          &\leq C\sum_{i=1}^{l}\norm{\phi}_{\alpha_{i},\beta_{i}}.
+        \end{align*}
+        Sumando ambas estimaciones:
+        \begin{align*}
+          |\hat{f_a}(\xi)| \leq |T_1(\xi)| + |T_2(\xi)| \leq M,
+        \end{align*}
+        donde $M$ es independiente de $\xi$ y $a$, por lo que:
+        \begin{align*}
+          \norm{\hat{f_a}}_{\infty} \leq M.
+        \end{align*}
+      \item[(ii)] Supongamos ahora que $a < 0$. En este caso, la función $x \mapsto \dfrac{x}{a - x^2}$ es una función suave en todo $\mathbb{R}$, ya que la ecuación $a - x^2 = 0$ no tiene soluciones reales. Por tanto, no hay ninguna singularidad a lo largo del eje real.\\
+      Entonces, podemos definir directamente:
+      \begin{align*}
+        f_a(\phi) := \int_{\mathbb{R}} \frac{x}{a - x^2} \phi(x) \, dx,
+      \end{align*}
+      y este funcional es perfectamente bien definido para toda $\phi \in \mathcal{S}(\mathbb{R})$. Veamos que define una distribución temperada.\\
+      Sea $\phi \in \mathcal{S}(\mathbb{R})$, entonces dado que $\frac{x}{a - x^2}$ es una función suave y de crecimiento a lo sumo lineal (pues \(|a - x^2|\) crece como \(x^2\) en el infinito), podemos estimar:
+      \begin{align*}
+        \left| f_a(\phi) \right| &= \left| \int_{\mathbb{R}} \frac{x}{a - x^2} \phi(x) \, dx \right| \leq \int_{\mathbb{R}} \left| \frac{x}{a - x^2} \phi(x) \right| \, dx.
+      \end{align*}
+      Como $\phi$ decrece más rápido que cualquier potencia, existe una constante $C>0$ tal que
+      \begin{align*}
+        \left| \frac{x}{a - x^2} \phi(x) \right| \leq \frac{|x|}{|a - x^2|} \cdot \frac{1}{(1 + |x|)^N} \leq \frac{C}{(1 + |x|)^{N-1}},
+      \end{align*}
+      para \(N\) suficientemente grande. Por tanto, la integral converge absolutamente, y se cumple que:
+      \begin{align*}
+        |f_a(\phi)| \leq C \norm{\phi}_{0,N},
+      \end{align*}
+      lo cual implica que \(f_a \in \mathcal{S}'(\mathbb{R})\).
+      Finalmente, observemos su transformada de Fourier:
+      \begin{align*}
+        \hat{f_a}(\xi) = \int_{\mathbb{R}} e^{-2\pi i x \xi} \cdot \frac{x}{a - x^2} \cdot \phi(x) \, dx.
+      \end{align*}
+      Razonando como antes, ya que $\frac{x}{a - x^2}$ es suave y de crecimiento controlado, se tiene que:
+      \begin{align*}
+        |\hat{f_a}(\xi)| \leq C \norm{\phi}_{0,N},
+      \end{align*}
+      de donde se concluye que:
+      \begin{align*}
+        \norm{\hat{f_a}}_{\infty} \leq M,
+      \end{align*}
+      con $M$ independiente de $a$ y de $\xi$, lo que nos permite concluir el ejercicio.
+    \end{itemize}
   \end{solution}
 \end{homeworkProblem}

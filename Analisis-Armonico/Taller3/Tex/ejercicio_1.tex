@@ -24,7 +24,42 @@
     \end{align*}
     Luego aplicando el mismo razonamiento con $\mathcal{F}^{-1}$ nosotros podemos concluir que el operador $\mathcal{F}$ de la transformada de Fourier es un isomorfismo de $\mathcal{S}'(\mathbb{R}^{n})$ en si mismo.
     \begin{enumerate}
-      \item 
+      \item Veamos que $\hat{\partial^{\alpha}\Psi}=(2\pi i)^{|\alpha|}\xi^{\alpha}\hat{\Psi}$, ya que
+        \begin{align*}
+          \hat{\partial^{\alpha}\Psi}(\phi)&=\partial^{\alpha}\Psi(\hat{\phi}),\\
+          &=(-1)^{|\alpha|}\Psi(\partial^{\alpha}\hat{\phi}),\\
+          &=(-1)^{|\alpha|}\Psi((-2\pi i)^{|\alpha|}\hat{x^{\alpha}\phi}),\\
+          &=(2\pi i)^{|\alpha|}\Psi(\hat{x^{\alpha}\phi}),\\
+          &=(2\pi i)^{|\alpha|}\hat{\Psi}(x^{\alpha}\phi),\\
+          &=(2\pi i)^{|\alpha|}\xi^{\alpha}\hat{\Psi}(\phi),
+        \end{align*}
+        Lo que concluye el resultado.
+      \item Veamos que $(-2\pi i)^{|\alpha|}\hat{x^{\alpha}\Psi}=\partial^{\alpha}\hat{\Psi}$, ya que
+        \begin{align*}
+          (-2\pi i)\hat{x^{\alpha}\Psi}(\phi)&=\hat{x^{\alpha}\Psi}((-2\pi i)^{|\alpha|}\phi),\\
+          &=x^{\alpha}\Psi((-2\pi i)^{|\alpha|}\hat{\phi}),\\
+          &=\Psi((-2\pi i)^{|\alpha|}\xi^{\alpha}\hat{\phi}),\\
+          &=\Psi((-1)^{|\alpha|}\hat{\partial^{\alpha}\phi}),\\
+          &=\hat{\Psi}((-1)^{\alpha}\partial^{\alpha}\phi),\\
+          &=\partial^{\alpha}\Psi(\phi),
+        \end{align*}
+        lo que concluye el resultado.
+      \item Veamos que $\check{\hat{\Psi}}=\Psi=\hat{\check{\Psi}}$, ya que
+        \begin{align*}
+          \check{\hat{\Psi}}(\phi)&=\hat{\Psi}(\check{\phi}),\\
+          &=\Psi(hat{\check{\phi}}),\\
+          &=\Psi(\phi),\\
+          &=\Psi(\check{\hat{\phi}}),\\
+          &=\check{\Psi}(\hat{\phi}),\\
+          &=\hat{\check{\Psi}}(\phi),
+        \end{align*}
+        lo que concluye el resultado.
+      \item Veamos que $\mathcal{F}^{4}=Id$ ya que
+        \begin{align*}
+          \mathcal{F}^{4}\Psi(\phi)&=\Psi(\mathcal{F}^{4}\phi),\\
+          &=\Psi(\phi),
+        \end{align*}
+        lo que concluye que $\mathcal{F}^{4}=Id$.
     \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
