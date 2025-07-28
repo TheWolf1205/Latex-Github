@@ -1,0 +1,261 @@
+%!TEX program = lualatex
+\PassOptionsToPackage{usenames, dvipsnames}{color}
+\documentclass{aleph-revista}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{aleph-comandos} 
+\usepackage{multicol}    
+\usepackage[usenames]{color}
+\usepackage{times}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm, mathrsfs}
+\usepackage{enumitem}
+\usepackage{fullpage}
+
+\newtheorem{proposition}{Proposición}
+\newtheorem{lemma}{Lema}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=cyan,
+    pdftitle={Sharelatex Example},
+    pdfpagemode=FullScreen,
+    }
+\addbibresource{bibliografia.bib}
+
+\newcommand{\ident}{\hspace{0.5cm}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\fechapubli{2025}
+\periodouno{Julio}
+
+\titulo{Estimación tipo conmutador para transformadas de Hilbert y derivadas fraccionarias.}
+
+\tituloingles{Models of the universe from differential geometry.}
+
+\autor{Andrés David Cadena Simons}
+\institucion{Universidad Nacional de Colombia, Facultad de ciencias, Sede Bogotá}
+\correo{acadenas@unal.edu.co}
+
+\fecha{\today}
+\resumen{
+XXXXX
+}
+\palabrasc{XXX}
+\begin{document}
+\membrete
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introducción}
+El objetivo de este trabajo es demostrar en detalle la siguiente estimación tipo conmutador:
+\begin{proposition}[Estimación tipo conmutador no local]
+Sea $1 < p < \infty$, $0 < \beta \leq 1$, $0 \leq \alpha \leq 1$ tal que $\alpha + \beta = 1$. Entonces existe una constante $C_{p,\alpha,\beta} > 0$ tal que
+\[
+\left\| D_x^{\alpha} [H_x, g] D_x^{\beta} f \right\|_{L^p(\mathbb{R})} \leq C_{p,\alpha,\beta} \left\| \partial_x g \right\|_{L^\infty(\mathbb{R})} \left\| f \right\|_{L^p(\mathbb{R})},
+\]
+para toda función $g$ suave con derivada acotada y toda $f \in \mathcal{S}(\mathbb{R})$.
+\end{proposition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Marco teórico}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Preliminares}
+
+Recordamos que la transformada de Hilbert $H_x$ está definida en la transformada de Fourier como
+\[
+\widehat{H_x f}(\xi) = -i\,\mathrm{sign}(\xi) \hat{f}(\xi).
+\]
+Además, las derivadas fraccionarias están dadas por el operador
+\[
+\widehat{D_x^s f}(\xi) = |\xi|^s \hat{f}(\xi), \qquad s \in \mathbb{R}.
+\]
+
+También usaremos las proyecciones de Littlewood–Paley $P^x_N$ definidas por
+\[
+\widehat{P^x_N f}(\xi) = \psi_N(\xi) \hat{f}(\xi),
+\]
+donde $\psi_N(\xi)$ es un multiplicador suave con soporte en frecuencias de orden $|\xi| \sim N$, con $N$ número dyádico.
+
+Utilizaremos además las siguientes herramientas fundamentales:
+
+\begin{lemma}[Fefferman–Stein]
+Sea $f = (f_j)_{j=1}^{\infty}$ una secuencia de funciones localmente integrables en $\mathbb{R}$. Si $1 < p < \infty$, entonces
+\[
+\left\| (Mf_j)_{\ell^2} \right\|_{L^p} \leq C_p \left\| (f_j)_{\ell^2} \right\|_{L^p},
+\]
+donde $M$ denota la función maximal de Hardy–Littlewood.
+\end{lemma}
+
+\begin{lemma}[Estimación tipo Calderón]
+Para $l + m \geq 1$, se tiene
+\[
+\left\| \partial_x^l [H_x, g] \partial_x^m f \right\|_{L^p} \lesssim \left\| \partial_x^{l + m} g \right\|_{L^\infty} \left\| f \right\|_{L^p}.
+\]
+\end{lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Demostración de la Proposición}
+
+Comenzamos suponiendo el caso no trivial donde $0 < \alpha, \beta < 1$ y $\alpha + \beta = 1$. El caso $\beta = 1$, $\alpha = 0$ se sigue directamente de la estimación clásica de Calderón.
+
+Queremos estimar
+\[
+D_x^\alpha [H_x, g] D_x^\beta f.
+\]
+En el dominio de Fourier, tenemos
+\[
+\mathcal{F} \left( D_x^\alpha [H_x, g] D_x^\beta f \right)(\xi) = -i \int_{\mathbb{R}} |\xi|^\alpha \left[ \mathrm{sign}(\xi) - \mathrm{sign}(\xi - \xi') \right] \widehat{g}(\xi - \xi') |\xi'|^\beta \widehat{f}(\xi') \, d\xi'.
+\]
+Observamos que el integrando solo es distinto de cero si los signos de $\xi$ y $\xi'$ son distintos, lo que equivale a que $|\xi'| < |\xi - \xi'|$.
+Aplicando la descomposici\'on tipo paraproducto y la propiedad del soporte en frecuencia, podemos escribir:
+\[
+D_x^\alpha [H_x, g] D_x^\beta f = A_1 + A_2 + A_3 + A_4,
+\]
+donde
+\begin{align*}
+A_1 &= H_x \left( \sum_{N>0} D_x^\alpha (P_N^x g \cdot P_{\ll N}^x D_x^\beta f) \right), \\
+A_2 &= - \sum_{N>0} D_x^\alpha (P_N^x g \cdot P_{\ll N}^x H_x D_x^\beta f), \\
+A_3 &= H_x \left( \sum_{N>0} D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x D_x^\beta f) \right), \\
+A_4 &= - \sum_{N>0} D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x H_x D_x^\beta f).
+\end{align*}
+
+\subsection*{Estimaci\'on del t\'ermino $A_1$}
+
+Dado que $\alpha + \beta = 1$ y que $H_x$ es acotado en $L^p$, aplicamos la desigualdad de Littlewood--Paley:
+\[
+\|A_1\|_{L^p} \lesssim \left\| \left( \sum_{M} |P_M^x \sum_{N > 0} D_x^\alpha (P_N^x g \cdot P_{\ll N}^x D_x^\beta f)|^2 \right)^{1/2} \right\|_{L^p}.
+\]
+
+El soporte en frecuencia nos permite restringir la suma a los \( N \sim M \), as\'i que:
+\[
+\|A_1\|_{L^p} \lesssim \left\| \left( \sum_{N} |D_x^\alpha (P_N^x g \cdot P_{\ll N}^x D_x^\beta f)|^2 \right)^{1/2} \right\|_{L^p}.
+\]
+
+Usamos que
+\[
+D_x^\alpha (P_N^x g \cdot P_{\ll N}^x D_x^\beta f) \sim P_N^x (\partial_x g_N^{-\beta} \cdot P_{\ll N}^x D_x^\beta f),
+\]
+donde \( g_N^{-\beta} \) representa una reescalada del tipo \( N^{-\beta} \partial_x g \), y por el Lema 7.1 (estimaci\'on tipo Calder\'on-Coifman-Meyer):
+\[
+|P_N^x (\partial_x g_N^{-\beta} \cdot P_{\ll N}^x D_x^\beta f)(x)| \lesssim M(\partial_x g)(x) \cdot N^{-\beta} M(P_{\ll N}^x D_x^\beta f)(x).
+\]
+
+Aplicando la desigualdad de Fefferman--Stein sobre la suma en \( N \):
+\[
+\|A_1\|_{L^p} \lesssim \| \partial_x g \|_{L^\infty} \cdot \left\| \left( \sum_{N} |M(P_{\ll N}^x D_x^\beta f)|^2 \right)^{1/2} \right\|_{L^p}.
+\]
+
+Finalmente, aplicamos la desigualdad de Littlewood--Paley y acotamos el maximal por:
+\[
+\|A_1\|_{L^p} \lesssim \| \partial_x g \|_{L^\infty} \cdot \|f\|_{L^p}.
+\]
+
+Esto completa la estimaci\'on del t\'ermino $A_1$.
+\subsection*{Estimaci\'on del t\'ermino $A_2$}
+
+La estimaci\'on de $A_2$ sigue exactamente los mismos pasos que la de $A_1$, ya que $H_x$ es un operador lineal acotado en $L^p$, y aparece aplicado sobre $f$ antes del producto. Observamos que:
+\[
+A_2 = - \sum_{N > 0} D_x^\alpha (P_N^x g \cdot P_{\ll N}^x H_x D_x^\beta f).
+\]
+
+Como $H_x$ conmuta con las proyecciones y es acotado, podemos reemplazar $f$ por $H_x f$ en la estimaci\'on anterior. Por tanto:
+\[
+\|A_2\|_{L^p} \lesssim \| \partial_x g \|_{L^\infty} \cdot \| H_x f \|_{L^p} \lesssim \| \partial_x g \|_{L^\infty} \cdot \|f\|_{L^p}.
+\]
+
+Esto concluye la estimaci\'on del t\'ermino $A_2$.
+\subsection*{Estimaci\'on del t\'ermino $A_3$}
+
+Ahora consideramos el t\'ermino
+\[
+A_3 = H_x \left( \sum_{N>0} D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x D_x^\beta f) \right).
+\]
+
+Recordamos que \( \widetilde{P}_N^x \) es una proyecci\'on que selecciona las frecuencias del mismo orden que $N$, por lo que $P_N^x g$ y $\widetilde{P}_N^x f$ est\'an oscilando en frecuencias comparables. En este caso se trata del llamado "interacci\'on de alta con alta frecuencia".
+
+Aplicamos nuevamente la desigualdad de Littlewood--Paley para estimar
+\[
+\|A_3\|_{L^p} \lesssim \left\| \left( \sum_{M} |P_M^x \sum_{N > 0} D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x D_x^\beta f)|^2 \right)^{1/2} \right\|_{L^p}.
+\]
+
+Dado que el soporte en frecuencia de $P_M^x$ solo interact\'ua con frecuencias $N \sim M$, reducimos a
+\[
+\|A_3\|_{L^p} \lesssim \left\| \left( \sum_{N} |D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x D_x^\beta f)|^2 \right)^{1/2} \right\|_{L^p}.
+\]
+
+Ahora usamos la regla del producto para derivadas fraccionarias (o simb\'olicamente en Fourier), teniendo en cuenta que $D_x^\alpha (f g)$ se comporta como la suma de productos $D_x^\alpha f \cdot g$ y $f \cdot D_x^\alpha g$, pero dado que ambos factores est\'an en la misma escala de frecuencia, podemos estimar como:
+\[
+|D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x D_x^\beta f)(x)| \lesssim N^\alpha |P_N^x g(x)| \cdot |\widetilde{P}_N^x D_x^\beta f(x)|.
+\]
+
+Recordamos que $\beta = 1 - \alpha$, por lo que $D_x^\beta f \sim N^\beta P_N^x f$, y por tanto
+\[
+|\widetilde{P}_N^x D_x^\beta f(x)| \lesssim N^\beta |P_N^x f(x)|.
+\]
+
+Entonces
+\[
+|D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x D_x^\beta f)(x)| \lesssim N^\alpha |P_N^x g(x)| \cdot N^\beta |P_N^x f(x)| = N |P_N^x g(x)| \cdot |P_N^x f(x)|.
+\]
+
+Pero como $\partial_x g \in L^\infty$, tenemos $|P_N^x g(x)| \lesssim N^{-1} M(\partial_x g)(x)$. Entonces
+\[
+|D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x D_x^\beta f)(x)| \lesssim M(\partial_x g)(x) \cdot |P_N^x f(x)|.
+\]
+
+Por tanto,
+\[
+\left( \sum_{N} |D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x D_x^\beta f)|^2 \right)^{1/2} \lesssim M(\partial_x g)(x) \cdot \left( \sum_N |P_N^x f(x)|^2 \right)^{1/2}.
+\]
+
+Finalmente, aplicamos Fefferman--Stein y Littlewood--Paley:
+\[
+\|A_3\|_{L^p} \lesssim \|M(\partial_x g)\|_{L^\infty} \cdot \|f\|_{L^p} \lesssim \|\partial_x g\|_{L^\infty} \cdot \|f\|_{L^p}.
+\]
+
+Esto concluye la estimaci\'on del t\'ermino $A_3$.
+\subsection*{Estimaci\'on del t\'ermino $A_4$}
+
+Finalmente, consideramos el t\'ermino
+\[
+A_4 = - \sum_{N>0} D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x H_x D_x^\beta f).
+\]
+
+Como en el caso de $A_3$, se trata de un producto de funciones en frecuencias comparables. Usamos que $H_x$ es un operador acotado en $L^p$ y conmuta con derivadas fraccionarias, por lo que:
+\[
+|\widetilde{P}_N^x H_x D_x^\beta f(x)| \lesssim N^\beta |P_N^x f(x)|.
+\]
+
+Por tanto, repitiendo los mismos argumentos que en la estimaci\'on de $A_3$, tenemos:
+\begin{align*}
+|D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x H_x D_x^\beta f)(x)| &\lesssim N^\alpha |P_N^x g(x)| \cdot |\widetilde{P}_N^x H_x D_x^\beta f(x)| \\
+&\lesssim N^\alpha |P_N^x g(x)| \cdot N^\beta |P_N^x f(x)| \\
+&= N |P_N^x g(x)| \cdot |P_N^x f(x)|.
+\end{align*}
+
+Usando que $|P_N^x g(x)| \lesssim N^{-1} M(\partial_x g)(x)$, obtenemos:
+\[
+|D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x H_x D_x^\beta f)(x)| \lesssim M(\partial_x g)(x) \cdot |P_N^x f(x)|.
+\]
+
+Por tanto,
+\[
+\left( \sum_{N} |D_x^\alpha (P_N^x g \cdot \widetilde{P}_N^x H_x D_x^\beta f)|^2 \right)^{1/2} \lesssim M(\partial_x g)(x) \cdot \left( \sum_N |P_N^x f(x)|^2 \right)^{1/2}.
+\]
+
+Aplicando nuevamente Fefferman--Stein y Littlewood--Paley, concluimos:
+\[
+\|A_4\|_{L^p} \lesssim \|M(\partial_x g)\|_{L^\infty} \cdot \|f\|_{L^p} \lesssim \|\partial_x g\|_{L^\infty} \cdot \|f\|_{L^p}.
+\]
+
+Esto concluye la estimaci\'on del t\'ermino $A_4$ y por tanto, la demostraci\'on completa de la Proposici\'on 1.1.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implicaciones}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusiones}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\nocite{*}
+\printbibliography
+
+\end{document}
