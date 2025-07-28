@@ -1,19 +1,20 @@
 %!TEX program = lualatex
 \PassOptionsToPackage{usenames, dvipsnames}{color}
 \documentclass{aleph-revista}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{aleph-comandos} 
 \usepackage{multicol}    
 \usepackage[usenames]{color}
-\usepackage{times}
 \usepackage{parskip}
 \usepackage{hyperref}
 \usepackage[spanish]{babel}
 \usepackage{amsmath, amssymb, amsthm, mathrsfs}
 \usepackage{enumitem}
-\usepackage{fullpage}
-
 \newtheorem{proposition}{Proposición}
 \newtheorem{lemma}{Lema}
 
@@ -26,6 +27,16 @@
     pdfpagemode=FullScreen,
     }
 \addbibresource{bibliografia.bib}
+
+% Fourier
+% hat y widecheck
+\DeclareFontFamily{U}{mathx}{}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\providecommand{\check}{\widecheck}
+\renewcommand{\hat}{\widehat}
+\providecommand{\norm}[1]{\left\|#1\right\|}
+
 
 \newcommand{\ident}{\hspace{0.5cm}}
 \renewcommand\qedsymbol{$\blacksquare$}
@@ -51,47 +62,40 @@ XXXXX
 \section{Introducción}
 El objetivo de este trabajo es demostrar en detalle la siguiente estimación tipo conmutador:
 \begin{proposition}[Estimación tipo conmutador no local]
-Sea $1 < p < \infty$, $0 < \beta \leq 1$, $0 \leq \alpha \leq 1$ tal que $\alpha + \beta = 1$. Entonces existe una constante $C_{p,\alpha,\beta} > 0$ tal que
-\[
-\left\| D_x^{\alpha} [H_x, g] D_x^{\beta} f \right\|_{L^p(\mathbb{R})} \leq C_{p,\alpha,\beta} \left\| \partial_x g \right\|_{L^\infty(\mathbb{R})} \left\| f \right\|_{L^p(\mathbb{R})},
-\]
+Sea $1 < p < \infty$, $0 < \alpha, \beta \leq 1$, tal que $\alpha + \beta = 1$. Entonces
+\begin{align*}
+  \norm{D_x^{\alpha} [H_x, g] D_x^{\beta} f}_{L^p(\mathbb{R})} \lesssim_{p,\alpha,\beta} \norm{\partial_x g}_{L^\infty(\mathbb{R})}\norm{f}_{L^p(\mathbb{R})}, 
+\end{align*}
 para toda función $g$ suave con derivada acotada y toda $f \in \mathcal{S}(\mathbb{R})$.
 \end{proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Marco teórico}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminares}
-
 Recordamos que la transformada de Hilbert $H_x$ está definida en la transformada de Fourier como
-\[
-\widehat{H_x f}(\xi) = -i\,\mathrm{sign}(\xi) \hat{f}(\xi).
-\]
+\begin{align*}
+  \hat{H_x f}(\xi) = -isign(\xi) \hat{f}(\xi). 
+\end{align*}
 Además, las derivadas fraccionarias están dadas por el operador
-\[
-\widehat{D_x^s f}(\xi) = |\xi|^s \hat{f}(\xi), \qquad s \in \mathbb{R}.
-\]
-
+\begin{align*}
+  \hat{D_x^s f}(\xi) = |\xi|^s \hat{f}(\xi), \qquad s \in \mathbb{R}. 
+\end{align*}
 También usaremos las proyecciones de Littlewood–Paley $P^x_N$ definidas por
-\[
-\widehat{P^x_N f}(\xi) = \psi_N(\xi) \hat{f}(\xi),
-\]
-donde $\psi_N(\xi)$ es un multiplicador suave con soporte en frecuencias de orden $|\xi| \sim N$, con $N$ número dyádico.
-
-Utilizaremos además las siguientes herramientas fundamentales:
-
+\begin{align*}
+  \hat{P^x_N f}(\xi) = \psi_N(\xi) \hat{f}(\xi), 
+\end{align*}
+donde $\psi_N(\xi)$ es un multiplicador suave con soporte en frecuencias de orden $|\xi| \sim N$, con $N$ número diádico.\\
+Utilizaremos además las siguientes herramientas fundamentales
 \begin{lemma}[Fefferman–Stein]
-Sea $f = (f_j)_{j=1}^{\infty}$ una secuencia de funciones localmente integrables en $\mathbb{R}$. Si $1 < p < \infty$, entonces
-\[
-\left\| (Mf_j)_{\ell^2} \right\|_{L^p} \leq C_p \left\| (f_j)_{\ell^2} \right\|_{L^p},
-\]
-donde $M$ denota la función maximal de Hardy–Littlewood.
+  Sea $f = (f_j)_{j=1}^{\infty}$ una secuencia de funciones localmente integrables en $\mathbb{R}$. Si $1 < p < \infty$, entonces
+  \begin{align*}
+    \norm{(Mf_j)_{l^2}}_{L^p} \leq C_p \norm{(f_j)_{l^2}}_{L^p}, 
+  \end{align*}
+  donde $M$ denota la función maximal de Hardy–Littlewood.
 \end{lemma}
-
 \begin{lemma}[Estimación tipo Calderón]
-Para $l + m \geq 1$, se tiene
-\[
-\left\| \partial_x^l [H_x, g] \partial_x^m f \right\|_{L^p} \lesssim \left\| \partial_x^{l + m} g \right\|_{L^\infty} \left\| f \right\|_{L^p}.
-\]
+  Para $l + m \geq 1$, se tiene
+  \begin{align*}
+    \norm{\partial_x^l [H_x, g] \partial_x^m f}_{L^p} \lesssim \norm{\partial_x^{l + m} g}_{L^\infty} \norm{f}_{L^p}. 
+  \end{align*}
 \end{lemma}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Demostración de la Proposición}
@@ -104,7 +108,7 @@ D_x^\alpha [H_x, g] D_x^\beta f.
 \]
 En el dominio de Fourier, tenemos
 \[
-\mathcal{F} \left( D_x^\alpha [H_x, g] D_x^\beta f \right)(\xi) = -i \int_{\mathbb{R}} |\xi|^\alpha \left[ \mathrm{sign}(\xi) - \mathrm{sign}(\xi - \xi') \right] \widehat{g}(\xi - \xi') |\xi'|^\beta \widehat{f}(\xi') \, d\xi'.
+\mathcal{F} \left( D_x^\alpha [H_x, g] D_x^\beta f \right)(\xi) = -i \int_{\mathbb{R}} |\xi|^\alpha \left[ \mathrm{sign}(\xi) - \mathrm{sign}(\xi - \xi') \right] \hat{g}(\xi - \xi') |\xi'|^\beta \hat{f}(\xi') \, d\xi'.
 \]
 Observamos que el integrando solo es distinto de cero si los signos de $\xi$ y $\xi'$ son distintos, lo que equivale a que $|\xi'| < |\xi - \xi'|$.
 Aplicando la descomposici\'on tipo paraproducto y la propiedad del soporte en frecuencia, podemos escribir:

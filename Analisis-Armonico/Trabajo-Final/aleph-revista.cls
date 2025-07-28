@@ -46,8 +46,6 @@
 %% --- Paquetes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Son necesarios los siguientes paquetes para dar formato al documento.
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
 \RequirePackage[spanish,es-noindentfirst]{babel}
 \RequirePackage{geometry}
 \RequirePackage{amsmath}
@@ -67,7 +65,6 @@
 \RequirePackage{tocbasic}
 \RequirePackage{nextpage}
 \RequirePackage{booktabs}
-\RequirePackage{mathpazo}
 \RequirePackage[font={small},labelfont={color=seccolor,bf,small},
   justification=centerlast,tablename=Tabla]{caption}
 \RequirePackage{listings}
