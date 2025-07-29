@@ -115,7 +115,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --> Estilo de secciones numeradas
 \titleformat{name=\section}[display]
-  {\color{seccolor}\vspace*{-10mm}\bfseries\scshape\centering}
+  {\color{seccolor}\vspace*{-10mm}\bfseries\centering}
     {}{1ex}
     {\Large\titlerule%\vspace{.3ex}
     \thesection.\
@@ -123,17 +123,17 @@
     [\vspace{.9ex}\titlerule]
 %% --> Estilo de secciones no numeradas
 \titleformat{name=\section,numberless}[display]
-  {\color{seccolor}\vspace*{-10mm}\bfseries\scshape\centering}
+  {\color{seccolor}\vspace*{-10mm}\bfseries\centering}
     {}{1ex}
     {\Large\titlerule\vspace{.3ex}
      }
     [\vspace{.9ex}\titlerule]
 %% --> Estilo de subsecciones numeradas
 \titleformat{\subsection}
-    {\color{sseccolor}\normalfont\Large\bfseries\scshape}{\thesubsection.}{1em}{}
+    {\color{sseccolor}\normalfont\Large\bfseries}{\thesubsection.}{1em}{}
 %% --> Estilo de subsecciones no numeradas
 \titleformat{name=\subsection,numberless}[display]
-    {\color{sseccolor}\large\bfseries\scshape}
+    {\color{sseccolor}\large\bfseries}
     {}{0ex}{}[]
 %% --> Estilo de subsubsecciones numeradas
 \titleformat{\subsubsection}
@@ -166,9 +166,9 @@
     \begin{center}
     
     \ifdefstrequal{\@tituloingles}{}{
-    \Huge\bfseries\scshape\@titulo
+    \Huge\bfseries\@titulo
     }{
-    \Huge\bfseries\scshape\@titulo\\
+    \Huge\bfseries\@titulo\\
     \Large \itshape \@tituloingles   
     }%
     \end{center}
@@ -191,13 +191,13 @@
     \begingroup
     \small
     \ifdefstring{\@abstract}{}{\small
-    \noindent\textcolor{seccolor}{\textbf{\textsc{Resumen:}}} \@resumen\\[1mm]
+    \noindent\textcolor{seccolor}{\textbf{Resumen:}} \@resumen\\[1mm]
     \noindent\textcolor{seccolor}{\textbf{Palabras clave:}} \@palabrasc
     }{
-    \noindent\textcolor{seccolor}{\textbf{\textsc{Resumen:}}} \@resumen\\[1mm]
+    \noindent\textcolor{seccolor}{\textbf{Resumen:}} \@resumen\\[1mm]
     \noindent\textcolor{seccolor}{\textbf{Palabras clave:}} \@palabrasc 
     
-    \noindent\textcolor{seccolor}{\textbf{\textsc{Abstract:}}} \@abstract\\[1mm]
+    \noindent\textcolor{seccolor}{\textbf{Abstract:}} \@abstract\\[1mm]
     \noindent\textcolor{seccolor}{\textbf{Key Words:}} \@keywords
     }%
     
@@ -252,7 +252,7 @@
 %% -- Definici\'on de ambientes matemáticos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newtheoremstyle{estiloteorema}%
-    {9pt}{9pt}{\slshape}{0pt}{\color{seccolor}\bfseries\scshape}{.}{ }{}
+    {9pt}{9pt}{\slshape}{0pt}{\color{seccolor}\bfseries}{.}{ }{}
 \theoremstyle{estiloteorema}
 \newtheorem{teo}{Teorema}
 \newtheorem{prop}{Proposición}
