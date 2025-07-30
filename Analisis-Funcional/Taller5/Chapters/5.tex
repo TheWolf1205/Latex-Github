@@ -693,13 +693,7 @@ De este modo, usando que $S_r^{\star}=S_l$, se sigue que \[S_{l}^{\star}=(S_{r}^
             B=\left\{f \in L^p((0,1)): \norm{f}_p\leq 1\right\}.
         \end{align*}
         Queremos ver que $\overline{T(B)}$ es compacto en $L^p((0,1))$, para esto, vamos a usar el siguiente resultado.
-        \begin{theorem}
-            \textbf{(Kolmogorov. Riesz-Frechet).} Sea $\mathcal{F}$ un subconjunto acotado de $L^p(\mathbb{R}^n)$ con $1\leq p<\infty$. Para $f:\mathbb{R}^n\to \mathbb{R}$ y $h \in \mathbb{R}^n$, sea $\tau_h f(x)=f(x+h)$. Asuma que
-            \begin{align*}
-                \lim_{|h|\to 0}\norm{\tau_h f-f}_p=0 \text{ uniformemente en } f \in\mathcal{F},
-            \end{align*}
-            esto es, si para todo $\varepsilon>0$ existe $\delta>0$ tal que si $|h|<\delta$,\\ entonces $\norm{\tau_h f-f}_p<\varepsilon$ para toda $f \in \mathcal{F}$. Entonces la clausura de $\mathcal{F}\big|_{\Omega}$ es compacta en $L^p(\Omega)$, para cualquier $\Omega\subset \mathbb{R}^n$ con medida finita ($\mathcal{F}\big|_\Omega$ denota las restricciones a $\Omega$ de las funciones en $\mathcal{F}$).
-        \end{theorem}
+        
 
         Para aplicar el teorema anterior, claramente vamos a tomar\\ $\Omega=(0,1)$ y $\mathcal{F}=T(B)$. Sea $h \in \mathbb{R}$ con $|h|<1$. Para no tener problemas con las expresiones
         \begin{align*}
@@ -927,5 +921,6 @@ De este modo, usando que $S_r^{\star}=S_l$, se sigue que \[S_{l}^{\star}=(S_{r}^
         \item $\sigma(M_{g})\setminus \{0\}$ es un conjunto enumerable y una secuencia convergente a $0$, pero note que $\sigma(M_{g})\setminus \{0\}=[g(m),g(M)]\setminus \{0\}$, pero note que como $\sigma(M_{g})=[g(m),g(M)]$ es un intervalo cerrado, $|\sigma(M_{g})\setminus \{0\}|=2^{\aleph_{0}}$.
       \end{enumerate}
       En cualquiera de los casos se llega a una contradicción, lo que nos permite afirmar que $M_{g}$ no es un operador compacto si $g\neq 0$. 
+       
   \end{enumerate}
 \end{proof}

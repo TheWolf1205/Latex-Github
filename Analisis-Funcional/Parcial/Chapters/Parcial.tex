@@ -19,7 +19,7 @@
 
 \textbf{Profesor:} Oscar Guillermo Riaño Castañeda\\
 \textbf{Integrantes:} Andrés David Cadena Simons \hspace{2.8cm}  Jairo Sebastián Niño Castro\hspace{2.8cm}
-Iván Felipe Salamanca Medina \hspace{5.05cm}\textbf{Fecha:} 16 de Julio del 2025\\
+Iván Felipe Salamanca Medina \hspace{5.05cm}\textbf{Fecha:} 22 de Julio del 2025\\
 \vspace{0.25cm}\\
 
 
@@ -47,12 +47,257 @@ Iván Felipe Salamanca Medina \hspace{5.05cm}\textbf{Fecha:} 16 de Julio del 202
             &\leq \left(\int_0^1 |t|^2\, dt\right)^{1/2}\norm{u}_2\\
             &=\dfrac{\sqrt{3}}{3}\norm{u}_2,
         \end{align*}
-        probando así que $T$ es acotado.
+        probando así que $T$ es acotado. Para probar que $T$ es compacto, usamos el siguiente resultado.
+        \begin{theorem}
+            \textbf{(Kolmogorov. Riesz-Frechet).} Sea $\mathcal{F}$ un subconjunto acotado de $L^p(\mathbb{R}^n)$ con $1\leq p<\infty$. Para $f:\mathbb{R}^n\to \mathbb{R}$ y $h \in \mathbb{R}^n$, sea $\tau_h f(x)=f(x+h)$. Asuma que
+            \begin{align*}
+                \lim_{|h|\to 0}\norm{\tau_h f-f}_p=0 \text{ uniformemente en } f \in\mathcal{F},
+            \end{align*}
+            esto es, si para todo $\varepsilon>0$ existe $\delta>0$ tal que si $|h|<\delta$,\\ entonces $\norm{\tau_h f-f}_p<\varepsilon$ para toda $f \in \mathcal{F}$. Entonces la clausura de $\mathcal{F}\big|_{\Omega}$ es compacta en $L^p(\Omega)$, para cualquier $\Omega\subset \mathbb{R}^n$ con medida finita ($\mathcal{F}\big|_\Omega$ denota las restricciones a $\Omega$ de las funciones en $\mathcal{F}$).
+        \end{theorem}
+        Queremos ver que $\overline{T(B)}$ es compacto en $L^2((0,1))$, donde
+        \begin{align*}
+            B=\left\{f \in L^{2}((0,1)): \norm{f}_2\leq 1\right\}. 
+        \end{align*}
+        Para aplicar el \textbf{Teorema 1}, tenemos que ver que 
+        \begin{align*}
+            \lim_{|h|\to 0}\norm{\tau_h f-f}_2=0,
+        \end{align*}
+        para toda $f \in T(B)$. Sea $h\in \mathbb{R}$. Antes de realizar los cálculos, formalmente vemos a las funciones como extendidas a todo $\mathbb{R}$ por $0$, es decir, dada $u \in L^2((0,1))$, consideramos
+        \begin{align*}
+            \widetilde{u}(x)=\begin{cases}
+                u(x) \hspace{3mm} &\text{ si } x \in (0,1)\\
+                0 &\text{ si } x \in \mathbb{R}\setminus (0,1),
+            \end{cases}
+        \end{align*}
+        aunque en la práctica trabajaremos con $u$. Esta aclaración se hace, dado que, dependiendo del valor de $h$, la expresión
+        \begin{align*}
+            \tau_hTu(x)=\int_0^{x+h}u(t)\, dt,
+        \end{align*}
+        podría no tener sentido si, en principio, $u$ está definida únicamente en $(0,1)$. Ahora, sí, procedemos con los cálculos: Sea $f \in T(B)$, es decir, existe $u \in B$, tal que $Tu=f$, 
+        \begin{itemize}
+            \item Si $h\geq 0$, tenemos
+            \begin{align*}
+                \norm{\tau_h f-f}_2^2&=\int_0^1 \left|\tau_h f(x)-f(x)\right|^2\, dx\\
+                &=\int_0^1\left|\tau_h Tu(x)-Tu(x)\right|^2\, dx\\
+                &=\int_0^1 \left|\int_0^{x+h}tu(t)\, dt-\int_0^x tu(t)\, dt\right|^2\, dx\\
+                &=\int_0^1\left|\int_x^{x+h}tu(t)\, dt\right|^2\, dx\\
+                &\leq \int_0^1 \left(\int_0^1 \chi_{(x,x+h)}(t)|t||u(t)|\, dt\right)^2\, dx,
+            \end{align*}
+            por la desigualdad de Cauchy-Schwarz y el hecho de que $u \in B$, tenemos 
+            \begin{align*}
+                \int_0^1 \chi_{(x,x+h)}(t)|t||u(t)|\, dt&\leq \left(\sup_{t\in (0,1)}|t|\right)\int_0^1 \chi_{(x,x+h)}(t)|u(t)|\, dt\\
+                &\leq \norm{\chi_{(x,x+h)}}_2\norm{u}_2\\
+                &\leq\left(\int_0^1 |\chi_{(x,x+h)}(t)|^2\, dt\right)^{1/2}\\
+                &=\left(\int_x^{x+h}\, dt\right)^{1/2}\\
+                &=h^{1/2}\\
+                &=|h|^{1/2},
+            \end{align*}
+            de esta manera
+            \begin{align*}
+                \norm{\tau_hf-f}_2^2\leq &\int_0^1 \left(\int_0^1 \chi_{(x,x+h)}(t)|t||u(t)|\, dt\right)^2\, dx\\
+                &\leq \int_0^1 \left(|h|^{1/2}\right)^2\, dx\\
+                &=|h|,
+            \end{align*}
+            y por tanto
+            \begin{align*}
+                \norm{\tau_hf-f}_2\leq |h|^{1/2}.
+            \end{align*}
+            \item Si $h\leq 0$, tenemos
+            \begin{align*}
+                \norm{\tau_h f-f}_2^2&=\int_0^1 |\tau_hf(x)-f(x)|^2\, dx\\
+                &=\int_0^1|\tau_h Tu(x)-Tu(x)|^2\, dx\\
+                &=\int_0^1 \left|\int_0^{x+h}tu(t)\, dt-\int_0^x tu(t)\, dt\right|^2\, dx\\
+                &=\int_0^1 \left|\int_{x+h}^xtu(t)\, dt\right|^2\, dx\\
+                &\leq \int_0^1\left(\int_0^1 \chi_{(x+h,x)}(t)|t||u(t)|\, dt\right)^2\, dx,
+            \end{align*}
+            nuevamente, por la desigualdad de Cauchy-Schwarz y el hecho de que $u \in B$, tenemos
+            \begin{align*}
+                \int_0^1 \chi_{(x+h,x)}(t)|t||u(t)|\, dt&\leq \left(\sup_{t \in (0,1)}|t|\right)\int_0^1 \chi_{(x+h,x)}(t)|u(t)|\, dt\\
+                &\leq \norm{\chi_{(x+h,x)}}_2\norm{u}_2\\
+                &\leq \left(\int_0^1 |\chi_{(x+h,x)}(t)|^2\, dt\right)^{1/2}\\
+                &=\left(\int_{x+h}^x \, dt\right)^{1/2}\\
+                &=(-h)^{1/2}\\
+                &=|h|^{1/2},
+            \end{align*}
+            de esta manera
+            \begin{align*}
+                \norm{\tau_hf-f}_2^2&\leq  \int_0^1\left(\int_0^1 \chi_{(x+h,x)}(t)|t||u(t)|\, dt\right)^2\, dx\\
+                &\leq \int_0^1\left(|h|^{1/2}\right)^2\, dx\\
+                &=|h|,
+            \end{align*}
+            y por tanto,
+            \begin{align*}
+                \norm{\tau_hf-f}_2\leq |h|^{1/2}.
+            \end{align*}
+        \end{itemize}
+        En cualquier caso, tenemos que $\norm{\tau_hf-f}_2\leq |h|^{1/2}$ para toda $f \in T(B)$, así
+        \begin{align*}
+            0\leq \lim_{|h|\to 0}\norm{\tau_hf-f}_2\leq \lim_{|h|\to 0}|h|^{1/2}=0,
+        \end{align*}
+        para toda $f \in T(B)$. Así, el \textbf{Teorema 1} nos garantiza que $T(B)$ tiene clausura compacta en $L^2((0,1))$, es decir, $\overline{T(B)}$ es compacto en $L^2((0,1))$ y por tanto, $T$ es un operador compacto.
+
+        \item[(b)] Como $T\in \mathcal{K}(L^2((0,1)))$, sabemos que $0 \in \sigma(T)$ y $\sigma(T)\setminus\{0\}=EV(T)\setminus\{0\}$. Sea $\lambda \in \mathbb{R}$ con $\lambda\neq 0$. Primero note que, si $f \in L^2((0,1))$, entonces, por la desigualdad de Cauchy-Schwarz
+        \begin{align*}
+            \norm{f}_1=\int_0^1 |f(x)|\, dx\leq \norm{1}_2\norm{f}_2=\norm{f}_2,
+        \end{align*}
+        es decir, $f \in L^1((0,1))$, además, como $g(t)=t$ es continua y acotada en $(0,1)$, tenemos $tf(t)\in L^1((0,1))$. De esta manera, podemos aplicar el Teorema de Diferenciación de Lebesgue para afirmar que si $f \in L^2((0,1))$
+        \begin{align*}
+            \lim_{h\to 0^+}\dfrac{1}{2h}\int_{x-h}^{x+h} tf(t)\, dt=\dfrac{1}{2h}\left[\int_{0}^{x+h}tf(t)\, dt-\int_0^{x-h}tf(t)\, dt\right]=xf(x),
+        \end{align*}
+        para casi todo $x \in (0,1)$, es decir, la función 
+        \begin{align*}
+            Tf(x)=\int_{0}^x tf(t)\, dt,
+        \end{align*}
+        es diferenciable en casi todo punto de $x \in (0,1)$ y, para los puntos donde esta sea diferenciable, vale que
+        \begin{align*}
+            \dfrac{d}{dx}(Tf(x))=xf(x).
+        \end{align*}
+        Sea $u \in L^2((0,1))$ tal que $Tu=\lambda u$, es decir
+        \begin{align*}
+            \int_0^x tu(t)\, dt=\lambda u(x),
+        \end{align*}
+        Note que, en este caso, podemos extender continuamente $u$ a $[0,1)$, definiendo
+        \begin{align*}
+            u(0):=\lim_{x\to 0^+}\int_0^x tu(t)\, dt=0.
+        \end{align*}
+        Por las observaciones que hicimos anteriormente, tenemos que si $Tu=\lambda u$, $u$ es diferenciable en casi toda parte, de manera que es válido expresar el problema de valor inicial dado por
+        \begin{align*}
+            \begin{cases}
+                xu(x)=\lambda u'(x)\\
+                u(0)=0,
+            \end{cases}
+        \end{align*}
+        cuya solución general de la EDO asociada está dada por
+        \begin{align*}
+            u(x)=Ce^{x^2/2\lambda},
+        \end{align*}
+        donde $C \in \mathbb{R}$, de manera que, para que $u(0)=0$, se debe tener que $C=0$ y por tanto, $u=0$. De esta manera, $\lambda\notin EV(T)$, es decir, $\mathbb{R}\setminus \{0\}\subset \rho(T)$. Finalmente, si $\lambda=0$, la ecuación $Tu=\lambda u$ se transforma en
+        \begin{align*}
+            \int_0^x tu(t)\, dt=0,
+        \end{align*}
+        nuevamente, como $Tu$ es diferenciable en casi toda parte, tenemos que 
+        \begin{align*}
+            xu(x)=0,
+        \end{align*}
+        para casi todo $x \in (0,1)$, pero esto quiere decir que $u(x)=0$ para casi todo $x \in (0,1)$, es decir, $u=0$ y así, $0 \notin EV(T)$. De esta manera $\sigma(T)=\{0\}$ y $EV(T)=\emptyset$.
+
+        \item[(c)] Sea $\lambda \in \rho(T)$, es decir, $\lambda\neq 0$. Sea $u \in L^2((0,1))$ y sea $f:=(Tu-\lambda u)$, de manera que $u=(T-\lambda I)^{-1}f$. Definimos 
+        \begin{align*}
+            v(x)=Tu(x)=\int_0^x tu(t)\, dt.
+        \end{align*}
+        y nuevamente, podemos extender $v$ a $[0,1)$ de manera continua con $v(0)=0$.
+        Análogamente a lo hecho en el ítem anterior, tenemos que $v$ es diferenciable en casi toda parte y $v'(x)=xu(x)$ para casi todo $x \in (0,1)$, así, $v$ satisface el siguiente problema de valor inicial 
+        \begin{align*}
+            \begin{cases}
+                v-\dfrac{\lambda}{x}v'=f\\
+                v(0)=0,
+            \end{cases}
+        \end{align*}
+        con $x \in (0,1)$. Esta es una ecuación diferencial lineal de primer orden, de manera que la única solución de el problema de valor inicial está dada por
+        \begin{align*}
+            v(x)=-\frac{1}{\lambda}e^{\frac{x^2}{2\lambda}}\int_0^x e^{-\frac{t^2}{2\lambda}}tf(t)\, dt, 
+        \end{align*}
+        Nuevamente, el Teorema de Diferenciación de Lebesgue nos garantiza que la función $e^{-\frac{t^2}{2\lambda}}tf(t)\in L^2((0,1))$ es diferenciable para casi todo $x \in (0,1)$, por tanto
+        \begin{align*}
+            v'(x)=xu(x)=-\frac{x}{\lambda^2}e^{\frac{x^2}{2\lambda}}\int_0^x e^{-\frac{t^2}{2\lambda}}tf(t)\, dt-\frac{1}{\lambda}xf(x),
+        \end{align*}
+        así, para $x \in (0,1)$, se tiene que
+        \begin{align*}
+            u(x)=-\frac{1}{\lambda^2}e^{\frac{x^2}{2\lambda}}\int_0^x e^{-\frac{t^2}{2\lambda}}tf(t)\, dt-\frac{1}{\lambda}f(x),
+        \end{align*}
+        de esta manera, para $f \in L^2((0,1))$ y $\lambda\neq 0$, tenemos que 
+        \begin{align*}
+            (T-\lambda I)^{-1}f(x)=-\frac{1}{\lambda^2}e^{\frac{x^2}{2\lambda}}\int_0^x e^{-\frac{t^2}{2\lambda}}tf(t)\, dt-\frac{1}{\lambda}f(x).
+        \end{align*}
+
+        \item[(d)] Vamos a calcular $T^\star$. Como $L^2((0,1))$ es un espacio de Hilbert con el producto interno
+        \begin{align*}
+            (f,g)=\int_0^1 f(x)g(x)\, dx,
+        \end{align*}
+        para toda $f,g \in L^2((0,1))$, queremos encontrar el operador $T^\star$ tal que
+        \begin{align*}
+            (Tf,g)=(f,T^\star g),
+        \end{align*}
+        para toda $f,g \in L^2((0,1))$. Por definición, dadas $f,g \in L^2((0,1))$ tenemos
+        \begin{align*}
+            (Tf,g)&=\int_0^1 Tf(x)g(x)\, dx\\
+            &=\int_0^1 \left(\int_0^x tf(t)\, dt\right)g(x)\, dx
+        \end{align*}
+        Usando el Teorema de Fubini para cambiar el orden de integración en la siguiente región
+        \begin{center}
+            
+
+
+
+% Pattern Info
+ 
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}
+\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_go9zksz5u}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_go9zksz5u}
+{\pgfqpoint{0pt}{-\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{
+\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfqpoint{0pt}{\mcSize}}
+\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{-\mcThickness}}
+\pgfusepath{stroke}
+}}
+\makeatother
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,310); %set diagram left start at 0, and has height of 310
+
+%Shape: Axis 2D [id:dp33092300198399116] 
+\draw  (204,226.3) -- (458,226.3)(229.4,22) -- (229.4,249) (451,221.3) -- (458,226.3) -- (451,231.3) (224.4,29) -- (229.4,22) -- (234.4,29)  ;
+%Shape: Square [id:dp6656203989122085] 
+\draw   (229.4,66.7) -- (389,66.7) -- (389,226.3) -- (229.4,226.3) -- cycle ;
+%Shape: Right Triangle [id:dp0038208365960288315] 
+\draw  [pattern=_go9zksz5u,pattern size=15pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 208; green, 2; blue, 27}] (389,66.7) -- (228.65,226.3) -- (389,226.3) -- cycle ;
+%Straight Lines [id:da8168646378355199] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (389,66.7) -- (229.4,226.3) ;
+
+% Text Node
+\draw (214,27.4) node [anchor=north west][inner sep=0.75pt]    {$t$};
+% Text Node
+\draw (446,231.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+% Text Node
+\draw (217,58.4) node [anchor=north west][inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (385,229.4) node [anchor=north west][inner sep=0.75pt]    {$1$};
+
+
+\end{tikzpicture}
+
+        \end{center}
+        tenemos que 
+        \begin{align*}
+            (Tf,g)&=\int_0^1\int_0^x tf(t)g(x)\,  dt\, dx\\
+            &=\int_0^1\int_{t}^1 tf(t)g(x)\, dx\, dt\\
+            &=\int_0^1 f(t)\left(t\int_t^1g(x)\, dx\right)\, dt\\
+        \end{align*}
+        de manera que, si definimos $\displaystyle Ag(t)=t\int_t^1g(x)\, dx$, tenemos
+        \begin{align*}
+            (Tf,g)=\int_0^1 f(t)\left(t\int_t^1g(x)\, dx\right)\, dt=(f,Ag),
+        \end{align*}
+        es decir, $A=T^\star$, de esta manera, para $f \in L^2((0,1))$, tenemos que 
+        \begin{align*}
+            T^\star f(x)=x\int_x^1 f(y)\, dy.
+        \end{align*}
     \end{enumerate}
 \end{proof}
 
 \section{Ecuaciones Diferenciales en Espacios de Hilbert}
-
 \textbf{Problema 2.}
 
 \textbf{Consideraciones preliminares.} Sea $H$ un espacio de Hilbert separable y $J \subseteq \mathbb{R}$ un intervalo abierto. $C(J;H)$ denota el espacio de todas las funciones $u : J \to H$ que son continuas, es decir, para todo $t \in J$ se tiene que
@@ -137,7 +382,7 @@ Note que, definiendo derivadas laterales, podemos considerar el espacio $C^k(J;H
         &\leq\sum_{l=0}^{k}\sup_{t\in J}\norm{u^{(l)}(t)}_{H}+|\lambda|\sum_{l=0}^{k}\sup_{t\in J} \norm{v^{(l)}(t)}_{H},\\
         &=\norm{u}_{C^{k}}+|\lambda|\norm{v}_{C^{k}}.
       \end{align*}
-      Por otro lado note que $u=0$ sí y sólo si $\norm{u}_{H}=0$, lo que sucede si y sólo si el cociente $\frac{u(t+h)-u(t)}{h}=0$ en $H$ para todo $t$ y $h$, lo que a su vez se da si y sólo si $u'=0$, inductivamente se llega a que $u^{(l)}=0$ para todo $0\leq l\leq k$, lo que se cumple si y sólo si $\norm{u}_{C^{k}}=0$, lo que nos permite concluir que $\norm{\cdot}_{C^{k}}$ en efecto es una norma bien definida.\\
+      Por otro lado note que $u=0$ sí y sólo si $\norm{u}_{H}=0$, lo que sucede si y sólo si el cociente $\dfrac{u(t+h)-u(t)}{h}=0$ en $H$ para todo $t$ y $h$, lo que a su vez se da si y sólo si $u'=0$, inductivamente se llega a que $u^{(l)}=0$ para todo $0\leq l\leq k$, lo que se cumple si y sólo si $\norm{u}_{C^{k}}=0$, lo que nos permite concluir que $\norm{\cdot}_{C^{k}}$ en efecto es una norma bien definida.\\
       Ahora veamos que el espacio antes mencionado es completo, es decir, dada $\{u_{m}\}\subset C^{k}(J:H)$ sucesión de Cauchy esta converge en $C^{k}(J;H)$.\\
       Note que dado $\epsilon>0$ existe $N>0$ tal que si $n,m>N$ entonces se satisface que
       \begin{align*}
@@ -176,7 +421,7 @@ Note que, definiendo derivadas laterales, podemos considerar el espacio $C^k(J;H
         &\leq \epsilon.
       \end{align*}
       Lo que nos permite concluir que $(C^{k}(J;H),\norm{\cdot}_{C^{k}})$ es un espacio de Banach.
-    \item Sean $\mathcal{Z}=\{t_0,t_{1},\cdots,t_{n}\}$ y $\mathcal{Z}'=\{s_0,s_{1},\cdots,s_{m}\}$ particiones del intervalo $[a,b]$, veamos que dado $\epsilon>0$ existe $N>0$ tal que si $|\mathcal{Z}|,|\mathcal{Z}'|< N$, entonces 
+    \item[(b)] Sean $\mathcal{Z}=\{t_0,t_{1},\cdots,t_{n}\}$ y $\mathcal{Z}'=\{s_0,s_{1},\cdots,s_{m}\}$ particiones del intervalo $[a,b]$, veamos que dado $\epsilon>0$ existe $N>0$ tal que si $|\mathcal{Z}|,|\mathcal{Z}'|< N$, entonces 
     \begin{align*}
       \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z}')}_{H}<\epsilon. 
     \end{align*}
@@ -186,7 +431,7 @@ Note que, definiendo derivadas laterales, podemos considerar el espacio $C^k(J;H
     \end{align*}
     Luego
     \begin{align*}
-      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z''})}_{H}&=\norm{\sum_{j=1}^{n}F(t^{*})(t_{j}-t_{j-1})-\sum_{j=1}^{l}F(q^{*})(q_{j}-q_{j-1})}_{H},
+      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z''})}_{H}&=\norm{\sum_{j=1}^{n}F(t^{*}_{j})(t_{j}-t_{j-1})-\sum_{j=1}^{l}F(q^{*}_{j})(q_{j}-q_{j-1})}_{H},
     \end{align*}
     Note que como $\mathcal{Z}\subset \mathcal{Z}''$, entonces sabemos que existe $r_{j}$ tal que
     \begin{align*}
@@ -194,7 +439,7 @@ Note que, definiendo derivadas laterales, podemos considerar el espacio $C^k(J;H
     \end{align*}
     De lo que podemos computar que
     \begin{align*}
-      F(t^{*})(t_{j}-t_{j-1})-\sum_{i=0}^{r_{j}}F(q^*)(q_{j,i}-q_{j-1,i})&=\sum_{i=0}^{r_{j}}(F(t^*)-F(q^*))(q_{j,i}-q_{j-1},i),
+      F(t^{*}_{j})(t_{j}-t_{j-1})-\sum_{i=0}^{r_{j}}F(q^*_{j,i})(q_{j,i}-q_{j-1,i})&=\sum_{i=0}^{r_{j}}(F(t^*_{j})-F(q^*_{j,i}))(q_{j,i}-q_{j-1},i),
     \end{align*}
     además, recuerde que como $F$ es uniformemente continua en $[a,b]$, dado $\epsilon>0$ existe $N>0$ tal que si $|t-q|<N$, entonces
     \begin{align*}
@@ -202,9 +447,9 @@ Note que, definiendo derivadas laterales, podemos considerar el espacio $C^k(J;H
     \end{align*}
     Si suponemos que $|\mathcal{Z}''|<|\mathcal{Z}|<N$, entonces
     \begin{align*}
-      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z''})}_{H}&=\norm{\sum_{j=1}^{n}F(t^{*})(t_{j}-t_{j-1})-\sum_{j=1}^{l}F(q^{*})(q_{j}-q_{j-1})}_{H},\\
-      &=\norm{\sum_{j=1}^{n}\sum_{i=0}^{r_{j}}(F(t^{*})-F(q^{*}))(q_{j,i}-q_{j-1,i})}_{H},\\
-      &\leq \sum_{j=1}^{n}\sum_{i=0}^{r_{j}}(q_{j,i}-q_{j-1,i})\norm{F(t^{*})-F(q^{*})}_{H},\\
+      \norm{S(f,\mathcal{Z})-S(f,\mathcal{Z''})}_{H}&=\norm{\sum_{j=1}^{n}F(t_{j}^{*})(t_{j}-t_{j-1})-\sum_{j=1}^{l}F(q^{*}_{j})(q_{j}-q_{j-1})}_{H},\\
+      &=\norm{\sum_{j=1}^{n}\sum_{i=0}^{r_{j}}(F(t^{*}_{j})-F(q^{*}_{j,i}))(q_{j,i}-q_{j-1,i})}_{H},\\
+      &\leq \sum_{j=1}^{n}\sum_{i=0}^{r_{j}}(q_{j,i}-q_{j-1,i})\norm{F(t^{*}_{j})-F(q^{*}_{j,i})}_{H},\\
       &\leq \frac{\epsilon}{2(b-a)} \sum_{j=1}^{n}(t_{j}-t_{j-1}),\\
       &\leq \frac{\epsilon}{2(b-a)} (b-a)=\frac{\epsilon}{2}.
     \end{align*}
@@ -225,5 +470,295 @@ Note que, definiendo derivadas laterales, podemos considerar el espacio $C^k(J;H
       &\leq \lim_{|Z| \to 0}\sum_{j=1}^{n}\norm{F(t^{*})}_{H}(t_{j}-t_{j-1}),\\
       &\leq \int_{a}^{b}\norm{F(\tau)}_{H}\, d\tau.
     \end{align*}
-  \end{enumerate}
+  \item[(c.1)]Veamos que $u(t)=e^{-tA}u_{0}$, $t>0$ es solución de
+\[
+\begin{cases}
+u^{\prime}(t)=-Au(t)\\
+u(0)=u_{0}
+\end{cases}
+\]
+En primer lugar, como $A\ge0$, se sigue que si $\lambda_n \in EV(A)$ con $v\ne0$ vector propio asociado (Esto es, $v\ne 0$ y $A~v=\lambda_{n}v)$ entonces
+\[0\le(Av,v)=(\lambda_{n}v,v)=\lambda n||v||^{2}\]
+De modo que $\lambda_{n}\ge0$. \\
+Ahora, como H es de Hilbert, separable con $T\in K(H)$ y $T=T^{\star}$. Sea $\{\phi_n\}$ base de Hilbert de modo que
+\[u(t)=e^{-tA}u_{0}=\sum_{n=0}^{\infty}(u_{0},\phi_{n})e^{-t\lambda_{n}}\phi_{n}\]
+
+Queremos ver que
+\[\lim_{h\rightarrow0}\norm{\frac{u(t+h)-u(t)}{h}+Au(t)}\]
+Para ello, consideramos
+\begin{align*}
+\norm{\frac{u(t+h)-u(t)}{h}+Au(t)}^2&=\norm{\sum_{n=1}^{\infty}(u_{0},\phi_{n})\left(\frac{e^{-(t+h)\lambda_{n}}-e^{-t\lambda_{n}}}{h}+\lambda_{n}e^{-t\lambda_{n}}\right)\phi_{n}}^{2}\\&=\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}\left|\frac{e^{-(t+h)\lambda_{n}}-e^{-t\lambda_{n}}}{h}+\lambda_{n}e^{-t\lambda_{n}}\right|^{2},
+\end{align*}
+donde la última igualdad se tiene por Bessel-Parseval.
+Veamos que esta converge uniformemente.
+\begin{align*}
+  \left|\frac{e^{-(t+h)\lambda_{n}}-e^{-t\lambda_{n}}}{h}+\lambda_{n}e^{-t\lambda_{n}}\right|
+&=\left|\frac{-\lambda_{n}}{h}\int_{t}^{t+h}e^{-\sigma\lambda_{n}}d\sigma+\lambda_{n}e^{-t\lambda_{n}}\right| \\
+&\le\left|\frac{\lambda_{n}}{h}\right|\left|\int_{t}^{t+h}e^{-\sigma\lambda_{n}}d\sigma\right|+\left|\lambda_{n}\right|e^{-t\lambda_{n}}.  
+\end{align*}
+
+
+Como $t>0$, $\lambda_n \ge 0$, $-t\lambda_{n}\le0$. Así, $0\le e^{-t\lambda_n}\le1$.
+Ahora consideremos los siguientes casos:
+\begin{enumerate}
+    \item[$\checkmark$] Si $h>0$, tomando $\sigma \in [t, t+h]$ se sigue que \[0\le e^{-\sigma\lambda_{n}}\le e^{-t\lambda n}\le1.\]
+    \item[$\checkmark$] Si $h<0$, con $|h|$ suficientemente pequeño tal que $t+h>0$, tomando $\sigma \in [t+h, t]$ se sigue que \[0\le e^{-\sigma\lambda_{n}}\le e^{-(t+h)\lambda_{n}}\le1. \]
+\end{enumerate}
+Así, en cualquier caso, se tiene que
+\begin{align*}
+\left|\frac{\lambda_n}{h}\right|\left|\int_{t}^{t+h}e^{-\sigma\lambda_n}d\sigma\right|+|\lambda_n|e^{-t\lambda_n}
+&\le\left|\frac{\lambda_{n}}{h}\right|\left|\int_{t}^{t+h}d\sigma\right|+|\lambda_{n}|
+\\&=\left|\frac{\lambda_{n}(t+h-t)}{h}\right|+|\lambda_{n}|\\&=2\lambda_{n}\\&\le2\sup_{n\ge1}\lambda_{n}.
+\end{align*}
+De modo que
+\begin{align}
+|(u_{0},\phi_{n})|^{2}\left|\frac{e^{-(t+h)\lambda_{n}}-e^{-t\lambda_{n}}}{h}+\lambda_{n}e^{-t\lambda_{n}}\right|^{2}\le|(u_{0},\phi_{n})|^{2}(2\sup_{n\ge1}\lambda_{n})^{2}, \label{1}    
+\end{align}
+
+y como $\displaystyle\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}(2\sup_{n\ge1}\lambda_{n})^{2}$ converge, pues $\displaystyle \sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}=||u_0||^2$, entonces por criterio M de Weierstrass,
+\[\norm{\frac{u(t+h)-u(t)}{h}+Au(t)}^{2}=\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}\left|\frac{e^{-(t+h)\lambda_{n}}-e^{-t\lambda_{n}}}{h}+\lambda_{n}e^{-t\lambda_{n}}\right|^{2}, \]
+converge uniformemente. Por lo tanto
+\begin{align*}
+\lim_{h\rightarrow0}\norm{\frac{u(t+h)-u(t)}{h}+Au(t)}^{2}&=\lim_{h\rightarrow0}\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}\left|\frac{e^{-(t+h)\lambda_{n}}-e^{-t\lambda_{n}}}{h}+\lambda_{n}e^{-t\lambda_{n}}\right|^{2} \\&=\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}\left|\lim_{h\rightarrow0}\frac{e^{-(t+h)\lambda_{n}}-e^{-t\lambda_{n}}}{h}+\lambda_{n}e^{-t\lambda_{n}}\right|^{2}
+\\&=\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}|-\lambda_{n}e^{-t\lambda_{n}}+\lambda_{n}e^{-t\lambda_{n}}|^{2}=0. \end{align*}
+
+Veamos ahora que $u(t)$ es continua. Para ello, mostremos que, 
+\[\lim_{t'\rightarrow t}||u(t)-u(t')||=0.\]
+Como
+\begin{align*}
+\norm{u(t)-u(t^{\prime})}^{2}&=\norm{\sum_{n=1}^{\infty}(\phi_{n},u_{0})(e^{-\lambda_{n}t}-e^{-\lambda_{n}t^{\prime}})\phi_{n}}^{2}
+\\&=\sum_{n=1}^{\infty}|(\phi_{n},u_{0})|^{2}|e^{-\lambda_{n}t}-e^{-\lambda_{n}t^{\prime}}|^{2}
+\\&=\sum_{n=1}^{\infty}|(\phi_{n},u_{0})|^{2}\left|\lambda_{n}e^{-\lambda_{n}\xi_{n}}|t-t^{\prime}|\right|^{2}.
+\end{align*}
+En donde en la última igualdad hemos usado teorema de valor medio, por lo que existe $\xi_n \in (t, t')$ (o $\xi_n \in (t',t)$ en el caso que $0<t^{\prime}<t)$ tal que
+\[|\lambda_n e^{-\lambda_n \xi_n} (t-t')| = |e^{-\lambda_n t} - e^{-\lambda_n t'}|.\]
+
+Ahora, como $0<\xi_n$ para todo $n$ y $\lambda_{n}\ge0$, se sigue entonces que \[e^{-\lambda_n \xi_n}\le1.\]
+De modo que
+\begin{align*}
+\norm{u(t)-u(t^{\prime})}^{2}&=\sum_{n=1}^{\infty}|(\phi_{n},u_{0})|^{2}\left|\lambda_{n}e^{-\lambda_{n}\xi_{n}}|t-t^{\prime}|\right|^{2}
+\\&\le\sum_{n=1}^{\infty}|(\phi_{n},u_{0})|^{2}|\lambda_{n}|t-t^{\prime}||^{2}
+\\&=|t-t^{\prime}|^2\sum_{n=1}^{\infty}|(\phi_{n},u_{0})\lambda_{n}|^{2},
+\end{align*}
+y como $\displaystyle\sum_{n=1}^{\infty}|(\phi_n, u_0)\lambda_n|^2$ converge, entonces
+\[\norm{u(t)-u(t^{\prime})}^{2}\le|t-t^{\prime}|^2\sum_{n=1}^{\infty}|(\phi_{n},u_{0})\lambda_n|^{2}\xrightarrow{t\rightarrow t^{\prime}}0,\]
+por lo que $u(t)$ es continua.
+
+Finalmente, dado que \[u^{\prime}(t)=\lim_{h\rightarrow0}\frac{u(t+h)-u(t)}{h}\] existe y $u^{\prime}(t)=-Au(t)$, se sigue que como $u:(0,\infty)\rightarrow H$ es continua, dado $\varepsilon>0$ existe $\delta>0$ tal que si $|t-t^{\prime}|<\delta$ entonces $||u(t)-u(t^{\prime})||<\varepsilon$.\\
+Como $A$ es acotado, existe $M>0$ tal que $||Au||\le M||u||$.
+Por lo tanto, \[\norm{-A~u(t)+A~u(t^{\prime})}=\norm{A(u(t)-u(t')}\le M||u(t)-u(t^{\prime})||<M\varepsilon,\] lo cual muestra que $u^{\prime}(t)=-Au(t)$ es continuo. \\
+Por inducción, supongamos que $u^{(k)}(t)=(-1)^{k}A^{k}e^{-tA}u_0$. Veamos que \[\displaystyle u^{(k+1)}(t)=(-1)^{k+1}A^{k+1}e^{-tA}u_0 (t>0).\]
+Para ello, tenemos
+\begin{align*}   
+&\norm{\frac{u^{(k)}(t+h)-u^{(k)}(t)}{h}-(-1)^{k+1}A^{k+1}e^{-tA}u_0}^{2}
+\\&=\norm{\sum_{n=1}^{\infty}(u_{0},\phi_{n})\left[\left(\frac{(-1)^{k}\lambda_{n}^{k}e^{-(t+h)\lambda_{n}}-(-1)^{k}\lambda_{n}^{k}e^{-t\lambda_{n}}}{h}\right)-(-1)^{k+1}\lambda_{n}^{k+1}e^{-t\lambda_{n}}\right]\phi_{n}}^{2}
+\\&=\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}\left|\left(\frac{(-1)^{k}{\lambda_{n}}^{k}e^{-(t+h)\lambda_{n}}-(-1)^{k}\lambda_{n}^{k}e^{-t\lambda_{n}}}{h}\right)-(-1)^{k+1}\lambda_{n}^{k+1}e^{-t\lambda_{n}}\right|^{2}\\&=\sum_{n=1}^{\infty}|(u_{0},\phi_{n})\lambda_{n}^{k}|^{2}\left|\left(\frac{e^{-(t+h)\lambda_{n}}-e^{-t\lambda_n}}{h}\right)+\lambda_{n}e^{-t\lambda_n}\right|^{2}.
+\end{align*}
+Por \ref{1}, entonces 
+\[|(u_{0},\phi_{n})\lambda_{n}^{k}|^{2}\left|\left(\frac{e^{-(t+h)\lambda_n}-e^{-t\lambda_n}}{h}\right)+\lambda_{n}e^{-t\lambda_n}\right|^{2}
+\le\left|(u_{0},\phi_{n})\sup_{n\geq 1}\lambda_n^k\right|^{2}(2\sup_{n\ge1}\lambda_{n})^{2}.\]
+Entonces por criterio M de Weierstrass,
+\[\norm{\frac{u^{(k)}(t+h)-u^{(k)}(t)}{h}-(-1)^{k+1}A^{k+1}e^{-tA}u_0}^{2} \quad \text{converge uniformemente.}\] 
+Por lo tanto,
+\begin{align*}
+&\lim_{h\rightarrow0}\norm{\frac{u^{(k)}(t+h)-u^{(k)}(t)}{h}-(-1)^{k+1}A^{k+1}e^{-tA}u_0}^{2}
+\\&=\lim_{h\rightarrow0}\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}\left|\left(\frac{(-1)^{k}{\lambda_{n}}^{k}e^{-(t+h)\lambda_{n}}-(-1)^{k}\lambda_{n}^{k}e^{-t\lambda_{n}}}{h}\right)-(-1)^{k+1}\lambda_{n}^{k+1}e^{-t\lambda_{n}}\right|^{2}\\&=\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}\left|\lim_{h\rightarrow0}\left(\frac{(-1)^{k}{\lambda_{n}}^{k}e^{-(t+h)\lambda_{n}}-(-1)^{k}\lambda_{n}^{k}e^{-t\lambda_{n}}}{h}\right)-(-1)^{k+1}\lambda_{n}^{k+1}e^{-t\lambda_{n}}\right|^{2}\\&=\sum_{n=1}^{\infty}|(u_{0},\phi_{n})|^{2}\left|(-1)^{k}\lambda_n^k(-\lambda_n)e^{-t\lambda_n}-(-1)^{k+1}\lambda_n^{k+1}e^{-t\lambda_n}\right|^{2}=0.
+\end{align*}
+
+Ahora, veamos que $u^{(k)}(t)$ es continua, es decir, que \[\lim_{t^{\prime}\rightarrow t}||u^{(k)}(t)-u^{(k)}(t^{\prime})||=0.\]
+Para ello
+$\norm{u^{(k)}(t)-u^{(k)}(t^{\prime})}=\norm{(-1)^{k}A^{k}u(t)-(-1)^{k}A^{k}u(t^{\prime})}$
+Como $u(t)$ es continuo, dado $\varepsilon>0$ existe $\delta>0$ tal que si $|t-t^{\prime}|<\delta$ entonces $||u(t)-u(t^{\prime})||<\varepsilon$.
+Ahora como $A$ es acotado, existe $M>0$ tal que $\norm{Au}\le M\norm{u}$.
+Por lo tanto
+\begin{align*}
+ \norm{(-1)^{k}A^{k}u(t)-(-1)^{k}A^{k}u(t^{\prime})}=\norm{A^{k}\left(u(t)-u(t^{\prime})\right)} \le M^k \norm{u(t)-u(t')} < M^k \varepsilon.   
+\end{align*}
+Con esto, tenemos que $u\in C^{k}((0,\infty),H)$ para todo $k\ge1$.
+
+Como hemos visto
+\[\sup_{t>0}\norm{u(t)}=\sup_{t>0}\norm{\sum_{n=0}^{\infty}(u_{0},\phi_{n})e^{-\lambda_{n}t}\phi_{n}}.\]
+Ahora,
+\begin{align*}
+\norm{\sum_{n=0}^{\infty}(u_{0},\phi_{n})e^{-\lambda_{n}t}\phi_{n}}^{2}=\sum_{n=0}^{\infty}|(u_{0},\phi_{n})|^{2}\left|e^{-\lambda_{n}t}\right|^{2}
+\le\sum_{n=0}^{\infty}|(u_{0},\phi_{n})|^{2}=||u_0||^2.
+\end{align*}
+Por lo tanto, $||u(t)||<\infty$ para todo $t\ge0$, de lo que se sigue que \[\sup_{t\ge0}\norm{u(t)}<\infty.\]
+
+
+
+    \item[(c.2)] Debemos verificar que
+    \begin{align*}
+        \lim_{h\to 0}\norm{\dfrac{u(t+h)-u(t)}{h}+Au(t)-F(t)}_H=0,
+    \end{align*}
+    para todo $t>0$, donde
+    \begin{align*}
+        u(t)=e^{-tA}u_0+\int_0^t e^{-(t-\tau)}F(\tau)\, d\tau.
+    \end{align*}
+    Tomando $h>0$ tenemos estimar
+    \begin{align*}
+        S_h=\norm{\frac{1}{h}\left[e^{-(t+h)A}u_0+\int_0^{t+h}e^{-(t+h-\tau)A}F(\tau)\, d\tau-e^{-tA}u_0-\int_0^t e^{-(t-\tau)A}F(\tau)\, d\tau\right]+Au(t)-F(t)}_H,
+    \end{align*}
+    Por lo hecho en el ítem (b) y como $h>0$, se tiene que 
+    \begin{align*}
+        \int_{0}^{t+h}e^{-(t+h-\tau)A}F(\tau)\, d\tau=\int_{0}^{t}e^{-(t+h-\tau)A}F(\tau)\, d\tau+\int_{t}^{t+h}e^{-(t+h-\tau)A}F(\tau)\, d\tau,
+    \end{align*}
+    de manera que
+    \begin{align*}
+        \int_{0}^{t+h}e^{-(t+h-\tau)A}F(\tau)\, d\tau-\int_0^t e^{-(t-\tau)A}F(\tau)\, d\tau=\int_{0}^{t}\left[e^{-(t+h-\tau)A}F(\tau)-e^{-(t-\tau)A}F(\tau)\right]\, d\tau\\
+        \hspace{25mm}+\int_{t}^{t+h}e^{-(t+h-\tau)A}F(\tau)\, d\tau,
+    \end{align*}
+    además, por la definición de $u(t)$ y la construcción de la integral por sumas de Riemann, obtenemos
+    \begin{align*}
+        Au(t)=Ae^{-tA}u_0+A\int_0^t e^{-(t-\tau)A}F(\tau)\, d\tau=Ae^{-tA}u_0+\int_0^t Ae^{-(t-\tau)A}F(\tau)\, d\tau
+    \end{align*}
+    Haciendo uso de la desigualdad triangular de la norma $\norm{\cdot}_H$, tenemos que 
+    \begin{align*}
+        S_h\leq S_h^1+S_h^2+S_h^3,
+    \end{align*}
+    donde
+    \begin{align*}
+        S_h^1&=\norm{\dfrac{1}{h}\left[e^{-(t+h)A}u_0-e^{-tA}u_0\right]+Aue^{-tA}u_0}_H\\
+        S_h^2&=\norm{\dfrac{1}{h}\int_{0}^{t}\left[e^{-(t+h-\tau)A}F(\tau)-e^{-(t-\tau)A}F(\tau)\right]\, d\tau+\int_0^t Ae^{-(t-\tau)A}F(\tau)\, d\tau}_H\\
+        S_h^3&=\norm{\dfrac{1}{h}\int_{t}^{t+h}e^{-(t+h-\tau)A}F(\tau)\, d\tau-F(t)}_H.
+    \end{align*}
+    Note que el término $S_h^1$ es exáctamente el término que estimamos cuando realizamos el sistema homogéneo, así, podemos afirmar que $\displaystyle\lim_{h\to 0}S_h^1=0$. Para $S_h^2$, note que, por la linealidad de la integral y la desigualdad triangular de la integral
+    \begin{align*}
+        S_h^2&=\norm{\int_0^t\left[\dfrac{e^{-(t+h-\tau)A}-e^{-(t-\tau)A}}{h}+Ae^{-(t-\tau)A}\right]F(\tau)\, d\tau}_H\\
+        &\leq \int_0^t\norm{\left[\dfrac{e^{-(t+h-\tau)A}-e^{-(t-\tau)A}}{h}+Ae^{-(t-\tau)A}\right]F(\tau)}_H\, d\tau,
+    \end{align*}
+    así, por la identidad de Parseval y aplicando el cálculo funcional que nos permite definir el Teorema Espectral, tenemos
+    \begin{align*}
+        \norm{\left[\dfrac{e^{-(t+h-\tau)A}-e^{-(t-\tau)A}}{h}+Ae^{-(t-\tau)A}\right]F(\tau)}_H^2\\
+        =\sum_{n=1}^\infty (F(\tau),\phi_n)^2\left|\dfrac{e^{-(t+h-\tau)\lambda_n}-e^{-(t-\tau)\lambda_n}}{h}+\lambda_ne^{-(t-\tau)\lambda_n}\right|^2, 
+    \end{align*}
+    donde $\{\phi_n\}$ es la base de Hilbert de vectores propios de $A$ y $\{\lambda_n\}$ es el espectro del operador $A$.
+    Como $(Ax,x)\geq 0$ para todo $x \in H$, $\lambda_n\geq 0$ para todo $n\in \mathbb{Z}^+$. Note que
+    \begin{align*}
+        \dfrac{e^{-(t+h-\tau)\lambda_n}-e^{-(t-\tau)\lambda_n}}{h}=\dfrac{-\lambda_n}{h}\int_{t}^{t+h}e^{-(s-\tau)\lambda_n}\, ds,
+    \end{align*}
+    como $0\leq \tau\leq t$ y $t\leq s\leq t+h$, tenemos que $\tau\leq s$, es decir, $s-\tau \geq 0$, por lo que, como $\lambda_n\geq 0$, $-(s-\tau)\lambda_n$, de manera que $e^{-(s-\tau)\lambda_n}\leq 1$, de la misma manera, $t-\tau\geq 0$, entonces $e^{-(t-\tau)\lambda_n}\leq 1$, por tanto
+    \begin{align*}
+        \left|\dfrac{e^{-(t+h-\tau)\lambda_n}-e^{-(t-\tau)\lambda_n}}{h}+\lambda_ne^{-(t-\tau)\lambda_n}\right|&\leq \left|\dfrac{e^{-(t+h-\tau)\lambda_n}-e^{-(t-\tau)\lambda_n}}{h}\right|+\left|\lambda_ne^{-(t-\tau)\lambda_n}\right|\\
+        &=\left|\dfrac{-\lambda_n}{h}\int_{t}^{t+h}e^{-(s-\tau)\lambda_n}\, ds\right|+\left|\lambda_ne^{-(t-\tau)\lambda_n}\right|\\
+        &\leq \dfrac{|\lambda_n|}{h}\int_t^{t+h}\, ds+|\lambda_n|\\
+        &=2|\lambda_n|\\
+        &\leq 2\sup_{n \in \mathbb{Z}^+}|\lambda_n|<\infty,
+    \end{align*}
+    de manera que 
+    \begin{align*}
+        \sum_{n=1}^\infty (F(\tau),\phi_n)^2\left|\dfrac{e^{-(t+h-\tau)\lambda_n}-e^{-(t-\tau)\lambda_n}}{h}+\lambda_ne^{-(t-\tau)\lambda_n}\right|^2\leq \sum_{n=1}^\infty (F(\tau),\phi_n)^2\left(2\sup_{n \in \mathbb{Z}^+}|\lambda_n|\right)^2<\infty,
+    \end{align*}
+    dado que $F(\tau)\in H$ para todo $\tau \in \mathbb{R}$, así, por el criterio $M$ de Weierstrass, podemos ``meter'' el límite dentro de la serie. Como
+    \begin{align*}
+        \lim_{h\to 0}\dfrac{e^{-(t+h-\tau)\lambda_n}-e^{-(t-\tau)\lambda_n}}{h}=-\lambda_ne^{-(t-\tau)\lambda_n},
+    \end{align*}
+    tenemos que 
+    \begin{align*}
+        \lim_{h\to 0}\sum_{n=1}^\infty (F(\tau),\phi_n)^2\left|\dfrac{e^{-(t+h-\tau)\lambda_n}-e^{-(t-\tau)\lambda_n}}{h}+\lambda_ne^{-(t-\tau)\lambda_n}\right|^2\\
+        =\sum_{n=1}^\infty (F(\tau),\phi_n)^2\lim_{h\to 0}\left|\dfrac{e^{-(t+h-\tau)\lambda_n}-e^{-(t-\tau)\lambda_n}}{h}+\lambda_ne^{-(t-\tau)\lambda_n}\right|^2=0,
+    \end{align*}
+    lo que nos permite concluir que $\displaystyle \lim_{h\to 0}S_h^2=0$. 
+
+    Finalmente, para $S_h^3$, escribimos
+    \begin{align*}
+        \dfrac{1}{h}\int_{t}^{t+h}e^{-(t+h-\tau)A}F(\tau)\, d\tau-F(t)&=\dfrac{1}{h}\int_{t}^{t+h}e^{-(t+h-\tau)A}F(\tau)\, d\tau-\dfrac{1}{h}\int_{t}^{t+h} F(t)\, d\tau\\
+        &=\dfrac{1}{h}\int_{t}^{t+h}[e^{-(t+h-\tau)A}F(\tau)-F(t)]\, d\tau,
+    \end{align*}
+    sumando y restando dentro de la integral $e^{-(t+h-\tau)A}F(t)$, tenemos
+    \begin{align*}
+        S_h^3&=\norm{\dfrac{1}{h}\int_t^{t+h}\left[e^{-(t+h-\tau)A}F(\tau)-e^{-(t+h-\tau)A}F(t)+e^{-(t+h-\tau)A}F(t)-F(t)\right]\, d\tau}_H\\
+        &=\norm{\dfrac{1}{h}\int_t^{t+h}\left[e^{-(t+h-\tau)A}(F(\tau)-F(t))+(e^{-(t+h-\tau)A}-I)F(t)\right]\, d\tau}_H\\
+        &\leq \dfrac{1}{h}\int_{t}^{t+h}\norm{\left[e^{-(t+h-\tau)A}(F(\tau)-F(t))+(e^{-(t+h-\tau)A}-I)F(t)\right]}_H\, d\tau\\
+        &\leq \dfrac{1}{h}\int_{t}^{t+h}\left(\norm{e^{-(t+h-\tau)A}(F(\tau)-F(t))}_H+\norm{(e^{-(t+h-\tau)A}-I)F(t)}_H\right)\, d\tau\\
+        &=\underbrace{\dfrac{1}{h}\int_{t}^{t+h}\norm{e^{-(t+h-\tau)A}(F(\tau)-F(t))}_H\, d\tau}_{I_1}+\underbrace{\dfrac{1}{h}\int_{t}^{t+h}\norm{(e^{-(t+h-\tau)A}-I)F(t)}_H\, d\tau}_{I_2}.
+    \end{align*}
+    Para $I_1$, acotamos la norma 
+    \begin{align*}
+        \norm{e^{-(t+h-\tau)A}(F(\tau)-F(t))}_H.
+    \end{align*}
+    Usando el cálculo funcional, y la identidad de Parseval, tenemos
+    \begin{align*}
+        \norm{e^{-(t+h-\tau)A}(F(\tau)-F(t))}_H^2&=\sum_{n=1}^\infty (F(\tau)-F(t),\phi_n)^2\left|e^{-(t+h-\tau)\lambda_n}\right|^2,
+    \end{align*}
+    como $t\leq \tau\leq t+h$, entonces $t+h-\tau\geq 0$, de manera que, como $\lambda_n\geq 0$ para todo $n \in \mathbb{Z}^+$, tenemos $e^{-(t+h-\tau)\lambda_n}\leq 1$, de manera que
+    \begin{align*}
+        \sum_{n=1}^\infty (F(\tau)-F(t),\phi_n)^2\left|e^{-(t+h-\tau)\lambda_n}\right|^2\leq \sum_{n=1}^\infty (F(\tau)-F(t),\phi_n)^2=\norm{F(\tau)-F(t)}_H^2<\infty,
+    \end{align*}
+    dado que $F(\tau),F(t)\in H$ y $H$ es espacio vectorial. Además, note que como $[t,t+h]$ es un compacto y $F$ es continua, $F$ es uniformemente continua en $[t,t+h]$, de manera que dado $\epsilon>0$ existe $\delta>0$ tal que si $|\tau-t|<\delta$, entonces $\norm{F(\tau)-F(t)}<\epsilon$ y $\delta$ no depende de $\tau$, de esta manera, para $h$ suficientemente pequeño para que $\tau-t\leq h<\delta$, se tiene que
+    \begin{align*}
+        I_1=\dfrac{1}{h}\int_{t}^{t+h}\norm{e^{-(t+h-\tau)A}(F(\tau)-F(t))}_H\, d\tau\leq \dfrac{1}{h}\int_{t}^{t+h}\norm{(F(\tau)-F(t))}_H\, d\tau<\dfrac{\epsilon}{h}\int_{t}^{t+h}\, d\tau=\epsilon,
+    \end{align*}
+    es decir, $\displaystyle \lim_{h\to 0}I_1=0$.
+
+    Para $I_2$, escribimos
+    \begin{align*}
+        I_2&=\dfrac{1}{h}\int_{t}^{t+h}\norm{(e^{-(t+h-\tau)A}-I)F(t)}_H\, d\tau\\
+        &=\int_{t}^{t+h}\norm{\dfrac{e^{-(t+h-\tau)A}-I}{h}F(t)}_H\, d\tau
+    \end{align*}
+    entonces acotamos la norma
+    \begin{align*}
+        \norm{\dfrac{e^{-(t+h-\tau)A}-I}{h}F(t)}_H
+    \end{align*}
+    usando el cálculo funcional y que definimos $A^0=I$, tenemos
+    \begin{align*}
+        \norm{\dfrac{e^{-(t+h-\tau)A}-I}{h}F(t)}_H^2=\sum_{n=1}^\infty(F(t),\phi_n)^2\left|\dfrac{e^{-(t+h-\tau)\lambda_n}-1}{h}\right|^2,
+    \end{align*}
+    como
+    \begin{align*}
+        e^{-(t+h-\tau)\lambda_n}-1=-\lambda_n\int_{0}^{t+h-\tau}e^{-s\lambda_n}\, ds,
+    \end{align*}
+    como $\tau\leq t+h$, entonces $t+h-\tau\geq 0$, de manera que $s\geq 0$ y como $\lambda_n\geq 0$ para todo $n \in \mathbb{Z}^+$ se tiene que $e^{-s\lambda_n}\leq 1$, así, tenemos
+    \begin{align*}
+        \left|\dfrac{e^{-(t+h-\tau)\lambda_n}-1}{h}\right|=\left|\dfrac{-\lambda_n}{h}\int_{0}^{t+h-\tau}e^{-s\lambda_n}\, ds\right|\leq \dfrac{|\lambda_n|}{h}\int_{0}^{t+h-\tau}\, ds=\dfrac{|\lambda_n|(t+h-\tau)}{h}
+    \end{align*}
+    Como $t\leq \tau\leq t+h$, tenemos $t-\tau\leq 0$ y por tanto, $t+h-\tau\leq h$, lo que nos garantiza que $\dfrac{t+h-\tau}{h}\leq 1$, así
+    \begin{align*}
+        \left|\dfrac{e^{-(t+h-\tau)\lambda_n}-1}{h}\right|\leq \dfrac{|\lambda_n|(t+h-\tau)}{h}\leq |\lambda_n|\leq \sup_{n\in \mathbb{Z}^+}|\lambda_n|,
+    \end{align*}
+    de esta manera
+    \begin{align*}
+        \sum_{n=1}^\infty(F(t),\phi_n)^2\left|\dfrac{e^{-(t+h-\tau)\lambda_n}-1}{h}\right|^2&\leq \sum_{n=1}^\infty(F(t),\phi_n)^2\left(\sup_{n\in \mathbb{Z}^+}|\lambda_n|\right)^2\\
+        &=\left(\sup_{n\in \mathbb{Z}^+}|\lambda_n|\right)^2\norm{F(t)}_H^2<\infty,
+    \end{align*}
+    de esta manera
+    \begin{align*}
+        I_2&=\int_{t}^{t+h}\norm{\dfrac{e^{-(t+h-\tau)A}-I}{h}F(t)}_H\, d\tau\\
+        &\leq \left(\sup_{n \in \mathbb{Z}^+}|\lambda_n|\right)\norm{F(t)}_H\int_{t}^{t+h}\, d\tau\\
+        &= \left(\sup_{n \in \mathbb{Z}^+}|\lambda_n|\right)\norm{F(t)}_Hh,
+    \end{align*}
+    de manera que 
+    \begin{align*}
+        0\leq \lim_{h\to 0}I_2\leq \lim_{h\to 0}\left(\sup_{n \in \mathbb{Z}^+}|\lambda_n|\right)\norm{F(t)}_Hh=0,
+    \end{align*}
+    lo que nos garantiza que $\displaystyle \lim_{h\to 0}I_2=0$, concluyendo así que $\displaystyle \lim_{h\to 0}S_h^3=0$ y así
+    \begin{align*}
+        \lim_{h\to 0} S_h\leq \lim_{h\to 0}(S_h^1+S_h^2+S_h^3)=0,
+    \end{align*}
+    concluyendo así, que 
+    \begin{align*}
+        u(t)=e^{-tA}u_0+\int_0^t e^{-(t-\tau)}F(\tau)\, d\tau,
+    \end{align*}
+    es solución del problema de valor inicial. El caso para $h<0$ es análogo.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Veamos que si $F\in C^{k}[(0,\infty);H]$, entonces $u\in C^{k+1}[(0,\infty);H]$.\\
+    Note que como vimos anteriormente, la solución $u$ satisface la ecuación:
+    \begin{align*}
+        u'(t)=-Au(t)+F(t).
+    \end{align*}
+    Ahora, como $F\in C^{k}[(0,\infty);H]$ sabemos que el cociente diferencial respectivo de las $k$ derivadas de $k$ en norma converge, de igual forma sabemos que $u\in C^{1}[(0,\infty);H]$ por lo anteriormente demostrado, por lo que sería válido afirmar que se satisface lo siguiente:
+    \begin{align*}
+        u''(t)=-Au'(t)+F'(t).
+    \end{align*}
+    Luego, si hacemos $v=u'$ y $G=F'$, entonces podemos ver que $v$ satisface
+    \begin{align*}
+        v'(t)=-Av(t)+G(t).
+    \end{align*}
+    al cual lo podemos tratar de la misma forma que a $u$, por lo que razonando de forma inductiva se deduce que
+    \begin{align*}
+        u^{(k+1)}(t)=-Au^{(k)}(t)+F^{(k)}(t),
+    \end{align*}
+    lo que nos permite concluir que si $F\in C^{k}[(0,\infty);H]$, entonces $u\in C^{k+1}[(0,\infty);H]$.
+  \end{enumerate} 
 \end{proof}

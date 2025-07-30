@@ -9,7 +9,7 @@ Repositorio para subir trabajos o talleres de la U :p.
 <details>
 <summary><strong>Geometría Diferencial</strong></summary>
 
-- [Trabajo final (Escrito - Inglés).](./Geometria-Diferencial/Trabajo-Final/Escrito/Ingles/main.pdf)
+- [Trabajo final (Escrito - Inglés).](./Geometria-Diferencial/Trabajo-Final/Escrito/Ingles/"Trabajo Final [Ingles] - Geometría Diferencial".pdf)
 - [Trabajo final (Escrito - Español).](./Geometria-Diferencial/Trabajo-Final/Escrito/Español/main.pdf)
 - [Trabajo final (Poster).](./Geometria-Diferencial/Trabajo-Final/Escrito/Español/main.pdf)
 </details>
