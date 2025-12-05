@@ -1,0 +1,114 @@
+El conjunto de Cantor $\mathcal{C}$ también puede describirse en términos de expansiones ternarias.
+\begin{enumerate}[a)]
+  \item Todo número en $[0,1]$ tiene una expansión ternaria
+    \begin{align*}
+      x=\sum_{k=1}^{\infty}a_{k}3^{-k},\quad \text{donde $a_{k}=0,1,2$.}
+    \end{align*}
+    Note que esta descomposición no es única, por ejemplo $\frac{1}{3}=\sum_{k=2}^{\infty}\frac{2}{3^{k}}$.\\
+    Pruebe que $x\in\mathcal{C}$ si y sólo si $x$ tiene una representación en la que todo $a_{k}$ es $0$ o $2$.
+  \item La función de Cantor-Lebesgue es definida en $\mathcal{C}$ por
+    \begin{align*}
+      F(x)=\sum_{k=1}^{\infty}\frac{b_{k}}{2^{k}}\quad\text{si }x=\sum_{k=1}^{\infty}a_{k}3^{-k},\text{ donde }b_{k}=\frac{a_{k}}{2}.
+    \end{align*}
+    En esta definición, nosotros escogemos la expansión de $x$ que satisface que $a_{k}$ es 0 o 2.\\
+    Muestre que $F$ está bien definida y es continua en $\mathcal{C}$, más aún $F(0)=0$ y $F(1)=1$.
+  \item Pruebe que $F:\mathcal{C}\to [0,1]$ es sobreyectiva.
+  \item Uno puede extender la función $F$ como una función continua de $[0,1]$ de la siguiente manera. Note que si $(a,b)$ es el intervalo abierto del complemento de $\mathcal{C}$, then $F(a)=F(b)$. Entonces nosotros podemos definir $F$ como la función constante $F(a)$ en este intervalo. 
+\end{enumerate}
+\begin{solucion}
+  \begin{enumerate}[a)]
+    \item Si $x\in\mathcal{C}$, entonces $x$ tiene una expansión ternaria en la que todo $a_{k}$ es $0$ o $2$.\\
+      Para esto, note que en la primera iteración nos queda el conjunto $\mathcal{C}_{1}=[0,\frac{1}{3}]\cup[\frac{2}{3},1]$, de esto se sigue que para llegar a los extremos de los intervalos se puede llegar con las siguientes sumas
+      \begin{align*}
+        0&=\sum_{k=1}^{\infty}(0)3^{-k}\\
+        \frac{1}{3}&=(0)3^{-1}+\sum_{k=2}^{\infty}(2)3^{-k}\\
+        \frac{2}{3}&=(2)3^{-1}+\sum_{k=2}^{\infty}(0)3^{-k}\\
+        1&=\sum_{k=1}^{\infty}(2)3^{-k}.
+      \end{align*}
+      Se sigue que en la siguiente iteración $\mathcal{C}_{2}=[0,\frac{1}{3^{2}}]\cup[\frac{2}{3^{2}},\frac{1}{3}]\cup[\frac{2}{3},\frac{7}{3^{2}}]\cup[\frac{8}{3^{2}},1]$, en dónde para cada llegar a cada extremo es suficiente con usar los extremos anteriores y agregarles las siguientes sumas
+      \begin{align*}
+        \frac{1}{3^{2}}&=\sum_{k=3}^{\infty}(2)3^{-k}\\
+        \frac{2}{3^{2}}&=(0)3^{-1}+(2)3^{-2}+\sum_{k=3}^{\infty}(0)3^{-k}.
+      \end{align*}
+      Esto mantiene la expansión ternaria, ya que, para llegar a los extremos del primer segmento se usa la expansión ya encontrada anteriormente que es completamente nula junto a la nueva que solo es no nula a partir de $k\geq 3$. Se sigue que para los del segundo segmento la nueva que solo tiene una componente no nula en $k=2$ y la encontrada previamente para $\mathcal{C}_{1}$. Continuando, para el tercero se usa la expansión encontrada en el paso anterior y la suma de $\frac{2}{3}+\frac{1}{3^{2}}=\frac{7}{3^{2}}$ que como la primera es nula para $k\geq 2$ y la segunda tiene términos nulos para $k<3$, entonces se mantiene la expansión con 0 en $k=2$ y 2's en las demás componentes y para la última se usa la expansión encontrada previamente en $\mathcal{C}_{1}$ y la suma $\frac{2}{3}+\frac{2}{3^{2}}=\frac{8}{3^{2}}$, que como la primera es nula para $k\geq 2$ y la otra es no nula solamente para $k=2$, entonces se mantiene 2's para $k=1$ y $2$ y 0's para todos los demás, por lo que se asegura para los extremos de los 4 segmentos la expansión ternaria en términos de 0's y 2's.\\
+      De esta manera, usando un argumento inductivo, en el conjunto $\mathcal{C}_{i}$ con $i\geq 3$ solo se necesitarán las siguientes expansiones
+      \begin{align*}
+        \frac{1}{3^{i}}&=\sum_{k=i+1}^{\infty}(2)3^{-k}\\
+        \frac{2}{3^{i}}&=\sum_{k\in\mathbb{Z}^{+}\setminus\{i\}}(0)3^{-k}+(2)3^{-i}.
+      \end{align*}
+      Por lo que al sumarlas con los anteriores se puede deducir que esta suma seguirá siendo una expansión con términos 0's y 2's.\\
+      Si $x$ tiene una representación en la que todo $a_{k}$ es 0 o 2, entonces $x\in \mathcal{C}$.\\
+      Note que en $\mathcal{C}_{n}$ Cantor remueve los intervalos abiertos que consisten en tener 1 en el $n$-ésimo lugar, luego por construcción, los $a_{k}$ con $k<n$ deben ser igual a $0$ o a $2$. Entonces como $x$ tiene expansión ternaria en la que $a_{k}$ es 0 o 2 para todo $k$, entonces $x\in \partial \mathcal{C}_{n}$ para todo $n$ y por ende $x\in \mathcal{C}$.
+    \item La función $F$ esta bien definida, ya que el único problema que tenemos es en la posible multi expansión que puede llegar a tener un número, pero lo crucial de esto es que o es infinita con términos 0 y 2, o termina en el término 1, por lo cual en dado caso remplazamos ese 1 por un 0 y los siguientes 0's por 2's, con lo cual llegaríamos a la expresión anterior, y como solo se toma la que tiene 0's y 2's, la cual es única por el argumento anterior, podemos concluir que $F$ está bien definida en $\mathcal{C}$.\\
+      Queremos probar que $F:\mathcal{C}\to[0,1]$ es continua. Note que el número binario $F(x)$ viene dado por los bits $b_{1},b_{2},\cdots$. Si dos números $x,y\in\mathcal{C}$ tienen las mismas primeras $k$ cifras ternarias (es decir $a_{1}=\tilde{a}_{1},a_{2}=\tilde{a}_{2},\cdots,a_{k}=\tilde{a}_{k}$), entonces sus imágenes tendrán las mismas primeras $k$ cifras binarias (es decir $b_{1}=\tilde{b}_{1},b_{2}=\tilde{b}_{2},\cdots,b_{k}=\tilde{b}_{k}$). Por tanto
+      \begin{align*}
+        |F(x)-F(y)|<\sum_{n=k+1}^{infty}(4)2^{-n}=\sum_{n=k+3}2^{-n}=2^{-(k+2)}
+      \end{align*}
+      Ahora, dado $\epsilon>0$, tomamos $k$ tal que $2^{-(k+2)}<\epsilon$, luego tomamos $\delta=3^{-(k+2)}$, por lo que si $|x-y|<\delta$, entonces deben de coincidir en las primeras $k$ cifras, por lo que podemos asegurar que $|F(x)-F(y)|<2^{-(k+2)}<\epsilon$.
+      Para probar que $F(0)=0$ solo hay que recordar que la expansión de $0$ es nula en todas sus componentes, por lo que es claro que $F(0)=0$. Por otro lado para $x=1$, se tiene que su representación ternaria es $2 en cada componente$, por lo que $b_{k}=1$ en cada componente y por ende $F(1)=1$.
+    \item Tomemos un $y\in [0,1]$. Sea $y=\sum_{k=1}^{\infty}b_{k}2^{-k}$ con $b_{k}=0,1$, una expansión binaria de $y$, en caso de que $y$ tenga más de una extensión, vamos a tomar la que termina en $1$, ya que en caso de ser infinita siempre podemos afirmar que $0.01111=0.1$.\\
+      Definamos una sucesión $a_{k}=2b_{k}$. Considera entonces el número
+      \begin{align*}
+        x=\sum_{k=1}^{\infty}a_{k}3^{-k}=\sum_{k=1}^{\infty}(2b_{k})3^{-k}\in [0,1].
+      \end{align*}
+      Ahora, por construcción $a_{k}$ tiene que ser $0$ o $2$ (ya que $b_{k}$ es igual a $0$ o a $1$), por lo que se puede concluir que $x\in\mathcal{C}$.
+    \item Recordemos primero que si $(a,b)$ es un intervalo abierto del complemento del conjunto de Cantor $C$, entonces $a,b\in C$ y se tiene
+      \begin{align}
+        F(a)=F(b).
+      \end{align}
+      Por tanto, es natural definir en dicho intervalo
+      \begin{align*}
+        F(x)=F(a)\quad \text{para todo } x\in(a,b),       
+      \end{align*}
+      lo cual hace que la función sea constante en cada intervalo removido.\\
+      Como $F$ es creciente en $C$ (por la construcción mediante la expansión ternaria), definimos ahora una extensión a todo $[0,1]$ mediante
+      \begin{align*}
+        G(x)=\sup\{\,F(y): y\le x,\ y\in C\,\}.       
+      \end{align*}
+      Observe que si $x\in C$, entonces $G(x)=F(x)$, pues $F$ es creciente en $C$ y la continuidad previa de $F$ en $C$ implica que el supremo sobre los puntos a la izquierda de $x$ coincide con $F(x)$.\\
+      Continuidad de $G$ fuera de $C$.\\
+      Si $z\notin C$, entonces $z$ pertenece a un intervalo abierto $(a,b)$ del complemento de $C$. En tal intervalo,
+      \begin{align*}
+        F(a)=F(b),       
+      \end{align*}
+      y por la definición de $G$ se tiene
+      \begin{align*}
+        G(y)=F(a)\quad \text{para todo } y\in(a,b).       
+      \end{align*}
+      Por tanto, $G$ es constante en un entorno de $z$ y, en consecuencia, continuo en ese punto.\\
+      Continuidad de $G$ en los puntos de $C$.\\
+      Sea $x\in C$. Como $F$ es continua en $C$, dado $\varepsilon>0$ existe $\delta>0$ tal que 
+      \begin{align*}
+        |F(y)-F(x)|<\varepsilon \quad\text{siempre que}\quad y\in C,\ |y-x|<\delta.
+      \end{align*}
+      Tomemos puntos $z_1,z_2\in C$ tales que
+      \begin{align*}
+        z_1\in(x-\delta,x),\qquad z_2\in(x,x+\delta),       
+      \end{align*}
+      y definamos
+      \begin{align*}
+        \delta_0=\min\{\,x-z_1,\ z_2-x\,\}.       
+      \end{align*}
+      De esta manera, si $|y-x|<\delta_0$, entonces $y\in(z_1,z_2)$.\\
+      Caso 1: $y\in C$.\\
+      En este caso,
+      \begin{align*}
+        |G(y)-G(x)| = |F(y)-F(x)|<\varepsilon.       
+      \end{align*}
+      Caso 2: $y\notin C$.\\
+      Supongamos primero que $y<x$. Como $y$ pertenece a un intervalo removido, en dicho intervalo $G$ es constante e igual a su valor sobre el extremo izquierdo. Además, por la definición de $z_1$ y la monotonía de $G$ en $C$, se obtiene
+      \begin{align*}
+        G(x) > G(y) \ge G(z_1) > G(x)-\varepsilon.
+      \end{align*}
+      De forma análoga, si $y>x$ pero $y\notin C$, se tiene
+      \begin{align*}
+        G(x) < G(y) \le G(z_2) < G(x)+\varepsilon.
+      \end{align*}
+      En ambos casos concluimos que
+      \begin{align*}
+        |G(y)-G(x)|<\varepsilon \quad\text{siempre que}\quad |y-x|<\delta_0, 
+      \end{align*}
+      lo que demuestra que $G$ es continua en $x$.\\
+      Por lo tanto, $G$ es continua en todo $[0,1]$ y coincide con $F$ sobre el conjunto de Cantor.
+  \end{enumerate}
+\end{solucion}
