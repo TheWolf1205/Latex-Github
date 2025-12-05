@@ -1,0 +1,73 @@
+\begin{homeworkProblem}
+  Muestre que si $f:\mathbb{R}\to \mathbb{R}$ es absolutamente continua, entonces
+  \begin{enumerate}
+    \item Si $E\subset \mathbb{R}$ es un conjunto de medida cero, entonces $f(E)$ es un conjunto de medida cero.
+    \item Si $E\subset \mathbb{R}$ es un conjunto medible, entonces $f(E)$ es medible. 
+  \end{enumerate}
+\end{homeworkProblem}
+\begin{solucion}
+\begin{enumerate}
+  \item Sea $E\subset\mathbb{R}$ un conjunto de medida cero. Fijemos $\epsilon>0$. Por continuidad de $f$ existe $\delta>0$ tal que para toda familia finita de intervalos disjuntos $\{(a_{j},b_{j})\}$ con 
+\begin{align*}
+  \sum_{j}(b_{j}-a_{j})<\delta, 
+\end{align*}
+se cumple
+\begin{align*}
+  \sum_{j}|f(b_{j})-f(a_{j})|<\epsilon. 
+\end{align*}
+Como $m(E)=0$, existe un abierto $U\supset E$ tal que $m(U)<\delta$.\\
+Note que como todo conjunto abierto en $\mathbb{R}$ es unión numerable disjunta de intervalos, podemos deducir
+\begin{align*}
+U=\bigcup_{j=1}^{\infty}(a_{j},b_{j}),\quad\text{con }\sum_{j=1}^{\infty}(b_{j}-a_{j})<\delta.
+\end{align*}
+Para cada $j$ definimos
+\begin{align*}
+m_{j},M_{j}\in[a_{j},b_{j}]\quad\text{tales que}\quad f(m_{j})=\min_{x\in[a_{j},b_{j}]}f(x),\qquad f(M_{j})=\max_{x\in[a_{j},b_{j}]}f(x).
+\end{align*}
+Estos existen porque $f$ es continua y $[a_{j},b_{j}]$ es compacto. Ahora, como $m_{j},M_{j}\in[a_{j},b_{j}]$, se deduce inmediatamente que
+\begin{align*}
+|M_{j}-m_{j}| \leq b_{j}-a_{j}.
+\end{align*}
+Esto se debe simplemente a que la distancia entre dos puntos de un intervalo nunca puede exceder la longitud total del intervalo.\\
+Además,
+\begin{align*}
+  f(U)\subset\bigcup_{j=1}^{\infty}[f(m_{j}),f(M_{j})]  
+\end{align*}
+y la medida de esta unión está acotada por
+\begin{align*}
+m\!\left(\bigcup_{j=1}^{\infty}[f(m_{j}),f(M_{j})]\right)
+\leq \sum_{j=1}^{\infty}|f(M_{j})-f(m_{j})|
+<\epsilon,
+\end{align*}
+porque, por lo demostrado arriba,
+\begin{align*}
+  \sum_{j}|M_{j}-m_{j}|\leq \sum_{j}(b_{j}-a_{j})<\delta \quad\Longrightarrow\quad \sum_{j}|f(M_{j})-f(m_{j})|<\epsilon
+\end{align*}
+por continuidad absoluta de $f$.  
+Como esto vale para todo $\epsilon>0$, se concluye que
+\begin{align*}
+  m(f(E))=0, 
+\end{align*}
+es decir, $f$ envía conjuntos de medida cero en conjuntos de medida cero.
+\item Sea $E\subset\mathbb{R}$ un conjunto medible. Podemos escribirlo como
+\begin{align*}
+  E=F\cup N, 
+\end{align*}
+donde $F$ es cerrado y $N$ tiene medida cero. Todo cerrado de $\mathbb{R}$ es $\sigma$-compacto, así que
+\begin{align*}
+  F=\bigcup_{k=1}^{\infty}K_{k}, 
+\end{align*}
+donde cada $K_{k}$ es compacto. Como $f$ es continua, cada imagen $f(K_{k})$ es compacta y por tanto es un conjunto de Borel. Además, por el inciso (a),
+\begin{align*}
+  m(f(N))=0. 
+\end{align*}
+Así,
+\begin{align*}
+  f(E)=f(F)\cup f(N)=\left(\bigcup_{k=1}^{\infty}f(K_{k})\right)\cup f(N), 
+\end{align*}
+la cual es unión de un conjunto $\sigma$-compacto (luego medible) y un conjunto de medida cero (también medible). Por lo tanto,
+\begin{align*}
+  f(E)\quad\text{es medible.} 
+\end{align*}
+\end{enumerate}
+\end{solucion}

@@ -19,6 +19,9 @@ find . -type f \( \
   -name '*.log' -o \
   -name '*.out' -o \
   -name '*.toc' -o \
+  -name '*.nav' -o \
+  -name '*.snm' -o \
+  -name '*.vrb' -o \
   -name '*.bbl' -o \
   -name '*.blg' -o \
   -name '*.fls' -o \

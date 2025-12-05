@@ -3,99 +3,60 @@ Sea $x\in\mathbb{R}$. Es bien conocido (y puede demostrarse usando el
 principio del palomar) que para todo irracional $x$ existen infinitos
 racionales $p/q$ en forma reducida tales que
 \begin{align*}
-  \left|x-\frac{p}{q}\right|\le \frac{1}{q^{2}}. 
+  \left|x-\frac{p}{q}\right|\leq \frac{1}{q^{2}}. 
 \end{align*}
 En este ejercicio queremos probar que si se reemplaza $1/q^{2}$ por
-$1/q^{3}$ (o más generalmente por $1/q^{2+\varepsilon}$), entonces el
+$1/q^{3}$ (o más generalmente por $1/q^{2+\epsilon}$), entonces el
 conjunto de $x$ que admiten infinitas aproximaciones de ese tipo es de
 medida cero.
 \end{homeworkProblem}
 \begin{solucion}
+  \begin{lema}[Borel-Cantelli]
+    Sea $\{A_{n}\}_{n\in\mathbb{Z}^{+}}$ una sucesión de conjuntos medibles tales que $\sum_{n\in\mathbb{Z}^{+}}m(A_{n})<\infty$, entonces $m(\limsup_{n\to\infty}A_{n})=0$.  
+  \end{lema}
 Para cada par $(p,q)$ con $(p,q)=1$, definamos el intervalo
-\[
-I_{p,q}
-=
-\left\{\,x\in\mathbb{R}:\,
-\left|x-\frac{p}{q}\right|\le \frac{1}{q^{3}}
-\right\}
-=
-\left[\frac{p}{q}-\frac{1}{q^{3}},\, \frac{p}{q}+\frac{1}{q^{3}}\right].
-\]
-
+\begin{align*}
+  I_{p,q}=\left\{\,x\in\mathbb{R}:\,\left|x-\frac{p}{q}\right|\leq \frac{1}{q^{3}}\right\}=\left[\frac{p}{q}-\frac{1}{q^{3}},\, \frac{p}{q}+\frac{1}{q^{3}}\right].
+\end{align*}
 Cada intervalo tiene longitud
-\[
-|I_{p,q}|=\frac{2}{q^{3}}.
-\]
-
-Para un denominador fijo $q$, consideremos todos los $p$ con $(p,q)=1$.
-El número de tales $p$ está dado por la función totiente $\varphi(q)$, y
-satisfacemos siempre la cota
-\[
-\varphi(q)\le q.
-\]
-
+\begin{align*}
+  |I_{p,q}|=\frac{2}{q^{3}}. 
+\end{align*}
+Para un denominador fijo $q$, consideremos todos los $p$ con $(p,q)=1$. El número de tales $p$ está dado por la función contadora de primos (Phi de Euler) $\varphi(q)$, de la cual sabemos se satisface siempre la cota $\varphi(q)\le q$.
 Sea ahora
-\[
-E_q := \bigcup_{\substack{p\in\mathbb{Z}\\ (p,q)=1}} I_{p,q}.
-\]
-
+\begin{align*}
+  E_q := \bigcup_{\substack{p\in\mathbb{Z}\\ (p,q)=1}} I_{p,q}. 
+\end{align*}
 Entonces podemos acotar la medida de $E_q$ por
-\[
-m(E_q)\le \sum_{\substack{p\in\mathbb{Z}\\ (p,q)=1}} |I_{p,q}|
-= \varphi(q)\frac{2}{q^{3}}
-\le \frac{2}{q^{2}}.
-\]
-
-El conjunto de números $x$ que admiten infinitas aproximaciones del tipo
-$\lvert x-\frac{p}{q}\rvert\le\frac{1}{q^{3}}$ es entonces
-\[
-E := \limsup_{q\to\infty} E_q
-=
-\bigcap_{N=1}^{\infty}\ \bigcup_{q\ge N} E_q.
-\]
-
-Aplicamos ahora el lema de Borel--Cantelli. Tenemos
-\[
-\sum_{q=1}^{\infty} m(E_q)
-\le
-\sum_{q=1}^{\infty} \frac{2}{q^{2}}
-<\infty.
-\]
-
-Por el lema de Borel--Cantelli se deduce que
-\[
-m(E)=0.
-\]
-
-Por tanto, el conjunto de números reales $x$ para los cuales existen
-infinitos racionales $p/q$ en forma reducida tales que
-\[
-\left|x-\frac{p}{q}\right|\le\frac{1}{q^{3}}
-\]
+\begin{align*}
+  m(E_q)\leq \sum_{\substack{p\in\mathbb{Z}\\ (p,q)=1}} |I_{p,q}|= \varphi(q)\frac{2}{q^{3}} \leq \frac{2}{q^{2}}.
+\end{align*}
+El conjunto de números $x$ que admiten infinitas aproximaciones del tipo $\lvert x-\frac{p}{q}\rvert\leq \frac{1}{q^{3}}$ es entonces
+\begin{align*}
+  E := \limsup_{q\to\infty} E_q = \bigcap_{N=1}^{\infty}\ \bigcup_{q\ge N} E_q.
+\end{align*}
+Usando la cota anterior se sabe que
+\begin{align*}
+  \sum_{q=1}^{\infty} m(E_q) \leq \sum_{q=1}^{\infty} \frac{2}{q^{2}} <\infty.  
+\end{align*}
+Lo que por el lema de Borel--Cantelli nos permite deducir que $m(E)=0$.\\
+Por tanto, el conjunto de números reales $x$ para los cuales existen infinitos racionales $p/q$ en forma reducida tales que
+\begin{align*}
+  \left|x-\frac{p}{q}\right|\leq\frac{1}{q^{3}} 
+\end{align*}
 tiene medida cero.
-
-\medskip
-\noindent\textbf{Extensión a $1/q^{2+\varepsilon}$.}
+Extensión a $1/q^{2+\epsilon}$.\\
 Con el mismo argumento, si definimos
-\[
-I_{p,q}
-=
-\left\{
-x:\,
-\left|x-\frac{p}{q}\right|\le \frac{1}{q^{2+\varepsilon}}
-\right\},
-\]
-su longitud es $2/q^{2+\varepsilon}$ y se obtiene
-\[
-m(E_q)\le \varphi(q)\frac{2}{q^{2+\varepsilon}}
-\le \frac{2}{q^{1+\varepsilon}}.
-\]
-La serie
-\[
-\sum_{q=1}^{\infty} \frac{1}{q^{1+\varepsilon}}
-\]
-converge para todo $\varepsilon>0$, de modo que el lema de
-Borel--Cantelli vuelve a aplicar y el conjunto correspondiente es de
-medida cero.
-
+\begin{align*}
+  I_{p,q}=\left\{x:\,\left|x-\frac{p}{q}\right|\leq \frac{1}{q^{2+\epsilon}}\right\},
+\end{align*}
+su longitud es $2/q^{2+\epsilon}$ y se obtiene
+\begin{align*}
+  m(E_q)\leq \varphi(q)\frac{2}{q^{2+\epsilon}} \leq \frac{2}{q^{1+\epsilon}}.
+\end{align*}
+Por lo tanto, la serie
+\begin{align*}
+  \sum_{q=1}^{\infty}m(E_{q})\leq \sum_{q=1}^{\infty} \frac{1}{q^{1+\epsilon}} 
+\end{align*}
+  converge para todo $\epsilon>0$, de modo que razonando de forma similar al caso anterior se puede concluir que el conjunto correspondiente $E$, es de medida cero.
 \end{solucion}

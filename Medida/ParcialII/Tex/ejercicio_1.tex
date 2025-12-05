@@ -1,0 +1,39 @@
+\begin{homeworkProblem}
+  Considere la función $f:\mathbb{R}\to \mathbb{R}$ definida por
+  \begin{align*}
+    f(x)= 
+    \begin{cases}
+      \frac{1}{|x|\left(\ln\left(\frac{1}{|x|}\right)\right)^{2}}, &\text{ if } |x|\leq \frac{1}{2} \text{,} \\
+      0, &\text{} otherwise .
+    \end{cases}
+  \end{align*}
+  \begin{enumerate}[a)]
+    \item Verifique que $f$ es integrable.
+    \item Muestre la desigualdad
+      \begin{align*}
+        f^{\ast}(x)\geq \frac{c}{|x|\ln\left( \frac{1}{|x|} \right)},\quad\text{ para algún $c>0$ y todo $|x|\leq \frac{1}{2}$},
+      \end{align*}
+      para concluir que la función maximal $f^{\ast}$ no es localmente integrable.
+  \end{enumerate}
+\end{homeworkProblem}
+\begin{solucion}
+\begin{enumerate}[a)]
+  \item Usando que $f$ es una función par y el cambio de variable $u=\ln\left( \frac{1}{x} \right)$ se tiene que
+    \begin{align*}
+      \int_{\mathbb{R}}|f(x)|\, dx=2\int_{0}^{\frac{1}{2}}\frac{1}{|x|\left( \ln\left( \frac{1}{|x|} \right) \right)}\, dx=2\int_{\ln(2)}^{\infty}\frac{1}{u^{2}}\, du=-2\left[ \frac{1}{x} \right]_{\ln(2)}^{\infty}=\frac{2}{\ln(2)}<\infty.
+    \end{align*}
+  \item Suponga $|x|\geq \frac{1}{2}$, entonces tomemos $B_{x}(x)=(0,2x)$ si $x>0$ la cual sabemos que $m(B_{x}(x))=2|x|$, luego usando que la función $f$ es positiva en $(0,2x)$ se deduce que 
+    \begin{align*}
+      \frac{1}{m(B_{x}(x))}\int_{0}^{2x}\frac{1}{y\left(\ln\left( \frac{1}{y} \right)\right)^{2}}\, dy\geq\frac{1}{m(B_{x}(x))}\int_{0}^{x}\frac{1}{y\left(\ln\left( \frac{1}{y} \right)\right)^{2}}\, dy=\frac{1}{2x\ln\left( \frac{1}{x} \right)}\geq\frac{c}{x\ln\left( \frac{1}{x} \right)}.
+    \end{align*}
+    Luego como la maximal domina a todas las integrales de media se concluye que
+    \begin{align*}
+      f^{\ast}(x)\geq \frac{c}{x\ln\left( \frac{1}{x} \right)},\quad\text{ para algúna constante $c>0$ y todo $|x|\leq \frac{1}{2}$.}
+    \end{align*}
+    Luego note que en una vecindad alrededor del $0$ como $(0,\epsilon)$ con $\epsilon >0$ se tiene que usando el cambio de variables $u=\ln\left( \frac{1}{x} \right)$ se sigue que 
+    \begin{align*}
+      \int_{0}^{\epsilon}f^{\ast}(x)\, dx\geq \int_{0}^{\epsilon}\frac{c}{x\ln\left( \frac{1}{x} \right)}\, dx=\int_{\ln\left( \frac{1}{\epsilon} \right)}^{\infty}\frac{1}{u}\, du=\infty,
+    \end{align*}
+    para todo $\epsilon>0$, de lo cual se concluye que $f^{\ast}$ no es localmente integrable. 
+\end{enumerate}
+\end{solucion}

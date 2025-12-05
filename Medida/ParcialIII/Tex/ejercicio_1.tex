@@ -1,0 +1,96 @@
+\begin{homeworkProblem}
+  Existe una curva $P:[0,1]\to[0,1]\times[0,1]$ continua y sobreyectiva que además cumple
+\begin{enumerate}[(i)]
+  \item $P$ es continua y sobreyectiva;
+  \item $P$ satisface una condición Lipschitz de exponente $1/2$, es decir, existen constantes $M>0$ tales que
+    \begin{align*}
+      |P(t)-P(s)|\le M|t-s|^{1/2}\quad\text{para todos }s,t\in[0,1];
+    \end{align*}
+ \item para todo subintervalo $[a,b]\subset[0,1]$ la imagen $P([a,b])$ es compacta y tiene medida de Lebesgue bidimensional exactamente $b-a$.
+\end{enumerate}  
+\end{homeworkProblem}
+\begin{solucion}
+  La prueba se hace por construcción y paso límite. La construcción está inspirada en las curvas \emph{tipo Peano/Hilbert} pero organizada para controlar el área de las imágenes de subintervalos.
+
+\textbf{Paso 1. Mallas y particiones.}
+Para cada \(n\ge 1\) consideremos la partición del cuadrado unitario en \(4^n\) cuadrados pequeños congruentes de lado \(2^{-n}\); numeremos esos cuadrados
+\(Q_{n,k}\) para \(k=1,\dots,4^n\) en cierto orden conectado (es decir, cada cuadrado sucesivo comparte arista con el anterior). También partimos el intervalo \([0,1]\) en \(4^n\) subintervalos contiguos
+\[
+I_{n,k}=\Big[\frac{k-1}{4^n},\frac{k}{4^n}\Big],\qquad k=1,\dots,4^n.
+\]
+Cada \(I_{n,k}\) tiene longitud \(4^{-n}\) y cada \(Q_{n,k}\) tiene área \(4^{-n}\).
+
+\textbf{Paso 2. Aproximaciones poligonales \(P_n\).}
+Definimos \(P_n:[0,1]\to[0,1]^2\) de la siguiente manera: sobre cada subintervalo \(I_{n,k}\), \(P_n\) es una trayectoria continua que recorre el cuadrado \(Q_{n,k}\) (por ejemplo, un lazo que entra por el centro de una arista y sale por otra) de modo que
+\begin{itemize}
+ \item \(P_n\) es continua en todo \([0,1]\);
+ \item las imágenes \(P_n(I_{n,k})\) están contenidas en \(Q_{n,k}\);
+ \item los extremos de los subintervalos \(\frac{k}{4^n}\) se mandan a puntos de la unión de las fronteras de los cuadrados de manera coherente para que \(P_n\) sea continua en todo \([0,1]\).
+\end{itemize}
+Además elegimos el recorrido en cada \(I_{n,k}\) de forma que la longitud del tramo \(P_n|_{I_{n,k}}\) sea \(\lesssim 2^{-n}\) (esto es siempre posible al recorrer un cuadrado de lado \(2^{-n}\) por una curva poligonal con número fijo de segmentos).
+
+Por construcción:
+\[
+P_n\big(I_{n,k}\big)\subset Q_{n,k}\quad\text{y}\quad m_2\big(Q_{n,k}\big)=4^{-n}=|I_{n,k}|,
+\]
+donde \(m_2\) es la medida de Lebesgue en el plano.
+
+\textbf{Paso 3. Compatibilidad y convergencia uniforme.}
+Construimos la sucesión \(P_n\) de forma anidada/compatible: la imagen de cada subintervalo \(I_{n+1,j}\) para \(n+1\) queda dentro del cuadrado correspondiente en la subdivisión de nivel \(n\) que contiene al cuadrado de nivel \(n+1\). Con una elección cuidadosa de los recorridos en cada etapa (ajustando un número finito de vértices en las fronteras), se puede asegurar que la sucesión \(P_n\) sea uniformemente de Cauchy: para algún \(C>0\) y todo \(s,t\)
+\[
+|P_{n+1}(t)-P_n(t)|\le C 2^{-n}.
+\]
+De ahí se sigue que \(P_n\) converge uniformemente a una función continua \(P:[0,1]\to[0,1]^2\). Por ser límite uniforme de continuas, \(P\) es continua; y por la forma en que en cada nivel se pisan todos los cuadrados pequeñitos, la imagen de \(P\) es todo el cuadrado unitario (surtividad).
+
+\textbf{Paso 4. Estimación Hölder \(1/2\).}
+Calculemos un control del tipo Hölder. Si \(s,t\in[0,1]\) y \(n\) es tal que
+\[
+4^{-(n+1)}<|t-s|\le 4^{-n},
+\]
+entonces \(s\) y \(t\) pertenecen como máximo a dos subintervalos distintos \(I_{n,k}\) de la partición de nivel \(n\). Por la construcción, las imágenes \(P_n(I_{n,k})\) están contenidas en cuadrados de lado \(2^{-n}\), luego para la aproximación \(P_n\) se tiene
+\[
+|P_n(t)-P_n(s)|\le C' 2^{-n}
+\]
+para alguna constante \(C'\) (depende de cómo recorremos cada cuadrado, pero es uniforme). Usando la convergencia uniforme \(P_n\to P\) y el hecho que \(2^{-n}\) y \(4^{-n}\) están relacionados por \(2^{-n}=(4^{-n})^{1/2}\), obtenemos
+\[
+|P(t)-P(s)| \le C'' 2^{-n} \le C'''\,|t-s|^{1/2}.
+\]
+Así \(P\) es Hölder de exponente \(1/2\) (es decir, Lipschitz de orden \(1/2\)).
+
+\textbf{Paso 5. Propiedad de la medida para intervalos dyádicos.}
+Para cada \(n\) y cada \(k\), por construcción \(P_n(I_{n,k})\subset Q_{n,k}\) y los \(Q_{n,k}\) son disjuntos salvo fronteras, luego
+\[
+m_2\big(P_n(I_{n,k})\big)\le m_2(Q_{n,k})=4^{-n}=|I_{n,k}|.
+\]
+Sin embargo, podemos organizar el recorrido en cada cuadrado de modo que la imagen cubra todo el cuadrado salvo una frontera de medida nula (por ejemplo, recorrer una malla densa en cada cuadrado): de ese modo para la aproximación \(P_n\) podemos garantizar
+\[
+m_2\big(P_n(I_{n,k})\big)=4^{-n}=|I_{n,k}|.
+\]
+Además, si \(J\) es la unión de varios intervalos de la partición de nivel \(n\), entonces \(P_n(J)\) es la unión de los cuadrados correspondientes, y por aditividad
+\[
+m_2\big(P_n(J)\big)=|J|.
+\]
+
+\textbf{Paso 6. Pasaje al límite y medida exacta para cualquier subintervalo.}
+Sea \([a,b]\subset[0,1]\). Dado \(\varepsilon>0\) tomamos \(n\) grande y consideramos la partición de nivel \(n\). Sean \(J_n^-\subset J_n^+\) dos uniones de subintervalos de la partición de nivel \(n\) tales que
+\[
+J_n^-\subset[a,b]\subset J_n^+,\qquad |J_n^+|-|J_n^-|<\varepsilon.
+\]
+Por la propiedad anterior (para \(P_n\)) tenemos
+\[
+m_2\big(P_n(J_n^-)\big)=|J_n^-|,\qquad m_2\big(P_n(J_n^+)\big)=|J_n^+|.
+\]
+Como \(P_n\to P\) uniformemente y \(P_n(J)\subset Q\) con diámetros de orden \(2^{-n}\), las imágenes \(P_n(J_n^\pm)\) convergen en el sentido de Hausdorff a \(P(J_n^\pm)\). Además
+\[
+P(J_n^-)\subset P([a,b])\subset P(J_n^+).
+\]
+Por regularidad exterior/interior de la medida de Lebesgue (y porque las fronteras aportan medida cero) se obtiene al pasar a límite con \(n\to\infty\) y luego \(\varepsilon\to 0\) que
+\[
+m_2\big(P([a,b])\big)=\lim_{n\to\infty} m_2\big(P_n(J_n^\pm)\big)=\lim_{n\to\infty} |J_n^\pm|=b-a.
+\]
+También \(P([a,b])\) es compacto porque \(P\) es continua y \([a,b]\) es compacto.
+
+Esto prueba que para todo subintervalo \([a,b]\) de \([0,1]\) la imagen \(P([a,b])\) es compacta y tiene área exactamente \(b-a\).
+
+\textbf{Comentarios finales.} La construcción anterior describe la idea estándar: en cada etapa \(n\) se divide \([0,1]\) en \(4^n\) trozos y el cuadrado en \(4^n\) cuadrados, y se hace corresponder cada trozo con un cuadrado de igual medida. La compatibilidad entre niveles garantiza continuidad en el límite; la relación geométrica entre lado del cuadrado \(2^{-n}\) y longitud del subintervalo \(4^{-n}\) da el exponente \(1/2\). La aditividad de la medida en la etapa finita y la regularidad de la medida en el límite dan la igualdad de áreas buscada.  
+\end{solucion}
