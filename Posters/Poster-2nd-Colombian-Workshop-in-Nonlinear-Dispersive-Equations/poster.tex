@@ -1,0 +1,278 @@
+%!TEX program = lualatex
+% Unofficial University of Cambridge Poster Template
+% https://github.com/andiac/gemini-cam
+% a fork of https://github.com/anishathalye/gemini
+% also refer to https://github.com/k4rtik/uchicago-poster
+
+\documentclass[final]{beamer}
+
+% ====================
+% Packages
+% ====================
+
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[oientation=portrait,size=a0,scale=1.06]{beamerposter}
+\usetheme{gemini}
+\usecolortheme{nott}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[numbers]{natbib} % o [authoryear] según prefieras
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{anyfontsize}
+
+\providecommand{\abs}[1]{\left|#1\right|}
+\providecommand{\norm}[1]{\left\|#1\right\|}
+
+
+% ====================
+% Lengths
+% ====================
+
+% If you have N columns, choose \sepwidth and \colwidth such that
+% (N+1)*\sepwidth + N*\colwidth = \paperwidth
+\newlength{\sepwidth}
+\newlength{\colwidth}
+\setlength{\sepwidth}{0.025\paperwidth}
+\setlength{\colwidth}{0.45\paperwidth}
+
+\newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
+
+% ====================
+% Title
+% ====================
+
+\title{On the Hardy-Littlewood maximal function in Sobolev spaces}
+
+\author{Andrés David Cadena Simons}
+
+\institute[shortinst]{Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales, Department of Mathematics, Universidad Nacional de Colombia --- Bogotá.}
+
+% ====================
+% Footer (optional)
+% ====================
+
+\footercontent{
+  2nd Colombian Workshop in Nonlinear Dispersive Equations --- 2025 \hfill
+  \href{mailto:acadenas@unal.edu.co}{acadenas@unal.edu.co}}
+% (can be left out to remove footer)
+
+
+% ====================
+% Logo (optional)
+% ====================
+
+% use this to include logos on the left and/or right side of the header:
+\logoright{\hspace{-20ex}\includegraphics[height=6cm]{logos/logocongreso.png}}
+\logoleft{\hspace{20ex}\includegraphics[height=6cm]{logos/logo.png}}
+
+% ====================
+% Body
+% ====================
+
+\begin{document}
+
+% Refer to https://github.com/k4rtik/uchicago-poster
+% logo: https://www.cam.ac.uk/brand-resources/about-the-logo/logo-downloads
+% \addtobeamertemplate{headline}{}
+% {
+%     \begin{tikzpicture}[remember picture,overlay]
+%       \node [anchor=north west, inner sep=3cm] at ([xshift=-2.5cm,yshift=1.75cm]current page.north west)
+%       {\includegraphics[height=7cm]{logos/unott-logo.eps}}; 
+%     \end{tikzpicture}
+% }
+
+\begin{frame}[t]
+\begin{columns}[t]
+\separatorcolumn
+
+\begin{column}{\colwidth}
+  \begin{block}{Preliminaries}
+    \textbf{Vitali's cobering lemma}\\
+    Let $E\subseteq \mathbb{R}^{n}$ be a measurable set, such that $E\subseteq \bigcup_{\alpha}B_{r_{\alpha}}(x_\alpha)$ with the family of open balls  $\{B_{r_{\alpha}}(x_{\alpha})\}_{\alpha}$ that satisfies $\sup_{\alpha}r_{\alpha}=c_0<\infty$.\\
+    Then there exists a subfamily $\{B_{r_j}(x_j)\}_{j\in\mathbb{Z}^{+}}$ of disjoint and numerable elements such that
+    \begin{align*}
+      |E|\leq 5^{n}\sum_{j=1}^{\infty}|B_{r_j}(x_j)|.
+    \end{align*}
+    \textbf{Distribution function}\\
+    Let $(X,\mu)$ be a measurable space, and $f:X\to \mathbb{C}$ be a measurable function.\\
+    We set the distribution function of $f$ associated with $\mu$ the function as follows 
+    \begin{align*}
+      a_f:[0,\infty]&\to [0,\infty]\\
+      \lambda&\to \mu(\{x\in X: |f(x)|>\lambda\})=\mu(E^{\lambda}_{f}).
+    \end{align*}
+    \textbf{Weak Spaces $L^{p}$}\\
+    For $1\leq p\leq \infty$, we denote by $L^{p*}(X,\mathcal{A},\mu)$ the space of all measurable functions $f:X\to \mathbb{C}$ such that
+    \begin{align*}
+      \norm{f}_{L^{p}(X)}^{*}=\sup_{\lambda>0}\lambda(a_{f}(\lambda))^{1/p}<\infty.
+    \end{align*}
+    Equivalently, $L^{p*}(X,\mathcal{A},\mu)$ consists of all functions $f$ that satisfy
+    \begin{align*}
+      a_{f}(\lambda)\leq \frac{C}{\lambda^p}.
+    \end{align*}
+    \textbf{Some types of inequalities}\\
+    Let $(X,\mu)$ and $(Y, \nu)$ be two measurable spaces, and let $T$ be an operator from $L^{p}(X,\mu)$ to the space of measurable functions on $Y$ with values in $\mathbb{C}$, that is $T:L^p(X,\mu)\to\mathcal{M}(Y,\mathbb{C})$.
+    \begin{itemize}
+        \item[i.] We say that $T$ is $(p,q)$-weak (with $q<\infty$) if for every $\lambda>0$, there exists $C>0$ such that $a_{Tf}(\lambda)\leq \left(\frac{C\norm{f}_{L^{p}(X)}}{\lambda}\right)^q.$
+        \item[iii.] We say that $T$ is $(p,q)$-strong if the operator is bounded from $L^p(X,\mu)$ to $L^q(Y,\nu)$.
+    \end{itemize}
+    
+    \textbf{The Marcinkiewicz Interpolation Theorem (diagonal Case)}\\
+    Let $(X, \mu)$ and $(Y, \nu)$ be measure spaces, $1 \leq p_0 < p_1 \leq \infty$, and let $T$ be a sublinear operator from $L^{p_0}(X, \mu) + L^{p_1}(X, \mu)$ to measurable functions on $Y$ that is weak $\left(p_0, p_0\right)$ and is weak $\left(p_1, p_1\right)$. Then $T$ is strong $(p, p)$ for $p_0 < p < p_1$.
+
+    \textbf{The Sobolev space}\\
+    Given $1\leq p\leq \infty$, we define $W^{k,p}(U)$ by all functions $u:U\to \mathbb{R}$ such that for each multiindex $\alpha$ with $|\alpha|\leq k$, $\partial^{\alpha}u$ exist in the weak sense and belongs to $L^{p}(U)$.\\
+    If $u\in W^{k,p}(U)$, we define the norm
+    \begin{align*}
+      \norm{f}_{W^{1,p}(U)}=\norm{f}_{L^p(U)}+\norm{\nabla f}_{L^p(U)}.
+    \end{align*}
+    \textbf{The Hardy-Littlewood Maximal Function}\\
+    Given $f\in L^1_{loc}(\mathbb{R}^{n})$, we define $\mathcal{M}f(x)$, the Hardy-Littlewood maximal function of a $f$ by
+    \begin{align*}
+      \mathcal{M}f(x)=\sup_{r>0}\frac{1}{|B_r(x)|}\int_{B_r(x)}|f(y)|\,dy=\sup_{r>0}\left(|f|*\frac{1}{|B_r(0)|}\chi_{B_r(0)}\right)(x).
+    \end{align*}
+  \end{block}
+
+  \begin{alertblock}{Results}
+    \textbf{Affirmation}. $\mathcal{M}$ is an operator $(\infty,\infty)$-strong.\\
+    {\bf Theorem}. {The operator $\mathcal{M}$ are $(1,1)$-week.}\\
+    As consecuence of the Marcinkiewicz interpolation theorem and the previous results, we affirm that $\mathcal{M}$ is an operator $(p,p)$-strong for all $1<p\leq \infty$.\\
+      Note that given $f\in L^1$, $\mathcal{M}f \in L^1$ if and only if $f=0$. Therefore, does not hold $(1,1)$-strong.\\
+      \vspace{0.2cm}
+    \textbf{Lebesgue differentiation theorem.} \emph{Let be $f\in L^{1}_{loc}(\mathbb{R}^{n})$, then
+      \begin{align*}
+        \lim_{r \to 0^{+}}\frac{1}{|B_{r}(x)|}\int_{B_{r}(x)}f(y)\, dy=f(x)\quad a.e.
+      \end{align*}}
+      \vspace{0.2cm}
+    \textbf{Theorem.} \emph{Let $\phi$ be a radial, positive and nonincreasing function of $r=|x|\in [0,\infty)$, then taking $\phi_{t}(x)=t^{-n}\phi(t^{-1}x)$ it is satisfies that $\sup_{t}|\phi_t\ast f(x)|\leq \|\phi\|_1\mathcal{M}f(x)$.}\\
+      Suppose $\phi$ be a simple functions, then
+      \begin{align*}
+        \left|\phi*f(x)\right|&=\left|\left(\sum_{j=1}^{\infty}c_j\chi_{B_{r_j}(x_j)}*f\right)(x)\right|\\
+        &=\left|\sum_{j=1}^{\infty}c_{j}|B_{r_j}(x_j)|\left( \frac{1}{|B_{r_{j}}(x_j)|}\chi_{B_{r_j}(x_j)}*f \right)(x)\right|\\
+        &\leq\norm{\phi}_{1}\mathcal{M}f(x).
+      \end{align*}
+      Since $\phi_{t}$ is a dilation of $\phi$, the same procedure can be followed and the same result reached.\\
+    As a consecuence, we have that maximal function $\sup_{t}|\phi_t\ast f(x)|$ are $(1,1)$-week and $(p,p)$-strong with $1< p \leq \infty$.
+    This result allows us to generalize (without using sequences $\{t_n\}$) the convergence results for approximations of the identity.
+
+    \textbf{Examples}\\
+    \begin{itemize}
+      \item For $t>0$, the heat kernel in $\mathbb{R}^{n}$ defined by $K_{t}(x)=\frac{1}{(4\pi t)^{\frac{n}{2}}}e^{-\frac{|x|^{2}}{4t}}$ satisfies the convergence result mentioned above.
+      \item For $t>0$, the Poisson kernel in $\mathbb{R}^{n}$ is defined by $P_{t}(x)=c_{n}\frac{t}{\left(t^{2}+|x|^{2}\right)^{\frac{n+1}{2}}}$, where $c_{n}>0$ is the normalization constant such that $\norm{P_{t}}_{L^{1}(\mathbb{R}^{n})}=1$ satisfies the convergence results. 
+    \end{itemize}
+    \textbf{Theorem \cite{MR1469106}.} \emph{It holds that
+    \begin{equation*}
+      \mathcal{M}:W^{1,p}(\mathbb{R}^n)\rightarrow W^{1,p}(\mathbb{R}^n)
+    \end{equation*}
+    defines a bounded operator when $1<p\leq \infty$.}\\
+    \textbf{(Sketch of the proof)} It is enough to show that if $u\in W^{1,p}(\mathbb{R}^{n})$ with $1<p< \infty$, then $\mathcal{M}f(x)$ has a weak derivative and satisfies
+    \begin{align*}
+      |\partial_{x_i}(\mathcal{M}u)|\leq \mathcal{M}\partial_{x_i}u.
+    \end{align*}
+  \end{alertblock}
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{alertblock}{}
+    On the other hand, when $p=\infty$, we will show that $\mathcal{M}f$ is Lipschitz.
+    To see the first inequality, it is enough to observe that if $u\in W^{1,p}(\mathbb{R}^{n})$, then $|u|\in W^{1,p}(\mathbb{R}^{n})$ and that
+    \begin{align*}
+      \partial_{x_i}\left( |u|*\chi_{r} \right)=\partial_{x_i}|u|*\chi_{r}.
+    \end{align*}
+    with $\chi_{r}(x)=\frac{\chi_{B_{r}(0)}}{|B_{r}(0)|}(x)$, for every $i=1,\cdots,n$.\\
+    Take a sequence $r_{j}>0$ with $j=1,2,\cdots$ as an enumeration of the positive rationals and define the functions $v_{k}:\mathbb{R}^{n}\to\mathbb{R}$, for $k=1,2\cdots$, by
+    \begin{align*}
+      v_{k}(x)=\max_{1\leq j\leq k}\left( |u|*\chi_{r_{j}} \right)(x).
+    \end{align*}
+    Note that the sequence of functions $\{v_{k}\}\subset W^{1,p}(\mathbb{R}^{n})$ is increasing and bounded; moreover, by construction we have pointwise convergence to $\mathcal{M}\partial_{x_i}u$ since
+    \begin{align*}
+      \sup_{k}|\partial_{x_i}v_{k}|\leq\sup_{k}\max_{1\leq j\leq k}|\partial_{x_i}|u|*\chi_{r_{j}}|\leq \mathcal{M}\partial_{x_i}u.
+    \end{align*}
+    Thus, taking the $L^{p}(\mathbb{R}^{n})$ norm, we obtain
+    \begin{align*}
+      \norm{\partial v_{k}}_{p}\leq\sum_{i=1}^{n}\norm{\partial_{x_{i}}v_k}_{p}\leq\sum_{i=1}^{n}\norm{\mathcal{M}\partial_{x_i} u}_{p}.
+    \end{align*}
+    Then, using the Hardy–Littlewood theorem, it follows that
+    \begin{align*}
+      \norm{v_k}_{1,p}&\leq \norm{\mathcal{M}u}_{p}+\sum_{i=1}^{n}\norm{\mathcal{M}\partial_{x_{i}}u}_{p}\leq c_p\norm{u}_{p}+c_{p}\sum_{i=1}^{n}\norm{\partial_{x_{i}}u}_{p}<\infty,
+    \end{align*}
+    hence, for every $k=1,2,\cdots$, the sequence $\{v_{k}\}\subset W^{1,p}(\mathbb{R}^{n})$ is an increasing and bounded sequence in $W^{1,p}(\mathbb{R}^{n})$. Therefore, since the space $W^{1,p}(\mathbb{R}^{n})$ is reflexive, there exists a weakly convergent subsequence $\{v_{k_{i}}\}$; however, since the sequence $\{v_{k}\}$ is increasing, the whole sequence converges weakly to $\mathcal{M}|u|$, and by the same argument $\{\partial_{x_{i}}v_{k}\}$ converges weakly to $\mathcal{M}\partial_{x_i}|u|$. This allows us to conclude that
+    \begin{align*}
+      |\partial_{x_i}\mathcal{M}u|\leq \mathcal{M}\partial_{x_i}u.
+    \end{align*}
+
+    \emph{Let $f\in W^{1,\infty}(\mathbb{R}^n)$. We shall show that $\mathcal{M}(f)$ is Lipschitz continuous.}
+    For this, let $x,y\in \mathbb{R}^n$ and $r>0$. By making a change of variables to center the balls at $0$ and using some properties of the absolute value, we have
+    \begin{align*}
+      \frac{1}{|B_{r}(x)|}\int_{B_r(x)} |f(z)|\, dz-\mathcal{M}f(y)\leq \frac{1}{|B_{r}(0)|}\int_{B_{r}(0)} \Big||f(x+w)-f(y+w)|\Big|\, dw.
+    \end{align*}
+    Since $f\in W^{1,\infty}(\mathbb{R}^n)$, by the mean value theorem it follows that
+    \begin{equation*}
+    \big|f(x+w)-f(y+w)\big|\leq \|\nabla f\|_{L^{\infty}} |x-y|.
+    \end{equation*}
+    We conclude that 
+    \begin{equation*}
+    \begin{aligned}
+    \frac{1}{|B(x,r)|}&\int_{B(x,r)} |f(z)|\, dz-\mathcal{M}f(y)\leq & \|\nabla f\|_{L^{\infty}} |x-y|.
+    \end{aligned}
+    \end{equation*}
+    Taking the supremum over $r>0$, we obtain from the previous inequality
+    \begin{equation*}
+    \begin{aligned}
+    \mathcal{M}f(x)-\mathcal{M}f(y)\leq & \|\nabla f\|_{L^{\infty}} |x-y|.
+    \end{aligned}
+    \end{equation*}
+    And by swapping the roles of $x$ and $y$, we arrive at
+    \begin{equation*}
+    \big|\mathcal{M}f(y)-\mathcal{M}f(x)\big| \leq \|\nabla f\|_{L^{\infty}} |x-y|.
+    \end{equation*}
+    From the above, it follows that $\mathcal{M}f$ is Lipschitz continuous. Therefore, the characterization of $W^{1,\infty}(\mathbb{R}^{n})$ shows that $\mathcal{M}f\in W^{1,\infty}(\mathbb{R}^n)$ and
+    \begin{equation*}
+      \|\nabla \mathcal{M}f\|_{L^{\infty}}\leq \|\nabla f\|_{L^{\infty}}.
+    \end{equation*}
+  \end{alertblock}
+
+\begin{exampleblock}{Future Work}
+  \begin{itemize}
+    \item Study additional properties of the Hardy–Littlewood maximal function in Sobolev spaces. For example, consult the results presented in \cite{Mazya2009}, pages 25-67.
+    \item Analyze other types of maximal functions. For example, consider the heat kernel
+    \begin{equation*}
+      K_t(x)=\frac{1}{(4\pi t)^{\frac{d}{2}}}e^{-\frac{|x|^2}{4t}}. 
+    \end{equation*}
+    Study the associated maximal operator,
+    \begin{equation*}
+      \mathcal{K} f(x):=\sup_{t>0}\big(f\ast K_t\big)(x),
+    \end{equation*}
+    in Sobolev spaces $W^{1,p}(\mathbb{R}^n)$. For this, one may consult the articles \cite{CarneiroFinderSousa2018}, \cite{CarneiroBenar2013}.
+  \end{itemize}
+\end{exampleblock}
+
+\begin{block}{Acknowledgment}
+  I would like to thank the Semillero de Análisis Armónico y Ecuaciones Diferenciales Parciales of the Universidad Nacional de Colombia – Bogotá, especially professors Ricardo Ariel Pastrán Ramírez and Oscar Guillermo Riaño Castañeda, who guided the development process of this poster, both in its theoretical part and in its presentation. 
+\end{block}
+
+  \begin{block}{References}
+
+    \nocite{*}
+    \footnotesize{
+      \bibliographystyle{plainnat}
+      \bibliography{poster}
+    }
+
+  \end{block}
+
+\end{column}
+\separatorcolumn
+
+
+
+\end{columns}
+\end{frame}
+
+\end{document}
