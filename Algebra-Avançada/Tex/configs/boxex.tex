@@ -1,0 +1,77 @@
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage{hyperref}
+\usepackage{cleveref}
+% NEW: etoolbox is needed to patch the proof environment
+\usepackage{etoolbox}
+
+% Definir colores personalizados para las cajas
+\definecolor{mygrayback}{RGB}{245, 245, 245}
+\definecolor{mygrayframe}{RGB}{80, 80, 80}
+\definecolor{mygrayframeproof}{RGB}{140, 140, 140}
+
+% Simbolo demostración
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Estilo de caja principal para teoremas y otros entornos
+\declaretheoremstyle[
+  headfont=\bfseries,
+  bodyfont=\normalfont,
+  mdframed={
+    backgroundcolor=mygrayback,
+    linecolor=mygrayframe,
+    innertopmargin=8pt,
+    innerbottommargin=8pt,
+    skipabove=1em,
+    skipbelow=1em,
+    roundcorner=5pt
+  }
+]{thmbox}
+
+% Definición de entornos (todos usan el estilo thmbox)
+\declaretheorem[numberwithin=section, style=thmbox, name=Theorem]{theorem}
+\declaretheorem[sibling=theorem, style=thmbox, name=Lemma]{lemma}
+\declaretheorem[sibling=theorem, style=thmbox, name=Proposition]{proposition}
+\declaretheorem[sibling=theorem, style=thmbox, name=Remarks]{note}
+\declaretheorem[sibling=theorem, style=thmbox, name=Corollary]{corollary}
+\declaretheorem[sibling=theorem, style=thmbox, name=Example]{example}
+\declaretheorem[sibling=theorem, style=thmbox, name=Definition]{definition}
+\declaretheorem[sibling=theorem, style=thmbox, name=Notation]{notation}
+
+% Configuración de mdframed para el entorno proof
+\renewenvironment{proof}[1][\proofname]{%
+  \begin{mdframed}[
+    frametitle={#1},
+    frametitlerule=true,
+    frametitlerulecolor=black,
+    frametitlerulewidth=0.2pt,
+    linecolor=black,
+    backgroundcolor=white,
+    roundcorner=5pt,
+    innertopmargin=6pt,
+    innerbottommargin=12pt,  % más espacio abajo
+    innerrightmargin=12pt,   % más espacio derecha
+    skipabove=1em,
+    skipbelow=1em
+  ]%
+  \pushQED{\qed} % <-- activa el símbolo
+}{%
+  \popQED          % <-- imprime el símbolo dentro del marco
+  \end{mdframed}
+}
+
+% Configuración cleveref para los nuevos entornos
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{note}{Note}{Notes}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{example}{Example}{Examples}
+\crefname{definition}{Definition}{Definitions}
+
+
+

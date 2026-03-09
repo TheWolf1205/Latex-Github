@@ -1,0 +1,53 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{epigraph}
+\usepackage{enumerate}
+\usepackage{amsmath,amssymb}  % Para matemáticas avanzadas
+\usepackage{tikz}
+\usetikzlibrary{patterns.meta}
+\usepackage{csquotes}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[width=150mm,top=35mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{lipsum} % Libreria con el texto de prueba
+\usepackage{hyperref}         % Para enlaces dentro del documento
+\usepackage{cleveref}
+
+% widehat y widecheck
+\DeclareFontFamily{U}{mathx}{}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+\renewcommand{\check}{\widecheck}
+\renewcommand{\hat}{\widehat}
+\newcommand{\fourier}[1]{\mathcal{F}\!\left(#1\right)}
+\renewcommand{\check}{\widecheck}
+\renewcommand{\tilde}{\widetilde}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\sgn}{sgn}
+% Integral de media
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+% norma 3 lineas
+\newcommand{\seminorm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+% norma alargada
+\newcommand{\norm}[1]{\left\|#1\right\|}
+
+% Cajas y entornos
+\input{configs/boxex}
