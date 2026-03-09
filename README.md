@@ -7,6 +7,18 @@ Repositorio para subir trabajos o talleres de la U :p.
 # Contenido
 
 <details>
+<summary><strong>Análise no Rn</strong></summary>
+
+- [Anotaçoes do aula](<./Analise-no-Rn/anotacoes-do-aula/Tex/main.pdf>)
+</details>
+
+<details>
+<summary><strong>Álgebra Avançada</strong></summary>
+
+- [Anotaçoes do aula](<./Algebra-Avançada/anotacoes-do-aula/Tex/main.pdf>)
+</details>
+
+<details>
 <summary><strong>Geometría Diferencial</strong></summary>
 
 - [Trabajo final (Escrito en inglés)](<./Geometria-Diferencial/Trabajo-Final/Escrito/Ingles/Trabajo%20Final%20%5BIngles%5D%20-%20Geometría%20Diferencial.pdf>)
