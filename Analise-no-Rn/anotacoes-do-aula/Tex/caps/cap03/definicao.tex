@@ -1,0 +1,18 @@
+Seja $U\subseteq \mathbb{R}^{n}$ um conjunto aberto. Dizemos que uma aplicação $f:U\to\mathbb{R}^{n}$ é diferenciável em um ponto $x\in U$ quando existe, na vizinhança de $x$, uma "boa aproximação linear" para $f$.
+
+Mais precisamente, deve existir uma transformação linear $T:\mathbb{R}^{m}\to\mathbb{R}^{n}$ tal que
+\begin{align*}
+  f(x+h)-f(x)=Th+r(h),\quad\text{onde }\lim_{h \to 0}\frac{r(h)}{|h|}=0.
+\end{align*}
+Na expressão acima, $h$ dever ser tomado suficientemente pequeno para que $x+h\in U$ e portanto $f(x+h)$ tenha sentido. Como $U$ é aberto, existe $\eta>0$ tal que $|h|<\eta$ implica $x+h\in U$.
+
+A igualdade $f(x+h)-f(x)=Th+r(h)$ é simplesmente a definição do "resto" $r(h)\in\mathbb{R}^{n}$. A diferenciabilidade de $f$ no ponto $x$ nos diz que este resto é um "infinitésimo de orden superior a $h$", isto é, $\displaystyle \lim_{h \to 0}\frac{r(h)}{|h|}=0$. Isto significa, é claro, que dado $\epsilon>0$, existe $\delta>0$ tal que $0< |h|<\epsilon$ implica $|r(h)|<\epsilon |h|$.
+
+As vezes é conveniente escrever a condição para a diferenciabilidade de $f:U\to\mathbb{R}^{n}$ em $x\in U$ do seguinte modo
+\begin{align*}
+  f(x+h)-f(x)=Th + \rho(h)|h|,\quad\text{onde }\lim_{h \to 0}\rho(h)=0.
+\end{align*}
+Para tal, basta tomar $\rho(h)=\frac{r(h)}{|h|}$. Isto deixa $\rho(h)$ sem sentido quando $h=0$. Mas, quando $f$ é diferenciável no ponto $x$, é natural definir $\rho(0)=0$. Então $\rho(h)$ será uma função continua de $h$ no ponto $h=0$.
+\begin{corollary}
+  Toda aplicação diferenciável num ponto é continua nesse ponto.
+\end{corollary}

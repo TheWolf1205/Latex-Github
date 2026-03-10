@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=0.8]
+
+  % Ejes
+  \draw[->] (-3,0) -- (3,0) node[right] {$x_1$};
+  \draw[->] (0,-3) -- (0,3) node[above] {$x_2$};
+      
+  % Bola L1
+  \draw[dotted] (-2,-2) -- (-2,2) -- (2,2) -- (2,-2) -- cycle;
+      
+  % Radio
+  \draw[->] (0,0) -- (2,0);
+  \node[below] at (1,0) {$r$};
+
+  % Centro
+  \fill (0,0) circle (2pt);
+\end{tikzpicture}  
+

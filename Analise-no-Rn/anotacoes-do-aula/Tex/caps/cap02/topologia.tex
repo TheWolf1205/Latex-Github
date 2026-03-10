@@ -1,0 +1,72 @@
+\subsection{Definicões}
+\begin{definition}[ponto interior]
+  Um $a\in X\subseteq \mathbb{R}^{n}$ é interior a $X$ se existe $r>0$ tal que $B(a;r)\subseteq X$. 
+\end{definition}
+\begin{definition}[Interior do $A$]
+  Dado um conjunto $A\subseteq \mathbb{R}^{n}$ definimos
+  \begin{align*}
+    int(A):=\left\{x\in A: x\text{ e um ponto interior do }A\right\}
+  \end{align*}
+\end{definition}
+\begin{definition}[Bola aberta]
+  Seja $a\in \mathbb{R}^{n}$ e $r>0$, então 
+  \begin{align*}
+    B(a;r):=\left\{x\in \mathbb{R}^{n}:|x-a|<r\right\}
+  \end{align*}
+\end{definition}
+\begin{definition}[Bola fechada]
+  Seja $a\in \mathbb{R}^{n}$ e $r>0$, então 
+  \begin{align*}
+    B(a;r):=\left\{x\in \mathbb{R}^{n}:|x-a|\leq r\right\}
+  \end{align*}
+\end{definition}
+\begin{definition}[Esfera]
+  Seja $a\in \mathbb{R}^{n}$ e $r>0$, então 
+  \begin{align*}
+    B(a;r):=\left\{x\in \mathbb{R}^{n}:|x-a|=r\right\}
+  \end{align*}
+\end{definition}
+\begin{example}[Norma Euclidiana]
+  Definimos a norma Euclidiana como $|x|=\sqrt{\sum_{i=1}^{n}x_i^2}$, o gráfico da bola é como
+  \begin{center}
+    \input{images/bolaeuclidiana.tex}     
+  \end{center}
+\end{example}
+\begin{example}[Norma da Suma]
+  Definimos a norma da suma como $|x|_{S}=\sum_{i=1}^{n}x_i$, o gráfico da bola é como
+  \begin{center}
+    \input{images/bolasoma.tex}
+  \end{center}
+\end{example}
+\begin{example}[Norma da Máximo]
+  Definimos a norma da máximo como $\displaystyle |x|_{M}=\max_{i=1,\cdots,n}|x_i|$, o gráfico da bola é como
+  \begin{center}
+    \input{images/bolamaximo.tex}
+  \end{center}
+\end{example}
+\begin{note}
+  As normas $|\phantom{x}|,|\phantom{x}|_{S},|\phantom{x}|_{M}$ são equivalenten no seguinte sentido
+  \begin{align*}
+    |x|_{M}\leq|x|\leq|x|_{S}\leq n|x|_{M}
+  \end{align*}
+\end{note}
+\begin{definition}[Conjunto limitado]
+  Um conjunto $X\in\mathbb{R}^{n}$ é limitado se existe uma bola que ó contém. 
+\end{definition}
+\begin{definition}[Conjunto aberto]
+  Um conjunto $A$ é aberto se todos os seus pontos são interiores, i,e. $A=int(A)$. 
+\end{definition}
+\subsection{Propriedades dos abertos}
+\begin{theorem}
+  A interseção finita de abertos é aberta.
+\end{theorem}
+\begin{proof} 
+  Suponha $X_i\subseteq \mathbb{R}^{n}$ com $i=1,\cdots,k$ conjuntos abertos, então dado $x\in \bigcap_{i=1}^{k}X_i$ sabemos que $x\in X_i$ para tudo $i=1,\cdots,=k$, logo como $x$ é ponto interior de cada conjunto existem $r_i>0$ de modo que $x\in B(x,r_i)\subseteq X_i$.\\
+  Suponha $\displaystyle \delta=\min_{i=1,\cdots,k} r_i$, assim por propriedades do mínimo sabemos que $B(x,\delta)\subseteq X_i$ para tudo $i=1,\cdots,k$, portanto $x\in B(x,\delta)\subseteq \bigcap_{i=1}^{k}X_i$, i,e, $x\in Int\left( \bigcap_{i=1}^{k}X_i \right)$ e como $x$ é arbitrario podemos concluir que $\bigcap_{i=1}^{k}X_i=int\left( \bigcap_{i=1}^{k}X_i \right)$.
+\end{proof}
+\begin{theorem}
+  A reunión arbitraria de abertos é aberta.
+\end{theorem}
+\begin{proof} 
+  Suponha $X_i\subseteq \mathbb{R}^{n}$ com $i\in \Lambda$ com $\Lambda$ índice arbitrario, então dado $x\in \bigcup_{i\in\Lambda}X_i$, sabemos que existe pelo menos um $j\in\Lambda$ tal que $x\in X_j$, logo $x$ é ponto interior de $X_j$ e portanto existe $r>0$ tal que $x\in B(x,r)\subseteq X_j \subseteq \bigcup_{i\in\Lambda}X_i$ e portanto $x\in int\left( \bigcup_{i\in\Lambda}X_i \right)$, i,e, $x$ é ponto interior do $\bigcup_{i\in\Lambda}X_i$ e como $x$ é arbitrario podemos concluir que $\bigcup_{i\in\Lambda}X_i=int\left( \bigcup_{i\in\Lambda}X_i \right)$. 
+\end{proof}
