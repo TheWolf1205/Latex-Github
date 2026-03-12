@@ -9,10 +9,80 @@ Na expressão acima, $h$ dever ser tomado suficientemente pequeno para que $x+h\
 A igualdade $f(x+h)-f(x)=Th+r(h)$ é simplesmente a definição do "resto" $r(h)\in\mathbb{R}^{n}$. A diferenciabilidade de $f$ no ponto $x$ nos diz que este resto é um "infinitésimo de orden superior a $h$", isto é, $\displaystyle \lim_{h \to 0}\frac{r(h)}{|h|}=0$. Isto significa, é claro, que dado $\epsilon>0$, existe $\delta>0$ tal que $0< |h|<\epsilon$ implica $|r(h)|<\epsilon |h|$.
 
 As vezes é conveniente escrever a condição para a diferenciabilidade de $f:U\to\mathbb{R}^{n}$ em $x\in U$ do seguinte modo
-\begin{align*}
+\begin{equation}\label{eq:aplicacao-diferenciavel}
   f(x+h)-f(x)=Th + \rho(h)|h|,\quad\text{onde }\lim_{h \to 0}\rho(h)=0.
-\end{align*}
+\end{equation}
 Para tal, basta tomar $\rho(h)=\frac{r(h)}{|h|}$. Isto deixa $\rho(h)$ sem sentido quando $h=0$. Mas, quando $f$ é diferenciável no ponto $x$, é natural definir $\rho(0)=0$. Então $\rho(h)$ será uma função continua de $h$ no ponto $h=0$.
 \begin{corollary}
   Toda aplicação diferenciável num ponto é continua nesse ponto.
 \end{corollary}
+\begin{proof} 
+  Basta calcular o limite em \eqref{eq:aplicacao-diferenciavel} para verificar.
+\end{proof}
+\begin{definition}[Derivada direccional]
+  Seja $f:U\subseteq\mathbb{R}^{m}\to\mathbb{R}^{n}$. A derivada direccional de $f$ num ponto $a\in U$ relativamente a un vetor $v\in\mathbb{R}^{m}$, é, por definição
+  \begin{align*}
+    \frac{\partial f}{\partial v}(a)=\lim_{t \to 0}\frac{f(a+tv)-f(a)}{t},
+  \end{align*}
+  quando tal limite existe.
+\end{definition}
+A noção de vetor de vetor velocidade nos dá uma interpretação geométrica para a derivada $f^\prime(x):\mathbb{R}^{m}\to\mathbb{R}^{n}$ de uma aplicação $f:U\to\mathbb{R}^{n}$ ($U\subseteq \mathbb{R}^{n}$, aberto, $x\in U$).
+
+Dado $h\in\mathbb{R}^{m}$, seja $J$ um intervalo aberto contendo $0$ tal que $x+th\in U$ para cada $t\in J$. A aplicação $f$ transforma o caminho $\lambda:J\to\mathbb{R}^{m}$, $\lambda(t)=x+th$, no caminho $t\to f(x+th)\in\mathbb{R}^{n}$, e $f^\prime(x)\dot h$ é o vetor velocidade deste último em $t=0$. Veremos adiante que não é necessario usar o caminho linear $\lambda$. Qualquer caminho $\lambda$ tal que $\lambda(0)=x$ e $\frac{d\lambda}{dt}(0)=h$ servirá.
+\begin{center}
+  \input{images/interpretacaovelocidade} 
+\end{center}
+Sea $f=\left( f_{1},\cdots,f_{n} \right)$ então $\frac{\partial f}{\partial v}(a)=\left( \frac{\partial f_{1}}{\partial v},\cdots,\frac{\partial f_{n}}{\partial v}(a) \right)$.
+
+Quando $v=e_j=\underbrace{(0,\cdots,1,\cdots,0)}_{\text{Posição }j}\in \mathbb{R}^{m}$ escreve-se $\frac{\partial f}{\partial x_j}(a)$ en vez de $\frac{\partial f}{\partial e_j}(a)$.
+
+\begin{definition}[Derivada de $f$ no ponto a]
+  Suponha que $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ é diferenciavel no ponto $a$ para tudo vetor $v\in\mathbb{R}^{m}$ y qualquer $t\in\mathbb{R}$ suficientemente pequeno, tem-se
+  \begin{align*}
+    f(a+tv)-f(a)=Ttv+\rho(tv)|tv|,\quad\text{onde }\lim_{v \to 0}\rho(tv)=0,
+  \end{align*}
+  $Ttv=tTv$ e $|Tv|=T|v|$ segue-se para tudo $t\neq 0$ que
+  \begin{align*}
+    \lim_{t \to 0}\frac{f(a+tv)-f(a)}{t}=Tv.
+  \end{align*}
+  Então
+  \begin{align*}
+    Tv=\frac{\partial f}{\partial v}(a),\quad\text{e $T$ é única.}
+  \end{align*}
+  Ela é chamada a derivada de $f$ no ponto $a$. 
+\end{definition}
+\begin{note}
+  Se $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ é diferenciável en $a\in U$, sua derivada é a aplicação linear $f^\prime(a):\mathbb{R}^{m}\to\mathbb{R}^{n}$ que cumpre
+  \begin{itemize}
+    \item $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ é diferenciável em $a\in U$.
+    \item $f^\prime:U\to(L(\mathbb{R}^{m},\mathbb{R}^{n}))$.
+    \item $f^\prime(a):\mathbb{R}^{m}\to\mathbb{R}^{n}$ é aplicação linear. 
+    \end{itemize}
+\end{note}
+\begin{note}
+  A transformação linear $f^\prime(a):\mathbb{R}^{m}\to\mathbb{R}^{n}$ possui en relação as bases canonicas de $\mathbb{R}^{m}$ e $\mathbb{R}^{n}$ uma $n\times m$ chama matriz Jacobiana $(Jf(a))$ suas colunas são os vetores $f^\prime(a)\dot e_{j}=\frac{\partial f}{\partial x_{j}}(a)$. 
+\end{note}
+\begin{note}[A derivada como Transformações linear]
+  Sea $f>U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ uma aplicação. Dizemos que $f$ é diferenciável em $a\in U$ se, e só se, cada uma das suas coordenadas $f_i:U\subseteq \mathbb{R}^{m}\to\mathbb{R}$ são diferenciáveis para tudo $i=1,\cdots,n$. 
+\end{note}
+\begin{note}
+  Se $f$ é diferenciável em $a$, então tudo vetor $v=(\alpha_1,\cdots,\alpha_m)\in\mathbb{R}^{m}$ tal que $a+t\in v$ para $i=1,\cdots,n$ vale $f_i(a+t)-f_i(a)=\sum_{j=1}^{m}\frac{\partial f_{i}}{\partial x_{j}}(a)\cdot\alpha_{j}+r_{i}(v)$ onde $\lim_{v \to 0}\frac{r_{i}(v)}{|v|}=0$.
+
+  A Matriz
+  \begin{align*}
+    Jf(a)=\left( \frac{\partial f_{i}}{\partial x_{j}} \right)_{\substack{1\leq j\leq m\\ 1\leq i\leq n}}\in M_{n\times m},
+  \end{align*}
+  chama-se matriz Jacobiana de $f$ no ponto $a$.
+
+  $f^\prime(a):\mathbb{R}^{m}\to\mathbb{R}^{n}$ cuja matriz em relação as bases canonicas de $\mathbb{R}^{m}$ e $\mathbb{R}^{n}$  e $Jf(a)$ denominase derivada da aplicação $f$ no ponto $a$.
+
+  Para tudo $v=(\alpha_1,\cdots,\alpha_m)\in\mathbb{R}^{m}\in\mathbb{R}^{m}$ tem-se $f^\prime(a)\cdot v=(\beta_{1},\cdots,\beta_{n})$ onde 
+  $$\displaystyle B_{i}=\sum_{j=1}^{m}\frac{\partial f_{i}}{\partial x_j}(a)\alpha_{j}=\frac{\partial f_{i}}{\partial v}(a).$$ 
+\end{note}
+\begin{note}
+  A derivada direccional da aplicação $f$ no ponto $a$ na direção de $v$ cumpre
+  \begin{align*}
+    \frac{\partial f}{\partial v}(a)&=\left( \frac{\partial f_1}{\partial v}(a),\cdots,\frac{\partial f_n}{\partial v}(a) \right)\\
+    &=f^\prime(a)\cdot v.
+  \end{align*}
+\end{note}
