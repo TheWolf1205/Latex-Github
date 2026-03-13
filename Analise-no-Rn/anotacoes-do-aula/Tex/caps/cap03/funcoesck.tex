@@ -1,0 +1,56 @@
+\begin{definition}[Funções $C^{1}$]
+  Uma função $f:U\subseteq\mathbb{R}^{n}\to\mathbb{R}$ é de classe $C^{1}$ e escrevemos $f\in C^{1}$ se 
+  \begin{align*}
+    \frac{\partial f}{\partial x_i}:U&\to\mathbb{R},\\
+    x&\to\frac{\partial f}{\partial x_i}(x),
+  \end{align*}
+  é continua em $U$ para tudo $i=1,\cdots,n$. 
+\end{definition}
+\begin{theorem}
+  Tudo função $f\in C^{1}$ é diferenciável. 
+\end{theorem}
+\begin{proof} 
+  Sem perda de generalidade seja $n=2$.
+
+  Fixemos $c=(a,b)\in\mathbb{R}^{2}$ e $v=(h,k)\in\mathbb{R}^{2}$ tal que $c+v\in U$.
+
+  Se definirmos $r$ e usarmos o Teorema do Valor Médio em uma dimenção, temos que existem $\theta_1,\theta_2\in[0,1]$ tais que 
+  \begin{align*}
+    r(v)=r(h,k)&=f(a+h,b+k)-f(a,b)-\frac{\partial f}{\partial x}(a,b)h-\frac{\partial f}{\partial y}(a,b)k\\
+    &=f(a+h,b+k)-f(a,b+k)+f(a,b+k)-f(a,b)-\frac{\partial f}{\partial x}(a,b)h-\frac{\partial f}{\partial y}(a,b)k\\
+    &=\frac{\partial f}{\partial x}(a+\theta_1h,b+k)h+\frac{\partial f}{\partial y}(a,b+\theta_2k)k-\frac{\partial f}{\partial x}(a,b)h-\frac{\partial f}{\partial y}(a,b)k\\
+    &=\left[ \frac{\partial f}{\partial x}(a+\theta_1h,b+k)-\frac{\partial f}{\partial x}(a,b) \right]h+\left[ \frac{\partial f}{\partial y}(a,b+\theta_2k)-\frac{\partial f}{\partial y}(a,b) \right]k.
+  \end{align*}
+  Assim,
+  \begin{align*}
+    \left|\frac{r(v)}{|v|}\right|&\leq\frac{|h|}{\sqrt{h^2+k^2}}\left| \frac{\partial f}{\partial x}(a+\theta_1h,b+k)-\frac{\partial f}{\partial x}(a,b) \right|+\frac{|k|}{\sqrt{h^2+k^2}}\left| \frac{\partial f}{\partial y}(a,b+\theta_2k)-\frac{\partial f}{\partial y}(a,b) \right|\\
+    &\leq\left| \frac{\partial f}{\partial x}(a+\theta_1h,b+k)-\frac{\partial f}{\partial x}(a,b) \right|+\left| \frac{\partial f}{\partial y}(a,b+\theta_2k)-\frac{\partial f}{\partial y}(a,b) \right|.
+  \end{align*}
+  Logo
+  \begin{align*}
+    \lim_{v \to 0}\left| \frac{r(v)}{|v|} \right|\leq \lim_{v \to 0}\left| \frac{\partial f}{\partial x}(a+\theta_1h,b+k)-\frac{\partial f}{\partial x}(a,b) \right|+\left| \frac{\partial f}{\partial y}(a,b+\theta_2k)-\frac{\partial f}{\partial y}(a,b) \right|=0.
+  \end{align*}
+  O que nos permite concluir que
+  \begin{align*}
+    \lim_{v \to 0}\frac{r(v)}{|v|}=0,
+  \end{align*}
+  i,e, $f$ é uma função diferenciável. 
+\end{proof}
+\newpage
+\begin{theorem}
+  Seja $U\subseteq \mathbb{R}^{m}$, $V\subseteq\mathbb{R}^{n}$ e $f:U\to V$ uma aplicação cujas funções coordenadas $f_1,\cdots,f_n:U\to \mathbb{R}$ possuem derivadas parciais em $a\in U$ e $g:V\to\mathbb{R}$ uma função diferenciável no ponto $b=f(a)$.\\
+  Então $g\circ f$ possui derivada parciais no ponto $a$ e vale
+  \begin{align*}
+    \frac{\partial (g\circ f)}{\partial x_i}(a)=\sum_{k=1}^{n}\frac{\partial g}{\partial y_k}(b)\cdot\frac{\partial f_k}{\partial x_i}(a),\quad i=1,\cdots,m.
+  \end{align*}
+  Além disso, $f,g\in C^1$ implicam que $g\circ f\in C^1$. 
+\end{theorem}
+\begin{proof} 
+  Por definição do derivada parciai
+  \begin{align*}
+    \frac{\partial (g\circ f)}{\partial x_i}(x)&=\lim_{h \to 0}\frac{(g\circ f)(x+e_ih)-(g\circ f)(x)}{h}\\
+    &=\lim_{h \to 0}\frac{g(f(x+e_ih))-g(f(x))}{h}\\
+    &=\lim_{h \to 0}\frac{g(f_1(x+e_ih),\cdots,f_n(x+e_ih))-g(f_1(x),\cdots,f_n(x))}{h}.
+  \end{align*}
+  Adicionando e subtraindo $g(f_1(x_1+h),x_2,\cdots,x_m),f_2(x),\cdots,f_n(x)),g(f_1(x_1+h,x_2+h,x_3,\cdots,x_m),f_2()$
+\end{proof}
