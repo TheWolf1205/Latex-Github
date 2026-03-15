@@ -1,6 +1,16 @@
 \begin{homeworkProblem}
   Uma involução em um grupo $G$ é um elemento de ordem $2$ deste grupo. Mostre que se $G$ é um grupo onde todo elemento não trivial é uma involução então $G$ é abeliano. 
   \begin{solution}
-    XXX
+    Seja $a,b\in G$, então como $a*b\in G$, segue-se que $o(a*b)=2$,i,e, $(a*b)*(a*b)=1$, então, fazendo os seguintes cálculos e usando que $o(a),o(b)=2$, sabe-se que
+    \begin{align*}
+      (a*b)*(a*b)&=1\\
+      a*b*a*b*b&=b\\
+      a*b*a*b*b*a&=b*a\\
+      a*b*a*1*a&=b*a\\
+      a*b*a*a&=b*a\\
+      a*b*1&=b*a\\
+      a*b&=b*a.
+    \end{align*}
+    Logo como $a$ e $b$ são arbitrários, então $G$ é ábeliano. 
   \end{solution}
 \end{homeworkProblem}

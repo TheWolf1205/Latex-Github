@@ -1,6 +1,11 @@
 \begin{homeworkProblem}
-  Mostre que se $g$ é um elemento de um grupo finito $G$ e $k$ é um inteiro tal que $x^k = 1$ então $o(x)$ divide $k$.
+  Mostre que se $x$ é um elemento de um grupo finito $G$ e $k$ é um inteiro tal que $x^k = 1$ então $o(x)$ divide $k$.
   \begin{solution}
-    XXX
+    Vamos raciocinar por contradição, suponha que $o(x)$ não divide $k$, então sabemos que $x^{o(x)}=1$ e $x^{k}=1$, logo já que $o(x)$ é o menor inteiro $N$ que satisfaz que $x^{N}=1$, então $o(x)<k$, sigue-se que existe o menor inteiro $m$ tal que $(m-1)\cdot o(x)<k<m\cdot o(x)$, então como $x^{(m-1)\cdot o(x)}=1$
+    \begin{align*}
+      \underbrace{\underbrace{x*x*\cdots*x}_{(m-1)\cdot o(x)\text{vezes}}*x*\cdots*x}_{k\text{ vezes }}=1\\
+      \underbrace{x*\cdots*x}_{k-(m-1)\cdot o(x)\text{ vezes}}=1.
+    \end{align*}
+    Logo $k-(m-1)\cdot o(x)< o(x)$ e $x^{k-(m-1)\cdot o(x)}=1$. Contradição, já que $o(x)$ é o menor enteiro $N$ que satisfaz que $x^N=1$. Então podemos concluir que $o(x)$ divide $k$.  
   \end{solution}
 \end{homeworkProblem}

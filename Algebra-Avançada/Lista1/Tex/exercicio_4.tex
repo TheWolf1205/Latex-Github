@@ -7,12 +7,34 @@
     
     \item Se todo elemento de $G$ tem ordem finita então $G$ tem ordem finita.
     
-    \item Se $G$ tem ordem finita então existe $m \in \mathbb{N}$ tal que $g^m = 1$, $\forall g \in G$ e além disso,
-    existe $a \in G$ tal que $o(a)=m$.
+    \item Se $G$ tem ordem finita então existe $m \in \mathbb{N}$ tal que $g^m = 1$, $\forall g \in G$ e além disso, existe $a \in G$ tal que $o(a)=m$.
     
     \item Se $G$ é abeliano de ordem finita então existe $m \in \mathbb{N}$ tal que $g^m = 1$, $\forall g \in G$ e além disso,existe $a \in G$ tal que $o(a)=m$.
   \end{enumerate}
   \begin{solution}
-    XXX
+    \begin{enumerate}
+      \item Se $x,y \in G$ têm ordem finita então $xy$ tem ordem finita.
+      
+      \item Se $x$ e $y$ são elementos de ordem finita que comutam em $G$ então $xy$ tem ordem finita.
+
+        Verdadeira.\\
+        Como $x$ e $y$ são elementos de orden finita que comutam en $G$, suponha que $o(x)=h$ e $o(y)=k$, então $o(xy)=\MMC(h,k)$ dado que 
+        \begin{align*}
+          \underbrace{xy*xy*\cdots*xy}_{\MMC(h,k)\text{ vezes}}&=(\underbrace{x*x*\cdots*x}_{\MMC(h,k) \text{ vezes}})*(\underbrace{y*y*\cdots*y}_{\MMC(h,k) \text{ vezes}})\\
+          &=1*1\\
+          &=1.
+        \end{align*}
+      \item Se todo elemento de $G$ tem ordem finita então $G$ tem ordem finita.
+      
+      \item Se $G$ tem ordem finita então existe $m \in \mathbb{N}$ tal que $g^m = 1$, $\forall g \in G$ e além disso, existe $a \in G$ tal que $o(a)=m$.
+
+        Falsa.\\
+        Tome como exemplo $S_3$. 
+      \item Se $G$ é abeliano de ordem finita então existe $m \in \mathbb{N}$ tal que $g^m = 1$, $\forall g \in G$ e além disso, existe $a \in G$ tal que $o(a)=m$.
+
+      Verdadeira.\\
+      Como $G$ é um grupo, satisfaze Fechadura, então como $|G|<\infty$ se cumple que para tudo $g\in G, o(g)<\infty$, então tome $\displaystyle m=\MMC_{h\in G}(o(h))$, logo $g^{m}=1$ para tudo $g\in G$.\\
+      Logo tome $\displaystyle x=\prod_{h\in G}h$, então $o(x)=m$.
+    \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
