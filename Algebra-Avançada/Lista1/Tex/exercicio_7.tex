@@ -1,10 +1,24 @@
 \begin{homeworkProblem}
-  Mostre que se $H$ e $K$ são dois subgrupos de $G$ então $H \cap K \le G$.
+  Mostre que se $H$ e $K$ são dois subgrupos de $G$ então $H \cap K \leq G$.
   Em geral, dada uma família $\{H_\omega\}_{\omega\in\Lambda}$ de subgrupos de $G$, temos que
-  \[
-    \bigcap_{\omega\in\Lambda} H_\omega \le G .
-  \]
+  \begin{align*}
+    \bigcap_{\omega\in\Lambda} H_\omega \leq G .
+  \end{align*}
   \begin{solution}
-    XXX
+    \begin{itemize}
+      \item Existencia do elemento identidade.
+
+        Como $1\in H_\omega$ para tudo $\omega\in\Lambda$, então $1\in \bigcap_{\omega\in\Lambda} H_\omega$. 
+      \item Fechamento.
+
+        Seja $m,n\in \bigcap_{\omega\in\Lambda} H_\omega$, logo $m,n\in H_\omega$ para tudo $\omega\in\Lambda$, como $H_\omega$ é grupo, então $mn\in H_\omega$ para tudo $\omega\in\Lambda$, logo $mn\in\bigcap_{\omega\in\Lambda} H_\omega$. 
+      \item Existencia do elemento inverso.
+
+        Seja $m\in\bigcap_{\omega\in\Lambda} H_\omega$, logo $m\in H_\omega$ para tudo $\omega\in\Lambda$, logo como $H_\omega$ é um grupo $m^{-1}\in H_\omega$ para tudo $\omega\in\Lambda$, então $m^{-1}\in \bigcap_{\omega\in\Lambda} H_\omega$. 
+      \item Associatividade.
+
+        Isso ocorre porque $G$ é um grupo.
+    \end{itemize}
+    Logo como $\bigcap_{\omega\in\Lambda} H_\omega\subseteq G$, pode-se concluir que $\bigcap_{\omega\in\Lambda} H_\omega\leq G$. 
   \end{solution}
 \end{homeworkProblem}

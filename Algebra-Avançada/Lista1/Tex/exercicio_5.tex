@@ -1,6 +1,25 @@
 \begin{homeworkProblem}
   Seja $H$ um subconjunto não vazio de um grupo $G$. Mostre que $H \le G$ se, e somente se, para todo $a,b \in H$ tem-se $ab^{-1} \in H$.
   \begin{solution}
-    XXX
+    (\textbf{Suficiente}) Si $H\leq G$, então para tudo $a,b\in H$ tem-se $ab^{-1}\in H$.
+
+    Como $H$ é um subgrupo, em particular $H$ é grupo, então si $a,b\in H$ ten-se por a propiedade do existencia do elemento inverso que $b^{-1}\in H$, logo por a propiedade do fechamento $ab^{-1}\in H$.\\
+
+    (\textbf{Necessária}) Si para tudo $a,b\in H$ tem-se $ab^{-1}\in H$, então $H\leq G$.
+    \begin{itemize}
+      \item Existencia do elemento neutro.
+
+        Como $a\in H$, então por hipótese $aa^{-1}=1\in H$.
+      \item Existencia do elemento inverso.
+
+        Como $1,a\in H$, então $1a^{-1}=a^{-1}\in H$.
+      \item Fechamento.
+
+        Como $a,b\in H$, por existencia do elemento inverso $b^{-1}\in H$, logo usando la hipótese con $a$ e $b^{-1}$ se sabe que $ab\in H$.
+      \item Associatividade.
+
+        Isso ocorre porque $G$ é um grupo.
+    \end{itemize}
+    Portanto, podemos concluir que a afirmação é verdadeira.
   \end{solution}
 \end{homeworkProblem}

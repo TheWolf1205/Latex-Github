@@ -1,10 +1,24 @@
 \begin{homeworkProblem}
   Seja $G$ um grupo e $H \le G$. Mostre que o conjunto
-  \[
+  \begin{align*}
     C_G(H)=\{\, g \in G \mid gx = xg, \ \forall x \in H \}
-  \]
+  \end{align*}
   (dito centralizador de $H$ em $G$) é um subgrupo de $G$.
   \begin{solution}
-    XXX
+    \begin{itemize}
+      \item Existencia do elemento identidade.
+
+        Como $1\in G$ e $1x=x1$, então $1\in C_G(H)$. 
+      \item Fechamento.
+
+        Seja $m,n\in C_G(H)$, logo por hipótese $mx=xm$ e $nx=xn$  para tudo $x$, logo $mnx=mxn=xmn$ para tudo $x$ i,e, que $mn\in C_G(H)$.
+      \item Existencia do elemento inverso.
+
+        Seja $m\in C_G(H)$, logo $mx=xm$ para tudo $x\in H$, logo $(mx)^{-1}=(xm)^{-1}$, pero $(mx)^{-1}=x^{-1}m^{-1}$ e $(xm)^{-1}=m^{-1}x^{-1}$, então, tomando $y = x^{-1}$, temos que $m^{-1}y=ym^{-1}$ para tudo $y\in H$, logo $m^{-1}\in C_G(H)$.
+      \item Associatividade.
+
+        Isso ocorre porque $G$ é um grupo. 
+    \end{itemize}
+    Logo $C_G(H)$ é um grupo. 
   \end{solution}
 \end{homeworkProblem}

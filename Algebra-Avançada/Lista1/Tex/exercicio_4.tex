@@ -14,7 +14,34 @@
   \begin{solution}
     \begin{enumerate}
       \item Se $x,y \in G$ têm ordem finita então $xy$ tem ordem finita.
-      
+
+        Falsa.\\
+        Seja $G=Gl_2(\mathbb{R})$, logo considere $x$ e $y$ como  
+        \begin{align*}
+          x=\begin{pmatrix}
+            -1 & 0 \\
+            0 & 1
+          \end{pmatrix},\qquad y=\begin{pmatrix}
+            1 & 1 \\
+            0 & -1
+          \end{pmatrix}.
+        \end{align*}
+        Pode-se calcular que $o(x)=o(y)=2$, mais
+        \begin{align*}
+          xy&=\begin{pmatrix}
+            -1 & -1 \\
+            0 & -1
+          \end{pmatrix}\\
+          (xy)^2&=\begin{pmatrix}
+            1 & 2 \\
+            0& 1
+          \end{pmatrix}\\
+          (xy)^{k}&=\begin{pmatrix}
+            (-1)^{k} & (-1)^{k}k \\
+            0 & (-1)^{k}
+          \end{pmatrix},
+        \end{align*}
+        i,e, $o(xy)=\infty$.
       \item Se $x$ e $y$ são elementos de ordem finita que comutam em $G$ então $xy$ tem ordem finita.
 
         Verdadeira.\\
@@ -25,7 +52,13 @@
           &=1.
         \end{align*}
       \item Se todo elemento de $G$ tem ordem finita então $G$ tem ordem finita.
-      
+
+      Falsa.\\
+      Considere $G=(\mathbb{Q}/\mathbb{Z},+)$, então sim $a,b\in \mathbb{Z}$, $x=\frac{a}{b}+\mathbb{Z}\in \mathbb{Q}/\mathbb{Z}$, logo observe que
+      \begin{align*}
+        \underbrace{\frac{a}{b}+\mathbb{Z}+\cdots+\frac{a}{b}+\mathbb{Z}}_{b\text{ vezes}}=\frac{ab}{b}+\mathbb{Z}=a+\mathbb{Z}=\mathbb{Z}. 
+      \end{align*}
+      Portanto, podemos afirmar que $o(x)<b<\infty$ para tudo $x\in G$, pero $|G|=\infty$.
       \item Se $G$ tem ordem finita então existe $m \in \mathbb{N}$ tal que $g^m = 1$, $\forall g \in G$ e além disso, existe $a \in G$ tal que $o(a)=m$.
 
         Falsa.\\

@@ -1,13 +1,22 @@
 \begin{homeworkProblem}
   Dado um grupo $G$ e um subconjunto não vazio $X \subseteq G$, definimos o subgrupo de $G$  gerado por $X$, denotado por $\langle X \rangle$, como a interseção de todos os subgrupos de $G$ que contêm $X$. Podemos observar que
-  \[
+  \begin{align*}
     \langle X \rangle = \{ x_1^{\pm1} x_2^{\pm1}\cdots x_s^{\pm1} \mid x_i \in X,\ s\ge 0 \},
-  \]
-  onde interpretamos a expressão com $s=0$ como sendo $1$. Mostre que
-  \[
+  \end{align*}
+  onde interpretamos a expressão com $s=0$ como sendo $1$.\\
+  Mostre que
+  \begin{align*} 
     S_3 = \langle (1\,2), (1\,2\,3) \rangle .
-  \]
+  \end{align*}
   \begin{solution}
-    XXX
+    Seguindo o algoritmo
+    \begin{align*}
+      x_0&=1\\
+      (12)^{-1}&=(12)\\
+      (123)^{-1}&=(213)\\
+      (12)(123)&=(13)\\
+      (12)(123)^{-1}=(12)(213)&=(23).
+    \end{align*}
+    Logo $\langle (12),(123) \rangle=\left\{ 1,(12),(13),(23),(123),(213) \right\}=S_3$.
   \end{solution}
 \end{homeworkProblem}
