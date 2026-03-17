@@ -15,7 +15,11 @@ Repositorio para subir trabajos o talleres de la U :p.
 <details>
 <summary><strong>Álgebra Avançada</strong></summary>
 
-- [Anotaçoes do aula](<./Algebra-Avançada/anotacoes-do-aula/Tex/main.pdf>)
+- [Anotaçoes do aula](<./Algebra-Avancada/anotacoes-do-aula/Tex/main.pdf>)
+- Lista 1.
+  - [Exercícios](<./Algebra-Avancada/Lista1/ExerciciosGrupos1.pdf>) 
+  - [Solução](<./Algebra-Avancada/Lista1/Tex/main.pdf>) 
+
 </details>
 
 <details>

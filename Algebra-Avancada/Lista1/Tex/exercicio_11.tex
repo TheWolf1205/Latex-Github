@@ -1,0 +1,6 @@
+\begin{homeworkProblem}
+Seja $G$ um grupo tal que a interseção de todos os seus subgrupos diferentes de $\{1\}$ é um subgrupo diferente de $\{1\}$. Mostre que todo elemento de $G$ tem ordem finita.
+  \begin{solution}
+    Seja $\{H_\omega\}_{\omega\in\Lambda}$ a coleção de todos os subgrupos de $G$. Então tome $x\in \bigcap_{\omega\in\Lambda}H_\omega$, logo $\langle x\rangle\leq \bigcap_{\omega\in\lambda}H_\omega$, pelo a sua vez $\langle x\rangle\leq G$, então $\bigcap_{\omega\in\lambda}H_\omega\leq \langle x\rangle$, portanto $\langle x\rangle = \bigcap_{\omega\in\Lambda}H_\omega$. Alem do mais, $\langle x^{k}\rangle = \langle x\rangle$ para todo $k\in\mathbb{N}$, então ele ordem de $x$ é finito. Logo se tomamos $y\in G$ como $x\in \bigcap_{\omega\in\Lambda}\leq \langle y\rangle$ então existe $y_i\in\mathbb{N}$ tal que $y^{y_i}=x$, por tanto $y$ é de ordem finito, com isso, conclui-se a demostração. 
+  \end{solution}
+\end{homeworkProblem}
