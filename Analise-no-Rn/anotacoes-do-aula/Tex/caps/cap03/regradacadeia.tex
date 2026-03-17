@@ -1,0 +1,21 @@
+\begin{theorem}[Regra da Cadeia]
+  Sejam $U\subseteq\mathbb{R}^{m},V\subseteq\mathbb{R}^{n}$ abertos, $f:U\to\mathbb{R}^{n}$ e $g:V\to\mathbb{R}^{p}$ diferenciável nos pontos $a\in U$ e $b=f(a)\in V$, com $f(U)\subseteq V$.
+
+  Então $g\circ f:U\to\mathbb{R}^{p}$ é diferenciável nos pontos $a\in U$ e $(g\circ f)^{\prime}(a)=g^{\prime}(b)\circ f^{\prime}(a):\mathbb{R}^{m}\to\mathbb{R}^{p}$. 
+\end{theorem}
+\begin{proof} 
+  Como $f$ e $g$ são diferenciavel em $a$ e $b$ tem-se que
+  \begin{align*}
+    f(a+v)&=f(a)+f^{\prime}(a)\cdot v+\rho(v)|v|,\\
+    g(b+w)&=g(b)+g^{\prime}(b)\cdot w+\tilde{\rho}(w)|w|.
+  \end{align*}
+  Logo
+  \begin{align*}
+    g(f(a+v))&=g\left(f(a)+\left(f^{\prime}(a)\cdot v+\rho(v)|v|\right)\right)\\
+    &=g(f(a))+g^{\prime}(f(a))\cdot (f^{\prime}(a)\cdot v+\rho(v)|v|)+\tilde{\rho}(f^{\prime}(a)\cdot v+\rho(v)|v|)|f^{\prime}(a)\cdot v+\rho(v)|v|.
+  \end{align*}
+  Então
+  \begin{align*}
+    g(f(a+v))-g(f(a))=g^{\prime}(f(a))\cdot f^{\prime}(a)v + \overline{\rho}(v)|v|.
+  \end{align*}
+\end{proof}
