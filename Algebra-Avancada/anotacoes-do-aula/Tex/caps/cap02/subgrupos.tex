@@ -1,0 +1,26 @@
+\begin{definition}[Subgrupo]
+  Um subgrupo de um grupo $(G,\cdot)$ é um subconjunto não vazio $H$ de $G$ tal que $(H,\cdot)$ é um grupo. Neste caso, denotamos $H\leq G$. 
+\end{definition}
+\begin{example}[Centro de $G$]
+  Dado um grupo $G$, o conjunto $Z(G)=\{g\in G:gx=xg, \text{ para todo }x\in G\}$ é um subgrupo de $G$ dito o \textbf{centro de $G$}. 
+\end{example}
+\begin{note}
+  Você pode comprobar que $Z(G)$ sempre es abeliano. 
+\end{note}
+\begin{example}[Interseção do subgrupos é subgrupo]
+  Se $H$ y $K$ são dois subgrupos de $G$, então $H\cap K\leq G$. Em geral, dada uma familia $\{H_\alpha\}_{\alpha\in\Gamma}$ de subgrupos de $G$, temos que $\displaystyle \bigcap_{\alpha\in\Gamma}H_{\alpha}\leq G$. 
+\end{example}
+\begin{example}[Generado]
+  Dado um grupo $G$ e um subconjunto não vazio $X\subseteq G$, definimos o \textbf{subgrupo de $G$ generado por $X$}, denotado por $\langle X\rangle$, como a interseção de todos os subgrupos de $G$ que contém $X$. Podemoso observar que
+  \begin{align*}
+    \langle X\rangle=\{x_1^{\pm 1}x_2^{\pm 1}\cdots x_s^{\pm 1}:x_i\in X,\text{ para tudo }s\geq 0\},
+  \end{align*}
+  (Todas as combinações possíveis entre os elementos de $X$ e seus inversos) onde interpretamos a expressão com $s=0$ como sendo $1$. 
+\end{example}
+\begin{note}[Subgrupo cíclico]
+  Se $X=\{x\}$ (conjunto unitario) então $\langle X \rangle=\langle x \rangle$ é o \textbf{subgrupo cíclico} de $G$ gerado pelo elemento $x$. O grupo $G$ é dito \textbf{cíclico} se existe $g\in G$ tal que $G=\langle g \rangle$, neste caso temos $|G|=o(g)$. 
+\end{note}
+\begin{note}[Finitamente gerado]
+  Se existe um subconjunto finito $X\subseteq G$ tal que $G=\langle 
+  X\rangle$, então dizemos que $G$ é \textbf{finitamente gerado}. 
+\end{note}

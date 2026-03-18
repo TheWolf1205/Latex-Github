@@ -1,0 +1,47 @@
+\begin{definition}[Classes laterais e índice]
+  Se $H\leq G$, definimos uma relação em $G$ da seguinte maneira
+  \begin{align*}
+    \text{Se }a,b\in G,a\equiv_H b \text{ sé y so sé }ab^{-1}\in H.
+  \end{align*}
+  Temos
+  \begin{itemize}
+    \item Esta relação é uma relação de equivalência en $G$.
+    \item A classe de equivalência de um elemento $a\in G$ é dada por
+      \begin{align*}
+        \{b\in G:B\equiv_H a\}&=\{b\in G: ba^{-1}=h\text{ para algúm }h\in H\}\\
+        &=\{b\in G: b=ha\text{ para algúm }h\in H\}\\
+        &=\{ha:h\in H\}:=Ha
+      \end{align*}
+      e denominada uma \textbf{classe lateral} (á dereita) de $H$ em $G$ (que contem $a$).
+    \item Se $a,b\in G$, então $Ha=Hb$ ou $Ha\cap  Hb=\emptyset$.
+    \item A cardinalidade do conjunto das classes laterais (á dereita) de $H$ em $G$ é denominada o \textbf{índice} de $H$ em $G$ e denotada por $[G:H]$.
+    \item Para todo $a\in G$ temos $|Ha| = |H|$. 
+  \end{itemize}
+\end{definition}
+\begin{theorem}[Teorema de Lagrange]
+  Se $G$ é um grupo finito e $H\leq G$. Então 
+  $$|G|=[G:H]|H|,$$
+  em particular $|H|$ e $[G:H]$ dividem $|G|$. 
+\end{theorem}
+\begin{corollary}
+  Se $|G|=p$, onde $p$ é um primo, então $G$ é um grupo cíclico. 
+\end{corollary}
+\begin{corollary}
+  Sejam $G$ um grupo finito e $a\in G$. Então $o(a)$ divide $|G|$. 
+\end{corollary}
+\begin{corollary}
+  Se $H,K\leq G$ e $\mdc(|H|,|K|)=1$ então $H\cap K=\{1\}$. 
+\end{corollary}
+Poderíamos também definir a seguinte relação de equivalência em $G$
+\begin{align*}
+  \text{Se }a,b\in G, a\equiv^{H} b\text{ sé e só sé }a^{-1}b\in H.
+\end{align*}
+Neste caso, utilizando as mesmas idéias anteriores, temos um conjunto de classes laterais (\textbf{à esquerda}) de $H$ em $G$, $aH$ onde $a\in G$, com propriedades análogas às da classe lateral à dereita.
+\begin{note}
+  Note que se $G$ é um grupo e $H\leq G$
+  \begin{itemize}
+    \item Se $G$ é abeliano então $aH=Ha$, para todo $a\in G$.
+    \item Se $[G:H]=2$ então $aH=Ha$, para todo $a\in G$.
+    \item No entanto, em geral, podemos ter $aH\neq Ha$, para algúm $a\in G$ (encontre um exemplo!). 
+  \end{itemize}
+\end{note}
