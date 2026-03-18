@@ -8,8 +8,23 @@
   $\{e\}$ e $G$ são normais em $G$. 
 \end{example}
 \begin{example}
-  Se $G$ é umm grupo abeliano, então todos os seus subgrupos são normais. No entanto a recíproca não e verdadeira, isto é, se todos os subgrupos de um grupo $G$ são normais, então $G$ não é necessarimente abeliano, pode tomar como exemplo $S_3$.
+  Se $G$ é um grupo abeliano, então todos os seus subgrupos são normais. No entanto a recíproca não e verdadeira, isto é, se todos os subgrupos de um grupo $G$ são normais, então $G$ não é necessarimente abeliano, pode tomar como exemplo $S_3$ onde $(12)(123)\neq(123)(12)$.
 \end{example}
+Sabemos que $S_3:\{1,(12),(23),(13),(123),(132)\}$, onde $o(12),o(23),o(13)=2$ e $o(123),o(132)=3$.
+
+Podemos então listar os subgrupos de $S_3$ da seguinte forma
+\begin{itemize}
+  \item $H_1=\{1,(12)\}$.
+  \item $H_2=\{1,(13)\}$.
+  \item $H_3=\{1,(23)\}$.
+  \item $H_4=\{1,(123),(132)\}$.
+\end{itemize}
+Por \ref{obs:propclasseslaterais} sabemos que $H_4$ é normal, ja que $|S_3|=6$, então por el teorema de Lagrange $[G:H_4]=2$ i,e, $H_4\normal G$.
+
+O diagrama a seguir representa os subgrupos de $S_3$, onde a linha dupla indica que o subgrupo é normal.
+\begin{center}
+  \input{images/s3subgrupos}  
+\end{center}
 \begin{example}
   $Z(G)\normal G$. Mais geralmente, se $H\leq Z(G)$ então $H\normal G$. 
 \end{example}

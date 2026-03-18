@@ -37,11 +37,44 @@ Poderíamos também definir a seguinte relação de equivalência em $G$
   \text{Se }a,b\in G, a\equiv^{H} b\text{ sé e só sé }a^{-1}b\in H.
 \end{align*}
 Neste caso, utilizando as mesmas idéias anteriores, temos um conjunto de classes laterais (\textbf{à esquerda}) de $H$ em $G$, $aH$ onde $a\in G$, com propriedades análogas às da classe lateral à dereita.
-\begin{note}
+\begin{note}\label{obs:propclasseslaterais}
   Note que se $G$ é um grupo e $H\leq G$
   \begin{itemize}
     \item Se $G$ é abeliano então $aH=Ha$, para todo $a\in G$.
     \item Se $[G:H]=2$ então $aH=Ha$, para todo $a\in G$.
-    \item No entanto, em geral, podemos ter $aH\neq Ha$, para algúm $a\in G$ (encontre um exemplo!). 
+    \item No entanto, em geral, podemos ter $aH\neq Ha$, para algúm $a\in G$. 
   \end{itemize}
 \end{note}
+Tome $G=GL_2(\mathbb{R})$, logo tome $H=\langle a \rangle$ en donde $a$ é
+\begin{align*}
+  a:=\begin{pmatrix}
+    -1 & 0 \\
+    0 & 1
+  \end{pmatrix}.
+\end{align*}
+Note que $o(a)=2$, logo $\langle a \rangle=\{1,A\}$.
+
+Agora seja $b\in GL_2(\mathbb{R})$ da seguinte maneira
+\begin{align*}
+  b:=\begin{pmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{pmatrix}
+\end{align*}
+Logo
+\begin{align*}
+  bH&=\{b,ba\}\\
+  Hb&=\{b,ab\}.
+\end{align*}
+Assim, se você realizar os seguintes calculos, vera que
+\begin{align*}
+  ab&=\begin{pmatrix}
+    -1 & -1 \\
+    0 & 1
+  \end{pmatrix}\\
+  ba&=\begin{pmatrix}
+    -1 & 1 \\
+    0 & 1
+  \end{pmatrix}.
+\end{align*}
+Portanto $bH\neq Hb$ con $b\in Gl_2(\mathbb{R})$ como mencionamos anteriormente.
