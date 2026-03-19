@@ -19,3 +19,139 @@
     g(f(a+v))-g(f(a))=g^{\prime}(f(a))\cdot f^{\prime}(a)v + \overline{\rho}(v)|v|.
   \end{align*}
 \end{proof}
+\begin{proposition}
+  Sob as mesmas condições do teorema anterior, se $f,g\in C^{k}$, então $g\circ f$ é também de classe $C^{k}$.
+\end{proposition}
+\begin{proof} 
+  Por induçao.
+  \begin{itemize}
+    \item $k=1$.\\
+      Pela regra da cadeia, temos que $(g\circ f)(x)=g^{\prime}(f(x))f^{\prime}(x)$, logo como $f,g\in C^{k}$, $f^{\prime},g^{\prime}$ são contínuas. Portanto $(g\circ f)^{\prime}$ é uma aplicação contínua i,e, que $g\circ f\in C^{1}$.
+    \item Suponha que $f,g\in C^{k+1}$ e $g\circ f\in C^{k}$, logo como $f,g\in C^{k}$, então $f^{\prime}(x),g^{\prime}(f(x))\in C^{k}$, logo pela regra da cadeia $g\circ f\in C^{k+1}$. 
+  \end{itemize}
+\end{proof}
+\begin{corollary}
+  Nas condições de Teorema da regra da cadeia, a matriz Jacobiana de $g\circ f$ no ponto $a$ é $J(g\circ f)(a)=Jg(f(a))\cdot Jf(a)$.
+
+  En termos de derivadas parciais
+  \begin{align*}
+    Jg(f(a))=\begin{pmatrix}
+      \frac{\partial g_1}{\partial y_1}(f(a)) & \cdots & \frac{\partial g_1}{\partial y_n}(f(a))\\
+      \vdots & \ddots & \vdots\\
+      \frac{\partial g_p}{\partial y_1}f((a)) & \cdots & \frac{\partial g_p}{\partial y_n}f((a))
+    \end{pmatrix}_{m\times p},\quad Jf(a)=\begin{pmatrix}
+      \frac{\partial f_1}{\partial x_1}(a) & \cdots & \frac{\partial f_1}{\partial x_m}(a)\\
+      \vdots & \ddots & \vdots\\
+      \frac{\partial f_n}{\partial x_1}(a) & \cdots & \frac{\partial f_n}{\partial x_m}(a)
+    \end{pmatrix}_{n\times m}
+  \end{align*}
+  Onde os componentes da matriz $J(g\circ f)(a)$ são
+  \begin{align*}
+    \underbrace{\frac{\partial g_i}{\partial x_j}(a)}_{\text{Notação}}=\frac{\partial (g\circ f)_i}{\partial x_j}(a)=\sum_{k=1}^{n}\frac{\partial g_i}{\partial y_k}(f(a))\frac{\partial f_k}{\partial x_j}(a),\quad i=1,\cdots,m.
+  \end{align*}
+\end{corollary}
+\begin{corollary}[As regras de derivação]
+  Sejam $f,g:U\to\mathbb{R}^{n}$ diferenciável no ponto $a\in U\subseteq \mathbb{R}^{m}$, $\alpha\in\mathbb{R}$ e $B:\mathbb{R}^{n}\times\mathbb{R}^{n}\to\mathbb{R}^{p}$ bilinear. Então
+  \begin{itemize}
+    \item $f+g:U\to\mathbb{R}^{n}$ é diferenciável em $a$, com $(f+g)^{\prime}(a)=f^{\prime}(a)+g^{\prime}(a)$.
+    \item $\alpha f:U\to\mathbb{R}^{n}$ é diferenciável em $a$, com $(\alpha f)^{\prime}(a)=\alpha f^{\prime}(a)$.
+    \item $B(f,g):U\to\mathbb{R}^{p}$ definida por $B(f,g)(x)=B(f(x),g(x))$.
+      é diferenciável em $a$, com $\left[B(f,g))\right]^{\prime}(a)\cdot v= B\left( f^{\prime}(a)\cdot v,g(a) \right)+B\left( f(a),g^{\prime}(a)\cdot v \right)$.
+  \end{itemize}
+\end{corollary}
+\begin{proof} 
+  \begin{itemize}
+    \item Considere $S:\mathbb{R}^{n}\times\mathbb{R}^{n}\to\mathbb{R}^{n}$ definida por $S(x,y)=x+y$. Sabemos que $S$ é linear, logo $f+g=S\circ (f,g)$ onde $(f,g):U\to\mathbb{R}^{n}\times\mathbb{R}^{n}$ definida por $(f,g)(x)=(f(x),g(x))$.\\
+      Pela regra da cadeia, temos
+      \begin{align*}
+        (f+g)^{\prime}(a)&=(S\circ (f,g))^{\prime}(a)\\
+        &=S^{\prime}((f,g)(a))\cdot (f,g)^{\prime}(a).
+      \end{align*}
+      Logo para $v\in\mathbb{R}^{m}$
+      \begin{align*}
+        (f+g)^{\prime}(a)\cdot v&=S^{\prime}((f,g)(a))\cdot(f,g)^{\prime}(a)\cdot v\\
+        &=S\cdot(f^{\prime}(a)\cdot v,g^{\prime}(a)\cdot v)\\
+        &=f^{\prime}(a)\cdot v+g^{\prime}(a)\cdot v.
+      \end{align*}
+      Então $(f+g)^{\prime}(a)=f^{\prime}(a)+g^{\prime}(a)$.
+    \item Defina $\alpha_\star:\mathbb{R}^{n}\to\mathbb{R}^{n}$ por $\alpha_\star(x)=\alpha x$ e note que $\alpha_\star$ é aplicação linear.\\
+      Logo $\alpha f=\alpha_\star\circ f$, assim pela regra da cadeia
+      \begin{align*}
+        (\alpha f)^{\prime}(a)&=(\alpha_\star \circ f)^{\prime}(a)\\
+        &=\alpha_\star^{\prime}(f(a))f^{\prime}(a)\\
+        &=\alpha_\star f^{\prime}(a)\\
+        &=\alpha f^{\prime}(a).
+      \end{align*}
+    \item Pela regra da cadeia e usando \ref{ex:aplicacoes-bilineares} tem-se que 
+      \begin{align*}
+        \left[ B\left( f,g \right)\right]^{\prime}(a)\cdot v&=\left[ B\circ (f,g) \right]^{\prime}(a)\cdot v\\
+        &=B^{\prime}\left( f(a),g(a) \right)\cdot\left( f^{\prime}\cdot v,g^{\prime}\cdot v\right)\\
+        &=B\left( f^{\prime}\cdot v,g(a) \right)+B\left( f(a),g^{\prime}(a)\cdot v \right).
+      \end{align*}
+  \end{itemize}
+\end{proof}
+\begin{note}[Regra de Leibniz]
+  Se escrevemos $x\cdot y$ no logar de $B$, então
+  \begin{align*}
+    (f\cdot g)^{\prime}(a)\cdot v=f^{\prime}(a)\cdot v\cdot g(a)+f(a)\cdot g^{\prime}(a)\cdot v.
+  \end{align*}
+\end{note}
+\begin{example}[Producto interno]
+  O productoo interno $B:\mathbb{R}^{n}\times\mathbb{R}^{n}\to\mathbb{R}$ definido por $B(x,y)=\langle x,y \rangle$ é bilinear.\\
+  Seja $\phi(x)=\langle f(x),g(x) \rangle$ onde $f,g:U\subseteq\mathbb{R}^{m}\to\mathbb{R}^{n}$ são diferenciiável.\\
+  Para $\phi=B\circ (f,g)$, temos $\phi^{\prime}(x)\cdot v=\langle f^{\prime}(a)\cdot v,g(a) \rangle+\langle f(x),g^{\prime}(a)\cdot v\rangle$.\\
+  Em particular, se $f=g$, então usando a simetría do producto interno temos
+  \begin{align*}
+    \left( |f(x)|^{2} \right)^{\prime}(a)\cdot v=\phi^{\prime}(a)\cdot v&=\langle f^{\prime}(a)\cdot v,f(a) \rangle+\langle f(x),f^{\prime}(a)\cdot v\rangle\\
+    &=2\langle f^{\prime}(a)\cdot v,f(a) \rangle.
+  \end{align*}
+\end{example}
+\begin{note}
+  Se $\psi(x)=\sqrt{\phi(x)}=|f(x)|$, logo
+  \begin{align*}
+    \psi^{\prime}(x)&=\frac{1}{2\sqrt{\phi(x)}}\cdot \phi^{\prime}(x)\cdot v\\
+    &=\frac{1}{2|f(x)|}\cdot 2\langle f^{\prime}(x)\cdot v,f(x)\rangle\\
+    &=\frac{\langle f^{\prime}(x)\cdot v,f(x) \rangle}{|f(x)|}.
+  \end{align*}
+\end{note}
+\begin{example}[Operador linear autoadjunto]
+  Seja $A:\mathbb{R}^{m}\to\mathbb{R}^{m}$ um operador linear autoadjunto (ou seja $\langle Ax,y\rangle=\langle x,Ay \rangle$ para todo $x,y\in\mathbb{R}^{m}$).\\
+  Definimos $\phi(x)=\langle Ax,y \rangle$, que é uma forma quadrática.\\
+  Note que $\phi(x)=B(Ax,x)$ onde $B$ é bilinear, logo usando que $A$ é autoadjunto e a simetría do producto interno temos 
+  \begin{align*}
+    \phi^{\prime}(x)\cdot v&=\langle A^{\prime}(x)\cdot v,x \rangle+\langle Ax,x^{\prime}(x)\cdot v \rangle\\
+    &=\langle Av,x\rangle+\langle Ax,v \rangle\\
+    &=2\langle Ax,v \rangle.
+  \end{align*}
+\end{example}
+Em notação matricial $\phi^{\prime}(x)\cdot v=2 x^{T}Av$.
+\begin{example}[Matriz inversa]
+  Seja $U\subseteq M_{n\times n}$ o conjunto das matrizes invertíveis. $U$ é aberto poiss $U=\det^{-1}(\mathbb{R}\setminus\{0\})$.\\
+  Defina $f:U\to M_{n\times n}$ por $f(x)=x^{-1}$.\\
+  Note que $f$ é diferenciável e $f^{\prime}(x)\cdot v=-x^{-1}vx^{-1}$ para todo $v\in M_{n\times n}$. 
+\end{example}
+Lembremos que a norma de uma transformação linear $T=\sup\{|Tv|:v\in S^{m-1}\}$.
+Onde
+\begin{itemize}
+  \item $|Tv|\leq |T||V|$ para todo $v\in\mathbb{R}^{m}$.
+\end{itemize}
+Agora falaremos sobre o teorema da desigualdade do valor médio para aplicações, mas primeiro faremos algumas observações sobre o que são um caminho e um caminho diferenciável, juntamente com um exemplo que deixará claro por que esse teorema é uma desigualdade.
+\begin{definition}[Caminho]
+  Um caminho $f:I\subseteq \mathbb{R}\to\mathbb{R}^{n}$ é uma aplicação contínua definida no intervalo $I\subseteq \mathbb{R}$. 
+\end{definition}
+\begin{definition}[Caminho diferenciável]
+  Um caminho $f:I\subseteq \mathbb{R}\to\mathbb{R}^{n}$ é diferenciável en os pontos $t_0\in I$ cuando existe o límite
+  \begin{align*}
+    f^{\prime}(t_0)=\lim_{h \to 0}\frac{f(t_0+h)-f(t_0)}{h}\in\mathbb{R}^{n}.
+  \end{align*}
+  $f^{\prime}(t_0)$ é chamado \textbf{vetor velocidade de $f$ no ponto $t_0$}. 
+\end{definition}
+\begin{example}
+  Considere o caminho
+  \begin{align*}
+    f:[0,2\pi]&\to\mathbb{R}^{2}\\
+    t&\to(\cos(t),\sen(t)).
+  \end{align*}
+  Note que $f(2\pi)=f(0)=(1,0)$, $f^{\prime}(t)=(-\sen(t),\cos(t))$ e $|f^{\prime}(t)|=1$ para todo $t\in [0,2\pi]$.\\
+  Logo observe que não existe um $c\in[0,2\pi]$ tal que $|f^{\prime}(c)|(2\pi-0)=|f(2\pi)-f(0)|$. 
+\end{example}
