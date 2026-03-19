@@ -130,28 +130,14 @@ Em notação matricial $\phi^{\prime}(x)\cdot v=2 x^{T}Av$.
   Defina $f:U\to M_{n\times n}$ por $f(x)=x^{-1}$.\\
   Note que $f$ é diferenciável e $f^{\prime}(x)\cdot v=-x^{-1}vx^{-1}$ para todo $v\in M_{n\times n}$. 
 \end{example}
-Lembremos que a norma de uma transformação linear $T=\sup\{|Tv|:v\in S^{m-1}\}$.
-Onde
-\begin{itemize}
-  \item $|Tv|\leq |T||V|$ para todo $v\in\mathbb{R}^{m}$.
-\end{itemize}
-Agora falaremos sobre o teorema da desigualdade do valor médio para aplicações, mas primeiro faremos algumas observações sobre o que são um caminho e um caminho diferenciável, juntamente com um exemplo que deixará claro por que esse teorema é uma desigualdade.
-\begin{definition}[Caminho]
-  Um caminho $f:I\subseteq \mathbb{R}\to\mathbb{R}^{n}$ é uma aplicação contínua definida no intervalo $I\subseteq \mathbb{R}$. 
-\end{definition}
-\begin{definition}[Caminho diferenciável]
-  Um caminho $f:I\subseteq \mathbb{R}\to\mathbb{R}^{n}$ é diferenciável en os pontos $t_0\in I$ cuando existe o límite
-  \begin{align*}
-    f^{\prime}(t_0)=\lim_{h \to 0}\frac{f(t_0+h)-f(t_0)}{h}\in\mathbb{R}^{n}.
-  \end{align*}
-  $f^{\prime}(t_0)$ é chamado \textbf{vetor velocidade de $f$ no ponto $t_0$}. 
-\end{definition}
-\begin{example}
-  Considere o caminho
-  \begin{align*}
-    f:[0,2\pi]&\to\mathbb{R}^{2}\\
-    t&\to(\cos(t),\sen(t)).
-  \end{align*}
-  Note que $f(2\pi)=f(0)=(1,0)$, $f^{\prime}(t)=(-\sen(t),\cos(t))$ e $|f^{\prime}(t)|=1$ para todo $t\in [0,2\pi]$.\\
-  Logo observe que não existe um $c\in[0,2\pi]$ tal que $|f^{\prime}(c)|(2\pi-0)=|f(2\pi)-f(0)|$. 
-\end{example}
+Para ver isto defina $F:U\to M_{n\times n}$ por $F(x)=xx^{-1}=I$.\\
+Logo note que $F(x)=xx^{-1}=xf(x)=I$, agora, usando a regra de Leibniz e que $I^{\prime}=0$, temos que
+\begin{align*}
+  F^{\prime}(x)\cdot v=\left( xf(x) \right)^{\prime}\cdot v=x^{\prime}\cdot v\cdot f(x)+x\cdot f^{\prime}(x)\cdot v=0.
+\end{align*}
+Portanto, fazendo alguns cálculos, fica fácil ver que
+\begin{align*}
+  f^{\prime}(x)\cdot v&=-x^{-1}x^{\prime}\cdot v\cdot f(x)\\
+  &=-x^{-1}vx^{-1}.
+\end{align*}
+Como mencionamos anteriormente.

@@ -1,0 +1,62 @@
+Lembremos que a norma de uma transformação linear $T=\sup\{|Tv|:v\in S^{m-1}\}$.
+Onde
+\begin{itemize}
+  \item $|Tv|\leq |T||V|$ para todo $v\in\mathbb{R}^{m}$.
+\end{itemize}
+Agora falaremos sobre o teorema da desigualdade do valor médio para aplicações, mas primeiro faremos algumas observações sobre o que são um caminho e um caminho diferenciável, juntamente com um exemplo que deixará claro por que esse teorema é uma desigualdade.
+\begin{definition}[Caminho]
+  Um caminho $f:I\subseteq \mathbb{R}\to\mathbb{R}^{n}$ é uma aplicação contínua definida no intervalo $I\subseteq \mathbb{R}$. 
+\end{definition}
+\begin{definition}[Caminho diferenciável]
+  Um caminho $f:I\subseteq \mathbb{R}\to\mathbb{R}^{n}$ é diferenciável en os pontos $t_0\in I$ cuando existe o límite
+  \begin{align*}
+    f^{\prime}(t_0)=\lim_{h \to 0}\frac{f(t_0+h)-f(t_0)}{h}\in\mathbb{R}^{n}.
+  \end{align*}
+  $f^{\prime}(t_0)$ é chamado \textbf{vetor velocidade de $f$ no ponto $t_0$}. 
+\end{definition}
+\begin{example}
+  Considere o caminho
+  \begin{align*}
+    f:[0,2\pi]&\to\mathbb{R}^{2}\\
+    t&\to(\cos(t),\sen(t)).
+  \end{align*}
+  Note que $f(2\pi)=f(0)=(1,0)$, $f^{\prime}(t)=(-\sen(t),\cos(t))$ e $|f^{\prime}(t)|=1$ para todo $t\in [0,2\pi]$.\\
+  Logo observe que não existe um $c\in[0,2\pi]$ tal que $|f^{\prime}(c)|(2\pi-0)=|f(2\pi)-f(0)|$. 
+\end{example}
+\begin{theorem}[Desigualdade do Valor Médio para caminhos]
+  Seja $f:[a,b]\to\mathbb{R}^{n}$ um caminho diferenciável no aberto $(a,b)$ com $f^{\prime}(t)\leq M$ para todo $t\in(a,b)$. Então $|f(b)-f(a)|\leq M(b-a)$. 
+\end{theorem}
+\begin{proof} 
+  Defina $\phi:[a,b]\to\mathbb{R}$ por $\phi(t)=\langle f(t),f(b)-f(a) \rangle$, logo $\phi^{\prime}(t)=\langle f^{\prime}(t),f(b)-f(a) \rangle$, então pelo teorema do valor médio (em uma dimenção), existe $c\in (a,b)$ tal que $\phi^{\prime}(c)(b-a)=\phi(b)-\phi(a)$, por tanto isso e as propriedades do producto interno temos 
+  \begin{align*}
+    |f(b)-f(a)|^{2}&=\langle f(b)-f(a),f(b)-f(a) \rangle\\
+    &=\phi(b)-\phi(a)\\
+    &=\phi^{\prime}(c)(b-a)\\
+    &=\langle f^{\prime}(c),f(b)-f(a)\rangle(b-a)\\
+    &=|f^{\prime}(c)||f(b)-f(a)|(b-a).
+  \end{align*}
+  Sigue-se que
+  \begin{align*}
+    |f(b)-f(a)|\leq |f^{\prime}(c)|(b-a)\leq M(b-a).
+  \end{align*}
+\end{proof}
+\begin{theorem}[Desigualdade do Valor Médio para aplicações]
+  Seja $f:U\to\mathbb{R}^{n}$ diferenciável em todos os pontos do segmento $[a,a+v]\subseteq U$. Se para todo ponto $t\in[0,1]$ tem-se $|f^{\prime}(a+tv)|\leq M$, então $|f(a+v)-f(a)|\leq M|v|$. 
+\end{theorem}
+\begin{proof} 
+  Defina $\lambda:[0,1]\to\mathbb{R}^{n}$ por $\lambda(t)=f(a+tv)$, note que $\lambda$ é diferenciável e $\lambda^{\prime}(t)=f^{\prime}(a+tv)\cdot v$, logo
+  \begin{align*}
+    |\lambda^{\prime}(t)|=|f^{\prime}(a+tv)||v|\leq M|v|,\quad\text{ para todo }t\in[0,1].
+  \end{align*}
+  Assim, pela desigualdade do valor médio para caminhos temos que
+  \begin{align*}
+    |\lambda(1)-\lambda(0)|\leq M|v|(1-0),
+  \end{align*}
+  i,e,
+  \begin{align*}
+    |f(a+v)-f(a)|\leq M|v|.
+  \end{align*}
+\end{proof}
+\begin{corollary}
+  Se o aberto $U\subseteq \mathbb{R}^{m}$ é convexo e $M>0$ é tal que a aplicação diferenciável $f:U\to\mathbb{R}^{n}$ cumple $f^{\prime}(x)\leq M$ para todo $x\in U$. Então $f$ é Lipschitz (ou seja $|f(y)-f(x)|\leq M|y-x|$ para todo $x,y\in U$). 
+\end{corollary}
