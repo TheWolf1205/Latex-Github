@@ -28,8 +28,39 @@ O diagrama a seguir representa os subgrupos de $S_3$, onde a linha dupla indica 
 \begin{example}
   $Z(G)\normal G$. Mais geralmente, se $H\leq Z(G)$ então $H\normal G$. 
 \end{example}
+Note que se definimos $X$ como el conjunto das classes laterais de $H$ subgrupo de $G$, a partir disso, estaríamos interessados em definir uma multiplicação de classes por $aH,bH\in X$ como $aHbH=abH$, mas neste caso, esta multiplicação não estã bem definída, pode tomar como exemplo el caso anterior con $S_3$.\\
+Suponha $H=\{1,(23)\}$, logo
+\begin{align*}
+  X=\{H=(2,3)H,(12)H=(123)H,(13)H=(132)H\}
+\end{align*}
+Note que de um lado temos
+\begin{align*}
+  (12)H(13)H=(132)H.
+\end{align*}
+Por outro lado temos
+\begin{align*}
+  (123)H(132)H=H.
+\end{align*}
+Portanto la multiplicação do classes laterais não está bem definida, mas a seguinte proposição esclarecerá essa questão.
 \begin{proposition}
   Se $N$ é subgrupo normal de $G$ então o conjunto $G/N=\{aN:a\in G\}$ é um grupo com a operação $Na\cdot Nb=Nab$, $a,b\in G$. O grupo $G/N$ é dito o \text{grupo quociente} de $G$ por $N$.
 
   Na verdade, $G/N$ é um grupo se, somente se, $N\normal G$. 
 \end{proposition}
+Agora podemos falar sobre alguns observações.
+
+Dados $H,K\leq G$, temos:
+\begin{itemize}
+  \item $H\leq G$ se, e somente se, $ab^{-1}\in H$ para todo $a,b\in H$.
+  \item $H\cap K$ é subgrupo de $G$.
+  \item $H\cup K$ nem sempre é subgrupo (de novo el exemplo é $S_3$).
+
+  \item $H \cup K\leq G$ se, somente se, $H\subseteq K$ ou $K\subseteq H$.
+  \item Definimos
+    \begin{align*}
+      HK:=\{hk:h\in H,k\in K\}=\bigcup_{h\in H}hK.
+    \end{align*}
+    nem sempre é subgrupo (mesmo exemplo).
+  \item $HK\leq G$ se, somente se, $HK=KH$.
+  \item Se $H\normal G$ ou $K\normal G$ então $HK\normal G$. 
+\end{itemize}

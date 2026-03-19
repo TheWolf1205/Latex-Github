@@ -1,0 +1,51 @@
+\begin{definition}[Homomorfismo de Grupos]
+  Dados $G_1$ e $G_2$ grupos, uma função $\varphi:G_1\to G_2$ é um \textbf{homomorfismo de grupo} se $\varphi(ab)=\varphi(a)\varphi(b)$ para todo $a,b\in G_1$.
+
+  Alem do mais temos los conjuntos $\Ker \varphi$ (núcleo de $\varphi$) e $\Img\varphi$ (Imágen de $\varphi$) definidos como
+  \begin{align*}
+    \Ker\varphi:=&\{a\in G_1:\varphi(a)=1\}\\
+    \Img\varphi:=&\{\varphi(a):a\in G_1\}.
+  \end{align*}
+\end{definition}
+\begin{note}
+  $\Ker\varphi \normal G_1,\Img\varphi\leq G_2$.
+\end{note}
+\begin{definition}[Tipos de Homomorfismos]
+  Seja $\varphi:G_1\to G_2$ um homomorfismo de grupo, então
+  \begin{itemize}
+    \item Si $\varphi$ é injetor, então se chama \textbf{Monomorfismo}.
+    \item Si $\varphi$ é sobrejetor, então se chama \textbf{Epimorfismo}.
+    \item Si $\varphi$ é bijetor, então se chama \textbf{Isomorfismo}. 
+  \end{itemize}
+\end{definition}
+\begin{proposition}
+  $\varphi$ é um homomorfismo injetor se, somente se, $\Ker\varphi=\{1\}$ 
+\end{proposition}
+\begin{proposition}
+  A partir de um homomorfismo $\varphi:G_1\to G_2$ com $K=\Ker\varphi$, podemos construir um homomorfismo injetor
+  \begin{align*}
+    \overline{\varphi}:G_1/K&\to G_2\\
+    aK&\to\varphi(a).
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  Seja $aK,bK\in G_1/K$ tal que $\overline{\varphi}(aK)=\overline{\varphi}(bK)$, logo $\varphi(a)=\varphi(b)$, assim
+  \begin{align*}
+    1&=\varphi(a)\varphi(b)^{-1}\\
+    &=\varphi(a)\varphi(b^{-1})\\
+    &=\varphi(ab^{-1}).
+  \end{align*}
+  e $ab^{-1}\in K$ se, somente se $aK=bK$. 
+\end{proof}
+\begin{note}
+  Além do mais, como  $\Img\overline{\varphi}=\Img\varphi$, temos que $\overline{\varphi}:G_1/K\to  \Img\varphi$ é um isomorfismo. 
+\end{note}
+\begin{theorem}[Isomorfismo de Grupos]
+  Se $\varphi:G_1\to G_2$ é um homomorfismo, então $G_1/\Ker\varphi$ é isomorfo a $\Img \varphi$. 
+\end{theorem}
+\begin{notation}[Isomorfo]
+  Se $G_1$ e $G_2$ são grupos isomorfos, escrevemos $G_1 \cong G_2$.
+\end{notation}
+\begin{note}[Isomorficamente imerso]
+  Nesta situação anterior, $G_1$ é isomorfo a $\Img\varphi$ que é um subgrupo de $G_2$. Neste caso dezemos que $G_1$ está \textbf{isomorficamente imerso} em $G_2$ e denotamos por $G_1 \hookrightarrow G_2$. 
+\end{note}
