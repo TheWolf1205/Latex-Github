@@ -1,0 +1,27 @@
+\begin{homeworkProblem}
+  Seja $H$ um subgrupo de $G$ e $g \in G$. Defina
+  \begin{align*}
+    gHg^{-1} = \{ ghg^{-1} \mid h \in H \}. 
+  \end{align*}
+  \begin{enumerate}
+    \item Mostre que $gHg^{-1}$ também é um subgrupo de $G$.
+    \item Mostre que se $gHg^{-1} \subseteq H$ para todo $g \in G$ então $gHg^{-1} = H$ para todo $g \in G$.
+  \end{enumerate}
+  \begin{solution}
+    \begin{enumerate}
+      \item Vamos verificar as condições.
+      \begin{itemize}
+        \item Fechadura.\\
+          Seja $a,b\in gHg^{-1}$, logo existem $x,y\in H$ tal que $a=gxg^{-1}$ e $b=gyg^{-1}$, logo $ab=gxg^{-1}gyg^{-1}=gxyg^{-1}$ e como $xy\in H$, então $ab\in gHg^{-1}$.
+        \item Existência de elemento identidade.\\
+          Como $H$ é subgrupo, $1\in H$, logo $1=g1g^{-1}$ por isso $1\in gHg^{-1}$.
+        \item Existência de elemento inverso.\\
+          Seja $a\in gHg^{-1}$, logo existe $x\in H$ tal que $a=gxg^{-1}$, então como $H$ é subgrupo $x^{-1}\in H$, logo note que se tomamos $y=gx^{-1}g^{-1}\in gHg^{-1}$, então $y=a^{-1}$.
+        \item Associatividade.\\
+          Isso é garantido pela associatividade da operação inicial do grupo.
+      \end{itemize}
+      Logo $gHg^{-1}$ também é um subgrupo de $G$.
+      \item Fixemos $a$ e veamos que $H\subseteq aHa^{-1}$, então, seja $h\in H$, logo como $gHg^{-1}\subseteq H$ para todo $g\in G$, sabemos que $b=a^{-1}h\left( a^{-1} \right)^{-1}=a^{-1}ha\in H$, depois $h=aba^{-1}$, portanto $h\in aHa^{-1}$ e como $a$ é arbitrario, então $gHg^{-1}=H$ para todo $g\in H$.  
+    \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}

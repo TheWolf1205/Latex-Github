@@ -1,0 +1,33 @@
+\begin{definition}[Grupo finitamente gerado]
+  Diremos que um grupo $G$ é \textbf{finitamente gerado} se existe $X\subseteq G$ tal que $\langle X \rangle=G$.
+\end{definition}
+Um grupo finitamente gerado no é necessariamente finito, tome de exemplo $G=(Z,+)$.
+\begin{notation}[$n$-gerado]
+  Diremos que um grupo $G$ é \textbf{$n$-gerado} si é finitamente gerado y neste caso $|X|=n$. 
+\end{notation}
+\begin{example}
+  $S_3$ é um grupo finitamente gerado. Alem do mais, ele é $2$-gerado e $X=\{(12),(123)\}$. 
+\end{example}
+\begin{note}
+  $G=(\mathbb{Q},+)$ é finitamente gerado? 
+\end{note}
+\begin{note}
+  Todo subgrupo de um grupo cíclico es cíclico.
+
+  Em particular, los subgrupos de $\mathbb{Z}$ son dados por $m\mathbb{Z}$, onde $m\leq 0$ com $m\in \mathbb{Z}$. Note que $\mathbb{Z}/m\mathbb{Z}\cong \mathbb{Z}_{m}$.
+
+  Alem do mais, note que todos os subgrupos de $\mathbb{Z}$ são cíclicos infinitos y todos los quocientes são finitos se $m\neq 0$. 
+\end{note}
+\begin{example}[$\mathbb{Z}_{p^{\infty}}$]
+  Considere a seguinte relacão de equivalência en $\mathbb{Q}$. Seja $q_1,q_2\in\mathbb{Q}$, $q_1\sim q_2$ se, e somente se, $q_1-q_2\in\mathbb{Z}$.
+
+  A classe de equivalência de $q\in\mathbb{Q}$ é formada por elementos $q+m$, com $m\in\mathbb{Z}$, la classe é denotada por $\overline{q}$.
+
+  Considere $p$ primo e considere o conjunto das classes de elemento em $\mathbb{Q}$ cujo denominador é uma equivalência de $p$
+  \begin{align*}
+    \mathbb{Z}_{p^{\infty}}:=\left\{ \left( \overline{\frac{a}{p^{k}}} \right): a\in\mathbb{Z},k\in\mathbb{N}^{*} \right\}.
+  \end{align*}
+  Com adição de classes temos que $(\mathbb{Z}_{p^{\infty}},+)$ é um grupo.
+
+  Logo $\mathbb{Q}/\mathbb{Z}$ é um grupo infinito onde todo subgrupo é cíclico finito e tal que todo quociente é infinito. 
+\end{example}

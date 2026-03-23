@@ -1,0 +1,63 @@
+Note que pelo teorema de Lagrange sabemos que para $n=1,2,3,5,7,\cdots,p$ com $p$ prima, temos que $G\cong \mathbb{Z}_{p}$.
+
+Para $n=4$ note que pelo teorema de Lagrange se fixamos $x\in G$, temos dois casos $o(x)=4$, en ese caso $G\cong \mathbb{Z}_{4}$. Por outro lado, se $o(x)=2$, então tenemos el seguinte grupo
+\begin{definition}[Grupo de Klein]
+  Seja $V_4$ um grupo chamado el \textbf{grupo de Klein} caracterizado pela seguinte tabela de Cayley
+  \[
+  \begin{array}{c|cccc}
+    \cdot & 1 & a & b & ab \\
+    \hline
+    1 & 1 & a & b & ab \\
+    a & a & 1 & ab & b \\
+    b & b & ab & 1 & a \\
+    ab & ab & b & a & 1 \\
+  \end{array}
+  \]
+\end{definition}
+\begin{proposition}[Produto direito]
+  Um grupo $G$ é o produto direito de dois subgrupos $H$ e $G$ se valen
+  \begin{enumerate}
+    \item $H\normal G$, $K\normal G$.
+    \item $H\cap K=\{1\}$.
+    \item $HK=G$.
+  \end{enumerate}
+\end{proposition}
+\begin{notation}[Produto direito]
+  Denotamos al grupo $G$ produto direito de $H$ e $K$ por $G=H\times K$.
+\end{notation}
+\begin{note}
+  Note que $V_4\cong \mathbb{Z}_{2}\times \mathbb{Z}_{2}$, alem do mais
+  \begin{center}
+    \input{images/v4subgrupos}  
+  \end{center}
+\end{note}
+
+Logo, para $n=6$ temos que si fixamos $x\in G$ com $x\neq 1$ que, se $o(x)=6$, então $G\cong \mathbb{Z}^{6}$.
+
+Note que $o(x)=2$ no é possivel para  todo $x\in G$, dado que se for assim, então dados $a,b,c\in G$ existe $ab\in G$, logo tambem existe $ac$ e $cb$, pelo $|G|=6$, o que é uma contradição. Assim, existe $b\in G$ tal que $o(b)=3$.
+Note que pelo teorema de Lagrange se $N=\langle b \rangle$, então $[G:N]=2$, por isso $N\normal G$, logo dado $a\in G$ tem-se que $aba^{-1}\in N$, logo
+\begin{itemize}
+  \item $aba^{-1}$ pode ser $1$?, não, dado que $o(b)=3$.
+  \item $aba^{-1}$ pode ser $b$?, não, dado que $ab=ba$ e $o(ab)=6$.
+  \item $aba^{-1}$ pode ser $b^{-1}$?, sim. 
+\end{itemize}
+Com isso $G\{1,a,b,b^{2},ab,ab^{-1}\}\cong S_3$.
+
+Então temos
+\begin{align*}
+  |G|&=1\quad\text{ então }G\cong \{1\}.\\
+  |G|&=2\quad\text{ então }G\cong \mathbb{Z}_{2}.\\
+  |G|&=3\quad\text{ então }G\cong \mathbb{Z}_{3}.\\
+  |G|&=4\quad,\text{ então } G\cong 
+  \begin{cases}
+    \mathbb{Z}_{4}, &\text{ se } o(x)=4 \text{,} \\
+    V_4, &\text{ se } o(x)=2 .
+  \end{cases}\, \text{ con }x\in G,x\neq 1.\\
+  |G|&=5\quad\text{ então }G\cong \mathbb{Z}_{5}.\\
+  |G|&=6\quad\text{ então }G\cong \begin{cases}
+    \mathbb{Z}_6, &\text{ se } o(x)=6 \text{,} \\
+    S_3, &\text{ se } o(x)\neq 6 .
+  \end{cases},\text{ con }x\in G,x\neq 1.\\
+  |G|&=7\quad\text{ então }G\cong \mathbb{Z}_{7}.\\
+  |G|&=p\quad\text{ então }G\cong \mathbb{Z}_{p}.
+\end{align*}

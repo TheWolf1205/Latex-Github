@@ -1,0 +1,36 @@
+\begin{homeworkProblem}
+  Seja $G$ um grupo e $H$ e $K$ subgrupos de $G$.
+  \begin{enumerate}
+    \item Mostre que se $H$ e $K$ são ambos normais em $G$ então $H \cap K$ é normal em $G$.
+    \item Mostre que se $H$ é normal em $G$ então $H \cap K$ é normal em $K$.
+    \item Considere os conjuntos
+      \begin{align*}
+        HK := \{ hk \mid h \in H,\ k \in K \}
+        \quad \text{e} \quad
+        KH := \{ kh \mid h \in H,\ k \in K \}.
+      \end{align*}
+      Mostre que $HK$ é um subgrupo de $G$ se, e somente se, $HK = KH$.
+    \item Se $H$ é normal em $G$ então mostre que $HK$ é subgrupo de $G$.
+    \item Se $H$ e $K$ são normais em $G$ então mostre que $HK$ é normal em $G$.
+    \item Se $H$ e $K$ são normais em $G$ e $H \cap K = \{1\}$ então mostre que para quaisquer $h \in H$ e $k \in K$ temos $hk = kh$.
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}
+    \item Como $H$ e $K$ são normais, então sabemos que dado $g\in G$, $h\in H$ e $k\in K$ temos $ghg^{-1}\in H$ e $gkg^{-1}\in K$, agora veamos que dado $a\in H\cap K$ temos que $gag^{-1}\in H\cap K$.
+
+      Note que $a\in H$, logo como $H$ é normal, $gag^{-1}\in H$, da mesma forma $a\in K$ e por isso $gag^{-1}\in K$, logo $gag^{-1}\in H\cap K$.
+    \item Como $H$ é normal, então sabemos que dado $g\in G$ e $h\in H$ temos que $ghg^{-1}\in H$, logo seja $a\in H\cap K$ y seja $k\in K$, logo em particular $k\in G$ y $a\in H$, então $kak^{-1}\in H$, pero como $a\in K$ e $K$ é subgrupo, por fechadura $kak^{-1}\in K$, logo podemos concluir que $kak^{-1}\in H\cap K$ i,e. $H\cap K\normal K$.
+    \item Prova.
+
+      (\textbf{Suficiente}) Seja $a\in HK$ e como $HK$ é subgrupo, então $a^{-1}\in HK$. Logo existen $h\in H$ e $k\in K$ taes que $a^{-1}=hk$, alem do mais, $a=k^{-1}h^{-1}$ e como $k^{-1}\in K$ e $h^{-1}\in H$, então $a\in KH$, portanto podemos afirmar que $HK\subseteq KH$.
+
+      Seja $a\in KH$, logo existen $k\in K$ e $h\in H$ taes que $a=kh$, assim $a^{-1}=h^{-1}k^{-1}\in HK$, mas como $HK$ é subgrupo, então $a\in HK$, por tanto podemos afirmar que $HK\subseteq KH$ e se pode concluir que $HK=KH$.
+
+      (\textbf{Necessário}) Vamos verificar as condições.
+      \begin{itemize}
+        \item Fechadura.
+          Seja $a,b\in HK$, logo existen $h_1,h_2\in H$ y $k_1,k_2\in K$ taes que $a=h_1k_1$ 
+      \end{itemize}
+  \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}
