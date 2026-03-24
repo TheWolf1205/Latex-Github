@@ -1,0 +1,49 @@
+\begin{definition}[Funcão uniformemente diferenciável]
+  Seja $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ de classe $C^{1}$ no aberto $U$. Se para todo $\epsilon>0$ existe $\delta>0$ ($\delta$ não depende de $x$) tal que se para todo $v\in \mathbb{R}^{m}$ com $|v|< \delta$ ten-se que $|f(x+v)-f(x)-f^{\prime}(x)\cdot v|< \epsilon|v|$ para todo $x\in U$, diremos que $f$ é uma funcão \textbf{uniformemente diferenciável em $U$}. 
+\end{definition}
+\begin{proposition}[Teorema Fundamental do Cálculo para caminhos]
+  Se $f:[a,b]\to\mathbb{R}^{n}$ é um caminho diferenciável de classe $C^{1}$, então
+  \begin{align*}
+    \int_{a}^{b}f^{\prime}(t)\, dt=f(b)-f(a).
+  \end{align*}
+\end{proposition}
+\begin{theorem}
+  Seja $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ de classe $C^{1}$ no aberto $U$. Se $K\subseteq U$ é compacto, então $f$ é uniformemente diferenciável em $K$. 
+\end{theorem}
+\begin{proof} 
+  Sabemos que existe $\delta>0$ tal que $B(x,2\delta)\subseteq U$ para todo $x\in K$. (\textcolor{red}{Por que?})
+
+  Defina $L=\bigcup_{k\in K}B[x,\delta]=\{y\in \mathbb{R}^{n}:d(y,k)\leq \delta,k\in K\}$.\\
+  \textbf{Afirmação:} $L$ é compacto.
+
+  Veamos que $L$ é limitado. Note que como $K$ é compacto, então existe $M>0$ tal que para todo $x\in K$ esta cumprido que $|x|< M$, logo temos que $|y|\leq |y-x|+|x|\leq \delta + M$ i,e. $L$ é limitado.
+
+  Veamos que $L$ é fechado. Seja $\{y_n\}_{n\in\mathbb{Z}^{+}}\subseteq L$ com $y_n\to y$, vamos ver que $y\in L$. Note que para cada $n\in\mathbb{Z}^{+}$, temos que existe $x_n\in K$ tal que $|x_n-y_n|\leq \delta$, logo como $K$ é compacto, $\{x_n\}_{n\in\mathbb{Z}^{+}}$ possui uma subsequencia $x_{n_k}\to x$ com $x\in K$, assim
+  \begin{align*}
+    \lim_{n_k \to \infty}|y-x|&\leq \lim_{n_k \to \infty}|y-y_{n_k}|+|y_{n_k}-x_{n_k}|+|x_{n_k}-x|\\
+    &\leq 0 + \delta + 0.
+  \end{align*}
+  Então $y\in B[x,\delta]\subseteq L$.\\
+  Assim, $L$ é compacto.
+
+  Logo se $x\in K$ e $|v|\leq \delta$, então $x+v\in L$.
+
+  Note que $f^{\prime}:L\to L(\mathbb{R}^{m},\mathbb{R}^{n})$ é uniformemente contínua.
+
+  Logo, podemos asumir que $|f^{\prime}(x+v)-f^{\prime}(x)|<\epsilon$ para toddo $x\in K$ e para todo vetor $v\in\mathbb{R}^{m}$ com $|v|<\delta$.
+
+  Assim, para todo $t\in[0,1]$, temos $|tv|\leq t|v|\leq |v|\leq \delta$ e assim $|f^{\prime}(x+tv)-f^{\prime}(x)|<\epsilon$ para todo $t\in[0,1]$.
+
+  Considere $\lambda:[0,1]\to\mathbb{R}^{n}$ dada por $\lambda(t)=f(x+tv)$, logo como $f$ é $C^{1}$, $\lambda$ é $C^{1}$, então pelo teorema fundamental do cálculo para caminhos temos que
+  \begin{align*}
+    f(x+v)-f(x)=\lambda(1)-\lambda(0)=\int_{0}^{1}\lambda^{\prime}(t)\,dt=\int_{0}^{1}f^{\prime}(x+tv)\cdot v\,dt.
+  \end{align*}
+  Então
+  \begin{align*}
+    |f(x+v)-f(x)-f^{\prime}(x)\cdot v|&=\left| \int_{0}^{1}f^{\prime}(x+tv)\cdot v\,dt -f^{\prime}(x)\cdot v\right|\\
+    &\leq \int_{0}^{1}\left| f^{\prime}(x+tv)-f^{\prime}(x) \right||v|\,dt\\
+    &\leq \epsilon |v||[0,1]|\\
+    &\leq \epsilon |v|.
+  \end{align*}
+\end{proof}
+
