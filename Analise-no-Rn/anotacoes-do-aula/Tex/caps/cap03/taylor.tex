@@ -46,4 +46,159 @@
     &\leq \epsilon |v|.
   \end{align*}
 \end{proof}
+\begin{lemma}
+  Se $f:I\to\mathbb{R}^{n}$ diferenciável no ponto $c\in I$. Dadas as sequencias de números $a_k\neq b_k$ em $I$, com $a_k\leq c \leq b_k$ e $\lim a_k=\lim b_k=c$, tem-se
+  \begin{align*}
+    f^{\prime}(c)=\lim_{k \to \infty}\frac{f(b_k)-f(a_k)}{b_k-a_k}.
+  \end{align*}
+\end{lemma}
+\begin{lemma}\label{lem:2-formula-de-taylor}
+  Sejam $f:[a,b]\to\mathbb{R}^{n}$ e $\varphi:[a,b]\to\mathbb{R}^{n}$ contínuas e diferenciávels no intervalo $(a,b)$, se $|f^{\prime}(t)|\leq \varphi^{\prime}(t)$ com $\varphi^{\prime}(t)>0$ para todo $t\in(a,b)$. Então $|f(b)-f(a)|\leq \varphi(b)-\varphi(a)$. 
+\end{lemma}
+\begin{theorem}[Fórmula de Taylor para caminhos]
+  Seja $f:[a,b]\to\mathbb{R}^{n}$ um caminho de classe $C^{p-1}$ $p$ vezes diferenciável em $(a,a+h)$. Se $|f^{(p)}(t)|\leq M$ para todo $t\in(a,a+h)$, então
+  \begin{align*}
+    f(a+h)=f(a)+hf^{\prime}(a)+\cdots+\frac{h^{p-1}}{(p-1)!}f^{(p-1)}(a)+r_p,\quad\text{ onde }|r_p|\leq\frac{Mh^{p}}{p!}.
+  \end{align*}
+  Colocando $a+h=b$, obtemos
+  \begin{align*}
+    f(b)=f(a)+(b-a)f^{\prime}(a)+\cdots+\frac{(b-a)}{(p-1)!}f^{(p-1)}(a)+r_p,\quad\text{ onde }|r_p|\leq\frac{M(b-a)^{p}}{p!}.
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Defina o caminho $g:[a,b]\to\mathbb{R}^{n}$ por
+  \begin{align*}
+    g(t)=f(t)+(b-t)f^{\prime}(t)+\cdots+\frac{(b-t)}{(p-1)!}f^{(p-1)}(t).
+  \end{align*}
+  Então, $g$ é contínua em $[a,b]$ e diferenciável em $(a,b)$ com
+  \begin{align*}
+    g^{\prime}(t)=\frac{(b-t)}{(p-1)!}f^{(p)}(t).
+  \end{align*}
+  Logo $|g^{\prime}(t)|\leq \frac{M(b-t)^{p-1}}{(p-1)!}$.\\
+  Seja $\phi(t)=\frac{M(b-t)^{p}}{p!}$, então pelo lema \ref{lem:2-formula-de-taylor}, temos
+  \begin{align*}
+    |r_p|&=\left|f(b)-f(a)-(b-a)f^{\prime}(a)-\cdots-\frac{(b-a)}{(p-1)!}f^{(p-1)}(a)\right|\\
+    &=|g(b)-g(a)|\\
+    &\leq \varphi(b)-\varphi(a)\\
+    &=\frac{M(b-a)^{p}}{p!}.
+  \end{align*}
+\end{proof}
+no contexto de funções, temos o seguinte.
+
+A fórmula de Taylor para uma função $f:U\to\mathbb{R}$ diferenciável no aberto $U\subseteq \mathbb{R}^{n}$ é dada por
+\begin{align*}
+  f(a+v)=f(a)+df(a)\cdot v+\frac{1}{2}d^{2}f(a)\cdot v^{2}+\cdots+\frac{1}{p!}d^{p}f(a)\cdot v^{p}+r_p(v).
+\end{align*}
+\begin{note}
+  Lembre que
+  \begin{itemize}
+    \item 
+      \begin{align*}
+        df:U&\to L(\mathbb{R}^{n},\mathbb{R})\\
+        a&\to df(a):\mathbb{R}^{n}\to\mathbb{R}^{n},\quad\text{linear.}
+      \end{align*}
+      \begin{align*}
+        df(a)\cdot v=\left\langle \nabla f(a),v \right\rangle=\sum_{i=1}^{n}\frac{\partial f}{\partial x_i}(a)\alpha_i,\quad\text{onde }v=(\alpha_1,\cdots,\alpha_n).
+      \end{align*}
+    \item $d^{2}f(a)\in L_2(\mathbb{R}^{n},\mathbb{R})=L(\mathbb{R}^{n},L(\mathbb{R}^{n},\mathbb{R}))$. Na prática, $d^{2}f(a)$ é representa pela matriz Hessiana $Hf(a)$ (simétrica se $f\in C^{2}$). 
+      \begin{align*}
+        d^{2}f(a)\cdot v^{2}=\sum_{i,j=1}^{n}\frac{\partial f}{\partial x_i\partial x_j}\cdot\alpha_i\alpha_j=v^{T}Hf(a)v.
+      \end{align*}
+    \item $d^{p}f(a)\in L_p(\mathbb{R}^{n},\mathbb{R})$ é o espaço das aplicações $p$-lineares de $\left( \mathbb{R}^{n} \right)^{p}$ em $\mathbb{R}$. Na prátic
+      \begin{align*}
+        d^{p}f(a)\cdot v^{p}=\sum_{i_1,\cdots,i_p=1}^{n}\frac{\partial f}{\partial x_{i_1}\cdots\partial x_{i_p}}(a)\alpha_{i_1}\cdots\alpha_{i_p}.
+      \end{align*}
+  \end{itemize}
+\end{note}
+\begin{note}[Resto]
+  \begin{enumerate}
+    \item Fórmula de Taylor infinitesimal.
+
+      Se $f$ é $p$-vezes diferenciável no ponto $a$, então
+      \begin{align*}
+        \lim_{v\to 0}\frac{r_p(v)}{|v|}=0.
+      \end{align*}
+    \item Resto de Lagrange.
+
+      Assumindo $[a,a+v]\subseteq U,f\in C^{p}$, $p+1$ vezes diferenciável no segmento aberto $(a,a+v)$, então existe $\theta\in(0,1)$ tal que 
+      \begin{align*}
+        r_p(v)=\frac{1}{(p+1)!}d^{p+1}f(a+\theta v)\cdot v^{p+1}\xrightarrow[v\to 0]{}0.
+      \end{align*}
+    \item Resto integral.
+
+      Se $f\in C^{p+1}$ e $[a,a+v]\subseteq U$, então
+      \begin{align*}
+        r_p(v)=\frac{1}{p!}\int_{0}^{1}f(a+\theta v)\cdot v^{p+1}\,dt.
+      \end{align*}
+  \end{enumerate}
+\end{note}
+\begin{theorem}[Fórmula de Taylor com resto de Lagrange]
+  Seja $f:U\subseteq\mathbb{R}^{m}\to\mathbb{R}^{n}$ de classe $C^{p}$, $p+1$ vezes diferenciável no segmento aberto $(a,a+v)\subseteq U$. Se $|f^{(p)}(t)|\leq M$ para todo $t\in (a,a+h)$, então
+  \begin{align*}
+    f(a+v)=f(a)+df(a)\cdot v+\frac{1}{2}d^{2}f(a)\cdot v^{2}+\cdots+\frac{1}{p!}d^{p}f(a)\cdot v^{p}+r_p(v).
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Fixemos $a\in U$ e $v\in\mathbb{R}^{n}$ tal que $a+tv\in U$ para todo $t\in[0,1]$.\\
+  Defina $\varphi(t)=f(a+tv)$, com $t\in[0,1]$.\\
+  Note que
+  \begin{align*}
+    \varphi^{\prime}(t)&=df(a+tv)\cdot v\\
+    \varphi^{\prime\prime}(t)&=d^{2}f(a+tv)\cdot v^{2}\\
+    \varphi^{(p)}(t)&=d^{p}f(a+tv)\cdot v^{p}.
+  \end{align*}
+  A função $\varphi$ é $p+1$ vezes diferenciável em $(0,1)$ com $\varphi^{(p)}$ contínua em $[0,1]$.\\
+  Pelo teorema de Taylor para funções de uma variável existe $\theta\in[0,1]$ tal que
+  \begin{align*}
+    \varphi(1)=\varphi(0)+\varphi^{\prime}(0)+\frac{1}{2}\varphi^{\prime\prime}(0)+\cdots+r_p(v).
+  \end{align*}
+  Sabemos que $\varphi(1)=f(a+v),\varphi(0)=f(a)$ e $\varphi^{(j)}(0)=d^{j}f(a)\cdot v^{j}$ para todo $j=1,\cdots,p$. Sustituindo
+  \begin{align*}
+    f(a+v)=f(a)+df(a)\cdot v+\cdots+\frac{1}{p!}d^{p}f(a)\cdots v^{p}+\underbrace{\frac{1}{(p+1)!}d^{p+1}f(a+\theta v)\cdot v^{p+1}}_{r_p(v)}.
+  \end{align*}
+  Exercicio!
+\end{proof}
+O resto éuma função $r_p:U_0\to\mathbb{R}$ definida no aberto $U_0=\{v\in\mathbb{R}^{n}:a+v\in U\}$ por
+\begin{align*}
+  r_p(v)=f(a+v)-f(a)-df(a)\cdot v-\cdots-\frac{1}{p!}d^{p}f(a)\cdot v^{p}.
+\end{align*}
+Note que $r_p$ é $p$-vezes diferenciável no ponto $0$ e $r_p^{\prime}(0)=0$.
+\begin{lemma}
+  Seja $r:U\to\mathbb{R}$ uma função $p$-vezes diferenciável no ponto $0\in U$. Se
+  \begin{align*}
+    r(0)=\frac{\partial r}{\partial x_i}(0)=\frac{\partial r}{\partial x_i\partial x_j}(0)=\cdots=\frac{\partial r}{\partial x_{i_1}\cdots\partial x_{i_p}}(0)=0.
+  \end{align*}
+  Então $\displaystyle \lim_{v \to 0}\frac{r(v)}{|v|}=0$.
+\end{lemma}
+\begin{proof} 
+  Usaremos indução em $p$.\\
+  $p=1$.\\
+  Como $r$ é diferenciável em $0$ ten-se que
+  \begin{align*}
+    r(v)=r(0)+dr(0)\cdot v+s(v)=s(v),\quad\text{onde }\lim_{v \to 0}\frac{s(v)}{|v|}=0.
+  \end{align*}
+  Então
+  \begin{align*}
+    \lim_{v \to 0}\frac{r(v)}{|v|}=0.
+  \end{align*}
+  Paso indutivo.\\
+  Suponha que para funções que cumprem $r(0)=d^{k}r(0)=0$ para $k=1,\cdots,p$, temos 
+  \begin{align*}
+    \lim_{v \to 0}\frac{r(v)}{|v|^{p}}=0
+  \end{align*}
+  Seja $r$ $p+1$-vezes diferenciável com $d^{p+1}r(0)=0$.\\
+  Fixemos $v\neq 0$. Pelo teorema de valor médio de uma variavél real aplicado a $\phi(t)=r(tv)$ com $t\in[0,1]$, existe $\theta\in(0,1)$ tal que $\phi(1)-\phi(0)=\phi^{\prime}(\theta)$. Como $\phi(0)=r(0)=0$, temos
+  \begin{align*}
+    r(v)=\phi(1)=\phi^{\prime}(\theta)=dr(\theta v)\cdot v=\sum_{i=1}^{n}\frac{\partial r}{\partial x_i}(\theta v)\cdot \alpha_i,\quad\text{onde }v=(\alpha_1,\cdots,\alpha_n).
+  \end{align*}
+  Logo
+  \begin{align*}
+    \frac{r(v)}{|v|^{p+1}}=\sum_{i=1}^{n}\frac{\frac{\partial r}{\partial x_i}(\theta v)}{|v|^{p}}\cdot \frac{\alpha_i}{|v|}.
+  \end{align*}
+  Usando la hipótesis indutiva e fazendo $v\to 0$ temos
+  \begin{align*}
+    \lim_{v \to 0}\frac{r(v)}{|v^{p+1}|}=0.
+  \end{align*}
+\end{proof}
+\textcolor{red}{Exercicio, fazer reciproca (unicidade).}
 
