@@ -1,0 +1,98 @@
+\begin{definition}[Grupo de automorfismos]
+  Seja $G$ um grupo, considere
+  \begin{align*}
+    Aut(G):=\left\{ \varphi:G\to G: \varphi\text{ é isomorfismo} \right\}.
+  \end{align*}
+  Se $\varphi\in Aut(G)$ dizemos que $\varphi$ é um \textbf{automorfismo de $G$}.\\
+  Alem do mais, temos que $Aut(G)$ é um grupo com a operação do composição, dito \textbf{grupo de automorfismos de $G$}. 
+\end{definition}
+\begin{example}[$S_3$]
+  Sabemos que $S_3=\{1,\underbrace{(12)}_{a},(13),(23),\underbrace{(123)}_{b},(132)\}$, logo podemos definir $S_3$ da seguinte maneira (chamada a presentação de $S_3$)
+  \begin{align*}
+    \left\langle \underbrace{a,b}_{\text{geradores}}:\underbrace{a^{2}=1,b^{3}=1,ab=b^{1}a}_{\text{relacões entre os geradores.}} \right\rangle
+  \end{align*}
+  Em seguida, utilizaremos a apresentação de $S_3$ para definir seus automorfismos usando combinações dos geradores com elementos da mesma ordem.
+  \begin{align*}
+    \varphi_1:G&\to G\hspace{2cm} \varphi_2:G\to G\\
+    a&\to a.\hspace{2.8cm} a\to a.\\
+    b&\to b.\hspace{2.9cm} b\to b^{-1}.\\
+    \varphi_3:G&\to G\hspace{2cm} \varphi_4:G\to G\\
+    a&\to ab.\hspace{2.6cm} a\to ab.\\
+    b&\to b.\hspace{2.8cm} b\to b^{-1}.\\
+    \varphi_4:G&\to G\hspace{2cm} \varphi_5:G\to G\\
+    a&\to ab^{-1}.\hspace{2.25cm} a\to ab^{-1}.\\
+    b&\to b.\hspace{2.8cm} b\to b^{-1}.\\
+  \end{align*}
+  Então, $Aut(S_3)=\{\varphi_i:1\leq i\leq 6\}$, logo $|Aut(S_3)|=6$ y podemos concluir que $Aut(S_3)\cong S_3$. 
+\end{example}
+\subsection{Automorfismos internos de um grupo}
+  \begin{definition}[Automorfismo interno]
+    Dado $G$ grupo e $x$ fixo, definimos
+    \begin{align*}
+      \phi_x:G&\to G\\
+      g&\to g^{x}=xgx^{-1}.
+    \end{align*}
+    Então
+    \begin{enumerate}
+      \item $\phi_x$ é um homomorfismo de $G$ em $G$.
+      \item $\phi_x$é injetor e sobrejetor.
+    \end{enumerate}
+    Assim, denotamos $\phi_x$ o \textbf{automorfismo interno induzido por conjugação por $x$}.\\
+    Definimos o \textbf{grupo das automorfismos internoo de $G$} por
+    \begin{align*}
+      Inn(G)=\{\phi_x:x\in G\}\subseteq Aut(G).
+    \end{align*}
+    Temos que $Inn(G)\normal Aut(G)$.\\
+    Agora, definimos
+    \begin{align*}
+      \phi:G&\to Aut(G)\\
+      x&\to\phi_x.
+    \end{align*}
+    Temos que $\phi$ é um homomorfismo de grupos, além disso $\Img\phi=Inn(G)$ e
+    \begin{align*}
+      \ker\phi=\{x\in G:\phi_x=Id\}=\{x\in G:xg=gx\text{para todo }g\in G\}=Z(G).
+    \end{align*}
+    Conclução, $G/Z(G)\cong Inn(G)$.
+  \end{definition}
+  \begin{definition}[Grupo completo]\label{def:grupo-completo}
+    Um grupo $G$ é dito \textbf{completo} se $Z(G)=\{1\}$ e além disso, todo automorfismo de $G$ é interno, e,i. $G\cong Inn(G)=Aut(G)$. 
+  \end{definition}
+  \begin{note}
+    Reciproco do \ref{def:grupo-completo} no é verdade, voce pode tomar como exemplo $D_4$, ja que $D_4\cong Aut(D_4)$, mas $Z(D_4)\neq \{1\}$, por tanto $D_4/Z(D_4)\cong K_4$.
+  \end{note}
+  \begin{definition}[Equação de classes de conjugaçao]
+    Dados $g,h\in G$, definimos uma relaçao de equivalência dada por $g\sim h$ se, somente se, existe $x\in G$ tal que $h=g^{x}$.\\
+    A classe de equivalencia de um elemento $g\in G$ é $Cl(g):=\{g^{x}:x\in G\}$ chamada classe de conjugações de $g$ em $G$.\\ 
+    Note que $Cl(1)=\{1\}$, por outro lado $Cl(g)=\{g\}$ se, somente se, $g\in Z(G)$.\\
+    Temos $\displaystyle G=\dot{\bigcup}_{g\in G}Cl(g)$.\\
+    Se $|G|<\infty$, temos $|G|=\dot{\sum_{g\in G}}|Cl(g)|$, logo
+    \begin{align*}
+      |G|&=\sum_{g\in Z(G)}|Cl(g)|+\dot{\sum_{h\notin Z(G)}}|Cl(h)|\\
+      &=|Z(G)|+\dot{\sum_{h\notin Z(G)}}|Cl(h)|
+    \end{align*}
+    Isso é a equação das classes de conjugação.
+  \end{definition}
+  \begin{example}[Classes de conjugações en $S_3$]
+    \begin{align*}
+      Cl(1)&=\{1\}.\\
+      Cl((12))&=\{(12),(13),(23)\}=Cl((13))=Cl((23)).\\
+      Cl((123))&=\{(123),(132)\}=Cl((132)).
+    \end{align*}
+  \end{example}
+  \begin{proposition}
+    Dado $h\in G$, $|Cl(g)|$ é um divisor de $|G|$.
+  \end{proposition}
+  \begin{definition}[Centralizador de $h$ em $G$]
+    Considere
+    \begin{align*}
+      C_G(h):=\{x\in G: xh=hx\}.
+    \end{align*}
+    Temos que $C_G(h)$ é um subgrupo de $G$, dito \textbf{centralizador de $h$ em $G$}. 
+  \end{definition}
+  Mostrar
+  \begin{enumerate}
+    \item $|Cl(h)|=[G:C_G(h)]$ para todo $h\in G$.
+    \item Se $|G|=p^{m}$ para algúm $p$ primo y algúm $m\geq 1$ com $m\in\mathbb{Z}$. Então $Z(G)\neq \{1\}$.
+    \item Todo grupo de orden $p^{2}$ é abeliano.
+    \item Se $|G|=p^{3}$, então $G$ é abeliano ou $|Z(G)|=p$. 
+  \end{enumerate}

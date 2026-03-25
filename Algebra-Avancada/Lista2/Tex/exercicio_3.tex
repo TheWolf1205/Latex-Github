@@ -29,8 +29,26 @@
       (\textbf{Necessário}) Vamos verificar as condições.
       \begin{itemize}
         \item Fechadura.
-          Seja $a,b\in HK$, logo existen $h_1,h_2\in H$ y $k_1,k_2\in K$ taes que $a=h_1k_1$ 
+          Seja $a,b\in HK$, logo existen $h_1,h_2\in H$ y $k_1,k_2\in K$ taes que $a=h_1k_1$ e $b=h_2k_2$, logo $ab=h_1k_1h_2k_2$, pero como $k_1h_2\in KH$ e $KH=HK$ sabemos que existen $h_3\in H$ e $k_3\in K$ taes que $k_1h_2=h_3k_3$, logo $ab=h_1h_3k_3k_2\in HK$.
+        \item Existencia de elemento identidade.
+          Sabemos que $1\in H$ e $1\in K$, logo $11=1\in HK$.
+        \item Existencia de elemento inverso.
+          Seja $a\in HK$, então existen $h\in H$ e $k\in K$ taes que $a=hk$, logo $a^{-1}=k^{-1}h^{-1}\in KH$, mas como $KH=HK$, então $a^{-1}\in HK$.
+        \item Asociatividade.
+          Isso é garantido pela associatividade da operação do grupo.
       \end{itemize}
+      Logo $HK$ é um subgrupo de $G$.
+    \item Note que se $H$ é normal, então
+      \begin{align*}
+        HK=\bigcup_{k\in K}Hk=\bigcup_{k\in K}kH=KH.
+      \end{align*}
+      Logo pelo item anterior, $HK$ é um subgrupo de $G$.
+    \item Seja $g\in G$, logo como $H$ e $K$ são normais em $G$ e usando asociatividade do grupo, sabemos que
+      \begin{align*}
+        gHK=HgK=HKg.
+      \end{align*}
+      logo $HK\normal G$.
+    \item Sabemos pelo item 4 e 3 que $HK=KH$, então seja $h\in H$ e $k\in K$, logo $hk=a\in HK$, mas $HK=KH$, então existe $h^{\prime}\in H$ e $k^{\prime}\in K$ taes que $a=k^{\prime}h^{\prime}$, logo $hk=k^{\prime}h^{\prime}$, alem do mais $h=k^{\prime}h^{\prime}k^{-1}\in H$, mas $h^{\prime}k^{-1}\in HK$ e $HK=KH$, por tanto existen $k_1\in K$ e $h_1\in H$ taes que $h^{\prime}k^{-1}=k_1h_1$, logo $h=k^{\prime}k_1h_1\in H$, portanto $k^{\prime}k_1\in H$, mas $H\cap K=\{1\}$, então $k^{\prime}=k_1^{-1}$, logo 
   \end{enumerate}
   \end{solution}
 \end{homeworkProblem}

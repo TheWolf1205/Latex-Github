@@ -1,0 +1,20 @@
+\begin{tikzpicture}[scale=1.2]
+  % Nodos
+  \node (G) at (0,3) {$G$};
+  \node (NH) at (0,2) {$NH$};
+  
+  \node (N) at (-1.5,1) {$N$};
+  \node (H) at (1.5,1) {$H$};
+  
+  \node (NcH) at (0,0) {$N\cap H$};
+  
+  % Aristas normales
+  \draw (G) -- (NH);
+  \draw (NH) -- (H);
+  \draw (N) -- (NcH);
+  
+  % Aristas destacadas (dobles)
+  \draw[double] (G) -- (N);
+  \draw[double] (NH) -- (N);
+  \draw[double] (H) -- (NcH);
+\end{tikzpicture}
