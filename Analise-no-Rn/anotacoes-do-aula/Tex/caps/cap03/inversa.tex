@@ -1,0 +1,90 @@
+\begin{theorem}[Teorema de aplicação inversa em uma variável]
+  Seja $f:I\subseteq \mathbb{R}\to\mathbb{R}$ derivável e $f^{\prime}(x)\neq 0$ para todo $x\in I$, então
+  \begin{itemize}
+    \item $f$ é monótona (logo injetiva) (pelo Teorema de Darboux). 
+    \item $f(I)=J$ é um intervalo aberto, além disso $g=f^{-1}:J\to I$ é diferenciável e $g^{\prime}(f(x))=\left[ f(x) \right]^{-1}$ ou seja $g$ é a inversa global. 
+  \end{itemize}
+\end{theorem}
+O que podemos generalizar para $\mathbb{R}^{m}$?
+
+$f^{\prime}(x)\neq 0$ (em $\mathbb{R}^{m}$) para todo $x\in\mathbb{R}^{m}$ somente sabesmos que $f^{\prime}(x)$ e isomorfismo (linear e bijetiva), pelo não podemos garantir inversa global, so local.\\
+Pode tomar como exemplo $f(x,y)=(e^{x}\cos(y),e^{x}\sen(y))$, mas veremos isso más tarde.
+\begin{definition}[Difeomorfismo]
+  Seja $U\subseteq \mathbb{R}^{m}$, $V\in\mathbb{R}^{n}$ abertos, $f:U\to V$ é um difeomorfismo quando:
+  \begin{enumerate}
+    \item $f$ é bijetiva.
+    \item $f$ é diferenciável.
+    \item $g=f^{-1}:V\to U$ é diferenciável. 
+  \end{enumerate}
+  Se $f,g\in C^{k}$  dizemos que $f$ é $C^{k}$-difeomorfismo. 
+\end{definition}
+\begin{proposition}\label{prop:difeo-identidade}
+  Se $f:U\to V$ é um difeomorfismo, então para todo $x\in U$.
+  \begin{align*}
+    g^{\prime}(f(x))\cdot f^{\prime}(x)=Id_{\mathbb{R}^{m}},\quad f^{\prime}(g(y))\cdot g^{\prime}(y)=Id_{\mathbb{R}^{n}}.
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  Sabemos que $g(f(x))=x$ e $f(g(y))=y$ com $x\in U$ e $y\in V$, então, pela regra da cadeia sabemos que
+  \begin{align*}
+    \left( g\circ f \right)^{\prime}(x)=g^{\prime}(f(x))\cdot f^{\prime}(x)=\left( Id_{U} \right)^{\prime}(x)=Id_{\mathbb{R}^{m}}.\\
+    \left( f\circ g \right)^{\prime}(y)f^{\prime}(g(y))\cdot g^{\prime}(y)=\left( Id_{V} \right)^{\prime}(y)=Id_{\mathbb{R}^{n}}.
+  \end{align*}
+\end{proof}
+\begin{proposition}
+  Se $f:U\to V$ é difeomorfismo, então $m=n$. 
+\end{proposition}
+\begin{proof} 
+  Pelo proposição \ref{prop:difeo-identidade}, $f^{\prime}(x)$ é um isomorfismo linear, então $f^{\prime}(x)$ é bijetiva y leva elementos de uma base de $U$ em elementos de uma base de $V$, logo $m=n$.
+\end{proof}
+\begin{definition}[Difeomorfismo local]
+  Uma aplicação diferenciável $f:U\mathbb{R}^{n}\to\mathbb{R}^{n}$ é um \textbf{difeomorfismo local} quando para cada $x\in U$, existe uma bola aberta $B_x\subseteq U$ contendo $x$ tal que $f\big|_{B_x}$ é difeomorfismo. 
+\end{definition}
+\begin{proposition}
+  Se $f:U\to\mathbb{R}^{n}$ é um difeomorfismo local, então $f$ leva abertos em abertos.
+\end{proposition}
+\begin{proof} 
+  Seja $A\subseteq U$ aberto. Para cada $x\in A$, existe $B_x\subseteq A$ aberta tal que $f\big|_{B_x}$ é difeomorfismo, logo $A=\bigcup_{x\in A}B_x$ e $f(B_x)$ é aberto para todo $x\in A$. Portanto,
+  \begin{align*}
+    f(A)=f\left( \bigcup_{x\in A}B_x \right)=\bigcup_{x\in A}f(B_x).
+  \end{align*}
+  Assim, $f(A)$ é aberto. 
+\end{proof}
+\begin{proposition}
+  Se $f:U\to\mathbb{R}^{m}$ é um difeomorfismo local injetivo, então $f:U\to f(U)$ é um difeomorfismo global. 
+\end{proposition}
+\begin{proof} 
+  $f$ é injetiva, então $f$ é bijetiva sobre $f(U)$. Logo para cada $y\in f(U)$, existe $x\in U$ tal que $f^{-1}(y)=x$, mas como $f$ é difeomorfismo local, existe $B_x$ tal que $f\big|_{B_x}$ é difeomorfismo. Então $f(B_x)$ é uma vizinhanca de $y$, onde a inversa local coincide com $f^{-1}(y)$, logo como $x$ é arbitrario, entáo $f^{-1}$ é global y diferenciável em cada ponto $y$, por tanto $f$ é um difeomorfismo. 
+\end{proof}
+\begin{example}
+  Seja $B:=\{y\in\mathbb{R}^{m}:|y|<1\}$. Defina
+  \begin{align*}
+    f(x)=\frac{x}{1+|x},\quad g(y)=\frac{y}{1-|y|}.
+  \end{align*}
+  \textbf{Afirmação:} $f$ é um difeomorfismo entre $\mathbb{R}^{m}$ e $B$ (a bola unitaria). 
+\end{example}
+\begin{example}
+  Seja $f:\mathbb{R}\to\mathbb{R}$ dada por $f(x)=x^3$, logo
+  \begin{itemize}
+    \item $f\in C^{\infty}$.
+    \item $f$ é bijetiva, com $g(y)=f^{-1}(y)=\sqrt[3]{y}$.
+    \item $g$ é contínua, mas não é diferenciável em $y=0$. 
+  \end{itemize}
+  Falha em $f^{\prime}(0)=0$, logo $f^{\prime}(0)$ não e isomorfismo. 
+\end{example}
+\begin{example}
+  \begin{align*}
+    f:\mathbb{R}^{2}&\to\mathbb{R}^{2}\\
+    (x,y)&\to(e^{x}\cos(y),e^{x}\sen(y)).
+  \end{align*}
+  Sabemos que
+  \begin{align*}
+    Jf(x,y)=\begin{pmatrix}
+      e^{x}\cos(y) & -e^{x}\sen(y) \\
+      e^{x}\sen(y) & e^{x}\cos(y)
+    \end{pmatrix}.
+  \end{align*}
+  Logo $\det(Jf(x,y))=e^{2x}>0$ para todo $(x,y)\in\mathbb{R}^{2}$.\\
+  $f^{\prime}(x,y)$ é um isomorfismo para todo $(x,y)\in\mathbb{R}^{2}$?\\
+  $f$ não é injetiva, então no é difeomorfismo global. 
+\end{example}

@@ -111,6 +111,7 @@ A fórmula de Taylor para uma função $f:U\to\mathbb{R}$ diferenciável no aber
   \end{itemize}
 \end{note}
 \begin{note}[Resto]
+  \phantom{x}
   \begin{enumerate}
     \item Fórmula de Taylor infinitesimal.
 
@@ -132,8 +133,8 @@ A fórmula de Taylor para uma função $f:U\to\mathbb{R}$ diferenciável no aber
       \end{align*}
   \end{enumerate}
 \end{note}
-\begin{theorem}[Fórmula de Taylor com resto de Lagrange]
-  Seja $f:U\subseteq\mathbb{R}^{m}\to\mathbb{R}^{n}$ de classe $C^{p}$, $p+1$ vezes diferenciável no segmento aberto $(a,a+v)\subseteq U$. Se $|f^{(p)}(t)|\leq M$ para todo $t\in (a,a+h)$, então
+\begin{theorem}[Fórmula de Taylor com resto de Lagrange para funções reais]
+  Seja $f:U\subseteq\mathbb{R}^{m}\to\mathbb{R}$ de classe $C^{p}$, $p+1$ vezes diferenciável no segmento aberto $(a,a+v)\subseteq U$. Se $|f^{(p)}(t)|\leq M$ para todo $t\in (a,a+h)$, então
   \begin{align*}
     f(a+v)=f(a)+df(a)\cdot v+\frac{1}{2}d^{2}f(a)\cdot v^{2}+\cdots+\frac{1}{p!}d^{p}f(a)\cdot v^{p}+r_p(v).
   \end{align*}
@@ -150,11 +151,11 @@ A fórmula de Taylor para uma função $f:U\to\mathbb{R}$ diferenciável no aber
   A função $\varphi$ é $p+1$ vezes diferenciável em $(0,1)$ com $\varphi^{(p)}$ contínua em $[0,1]$.\\
   Pelo teorema de Taylor para funções de uma variável existe $\theta\in[0,1]$ tal que
   \begin{align*}
-    \varphi(1)=\varphi(0)+\varphi^{\prime}(0)+\frac{1}{2}\varphi^{\prime\prime}(0)+\cdots+r_p(v).
+    \varphi(1)=\varphi(0)+\varphi^{\prime}(0)+\frac{1}{2}\varphi^{\prime\prime}(0)+\cdots+r_p(\theta,v).
   \end{align*}
   Sabemos que $\varphi(1)=f(a+v),\varphi(0)=f(a)$ e $\varphi^{(j)}(0)=d^{j}f(a)\cdot v^{j}$ para todo $j=1,\cdots,p$. Sustituindo
   \begin{align*}
-    f(a+v)=f(a)+df(a)\cdot v+\cdots+\frac{1}{p!}d^{p}f(a)\cdots v^{p}+\underbrace{\frac{1}{(p+1)!}d^{p+1}f(a+\theta v)\cdot v^{p+1}}_{r_p(v)}.
+    f(a+v)=f(a)+df(a)\cdot v+\cdots+\frac{1}{p!}d^{p}f(a)\cdots v^{p}+\underbrace{\frac{1}{(p+1)!}d^{p+1}f(a+\theta v)\cdot \theta v^{p+1}}_{r_p(v)}.
   \end{align*}
   Exercicio!
 \end{proof}
@@ -200,5 +201,67 @@ Note que $r_p$ é $p$-vezes diferenciável no ponto $0$ e $r_p^{\prime}(0)=0$.
     \lim_{v \to 0}\frac{r(v)}{|v^{p+1}|}=0.
   \end{align*}
 \end{proof}
-\textcolor{red}{Exercicio, fazer reciproca (unicidade).}
+\textcolor{red}{Exercicio, fazer reciproca (unicidade).}\\
+Agora, no contexto de aplicações, temos o seguinte.\\
+Seja $f:U\subseteq\mathbb{R}^{m}\to\mathbb{R}^{n}$ uma aplicação diferenciável no aberto $U$ com $a,a+v\in U$. A fórmula de Taylor se escreve
+\begin{equation}\label{eq:formula-de-taylor-para-aplicacoes}
+  f(a+v)=f(a)+f^{\prime}(a)\cdot v+f^{\prime\prime}(a)\cdot v^{2}+\cdots+\frac{1}{p!}f^{(p)}(a)\cdot v^{p}+r_p(v).
+\end{equation}
+Onde
+\begin{align*}
+  f^{(j)}f(a)\cdot v^{j}=\frac{\partial ^{j}f}{\partial v^{j}}(a)=\underbrace{\frac{\partial }{\partial v}\left(\frac{\partial }{\partial v}\left(\cdots\left(\frac{\partial f}{\partial v}\right)\cdots\right)\right)}_{j\text{ vezes}}(a).
+\end{align*}
+\begin{note}[Resto]
+  \phantom{x}
+  \begin{enumerate}
+    \item Fórmula de Taylor infinitesimal.
 
+      Se $f$ é $p$-vezes diferenciável no ponto $a$, então
+      \begin{align*}
+        \lim_{v\to 0}\frac{r_p(v)}{|v|}=0.
+      \end{align*}
+    \item Fórmula de Taylor com resto de Lagrange.
+
+      Sejam $[a,a+v]\subseteq U,f\in C^{p}$, $p+1$ vezes diferenciável em cada ponto do segmento $(a,a+v)$ com $|f^{(p+1)}(x)\cdot w^{p+1}|\leq M|w|^{p+1}$ para todo $x\in (a,a+v)$ e todo $w\in\mathbb{R}^{m}$, então 
+      \begin{align*}
+        |r_p(v)|\leq \frac{M}{(p+1)!}|v|^{p+1}.
+      \end{align*}
+    \item Fórmula de Taylor com resto integral.
+
+      Se $f\in C^{p+1}$ e $[a,a+v]\subseteq U$, então
+      \begin{align*}
+        r_p(v)=\frac{1}{p!}\int_{0}^{1}(1-t)^{p}f^{(p+1)}(a+\theta v)\cdot v^{p+1}\,dt,
+      \end{align*}
+      onde, para cada $j=1,\cdots,p$, $f^{(j)(a)\cdot v^{j}}$ é o vetor de $\mathbb{R}^{n}$ cujas coordenadas são os números $d^{(j)}f_i(a)\cdot v^{j}$ onde $f=(f_1,\cdots,f_n)$. 
+  \end{enumerate}
+\end{note}
+Note que a fórmula de Taylor \eqref{eq:formula-de-taylor-para-aplicacoes} equivale a $n$ igualdades da fórmula de Taylor para funções reais ($f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}$), pelo que proba $1.$ e $2.$ está pronto.
+\begin{theorem}[Fórmula de Taylor com resto de Lagrange para aplicações]
+  Seja $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ uma aplicação no $C^{p}$ e $p+1$ vezes diferenciável em cada ponto do segmento $(a,a+v)\subseteq U$ com $f^{(p+1)}(x)\cdot w^{p+1}$ para todo $x\in (a,a+v)$e todo $w\in\mathbb{R}^{m}$, então 
+  \begin{align*}
+    f(a+v)=f(a)+f^{\prime}(a)\cdot v+f^{\prime\prime}(a)\cdot v^{2}+\cdots+\frac{1}{p!}f^{(p)}(a)\cdot v^{p}+r_p(v),
+  \end{align*}
+  onde
+  \begin{align*}
+    |r_p(v)|\leq \frac{M}{(p+1)!}|v|^{p+1}. 
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Considere o caminho $\varphi:[0,1]\to\mathbb{R}^{n}$ dado por $\varphi(t)=f(a+tv)$.\\
+  Sabemos que
+  \begin{itemize}
+    \item $\varphi\in C^{p}$.
+    \item $\varphi$ é $p+1$ vezes diferenciável em $(0,1)$.
+    \item $\varphi(0)=f(a)$, $\varphi(1)=f(a+v)$.
+    \item $\varphi^{(j)}(t)=d^{j}f(a+tv)\cdot v^{j}$ para $j=1,\cdots,p,p+1$.
+    \item $|\varphi^{(p+1)}(t)|=|d^{p+1}f(a+tv)\cdot v^{p+1}|\leq M|v|^{p+1}$ para todo $t\in(0,1)$. 
+  \end{itemize}
+  Logo, pela fórmula de Taylor para caminhos
+  \begin{align*}
+    \varphi(1)=\varphi(0)+\varphi^{\prime}(0)+\frac{1}{p!}\varphi^{(p)}(0)+r_p,\quad\text{onde }|r_p|\leq\frac{M|v^{p+1}|}{(p+1)!}.
+  \end{align*}
+  i,e.
+  \begin{align*}
+    f(a+v)=f(a)+df(a)\cdot v+\cdots+d^{(p)}f(a)\cdot v^{p}+r_p(v),\quad\text{onde }|r_p(v)|\leq \frac{M|v|^{p+1}}{(p+1)!}.
+  \end{align*}
+\end{proof}
