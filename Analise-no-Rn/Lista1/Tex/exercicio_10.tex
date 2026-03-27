@@ -1,0 +1,35 @@
+\begin{homeworkProblem}
+  Seja $f : U \to \mathbb{R}^n$ Lipschitziana, com constante de Lipschitz igual a $c$, no aberto $U \subset \mathbb{R}^m$, com $a \in U$, e $g : V \to \mathbb{R}^p$ diferenciável no aberto $V \subset \mathbb{R}^n$, com $f(U) \subset V$ e $b = f(a)$. Se $g'(b) = 0$ então $g \circ f : U \to \mathbb{R}^p$ é diferenciável no ponto $a$, com $(g \circ f)'(a) = 0$.
+  \begin{solution}
+    Como $f$ é Lipschitziana, com constante de Lipschitz igual a $c$, nos sabemos que dados $x,y\in U$ temos 
+    \begin{align*}
+      |f(y)-f(x)|\leq c|x-y|.
+    \end{align*}
+    Alem mais, como $f$ é diferenciável no aberto $V$ temos que $f$ é contínua e, em particular, é diferenciável no ponto $b=f(a)$.\\
+    Por outro lado, temos que $g^{\prime}(f(a))=0$, isto es que para todo $v\in\mathbb{R}^{n}$ 
+    \begin{align*}
+      \lim_{t \to 0}\frac{g(f(a+tv))-g(f(a))}{|f(a+tv)-f(a)|}=0.
+    \end{align*}
+    Isso é que dado $\epsilon>0$ existe $\delta>0$ tal que se $|a+tv-a|=|tv|<\delta$, então
+    \begin{align*}
+      \left| \frac{g(f(a+tv))-g(f(a))}{|f(a+tv)-f(a)|} \right|\leq \epsilon.
+    \end{align*}
+    Logo, multiplicando por $|f(a+tv)-f(a)|$, fixando um $t$ adecuado para que $|f(a+tv)-f(a)|\leq \delta$ (isso porque $f$ é contínua) e usando que $f$ é Lipschitziana temos que
+    \begin{align*}
+      |g(f(a+tv))-g(f(a))|&\leq\epsilon|f(a+tv)-f(a)|\leq \epsilon c|a+tv-a|\leq \epsilon c|tv|.
+    \end{align*}
+    Assim
+    \begin{align*}
+      \left| \frac{g(f(a+tv))-g(f(a))}{tv} \right|\leq\epsilon c.
+    \end{align*}
+    Logo
+    \begin{align*}
+      \lim_{t \to 0}\left| \frac{g(f(a+tv))-g(f(a))}{tv} \right|=0.
+    \end{align*}
+    Portanto temos que
+    \begin{align*}
+      (g\circ f)^{\prime}(a)=\lim_{t \to 0}\frac{g(f(a+tv))-g(f(a))}{tv}=0.
+    \end{align*}
+    O que conclui a prova.
+  \end{solution}
+\end{homeworkProblem}
