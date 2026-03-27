@@ -1,10 +1,25 @@
 \begin{homeworkProblem}
   Sejam $\alpha > 1$ e $c \in \mathbb{R}$. Se $f : U \to \mathbb{R}^n$, definida no aberto $U \subseteq \mathbb{R}^m$, cumpre a condição
-  \begin{align*}
-    |f(x)-f(y)| \le c|x-y|^\alpha \quad \text{para quaisquer } x,y \in U,   
-  \end{align*}
+  \begin{equation}\label{eq:1}
+    |f(x)-f(y)| \leq c|x-y|^\alpha \quad \text{para quaisquer } x,y \in U,   
+  \end{equation}
   então $f$ é constante em cada componente conexa de $U$.
   \begin{solution}
-    Solução.
+    Suponha $K\subseteq U$ uma componente conexa. Então, como ela é conexa y aberta, sabemos que $K$ é arco-conexa, pelo que, sem perdida de generalidade sabemos que dados $x,y\in K$ e $t\in[0,1]$ o ponto $x+t(y-x)\in K$.\\
+    Vamos ver que $f$ é diferenciável, ja que usando a condição \eqref{eq:1} sabemos que tomando $t\in[0,1]$ temos que como $\alpha>1$ e portanto $\alpha-1>0$ que 
+    \begin{align*}
+      \lim_{t \to 0}\frac{|f(x+t(y-x))-f(x)|}{|t(y-x)|}\leq \lim_{t \to 0}c|t(y-x)|^{\alpha-1}=0.
+    \end{align*}
+    Logo como $y$ e $x$ são arbitrarios (pelo suficientemente pequenos) podemos afirmar que $f$ é diferenciável, alem disso $df(x)\cdot v=0$ para todo $x\in K$ e $v\in \mathbb{R}^{m}$ suficientemente pequeno.\\
+    Agora, definamos $\varphi:[0,1]\to\mathbb{R}^{n}$ por $\varphi(t)=f(x+t(y-x))$, logo
+    \begin{itemize}
+      \item $\varphi^{\prime}(t)=df(x+t(y-x))\cdot t(y-x)=0$.
+      \item $\varphi(1)-\varphi(0)=f(y)-f(x)$.
+    \end{itemize}
+    Portanto, pelo desigualdad de valor medio para caminhos, temos que
+    \begin{align*}
+      |\varphi(1)-\varphi(0)|=|f(y)-f(x)|\leq 0|y-x|.
+    \end{align*}
+    Logo $f(x)=f(y)$ para tudo $x,y\in K$, e,i. $f$ é constante em cada componente conexa de $U$. 
   \end{solution}
 \end{homeworkProblem}

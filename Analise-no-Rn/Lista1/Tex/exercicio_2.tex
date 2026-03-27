@@ -4,6 +4,31 @@
     \lim_{v\to 0} \frac{f(a+v)-g(a+v)}{|v|} = 0.   
   \end{align*}
   \begin{solution}
-    Solução.
+    Como $f$ e $g$ são diferenciáveis no ponto $a$ temos que dado $v\in \mathbb{R}^{m}$ suficientemente pequeno tal que $a+v\in U$ se cumpre que como $f(a)=g(a)$, temos
+    \begin{align*}
+      f(a+v)=f(a)+f^{\prime}(a)\cdot v+r(v)\\
+      g(a+v)=f(a)+g^{\prime}(a)\cdot v+\overline{r}(v),
+    \end{align*}
+    onde
+    \begin{align*}
+      \lim_{v \to 0}\frac{r(v)}{|v|}=0\quad\text{e}\quad \lim_{v \to 0}\frac{\overline{r}(v)}{|v|}=0.
+    \end{align*}
+
+    \textbf{Necessário:} 
+    Assim, como $f^{\prime}(a)=g^{\prime}(a)$, então $f(a+v)-g(a+v)=r(v)-\overline{r}(v)$, portanto
+    \begin{align*}
+      \lim_{v \to 0}\frac{f(a+v)-g(a+v)}{|v|}&=\lim_{v\to 0}\frac{r(v)-\overline{r}(v)}{|v|}=0.
+    \end{align*}
+
+    \textbf{Suficiente:}
+    Assim, temos que por um lado
+    \begin{align*}
+      \lim_{v \to 0}\frac{f(a+v)-g(a+v)}{|v|}=0,
+    \end{align*}
+    mas, por outro lado
+    \begin{align*}
+      \lim_{v \to 0}\frac{f(a+v)-g(a+v)}{|v|}&=\lim_{v \to 0}\frac{f^{\prime}(a)\cdot v-g^{\prime}(a)\cdot v+r(v)-\overline{r}(v)}{|v|}=(f^{\prime}(a)-g^{\prime}(a))\cdot v.
+    \end{align*}
+    Assim, pelo anterior $f^{\prime}(a)-g^{\prime}(a)=0$, e, i. $f^{\prime}(a)=g^{\prime}(a)$.
   \end{solution}
 \end{homeworkProblem}
