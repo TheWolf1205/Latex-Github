@@ -4,6 +4,17 @@
     \varphi'(x_0,h_0)\cdot (u,v) = f'(x_0+h_0)\cdot (u+v).   
   \end{align*}
   \begin{solution}
-    Solução.
+    Como $f$ é diferenciável, sabemos que dado $x\in U$ y $v\in \mathbb{R}^{m}$ o suficientemente pequeno para que $x+v\in U$, então
+    \begin{align*}
+      f(x+v)=f(x)+f^{\prime}(x)\cdot v+r(v).
+    \end{align*}
+    Agora, seja $x,h\in V$ e $u,v\in B$, logo usando a definição de $\varphi$ e a difererenciabilidade do $f$ temos 
+    \begin{align*}
+      \varphi(x+u,h+v)&=f(x+u+h+v)\\
+      &=f(x+h+u+v)\\
+      &=f(x+h)+f^{\prime}(x+h)\cdot(u+v)+r(u+v)\\
+      &=\varphi(x,y)+f^{\prime}(x+h)\cdot (u+v)+r(u+v),\quad\text{onde }\lim_{u+v \to 0}\frac{r(u+v)}{|u+v|}=0.
+    \end{align*}
+    Portanto, nos podemos afirmar que $\varphi^{\prime}(x,h)\cdot(u,v)=f^{\prime}(x+h)\cdot(u+v)$.
   \end{solution}
 \end{homeworkProblem}

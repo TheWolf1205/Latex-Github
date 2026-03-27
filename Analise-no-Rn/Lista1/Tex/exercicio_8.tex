@@ -12,6 +12,30 @@
     \frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}.   
   \end{align*}
   \begin{solution}
-    Solução.
+    Usando as hipóteses nos sabemos que dado $t_0\in I$ e $h\in\mathbb{R}$ tal que $t_0+h\in I$, então 
+    \begin{align*}
+      \sigma(t_0+h)=\sigma(t_0)+\sigma^{\prime}(t_0)\cdot h+r(h). 
+    \end{align*}
+    Alem mais, $f$ é diferenciável no $\sigma(t_0)$, logo para todo $v\in\mathbb{R}^{n}$ temos que
+    \begin{align*}
+      f(\sigma(t_0)+v)=f(\sigma(t_0))+f^{\prime}(\sigma(t_0))\cdot v+\overline{r}(v).
+    \end{align*}
+    Assim, defina $z:I\to\mathbb{R}^{p}$ dada por $z(t)=(f\circ \sigma)(t)$, logo a diferenciabilidade do $f$ e $\sigma$ temos 
+    \begin{align*}
+      z(t_0+h)&=f(\sigma(t_0+h))\\
+      &=f(\sigma(t_0)+\sigma^{\prime}(t_0)\cdot h+r(h))\\
+      &=f(\sigma(t_0))+f^{\prime}(\sigma(t_0))\cdot(\sigma^{\prime}(t_0)\cdot h+r(h))+\overline{r}(\sigma^{\prime}(t_0)\cdot h+r(h)).
+    \end{align*}
+    Assim, restando $f(\sigma(t_0))$, dividendo por $h$ e tomando o limite quando $h$ tende a $0$
+    \begin{align*}
+      \lim_{h \to 0}\frac{z(t_0+h)-z(t_0)}{h}&=\lim_{h \to 0}f^{\prime}(\sigma(t_0))\cdot\frac{(\sigma^{\prime}(t_0)\cdot h+r(h))}{h}+\frac{\overline{r}(\sigma^{\prime}(t_0)\cdot h+r(h))}{h}\\
+      &=\lim_{h \to 0}f^{\prime}(\sigma(t_0))\cdot\sigma^{\prime}(t_0)+\frac{r(h)}{h}+\frac{\overline{r}(\sigma^{\prime}(t_0)\cdot h+r(h))}{h}\\
+      &=f^{\prime}(\sigma(t_0))\cdot\sigma^{\prime}(t_0)+\lim_{h \to 0}\frac{\overline{r}(\sigma^{\prime}(t_0)\cdot h+r(h))}{h}.
+    \end{align*}
+    Agora, note que usando as propriedades do $r$ e $\overline{r}$ temos que 
+    \begin{align*}
+      \lim_{h \to 0}\frac{\overline{r}(\sigma^{\prime}(t_0)\cdot h+r(h))}{h}&=\lim_{h \to 0}\frac{\overline{r}(\sigma^{\prime}(t_0)\cdot h+r(h))}{|\sigma^{\prime}(t_0)\cdot h+r(h)|}\cdot\frac{|\sigma^{\prime}(t_0)\cdot h+r(h)|}{h}\\
+      &=0(\sigma^{\prime}(t_0)+0)=0.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}

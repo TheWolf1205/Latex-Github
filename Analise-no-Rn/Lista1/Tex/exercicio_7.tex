@@ -1,6 +1,29 @@
 \begin{homeworkProblem}
   Dada $f : S^m \to \mathbb{R}^n$ defina a extensão radial de $f$ como a aplicação $F : \mathbb{R}^{m+1} \to \mathbb{R}^n$ tal que $F(0)=0$ e $F(x) = |x|\cdot f\left(\frac{x}{|x|}\right)$ se $x \neq 0$. Mostre que $F$ é diferenciável na origem $0 \in \mathbb{R}^{m+1}$ se, e somente se, $f$ é (a restrição de uma aplicação) linear.
   \begin{solution}
-    Solução.
+    \textbf{Necessario:} Supoha que $F$ é diferenciável na origen $0\in\mathbb{R}^{m+1}$, logo se fixamos $v\in\mathbb{R}^{m+1}$ temos que 
+    \begin{align*}
+      F(0+v)&=F(0)+F^{\prime}(0)\cdot v+r(v).
+    \end{align*}
+    Isso es
+    \begin{align*}
+      |v|f\left( \frac{v}{|v|} \right)&=0+\lim_{t \to 0}\frac{F(0+tv)-F(0)}{t}+r(v)\\
+      &=\lim_{t \to 0}\frac{|tv|f\left( \frac{tv}{|tv|} \right)}{t}+r(v)\\
+      &=|v|f\left( \frac{v}{|v|} \right)+r(v).
+    \end{align*}
+    Portanto, $r(v)=0$ e como $v$ é arbitrario nos podemos afirmar que
+    \begin{align*}
+      F(0+v)=F(0)+F(v)=F(0)+F^{\prime}(0)\cdot v.
+    \end{align*}
+    Logo $F(v)=F^{\prime}(0)\cdot v$, então $F$ é uma aplicação linear, logo note que $f(x)=F(x)$ si $|x|=1$, portanto $f$ é uma restrição de uma aplicação linear.
+
+    \textbf{Suficiente:} Suponha que $f$ é a restrição de uma aplicação linear, logo $f(0+v)=f(0)+f(v)=f(v)$, então
+    \begin{align*}
+      F(0+v)&=|0+v|f\left( \frac{0+v}{|0+v|} \right)\\
+      &=|v|f\left( \frac{v}{|v|} \right)\\
+      &=F(0)+\lim_{t \to 0}\frac{|tv|f\left( \frac{tv}{|tv|} \right)}{t}+0\\
+      &=F(0)+F^{\prime}(0)\cdot v+r(v).
+    \end{align*}
+    Onde definimos $r(v)=0$ para todo $v\in\mathbb{R}^{m+1}$, assim, $F$ é diferenciável na origem $0\in\mathbb{R}^{m+1}$. 
   \end{solution}
 \end{homeworkProblem}

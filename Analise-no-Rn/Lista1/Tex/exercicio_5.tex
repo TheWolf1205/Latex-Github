@@ -4,6 +4,15 @@
     \lim_{k\to\infty} \frac{f(a+t_k v_k)-f(a)}{t_k} = f'(a)\cdot v.   
   \end{align*}
   \begin{solution}
-    Solução.
+    Como $f$ é diferenciável no ponto $a$, se fixamos $t_kv_k\in\mathbb{R}^{m}$ taes que $a+t_kv_k\in U$, note que sem perdida de generalidade, suponha $|v_k|=1$, ja que se definimos $\overline{t}_k=t_k|v_k|$, $\overline{t}_k\to 0$ porque $t_k\to 0$ e $|v_k|\to|v|=l<\infty$, então usando a diferenciabilidade do $f$ temos 
+    \begin{align*}
+      f(a+t_kv_k)-f(a)=f^{\prime}(a)\cdot t_kv_k + r(t_kv_k).
+    \end{align*}
+    Portanto
+    \begin{align*}
+      \lim_{k \to \infty}\frac{f(a+t_kv_k)-f(a)}{t_k}&=\lim_{k \to \infty}f^{\prime}(a)\cdot v_k+\frac{r(t_kv_k)}{t_k}\\
+      &=\lim_{k \to \infty}f^{\prime}(a)\cdot v_k+\frac{r(t_kv_k)}{t_k|v_k|}\\
+      &=f^{\prime}(a)\cdot v.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}
