@@ -45,6 +45,93 @@ Você pode fazer e seguinte exercicio.
   \begin{itemize}
     \item $S_n=\left\langle (12),(23),\cdots,((n-1) n) \right\rangle$.
     \item $S_n=\left\langle (12),(12\cdots n) \right\rangle$.
-    \item Dada $\sigma=(ij)$ transpoção com $i\leq j-1$, temos $(ij)=((j-1)j)(i(j-1))((j-1)j)$. 
+    \item Dada $\varsigma=(ij)$ transpoção com $i\leq j-1$, temos $(ij)=((j-1)j)(i(j-1))((j-1)j)$. 
   \end{itemize}
 \end{note}
+\begin{definition}[Permutações pares e impares]
+  $\sigma\in S_n$ é \textbf{par} se pode ser escrita como um produto de uma cantidade par de transposições. Caso contrário, $\sigma$ é \textbf{impar}. 
+\end{definition}
+\begin{definition}[$A_n$]
+  Definimos $A_n$ como
+  \begin{align*}
+    A_n:=\{\sigma\in S_n:\sigma\text{ é par.}\}
+  \end{align*}
+  Ele é um subgrupo de $S_n$ dito subgrupo \textbf{alternado de grau $n$} de $S_n$.
+\end{definition}
+\begin{note}[$A_n\normal S_n$]
+  Note que $A_n\normal S_n$ para todo $n\geq 5$.\\
+  Seja $\varsigma=(ij)$ uma transposição de $S_n$ defina
+  \begin{align*}
+    f:S_n&\to A_n\\
+    \sigma&\to f(\sigma)LHS= 
+    \begin{cases}
+      \sigma, &\text{ se } \sigma\text{ e par} \text{,} \\
+      \varsigma\sigma, &\text{ se } \sigma\text{ e impar} .
+    \end{cases}
+  \end{align*}
+  Logo $f$ é um homomorfismoo sobrejetivo, $\ker f=:\{1,\varsigma\}=\left\langle \varsigma \right\rangle$. Assim, $|S_n/\ker f|=2\cong \Img f$, logo $[S_n:A_n]=2$ e portanto $A_n\normal S_n$. 
+\end{note}
+Consequentemente $S_n$ não é um grupo simple, mas, vamos mostrar que $A_n$ é um grupo sumple com $n\geq 3$ e $n\neq 4$.\\ 
+Em $S_4$ nos temos que $|A_4|=12$, logo $\tilde{K_4}=\{1,(12)(34),(13)(23),(14)(23)\}$ e $\tilde{K_4}\normal A_4$ (mais do fue isto $\tilde{K_4}\normal S_4$).
+\begin{proposition}
+  Duas permutações $\alpha,\beta\in S_n$ das conjugada se, e somente se, $\alpha$ e $\beta$ tem a mesma estructura cíclica.
+\end{proposition}
+\begin{proof} 
+  Suponha que existe $\gamma\in S_n$ tal que $\alpha=\beta^{\sigma}$, vamos admitir que $\alpha$ é um $m$-cíclo, digamos $\alpha=(i_1i_2\cdots i_m)$, temos
+  \begin{align*}
+    \beta\gamma(i_1)&=\gamma\alpha(i_1)\\
+    &=\gamma(i_2).\\
+    \beta\gamma(i_2)&=\gamma\alpha(i_2)\\
+    &=\gamma(i_3).\\
+    &\vdots
+  \end{align*}
+  Concluimos que $\beta$ é o cíclo $(\gamma(i_1),\gamma(i_2)\cdots\gamma(i_m))$.
+
+  Reciprocamente, sejan
+  \begin{align*}
+    \alpha&=(i_1^{(1)}i_2^{(1)}\cdots i_{k_1}^{(1)})\cdots(i_1^{(s)}i_{2}^{(s)}\cdots i_{k_s}^{(s)}),\text{ disjunto }\\
+    \beta&=(j_1^{(1)}j_2^{(1)}\cdots j_{k_1}^{(1)})\cdots(j_1^{(s)}j_{2}^{(s)}\cdots j_{k_s}^{(s)}),\text{ disjunto }
+  \end{align*}
+  Defina $\gamma: i_t^{l}\to j_t^{l}$.
+\end{proof}
+\begin{note}
+  Cada estructura cĩclica posivel em $S_n$ está associada a uma partição de $n$, isto es, por exemplo
+  \begin{align*}
+    (489)(125)(67)(3).
+  \end{align*}
+  $(3,3,2,1)\to 9$.
+\end{note}
+\begin{note}
+  Seja $\sigma$ um cíclo de comprimento $m$, logo $m$ é par ou impar. Se $m$ é par, então $\sigma$ é impar, caso contrario $\sigma$ é impar. Com isso, os $3$-cíclos em $S_n$ são elementos de $A_n$ com $n\geq 3$. 
+\end{note}
+\begin{proposition}
+  \begin{enumerate}
+    \item Os $3$-cíclos suam o subgrupo de $A_n$, para $n\geq 3$.
+    \item Todos os $3$-cíclos são conjugados em $A_n$, para $n\geq  5$.
+  \end{enumerate}
+  \begin{align*}
+    A_3=\{1,(123),(132)\}\text{ sendo $3$-cíclos.} 
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  Considere $n\geq 4$ e tome $\sigma\in A_4$ e escreva como um produto de transposições
+  \begin{align*}
+    \sigma=(i_1j_1)(i_2j_2)\cdots(i_mj_m)\text{ $m$ par.}
+  \end{align*}
+  Onde as transposições são disjuntas ou não.\\
+  No primer caso, reescreve
+  \begin{align*}
+    (i_1j_1)(i_2j_2)=(i_1i_2j_2)(i_1j_1j_2).
+  \end{align*}
+  No segundo caso, sem perdida de generalidade, considere $i_1=i_2$, temos
+  \begin{align*}
+    (i_1j_1)(i_2j_2)&=(i_1j_1)(i_1j_2)\\
+    &=(i_1j_2j_1).
+  \end{align*}
+
+  Para provar \textbf{2.} considere $\alpha$ e $\beta$ $3$-cíclos em $A_n$. Sabemos que existe $\gamma\in S_n$ tal que $\beta=\alpha^{\gamma}$.\\
+  Se $\gamma\in A_n$, acabou.\\
+  Se $\gamma\notin A_n$, como $\alpha=(i_1i_2i_3)$, nesse caso considere $\varsigma=(j_1j_2)$ onde $j_1,j_2\notin\{i_1,i_2,i_3\}$, assim temos que definimos $\theta=\gamma\varsigma\in A_n$ e $\alpha^{\theta}=\alpha^{\gamma\varsigma}=\alpha^{\gamma}=\beta$. 
+\end{proof}
+
+
