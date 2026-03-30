@@ -1,0 +1,50 @@
+Considere $n\in\mathbb{N}$, $n\geq 3$, então lembremos
+\begin{align*}
+  S_n=\{\sigma:\{1,\cdots,n\}\to\{1,\cdots,n\}:\sigma\text{ é bijetiva.}\}
+\end{align*}
+Sabemos que $|S_3|=n!$ e $Z(S_n)=\{1\}$.\\
+Então, dado  $\sigma\in S_n$ com $\sigma\neq 1$, podemos considerar a estructura cíclica de $\sigma$.
+\begin{definition}
+  Chamamos a $\sigma$ um cíclo de comprimendo $m$ se $\sigma$ é uma permutação do tipo
+  \begin{align*}
+    \sigma:G&\to G\\
+    i_1&\to i_2,\\
+    i_2&\to i_3,\\
+    &\vdots\\
+    i_m&\to i_1.
+  \end{align*}
+  Escrevemos $\sigma=(i_1,i_2,\cdots,i_m)$ ou $m$-cíclo. 
+\end{definition}
+Note que toda permutação $\sigma\neq 1$ em $S_n$ pode ser escrita como um produto de cíclos disjuntos (cíclos que não mvem elementos em común).\\
+Dois cíclos disjuntos comutam entre sí, então ela é a estructura cíclica de $\sigma$, i.e, é a manera única a mas de ordem do $\sigma$ onde $\sigma$ se escreve como produto de cíclos disjuntos.
+Exemplos: 
+\begin{align*}
+  (9357)=(3579)=(5793)=(7935)\\
+  (3\,5\,7\,9)(2\,4)(8\, 10\, 11)=(3\, 5\, 7\, 9)(9\, 10\, 11)(2\, 4)
+\end{align*}
+Você pode fazer e seguinte exercicio.
+\begin{align*}
+  (359)(89)(34)=(34598).
+\end{align*}
+\begin{note}
+  Todo $m$-cíclo pode ser escrito como um produto de [transposições] (cíclos de comprimendo $2$) não necesariamente disjuntos, por exemplo
+  \begin{align*}
+    (2359)=(29)(25)(23).
+  \end{align*}
+  Geralmente 
+  \begin{align*}
+    (i_1\, i_2\, \cdots\, i_m)=(i_1i_m)(i_1i_{m-1})\cdots (i_1i_2).
+  \end{align*}
+\end{note}
+\begin{note}[Propriedades de $S_n$]
+  Um conjunto gerador de $S_n$
+  \begin{align*}
+    \left\langle (ij):1\leq i\neq j\leq n \right\rangle=S_n.
+  \end{align*}
+  Temos as seguintes propriedades
+  \begin{itemize}
+    \item $S_n=\left\langle (12),(23),\cdots,((n-1) n) \right\rangle$.
+    \item $S_n=\left\langle (12),(12\cdots n) \right\rangle$.
+    \item Dada $\sigma=(ij)$ transpoção com $i\leq j-1$, temos $(ij)=((j-1)j)(i(j-1))((j-1)j)$. 
+  \end{itemize}
+\end{note}

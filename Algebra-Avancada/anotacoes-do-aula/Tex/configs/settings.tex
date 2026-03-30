@@ -17,6 +17,7 @@
 \usepackage{lipsum} % Libreria con el texto de prueba
 \usepackage{hyperref}         % Para enlaces dentro del documento
 \usepackage{cleveref}
+\usepackage{centernot}
 % widehat y widecheck
 \DeclareFontFamily{U}{mathx}{}
 \DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
@@ -34,6 +35,8 @@
 \DeclareMathOperator{\Img}{Im}
 \DeclareMathOperator{\mdc}{mdc}
 \newcommand{\normal}{\vartriangleleft}
+\newcommand{\car}{\underset{\text{car}}{<}}
+\newcommand{\cnot}{\centernot}
 % Integral de media
 \def\Xint#1{\mathchoice
 {\XXint\displaystyle\textstyle{#1}}%

@@ -1,6 +1,26 @@
 \begin{homeworkProblem}
   Se um subgrupo cíclico $H$ de $G$ é normal em $G$ então mostre que todo subgrupo de $H$ é normal em $G$.
   \begin{solution}
-    Solução.
+    Seja $K\leq H$, logo como $H$ é cíclico, suponha $h\in H$ tal que $H=\left\langle h \right\rangle$, logo note que existe $i\in\mathbb{Z}$ tal que 
+    \begin{align*}
+      ghg^{-1}&=h^{i}.
+    \end{align*}
+    Logo note que dado $n\in \mathbb{Z}$ temos que
+    \begin{align*}
+      gh^{n}g^{-1}&=gh\underbrace{(g^{-1}g)h\cdots (g^{-1}g)h}_{(n-1)\text{ vezes }}g^{-1}\\
+      &=\underbrace{(ghg^{-1})\cdots (ghg^{-1})}_{n\text{ vezes }}\\
+      &=(ghg^{-1})^{n}.
+    \end{align*}
+    Agora, note que como $K\leq H$, existe $m\in\mathbb{Z}$ tal que $K=\left\langle h^{m} \right\rangle$.\\
+    Fixe $g\in G$, logo veamos que dado $k\in K$, $gkg^{-1}\in K$.\\
+    Como $k\in K$, então existe $l\in \mathbb{Z}$ tal que $k=h^{lm}$, assim temos que
+    \begin{align*}
+      gkg^{-1}=gh^{lm}g^{-1}
+      =(ghg^{-1})^{lm}
+      =(h^{i})^{lm}
+      =h^{mil}
+      =k^{il}\in K.
+    \end{align*}
+    Portanto $K\normal G$.
   \end{solution}
 \end{homeworkProblem}

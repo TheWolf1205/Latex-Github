@@ -1,6 +1,12 @@
 \begin{homeworkProblem}
   Verifique se a seguinte afirmativa é verdadeira, justificando: Se $G$ é um grupo e $N \neq \{1\}$ é um subgrupo normal de $G$ tal que $G/N$ e $N$ são abelianos então $G$ é abeliano.
   \begin{solution}
-    Solução.
+    Falso.\\
+    Tome como exemplo $G=S_3=\{1,(12),(23),(13),(123),(132)\}=\{1,a,ab,ab^{-1},b,b^{-1}\}$ e $N=\{1,b,b^{-1}\}$, logo $G/N=\{\overline{a},\overline{b}\}$ onde
+    \begin{align*}
+      \overline{a}=\{a,ab,ab^{-1}\}.\\
+      \overline{b}=\{b,b^{1},1\}.
+    \end{align*}
+    Logo se pode ver que $\overline{a}\overline{b}=\overline{b}\overline{a}$, pelo que $G/N$ é abeliano, assim $G$ é um grupo, $N\normal G$ não trivial tal que $G/N$ e $N$ são abelianos, mas $G$ não é abeliano. 
   \end{solution}
 \end{homeworkProblem}

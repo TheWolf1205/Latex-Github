@@ -6,6 +6,16 @@
     \item Mostre que $G/Z(G)$ nunca tem ordem prima.
   \end{enumerate}
   \begin{solution}
-    Solução.
+    \begin{enumerate}
+      \item Como $H\leq Z(G)$, sabemos que $H$ é um grupo, alem mais, $H\subseteq G$, logo $H\leq G$.
+      \item Suponha que $G/H$ é cíclico, isso es que existe $xH\in G/H$ com $x\in G$ tal que $G/H=\left\langle xH \right\rangle$ e sabemos que como $G/H$ é um grupo, então $H\normal G$, logo como $H\leq Z(G)$ sabemos que $H$ é abeliano e comuta com todo $g\in G$.\\
+        Então, suponha $a,b\in G$, então como $H\normal G$ sabemos que existem $\overline{a},\overline{b}$ e $h_1h_2\in H$ taes que $a=\overline{a}h_1$ e $b=\overline{b}h_2$, alem mais, existem $i,j\in\mathbb{Z}$ e $\overline{h}_1,\overline{h}_2\in H$ taes que $\overline{a}h_1=x^{i}\overline{h}_1$ e $\overline{b}h_2=x^{j}\overline{h}_2$, assim
+        \begin{align*}
+          ab=x^{i}\overline{h}_1x^{j}\overline{h}_2=x^{i+j}\overline{h}_1\overline{h}_2=x^{j+i}\overline{h_2}\overline{h_1}=x^{j}\overline{h}_2x^{i}\overline{h}_1=ba.
+        \end{align*}
+        Logo $G$ é abeliano.
+      \item Vamos a racicionar por contradição.\\
+        Note que como $|G/Z(G)|=p$ com $p$ primo, então como $Z(G)\leq Z(G)$, sabemos que $G/Z(G)$ é cíclico e pelo item anterior $G$ é abeliano. Logo $Z(G)=G$, então $G/Z(G)=\{1\}$, isso es $|G/Z(G)|=1$, contradição, ja que $1$ no é primo (porque é um elemento identidade). Logo $G/Z(G)$ nunca tem ordem prima.  
+    \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
