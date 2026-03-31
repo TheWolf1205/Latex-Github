@@ -4,6 +4,35 @@
     f(x) \neq x \quad \text{para todo } x \in V \setminus \{0\}.   
   \end{align*}
   \begin{solution}
-    Solução.
+    Vamos a raciocinar por contradiçao.\\
+    Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m}$ diferenciável, com $f(0)=0$. Se a transformação linear $f^{\prime}(0)$ não tem valor próprio igual a $1$ e para toda vizinhança $V$ de $0\in\mathbb{R}^{m}$ se cumpre que existe um $x\in V\setminus\{0\}$ tal que $f(x)=x$, temos lo seguinte.
+    \begin{itemize}
+      \item Vamos pegar $V_k=B\left(0,\frac{1}{k}\right)$, logo por cada $V_k$ temos que existe $x_k\in V_k\setminus\{0\}$ que cumpre $f(x_k)=x_k$.
+      \item Devido a forma como $V_k$ foi construído sabemos que $\{x_k\}_{k\in\mathbb{Z}^{+}}\subseteq \mathbb{R}^{m}$ cumpre que $x_k\xrightarrow[k\to\infty]{}0$.
+      \item Tome $\displaystyle v_k=\frac{x_k}{|x_k|}\subseteq S^{m-1}$, logo como $S^{m-1}$ é compacto sabemos que existe uma subsequencia $\{v_{k_m}\}_{k_m\in\mathbb{Z}^{+}}$ tal que $v_{k_m}\xrightarrow[k_m\to\infty]{}v$ com $v\in S^{m-1}$. 
+    \end{itemize}
+    Assim, note que como $f$ é diferenciável temos que para todo $x\in\mathbb{R}^{m}$ se cumpre 
+    \begin{align*}
+      f(0+x)-f(0)=f^{\prime}(0)\cdot x+r(x),\quad\text{onde }\lim_{x \to 0}\frac{r(x)}{|x|}=0.
+    \end{align*}
+    Mas como $f(0)=0$ temos que
+    \begin{align*}
+      f(x)=f^{\prime}(0)\cdot x+r(x).
+    \end{align*}
+    Em particular para $x_{k_m}$ temos que
+    \begin{align*}
+      f^{\prime}(0)\cdot x_{k_m}=f(x_{k_m})-r(x_{k_m})=x_{k_m}-r(x_{k_m}).
+    \end{align*}
+    Assim, usando que $f^{\prime}(0)$ é linear y que $v_{k_m}\xrightarrow[k_m\to\infty]{}v$ temos que
+    \begin{align*}
+      f^{\prime}(0)\cdot v&=\lim_{k_m \to \infty}f^{\prime}(0)\cdot v_{k_m}\\
+      &=\lim_{k_m \to \infty}f^{\prime}(0)\cdot x_{k_m}\cdot \frac{1}{|x_{k_m}|}\\
+      &=\lim_{k_m \to \infty}\frac{x_{k_m}}{|x_{k_m}|}-\frac{r(x_{k_m})}{|x_{k_m}|}\\
+      &=v.
+    \end{align*}
+    Então, como $v\neq 0$ (pois $v\in S^{m-1}$) temos que $f^{\prime}(0)$ tem um valor próprio igual a 1. Contradição, poiss assumimos que $f^{\prime}(0)$ não tem valor próprio igual a $1$. Portanto, se $f : \mathbb{R}^m \to \mathbb{R}^m$ diferenciável, com $f(0)=0$. Se a transformação linear $f'(0)$ não tem valor próprio igual a $1$, então existe uma vizinhança $V$ de $0$ em $\mathbb{R}^m$ tal que
+    \begin{align*}
+      f(x) \neq x \quad \text{para todo } x \in V \setminus \{0\}.   
+    \end{align*} 
   \end{solution}
 \end{homeworkProblem}

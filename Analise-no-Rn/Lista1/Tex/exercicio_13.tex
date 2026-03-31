@@ -1,6 +1,6 @@
 \begin{homeworkProblem}
   Sejam $f : U \to \mathbb{R}^n$ e $g : V \to \mathbb{R}^m$ diferenciáveis nos abertos $U \subset \mathbb{R}^m$ e $V \subset \mathbb{R}^n$, com $g(f(x)) = x$ para todo $x \in U$. Se $y = f(x)$, prove que as transformações lineares $f'(x) : \mathbb{R}^m \to \mathbb{R}^n$ e $g'(y) : \mathbb{R}^n \to \mathbb{R}^m$ têm o mesmo posto.
   \begin{solution}
-    Solução.
+    Sabemos que $(g\circ f)(x)=x$ para todo $x\in U$, isso es, que para todo $y\in \mathbb{R}^{n}$ tal que $y=f(x)$ com $x\in U$ tense que $g(y)=f^{-1}(y)=x$ (ou que $g$ é inversa por esquerda ). Logo $f$ é injetiva (pois $g$ é bem definida). Assim, pela regra da cadeia e usando que $f(x)=y$ temos que $g^{\prime}(y)\cdot f^{\prime}(x)=Id_{\mathbb{R}^{m}}$. Portanto $f^{\prime}(x)$ é injetiva e $g^{\prime}(y)$ é sobrejetiva, logo $\text{posto}(f^{\prime}(x))=m$ e $\text{posto}(g^{\prime}(y))=m$. 
   \end{solution}
 \end{homeworkProblem}

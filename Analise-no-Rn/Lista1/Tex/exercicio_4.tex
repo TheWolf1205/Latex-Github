@@ -1,6 +1,46 @@
 \begin{homeworkProblem}
   Seja $U \subset \mathbb{R}^m$ aberto. A fim de que uma aplicação $f : U \to \mathbb{R}^n$ seja diferenciável no ponto $a \in U$ é necessário e suficiente que exista, para cada $h \in \mathbb{R}^m$ com $a+h \in U$, uma transformação linear $A(h):\mathbb{R}^m \to \mathbb{R}^n$ tal que $f(a+h)-f(a)=A(h)\cdot h$ e $h \mapsto A(h)$ seja contínua no ponto $h=0$.
   \begin{solution}
-    Solução.
+  \textbf{Necessário:}\\
+    Note que como $f$ é uma aplicação diferenciável, temos que
+    \begin{align*}
+      f(x+h)-f(x)=f^{\prime}(x)\cdot h+r(h).
+    \end{align*}
+    Definamos $A$ operador dado por
+    \begin{align*}
+      A:U&\to L(\mathbb{R}^{m},\mathbb{R}^{n}),\\
+      h&\to A(h):\mathbb{R}^{m}\to\mathbb{R}^{n},\\
+      \phantom{h}&\phantom{\to A(h):}\hspace{0.55cm}v\to df(a)\cdot v+\frac{\left\langle v,h \right\rangle}{|h|^{2}}r(h).
+    \end{align*}
+    Agora, note que
+    \begin{align*}
+      \lim_{h \to 0}\frac{\left\langle v,h \right\rangle}{|h|^{2}}|r(h)|\leq \lim_{h \to 0}\frac{|v||h|}{|h|}\frac{|r(h)|}{|h|}\leq \lim_{h \to 0}|v|\frac{|r(h)|}{|h|}=0.
+    \end{align*}
+    Logo, definimos $A(0)\cdot v$ por contínuidade como $A(0)\cdot v=df(a)\cdot v$. Então, note que $A(h)$ é uma aplicação linear, ja que $f^{\prime}(a)$ e $\left\langle \cdot,h \right\rangle$ são aplicações lineares, agora, pelo anterior temos que se fixamos $v\in\mathbb{R}^{m}$ ten-se que 
+    \begin{align*}
+      \lim_{h \to 0}|A(h)\cdot v-df(a)\cdot v|\leq \lim_{h \to a}\left| \frac{\left\langle v,h \right\rangle}{|h|^{2}}r(h) \right|=0.
+    \end{align*}
+    Logo $A(h)\xrightarrow[h\to 0]{}A(0)=df(a)$, i.e, $A(h)$ é uma aplicação contínua no ponto $h=0$.\\
+    Assim,
+    \begin{align*}
+      f(a+h)-f(a)&= f^{\prime}(x)\cdot h + r(h)\\
+      &=f^{\prime}(x)\cdot \frac{|h|^{2}}{|h^{2}|}r(h)\\
+      &=f^{\prime}(x)\cdot \frac{\left\langle h,h \right\rangle}{|h|^{2}}r(h)\\
+      &=A(h)\cdot h.
+    \end{align*}
+  \textbf{Suficiente}\\
+    Usando que $A(h)$ é contínua no ponto $h=0$ e $f(x+h)-f(x)=A(h)\cdot f$ temos que
+    \begin{align*}
+      f(x+h)-f(x)=A(h)\cdot h - A(0)\cdot h+A(0)\cdot h=A(0)\cdot h + \left( A(h)-A(0) \right)\cdot h.
+    \end{align*}
+    Definamos $r:\mathbb{R}^{m}\to\mathbb{R}^{n}$ dada por $r(h)=\left( A(h)-A(0) \right)\cdot h$, logo note que usando que $A(h)$ é uma aplicação contínua (portanto limitada) no ponto $h=0$ temos que 
+    \begin{align*}
+      \lim_{h \to 0}\left|\frac{\left( A(h)-A(0) \right)\cdot h}{|h|}\right|\leq \lim_{h \to 0}\frac{|A(h)-A(0)||h|}{|h|}\leq \lim_{h \to 0}|A(h)-A(0)|\leq 0.
+    \end{align*}
+    Issto es, que $\lim_{h \to 0}\frac{r(h)}{|h|}=0$. Assim
+    \begin{align*}
+      f(x+h)-f(x)=A(0)\cdot h+r(h),\quad\text{onde }\lim_{h \to 0}\frac{r(h)}{|h|}=0.
+    \end{align*}
+    Logo $f$ é diferenciável e $f^{\prime}(x)=A(0)$. 
   \end{solution}
 \end{homeworkProblem}

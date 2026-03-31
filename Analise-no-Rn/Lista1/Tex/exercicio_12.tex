@@ -5,6 +5,15 @@
     \]
     Prove que a relação de Euler $f'(x)\cdot x = kf(x)$ é necessária e suficiente para que uma aplicação diferenciável $f : U \to \mathbb{R}^n$ seja positivamente homogênea de grau $k$.
   \begin{solution}
-    Solução.
+    \textbf{Necessária:}\\
+    Defina $\phi(t)=f(tx)$, logo usando a regra da cadeia e que $f$ cumpre a relação de Euler temos que 
+    \begin{align*}
+      \phi^{\prime}(t)=f^{\prime}(tx)\cdot x=f^{\prime}(tx)\cdot \frac{tx}{t}=f(tx)\frac{k}{t}=\frac{k}{t}\phi(t).
+    \end{align*}
+    Resolvendo a equação diferencial temos que $\displaystyle \int \frac{1}{\phi(t)}\,d\phi(t)=\int \frac{k}{t}\,dt$, logo $\displaystyle \ln(\phi(t))=k\ln(t)+c$. Assim $\phi(t)=ct^{k}$, mas $\phi(1)=f(x)$ o que implica que $\phi(t)=t^{k}f(x)$. Assim, por outro lado por definição $\phi(t)=f(tx)$, então $f(tx)=t^{k}f(x)$ para todo $x\in U$ e todo $t>0$.
+
+    \textbf{Suficiente:}\\
+    Defina $\phi(t)=f(tx)$, logo por um lado temos que usando a regra da cadeia se cumpre que $\phi^{\prime}(t)=f^{\prime}(tx)\cdot x$. Por outro lado temos que como $f$ é positivamente homogenea de grau $k$ temos que $\phi(t)=t^{k}f(x)$ e usando a regra da cadeia tense que $\phi^{\prime}(t)=kt^{k-1}f(x)$.\\
+    Logo $f^{\prime}(x)\cdot x=\phi^{\prime}(1)=kf(x)$, isso es que $f$ cumpre a relação de Euler.
   \end{solution}
 \end{homeworkProblem}

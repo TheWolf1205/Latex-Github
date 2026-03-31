@@ -1,6 +1,28 @@
 \begin{homeworkProblem}
   Seja $f : U \to \mathbb{R}^n$ diferenciável no aberto $U \subset \mathbb{R}^m$. Se, para algum $b \in \mathbb{R}^n$, o conjunto $f^{-1}(b)$ possui um ponto de acumulação $a \in U$, então $f'(a):\mathbb{R}^m \to \mathbb{R}^n$ não é injetiva.
   \begin{solution}
-    Solução.
+    Defina o seguinte conjunto
+    \begin{align*}
+      A=\{x\in U:f(x)=b\}.
+    \end{align*}
+    Logo $a$ é um ponto de acumulação do $A$.
+    Portanto, Vamos pegar $\{x_k\}_{k\in\mathbb{Z}^{+}}\subseteq A$ taes que $x_k\xrightarrow[k\to\infty]{}a$. Note que para cada $x_k$ podemos encontrar um $h_k$ tal que $x_k=a-h_k$, logo $h_k\xrightarrow[k\to\infty]{}0$. Então, como $f$ é diferenciável temos que
+    \begin{align*}
+      f(a+h_k)-f(a)=f^{\prime}(a)\cdot h_k+r(h_k),
+    \end{align*}
+    mas, como $f(a+h_k)=b=f(a)$ temos que
+    \begin{align*}
+      f^{\prime}(a)\cdot h_k=-r(h_k),\quad\text{ para todo }k\in\mathbb{Z}^{+}.
+    \end{align*}
+    Definamos $v_k=\frac{h_k}{|h_k|}\in S^{m-1}$, usando que $S^{m-1}$ é compacto, sabemos que existe uma subsequencia $\{v_{k_m}\}_{k_m\in\mathbb{Z}^{+}}$ tal que $x_{k_m}\xrightarrow[k_m\to\infty]{}v$ com $v\in S^{m-1}$.\\
+    Agora, usando que $f^{\prime}(a)$ é linear temos que
+    \begin{align*}
+      \lim_{k_m \to \infty}f^{\prime}(a)\cdot h_{k_m}\frac{1}{|h_{k_m}|}=\lim_{k_m \to \infty}f^{\prime}(a)\cdot \frac{h_{k_m}}{|h_{k_m}|}=\lim_{k_m \to \infty}f^{\prime}(a)\cdot v_k=f^{\prime}(a)\cdot v.
+    \end{align*}
+    Por outro lado
+    \begin{align*}
+      f^{\prime}(a)\cdot v=\lim_{k_m \to \infty}f^{\prime}(a)\cdot h_{k_m}\frac{1}{|h_{k_m}|}=\lim_{k_m \to \infty}-\frac{r(h_{k_m})}{|h_{k_m}|}=0.
+    \end{align*}
+    Logo como $v\in S^{m-1}$, então $v\neq 0$. Portanto, $f^{\prime}(a)$ não é uma aplicação injetiva. 
   \end{solution}
 \end{homeworkProblem}
