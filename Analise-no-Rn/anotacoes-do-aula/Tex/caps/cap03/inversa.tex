@@ -88,3 +88,167 @@ Pode tomar como exemplo $f(x,y)=(e^{x}\cos(y),e^{x}\sen(y))$, mas veremos isso m
   $f^{\prime}(x,y)$ é um isomorfismo para todo $(x,y)\in\mathbb{R}^{2}$?\\
   $f$ não é injetiva, então no é difeomorfismo global. 
 \end{example}
+Agora, com a intenção de provar o teorema de difeomorfismo do homomorfismo inverso vamos a provar alguns lemas e teoremas.
+\begin{lemma}\label{lema:inversa-e-cinfinito}
+  A aplicação
+  \begin{align*}
+    inv:GL(\mathbb{R}^{m})&\to GL(\mathbb{R}^{m})\\
+    x&\to x^{-1},
+  \end{align*}
+  é $C^{\infty}$.
+\end{lemma}
+Lembremos que
+\begin{itemize}
+  \item $GL(\mathbb{R}^{m})=\{x\in \mathbb{R}^{m\times m}:\det(x)\neq 0\}$.
+  \item $GL(\mathbb{R}^{m})$ é aberto de $\mathbb{R}^{m\times m}$, poiss a função
+    \begin{align*}
+      \det:\mathbb{R}^{m\times m}&\to\mathbb{R}\\
+      x&=\det(x)
+    \end{align*}
+    é contínua (é um polinomio nas entradas).\\
+    Logo $\det(\mathbb{R}\setminus\{0\})=GL(\mathbb{R}^{n})$.
+\end{itemize}
+\begin{proof} 
+  Sabemos que $x^{-1}=\frac{1}{\det(x)}\cdot Adj(x)$, logo $x^{-1}$ é uma função racional com $\det(x)\neq 0$, assim $inv\in C^{\infty}$. 
+\end{proof}
+\begin{lemma}\label{lema:2-ckdifeomorfismo}
+  Se $f:U\to V$ é um $C^{k}$-difeomorfismo, então para todo $y=f(x)\in V$, temos que $g^{\prime}(y)=\left[ f^{\prime}(x) \right]^{-1}=\left[ f^{\prime}\left( g(y) \right) \right]^{-1}$.
+\end{lemma}
+\begin{proof} 
+  Como $g(f(x))=x$, para todo $x\in U$, pela regra da cadeia temos que, $g^{\prime}(f(x))\cdot f^{\prime}(x)=Id_{\mathbb{R}^{m}}$. Então $g^{\prime}(y)=g^{\prime}\left( f(x) \right)=\left[ f^{\prime}(x) \right]^{-1}=\left[ f^{\prime}(g(y)) \right]^{-1}$.
+\end{proof}
+\begin{theorem}\label{teo:3.6-teorema1}
+  Se $f:U\to V$ é um $C^{k}$-difeomorfismo com $U\subseteq \mathbb{R}^{m}$ e $V\subseteq\mathbb{R}^{n}$ abertos, então $g=f^{-1}:V\to U$ também é $C^{k}$. 
+\end{theorem}
+\begin{proof} 
+  Por indução sobre $k$.\\
+  $k=1$.
+  \begin{itemize}
+    \item $f\in C^{1}$, diferenciável e $f^{\prime}$ é contínua.
+    \item $g$ é diferenciável, então $g$ é contínua. 
+  \end{itemize}
+  Ja que $g^{\prime}=inv\circ f^{\prime}\circ g$, então $g^{\prime}$ é contínua (al ser composta de contínuas) e portanto $g\in C^{1}$.
+
+  Paso indutivo,.\\
+  Sumponha que o resultado é certo para $k-1$, vamos verificar o resultado para $k$.
+  \begin{itemize}
+    \item $f^{\prime}\in C^{k-1}$ (pois $f\in C^{k}$).
+    \item $g\in C^{k-1}$ (pois $f\in C^{k-1}$).
+    \item $inv\in C^{k-1}$ (pelo lema \ref{lema:2-ckdifeomorfismo}).
+  \end{itemize}
+  Como $g^{\prime}=inv\circ f^{\prime}\circ g$, então $g^{\prime}\in C^{k-1}$, i.e, $g\in C^{k}$.
+\end{proof}
+\begin{theorem}\label{teo:3.6-teorema2}
+  Seja $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ de classe $C^{1}$, com $a\in U$. Se $f^{\prime}(a):\mathbb{R}^{m}\to\mathbb{R}^{n}$ é injetiva, então existem $\delta>0$ e $c>0$ taes que $|f(x)-f(y)|\geq c|x-y|$ para todo $x,y\in B(a,\delta)$. 
+\end{theorem}
+\begin{proof} 
+  Como $f^{\prime}(a)$ é injetiva $f^{\prime}(a)\cdot v\neq 0$ para todo $v\in\mathbb{R}^{m}$.\\
+  Defina a função $\phi(u)=|f^{\prime}(a)\cdot u|$ para todo $u\in S^{m-1}$. Note que $\phi$ é contínua. Assim, pelo teorema de Weierstrass, $\phi$ atingue um mínimo. Este mínimo é positivo pois $\phi(u)>0$ para todo $u\in S^{m-1}$. Então, existe $c>0$ tal que
+  \begin{align*}
+    |f^{\prime}(a)\cdot u|\geq 2>0.
+  \end{align*}
+  Logo
+  \begin{align*}
+    |f^{\prime}(a)\cdot \frac{v}{|v|}||v|\geq 2c|v|>0,\quad\text{ para todo }v\in\mathbb{R}^{m}.
+  \end{align*}
+  Agora, defina $r(x)=f(x)-f(a)-f^{\prime}(a)(x-a)$. Então
+  \begin{itemize}
+    \item $r(a)=0$.
+    \item $r^{\prime}(a)=f^{\prime}(a)-f^{\prime}(a)=0$.
+  \end{itemize}
+  Como $r^{\prime}$ é contínua em $a$, temos que dado $\epsilon=c>0$, existe $\delta^{\prime}>0$ tal que se $|x-a|<\delta^{\prime}$, então $|r^{\prime}(x)-r^{\prime}(a)|=|r^{\prime}(x)|<\epsilon=c$.\\
+  Seja $B=B(a,\delta)$ com $\delta=\frac{\delta^{\prime}}{2}$, logo dados $x,y\in B$, temos que $[x,y]\in B$. Logo pela desigualdade do valor médio, temos que
+  \begin{align*}
+    |r(x)-r(y)|\leq c|x-y|.
+  \end{align*}
+  Assim
+  \begin{align*}
+    |f(x)-f(y)|\geq|f^{\prime}(a)(x-y)|-|r(x)-r(y)|\geq 2c|x-y|-c|x-y|\geq c|x-y|.
+  \end{align*}
+\end{proof}
+\begin{theorem}[Difeomorfismo do homomorfismo inverso]\label{teo:3.6-teorema-difeo-inverso}
+  Seja $f:U\to V$ um homeomorfismo diferenciável entre abertos $U,V\in\mathbb{R}^{n}$. Se para algúm $x\in U$, $f^{\prime}(x)$ é invertivel, então $g=f^{-1}$ é diferenciável em $y=f(x)$ e $g^{\prime}(y)=\left[ f^{\prime}(x) \right]^{-1}$. 
+\end{theorem}
+\begin{proof} 
+  Sejam $y=f(x)\in V$. Para $v\in\mathbb{R}^{m}$ tal que $x+v\in U$, defina
+  \begin{align*}
+    w=f(x+y)-f(x)=f(g(y)-v)-y.
+  \end{align*}
+  Então $w+y=f(g(y)+v)$, logo como $g=f^{-1}$ temos 
+  \begin{align*}
+    g(w+y)=g(f(g(y)+v))=g(y)+v.
+  \end{align*}
+  Assim $v=g(w+y)-g(y)$.\\
+  Como $f$ é diferenciável em $x$ temos que
+  \begin{equation}\label{eq:3.6-eq1}
+    w=f(x+v)-f(x)=f^{\prime}(x)\cdot v+r(v).
+  \end{equation}
+  Assim, $f^{\prime}(x)$ invertivel, implica
+  \begin{align*}
+    \left[ f^{\prime}(x) \right]^{-1}\cdot w=v+\left[ f^{\prime}(x) \right]^{-1}\cdot r(v).
+  \end{align*}
+  i.e,
+  \begin{align*}
+    v=\left[ f^{\prime}(x) \right]^{-1}\cdot w-\left[ f^{\prime}(x) \right]^{-1}\cdot r(v).
+  \end{align*}
+  Então, como queremos provar que $g$ é diferenciável em $y=f(x)$ e $g^{\prime}(y)=\left[ f^{\prime}(x) \right]^{-1}$, logo
+  \begin{align*}
+    v=g(w+y)-g(y)=\left[ f^{\prime}(x) \right]^{-1}\cdot w-\left[ f^{\prime}(x) \right]^{-1}\cdot r(v).
+  \end{align*}
+  \textbf{Afirmação:} $\lim_{w \to 0}\frac{\left[ f^{\prime}(x) \right]^{-1}\cdot r(v)}{|w|}=0$.\\
+  De fato
+  \begin{align*}
+    \frac{\left|\left[ f^{\prime}(x) \right]^{-1}\cdot r(v)\right|}{|w|}\leq \left| \left[ f^{\prime}(x)\right]^{-1} \right|\cdot \frac{|r(v)|}{|w|}\leq \left| \left[ f^{\prime}(x) \right]^{-1} \right|\cdot \frac{|r(v)|}{|v|}\cdot \frac{|v|}{|w|}.
+  \end{align*}
+  Logo, pelo teorema \ref{teo:3.6-teorema2}, existe uma vizinhança de $x$ onde
+  \begin{align*}
+    |f(x+v)-f(x)|\geq c|v|
+  \end{align*}
+  para algúm $c>0$, ou seja que usando \eqref{eq:3.6-eq1} temos que $|w|\geq c|v|$, i.e, $\frac{|v|}{|w|}\leq \frac{1}{c}$. Por tanto
+  \begin{align*}
+    \lim_{w \to 0}\frac{\left| \left[ f^{\prime}(x) \right]^{-1}\cdot r(v) \right|}{|w|}\leq \lim_{w \to 0}\left| \left[ f^{\prime}(x) \right]^{-1} \right|\cdot \frac{|r(v)|}{|v|}\cdot \frac{|v|}{|w|}\leq \frac{M}{c}\lim_{v \to 0}\frac{|r(v)|}{|v|}=0,
+  \end{align*}
+  Com $M\geq \left|\left[ f^{\prime}(x) \right]^{-1} \right|$, o que conclui o resultado. 
+\end{proof}
+\begin{corollary}
+  Se $f:U\to V$ é um homeomorfismo de classe $C^{1}$ e $f^{\prime}(x)$ é invertivel para todo $x\in U$, então $g=f^{-1}\in C^{1}$. 
+\end{corollary}
+\begin{proof} 
+  Pelo teorema \ref{teo:3.6-teorema-difeo-inverso} $g$ é diferenciável em $v$ e $g^{\prime}=inv\circ f^{\prime}\circ g$. Logo $g^{\prime}$ é contínua, i.e, $g=f^{-1}\in C^{1}$. 
+\end{proof}
+\begin{lemma}\label{lema:3.6-lema1}
+  Sejam $U\subseteq \mathbb{R}^{m}$ aberto e $g:U\to\mathbb{R}^{n}$ diferenciável em $a\in U$ com $g^{\prime}(a)$ sobrejetive. Se $a$ é ponto mínimo local de $|g(x)|$, então $g(a)=0$.
+\end{lemma}
+\begin{proof} 
+  Defina $\phi(x):=|g(x)|^{2}=\left\langle 
+  g(x),g(x)\right\rangle$ com $x\in U$.\\
+  Se $a$ é mínimo local de $|g|$, então também é mínimo local de $\phi$.\\
+  Logo, $\phi^{\prime}(a)=0$ e como $\phi^{\prime}(x)\cdot v=2\left\langle g^{\prime}(x)\cdot v,g(x) \right\rangle$ para todo $v\in\mathbb{R}^{m}$, temos que 
+  $$\phi^{\prime}(a)\cdot v=2\left\langle g^{\prime}(a)\cdot v,g(a) \right\rangle=0\text{ para todo }v\in\mathbb{R}^{m},$$
+  logo como $g^{\prime}(a)$ e sobrejetiva, então $g(a)=0$. 
+\end{proof}
+\begin{theorem}[Teorema da aplicação inversa]
+  Seja $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{k}$ ($k\geq 1$). Se $a\in U$ e $f^{\prime}(a)$ é invertivel, então existe uma bola aberta $B=B(a,\delta)\subseteq U$ tal que $F\big|_{B}$ é um $C^{k}$-difeomorfismo sobre um aberto $V\subseteq\mathbb{R}^{m}$ contendo $f(a)$. 
+\end{theorem}
+\begin{proof} 
+  \begin{enumerate}
+    \item Como $f^{\prime}(a)$ é invertivel (em particular injetiva) pelo teorema \ref{teo:3.6-teorema2}, existem $\delta>0$ e $c>0$ taes que $|f(x)-f(y)|\geq c|x-y|$ para todo $x,y\in \overline{B}(a,\delta)$. Note que em particular $f\big|_{\overline{B}}$ é injetiva.
+    \item $f\big|_{\overline{B}}$ é um homeomorfismo sobre $f\left( \overline{B} \right)$. Ja que sabemos que $f\big|_{\overline{B}}$ é contínua, bijetiva e $g=f^{-1}$ é contínua.
+    \item $f(B)$ é aberto.\\
+      \textcolor{red}{Sabemos que $g=f^{-1}$ é contínua e que $f$ é bijetiva, logo como $B$ é aberto, então $f^{-1}\left( B \right)=f(B)$ é aberto. (Funciona?)}\\
+      Seja $q=f(p)$ com $p\in B$. Seja $S=\partial\overline{B}=\{x\in\mathbb{R}^{m}:|x-a|=\delta\}$, como $f$ é injetiva em $\overline{B}$, então $q\notin f(S)$. Como $f(S)$ e compacto, logo existe $\epsilon>0$ tal que
+      \begin{align*}
+        |f(x)-q|\geq 2\epsilon\text{ para todo }x\in S.
+      \end{align*}
+      \textbf{Afirmação:} $B(q,\epsilon)\subseteq f(B)$.\\
+      Seja $y\in B(q,\epsilon)$ e considere a função $h(x)=|f(x)-y|$ com $x\in \overline{B}$. Como $\overline{B}$ é compacto, $h$ atingue um mínimo em algum $x_0\in \overline{B}$.
+      \begin{itemize}
+        \item $x_0\in S$, então $|h(x_0)|\geq 2\epsilon$.\\
+          Logo $|f(x)-y|\geq |f(x)-q|-|q-y|\geq 2\epsilon-\epsilon\geq \epsilon.$
+        \item Por outro lado $h(p)=|q-y|<\epsilon$.\\
+          Então o mínimo não pode ocorrer em $S$ pois em $p\in B$ o valor é menor pelo lema \ref{lema:3.6-lema1} aplicando a $g(x)=f(x)-y$, como $x_0$ é ponto mínimo de $|g(x)|$, temos $g(x_0)=0$, seja $f(x_0)=y$, então $y\in f(B)$. 
+      \end{itemize}
+    \item Assim, pelo teorema \ref{teo:3.6-teorema-difeo-inverso} temos que $f\big|_{B}$ é difeomorfismo.
+    \item $f\in C^{k}$ ($k\geq 1$), logo $f$ é um $C^{k}$-difeomorfismo e pelo teorema \ref{teo:3.6-teorema1}, então $g\in C^{k}$.
+  \end{enumerate}
+\end{proof}
