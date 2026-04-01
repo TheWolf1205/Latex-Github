@@ -1,0 +1,81 @@
+\begin{theorem}[Teorema de Cauchy]
+  Se $G$ é um grupo finito e $p$ é primo tal que $p\mid |G|$, então existe $g\in G$ tal que $o(g)=p$. 
+\end{theorem}
+\begin{proof} 
+  Vamos a raciocinar por indução sobre $|G|$.\\
+  \begin{enumerate}
+    \item O teorema vale si $|G|=1$ por vacuidade.
+    \item Suponha que o teorema vale para qualquer $|G|\leq n$, portanto, vale para qualquer $H\leq G$, com $H\neq G$.
+    \item Vamos a raciocinar por casos.
+    \begin{enumerate}
+      \item Suponha que $G$ é cíclico, digamos, $G=\left\langle g \right\rangle$ e $p\mid |G|$, então temos que $o(g^{n/p})=p$.
+      \item Suponha que $G$ é abeliano não cíclico.\\
+        Seja $p$ primo com $p\mid |G|$. Tome $x\in G$ com $x\neq 1$. Temos que $\{1\}\neq \left\langle x \right\rangle\leq G$ e $\left\langle x \right\rangle\neq G$, note que $N=\left\langle x \right\rangle\normal G$, logo $p\mid [G:N]|N|$, então, se $p\mid N$, pela hipotese de indução, acabou.\\
+        Por outro lado, se $p\nmid |N|$, então $p\mid |G/N|$, como $|G/N|\leq |G|$, usamosa hipotese de indução e temos que existe $Ng\in G/N$, com $g\in G$ e $o(Ng)=p$, logo $g^{p}\in N$ e $g\notin N$.\\
+        Considere $o(g^{p})=k$, temos que $(g^{p})^{k}=1$, logo se $g^{k}=1$ temos uma contradição, caso contrário, $o(g^k)=p$.
+      \item $G$ não e abeliano.\\
+        Neste caso, $Z(G)\neq G$, se $p\mid |Z(G)|$, então pela hipotese de induçao temos que existe $g\in Z(G)$ tal que $g^{p}=1$.\\
+        Por outro lado, se $p\nmid |Z(G)|$, usando a equações das classes de conjugação temos que
+        \begin{align*}
+          |G|=|Z(G)|+\dot{\sum_{x\notin Z(G)}}|Cl(x)|.
+        \end{align*}
+        Logo como $p\nmid |Z(G)|$, então existe $x\in G$ tal que $p\nmid |Cl(x)|$ com $x\notin Z(G)$.\\
+        Temos que $p\nmid |Cl(x)|=[G:C_{G}(x)]$, então $p\mid |C_{G}(x)|$, com $C_{G}(x)\neq G$, pois $x\notin Z(G)$. Logo pela hipotese de indução temos que existe $g$ tal que $g^{p}=1$. 
+    \end{enumerate}
+  \end{enumerate}
+\end{proof}
+Agora, vamos provas que $A_n$ é um grupo simple, para $n\geq 5$, isso porque $A_n$ é gerado pelos $3$-cíclos e todos os $3$-cíclos son conjugados em $A_n$.
+\begin{theorem}[$A_n$ é simple]
+  Seja $G=A_n$. Se $n\geq 5$ temos que $A_n$ é simple. 
+\end{theorem}
+\begin{proof} 
+  Seja $\{1\}\neq N\normal A_n$, para mostrar que $N=A_n$ basta mostrar que $N$ contem um $3$-cíclo, ja que os $3$-cíclos são conjugação de outro $3$-cíclo.\\
+  Considere $p$ primo tal que $p\mid |N|$.\\
+  Pelo teorema de Cauchy, existe $\sigma\in N$ tal que $o(\sigma)=p$.\\
+  Escrevemos $\sigma$ como produto de ciclos disjuntos $\varsigma_i$, $1\leq i\leq m$, logo $\sigma=\varsigma_1\cdots\varsigma_m$.\\
+  Deta forma, cada $\varphi_i$ é um $p$-cíclo.\\
+  Analisamos os valorespossivels para $p$.
+  \begin{enumerate}
+    \item $p=2$.\\
+      uma transposiçõe e assim, $m\geq 2$ par, escreva
+      \begin{align*}
+        \sigma=(ab)(cd)\varsigma_3\cdots\varsigma_m\in N.
+      \end{align*}
+      Considere $\gamma=(abc)$, temo que como $N$ é normal se pode calcular
+      \begin{align*}
+        \sigma^{\gamma}\sigma^{-1}&=(ab)^{\gamma}(cd)^{\gamma}\varsigma_3^{\gamma}\cdots\varsigma_{m}^{\gamma}\cdot \sigma^{-1}\\
+        &=(ab)^{\gamma}(cd)^{\gamma}(ab)(cd)\\
+        &=(ac)(bd)\in N.
+      \end{align*}
+      Agora, como $n\geq 5$, podemos tomar $k\notin\{a,b,c,d\}$, consideremos $\theta=(ack)$ e $\alpha=(ac)(bd)$ e temos que $(akc)=\alpha^{\theta}\alpha\in N$.
+    \item $p=3$.\\
+      Neste caso, cada $\varsigma_i$ é um $3$-cíclo, se $m=1$, acabou. Caso contrário, se $m\geq 2$, escreva $\sigma=(abc)(def)\varsigma_3\cdots\varsigma_m$. Considere o $3$-cíclo $\gamma=(bcd)$ e, como $N$ é normal se cumpre que $\sigma^{\gamma}\sigma^{-1}\in N$ e é um $5$-cíclo, este caso será resolvido a partir de na próxima situação.
+    \item $p>3$.\\
+      Consider $\varsigma_1=(a_1a_2\cdots a_p)$: $p$-cíclo em $N$ e $\gamma=(a_2a_3a_4)$ (observe que $\gamma$ comuta com todos $\varsigma_i$ com $i\geq 2$). Temos que
+      \begin{align*}
+        \sigma^{\gamma}\sigma^{-1}=(a_2a_3a_5)\in N.
+      \end{align*}
+      Isto mostra o resultado.
+  \end{enumerate}
+  Em conclução $N=A_n$.
+\end{proof}
+\textbf{Consequências:}\\
+Subgrupos normais de $S_n$, $n\geq 3$.
+\begin{itemize}
+  \item $n=3$, $N\normal S_3$, então $N=\{1\}$ ou $N=A_3=S_3$.
+  \item $n=4$, $N\normal S_4$, logo temos que $N\in \left\{ \{1\},K_4,,A_4,S_4 \right\}$ (queda como exercicio mstrar que são os únicos normais de $S_4$).
+  \item $n\geq 5$. Se $N\normal G$, então $N\in\left\{ \{1\},A_n,S_n \right\}$, usando que $N\normal S_n$ temos que $A_n\cap N\normal A_n$, logo como $A_n$ é simple, temos que $A_n\leq N\leq S_n$, assim, $N=A_n$ ou $S_n$. Por outro lado, se $N\cap A_n=\{1\}$, então vamos provar que $N=\{1\}$. Raciocinando por contradiçao temos que existe um $\theta\in N$ tal que $\theta\neq 1$, temos que $\theta\notin A_n$, mas $\theta^{2}\in N$ é par e $\theta^{2}\in A_n$. Logo $\theta^{2}\in N\cap A_n=\{1\}$, então $\theta^{2}=1$.\\
+    \text{Afirmação:} $N=\{1,\theta\}$.\\
+    De fato, se $1\neq \gamma\in N$ temos que $\gamma\theta\in A_n$, logo $\gamma\theta=1$ e assim $\gamma=\theta^{-1}=\theta$.\\
+    Agora, escreva $\theta$ como um produto de transposições disjuntas $\theta=\varsigma_1\cdots\varsigma_k$ com $k$ impar, se $k=1$, digamos $\theta=(i_1j_1)$ (temos que $n\geq 5$) então tome $j_2\in \{i_1j_1\}$ e $\alpha=(i_1j_2)$, temos $\theta^{\gamma}=(j_2j_1)\neq \theta$, contradição.\\
+    Se $k\geq 2$, considere $\theta=(i_1j_1)(i_2j_2)\varsigma_3\cdots\varsigma_k$ e $\beta=(i_1i_2)$. Assim $\theta^{\beta}=(i_2j_1)(i_1j_2)\varsigma_3\cdots\varsigma_k\neq \theta$, contradição.\\
+    Logo, neste caso $N=\{1\}$.
+\end{itemize}
+\begin{definition}[$p$-grupo]
+  Dizemos que $G$ é um $p$-grupo se todo elemento de $G$ tem ordem de potência de $p$.
+\end{definition}
+\begin{note}
+  Se $G$ é um $p$ grupo finito, temos que pelo teorema de Cauchy, $|G|=p^{m}$ para algúm $m\geq 1$.\\
+  Mas um $p$-grupo não precisa ser necessariamente finitom tome como exemplo $\mathbb{Z}_{p^{\infty}}$.\\
+  Como exercicio pode tentar mostrar qu os $p$-grupos finítos são solúveis.
+\end{note}

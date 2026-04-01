@@ -1,0 +1,13 @@
+\begin{homeworkProblem}
+  Sejam $G$ um grupo e $N \normal G$. Mostre que:
+  \begin{enumerate}
+    \item Se todo elemento de $N$ e de $G/N$ tem ordem finita, então todo elemento de $G$ tem ordem finita.
+    \item Se $N$ é finito e $G/N$ contém um elemento de ordem $n$, mostre que $G$ contém um elemento de ordem $n$.
+  \end{enumerate}
+  \begin{solution}
+    \begin{enumerate}
+      \item Seja $g\in G$, logo $gN\in G/N$. Então, usando que todo elemento de $G/N$ tem ordem finita sabemos que existe $k\in\mathbb{Z}^{+}$ tal que $g^{k}\in N$, logo como todo elemento de $N$ tem ordem finita, sabemos que existe $m\in\mathbb{Z}^{+}$ tal que $(g^{k})^{m}=1$, logo $o(g)\leq km$. Isso es, que todo elemento $g\in G$ tem ordem finita.
+      \item Suponha que $|N|=m$. Tome $gN\in G/N$ tal que $o(gN)=n$, logo $g^{n}\in N$. Alem mais, note que $\left\langle g^{n} \right\rangle\leq  N$, logo $\left| \left\langle g^{n} \right\rangle \right|\leq |N|=m$. Assim, seja $\left| \left\langle g^{n} \right\rangle \right|=l$ e tome $h\in G$ como $h=g^{l}$, logo $h^{n}=\left( g^{l} \right)^{n}=\left( g^{n} \right)^{l}=1$, isso es que $o(h)=m$. 
+    \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}

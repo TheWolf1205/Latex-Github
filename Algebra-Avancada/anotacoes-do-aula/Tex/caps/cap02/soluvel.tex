@@ -1,0 +1,69 @@
+\begin{definition}[Grupo solúvel]
+  Dezemos que $G$ é um \textbf{grupo solúvel} se existe uma sequencia finita $\{G_i\}_{i=1}^{n}$ de sugbrupos de $G$ taes que cumprem o papel de serem série abeliana, isso es
+  \begin{align*}
+    \{1\}=G_0\normal G_1\normal \cdots\normal G_n=G
+  \end{align*}
+  e $G_{i+1}/G_{i}$ é abelinao. 
+\end{definition}
+\begin{example}
+  \begin{enumerate}
+    \item Todo grupo abeliano é solúvel, ja que $\{1\}\normal G$.
+    \item Se $G$ é simple, é solúvel, então $G$ é abeliano.
+    \item $S_3$ é solúvel, poiss $\{1\}\normal \left\langle (123) \right\rangle\normal S_3$.
+    \item $D_4$ é solúvel (\textcolor{red}{fazer diagrama}).
+    \item $S_4$ é solúvel $\{1\}\normal K_4\normal A_4\normal S_4$.
+    \item $S_n$ com $n\geq 5$ não é solúvel (vamos demonstrar isso mais tarde).
+    \item $|G|=p^{3}$ é solúvel. Por um lado, se $G$ é abeliano, então $e$ solúvel. Por outro lado, se $G$ não é abeliano, então $|Z(G)|=p$, logo $\{1\}\normal Z(G)\normal G$.
+    \item $|G|=p^{r}$, então $G$ é solúvel.\\
+      Existe $H\leq G$ tal que $|H|=q$, logo $[G:H]=p$, logo $H\normal G$ (porque é abeliano). Assim, $\{1\}\normal H\normal G$. 
+  \end{enumerate}
+\end{example}
+\begin{theorem}[Teorema de Burniside]
+  Se $G$ é um grupo tal que $|G|=p^{a}q^{b}$, então $G$ é solúvel. 
+\end{theorem}
+\begin{proposition}[Propriedades do um grupo solúvel]
+  \begin{enumerate}
+    \item Se $H\leq G$, então $H$ é solúvel.
+    \item Se $N\normal G$, então $G/N$ é solúvel.
+    \item Se $N\normal G$, $N$ solúvel e $G/N$ é solúvel, então $G$ é solúvel. 
+  \end{enumerate}
+\end{proposition}
+\begin{proof} 
+  \begin{enumerate}
+    \item Vamos seguir o diagrama abaixo.\\
+      \begin{center}
+        \input{images/propriedades-soluvel-1}  
+      \end{center}
+      \begin{itemize}
+        \item Defina $H_i=H\cap G_i$. Logo $H_i\normal H_i+1$.
+        \item Temos que
+          \begin{align*}
+            H_{i+1}/H_{i}&=\frac{H\cap G_{i+1}}{H\cap G_i}\\
+            &=\frac{H\cap G_{i+1}}{(H\cap G_{i+1})\cap G_{i}}\\
+            &\cong \frac{(H\cap G_{i+1})G_{i}}{G_i} \leq G_{i+1}/G_{i}, \text{ é abeliano}.
+          \end{align*}
+      \end{itemize}
+      Logo $H$ é solúvel.
+    \item Vamos segui o diagrama abaixo.\\
+      \begin{center}  
+        \input{images/propriedades-soluvel-2}  
+      \end{center}
+      \begin{itemize}
+        \item Seja $\{G_kN/N\}$ a sequencia.
+        \item $G_iN/N\normal G_{i+1}N/N$.
+        \item $\frac{G_{i+1}N/N}{G_iN/N}$ é abeliano. 
+      \end{itemize}
+    \item Como $G/N=\overline{G}$  é solúvel, existe seguinte $\{\overline{G}_i\}$ tal que
+      $$\{\overline{1}\}=\overline{G}_0\normal \overline{G}_1\normal \cdots\normal \overline{G}_n=G/N.$$
+      Pelo teorema de correspondencia temos que existen $G_i$ tales que
+      $$N\normal G_1\normal \cdots\normal G_{n-1}\normal G_n.$$
+      E como $N$ é solúvel
+      $$\{1\}\normal \overline{G}_1\normal\cdots\normal N\normal G_1\normal \cdots\normal G_{n-1}\normal G_n.$$
+  \end{enumerate}
+\end{proof}
+\begin{definition}[Série derivada]
+  Seja $G$ um grupo. Se definimos $G^{(0)}=G,G^{(1)}=G^{\prime},G^{(i+1)}=(G^{(i)})^{\prime}$, então chamamos $\{G^{(i)}\}_{i\geq 0}$ \text{série derivada} de $G$. 
+\end{definition}
+\begin{proposition}
+  $G$ é soluvél se, somente se, existe $m\in\mathbb{N}$ tal que $G^{(m)}=\{1\}$. 
+\end{proposition}
