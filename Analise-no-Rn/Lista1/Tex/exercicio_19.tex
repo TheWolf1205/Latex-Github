@@ -1,14 +1,44 @@
 \begin{homeworkProblem}
   Seja $U \subset \mathbb{R}^n$ um conjunto aberto e $u : U \to \mathbb{R}$ uma função de classe $C^2(U)$, ou seja, $u$ possui todas as derivadas parciais de primeira e segunda ordem contínuas em $U$. Para cada $x \in U$, definimos o Laplaciano de $u$ por
-    \[
+    \begin{align*}
     (\Delta u)(x) := \sum_{i=1}^n \frac{\partial^2 u}{\partial x_i^2}(x).
-    \]
+    \end{align*}
     Seja $T : \mathbb{R}^n \to \mathbb{R}^n$ uma transformação linear ortogonal, isto é, $T T^T = I_n$. Prove que
-    \[
+    \begin{align*}
     \Delta (u \circ T) = (\Delta u) \circ T,
-    \]
+    \end{align*}
     no conjunto $T^{-1}(U) = \{y \in \mathbb{R}^n : T(y) \in U\}$.
   \begin{solution}
-    Solução.
+    Note que $u\circ T$ é definida por
+    \begin{align*}
+      u\circ T: U\subseteq & \mathbb{R}^{n}\,\to\hspace{0.2cm}\mathbb{R}^{n}\,\to\mathbb{R}\\
+      x&\hspace{0.5cm}\to T(x)\to u\left(T(x)\right).
+    \end{align*}
+    Logo, tirando $T=(T_1,\cdots,T_n)$ e pela regra da cadeia temos que
+    \begin{align*}
+      \frac{\partial (u\circ T)}{\partial x_i}(x)&=\sum_{j=1}^{n}\frac{\partial u}{\partial x_j}(T(x))\cdot \frac{\partial T_j}{\partial x_i}(x)\\
+      &=\sum_{j=1}^{n}\left( \frac{\partial u}{\partial x_j}\circ T \right)(x)\cdot \frac{\partial T_j}{\partial x_i}(x).
+    \end{align*}
+    Portanto, pela linearidade da derivada parcial e pela regra do produto, temos que
+    \begin{align*}
+      \frac{\partial^{2} (u\circ T)}{\partial x_i^{2}}(x)&=\sum_{j=1}^{n}\frac{\partial }{\partial x_i}\left(\left( \frac{\partial u}{\partial x_j}\circ T \right)(x)\cdot \frac{\partial T_j}{\partial x_i}(x)\right)(x)\\
+      &=\sum_{j=1}^{n}\frac{\partial }{\partial x_i}\left( \frac{\partial u}{\partial x_j}\circ T \right)(x)\cdot \frac{\partial T_j}{\partial x_i}(x)+\left( \frac{\partial u}{\partial x_j}\circ T \right)(x)\cdot \frac{\partial^{2} T_j}{\partial x_i^{2}}(x).
+    \end{align*}
+    Mas, como $T$ é uma transformação linear de $\mathbb{R}^{n}$ para $\mathbb{R}^{n}$ sabemos que $T$ se pode representar como uma matriz com entradas $T_{ij}$, logo $\displaystyle \frac{\partial T_j}{\partial x_i}=T_{ij}$ e $\displaystyle \frac{\partial^{2} T_j}{\partial x_i^{2}}(x)=0$, assim, usando a regra da cadeia temos que
+    \begin{align*}
+      \frac{\partial^{2} (u\circ T)}{\partial x_i^{2}}(x)&=\sum_{j=1}^{n}\left( \sum_{k=1}^{n}\left( \frac{\partial^{2}u }{\partial x_kx_j}\circ T\right) (x)\cdot T_{ik}\right)\cdot T_{ij}.
+    \end{align*}
+    Agora, note que como $T$ é ortogonal sabemos que $TT^{T}=I_n$, isso é que 
+    $$\displaystyle \sum_{i=1}^{n}T_{ik}\cdot T^{T}_{ji}=\sum_{i=1}^{n}T_{ik}\cdot T_{ij}=\delta_{jk}.$$
+    Logo usando da definição do Laplaciano temos que
+    \begin{align*}
+      \Delta(u\circ T)(x)&=\sum_{i=1}^{n}\frac{\partial^{2} (u\circ T)}{\partial x_i^{2}}\\
+      &=\sum_{i=1}^{n}\left(\sum_{j=1}^{n}\left( \sum_{k=1}^{n}\left( \frac{\partial^{2}u }{\partial x_kx_j}\circ T\right) (x)\cdot T_{ik}\right)\cdot T_{ij}\right)\\
+      &=\sum_{j=1}^{n}\sum_{k=1}^{n}\left(\left( \frac{\partial^{2} u}{\partial x_kx_j}\circ T \right)(x)\cdot \left(\sum_{i=1}^{n}T_{ik}\cdot T_{ij}\right)\right)\\
+      &=\sum_{j=1}^{n}\sum_{k=1}^{n}\left( \frac{\partial^{2} u}{\partial x_kx_j}\circ T \right)(x)\cdot \delta_{jk}\\
+      &=\sum_{i=1}^{n}\left( \frac{\partial^{2}u }{\partial x_{i}^{2}}\circ T \right)(x)\\
+      &=\left(\ \Delta u \circ T\right)(x).
+    \end{align*}
+    Portanto, $\Delta(u\circ T)=\left( \Delta u \right)\circ T$.
   \end{solution}
 \end{homeworkProblem}
