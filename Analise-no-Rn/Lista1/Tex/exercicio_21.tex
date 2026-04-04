@@ -1,9 +1,44 @@
-\begin{homeworkProblem}
+\begin{homeworkProblem}[Seção 3-5]
   Seja $f:U\to\mathbb{R}^{m}$ diferenciável no aberto conexo $U\subseteq \mathbb{R}^{m}$. Mostre que
   \begin{align*}
     \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}=\sup_{z\in U}|f^{\prime}(z)|.
   \end{align*}
   \begin{solution}
-    Solução.
+    \begin{itemize}
+      \item $\displaystyle \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}\leq \sup_{z\in U}|f^{\prime}(z)|$.\\
+        Note que, como $U$ é conexo, temos que dados $x,y\in U$ se cumpre que para todo $t\in[0,1]$, $x+t(y-x)\in U$, logo pelo teorema fundamental do ćalculo para caminhos temos que
+        \begin{align*}
+          f(x)-f(y)=\int_{0}^{1}f^{\prime}(x+t(y-x))\,dt\cdot (y-x).
+        \end{align*}
+        Isso implica que
+        \begin{align*}
+          \frac{|f(x)-f(y)|}{|x-y|}=\left| \int_{0}^{1}f^{\prime}(x+t(y-x))\,dt \right|\leq \int_{0}^{1}\sup_{z\in U}|f^{\prime}(z)|\,dt\leq \sup_{z\in U}|f^{\prime}(z)|.
+        \end{align*}
+        Logo temos que
+        \begin{align*}
+          \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}\leq \sup_{x\neq y}\sup_{z\in U}|f^{\prime}(z)|=\sup_{z\in U}|f^{\prime}(z)|.
+        \end{align*}
+        Assim
+        \begin{align*}
+          \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}\leq \sup_{z\in U}|f^{\prime}(z)|. 
+        \end{align*}
+      \item $\displaystyle \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}\geq \sup_{z\in U}|f^{\prime}(z)|$.\\
+        Note que pela definição do $f^{\prime}$ temos que
+        \begin{align*}
+          |f^{\prime}(z)|=\lim_{h \to 0}\frac{|f(z+h)-f(z)|}{|(z+h)-(z)|}\leq \lim_{h \to 0}\sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}\leq \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}.
+        \end{align*}
+        Logo
+        \begin{align*}
+          \sup_{z\in U}|f^{\prime}(z)|\leq \sup_{z\in U}\sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}\leq \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}.
+        \end{align*}
+        Assim
+        \begin{align*}
+          \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}\geq \sup_{z\in U}|f^{\prime}(z)|. 
+        \end{align*}
+    \end{itemize}
+    Logo podemos concluir que
+    \begin{align*}
+      \sup_{x\neq y}\frac{|f(x)-f(y)|}{|x-y|}=\sup_{z\in U}|f^{\prime}(z)|.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}

@@ -10,6 +10,9 @@ Repositorio para subir trabajos o talleres de la U :p.
 <summary><strong>Análise no Rn</strong></summary>
 
 - [Anotaçoes do aula](<./Analise-no-Rn/anotacoes-do-aula/Tex/main.pdf>)
+- Lista 1.
+  - [Exercícios](<./Analise-no-Rn/Lista1/Exercícios 1 - Análise no Rn.pdf>) 
+  - [Solução](<./Analise-no-Rn/Lista1/Tex/Lista 1 Análise no Rn.pdf>) 
 </details>
 
 <details>
@@ -18,8 +21,13 @@ Repositorio para subir trabajos o talleres de la U :p.
 - [Anotaçoes do aula](<./Algebra-Avancada/anotacoes-do-aula/Tex/main.pdf>)
 - Lista 1.
   - [Exercícios](<./Algebra-Avancada/Lista1/ExerciciosGrupos1.pdf>) 
-  - [Solução](<./Algebra-Avancada/Lista1/Tex/main.pdf>) 
-
+  - [Solução](<./Algebra-Avancada/Lista1/Tex/Lista 1 Álgebra Avançada.pdf>) 
+- Lista 2.
+  - [Exercícios](<./Algebra-Avancada/Lista2/ExerciciosGrupos2.pdf>) 
+  - [Solução](<./Algebra-Avancada/Lista2/Tex/Lista 2 Álgebra Avançada.pdf>) 
+- Lista 3.
+  - [Exercícios](<./Algebra-Avancada/Lista3/ExerciciosGrupos3.pdf>) 
+  - [Solução](<./Algebra-Avancada/Lista3/Tex/Lista 3 Álgebra Avançada.pdf>) 
 </details>
 
 <details>

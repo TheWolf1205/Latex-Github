@@ -1,6 +1,28 @@
-\begin{homeworkProblem}
+\begin{homeworkProblem}[Seção 3-6]
   Se $f:\mathbb{R}^{m}\to\mathbb{R}^{n}$ é diferenciável com $\displaystyle \lim_{|x| \to \infty}f^{\prime}(x)\cdot x=0$ então a aplicação $g:\mathbb{R}^{m}\to\mathbb{R}^{n}$ definida por $g(x)=f(2x)-f(x)$ é limitada. 
   \begin{solution}
-    Solução.
+    Definamos el caminho $\varphi:[1,2]\to\mathbb{R}^{n}$ dado por $\varphi(t)=f(tx)$. Assim, como $f$ é diferenciável, $\varphi$ é diferenciavel, então pelo teorema fundamental do cálculo para caminhos sabemos que
+    \begin{align*}
+      |g(x)|^{2}&=|f(2x)-f(x)|^{2}\\
+      &=\left\langle f(2x)-f(x),f(2x)-f(x) \right\rangle\\
+      &=\left\langle \varphi(2)-\varphi(1),f(2x)-f(x) \right\rangle\\
+      &=\left\langle \int_{1}^{2}\varphi^{\prime}(t)\,dt, f(2x)-f(x)  \right\rangle\\
+      &=\left\langle \int_{1}^{2}f^{\prime}(tx)\cdot x\,dt, f(2x)-f(x) \right\rangle\\
+      &\leq \left|\int_{1}^{2}f^{\prime}(tx)\cdot x\,dt\right|\left| f(2x)-f(x) \right|.
+    \end{align*}
+    Assim, dividindo por $|g(x)|=|f(2x)-f(x)|$ temos que 
+    \begin{align*}
+      |g(x)|\leq \left| \int_{1}^{2}f^{\prime}(tx)\cdot x\,dt \right|.
+    \end{align*}
+    Agora, note lo seguinte
+    \begin{itemize}
+      \item Como $f$ é diferenciável, sabemos que para todo $x\in U$ temos que $f^{\prime}(x)\cdot x$ está bem definida. Alem do mais, como $\displaystyle \lim_{|x| \to \infty}f^{\prime}(x)\cdot x=0$, sabemos que $f^{\prime}(x)\cdot (x)$ não diverge no infinito, então sabemos que existe $M>0$ tal que para todo $x\in U$ tense que $\left|f^{\prime}(x)\cdot x\right|\leq M$.
+      \item Como $t\in[1,2]$, então $\displaystyle \frac{1}{t}\leq 1$.
+    \end{itemize}
+    Assim, temos que
+    \begin{align*}
+      |g(x)|\leq \left| \int_{1}^{2}f^{\prime}(tx)\cdot x\,dt \right|\leq \int_{1}^{2}|f^{\prime}(tx)\cdot tx|\frac{1}{t}\,dt\leq \int_{1}^{2}M\,dt\leq M.
+    \end{align*}
+    Portanto, podemos afirmar que la aplicação $g:\mathbb{R}^{m}\to\mathbb{R}^{n}$ definida por $g(x)=f(2x)-f(x)$ é limitada. 
   \end{solution}
 \end{homeworkProblem}

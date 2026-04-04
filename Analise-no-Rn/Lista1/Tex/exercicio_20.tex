@@ -1,6 +1,36 @@
-\begin{homeworkProblem}
+\begin{homeworkProblem}[Seção 3-4]
   Seja $U\subseteq \mathbb{R}^{m}$ aberto conexo. Se $f:U\to\mathbb{R}^{n}$ é diferenciável e $f^{\prime}(x)=T$ (constante) para todo $x\in U$ então existe $a\in\mathbb{R}^{n}$ tal que $f(x)=T\cdot x+a$. Mais geralmente, se $f^{(k+1)}(x)=0$ para todo $x\in U$ então $f$ é um polinômio de grau $k$ (soma de formas multilineares de grau $\leq k$, restritas a diagonal). 
   \begin{solution}
-    Solução.
+    Vamos a raciocinar por indução sobre $k$.\\
+    \begin{itemize}
+      \item ($k=1$) Suponha $f:U\to\mathbb{R}^{n}$ diferenciável e $f^{\prime}(x)=T$ (constante) para todo $x\in U$.\\
+        Note que como $U$ é aberto e conexo, então $U$ é arco conexo. Portanto, sabemos que dados $x,y\in U$ temos que existe un caminho $\varphi$ contínuo (e poligonal) tal que $\varphi(1)=x$ e $\varphi(0)=y$. Assim, sem perdida de generalidade, podemos assumir que $\varphi:[0,1]\to U$ bem definido por $\varphi(t)=y+t(x-y)$.\\
+        Podemos ver que pelo teorema fundamental do cálculo para caminhos temos que
+        \begin{align*}
+          (f\circ \varphi)(1)-(f\circ \varphi)(0)&=\int_{0}^{1}(f\circ \varphi)^{\prime}(t)\,dt.
+        \end{align*}
+        Logo, pela regra da cadeia e temos que $(f\circ \varphi)^{\prime}(t)=f^{\prime}(y+t(x-y))\cdot (x-y)=T(x-y)$, assim 
+        \begin{align*}
+          f(x)-f(y)=\int_{0}^{1}T(x-y)\,dt= T(x-y).
+        \end{align*}
+        Logo, fixando $y\in U$ temos que se definimos $a=f(y)-Ty\in\mathbb{R}^{n}$ podemos concluir que 
+        \begin{align*}
+          f(x)=T\cdot x + a.
+        \end{align*}
+      \item (Paso indutivo) Suponha $g:U\to\mathbb{R}^{n}$ diferenciável. Se $g^{(k)}(x)=T$ para todo $x\in U$, então $g$ é um polinômio de grau $\leq k$. Veamos que isso implica que si $f:U\to\mathbb{R}^{n}$ é diferenciável e $f^{(k+1)}(x)=T$ para todo $x\in\mathbb{R}^{m}$, então $f$ é um polinômio de grau $\leq k+1$.\\
+        Note que se definimos $h(x)=f^{\prime}(x)$, então temos que $h^{(k)}(x)=T$ para todo $x\in\mathbb{R}^{m}$, logo $h$ é um polinômio de grau $\leq k$. Assim, $f^{\prime}$ é um polinômio de grau $\leq k$. Agora, note que, sem perdida de generalidade podemos assumir que $f^{\prime}(x)=x^{k}+p(x)$ (abusando un pouco da notação do multi-indice) com $p$ um polinômio de grau $\leq k-1$, logo como $p^{(k-1)}(x)=K$ (constante) para todo $x\in\mathbb{R}^{m}$, então se definimos $q^{\prime}(x)=p$, sabemos que $q$ é um polinômio de grau $\leq k$. Portanto, vamos apenas verificar que se $f^{\prime}(x)=x^{k}$, então $f$ é um polinômio de grau $\leq k+1$.\\
+        Note que se definimos $\varphi$ como no caso base, temos que pela regra da cadeia $(f\circ \varphi)^{\prime}(x)=f^{\prime}(y+t(x-y))\cdot (x-y)=\left( y+t(x-y) \right)^{k}\cdot (x-y)$, logo pelo teorema fundamental do cálculo para caminhos, pela regra de Leibniz e que $\int_{0}^{1}t^{j}\,dt=\frac{1}{j+1}$ temos que existe um polinomio $\overline{p}$ de grau $\leq k$ tal que 
+        \begin{align*}
+          f(x)-f(y)&=\int_{0}^{1}(y+t(x-y))^{k}\cdot (x-y)\,dt\\
+          &= \int_{0}^{1}t^{k}\,dt \cdot (x-y)^{k+1} + \overline{p}(x)\\
+          &= \frac{1}{k+1}(x-y)^{k+1}+\overline{p}(x).
+        \end{align*}
+        Assim se pode concluir que
+        \begin{align*}
+          f(x)=\frac{1}{k+1}(x-y)^{k+1}+\overline{p}(x)+f(y).
+        \end{align*}
+        Isso é, que $f$ é um polinômio de grau $\leq k+1$. 
+    \end{itemize}
+    Portanto, podemos concluir o resultado por indução.
   \end{solution}
 \end{homeworkProblem}
