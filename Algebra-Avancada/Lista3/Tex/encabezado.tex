@@ -7,7 +7,7 @@
 \usepackage{algpseudocode}
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc}    
-\usepackage{hyperref}       
+\usepackage{hyperref}
 \usepackage{url}        
 \usepackage{booktabs}
 \usepackage{pdfpages}
@@ -69,7 +69,7 @@
 \textwidth=6.5in
 \textheight=9.0in
 \headsep=0.25in
-
+\setlength{\footskip}{60pt}
 \linespread{1.1}
 %|#*******************************************************************#|
 \pagestyle{fancy}
@@ -105,7 +105,6 @@
 \newcounter{partCounter}
 \newcounter{homeworkProblemCounter}
 \setcounter{homeworkProblemCounter}{1}
-\nobreak\extramarks{Exercício \arabic{homeworkProblemCounter}}{}\nobreak
 %margen de una pagina
 \newenvironment{changemargin}[2]{%
 \begin{list}{}{%
@@ -126,21 +125,36 @@
 % assignment aren't sequential. See the last 3 problems of this template for an
 % example.
 %
-\newenvironment{homeworkProblem}[1][-1]{
-    \ifnum#1>0
-        \setcounter{homeworkProblemCounter}{#1}
+\usepackage{xparse}
+
+\NewDocumentEnvironment{homeworkProblem}{O{} O{}}
+{
+    \def\customnumber{#1}
+    
+    % 🔥 DEFINE PRIMERO
+    \ifx\customnumber\empty
+        \def\currentProblemName{\arabic{homeworkProblemCounter}}
+    \else
+        \def\currentProblemName{#1}
     \fi
-    \section{Exercício \arabic{homeworkProblemCounter}:}
+
+    % 🔥 LUEGO USA
+    \section{Exercício \currentProblemName \ifx&#2&\else (#2)\fi:}
+
+    \nobreak\extramarks{Exercício \currentProblemName}{}\nobreak
+    
     \setcounter{partCounter}{1}
-    \enterProblemHeader{homeworkProblemCounter}
-}{
-    \exitProblemHeader{homeworkProblemCounter}
+}
+{
+    \ifx\customnumber\empty
+        \exitProblemHeader{homeworkProblemCounter}
+    \else
+        \stepcounter{homeworkProblemCounter}
+    \fi
 }
 
-
 %|#*******************************************************************#|
-
-\newcommand{\hmwkTitle}{Lista 2}
+\newcommand{\hmwkTitle}{Lista 3}
 \newcommand{\hmwkDueDate}{\today}
 \newcommand{\hmwkClass}{Álgebra Avançada}
 \newcommand{\hmwkUniversity}{Universidade Federal de Minais Gerais}

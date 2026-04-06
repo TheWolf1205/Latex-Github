@@ -1,6 +1,18 @@
 \begin{homeworkProblem}
   Determine a ordem do grupo $GL(n,p) = \{A \in M_n(\mathbb{F}_p) \mid A \text{ é invertível}\}$, onde $\mathbb{F}_p$ é um corpo com $p$ elementos ($p$ primo).
   \begin{solution}
-    Solução.
+    Note que, dada uma matriz $A$, pode-se pensar nela como um arranjo de vetores $v_i$. Assim, toda matriz $A\in GL(n,p)$ pode-se escrever como $A=(v_1,v_2,\cdots,v_n)$ com $v_i\in \mathbb{F}_{p}^{n}$ para todo $i\in\{1,2,\cdots,n\}$.\\
+    Assim, sabemos que $A\in GL(n,p)$ se, e somente se, $\{v_i\}_{1\leq i\leq n}$ é uma coleção de vetores linearmente independentes.\\
+    Logo, sabemos que, pelo argumento combinatório, temos que $v_1$ tem $p^{n}-1$ possibilidades (tem $p$ opções em cada componente, por isso $p^{n}$, mas tomamos $v_1\neq 0$, por isso $-1$). Depois, como queremos que $v_2$ seja linearmente independente de $v_1$, sabemos que $v_2$ tem $p^{n}-p$ possibilidades (de novo, tem $p$ opções em cada componente, por isso $p^{n}$, mas excluímos os vetores linearmente dependentes de $v_1$, ou seja, $v_2\neq kv_1$ com $k\in\mathbb{F}_p$, por isso $-p$). Raciocinando da mesma maneira, temos que
+    \begin{itemize}
+      \item $v_1$ tem $p^{n}-1$ opções.
+      \item $v_2$ tem $p^{n}-p$ opções.
+      \item $v_3$ tem $p^{n}-p^{2}$ opções (isso porque $v_3\neq k_1v_1+k_2v_2$ com $k_1k_2\in \mathbb{F}_p$).
+      \item $v_i$ tem $p^{n}-p^{i-1}$ com $i\in\{1,\cdots, n\}$. 
+    \end{itemize}
+    Assim, sabemos que
+    \begin{align*}
+      |GL(n,p)|=(p^{n}-1)(p^{n}-p)(p^{n}-p^{2})\cdots(p^{n}-p^{n-1}).
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}

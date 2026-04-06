@@ -1,16 +1,32 @@
 \begin{homeworkProblem}
   Considere a matriz
-\[
-A =
-\begin{pmatrix}
-1 & 2 & 0 \\
-0 & -1 & 1 \\
-1 & 1 & 0
-\end{pmatrix}
-\in SL(3,\mathbb{R}).
-\]
-Escreva $A$ como produto de matrizes da forma $e_{ij}(\alpha)$, com $i \neq j$ e $\alpha \in \mathbb{R}$, sendo $e_{ij}(\alpha)$ a matriz que tem $1$ nas entradas diagonais, $\alpha$ na posição $(i,j)$ e $0$ nas demais.
+  \begin{align*}
+    A =\begin{pmatrix}
+      1 & 2 & 0 \\
+      0 & -1 & 1 \\
+      1 & 1 & 0
+    \end{pmatrix} \in SL(3,\mathbb{R}).
+  \end{align*}
+  Escreva $A$ como produto de matrizes da forma $e_{ij}(\alpha)$, com $i \neq j$ e $\alpha \in \mathbb{R}$, sendo $e_{ij}(\alpha)$ a matriz que tem $1$ nas entradas diagonais, $\alpha$ na posição $(i,j)$ e $0$ nas demais.
   \begin{solution}
-    Solução.
+    Note que $a_{ij}(\alpha)$ é equivalente a fazer uma operação elementar do tipo $F_i=F_i+\alpha F_j$ (com $F_l$ na linha $l$-ésima da matriz). Logo, fazendo algumas contas, você pode concluir que
+    \begin{align*}
+      a_{13}(2)a_{32}(-1)a_{21}(-1)a_{13}(-2)a_{12}(1)a_{13}(1)a_{23}(1)a_{21}(-2)a_{12}(1)a_{31}(1)=A.
+    \end{align*}
+    Isso é
+    \begin{align*}
+      \begin{pmatrix}1&0&2\\0&1&0\\0&0&1\end{pmatrix}
+      \begin{pmatrix}1&0&0\\0&1&0\\0&-1&1\end{pmatrix}
+      \begin{pmatrix}1&0&0\\-1&1&0\\0&0&1\end{pmatrix}
+      \begin{pmatrix}1&0&-2\\0&1&0\\0&0&1\end{pmatrix}
+      \begin{pmatrix}1&1&0\\0&1&0\\0&0&1\end{pmatrix}&\cdots\\
+      \cdots \begin{pmatrix}1&0&1\\0&1&0\\0&0&1\end{pmatrix}
+      \begin{pmatrix}1&0&0\\0&1&1\\0&0&1\end{pmatrix}
+      \begin{pmatrix}1&0&0\\-2&1&0\\0&0&1\end{pmatrix}
+      \begin{pmatrix}1&1&0\\0&1&0\\0&0&1\end{pmatrix}
+      \begin{pmatrix}1&0&0\\0&1&0\\1&0&1\end{pmatrix}
+        &\phantom{\cdots}=
+      \begin{pmatrix}1&2&0\\0&-1&1\\1&1&0\end{pmatrix}.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}
