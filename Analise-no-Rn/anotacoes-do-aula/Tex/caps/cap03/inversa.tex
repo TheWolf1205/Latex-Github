@@ -228,7 +228,7 @@ Lembremos que
   logo como $g^{\prime}(a)$ e sobrejetiva, então $g(a)=0$. 
 \end{proof}
 \begin{theorem}[Teorema da aplicação inversa]
-  Seja $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{k}$ ($k\geq 1$). Se $a\in U$ e $f^{\prime}(a)$ é invertivel, então existe uma bola aberta $B=B(a,\delta)\subseteq U$ tal que $F\big|_{B}$ é um $C^{k}$-difeomorfismo sobre um aberto $V\subseteq\mathbb{R}^{m}$ contendo $f(a)$. 
+  Seja $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{k}$ ($k\geq 1$). Se $a\in U$ e $f^{\prime}(a)$ é invertivel, então existe uma bola aberta $B=B(a,\delta)\subseteq U$ tal que $f\big|_{B}$ é um $C^{k}$-difeomorfismo sobre um aberto $V\subseteq\mathbb{R}^{m}$ contendo $f(a)$. 
 \end{theorem}
 \begin{proof} 
   \begin{enumerate}
@@ -251,4 +251,22 @@ Lembremos que
     \item Assim, pelo teorema \ref{teo:3.6-teorema-difeo-inverso} temos que $f\big|_{B}$ é difeomorfismo.
     \item $f\in C^{k}$ ($k\geq 1$), logo $f$ é um $C^{k}$-difeomorfismo e pelo teorema \ref{teo:3.6-teorema1}, então $g\in C^{k}$.
   \end{enumerate}
+\end{proof}
+\begin{example}
+  Seja $f:M_{n\times n}\to M_{n\times n}$ definida por $x^{2}$.
+  Sabemos
+  \begin{itemize}
+    \item $f$ é $C^{\infty}$ (ela é um polinômio).
+    \item $f´(x)\dot H=Hx+xH$.
+    \item $f^{\prime}(Id)\cdot H=2H$ é um isomorfismo. 
+  \end{itemize}
+  Pelo teorema de la aplicação inversa, existe uma vizinhança $V$ de $Id$ onde $f$ é um difeomorfismo sobre $V=f(U)$.\\
+  Assim, dado $y\in V$ existe um único $x\in U$ tal que $x^{2}=y$, i.é, $x=\sqrt{y}$ é $C^{\infty}$. 
+\end{example}
+\begin{corollary}
+  Seja $f:U\subseteq \mathbb{R}^{n}\to\mathbb{R}$ de classe $C^{2}$. Se $a$ é ponto crítico $(\nabla f(a)=0)$ e a matriz Hessiana $Hf(a)$ é invertível. Então existe uma vizinhança de $a$ onde não há outros pontos críticos. 
+\end{corollary}
+\begin{proof} 
+  Considere $F:U\to\mathbb{R}^{n}$ definida por $F(x)=\nabla f(x)$ que é de classe $C^{1}$ e $F^{\prime}(x)=Hf(x)$ para todo $x\in U$. Como $Hf(a)$ é invertível, então $F^{\prime}(a)$ é invertível. Logo, pelo teorema de la aplicação inversa existe uma vizinhança $B$ de $a$ onde $F\big|_{B}$ é um difeomorfismo local, como $F(a)=0$, então $F(x)\neq 0$ para todo $x\in B$.\\
+  Então $a$ é o único ponto crítico de $B$. 
 \end{proof}

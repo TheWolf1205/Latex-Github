@@ -1,0 +1,60 @@
+\textbf{Problema:} Seja $f:U\subseteq \mathbb{R}^{2}\to\mathbb{R}$ tal que $f(x,y)=c$. Quando podemos resolver esta equação para $y$ como função de $x$?
+\begin{example}
+  $$f(x,y)=x^{2}+y^{2}.$$
+  Note que o gráfico de $f(x,y)=c$ é e seguinte 
+  \begin{center}
+    \input{images/circunferenciaradioc}  
+  \end{center}
+  Suponha $c=1$, logo note que
+  \begin{itemize}
+    \item $\frac{\partial f}{\partial x}(0,1)=0$, logo no se pode resolver a $x$ en função de $y$.
+    \item $\frac{\partial f}{\partial y}(0,1)=2\neq 0$, logo temos que $y=\sqrt{1-x^{2}}$.
+  \end{itemize}
+\end{example}
+\begin{definition}[Hipersuperfície]
+  Um $M\subseteq \mathbb{R}^{n+1}$ chama-se uma \textbf{hipersuperfície} de classe $C^{k}$ quando para cada $p\in M$ existe um aberto $V\subseteq \mathbb{R}^{n+1}$ e uma função $\xi:U\to\mathbb{R}$ com $U\subseteq\mathbb{R}^{n}$ aberto de classe $C^{k}$ taes que $p\in V$ e $V\cap M=\graf(\xi)$.\\
+  Ou seja, para algúm inteiro $i\in\{1,\cdots,n+1\}$ ten-se que
+  \begin{align*}
+    V\cap M=\{(x_1,\cdots,x_{n+1})\in\mathbb{R}^{n+1}:x_i=\xi(x_1,\cdots,x_{i-1},x_{i+1},\cdots,x_n)\}.
+  \end{align*}
+\end{definition}
+\begin{example}[$S^{n}$]
+  Seja $S^{n}$ definido por
+  \begin{align*}
+    S^{n}=\{x\in\mathbb{R}^{n+1}:\left\langle x,x \right\rangle=1\}.
+  \end{align*}
+  Note que $S^{n}$ é uma hipersuperfície $C^{\infty}$.\\
+  Defina para cada $i\in\{1,\cdots,n+1\}$ o seguinte
+  \begin{itemize}
+    \item $V_i=\{x\in\mathbb{R}^{n+1}:x_i>0\}$.
+    \item $U_i=\{x\in\mathbb{R}^{n+1}:x_i<0\}$.
+  \end{itemize}
+  Escrevamos $x^{+}=(x_1,\cdots,x_{i-1},x_{i+1},\cdots,x_{n+1})$, logo
+  \begin{itemize}
+    \item $x\in S^{n}\cap V_i$ se, somente se $|x^{+}|<1$ e $x_i=\sqrt{1-|x^{+}|^{2}}$. 
+    \item $x\in S^{n}\cap U_i$ se, somente se $|x^{+}|<1$ e $x_i=-\sqrt{1-|x^{+}|^{2}}$. 
+  \end{itemize}
+  Logo $S^{n}$ é uma hipersuperfície de classe $C^{\infty}$. 
+\end{example}
+\begin{definition}[Espaço vetorial Tangente]
+  Seja $M$ uma hipersuperfície de classe $C^{k}$ ($k\geq 1$), para cada $p\in M$.\\
+  Definimos o \textbf{espaço vetorial tangente} por
+  \begin{align*}
+    T_{p}M=\{v=\lambda^{\prime}(0):\lambda:(-\delta,\delta)\to M\text{ diferenciável com }\lambda(0)=p\}.
+  \end{align*}
+\end{definition}
+\begin{definition}[Valor regular e nivel crtítico]
+  Um número $c\in\mathbb{R}$ chama-se \textbf{valor regular} de uma função $f:U\subseteq \mathbb{R}^{n}\to\mathbb{R}$ de classe $C^{1}$ quando $f(x)=c$, implica que $\nabla f(x)\neq 0$.\\
+  Se existe $x\in U$ com $f(x)=c$ e $\nabla f(x)=0$, $c$ é chamado \textbf{nivel crítico}. 
+\end{definition}
+\begin{theorem}[Teorema de função implícita]
+  Sejam $U\subseteq \mathbb{R}^{n+m}=\mathbb{R}^{n}\times \mathbb{R}^{m}$ um aberto, $f:U\to\mathbb{R}^{m}$ uma aplicação de classe $C^k$ com $k\geq 1$ e $(a,b)\in U$ taes que $f(a,b)=c\in\mathbb{R}^{m}$. Nessão condições, se $f^{\prime}(a,b)\big|_{\{0\}\times\mathbb{R}^{m}}=\frac{\partial f}{\partial y}(a,b)$ é um isomorfismo sobre $\mathbb{R}^{m}$, então existen abertos $V$ com $(a,b)\in V$, $V\subseteq U$ e $A$ com $a\in A$ e $A\subseteq\mathbb{R}^{n}$ que cumpren
+  \begin{enumerate}
+    \item Para todo $x\in A$, existem um único $y=\xi(x)\in\mathbb{R}^{m}$ tal que $(x,\xi(x))\in V$ e $f(x,\xi(x))=c$.
+    \item A aplicação $\xi:A\to\mathbb{R}^{m}$ é de classe $C^{k}$ e $\xi^{\prime}(a)=-T_2^{-1}T_1$, onde $T_1\in L(\mathbb{R}^{n},\mathbb{R}^{m})$ e $T_2\in L(\mathbb{R}^{m})$ são definidas por
+      \begin{align*}
+        T_1h&=f^{\prime}(a,b)\cdot (h,0).\\
+        T_2h&=f^{\prime}(a,b)\cdot (0,h).
+      \end{align*}
+  \end{enumerate}
+\end{theorem}
