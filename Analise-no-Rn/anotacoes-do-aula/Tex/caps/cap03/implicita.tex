@@ -58,3 +58,41 @@
       \end{align*}
   \end{enumerate}
 \end{theorem}
+\begin{proof}
+  \begin{center}
+    \input{images/teoremaimplicita}  
+  \end{center}
+  Sem perdida de generalidade considere $c=0$.\\
+  Considere $F:U\to\mathbb{R}^{n}\times\mathbb{R}^{m}$ definida por $F(x,y)=(x,f(x,y))$.\\
+  Logo $F$ é $C^{k}$, assim
+  \begin{align*}
+    F^{\prime}(a,b)\cdot (h,k)=(h,f^{\prime}(a,v)\cdot(h,k)).
+  \end{align*}
+  Onde $(h,k)\in\mathbb{R}^{n}\times\mathbb{R}^{m}$.\\
+  Se $F^{\prime}(a,b)\cdot(h,k)=(0,0)$, então temos que $h=0$.\\
+  Logo, como $f\big|_{\{0\}\times\mathbb{R}^{m}}$ é um isomoorfismo, $F^{\prime}(a,b)\cdot (0,k)=0$ implica que $k=0$.\\
+  Portanto, $F^{\prime}(a,b)$ é injetiva e como é  uma aplicação linear entre espaços da mesma dimensão, é um isomorfismo de $\mathbb{R}^{n}\times\mathbb{R}^{m}$ sobre si mesmo.\\
+  Assim, pelo teorema de la aplicação inversa temos que existen $V\subseteq U$ tal que $(a,b)\in V$ e $W\subseteq \mathbb{R}^{n}\times\mathbb{R}^{m}$ tal que $F(a,b)=(a,0)\in W$ e $W=A\times B$ com $A\subseteq \mathbb{R}^{n}$ e $B\subseteq \mathbb{R}^{m}$ abertos, taes que $F\big|_{V}:V\to W$ é um $C^{k}$-difeomorfismo.\\
+  Logo, para cada $x\in A$, com $(x,0)\in W$ existe um único $(x,y)\in V$ tal que $F(x,y)=(x,0)$. Definimos $\xi(x)=y$. Assim, para cada $x\in A$ temos que $f(x,\xi(x))=c=0$.
+  \begin{itemize}
+    \item Regularidade de $\xi$.\\
+      Consideremos $G=\left[ F\big|_{V} \right]^{-1}$ a qual é $C^{k}$ pelo teorema de la aplicação inversa, logo temos que $G(x,0)=(x,\xi(x))$.\\
+      Assim, definindo $\varphi(x)=(x,0)$ que é $C^{\infty}$ e a projeção $p_2(x,y)=2$, obtemos que $\xi=p_2\circ G\circ \varphi \in C^{k}$.
+    \item Fórmula de la derivada.\\
+      Sabemos que, para todo $(h,k)\in\mathbb{R}^{n}\times\mathbb{R}^{m}$ se cumpre que
+      \begin{align*}
+        f^{\prime}(a,b)\cdot (h,k)=f^{\prime}(a,b)\cdot(h,0)+f^{\prime}(a,b)\cdot (0,k)=T_1\cdot h+T_2\cdot k.
+      \end{align*}
+      Como $f(x,\xi(x))=0$, temos que $f^{\prime}(a,\xi(a))\cdot(h,\xi^{\prime}(a))=0$, pela regra da cadeia, logo
+      \begin{align*}
+        0&=f^{\prime}(a,\xi(a))\cdot(h,\xi^{\prime}(a)\cdot h)\\
+        &=f^{\prime}(a,\xi(a))\cdot(h,0)+f^{\prime}(a,\xi(a))\cdot(0,\xi^{\prime}(a)\cdot h)\\
+        &=T_1\cdot h+T_2\cdot\xi^{\prime}(a)\cdot h.
+      \end{align*}
+      Assim
+      \begin{align*}
+        \xi^{\prime}(a)&=-T_2^{-1}\circ(T_1)\\
+        &=-\left( \frac{\partial f}{\partial y}(a,b) \right)^{-1}\cdot\left( \frac{\partial f}{\partial x}(a,b)\cdot h \right).
+      \end{align*}
+  \end{itemize}
+\end{proof}

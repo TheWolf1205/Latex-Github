@@ -1,0 +1,13 @@
+\begin{tikzpicture}[scale=0.7]
+\begin{axis}[
+    axis lines = middle,
+    xlabel = $x$,
+    ylabel = $y$,
+]
+\addplot[
+    domain=-1.5:1.5,
+    samples=50,
+]
+({x^3 - x}, {x^2});
+\end{axis}
+\end{tikzpicture}

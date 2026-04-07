@@ -1,0 +1,128 @@
+\begin{definition}[Submerção]
+  Dado um abertoo $U\subseteq\mathbb{R}^{m}$ e uma aplicação diferenciável $f:U\to\mathbb{R}^{m}$ é chamada uma \textbf{submerção} quando $f^{\prime}(x)$ é sobrejetiva para todo $x\in U$. 
+\end{definition}
+\textbf{Problema:}\\
+Considere $f:U\to\mathbb{R}$ de classe $C^{1}$ definida no aberto $U\subseteq \mathbb{R}^{n+1}$ e $M=\phi^{-1}(c)$, onde $\phi:U\to\mathbb{R}$ é $C^{1}$ e $c$ um valor regular de $\phi$ ($\nabla\phi(x)\neq 0$ para todo $x\in M$).\\
+Queremos encontrar os "pontos críticos" de $f\big|_{M}:M\to\mathbb{R}$.
+\begin{definition}[Ponto crítico]
+  Um ponto $x\in M$ é um ponto crítico quando para todo caminho diferenciável $\lambda:(-\delta,\delta)\to M$ com $\lambda(0)=x$ tem-se $(f\circ \lambda)^{\prime}(0)=0$. 
+\end{definition}
+\begin{note}
+  Note que se $v=\lambda^{\prime}(0)\in T_{x}M$, isto equivale a $\left\langle \nabla f(x),v \right\rangle=0$ para todo $v\in T_{x}M$, i.é, $\nabla f(x)\perp T_{x}M$, \textbf{uma caracterização de espaço tangente}.\\
+  Como $M=\phi^{-1}(c)$ e $c$ é um valor regular, temos:
+  \begin{align*}
+    T_{x}M&=\{v\in\mathbb{R}^{n+1}:\left\langle \nabla\phi(x),v \right\rangle=0\}\\
+    &=\left[ \nabla\phi(x) \right]^{\perp}.
+  \end{align*}
+  Alem disso, como $\dim \left[ T_xM \right]^{\perp}=1$, temos que $\nabla f(x)\perp T_{x}M$ se, somente se, $\nabla f(x)=\lambda\nabla \phi(x)$ para todo $\lambda\in\mathbb{R}$. 
+\end{note}
+\begin{theorem}[Multiplicadores de Lagrange (com uma restrição)]
+  O ponto $x\in U$ é ponto crítico da restrição $f\big|_{M}$ onde $M=\phi^{-1}(c)$ se, somente se
+  \begin{enumerate}
+    \item $\phi(x)=c$.
+    \item $\nabla f(x)=\lambda\nabla(x)$ para todo $\lambda\in\mathbb{R}$. 
+  \end{enumerate}
+  \textbf{Caso geral}\\
+  Considere
+  \begin{itemize}
+    \item $f:U\to\mathbb{R}$ de classe $C^{1}$, $U\subseteq \mathbb{R}^{n+m}$.
+    \item $g=(g_1,\cdots,g_m):U\to\mathbb{R}^{m}$ $C^{1}$ uma submerção, i.é, $g^{\prime}(p)$ é sobrejetiva para todo $p\in M$.
+    \item $M=g^{-1}(c)$, com $c\in\mathbb{R}^{m}$ valor regular. 
+  \end{itemize}
+  Se $p\in M$ é um extremo local de $f\big|_{M}$, então existem $\lambda_{1},\cdot,\lambda_{m}\in\mathbb{R}$ taes que
+  \begin{align*}
+    \nabla f(p)=\sum_{i=1}^{m}\lambda_{i}\nabla g_{i}(p).
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Seja $p=(x_0,y_0)\in M$ um extremo local de $f\big|_{M}$. Como $g$ é uma submerção, $g^{\prime}(p)$ é sobrejetiva.
+  \begin{align*}
+    g^{\prime}:&U\to L(\mathbb{R}^{n+m},\mathbb{R}^{m})\\
+    &Jg(p)\in M_{m\times (n+m)}.
+  \end{align*}
+  Sem perdida de generalidade suponha
+  \begin{align*}
+    Jg(p)=(x_1,\cdots,x_n,\underbrace{y_1,\cdots,y_m}_{\text{columas L.I}}).
+  \end{align*}
+  Logo $g^{\prime}(p)\big|_{\{0\}\times \mathbb{R}^{m}}$ é um isomorfismo sobre $\mathbb{R}^{m}$.\\
+  Pelo teorema da função implicita, existem um aberto $A\subseteq \mathbb{R}^{n}$ com $x\in A$ e uma aplicação $\xi:A\to\mathbb{R}^{m}$ de classe $C^{1}$ taes que $g(x,\xi(x))=c$ e $\xi(x_0)=y_0$. Alem disso, o gráfico de $\xi$ está contido em $M$.\\
+  Definimos o subespaço vetorial $G=\{(h,\xi^{\prime}
+  (x_0)\cdot h):h\in\mathbb{R}^{n}\}$.\\
+  Note que $\{(e_1,\xi^{\prime}(x_0)\cdot e_1),\cdots,(e_n,\xi^{\prime}(x_0)\cdot e_n)\}$ é uma base de $G$, então $\dim G=m$.\\
+  \textbf{Afirmação:} $T_{p}M=G$.\\
+    Como $g(x,\xi(x))=c$, então $g^{\prime}(p)\cdot(h,\xi^{\prime}(x_0)\cdot h)=0$, logo $(h,\xi^{\prime}(x_0)\cdot h)\in \Ker g^{\prime}(p)=T_{p}M$, assim $G\subseteq T_{p}M$, logo como tem a mesma dimenção, então $G=T_{p}M$.\\
+  Agora, para cada $v=(h,\xi^{\prime}(x_0)\cdot h)\in G$ temos que
+  \begin{align*}
+    0=g^{\prime}_{j}(p)\cdot v=\left\langle \nabla g_{j}(p),v \right\rangle,\quad\text{ para todo }j=1,\cdots,m.
+  \end{align*}
+  Então $\nabla g_{j}(p)\in G^{\perp}$ para todo $j$.\\
+  Além disso como $\dim G + \dim G^{\perp}=n+m$, então $\dim G^{\perp}=m$.\\
+  Portanto, note que como $B=\{\nabla g_1(p),\cdots,\nabla g_m(p)\}$ é L.I, então $B$ é base de $G^{\perp}$.\\
+  \textbf{Afirmação:} $\nabla f(p)\in G^{\perp}$.\\
+    Como $p$ é extremo local de $f\big|_{M},x_{0}$ é extremo local de $\eta(x)=f(x,\xi(x))$. Então para todo $h\in\mathbb{R}^{n}$, temos que
+    \begin{align*}
+      0=f^{\prime}(x_0,\xi(x_0))\cdot(h,\xi^{\prime}(x_0)\cdot h)=\left\langle \nabla f(p),(h,\xi^{\prime}(x_0)\cdot h) \right\rangle.
+    \end{align*}
+    Logo $\nabla f(p)\in G^{\perp}$.\\
+  Assim, existe $\lambda_1\cdots,\lambda_{m}\in\mathbb{R}$ taes que 
+  \begin{align*}
+    \nabla f(p)=\sum_{i=1}^{m}\lambda_{i}\nabla g_{i}(p).
+  \end{align*}
+\end{proof}
+\begin{example}
+  Seja $f(x,y)=ax+by$ com $a^{2}+b^{2}\neq 0$.\\
+  Determine os pontos críticos de $f\big|_{S^{1}}$, onde
+  \begin{align*}
+    S_1=\{(x,y)\in\mathbb{R}^{2}:x^{2}+y^{2}=1\}.
+  \end{align*}
+  Note que a restrição $x^{2}+y^{2}=1$ se pode escrever como $\phi(x)=x^{2}+y^{2}-1$, assim temos
+  \begin{itemize}
+    \item $\nabla f(x,y)=(a,b)$.
+    \item $\nabla g(x,y)=(2x,2y)$.
+  \end{itemize}
+  Pelo teorema de multiplicadores de Lagrange, os pontos críticos satisfazen
+  \begin{align*}
+    \begin{cases}
+      \nabla f(x,y)=\lambda \nabla g(x,y), \\
+      g(x,y)=0.
+    \end{cases}
+  \end{align*}
+  Assim, $a=2\lambda x$ e $b=2\lambda y$, então $\displaystyle \frac{a^{2}}{4\lambda^{2}}+\frac{b^{2}}{4\lambda^{2}}=1$, portanto $\lambda=\pm\frac{\sqrt{a^{2}+b^{2}}}{2}$.\\
+  Logo
+  \begin{align*}
+    \begin{cases}
+      f\left( \frac{a}{2\lambda},\frac{b}{2\lambda} \right)=\frac{a^{2}+b^{2}}{2\lambda}=\sqrt{a^{2}+b^{2}}, &\text{ é o máximo } \lambda>0 \text{,} \\
+      f\left( \frac{a}{2\lambda},\frac{b}{2\lambda} \right)=\frac{a^{2}+b^{2}}{2\lambda}=-\sqrt{a^{2}+b^{2}}, &\text{ é o mínimo } \lambda<0.
+    \end{cases} 
+  \end{align*}
+\end{example}
+\begin{example}
+  Dados $a\in \mathbb{R}^{n+1}$ e uma hipersuperfície $M\subseteq \mathbb{R}^{m+1}$ com $a\neq M$. Determinar o ponto $p\in M$ mais próximo de $a$.\\
+  Defina $f(x)=|x-a|$ a qual é de classe $C^{\infty}$ em $\mathbb{R}^{n+1}\setminus\{a\}$. Queremos minimizar $f\big|_{M}$.\\
+  Note que $\nabla f(x)\frac{x-a}{|x-a|}$. Logo pelo método de multiplicadores de Lagrange nos pontos críticos de $f\big|_{M}$ cumprem que $\nabla f(x)$ é normal a $M$, ou seja, $x-a$ é normal a $M$.\\
+  Em particular, se $M=S^{n}$ temos que
+  \begin{itemize}
+    \item $T_{x}S^{n}=\{v\in\mathbb{R}^{n}: \left\langle x,v \right\rangle=0\}$.
+    \item $x-a\perp T_{x}S^{n}$ se, somente se $x-a=\alpha x$ com $\alpha\in\mathbb{R}$. Logo $x=\frac{a}{1-\alpha}$. 
+  \end{itemize}
+  Então, se $|x|=1$, logo $|a|=|1-\alpha|$, então as soluções são $x=\pm\frac{a}{|a|}$.
+\end{example}
+\begin{example}[Desigualdade de Hadamard]
+  Se $x\in M_{n\times n}$ com linhas $x_1,\cdots,x_n$, então
+  \begin{align*}
+    |\det(x)|\leq |x_1|\cdots|x_n|.
+  \end{align*}
+  \textbf{Esboçoda prova:}\\
+  Se $\det(x)=0$, a desigualdade é trivial. Caso contrario, escrevemos $x_i=|x_i|w_i$ com $|w_i|=1$, logo escrevemos $x=DW$ com $D$ definida por 
+  \begin{align*}
+    x=\begin{pmatrix}
+      |x_1| & 0 & 0\\
+      0 & \ddots & 0\\
+      0 & 0 & |x_n|
+    \end{pmatrix}W.
+  \end{align*}
+  Assim $\det(x)=\det(D)\det(W)$, portanto provando que $\det(W)\leq 1$ temos que
+  \begin{align*}
+    |\det(x)|\leq |x_1|\cdots|x_n|.
+  \end{align*}
+\end{example}

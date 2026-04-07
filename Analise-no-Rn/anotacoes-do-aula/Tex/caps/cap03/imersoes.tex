@@ -1,0 +1,39 @@
+\begin{definition}[Imersão]
+  Sejam $U\subseteq\mathbb{R}^{m}$ e $f:U\to\mathbb{R}^{n}$ diferenciável. Dizemos que $f$ é uma \textbf{imersão} no ponto $a\in U$ se a derivada $f^{\prime}(a):\mathbb{R}^{m}\to\mathbb{R}^{n}$ é uma transformação linear injetiva.\\
+  Se $f$ é uma imersão em todos os pontos de $U$, dizemos que $f$ é uma imersão.\\
+  Se $f^{\prime}(a)$ é injetiva e $f^{\prime}$ é contínua em $a$, então existe uma vizinhança de $a$ que transforma uma bola centrada em $a$, homeomorficamente sobre sua imagen ($|f(x)-f(y)|\geq c|x-y|$). 
+\end{definition}
+\begin{example}
+  Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m} \times\mathbb{R}^{m}$ dada por $f(x)=(x,0)$. Logo como $f$  é linear, $f^{\prime}(x)=f$ e
+  \begin{align*}
+    0=f^{\prime}(x)\cdot v=f(v)=(v,0).
+  \end{align*}
+  Logo $v=0$, então $f^{\prime}(x)$ é injetiva, portanto $f$ é uma imersão de classe $C^{\infty}$. 
+\end{example}
+\begin{example}
+  Seja $J\subseteq\mathbb{R}$ um caminho. $f:J\to\mathbb{R}^{n}$ é uma imersão se, somente se $f^{\prime}(t)\neq 0$ para todo $t\in J$.
+\end{example}
+\begin{note}
+  \begin{itemize}
+    \item A imagem possuio reta tangente em cada ponto $L=\{f(t)+sf^{\prime}(t):s\in\mathbb{R}\}$.
+    \item Suponha $f(t)=(t^{3}-t,t^{2})$.
+      \begin{center}
+        \input{images/curvaimersao}  
+      \end{center}
+      Note que uma imersão pode não ser injetiva globalmente, mas é injetiva localmente.
+  \end{itemize}
+\end{note}
+\begin{example}
+  A Cicloide não é uma imersão. $g(t)=(t-\sen(t),1-\cos(t))$.
+  \begin{center}
+    \input{images/cicloide}  
+  \end{center}
+  \begin{itemize}
+    \item $g\in C^{\infty}$.
+    \item $g$ é injetiva.
+    \item $g$ não é imersão, poiss $g^{\prime}(t)=(1-\cos(t),\sen(t))$, logo $g^{\prime}(t)=0$ se, somente se, $t=2k\pi$ com $k\in\mathbb{Z}$. 
+  \end{itemize}
+\end{example}
+\begin{theorem}[Forma local das imersões]
+  Seja $U\subseteq \mathbb{R}^{n}$ aberto e $f:U\to\mathbb{R}^{n+m}$ uma aplicação $C^{k}$, $k\geq 1$, tal que $f$ é uma imersão em $a\in U$. Então, existem abertos $A\subseteq U$ com $a\in A$, $W\subseteq \mathbb{R}^{n+m}$, com $f(a)\in W$ e um difeomorfismo $G:W\to G(W)\subseteq\mathbb{R}^{n+m}$ tal que $G\circ f:A\to\mathbb{R}^{n+m}$ satisfaz $(G\circ f)(x)=(x,0)$ para todo $x\in A$. 
+\end{theorem}
