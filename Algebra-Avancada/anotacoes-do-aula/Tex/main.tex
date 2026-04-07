@@ -1,4 +1,4 @@
-\documentclass[10pt]{report}
+\documentclass[10pt,twoside]{report}
 \usepackage[brazilian]{babel}
 \input{configs/settings}
 \input{configs/frontpage}
@@ -8,7 +8,15 @@
 
 \pagestyle{fancyplain}% <- use fancyplain instead fancy
 \fancyhf{}
-\fancyhead[R]{\thepage}
+% Capítulo en páginas pares (izquierda)
+\fancyhead[LE]{\nouppercase{\leftmark}}
+
+% Sección en páginas impares (derecha)
+\fancyhead[RO]{\nouppercase{\rightmark}}
+
+% Número de página (puedes dejarlo como lo tenías o moverlo)
+\fancyhead[RE,LO]{\thepage}
+
 \renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{14pt}
 

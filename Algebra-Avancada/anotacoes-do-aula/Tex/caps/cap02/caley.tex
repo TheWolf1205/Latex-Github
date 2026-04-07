@@ -1,3 +1,218 @@
+Seja $G$ um grupo, sabemos que
+\begin{align*}
+  Sim(G)=\{f:G\to G:f \text{ é bijetiva}\},
+\end{align*}
+é um grupo com a operação de composição.\\
+Dado $x\in G$ definimos
+\begin{align*}
+  \varphi_x:G&\to G\\
+  g&\to xg.
+\end{align*}
+Temos que $\varphi_x\in Sim(G)$.\\
+Assim, considere
+\begin{align*}
+  \varphi:G&\to Sim(G)\\
+  x&\to \varphi_x.
+\end{align*}
+Logo $\Ker\varphi=\{1\}$, consequentemente
+\begin{align*}
+  G/\Ker\varphi\cong \Img\varphi\leq Sim(G).
+\end{align*}
+Particularmente se $|G|=n<\infty$, $|Sim(G)|=n!$.\\
+Isto motiva o seguinte.
 \begin{theorem}[Teorema de Caley]
-  Seja $G$ um grupo 
+  Sea $G$ um grupo, então $G$ é isomorfo a um subgrupo de permutações. Em particular, se $|G|=n<\infty$, então existe $H\leq S_n$ tal que $G\cong H$.
 \end{theorem}
+\begin{example}[$D_4$]
+  Sabemos que
+  \begin{align*}
+    D_4=\left\langle r,\theta: r^{2}=\theta^{4}=1, r\theta=\theta r^{-1} \right\rangle.
+  \end{align*}
+  Sabemos que $|D_4|=8$, logo $D_4\hookrightarrow S_8$, mas sabemos que $D_4\leq S_4$, logo também $D_4\hookrightarrow S_4$.\\
+  Então sabemos que $S_n$ pode estar muito longe. 
+\end{example}
+Generalizando, considere $X\neq \emptyset$ um conjunto qualquer, assim pode definir
+\begin{align*}
+  Sim(X):=\{f:X\to X:f\text{ é bijetiva}\}.
+\end{align*}
+\begin{definition}[Representação permutacional]
+  Uma \textbf{representação permutacional} de $G$ sobre $X$ é um homomorfismo $\varphi:G\to Sim(X)$. 
+\end{definition}
+\begin{example}
+  Para $X=G$, temos
+  \begin{align*}
+    \varphi: G&\to Sim(G)\\
+    g&\to \varphi_g:X\to G\\
+    \phantom{g}&\phantom{\to \varphi_g:}\hspace{0.34cm}x\to gx,
+  \end{align*}
+  é chamada \textbf{representação regular} de $G$.
+\end{example}
+\textbf{Importante:} Uma representação permutacional de $G$ sobre $X$ define uma ação de $G$ sobre $X$ (e vice-versa).
+\begin{definition}[Ação de um grupo $G$ sobre um conjunto]
+  Seja $G$ um grupo e $X\neq \emptyset$ um conjunto, então
+  \begin{align*}
+    G\times X&\to X\\
+    (g,x)&g\cdot x.
+  \end{align*}
+  Tal que
+  \begin{itemize}
+    \item $1\cdot x=x$ para todo $x\in X$.
+    \item $(gh)\cdot x=g\cdot(h\cdot x)$ para todo $g,h\in G$ e todo $x\in X$. 
+  \end{itemize}
+  é uma \textbf{ação de grupo} de $G$ sobre $X$. 
+\end{definition}
+\begin{note}
+  Dada uma representação de $G$ sobre $X$
+  \begin{align*}
+    \varphi: G&\to Sim(X)\\
+    g&\to \varphi_g:X\to X\\
+    \phantom{g}&\phantom{\to \varphi_g:}\hspace{0.34cm}x\to \varphi_g(x),    
+  \end{align*}
+  definimos uma ação de $G$ sobre $X$ dada por
+  \begin{align*}
+    G\times X&\to X\\
+    (g,x)&\to\varphi_{g}(x).
+  \end{align*}
+  Reciprocamente, se temos uma ação de $G$  sobre $X$
+  \begin{align*}
+    G\times X&\to X\\
+    (g,x)&\to g\cdot x,
+  \end{align*}
+  definimos uma representação de $G$ sobre $X$
+  \begin{align*}
+    \varphi: G&\to Sim(X)\\
+    g&\to \varphi_g:X\to X\\
+    \phantom{g}&\phantom{\to \varphi_g:}\hspace{0.34cm}x\to \varphi_g(x):=g\cdot x, 
+  \end{align*}
+  a qual é um homomorfismo.
+\end{note}
+\begin{example}
+  No caso de uma representação regular de $G$
+  \begin{align*}
+    \varphi: G&\to Sim(G)\\
+    g&\to \varphi_g:G\to G\\
+    \phantom{g}&\phantom{\to \varphi_g:}\hspace{0.34cm}x\to g\cdot x,    
+  \end{align*}
+  temos a ação de $G$ sobre si misma por multiplicação à esquerda.
+  \begin{align*}
+    G\times G&\to G\\
+    (g,x)&\to gx.
+  \end{align*}
+\end{example}
+Observamos que dada uma ação de $G$ sobre um conjunto $X\neq \emptyset$, temos definida uma relação de equivalencia em $X$ dada por lo seguinte. Se $x,y\in X$, temos que $xRy$ se, somente se, existe $g$ tal que $y:=g\cdot x$.
+\begin{definition}[Orbita e Estabilizador]
+  Dada uma ação de $G$ sobre um conjunto $X$ definimos o \textbf{orbita} de $x\in X$ em $G$ como a classe de equivalencia de $x$ definida pela relação
+  \begin{align*}
+    Orb_{G}(x):=\{g\cdot x:g\in G\}\subseteq X.
+  \end{align*}
+  Logo $X=\dot\bigcup_{x\in X}Orb_{G}(x)$.\\
+  Definimos também o \textbf{estabilizador} do $x$ em $G$ como
+  \begin{align*}
+    Stab_{G}(x)=\{g\in G:g\cdot x=x\}\subseteq G.
+  \end{align*}
+\end{definition}
+\begin{lemma}
+  Dado $x\in X$, temos que $Stab_{G}(x)$ é um subgrupo de $G$.
+\end{lemma}
+\begin{theorem}[Teorema da órbita estabilizador]
+  Dado $x\in X$, temos
+  \begin{align*}
+    [G:Stab_{G}(x)]=|Orb_{G}(x)|.
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Considere $S_x=Stab_{G}(x)$ e o cojunto das classes laterais de $S_x$ em $G$
+  \begin{align*}
+    C=\{gS_x:g\in G\}.
+  \end{align*}
+  Defina $f:C\to Orb_{G}(x)$ dada por $f(gS_x)=g\cdot x$, logo temos que $f$ é uma bijeção. 
+\end{proof}
+\textbf{Consequências:}
+Para $|G|<\infty$ e $|X|<\infty$, temos $|Orb_{G}(x)|$ é divisor de$|G|$.
+\begin{align*}
+  |X|=\dot\sum_{x\in X}|Orb_{G}(x)|.
+\end{align*}
+Algumos exemplos de ações de grupos são.
+\begin{example}
+  Ação de $G$ sobre si mesmo por conjugações
+  \begin{align*}
+    G\times G&\to G\\
+    (g,x)&\to x^{g}.
+  \end{align*}
+  Logo
+  \begin{align*}
+    \varphi: G&\to Sim(G)\\
+    g&\to \varphi_g:G\to G\\
+    \phantom{g}&\phantom{\to \varphi_g:}\hspace{0.34cm}x\to x^{g}.    
+  \end{align*}
+  Assim, dado $x\in G$, temos
+  \begin{align*}
+    Orb_{G}(x)=\{x^{g}:g\in G\}=Cl(x)\\
+    Stab_{G}(x)=\{g\in G:x^{g}=x\}=C_{G}(x).
+  \end{align*}
+  Concluimos que $[G:C_{G}(x)]=|Cl(x)|$ para todo $x\in G$.\\
+  Além disso, observe que $\Ker\varphi=\{g\in G:x^{g}=x\}$ para todo $x\in G$, logo $\Ker\varphi=Z(G)$. 
+\end{example}
+\begin{example}[Conjunto das classes laterais]
+  Dado um subgrupo $H\leq G$, definimos a ação de $G$ sobre o conjunto das classes laterais de $H$ em $G$.
+  \begin{align*}
+    X=\{xH:x\in G\}.
+  \end{align*}
+  \begin{align*}
+    G\times X&\to X\\
+    (g,xH)&\to gxH.
+  \end{align*}
+  Logo
+  \begin{align*}
+    \varphi: G&\to Sim(X)\\
+    g&\to \varphi_g:X\to X\\
+    \phantom{g}&\phantom{\to \varphi_g:}\hspace{0.34cm}xH\to gxH.    
+  \end{align*}
+  Se $H\in X$, então (se $|G|<\infty$)
+  \begin{align*}
+    Orb_{G}(H)&=X\\
+    Stab_{G}(H)&=H\\
+    [G:H]&=|H|\\
+    \Ker\varphi&=\{g\in G:\varphi_g=Id_X\}\\
+    &=\{g\in G:\varphi_g(xH)=xH\text{ para todo }xH\in X\}\\
+    &=\{g\in G:gxH=xH\text{ para todo }xH\in X\}\\
+    &=\{g\in G:g\in H^{x}\text{ para todo }x\in G\}\\
+    &=\bigcap_{x\in G}H^{x}\normal G.
+  \end{align*}
+  \textbf{Conclução:} Dado $H\leq G$, existe um subgrupo $K$ normal de $G$ tal que $K\leq H$, $K\normal G$, onde $K=Core(H)$ com $\displaystyle Core(H)=\bigcap_{g\in G}H^{g}$. 
+\end{example}
+\begin{proposition}
+  Se $|G|<\infty$ e $H\leq G$ com $[G:H]=n$, então existe um $N\leq H$ com $N\normal G$ tal que $[G:N]$ divide $n!$ 
+\end{proposition}
+\begin{proof} 
+  Observe que se $X=\{xH:x\in G\}$, então $|Sim(x)|=n!$\\
+  Assim, a representação permutacional de $G$ sobre $X$ $\varphi:G\to Sim(X)$ tem núcleo $\displaystyle N=\bigcap_{x\in G}H^{x}$ e temos $G/N\cong \Img\varphi\leq Sim(X)$.\\
+  Logo $|G/N|$ divide $|Sim(X)|$, i.é, $[G:N]$ divide $n!$. 
+\end{proof}
+\begin{corollary}
+  Se $|G|<\infty$ e $H\leq G$ é tal que $[G:H]=p$, onde $p$ é o menor primo divisor de $|G|$, então $H\normal G$. 
+\end{corollary}
+\begin{proof} 
+  Pela proposição anterior existe $N\normal G$, $N\leq H$ com $[G:H]$ que divide a $p!$\\
+  \textbf{Afirmação:}$N\neq H$(e assim $H\normal G$)\\
+  De fato, se $N\neq H$, considere $q$ primo tal que $q$ divide $[H:N]$, loo $q\mid (p-1)!$, mas o menor primo que divide $|G|$ é $p$, contradição, logo $N=H$. 
+\end{proof}
+\begin{example}
+  Ação de $G$ sobre o conjunto das conjugados de um subgrupo.\\
+  Seja $H\leq G$, $X=\{H^{x}:x\in G\}$ com $|G|<\infty$.\\
+  \begin{align*}
+    G\times X&\to X\\
+    (g,H^{x})&\to H^{gx}.
+  \end{align*}
+  Temos $H\in X$.\\
+  \begin{align*}
+    Orb_{G}(H)&=\{H^{g}:g\in G\}=X\\
+    Stab_{G}(H)&\{g\in G:H^{g}=H\}=N_{G}(H).
+  \end{align*}
+  Logo, pelo teorema da órbita estabilizador temos que
+  \begin{align*}
+    [G:Stab_{G}(H)]=|Orb_{G}(H)|\\
+    [G:N_{G}(H)]=|X|.
+  \end{align*}
+  Onde $|X|$ é o número de conjugados de $H$ em $G$. 
+\end{example}
