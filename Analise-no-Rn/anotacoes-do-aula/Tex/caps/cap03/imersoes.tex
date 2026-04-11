@@ -3,6 +3,9 @@
   Se $f$ é uma imersão em todos os pontos de $U$, dizemos que $f$ é uma imersão.\\
   Se $f^{\prime}(a)$ é injetiva e $f^{\prime}$ é contínua em $a$, então existe uma vizinhança de $a$ que transforma uma bola centrada em $a$, homeomorficamente sobre sua imagen ($|f(x)-f(y)|\geq c|x-y|$). 
 \end{definition}
+\begin{note}
+  Note que a composta de duas imersões é uma imersão.
+\end{note}
 \begin{example}
   Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m} \times\mathbb{R}^{m}$ dada por $f(x)=(x,0)$. Logo como $f$  é linear, $f^{\prime}(x)=f$ e
   \begin{align*}
@@ -37,3 +40,32 @@
 \begin{theorem}[Forma local das imersões]
   Seja $U\subseteq \mathbb{R}^{n}$ aberto e $f:U\to\mathbb{R}^{n+m}$ uma aplicação $C^{k}$, $k\geq 1$, tal que $f$ é uma imersão em $a\in U$. Então, existem abertos $A\subseteq U$ com $a\in A$, $W\subseteq \mathbb{R}^{n+m}$, com $f(a)\in W$ e um difeomorfismo $G:W\to G(W)\subseteq\mathbb{R}^{n+m}$ tal que $G\circ f:A\to\mathbb{R}^{n+m}$ satisfaz $(G\circ f)(x)=(x,0)$ para todo $x\in A$. 
 \end{theorem}
+\begin{proof} 
+  \begin{center}
+    \input{images/localimersoes} 
+  \end{center}
+  Sem perdida  de generalidade podemos supor que $f^{\prime}(a)(\mathbb{R}^{n})=\mathbb{R}^{n}\times\{0\}$.\\
+  De fato, sabemos que $\dim \Img(f^{\prime}(a))=\dim V=n$. Seja $W=V^{\perp}$, i.é, $\dim W=m$. Agora, consideremos uma base ortogonal de $V$ e $W$, i.é, 
+  \begin{align*}
+    \begin{cases}
+      \{v_1,v_2,\cdots,v_n\}, &\text{ base de } V \text{,} \\
+      \{w_1,w_2,\cdots,w_m\}, &\text{ base de } W.
+    \end{cases}
+  \end{align*}
+  Defina $T:\mathbb{R}^{n+m}\to\mathbb{R}^{n+m}$ uma tranformação linear dada por $T(v_i)=e_i$ e $T(w_i)=e_{n+i}$ para todo $i$.\\
+  Logo $T$ é um isomorfismo linear e $T(V)=\mathbb{R}^{n}\times\{0\}$ e $T(W)=\{0\}\times\mathbb{R}^{m}$.\\
+  Logo, considere a função $\tilde{f}=T\circ f:U\to\mathbb{R}^{n+m}$.\\
+  Pela regra da cadeia temos que $\tilde{f}^{\prime}=Tf^{\prime}$ que como $f^{\prime}$ é injetiva e $T$ é bijetiva, temos que $\tilde{f}^{\prime}$ ´e injetiva, logo $\Img \tilde{f}^{\prime}(a)=\mathbb{R}^{n}\times \{0\}$.\\
+  Se provamos o teorema para $\tilde{f}^{\prime}$, obtemos que $a\in A$, $\tilde{f}(a)\in W$ e um difeomorfismo $\tilde{G}:W\to\tilde{G}(W)$ tal que $(\tilde{G}\circ\tilde{f})(x)=(x,0)$, logo você pode fazer $G=\tilde{G}\circ T$.\\
+  Agora, defina $F:U\times \mathbb{R}^{m}\to\mathbb{R}^{n+m}$ como $F(x,y)=f(p_1(x,y))+p_2(x,y)=f(x)+(0,y)$. Onde $p_1$ e $p_2$ são as projeções de $\mathbb{R}^{n+m}$ sobre $\mathbb{R}^{n}\times\{0\}$ e $\{0\}\times\mathbb{R}^{m}$, respectivamente. Agora, calculamos a derivada de $F$ no ponto $(a,0)$
+  \begin{align*}
+    F^{\prime}(a,0)\cdot(h,k)=f^{\prime}(a)\cdot h+(0,k).
+  \end{align*}
+  Logo $\Img(F^{\prime}(a,0))=\mathbb{R}^{n+m}$. Assim, $F^{\prime}(a,0)$ é sobrejetiva, logo como ela é linear é injetiva e portanto ela ´e um isomorfismo invertivel.\\
+  Pelo teorema da função inversa temos que existem abertos $V\subseteq \mathbb{R}^{n+m}$ com $(a,0)\in V$ e $W\subseteq\mathbb{R}^{n+m}$ com $F(a,0)=f(a)\in W$ taes que $F\big|_{V}:V\to W$ é um difeomorfismo.\\
+  Seja $G:\left[ F\big|_{V} \right]^{-1}:W\to V$ e $A=p_1(V)\subseteq U$, logo para todo $x\in A$ temos que $(x,0)\in V$ e portanto
+  \begin{align*}
+    (G\circ f)(x)=G(f(x))=(G\circ F)(x,0)=(x,0).
+  \end{align*}
+  Para todo $x\in A$.
+\end{proof}

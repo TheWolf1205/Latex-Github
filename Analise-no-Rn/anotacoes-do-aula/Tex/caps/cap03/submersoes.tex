@@ -1,0 +1,63 @@
+\begin{definition}[Submersão]
+  Seja $U\subseteq \mathbb{R}^{n}$ aberto, $f:U\to\mathbb{R}^{m}$ é dita \textbf{submersão} no ponto $x\in U$ se $f^{\prime}(x):\mathbb{R}^{m}\to\mathbb{R}^{n}$ é sobrejetiva (ou seja $m\geq n$). 
+\end{definition}
+\begin{note}
+  Note que a composta das submersões é uma submersão.
+\end{note}
+\begin{example}
+  Seja $p:\mathbb{R}^{m}\times\mathbb{R}^{n}\to\mathbb{R}^{n}$ a projeção $p(x,y)=y$.\\
+  Note que $p$ é linear, logo $p^{\prime}=p$, assim $p^{\prime}$ é sobrejetiva e portanto uma submersão. 
+\end{example}
+\begin{example}
+  Seja $f:\mathbb{R}^{m}\to\mathbb{R}$ dada por $f(x,y)=\norm{x}^{2}-\norm{y}^{2}$ com $x\in\mathbb{R}^{m-i}$ e $y\in\mathbb{R}^{i}$.\\
+  Logo
+  \begin{align*}
+    f^{\prime}(x,y)\cdot (h,k)=2\left\langle x,h \right\rangle-2\left\langle y,k \right\rangle.
+  \end{align*}
+  Então, $f^{\prime}\big|_{\mathbb{R}^{m}\setminus\{0\}}$ é submersão, ja que $f^{\prime}(x,y)\neq 0$ para todo $(x,y)\in\mathbb{R}^{m}\setminus\{0\}$. 
+\end{example}
+\begin{notation}
+  Escrevemos $\mathbb{R}^{n+m}=E\oplus F$ com $z=(x,y)$, $x\in E$ e $y\in F$. E as derivadas parciais.
+  \begin{align*}
+    \partial_{1}f(z_0)&=f^{\prime}(z_0)\big|_{E}:E\to\mathbb{R}^{n}.\\
+    \partial_{2}f(z_0)&=f^{\prime}(z_0)\big|_{F}:F\to\mathbb{R}^{n}.
+  \end{align*}
+\end{notation}
+\begin{theorem}[Forma local das submersões]
+  Sejam $U\subseteq\mathbb{R}^{m+n}$ aberto, $f:U\to\mathbb{R}^{n}$ de classe $C^{k}$ ($k\geq 1$), submersão em $z_0\in U$ (i.é, $f^{\prime}(z_0)$ é sobrejetiva).\\
+  Dada uma descomposição $\mathbb{R}^{m+n}=E\oplus F$ com $z_0=(x_0,y_0)$ tal que $\partial_{2}f(z_0):F\to\mathbb{R}^{n}$ é um isomorfismo.\\
+  Então exise um difeomorfismo $h:V\times W\to Z$ de classe $C^{k}$, onde
+  \begin{itemize}
+    \item $V\subseteq E$ é aberto com $x_0\in V$.
+    \item $W\subseteq \mathbb{R}^{n}$ é aberto com $f(z_0)\in W$.
+    \item $Z\subseteq U$ é aberto com $z_0\in Z$. 
+  \end{itemize}
+  Tal que $f(h(x,w))=w$ para todo $(x,w)\in V\times W$. 
+\end{theorem}
+\begin{proof} 
+  \begin{center}
+    \input{images/localsubmersoes}  
+  \end{center}
+  Seja $\phi:U\to E\times\mathbb{R}^{n}$ definida por $\phi(x,y)=(x,f(x,y))$.\\
+  Note que a derivada de $\phi$ é dada por
+  \begin{align*}
+    \phi^{\prime}(z_0)\cdot(h,k)=\left( h,\partial_{1}f(z_0)\cdot h+\partial_{2}f(z_0)\cdot k \right),
+  \end{align*}
+  para todo $(h,k)\in E\oplus F$.\\
+  \textbf{Afirmação:} $\phi^{\prime}(z_0)$ é um isomorfimo em $z_0=(x_0,y_0)$.\\
+  Precisamos resolver quando $\phi^{\prime}(z_0)\cdot(h,k)=(u,v)$ onde $u\in E$ e $v\in \mathbb{R}^{n}$. Isto é
+  \begin{align*}
+    \begin{cases}
+      h=u, &\text{,} \\
+      \partial_{1}f(z_0)\cdot h+\partial_{2}f(z_0)\cdot k=v, &.
+    \end{cases}
+  \end{align*}
+  Subtituindo chegamos a $\partial_{1}f(z_0)\cdot u+\partial_{2}f(z_0)\cdot k=v$. Logo como $\partial_{2}f(z_0)$ é isomorfismo, existe $\left[ \partial_{2}f(z_0) \right]^{-1}$, então
+  \begin{align*}
+    k=\left[ \partial_{2}f(z_0) \right]^{-1}\left( v-\partial_{1}f(z_0)\cdot h \right).
+  \end{align*}
+  Logo, temos que $\phi^{\prime}(z_0)$ é sobrejetiva, logo pelo ser transformação linear e as dimenções do $U$ e $E\times\mathbb{R}^{n}$ ser as mesmas, temos que ela é bijetiva, pelo que podemos concluir que $\phi^{\prime}(z_0)$ é um isomorfismo.\\
+  Agora, pelo teorema de la aplicação inversa existe um aberto $Z\subseteq U$ tal que $z_0\in Z$, e um aberto $V\times W\subseteq E\times\mathbb{R}^{n}$ com $\phi(z_0)=(x_0,f(z_0))\in V\times W$ tal que $\phi\big|_{Z}:Z\to V\times W$ é difeomorfismo.\\
+  Assim, defina $h=\left[ \phi\big|_{Z} \right]^{-1}:V\times W\to Z$ a qual é umm difeomorfismo.
+  Além disso, para todo $(x,w)\in V\times W$ temos $f(h(x,w))=w$. 
+\end{proof}
