@@ -1,0 +1,21 @@
+\begin{homeworkProblem}[Seção 1-9]
+  Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{1}$, com $|f^{\prime}(x)\cdot v|\geq \alpha |v|$ para $x,y\in\mathbb{R}^{m}$ quaisquer ($\alpha>0$ constante). Então $f^{\prime}$ é um difeomorfismo de $\mathbb{R}^{m}$ sobre si mesmo. Em particular, $|f(x)-f(y)|\geq\alpha|x-y|$, para quaisquer $x,y,\in\mathbb{R}^{m}$. Sugestão: prove que, dados $a\in\mathbb{R}^{m}$ e $b\in\mathbb{R}^{m}$, existe $\lambda:[0,1]\to\mathbb{R}^{m}$ tal que $\lambda(0)=a$ e 
+  \begin{align*}
+    f(\lambda(t))=(1-t)f(a)+tb,\quad\text{ para todo }t\in[0,1].
+  \end{align*}
+  \begin{solution}
+    Note que como $f$ é $C^{1}$, ela é diferenciável, logo pelo teorema fundamental do cálculo para caminhos temos que
+    \begin{equation}\label{eq:2}  
+      f(x)-f(y)=\int_{0}^{1}f^{\prime}(y+t(x-y))\cdot (x-y)\,dt.
+    \end{equation}
+    Logo, note que pela propriedade da hipótese e que a função $x^{2}:\mathbb{R}^{+}\to\mathbb{R}$ e monotoná se cumpre que
+    \begin{align*}
+      |x-y|^{2}\alpha^{2}\leq |f^{\prime}(y+t(x-y))\cdot (x-y)|^{2}.
+    \end{align*}
+    Agora, integrando, usando na linearidade do a integral e o produto interno, a equacão \eqref{eq:2} temos que
+    \begin{align*}
+      \alpha^{2}\left\langle x-y,x-y \right\rangle&\leq \left\langle f^{\prime}(y+t(x-y))\cdot(x-y),f^{\prime}(y+t(x-y))\cdot(x-y) \right\rangle\\
+      &\leq
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}
