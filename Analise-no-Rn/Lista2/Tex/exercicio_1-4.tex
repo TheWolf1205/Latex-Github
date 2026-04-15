@@ -1,0 +1,10 @@
+\begin{homeworkProblem}[Seção 1-4]
+  Sejam $U\subseteq\mathbb{R}^{n}$ aberto e $f:U\to\mathbb{R}$ contínua. A função $g:U\to\mathbb{R}$ é dada pela expressão
+  \begin{align*}
+    g(x)=\int_{0}^{f(x)}e^{-t^{2}}\,dt.
+  \end{align*}
+  Provar que se $g$ é de classe $C^{1}$, então $f$ também é de classe $C^{1}$. 
+  \begin{solution}
+    Defina $\phi:\mathbb{R}\to\mathbb{R}$ dada por $\phi(s)=\int_{0}^{s}e^{-t^{2}}\,dt$, logo note que pelo teorema fundamental del cálculo temos que $\phi^{\prime}(s)=e^{-s^{2}}$, portanto $\phi\in C^{1}$. Além mais, temos que $\phi^{\prime}(s)>0$ para todo $s\in\mathbb{R}$, pelo que sabemos que $\phi$ é injetiva, logo pelo teorema da função inversa temos que $\phi$ é um difeomorfismo local para todo $s\in\mathbb{R}$, mas como $\phi$ é injetiva, então $\phi$ é um $C^{1}$-difeomorfismo sobre sua imágem. Portanto, temos que $g(x)=(\phi\circ f)(x)$, implica que $f(x)=(\phi^{-1}\circ g)(x)$ e como $\phi^{-1},g\in C^{1}$ temos que $f$ é $C^{1}$. 
+  \end{solution}
+\end{homeworkProblem}

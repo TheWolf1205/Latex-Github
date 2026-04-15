@@ -1,0 +1,29 @@
+\begin{homeworkProblem}[Seção 1-7]
+  Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{1}$ tal que para $x,v\in\mathbb{R}^{m}$ quaisquer tem-se $\left\langle f^{\prime}(x)\cdot v,v \right\rangle\geq \alpha \left| v^{2} \right|$, onde $\alpha>0$ é uma constante. Prove que $|f(x)-f(y)|\geq \alpha\left| x-y\right|$ para $x,y\in\mathbb{R}^{m}$ arbitrários. Conclua que $f\left( \mathbb{R}^{m} \right)$ é fechado, e dái, que $f$ é um difeomorfismo de $\mathbb{R}^{m}$ sobre si mesmo. (A hipótese "$f\in C^{1}$" pode ser substituída por "$f$ diferenciável".) 
+  \begin{solution}
+    Note que pelo teorema fundamental del cálculo para caminhos temos que
+    \begin{equation}\label{eq:1}
+      f(x)-f(y)=\int_{0}^{1}f^{\prime}(y+t(x-y))\cdot (x-y)\,dt.
+    \end{equation}
+    Logo note que pela propriedade da hipótese temos que 
+    \begin{align*}
+      \alpha\left| x-y \right|^{2}\leq \left\langle x-y,f^{\prime}(y+t(x-y))\cdot (x-y) \right\rangle.
+    \end{align*}
+    Agora, integrando, usando na linearidade do a integreal e o produto interno, a equação \eqref{eq:1} e a desigualdade de Cauchy, temos que
+    \begin{align*}
+      \alpha\left| x-y \right|^{2}&=\int_{0}^{1}\alpha\left| x-y \right|^{2}\,dt\\
+      &\leq \int_{0}^{1}\left\langle f^{\prime}(y+t(xy))\cdot(x-y),x-y \right\rangle\,dt\\
+      &\leq \left\langle \int_{0}^{1}f^{\prime}(y+t(x-y))\cdot (x-y)\,dt ,x-y\right\rangle\\
+      &\leq \left\langle f(x)-f(y),x-y \right\rangle\\
+      &\leq \left| f(x)-f(y) \right|\left| x-y \right|.
+    \end{align*}
+    Portanto, $\alpha\left| x-y \right|\leq \left| f(x)-f(y) \right|$, além mais, note que como $f$ é de classe $C^{1}$, nos podemos pegar $x,y\in\mathbb{R}^{m}$ arbitrários.\\
+    Note que, isto implica que $f$ é injetiva, ja que si suponemos $f(x)=f(y)$, temos que $\alpha\left| x-y \right|\leq 0$, logo $x=y$.\\
+    Por outro lado, note que $f^{\prime}(x)\cdot v=0$ se, somente se $v=0$, ja que temos que $\alpha\left| v \right|^{2}\leq \left\langle f^{\prime}(x)\cdot v,v \right\rangle=0$ se, somente se $v=0$.\\
+    Logo, pelo teorema da função inversa e que $f$ é injetiva, temos que $f$ é um difeomorfismo na sua imagem $f\left( \mathbb{R}^{m} \right)$, além mais, $f$ é uma função aberta.\\ 
+    Agora, para ver que $f\left( \mathbb{R}^{m} \right)$ é fechado, vamos pegar uma sequencia $\{y_k\}_{k\in\mathbb{Z}^{+}}\subseteq f\left( \mathbb{R}^{m} \right)$ de Cauchy, note que como $f$ é injetiva, temos uma sequencia $\{x_k\}_{i\in\mathbb{Z}^{+}}$ tal que $f(x_k)=y_k$ para todo $k\in\mathbb{Z}^{+}$. Logo como $\left| x_k-x_{n} \right|\leq \frac{1}{\alpha}\left| f(x_k)-f(x_{n}) \right|$, nos podemos conclui que $\{x_k\}_{k\in\mathbb{Z}^{+}}$ é de Cauchy. Depois como $\mathbb{R}^{m}$ é um espaço completo, temos que $x_k\xrightarrow[k\to\infty]{}x$ com $x\in\mathbb{R}^{m}$.\\
+    Assim, como $f$ é contínua, temos que $f(x_k)=y_k\xrightarrow[k\to\infty]{}f(x)$ com $f(x)\in f\left( \mathbb{R}^{m} \right)$. Pelo que podemos conclui que $f\left( \mathbb{R}^{m} \right)$ é um conjunto fechado.\\
+    Então, note que como $f$ é uma função aberta, temos que $f(\mathbb{R}^{m})\subseteq \mathbb{R}^{m}$ é aberto, pelo por lo anterior temos que $f\left( \mathbb{R}^{m} \right)\subseteq \mathbb{R}^{m}$ é fechado, logo como $\mathbb{R}^{m}$ é conexo, então $f(\mathbb{R}^{m})=\mathbb{R}^{m}$, pelo que se pode conclui que $f$ é sobrejetiva e por ende $f$ é um difeomorfismo de $\mathbb{R}^{m}$ sobre se mesmo.\\
+    \textcolor{red}{Note que só é necessario que $f$ seja diferenciável.}
+  \end{solution}
+\end{homeworkProblem}

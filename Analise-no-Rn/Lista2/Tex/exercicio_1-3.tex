@@ -1,6 +1,30 @@
 \begin{homeworkProblem}[Seção 1-3]
   Sejam $f,g,h:\mathbb{R}\to\mathbb{R}$ diferenciáveis. Defina $F:\mathbb{R}^{2}\to\mathbb{R}^{2}$ pondo $F(x,y)=(f(x)\cdot h(y),g(y))$. Suponha que $f$ e $g$ são difeomorfismos de $\mathbb{R}$ sobre $\mathbb{R}$. Mostre que $F$ é um difeomorfismo se, somente se $0\neq h(\mathbb{R})$. 
   \begin{solution}
-    XXX  
+    \textbf{Necessario:} Note que como $F$ é um difeomorfismo, então sabemos que $JF(x,y)$ é invertivel para todo $(x,y)\in\mathbb{R}^{2}$, logo
+    \begin{align*}
+      JF(x,y)=\begin{pmatrix}
+        f^{\prime}(x)h(y) & f(x)h^{\prime}(y) \\
+        0 & g^{\prime}(y)
+      \end{pmatrix}.
+    \end{align*}
+    Logo $\det(JF(x,y))=f^{\prime}(x)g^{\prime}(y)h(y)\neq 0$ para todo $(x,y)\in\mathbb{R}^{2}$. Portanto, $h(y)\neq 0$ para todo $y\in\mathbb{R}$, i.é, $0\notin h(\mathbb{R})$.\\
+    \textbf{Suficiente:} Veamos que $F$ é um difeomorfismo.\\
+    \begin{itemize}
+      \item Injetividade.\\
+        Suponha $(x_1,y_1),(x_2,y_2)\in\mathbb{R}^{2}$ taes que $F(x_1,y_1)=F(x_2,y_2)$, isto implica que $g(y_1)=g(y_2)$ e como $g$ é um difeomorfismo, $g$ é injetiva, portanto podemos concluir que $y_1=y_2$.\\
+        Por outra parte, temos que $f(x_1)h(y_1)=f(x_2)h(y_1)$, logo como $h(y_1)\neq 0$ (ja que $0\notin h(\mathbb{R})$) podemos dividir na igualdade por $h(y_1)$, o que implica que $f(x_1)=f(x_2)$ e como $f$ é difeomorfismo podemos concluir igualmente que $x_1=x_2$. Portanto, $F$ e injetiva.
+      \item Sobrejetividade.\\
+        Seja $u,v\in\mathbb{R}^{2}$, nos queremos resolver $F(x,y)=(u,v)$.\\
+        Isto é, por uma parte $g(y)=v$, logo como $g$ é difeomorfismo, $g$ é invertivel, portanto $y=g^{-1}(v)$.\\
+        Por outra parte, note que temos que $f(x)h(g^{-1}(v))=u$, logo fazendo algums cálculos e usando que $f$ é difeomorfismo, portanto invertivel, temos que $x=f^{-1}\left( \frac{u}{h(g^{-1}(v))} \right)$ a qual está bem definida, ja que $0\notin h(\mathbb{R})$.\\
+      \item Inversa diferenciável.\\
+        Note que, pelo anterior temos
+        \begin{align*}
+          F^{-1}(x,y)=\left( \left(f^{-1}\circ \frac{x}{\cdot}\circ h\circ g^{-1}\right)(y),g^{-1}(y) \right).
+        \end{align*}
+        Logo como $F^{-1}$ é composta de funções diferenciáveis, temos que $F^{-1}$ é diferenciável. 
+    \end{itemize}
+    Assim, podemos concluir que $F$ é difeomorfismo. 
   \end{solution}
 \end{homeworkProblem}

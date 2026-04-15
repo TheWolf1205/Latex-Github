@@ -1,0 +1,20 @@
+\begin{homeworkProblem}[Seção 1-5]
+  Sejam $L:\mathbb{R}^{n}\to\mathbb{R}^{n}$ um isomorfismo linear e $g:\mathbb{R}^{n}\to\mathbb{R}^{n}$ uma função de classe $C^{1}$ satisfazendo a seguinte propiedade: existe $M>0$ tal que para todo $x\in\mathbb{R}^{n}$,
+  \begin{align*}
+    \norm{g(x)}\leq M\norm{x}^{2}.
+  \end{align*}
+  Considere a função $f:\mathbb{R}^{n}\to\mathbb{R}^{n}$ definida por $f(x)=L(x)+g(x)$. Prove que existem abertos $U_1$ e $U_2$ tais que $0\in U_1\cap U_2$ e $f:U_1\to U_2$ é um homeomorfismo. 
+  \begin{solution}
+    Note que por um lado, temos que $L^{\prime}(x)\cdot v=Lv$, ja que $L$ é um isomorfismo linear.\\
+    Por outro lado temos que
+    \begin{align*}
+      \norm{g(0)}\leq M\norm{0}=0.
+    \end{align*}
+    Logo temos que $g(0)=0$. Agora, usando isto e la hipótesis sobre $g$ temos que
+    \begin{align*}
+      \norm{g^{\prime}(0)}=\norm{\lim_{t \to 0}\frac{g(0+tv)-g(0)}{tv}}\leq \lim_{t \to 0}\norm{\frac{g(tv)}{tv}}\leq \lim_{t \to 0}M\norm{tv}=0.
+    \end{align*}
+    Logo $g^{\prime}(0)=0$.\\
+    Portanto, temos que $f^{\prime}(0)\cdot v=Lv$ e como $L$ é um isomorfismo linear, sabemos que $f^{\prime}(0)$ é invertivel. Assim, pelo teorema da função inversa temos que existem abertos $U_1,U_2\subseteq \mathbb{R}^{n}$ taes que $0\in U_1$ e $f(0)=L(0)+g(0)=0\in U_2$, isto é, que $0\in U_1\cap U_2$ taes que $f:U_1\to U_2$ é um $C^{1}$-difeomorfismo (ja que $f$ é soma de funções $C^{1}$). Em particular, $f:U_1\to U_2$ é um homeomorfismo. 
+  \end{solution}
+\end{homeworkProblem}
