@@ -1,0 +1,51 @@
+\begin{homeworkProblem}[Seção 3-5]
+  Determine os pontos críticos da função $f:\mathbb{R}^{m}\times\mathbb{R}^{m}\to\mathbb{R}$, $f(x,y)=\left\langle x,y \right\rangle$, restrita à esfera unitária $|x|^{2}+|y|^{2}=1$, e mostre como dái se obtém a desigualdade de Cauchy-Schwarz.
+  \begin{solution}
+    Note que a restrição $|x|^{2}+|y|^{2}=1$ se pode escrever como uma função $\phi:\mathbb{R}^{m}\times\mathbb{R}^{m}$ dada por $\phi(x,y)=|x|^{2}+|y|^{2}-1$. Então, pelo teorema do multiplicadores de Lagrange temos que
+    \begin{itemize}
+      \item $\nabla f(x,y)=\left( \left\langle 1,y \right\rangle,\left\langle x,1 \right\rangle \right)=\left( y,x \right)$.
+      \item $\nabla \phi(x,y)=\left( 2x,2y \right)$.
+    \end{itemize}
+    Que cumprem
+    \begin{align*}
+      \begin{cases}
+        \nabla f(x,y)=\lambda\nabla\phi(x,y),\\
+        \phi(x,y)=0.
+      \end{cases}
+    \end{align*}
+    Portanto
+    \begin{align*}
+      \begin{cases}
+        \left( y,x \right)=\left( 2x\lambda,2y\lambda \right),\\
+        \phi(x,y)=0.
+      \end{cases}
+    \end{align*}
+    Assim, $y=2x\lambda$ e $x=2y\lambda$, logo temos que $x=2(2x\lambda)\lambda$ o que implica que $4\lambda^{2}x-x=(4\lambda^{2}-1)x=0$, logo se $x\neq 0$ temos que $\lambda=\pm\frac{1}{2}$, por outro lado, se $x=0$ temos que $|y|^{2}=1$ e portanto $y=\pm 1$, assim temos que os pontos críticos de $f$ restrita à esfera unitária são
+    \begin{align*}
+      \begin{cases}
+        f(x,2x\lambda)=f(x,x)=|x|^{2}, &\text{máximo com } \lambda=\frac{1}{2},x\neq 0 \text{,} \\
+        f(x,2x\lambda)=f(x,-x)=-|x|^{2}, &\text{mínimo com } \lambda=-\frac{1}{2},x\neq 0,\\
+        f(0,y)=f(0,1)=0,\\
+        f(0,y)=f(0,-1)=0.
+      \end{cases}
+    \end{align*}
+    Agora, note que pelo anterior, se $|x|^{2}+|y|^{2}=1$ com $x,y\neq 0$, temos que $-\frac{1}{2}\leq \left\langle x,y \right\rangle\leq \frac{1}{2}$ o mesmo que dizer que $\left| \left\langle x,y \right\rangle \right|\leq \frac{1}{2}$.\\
+    Portanto, se tomamos $(x,y)\in\mathbb{R}^{m}\times\mathbb{R}^{m}$ com $x,y\neq 0$, temos que 
+    $$\left| \frac{x}{\sqrt{|x|^{2}+|y|^{2}}} \right|^{2}+\left| \frac{y}{\sqrt{|x|^{2}+|y|^{2}}} \right|^{2}=1.$$
+    Assim, pelo mencionado anteriormente temos que 
+    $$\left|\left\langle \frac{x}{\sqrt{|x|^{2}+|y|^{2}}},\frac{y}{\sqrt{|x|^{2}+|y|^{2}}} \right\rangle\right|\leq \frac{1}{2}.$$
+    Depois, usando a linearidade do produto interno e fazendo ums cálculos obtemos que
+    \begin{align*}
+      \left|\left\langle x,y \right\rangle\right|\leq \frac{|x|^{2}+|y|^{2}}{2}.
+    \end{align*}
+    Agora, usando isto nos podemos pegar $v=\frac{x}{|x|}$ e $u=\frac{y}{|y|}$, logo pelo anterior temos que 
+    \begin{align*}
+      \left\langle x,y \right\rangle = |x||y|\left\langle u,v \right\rangle\leq |x||y|\frac{|u|^{2}+|v|^{2}}{2}= |x||y|\frac{1+1}{2}= |x||y|.
+    \end{align*}
+    Isto é
+    \begin{align*}
+      \left\langle x,y \right\rangle\leq |x||y|.
+    \end{align*}
+    O que conclui a desigualdade de Cauchy-Schwarz para todo $(x,y)\in\mathbb{R}^{m}\times\mathbb{R}^{m}$ com $x,y\neq 0$. Note que se $x=0$ ou $y=0$ a desigualdade e facil de verificar. 
+  \end{solution}
+\end{homeworkProblem}

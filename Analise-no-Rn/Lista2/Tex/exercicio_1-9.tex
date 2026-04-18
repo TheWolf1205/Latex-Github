@@ -1,21 +1,14 @@
 \begin{homeworkProblem}[Seção 1-9]
-  Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{1}$, com $|f^{\prime}(x)\cdot v|\geq \alpha |v|$ para $x,y\in\mathbb{R}^{m}$ quaisquer ($\alpha>0$ constante). Então $f^{\prime}$ é um difeomorfismo de $\mathbb{R}^{m}$ sobre si mesmo. Em particular, $|f(x)-f(y)|\geq\alpha|x-y|$, para quaisquer $x,y,\in\mathbb{R}^{m}$. Sugestão: prove que, dados $a\in\mathbb{R}^{m}$ e $b\in\mathbb{R}^{m}$, existe $\lambda:[0,1]\to\mathbb{R}^{m}$ tal que $\lambda(0)=a$ e 
+  Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{1}$, com $|f^{\prime}(x)\cdot v|\geq \alpha |v|$ para $x,v\in\mathbb{R}^{m}$ quaisquer ($\alpha>0$ constante). Então $f^{\prime}$ é um difeomorfismo de $\mathbb{R}^{m}$ sobre si mesmo. Em particular, $|f(x)-f(y)|\geq\alpha|x-y|$, para quaisquer $x,y,\in\mathbb{R}^{m}$. Sugestão: prove que, dados $a\in\mathbb{R}^{m}$ e $b\in\mathbb{R}^{m}$, existe $\lambda:[0,1]\to\mathbb{R}^{m}$ tal que $\lambda(0)=a$ e 
   \begin{align*}
     f(\lambda(t))=(1-t)f(a)+tb,\quad\text{ para todo }t\in[0,1].
   \end{align*}
   \begin{solution}
-    Note que como $f$ é $C^{1}$, ela é diferenciável, logo pelo teorema fundamental do cálculo para caminhos temos que
-    \begin{equation}\label{eq:2}  
-      f(x)-f(y)=\int_{0}^{1}f^{\prime}(y+t(x-y))\cdot (x-y)\,dt.
-    \end{equation}
-    Logo, note que pela propriedade da hipótese e que a função $x^{2}:\mathbb{R}^{+}\to\mathbb{R}$ e monotoná se cumpre que
-    \begin{align*}
-      |x-y|^{2}\alpha^{2}\leq |f^{\prime}(y+t(x-y))\cdot (x-y)|^{2}.
-    \end{align*}
-    Agora, integrando, usando na linearidade do a integral e o produto interno, a equacão \eqref{eq:2} temos que
-    \begin{align*}
-      \alpha^{2}\left\langle x-y,x-y \right\rangle&\leq \left\langle f^{\prime}(y+t(x-y))\cdot(x-y),f^{\prime}(y+t(x-y))\cdot(x-y) \right\rangle\\
-      &\leq
-    \end{align*}
+    Note que, pela hipótese do teorema, temos que $|f^{\prime}(x)\cdot v|\geq \alpha |v|$ para $x,v\in\mathbb{R}^{m}$ quaisquer. Então temos que $f^{\prime}(x)\cdot v=0$ se, somente se, $v=0$. Assim, podemos afirmar que $f^{\prime}(x)$ é invertível para todo $x\in\mathbb{R}^{m}$. Portanto, pelo teorema da função inversa, temos que existe $V_x\subseteq \mathbb{R}^{m}$ aberto tal que $x\in V_x$ e $f|_{V_x}:V_x\to f(V_x)$ é um difeomorfismo.\\
+    Agora, fixe $a\in\mathbb{R}^{m}$, logo temos que $f|_{V_a}:V_a\to f(V_a)$ é um difeomorfismo.\\
+    Seja $b\in\mathbb{R}^{m}$ e definamos $\gamma_{b}(t):[0,1]\to\mathbb{R}^{m}$ dado por $\gamma_{b}(t)=(1-t)f(a)+tb$, logo se pegamos $\epsilon_{a}>0$ tal que se definimos $\lambda:[0,\epsilon_{a}]\to\mathbb{R}^{m}$ dada por $\lambda(t)=f^{-1}(\gamma(t))$ ela esté bem definida, i.é, que para todo $t\in[0,\epsilon)$ se cumpra que $\gamma_{b}(t)\in f(V_a)$.
+    \begin{center}
+      \input{Figures/diagrama-1.9}  
+    \end{center}
   \end{solution}
 \end{homeworkProblem}

@@ -1,0 +1,28 @@
+\begin{homeworkProblem}[Seção 2-2]
+  Considere $F:\mathbb{R}^{n}\times\mathbb{R}\to\mathbb{R}^{n}$ de classe $C^{1}$ e, para cada $t\in\mathbb{R}$, defina o mapa $f_t:\mathbb{R}^{n}\to\mathbb{R}^{n}$ por
+  \begin{align*}
+    f_{t}(x)=F(x,t).
+  \end{align*}
+  Suponha que $f_{0}(0)=0$ e que 1 \textbf{não} é autovalor de $D(f_{0})(0)$. Prove que existe $\epsilon>0$ e $\varphi:(-\epsilon,\epsilon)\to\mathbb{R}^{n}$ de classe $C^{1}$ tal que $\varphi(0)=0$ e
+  \begin{align*}
+    f_{t}(\varphi(t))=\varphi(t),\quad\text{ para todo }t\in(-\epsilon,\epsilon).
+  \end{align*}
+  \begin{solution}
+    Defina $G:\mathbb{R}^{n}\times\mathbb{R}\to\mathbb{R}^{n}$ dada por $G(x,t)=F(x,t)-x$. Note que como $f_{0}(0)=F(0,0)=0$ temos que $G(0,0)=0$, logo também temos que
+    \begin{align*}
+      \frac{\partial G}{\partial x}(x,t)&=G^{\prime}(x,t)\big|_{\mathbb{R}^{n}\times\{0\}}\\
+      &=F^{\prime}(x,t)\big|_{\mathbb{R}^{n}\times\{0\}}+Id_{\mathbb{R}^{n}}\\
+      &=D(f_{t})(x)+Id_{\mathbb{R}^{n}}.
+    \end{align*} 
+    Logo, como $D(f_{0})(0)$ \textbf{não} tem autovalor igual a $1$ sabemos que
+    \begin{align*}
+      \frac{\partial G}{\partial x}(0,0)=D(f_{0})(0)-Id_{\mathbb{R}^{n}}\neq 0.
+    \end{align*}
+    Pelo que podemos conclui que $\frac{\partial G}{\partial x}(0,0)$ é invertível e portanto um isomorfismo sobre $\mathbb{R}^{n}$.\\
+    Assim, pelo teorema da função implicita temos que existem abertos $V$ com $(0,0)\in V\subseteq \mathbb{R}^{n}\times\mathbb{R}$ e $A\subseteq \mathbb{R}$ com $0\in A$ tales que
+    \begin{itemize}
+      \item Para todo $t\in A$ temos que existe um único $y=\varphi(t)\in\mathbb{R}^{n}$ tal que $(\varphi(t),t)\in V$ e $G(\varphi(t),t)=0$. 
+    \end{itemize}
+    Agora, como $V\subseteq \mathbb{R}$ é aberto, temos que existe $\epsilon>0$ tal que $(-\epsilon,\epsilon)\subseteq V$, logo $\varphi:(-\epsilon,\epsilon)\to\mathbb{R}^{n}$ é de classe $C^1$ y cumple que como $(0,0)\in V$ e $F(0,0)=f_{0}(0)=0$ temos que $G(0,0)=F(\varphi(0),0)-\varphi(0)=0$ lo que implica que $\varphi(0)=F(0,0)=f_{0}(0)=0$, além mais, $f_{t}(\varphi(t))=F(\varphi(t),t)=\varphi(t)$ para todo $t\in(-\epsilon,\epsilon)$. 
+  \end{solution}
+\end{homeworkProblem}

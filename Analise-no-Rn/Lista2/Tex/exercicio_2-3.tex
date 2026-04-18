@@ -1,0 +1,25 @@
+\begin{homeworkProblem}[Seção 2-3]
+  Seja $f:U\to\mathbb{R}$ uma função contínua definida em um aberto $U\subseteq \mathbb{R}^{2}$, tal que
+  \begin{align*}
+    (x^{4}+y^{2})f(x,y)+f^{5}(x,y)=4,\quad\text{ para todo }(x,y)\in U.
+  \end{align*}
+  Provar que $f$ é de classe $C^{1}$. É possível afirmar que a função $f$ é de classe $C^{k}$ com $k>1$? 
+  \begin{solution}
+    Definamos $F:\mathbb{R}^{2}\times\mathbb{R}\to\mathbb{R}^{2}$ dada por $F((x,y),z)=(x^{4}+y^{2})z+z^{5}-4$. Note que $F$ é de classe $C^{\infty}$ (é um polinômio) e além mais temos que
+    \begin{align*}
+      \frac{\partial F}{\partial z}(x,y,z)=x^{4}+y^{2}+5z^{4}.
+    \end{align*}
+    Logo $\frac{\partial F}{\partial z}((x,y),z)=0$ se, somente se, $x=y=z=0$, ja que $x^{4}\geq 0$, $y^{2}\geq 0$ e $5z^{4}\geq 0$ para todo $((x,y),z)\in\mathbb{R}^{2}\times\mathbb{R}$.\\
+    Depois, note que se pegamos $z=f(0,0)$ temos que pela hipótese sobre $f$ podemos afirmar que 
+    \begin{align*}
+      F((0,0),f(0,0))=(0^{4}+0^{2})f(0,0)+f^{5}(0,0)-4=0.
+    \end{align*}
+    O que implica que $f^{5}(0,0)=4$. Portanto $\frac{\partial F}{\partial z}((x,y),f(x,y))\neq 0$ para todo $(x,y)\in\mathbb{R}^{2}$, i.é, $\frac{\partial F}{\partial z}((x,y),f(x,y))$ é um isomorfismo sobre $\mathbb{R}^{2}$ para todo $(x,y)\in \mathbb{R}^{2}$.\\
+    Assim, pelo teorema da função implícita temos que existem abertos $V\subseteq\mathbb{R}^{2}\times\mathbb{R}$ taes que $((x,y),f(x,y))\in V$ e $A\subseteq \mathbb{R}^{2}$ tal que $(x,y)\in A$ que cumple que
+    \begin{itemize}
+      \item Para todo $(x,y)\in A$, existe um único $y=\varphi(x,y)\in\mathbb{R}$ tal que $((x,y),\varphi(x,y))\in V$ e $F((x,y),\varphi(x,y))=0$.
+      \item A aplicação $\varphi:A\to\mathbb{R}^{2}$ é de classe $C^{\infty}$. 
+    \end{itemize}
+    Mas, note que pela hipótese como $F((x,y),f(x,y))=0$ para todo $(x,y)\in\mathbb{R}^{2}$, como $y$ é o único $y=\varphi(x,y)\in\mathbb{R}$ tal que $F((x,y),\varphi(x,y))=0$, então sabemos que $f(x,y)=\varphi(x,y)$ para todo $(x,y)\in\mathbb{R}^{2}$. Portanto, além mais do que $f\in C^{1}$ temos que $f\in C^{\infty}$.
+  \end{solution}
+\end{homeworkProblem}
