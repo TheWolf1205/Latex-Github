@@ -1,14 +1,53 @@
 \begin{homeworkProblem}[Seção 1-9]
-  Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{1}$, com $|f^{\prime}(x)\cdot v|\geq \alpha |v|$ para $x,v\in\mathbb{R}^{m}$ quaisquer ($\alpha>0$ constante). Então $f^{\prime}$ é um difeomorfismo de $\mathbb{R}^{m}$ sobre si mesmo. Em particular, $|f(x)-f(y)|\geq\alpha|x-y|$, para quaisquer $x,y,\in\mathbb{R}^{m}$. Sugestão: prove que, dados $a\in\mathbb{R}^{m}$ e $b\in\mathbb{R}^{m}$, existe $\lambda:[0,1]\to\mathbb{R}^{m}$ tal que $\lambda(0)=a$ e 
+  Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m}$ de classe $C^{1}$, com $|f^{\prime}(x)\cdot v|\geq \alpha |v|$ para $x,v\in\mathbb{R}^{m}$ quaisquer ($\alpha>0$ constante). Então $f$ é um difeomorfismo de $\mathbb{R}^{m}$ sobre si mesmo. Em particular, $|f(x)-f(y)|\geq\alpha|x-y|$, para quaisquer $x,y,\in\mathbb{R}^{m}$. Sugestão: prove que, dados $a\in\mathbb{R}^{m}$ e $b\in\mathbb{R}^{m}$, existe $\lambda:[0,1]\to\mathbb{R}^{m}$ tal que $\lambda(0)=a$ e 
   \begin{align*}
     f(\lambda(t))=(1-t)f(a)+tb,\quad\text{ para todo }t\in[0,1].
   \end{align*}
   \begin{solution}
     Note que, pela hipótese do teorema, temos que $|f^{\prime}(x)\cdot v|\geq \alpha |v|$ para $x,v\in\mathbb{R}^{m}$ quaisquer. Então temos que $f^{\prime}(x)\cdot v=0$ se, somente se, $v=0$. Assim, podemos afirmar que $f^{\prime}(x)$ é invertível para todo $x\in\mathbb{R}^{m}$. Portanto, pelo teorema da função inversa, temos que existe $V_x\subseteq \mathbb{R}^{m}$ aberto tal que $x\in V_x$ e $f|_{V_x}:V_x\to f(V_x)$ é um difeomorfismo.\\
+
     Agora, fixe $a\in\mathbb{R}^{m}$, logo temos que $f|_{V_a}:V_a\to f(V_a)$ é um difeomorfismo.\\
-    Seja $b\in\mathbb{R}^{m}$ e definamos $\gamma_{b}(t):[0,1]\to\mathbb{R}^{m}$ dado por $\gamma_{b}(t)=(1-t)f(a)+tb$, logo se pegamos $\epsilon_{a}>0$ tal que se definimos $\lambda:[0,\epsilon_{a}]\to\mathbb{R}^{m}$ dada por $\lambda(t)=f^{-1}(\gamma(t))$ ela esté bem definida, i.é, que para todo $t\in[0,\epsilon)$ se cumpra que $\gamma_{b}(t)\in f(V_a)$.
-    \begin{center}
-      \input{Figures/diagrama-1.9}  
-    \end{center}
+    Seja $b\in\mathbb{R}^{m}$ e definamos $\gamma_{b}(t):[0,1]\to\mathbb{R}^{m}$ dado por $\gamma_{b}(t)=(1-t)f(a)+tb$, logo definimos $\lambda(t)=f^{-1}(\gamma(t))$ e consider o seguinte.\\
+
+    Suponha $A:=\{\epsilon\in [0,1]: \lambda:[0,\epsilon]\to\mathbb{R}^{m}\text{ seja bem definida }\}$.\\
+    \textbf{Afirmação:} Suponha $\epsilon=\sup A$, então $\epsilon=1$.\\
+      Note que, pela propriedade da hipótese temos que $|f^{\prime}(x)\cdot v|\geq \alpha |v|$, defina $w=f^{\prime}(x)\cdot v$, logo $v=\left[ f^{\prime}(x) \right]^{-1}\cdot w$. Assim, pela mesma propriedade e fazendo ums cálculos temos que 
+      \begin{equation}\label{eq:4}
+        \left| \left[ f^{\prime}(x) \right]^{-1}\cdot w \right|\leq \frac{1}{\alpha}\left| w \right|. 
+      \end{equation}
+      Por outro lado, note que pela regra da cadeia temos que se $f(\lambda(t))=\gamma_b(t)$, então $f^{\prime}(\lambda(t))\cdot \lambda^{\prime}(t)=\gamma_b^{\prime}(t)$, logo $\lambda^{\prime}(t)=\left[ f^{\prime}(\lambda(t)) \right]^{-1}\left( b-f(a) \right)$. Assim, fazendo o seguites cálculos, usando o teorema fundamental do cálculo e a equação \eqref{eq:4} temos que
+      \begin{align*}
+        \left| \lambda(t)-\lambda(s) \right|=\left| \int_{s}^{t}\lambda^{\prime}(\tau)\,d\tau \right|\leq \int_{s}^{t}\left| \lambda^{\prime}(\tau) \right|\,d\tau\leq \int_{s}^{t}\frac{1}{\alpha}\left| b-f(a) \right|\,d\tau\leq \frac{1}{\alpha}\left| b-f(a) \right|\left| t-s \right|.
+      \end{align*}
+      Logo definindo $K=\frac{|b-f(a)|}{\alpha}$ temos que $\lambda$ é Lipschitz, i.é, 
+      \begin{equation}\label{eq:5}
+        \left| \lambda(t)-\lambda(s) \right|\leq K\left| t-s \right|.
+      \end{equation}
+      Agora, suponha $\{\epsilon_k\}_{k\in\mathbb{Z}^{+}}\subseteq A$ uma sequencia tal que $\epsilon_k\xrightarrow[k\to\infty]{}\epsilon$ com $\epsilon<1$.\\
+      Note que pela equação \eqref{eq:4} temos que
+      \begin{align*}
+        |\lambda(\epsilon_{k})-\lambda(\epsilon_{l})|\leq K\left| \epsilon_{k}-\epsilon_{l} \right|,
+      \end{align*}
+      portanto, a sequencia $\{\lambda(\epsilon_{k})\}_{k\in\mathbb{Z}^{+}}$ é uma sequencia de Cauchy, assim, existe $x_{\epsilon}\in\mathbb{R}^{m}$ tal que $\lambda(\epsilon_{k})\xrightarrow[k\to\infty]{}x_{\epsilon}$.\\
+      Agora, note que temos que existe um aberto $V_{x_{\epsilon}}\subseteq \mathbb{R}^{m}$ tal que $f\big|_{V_{x_{\epsilon}}}:V_{x_{\epsilon}}\to f\left( V_{x_{\epsilon}} \right)$ é difeomorfismo. Logo,  como $\gamma_{b}$ é contínua e que $\gamma_{b}(\epsilon)\in f\left( V_{x_{\epsilon}} \right)$temos que existe um $\delta>0$ tal que
+      \begin{align*}
+        \gamma_{b}(t)\in f\left( V_{x_{\epsilon}} \right),\quad\text{com }t\in[\epsilon-\delta,\epsilon+\delta].
+      \end{align*}
+      Logo note que como $V_{a}\cap V_{x_{\epsilon}}\neq\emptyset$, sabemos que se pode extender $\lambda$ ate $\epsilon+\delta$. Mas temos que $\epsilon=\sup A$, pelo que isto é  um absurdo. Logo temos que $\epsilon=1$ e portanto temos que $\lambda:[0,1]\to\mathbb{R}^{m}$ tal que $f(\lambda(t))=(1-t)f(a)-tb$ existe.\\
+      Agora, note que $f$ é bijetiva, ja que 
+      \begin{itemize}
+        \item Note que $f(\lambda(1))=\gamma_b(1)=b$ para todo $b\in \mathbb{R}^{m}$, pelo que podemos conclui que $f$ é sobrejetiva.
+        \item Note que pelo anterior, como $f$ é sobrejetiva, sabemos existe $y\in\mathbb{R}^{m}$ tal que $y=f^{-1}(b)$ para todo $b\in\mathbb{R}^{m}$. Depois, pelo teorema fundamental do cálculo e a equação \eqref{eq:4} temos que
+          \begin{align*}
+            \left| y-a \right|&=\left| \lambda(1)-\lambda(0) \right|\\
+            &= \left| \int_{0}^{1}\lambda^{\prime}(t)\,dt \right|\\
+            &\leq \int_{0}^{1}\left| \lambda^{\prime}(t) \right|\,dt\\
+            &\leq \int_{0}^{1}\left| \left[ f^{\prime}(\lambda(t)) \right]^{-1}(f(y)-f(a)) \right|\,dt\\
+            &\leq \int_{0}^{1}\frac{1}{\alpha}\left| f(y)-f(a) \right|\,dt\\
+            &\leq \frac{1}{\alpha}\left| f(y)-f(a) \right|.
+          \end{align*}
+          Logo, se $f(y)=f(a)$, então $y=a$, pelo que podemos conclui que $f$ é injetiva. 
+      \end{itemize}
+      Assim, como $f^{\prime}(x)$ é invertível, pelo teorema da função inversa temos que $f$ é um difeomorfismo local para todo  $x\in\mathbb{R}^{m}$, mas como $f$ é bijetiva, podemos conclui que $f$ é um difeomorfismo sobre $\mathbb{R}^{m}$. 
   \end{solution}
 \end{homeworkProblem}
