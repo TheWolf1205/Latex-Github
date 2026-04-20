@@ -1,0 +1,12 @@
+\begin{homeworkProblem}[Seção 4-4]
+  Se $f:U\to\mathbb{R}^{m}$ é uma submersão de classe $C^{k}$ ($k\geq 1$), definida no aberto $U\subseteq \mathbb{R}^{m+p}$, e $g:f(U)\to\mathbb{R}^{n}$ é tal que $g\circ f:U\to\mathbb{R}^{n}$ é de classe $C^{k}$, então $g$ é de classe $C^{k}$. 
+  \begin{solution}
+    Note que como $f\in C^{k}$ é uma submersão, então existe uma descomposição do $\mathbb{R}^{m+p}$ tal que se $x\in\mathbb{R}^{m}$ e $y\in\mathbb{R}^{p}$, então 
+    \begin{align*}
+      f(x,y)=x.
+    \end{align*}
+    Então, seja $y_0\in f(U)$, logo existe $x_0\in U$ tal que $f(x_0)=y_0$.\\
+    Agora, definamos $s:\mathbb{R}^{m}\to\mathbb{R}^{m+p}$ dada por $s(u)=(u,0)$, logo $f(s(u))=f(u,0)=u$, pelo que podemos dizer que $f\circ s=Id_{\mathbb{R}^{m}}$.\\
+    Note que, en geral temos que se pegamos $v\in f(U)\subseteq \mathbb{R}^{m}$ temos que $g(u)=((g\circ f)\circ s)(u)$, pelo como $g\circ f\in C^{k}$ e $s\in C^{\infty}$ temos que $g\in C^{k}$. 
+  \end{solution}
+\end{homeworkProblem}

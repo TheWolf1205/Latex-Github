@@ -239,7 +239,7 @@ Note que a fórmula de Taylor \eqref{eq:formula-de-taylor-para-aplicacoes} equiv
 \begin{theorem}[Fórmula de Taylor com resto de Lagrange para aplicações]
   Seja $f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{n}$ uma aplicação no $C^{p}$ e $p+1$ vezes diferenciável em cada ponto do segmento $(a,a+v)\subseteq U$ com $f^{(p+1)}(x)\cdot w^{p+1}$ para todo $x\in (a,a+v)$e todo $w\in\mathbb{R}^{m}$, então 
   \begin{align*}
-    f(a+v)=f(a)+f^{\prime}(a)\cdot v+f^{\prime\prime}(a)\cdot v^{2}+\cdots+\frac{1}{p!}f^{(p)}(a)\cdot v^{p}+r_p(v),
+    f(a+v)=f(a)+f^{\prime}(a)\cdot v+\frac{1}{2}f^{\prime\prime}(a)\cdot v^{2}+\cdots+\frac{1}{p!}f^{(p)}(a)\cdot v^{p}+r_p(v),
   \end{align*}
   onde
   \begin{align*}
@@ -258,10 +258,10 @@ Note que a fórmula de Taylor \eqref{eq:formula-de-taylor-para-aplicacoes} equiv
   \end{itemize}
   Logo, pela fórmula de Taylor para caminhos
   \begin{align*}
-    \varphi(1)=\varphi(0)+\varphi^{\prime}(0)+\frac{1}{p!}\varphi^{(p)}(0)+r_p,\quad\text{onde }|r_p|\leq\frac{M|v^{p+1}|}{(p+1)!}.
+    \varphi(1)=\varphi(0)+\varphi^{\prime}(0)+\frac{1}{2}\varphi^{\prime\prime}(0)+\cdots+\frac{1}{p!}\varphi^{(p)}(0)+r_p,\quad\text{onde }|r_p|\leq\frac{M|v^{p+1}|}{(p+1)!}.
   \end{align*}
   i,e.
   \begin{align*}
-    f(a+v)=f(a)+df(a)\cdot v+\cdots+d^{(p)}f(a)\cdot v^{p}+r_p(v),\quad\text{onde }|r_p(v)|\leq \frac{M|v|^{p+1}}{(p+1)!}.
+    f(a+v)=f(a)+df(a)\cdot v+\cdots+\frac{1}{p!}d^{(p)}f(a)\cdot v^{p}+r_p(v),\quad\text{onde }|r_p(v)|\leq \frac{M|v|^{p+1}}{(p+1)!}.
   \end{align*}
 \end{proof}

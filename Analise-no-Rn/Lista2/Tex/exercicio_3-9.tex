@@ -1,6 +1,75 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[Seção 3-9]
+  Demostre o Lema de Morse: Seja $f:U\subseteq\mathbb{R}^{n}\to\mathbb{R}$ uma aplicação diferenciável de classe $C^{k}$, com $k\geq 3$, $a\in U$ um ponto crítico não degenerado, então existe um difeomorfismo (mudança de coordenadas) $\varphi$ tal que em uma vizinhança de $a$,
+  \begin{align*}
+    f\circ\varphi(x_1,\cdots,x_n)-f(a)=x_1^{2}+\cdots+x_{k}^{2}-x_{k+1}^{2}-\cdots-x_{n}^{2}.
+  \end{align*}
   \begin{solution}
-    XXX  
+    Considere $a=0$ e $f(a)=0$. Então, seja $W=B(0,\delta)$ com $\delta>0$ tal que $W\subseteq U$, logo pela fórmula de Taylor com resto integral temos que dado $x\in W$ se cumpre que 
+    \begin{align*}
+      f(x)=f(0)+\sum_{i=1}^{n}\frac{\partial f}{\partial x_{i}}(0)x_i+\sum_{i,j=1}^{n}x_ix_j \int_{0}^{1}(1-t)\frac{\partial^{2}f }{\partial x_i\partial x_j}(tx)\,dt.
+    \end{align*}
+    Pelo como $0$ é ponto crítico, $f^{\prime}(0)=0$, assim
+    \begin{align*}
+      f(x)=\sum_{i,j=1}^{n}x_ix_j \int_{0}^{1}(1-t)\frac{\partial^{2}f }{\partial x_i\partial x_j}(tx)\,dt.
+    \end{align*}
+    Definamos $a_{ij}(x)=\int_{0}^{1}(1-t)\frac{\partial^{2}f }{\partial x_i\partial x_j}(tx)\,dt$, logo
+    \begin{align*}
+      f(x)=\sum_{i,j=1}^{n}a_{ij}(x)x_ix_j.
+    \end{align*}
+    Agora, note que pelo teorema fundamental do cálculo $a_{ij}\in C^{1}(W)$, e como $f\in C^{k}$ com $k\geq 3$, temos que $a_{ij}=a_{ji}$.\\
+    Assim, definamos a matriz $A(x)$ definida por componentes como $A(x)=(a_{ij}(x))$, logo note que $f(x)=\left\langle A(x)\cdot x,x \right\rangle$.\\
+    Seja $A_0=A(0)$, note que
+    \begin{align*}
+      \int_{0}^{1}(1-t)\frac{\partial^{2} f}{\partial x_i\partial x_j}f(0)\,dt=\frac{1}{2}\frac{\partial^{2}f }{\partial x_i\partial x_j}(0).
+    \end{align*}
+    Logo $A_0=\frac{1}{2}Hf(0)$ onde $Hf(0)$ é a matriz Hessiana do $f$ em $0$.\\
+    Assim, como $A_0$ é simétrica (ja que $f\in C^{3}$) e $0$ é um ponto não regular, temos que $A_0$ é invertível.\\
+    Depois, defina $C(x):=A_{0}^{-1}A(x)$, note que como $A(x)\in C$ temos que $C(x)\in C$ e além mais $C(0)=I$.\\
+    Agora, defina $F:\mathbb{R}^{n^{2}}\to\mathbb{R}^{n^{2}}$ dada por $F(X)=X^{2}$, assim, como $F\in C^{\infty}$ e $F^{\prime}(X)=2X$, temos que $F^{\prime}(C(0))=F^{\prime}(I)=2I$, logo temos que pelo teorema da função inversa existem $U,W\subseteq\mathbb{R}^{n^{2}}$ taes que $I\in U\cap W$ e $F:U\to W$ é um difeomorfismo.\\
+    Agora, tomando $\delta$ suficientemente pequeno, suponha que $C(x)\in W$, logo, pelo que podemos definir $B(x)=F^{-1}(C(x))$ que cumpre que $\left[B(x)\right]^{2}=C(x)$.\\
+    Logo como $F^{-1}\in C$ e $C(x)\in C$, temos que $B(x)\in C$. Além do mais, temos que $A(x)=A_0\left[ B(x) \right]^{2}$.\\
+
+    Agora, note que como $A(x)$ é simétrica temos que
+    \begin{align*}
+      A(x)=\left( A_0B^{2}(x) \right)^{T}=\left[B^{2}(x)\right]^{T}A_0=\left[B^{T}(x)\right]^{2}A_0.
+    \end{align*}
+    Mas como $A(x)=A_0B^{2}(x)$ temos que
+    \begin{align*}
+        A_0B^{2}(x)=\left[B^{T}(x)\right]^{2}A_0.
+    \end{align*}
+    Logo fazendo ums cálculos temos que
+    \begin{align*}
+      B^{2}(x)=A_0^{-1}\left[ B^{T}(x) \right]^{2}A_0=\left( A_0^{-1}B^{T}(x)A_0 \right)^{2}.
+    \end{align*}
+    Logo como $B\in U$, temos que $B$ é única, pelo que
+    \begin{align*}
+      B(x)=A_0^{-1}B^{T}(x)A_0.
+    \end{align*}
+    O que implica que
+    \begin{align*}
+      A_0B(x)=B^{T}(x)A_0.
+    \end{align*}
+    Mas como $A(x)=A_0B^{2}(x)$ temos que
+    \begin{align*}
+      A(x)=A_0B(x)B(x)=B^{T}(x)A_0B(x).
+    \end{align*}
+    Assim temos que
+    \begin{align*}
+      f(x)=\left\langle A(x)\cdot x,x \right\rangle=\left\langle  B^{T}A_0B(x)\cdot x,x\right\rangle=\left\langle A_0B(x)\cdot x,B(x)\cdot x \right\rangle.
+    \end{align*}
+
+    Agora, veamos que se tomamos $\delta$ o suficientemente pequeno a aplicação $\varphi:W\to\mathbb{R}^{n}$ dada por $\varphi(x)=B(x)\cdot x$ é um difeomorfismo de classe $C^{k-2}$ sobre sua imagem.\\
+
+    Note que como $B\in C^{k-2}$ temos que $\varphi(x)=B(x)\cdot x$ também é $C^{k-2}$, logo note que pela regra da cadeia temos que $\varphi^{\prime}(0)\cdot h=B(0)\cdot h+DB(0)\cdot h \cdot 0=B(0)\cdot h$, pero como $B(0)=I$ temos que $\varphi^{\prime}(0)\cdot h=h$, assim $\varphi^{\prime}(0)=I$. Logo, pelo teorema da função inversa temos que existe um aberto $U$ tal que $0\in U$ que cumpre que $\varphi:U\to\varphi(U)$ é um difeomorfismo.\\
+    Assim, pegando $y=\varphi(x)$ temos que
+    \begin{align*}
+      f(x)=\left\langle A_0y,y \right\rangle.
+    \end{align*}
+    Logo $(f\circ \varphi^{-1})(y)=\left\langle A_0y,y \right\rangle$ e como $A_0$ é uma matriz simétrica e invertível temos que
+    \begin{align*}
+      (f\circ \varphi^{-1})(y)=\left\langle A_0y,y \right\rangle=x_1^{2}+\cdots+x_{k}^{2}-x_{k+1}^{2}-\cdots-x_{n}^{2}.
+    \end{align*}
+    
+    Agora, note que, en geral se $a$ é um ponto crítico não degenerado você pode pensar na função $g(x)=f(x+a)-f(a)$, logo $0$ é o ponto crítico não degenerado do $g$ e $g(0)=0$, pelo que a prova do teorema se pode conclui. 
   \end{solution}
 \end{homeworkProblem}

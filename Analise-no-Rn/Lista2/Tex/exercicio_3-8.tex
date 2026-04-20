@@ -1,5 +1,5 @@
 \begin{homeworkProblem}[Seção 3-8]
-  \textbf{(Unicidade da fórmula de Taylor)} Seja $f:U\subseteq\mathbb{R}^{n}\to\mathbb{R}^{m}$ ima aplicação $k$ vezes diferenciável. Sejam $\varphi_{j}\in L\left( \mathbb{R}^{n}\times\cdots\times\mathbb{R}^{n},\mathbb{R}^{m} \right)$, $j=1,2,\cdots,k$, transformações $j$-lineares e simétricas tais que
+  \textbf{(Unicidade da fórmula de Taylor)} Seja $f:U\subseteq\mathbb{R}^{n}\to\mathbb{R}^{m}$ uma aplicação $k$ vezes diferenciável. Sejam $\varphi_{j}\in L\left( \mathbb{R}^{n}\times\cdots\times\mathbb{R}^{n},\mathbb{R}^{m} \right)$, $j=1,2,\cdots,k$, transformações $j$-lineares e simétricas tais que
   \begin{align*}
     f(a+h)=f(a)+\varphi_{1}(h)+\varphi_2(h,h)+\cdots+\varphi_{k}(h,\cdots,h)+r_{k}(h),
   \end{align*}
@@ -12,6 +12,60 @@
     \varphi_{j}=\frac{1}{j!}D^{j}f(a),\quad\text{ para todo }j=1,\cdots,k.
   \end{align*}
   \begin{solution}
-    Seja $\phi:[0,1]\to\mathbb{R}^{m}$ definida por $\phi(t)=f(a+th)$  
+    Raciocinemos por indução sobre $j$.
+    \begin{itemize}
+      \item $j=1$.\\
+        Note que se pegamos $\varphi_{l}$ uma transformação $l$-linear, temos que (pelo ser uma transformação com domínio do dimensão finita) $\norm{\varphi_{l}(x,\cdots,x)}\leq K\norm{x}^{l}$ para algúm $K>0$ e para todo $x\in\mathbb{R}^{n}$, i.é, $\displaystyle \lim_{h \to 0}\frac{\varphi_{l}(x,\cdots,x)}{\norm{x}^{l}}\leq K$, logo temos que
+        \begin{align*}
+          \lim_{h \to 0}\frac{\varphi_{l}(x,\cdots,x)}{\norm{x}^{l-1}}=0.
+        \end{align*}
+        Assim, vamos definir $r_{1}(h)=\varphi_2(h)+\cdots+\varphi_{k}(h,\cdots,h)+r_{k}(h)$, logo
+        \begin{align*}
+          \lim_{h \to 0}\frac{r_{1}(h)}{\norm{h}}&=\lim_{h \to 0}\frac{\varphi_2(h)}{\norm{h}}+\cdots+\frac{\varphi_{k}(h)}{\norm{h}^{k-1}}\norm{h}^{k-2}+\frac{r_k(h)}{\norm{h}^{k}}\norm{h}^{k-1}=0.
+        \end{align*}
+        Assim, temos que
+        \begin{align*}
+          f(a+h)=f(a)+\varphi_1(h)+r_{1}(h).
+        \end{align*}
+        Logo, como $f$ é em particular $C^{1}$ nos sabemos que pela fórmula de Taylor se cumpre que
+        \begin{align*}
+          f(a+h)=f(a)+Df(a)\cdot h+\tilde{r}_{1}(h),\quad\text{onde }\lim_{h \to 0}\frac{\tilde{r}_1(h)}{\norm{h}}=0.
+        \end{align*}
+        Logo, restando, pegando $r(h)=r_1(h)-\tilde{r}_1(h)$ y fazendo ums cálculos temos que
+        \begin{align*}
+          Df(a)\cdot h-\varphi_1(h)=r(h).
+        \end{align*}
+        Logo suponha $v\in\mathbb{R}^{n}$ fixo e $t\in\mathbb{R}^{+}$, logo dividendo por $|t|$ y usando a linearidade temos que 
+        \begin{align*}
+          Df(a)\cdot \frac{tv}{|t|}-\varphi_1(v)\frac{t}{|t|}=\frac{r(tv)}{|t|}.
+        \end{align*}
+        O que implica que
+        \begin{align*}
+          Df(a)\cdot v - \varphi_{1}(v)=\lim_{t \to 0}\frac{r(tv)}{|tv|}|v|=0.
+        \end{align*}
+        Logo se pode conclui que $Df(a)\cdot v=\varphi_1(v)$ para todo $v\in\mathbb{R}^{n}$, i.é, $Df(a)=\varphi_{1}$.
+      \item Suponga que o resultado ten-se para $j=1,\cdots,k-1$, i.é, $\varphi_j=\frac{1}{j!}D^{j}f(a)$ para todo $j=1,\cdots,k-1$. Vejamos o que isso demonstra no resultado geral.\\
+        Note que por um lado temos que
+        \begin{align*}
+          f(a+h)=f(a)+\varphi_{1}(h)+\varphi_2(h,h)+\cdots+\varphi_{k}(h,\cdots,h)+r_{k}(h).
+        \end{align*}
+        Por outro lado, temos que pela fórmula de Taylor se cumpre que
+        \begin{align*}
+          f(a+h)=f(a)+Df(a)\cdot h+\cdots+\frac{1}{k!}D^{k}f(a)\cdot h^{k}+\tilde{r}_{k}(h).
+        \end{align*}
+        Note que pela hipótese de indução e fazendo ums cálculos temos que definindo $r(h)=r_k(h)-\tilde{r}_{k}(h)$ temos 
+        \begin{align*}
+          \frac{1}{k!}D^{k}f(a)\cdot h^{k}-\varphi_{k}(h,\cdots,h)=r(h). 
+        \end{align*}
+        Logo suponha $v\in\mathbb{R}^{n}$ fixo e $t\in\mathbb{R}^{+}$, logo dividendo por $|t|^{k}$ y usando a $k$-linearidade temos que
+        \begin{align*}
+          \frac{1}{k!}D^{k}f(a)\cdot v^{k} \frac{t^{k}}{|t|^{k}}-\varphi_k(v,\cdots,v)\frac{t^{k}}{|t|^{k}}=\frac{r(tv)}{|t|^{k}}.
+        \end{align*}
+        O que implica que
+        \begin{align*}
+          \frac{1}{k!}D^{k}f(a)\cdot v^{k}- \varphi_{k}(v,\cdots,v)=\lim_{t \to 0}\frac{r(tv)}{|tv|^{k}}|v|^{k}=0.
+        \end{align*}
+        Logo se pode conclui que $\frac{1}{k!}D^{k}f(a)\cdot v^{k}=\varphi_k(v,\cdots,v)$ para todo $v\in\mathbb{R}^{n}$. Agora, como $\varphi_{k}$ é uma transformação $k$-linear simétrica, sabemos que pela fórmula de polarizacão temos que $\varphi_{k}$ é definida por seu comportamento diagonal, pelo que como $\frac{1}{k!}D^{k}f(a)\cdot v^{k}=\varphi_k(v,\cdots,v)$ para todo $v\in\mathbb{R}^{n}$ temos que elas dois são iguales como transformações lineares do $L(\mathbb{R}^{n}\times\cdots\times\mathbb{R}^{n},\mathbb{R}^{m})$, i.é, $\frac{1}{k!}D^{k}f(a)=\varphi_{k}$. 
+    \end{itemize}
   \end{solution}
 \end{homeworkProblem}
