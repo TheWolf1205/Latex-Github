@@ -144,10 +144,14 @@ Repositorio para subir trabajos o talleres de la U :p.
 - Parcial II.
   - [Taller.](./Ecuaciones-diferenciales-parciales-I/Parcial-2/Examen_2_EDPI_V1_2024.pdf)
   - [Solución.](<./Ecuaciones-diferenciales-parciales-I/Parcial-2/Tex/Parcial II - EDP.pdf>)
+- Parcial III.
+  - [Solución](<./Ecuaciones-diferenciales-parciales-I/el_señor_es_mi_pastor_nada_me_faltara.pdf>)
 - Heat Equation.
   - [Taller.](./Ecuaciones-diferenciales-parciales-I/Heat-Equation/Trabajo_EDP_Presentación.pdf)
   - [Solución.](<./Ecuaciones-diferenciales-parciales-I/Heat-Equation/Tex/Ejercicios ecuación del calor - EDP.pdf>)
   - [Presentación.](<./Ecuaciones-diferenciales-parciales-I/Heat-Equation/Beamer_Andres/Presentación ecuación del calor - EDP.pdf>)
+- Trabajo Final.
+  - [Escrito.](./Ecuaciones-diferenciales-parciales-I/Trabajo_EDP.pdf)
 </details>
 
 <details>
