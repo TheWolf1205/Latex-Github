@@ -1,0 +1,27 @@
+\begin{homeworkProblem}[6]
+  Sejam $p$ e $q$ primos. Mostre que se $G$ é um grupo de ordem $p^{2}q$ então $G$ não é simple. 
+  \begin{solution}
+    Seja $|G|=p^{2}q$, com $p,q$ primos distintos. Consideremos os subgrupos de Sylow.\\
+    Denotemos por $n_p$ o número de $p$-subgrupos de Sylow e por $n_q$ o número de $q$-subgrupos de Sylow. Assim, pelos teoremas de Sylow temos que
+    \begin{align*}
+      \begin{cases}
+        n_p\equiv 1(mod\,p), &\text{ e } n_p\mid q \text{,} \\
+        n_q\equiv 1(mod\,q), &\text{ e } n_q\mid p^{2}.
+      \end{cases}
+    \end{align*}
+    Note que $n_p=\{1,q\}$ e $n_q\in\{1,p,p^{2}\}$, assim temos o seguinte
+    \begin{itemize}
+      \item Suponha $n_p=1$, logo $P\in Syl_{p}(G)$ cumpre $P\neq \{1\}$ e $P\normal G$, logo $G$ não é simple.
+      \item Suponha $n_p=q$, logo $q\equiv 1(mod\,p)$, pelo que temos que $p\mid (q-1)$.
+      \item Suponha $n_q=1$, logo $Q\in Syl_{q}(G)$ cumple $Q\neq\{1\}$ e $Q\normal G$, logo $G$ não é simple.
+      \item Suponha que $n_p=q$ e $n_q=p$, logo $p\equiv 1(mod\, q)$, pelo que temos que $q\mid (p-1)$ e $p\mid (q-1)$.\\
+        Note que o anterior implica que existem $n,m\in\mathbb{Z}^{+ }$ taes que $qm=p-1$ e $pn=q-1$.\\
+        Note que se $m=1$ temos que $q=p-1$, logo $p\mid p-2$, absurdo, e se $n=1$ temos que $p=q-1$ e $q\mid q-2$, assim temos que $n,m>1$. Logo temos que isto implica que $(q-1)m=p-1-m$, logo $pnm=p-1-m$, depois $p(nm-1)=-(1+m)$, mas note que como $n,m>1$ temos que $nm-1>0$ e como $p>0$, então $p(nm-1)>0$, mas $p(nm-1)=-(1+m)<0$, absurdo, logo este caso no se pode dar. 
+      \item Suponha que $n_p=1$ e $n_q=p^{2}$, logo $p^{2}\equiv 1(mod\,q)$, pelo que temos que $q\mid p^{2}-1=(p-1)(p+1)$ e $p\mid (q-1)$.\\
+        Note que $q\mid p-1$ ou $q\mid p+1$, logo se $q\mid p-1$ temos o mesmo caso anterior, pelo que no se pode. Assim, suponha que $q\mid p+1$ e $q\nmid p-1$.\\
+        Logo da mesma maneira temos que existem $n,m\in\mathbb{Z}^{+}$ taes que $qm=p+1$ e $pn=q-1$, logo temos que isto implica que $pn+1=q$, depois $(pn+1)m=p+1$, assim $p(nm-1)=1-m$, mas como $m,n\in\mathbb{Z}^{+}$ temos que $nm-1\geq 0$ e que $1-m\leq 0$, logo isto é absurdo se $m,n\neq 1$.\\
+        Agora, suponha que $m,n=1$, logo $q=p+1$. Portanto, como $p$ e $q$ são primos e $q=p+1$, então $p=2$ e $q=3$, pelo que temos que $|G|=2^{2}\cdot 3=12$ e como vimos na aula, sabemos que todo grupo $G$ com $|G|=12$ não é simple. 
+    \end{itemize}
+    Assim, concluímos que $G$ não é simple.
+   \end{solution}
+\end{homeworkProblem}

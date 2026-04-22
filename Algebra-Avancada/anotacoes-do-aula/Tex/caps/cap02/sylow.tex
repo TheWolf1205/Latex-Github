@@ -1,0 +1,71 @@
+\begin{theorem}[Teoremas de Silow]
+  Seja $G$ grupo finito e $p$ primo com $p\mid |G|$, i.é, $|G|=p^{\alpha}m$ com $\alpha\geq 1$ e $\mdc(p,m)=1$, então
+  \begin{enumerate}
+    \item Para qualquer $1\leq \beta\leq \alpha$, existe um subgrupo de $G$ de ordem $p^{\beta}$.\\
+      Los $p$-subgrupos de ordem $p^{\alpha}$ são chamados os \textbf{$p$-subgrupos de Sylow} e denotamos $Syl_{p}(G)=\{H:H\text{ é $p$-subgrupo de Sylow}\}$.
+    \item Dado qualquer $p$-subgrupo $P$, existe $S\in Syl_{p}(G)$ tal que $P\leq S$. Consequentemente, todos os $p$-subgrupos de Sylow são conjugados.
+    \item Se $n_p$ é a quantidade de $p$-subgrupos de Sylow de $G$ (ou seja, $n_p=|Syl_{p}(G)|$), então $n_p\mid m$ e $n_p\equiv 1(mod\,p)$ 
+  \end{enumerate}
+\end{theorem}
+\begin{example}
+  Seja $G$ com $|G|=12=2^{2}\cdot 3$, então existe $P\in Syl_{2}(G)$, com $|P|=2^{2}$ e existe $Q\in Syl_{3}(G)$, com $|G|=3$.\\
+  Nos temos que
+  \begin{itemize}
+    \item $n_2=|Syl_{2}(G)|\in \{1,3\}$, ja que $n_2\mid 3$.\\
+      Além mais, $n_2\equiv 1(mod\, 2)$, logo
+      \begin{align*}
+        \begin{cases}
+          n_2=1\equiv 1(mod\,2), &\text{ Então $P\normal G$, ja que $xPx^{-1}=P$}\text{,} \\
+          n_2=3\equiv 1(mod\,2), &.
+        \end{cases}
+      \end{align*}
+    \item $n_3=|Syl_{3}(G)|\in \{1,2,4\}$, ja que $n_3\mid 2^{2}$.\\
+      Além mais, $n_3\equiv 1(mod\, 3)$, logo
+      \begin{align*}
+        \begin{cases}
+          n_3=1\equiv 1(mod\,3), &\text{ Então $Q\normal G$}\text{,} \\
+          n_3=2\not\equiv 1(mod\,3), &\\
+          n_3=4\equiv 1(mod\,3), &\text{ Observe o seguinte}
+        \end{cases}
+      \end{align*}
+      Suponha que $n_p=4$, logo temos que se $Q_i\in Syl_{3}(G)$ com $i\in\{1,2,3,4\}$, logo $\bigcap_{i=1}^{4}Q_i=\{1\}$, pelo que temos $4\times 2=8$ elementos distintos de ordem $3$ em $G$. Logo como $|G|=12$, restam $4$ elementos que forma um único subgrupo de ordém $4$ (isso pode ser visto usando um argumento de contagem), logo $P\normal G$. 
+  \end{itemize}
+\end{example}
+\begin{proof}
+  $1$.\\
+  Vamos a raciocinar por indução sobre $|G|=p^{\alpha}m$, com $\mdc(p,m)=1$.\\
+  \begin{itemize}
+    \item Suponha $|\alpha|=1$, então $|G|=pm$, logo, pelo teorema de Cauchy temos existe $H\leq G$ com $|H|=p$.
+    \item Suponha que o teorema vale para todo grupo $k$, con $|k|<  |G|$ e $p\mid |K|$.\\
+      Suponha que $p\mid Z(G)$.\\
+      Então existe $x\in Z(G)$, com $o(x)=p$, e tal que $H=\left\langle x \right\rangle$ tem ordem $p$ e $H\normal G$, porque $H\leq Z(G)$.\\
+      Temos $G/H$ é um grupo com ordem $p^{\alpha-1}m< |G|$, logo, pela hipótese de indução temos que para cada $1\leq\gamma\leq \alpha-1$, existe $\overline{S}_{\gamma}\leq \overline{G}$, com $|\overline{S}_{\gamma}|=p^{\gamma}$. Assim, pelo teorema de correspondencia existe $S_{\gamma}$ tal que $S_{\gamma}\leq G$ com $H\leq S_{\gamma}$ e $|S_{\gamma}|=|\overline{S}_{\gamma}||H|=p^{\gamma+1}$ com $2\leq \gamma+1\leq \alpha$.\\
+
+      Agora, suponha que $p\centernot\mid Z(G)$.\\
+      Neste caso, usando a equação das classes de conjugação temos que existe $x\notin Z(G)$ tal que $p\centernot\mid |Cl(x)|=[G:C_{G}(x)]$. Então $|C_{G}(x)|<G$ e $p\mid |C_{G}(x)|$, logo $|C_{G}(x)|=p^{\alpha}k$ com $k\leq m$, logo usamos a hipótese de indução e temos que o teorema vale. 
+  \end{itemize}
+\end{proof}
+Lembre que se $H\leq G$ e $X=\{H^{x}:x\in G\}$, logo $|X|=[G:N_{G}(H)]$. Onde $N_{G}(H)=\{x\in G:xH=Hx\}=\{x\in G:H^{x}=H\}$.
+\begin{note}
+  $N_G(H)=G$ se, somente se $H\normal G$. 
+\end{note}
+\begin{lemma}
+  Seja $S$ $p$-subgrupo de Silow de $G$ e suponha que $x\in N_{G}(S)$ tem ordem potência de $p$, então $x\in S$. 
+\end{lemma}
+\begin{proof} 
+  Raciocine pela contradição.\\
+  Suponha que $x\notin S$. Considere $|H|=|\left\langle x \right\rangle|=p^{k}$, logo note que $H\leq N_{G}(S)$ e $S\normal C_G(S)$, então $HS\leq N_{G}(S)$, logo temos que para algúm $\beta\neq 0$ se cumpre que $p^{\beta}=[SH:S]=[H:H\cap S]\neq 1$, lo que é um absurdo, logo $x\in S$.\\
+  Fazer diagrama.
+\end{proof}
+\begin{corollary}
+  Seja $P$ um $p$-subgrupo de $G$ e $S\in Syl_{p}(G)$, temos que $N_{G}(S)\cap P=S\cap P$ e $N_{P}(S)=S\cap P$. 
+\end{corollary}
+\begin{proof} 
+  $2$.
+  Seja $P$ um $p$-subgrupo de $G$ e $S\in Syl_{p}(G)$. Vamos mostrar que $P$ ésta contido em algúm conjugado de $S$.\\
+  Considere $X=\{S^{x}:x\in G\}=\{S_1,S_2,\cdots,S_k\}$, lgo camos considerar a ação de $P$ sobre $X$ dada por $\phi_{g}(S^{x})=S^{xg}$ com $g\in P$.\\
+  Temos que $X=\dot{\bigcup_{1\leq i\leq k}}Orb_{p}(S_i)$, logo
+  \begin{align*}
+    |X|&=
+  \end{align*}
+\end{proof}
