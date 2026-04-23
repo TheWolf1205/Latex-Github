@@ -1,6 +1,20 @@
 \begin{homeworkProblem}[12]
   Seja $G$ um grupo de ordem $2^{n}3$, $n\geq 2$. Mostre que $G$ contém um subgrupo normal de ordem $2^{n}$ ou $2^{n-1}$. 
-   \begin{solution}
-    XXX
-   \end{solution}
+  \begin{solution}
+    Suponha $H\leq G$ tal que $H\in Syl_{2^{n}}(G)$, logo pelos teoremas de Sylow temos que $n_{2^{n}}\mid 3$ e $n_{2^{n}}\equiv 1(mod\,2)$, assim temos que $n_{2^{n}}\in\{1,3\}$ e como $n\geq 2$
+    \begin{align*}
+      \begin{cases}
+        n_{2^{n}}=1\equiv 1(mod\,2^{n}), &\text{ logo $H\normal G$, o que conclui a prova } \text{,} \\
+        n_{2^{n}}=3\equiv 1(mod\,2^{n}), &.
+      \end{cases}
+    \end{align*}
+    No caso do que $n_{2^{n}}=3$ temos o seguinte, note que como $|Syl_{2^{n}}(G)|=3$, temos que $[G:H]=3$, assim, como $|G|=2^{n}3<\infty$ e $[G:H]=3$ temos que existe um $N\leq H$ com $N\normal G$ tal que $[G:N]$ divide $3! =6$, logo $[G:N]\in\{1,2,3,6\}$, Assim temos que
+    \begin{itemize}
+      \item Se $[G:N]=1$, então $|G|=[G:N]|N|=|N|$, mas como $N\leq H$ e $|H|<|G|$, isto no é um absurdo.
+      \item Se $[G:N]=2$, então $|G|=2|N|$, o que implica que $|N|=2^{n-1}3$, mas como $N\leq H$ temos que $|N|\mid |H|$, logo como $2^{n-1}3\nmid 2^{n}$ temos que isto é um absurdo.
+      \item Se $[G:N]=3$, então $|G|=3|N|$, o que implica que $|N|=2^{n}$, logo como temos que $N\leq H$ e $|N|=|H|$, então temos que $N=H$, mas como $H$ não é normal e $N\normal G$, temos que isto é um absurdo.
+      \item Se $[G:N]=6$, então $|G|=6|N|$, o que implica que $|N|=2^{n-1}$, logo temos que existe um $N\normal G$ com $|N|=2^{n-1}$. 
+    \end{itemize}
+    Assim, em ambos os casos temos que se $G$ é um grupoo de ordem $2^{n}3$ com $n\geq 2$. Então $G$ comtém um subgrupo normal de ordem $2^{n}$ ou $2^{n-1}$. 
+  \end{solution}
 \end{homeworkProblem}

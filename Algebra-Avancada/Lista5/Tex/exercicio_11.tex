@@ -1,6 +1,28 @@
 \begin{homeworkProblem}[11]
   Seja $G$ um grupo tal que $|G|=231$. Mostre que $G$ comtém um único $11$-subgrupo de Sylow e que este subgrupo está contido no centro de $G$. 
-   \begin{solution}
-    XXX
-   \end{solution}
+  \begin{solution}
+    Note que $|G|=231=3*7*11$.\\
+    Assim, podemos escrever $|G|=11*(21)$, logo, pelos teoremas de Silow temos que existe $H\leq G$ tal que $H\in Syl_{11}(G)$. Além do  mais, nos sabemos que $n_{11}\mid 21$ e que $n_{11}\equiv 1(mod\,11)$, assim temos que $n_{11}\in\{1,3,7,21\}$ e 
+    \begin{align*}
+      \begin{cases}
+        n_{11}=1\equiv 1(mod\,11), &\text{ logo $H\normal G$ }\text{,} \\
+        n_{11}=3\not\equiv 1(mod\,11), &\text{ ja que } 11\nmid 2,\\
+        n_{11}=7\not\equiv 1(mod\,11), &\text{ ja que } 11\nmid 6,\\
+        n_{11}=21\not\equiv 1(mod\,11), &\text{ ja que } 11\nmid 20.
+      \end{cases}
+    \end{align*}
+    Portanto $H$ é o único $11$-subgrupo de Sylow de $G$.\\
+
+    Agora, veamos que $H\leq Z(G)$.\\
+    Note que como $H\normal G$, temos que $xHx^{-1}=H$. Assim,consider $\varphi$ homomorfismo como o seguinte
+    \begin{align*}
+      \varphi:G&\to Aut(H),\\
+              x&\to\varphi_x:H\to H,\\
+                          &\hspace{1.4cm}h\to xhx^{-1}.
+    \end{align*}
+    Agora, note que como $|H|=11$, então $H\cong \mathbb{Z}_{11}$, logo $|Aut(H)|=|Aut(\mathbb{Z}_{11})|=10$, logo como $\Img \varphi\leq Aut(H)$ temos que $|\Img \varphi|\mid |Aut(H)|=10$.\\
+    Por outro lado, pelo teorema do isomorfismos de grupos temos que $G/\ker \varphi\cong \Img \varphi$, logo isto implica que $|G|=|\ker \varphi||\Img \varphi|$, depois $|\Img \varphi|\mid |G|=231$.\\
+    Agora, pelo anterior temos que $|\Img\varphi|\mid 10$ e $|\Img\varphi|\mid 231$, logo $|\Img\varphi|\mid \mcd(10,231)=1$, pelo que temos que $|\Img\varphi|=1$.\\
+    Portanto, temos que para todo $x\in G$, $\varphi(x)=Id_{H}$, isto é, que para todo $x\in G$ temos que $h=xhx^{-1}$, logo $xh=hx$ para todo $x\in G$, pelo que podemos conclui que $H\leq Z(G)$. 
+  \end{solution}
 \end{homeworkProblem}
