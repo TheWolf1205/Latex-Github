@@ -1,0 +1,75 @@
+\begin{definition}[Anel]
+  Seja $(A,+)$ um grupo abeliano com uma operação adicional (multiplicação)
+  \begin{align*}
+    A\times A&\to A,\\
+    (a,b)&\to ab.
+  \end{align*}
+  Tal que a multiplicação é distributiva com relação a soma, isto é que para todo $a,b,c\in A$ temos que se cumpre que 
+  \begin{itemize}
+    \item $c(a+b)=ca+cb$.
+    \item $(a+b)c=ac+bc$.
+  \end{itemize}
+  Então, chamamos $(A,+,\cdot)$ um \textbf{anel}.\\ 
+  Se a multiplicação é uma operação associativa, dezimos que o anel $(A,+,\cdot)$ é um \textbf{anel associativo}.\\
+  \textbf{Note:} Vamos a trabalhar com este caso, então consideramos anel sempre sendo associativo.
+\end{definition}
+\begin{note}[Aneis não associativo]
+  \begin{itemize}
+    \item $(\mathbb{R}^{3},+,\times)$ com $\times$ o produto vetorial.
+    \item $(M_{n}(\mathbb{R}),+,\cdot)$ com $A\cdot B=[A,B]=AB-BA$. 
+  \end{itemize}
+\end{note}
+\begin{example}
+  \begin{itemize}
+    \item $(\mathbb{Z},+,\cdot)$ usuais. Neste caso como a operação multiplicação é comutativa, dezimos que é um \textbf{anel multilplicativo}. Da mesma maneira, se existe um elemento neutro multiplicativo, dezimos que é um \textbf{anel unitário} ou \textbf{anel com unidade}.
+    \item $(m\mathbb{Z},+,\cdot)$ é um anel comutativo não unitário.
+    \item $(M_n(A),+,\cdot)$ anel não comutativo. Unitário se $A$ tem unidade com $n\geq 2$.
+    \item $(\mathbb{Z}_{m},+,\cdot)$ é um anel comutativo unitário finito. 
+  \end{itemize}
+\end{example}
+\begin{definition}[Anel de divisão]
+  Se $A$ é um anel unitário de modo que a multiplicação admita inverso para elementos não nulos, ou seja, para qualquer $a\in A$ com $a\neq 0$, existe $b\in A$ tal que $ab=ba=1$, então dizemos que $A$ é um anel de divisão. 
+\end{definition}
+\begin{example}
+  \begin{itemize}
+    \item $(\mathbb{Q},+,\cdot)$ é anel de divisão mais do que isto, é comutativo.\\
+      Se $A$ é um anel de divisão comutativo, então chamamos $A$ um \textbf{corpo}.
+    \item Anel dos quaternios.\\
+      Considere o conjunto de matrizes $2\times 2$ com entradas en $\mathbb{C}$ da forma
+      \begin{align*}
+        \mathbb{H}=\left\{ \begin{pmatrix}
+          \xi_{1} & \xi_{2} \\
+          -\tilde{\xi_{2}} & \tilde{\xi_1}
+        \end{pmatrix}:\xi_1,\xi_2\in\mathbb{C} \right\}\subseteq M_{2}(\mathbb{C}).
+      \end{align*}
+      Note que
+      \begin{align*}
+        \begin{pmatrix}
+          a+bi & c+di \\
+          -c+di & a-bi
+        \end{pmatrix}=a \underbrace{\begin{pmatrix}
+          1 & 0 \\
+          0 & 1
+        \end{pmatrix}}_{\mathbbm{1}}+b \underbrace{\begin{pmatrix}
+          i & 0 \\
+          0 & -i
+        \end{pmatrix}}_{\mathbb{I}}+c \underbrace{\begin{pmatrix}
+          0 & 1 \\
+          -1 & 0
+        \end{pmatrix}}_{\mathbb{J}}+d \underbrace{\begin{pmatrix}
+          0 & i \\
+          i & 0
+        \end{pmatrix}}_{\mathbb{K}}.
+      \end{align*}
+      Logo $spam\{\mathbbm{1},\mathbb{I},\mathbb{J},\mathbb{K}\}=\mathbb{H}$.\\
+      Note que as matrizes $\mathbbm{1},\mathbb{I},\mathbb{J}$ e $\mathbb{K}$ sáo tais que
+      \begin{itemize}
+        \item $\mathbb{I}^{2}=\mathbb{J}^{2}=\mathbb{K}^{2}=-\mathbbm{1}$.
+        \item $\mathbb{I}\mathbb{J}=-\mathbb{J}\mathbb{I}=\mathbb{K}$.
+        \item $\mathbb{J}\mathbb{K}=-\mathbb{K}\mathbb{J}=-\mathbb{I}$.
+        \item $\mathbb{K}\mathbb{I}=-\mathbb{I}\mathbb{K}=-\mathbb{J}$.
+      \end{itemize}
+      Logo temos que $\left\langle \mathbb{I},\mathbb{J} \right\rangle\cong \mathbb{Q}_{8}$ quaternions.\\
+      Asim, o conjunto $\mathbb{H}$ com operações usuais de matricez é um anel não comutativo e tal que para todo elemento $M\in \mathbb{H}$, $M\neq 0$, existe $M^{-1}\in\mathbb{H}$. $\mathbb{H}$ é anel de divisão. 
+  \end{itemize}
+\end{example}

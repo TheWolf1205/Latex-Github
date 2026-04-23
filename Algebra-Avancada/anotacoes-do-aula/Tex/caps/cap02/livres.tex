@@ -1,0 +1,100 @@
+Considere $X=\{x_i\}_{i\in I}$ conjunto de asociamos e $X^{-1}=\{x_i^{-1}\}$, asociamos a $X$ seu conjugado.\\
+\begin{definition}[Alfabeto e palabras]
+  Consider $X\cup X^{-1}$ chamado \textbf{alfabeto}. Assim, construimos \textbf{palabras} com sequencias finitas de elementos de $X\cup X^{-1}$ como $x_{i_{1}}^{\pm}x_{i_{2}}^{\pm}\cdots x_{i_{n}}^{\pm}$.\\
+  Chamamos $x_ix_i^{-1}$ \textbf{palabra vazia}.\\
+  Mas vamos considerar o conjunto $F(X)$ como o conjunto de so as palabras reduzidas, isto é, que elas não tem palabras vazias.
+\end{definition}
+Sendo así, consideramos uma justaposição de palabras como operação e exigendo como resultado uma palabra reduzida.
+\begin{example}
+  Seja $v=x_5x_4x_1^{-1}x_2x_3^{-1}$ e $w=x_3x_2^{-1}x_3x_1$, logo $vw=x_5x_4x_1^{-1}x_3x_1$. 
+\end{example}
+\begin{definition}[Grupo livre]
+  $F(X)$ é um grupo, dito \textbf{grupo livre} gerado por $X$. 
+\end{definition}
+Note que $|X|$ é posto de grupo livre $F(X)$.
+\begin{note}
+  Existe um grupo livre de qualquer posto dado (finito ou não).
+\end{note}
+Note que 
+\begin{itemize}
+  \item $\mathbb{Z}$ é um grupo livre com posto $1$.
+  \item Um grupo livre $F(X)$ é infinito. 
+\end{itemize}
+\textbf{Questão}: dado um grupo infinito, temos
+\begin{enumerate}
+  \item Se $o(x)$ é finito, para todo $x\in G$, então $G$ não comtém grupos livres.
+  \item Se existe $x\in G$ tal que $o(x)$ é infinito, então $G$ comtém um grupo livre de posto $1$. 
+\end{enumerate}
+\textbf{Pregunta}: $G$ comtém grupos livres de posto $\geq 2$?
+\begin{theorem}
+  Se $F$ é um corpo infinito, então o grupo $GL_{n}(F)$ comtém subgrupos livres de posto $\geq 2$, para $n\geq 2$. 
+\end{theorem}
+\begin{theorem}[Sanov]
+  Considere $\alpha\in\mathbb{C}$, $|\alpha|\geq 2$. Então
+  \begin{align*}
+    A=\begin{pmatrix}
+      1 & \alpha \\
+      0 & 1
+    \end{pmatrix}\quad B=\begin{pmatrix}
+      1 & 0 \\
+      \alpha & 0
+    \end{pmatrix}.
+  \end{align*}
+  geram um subgrupo livre de $GL_2(\mathbb{C})$.
+\end{theorem}
+Para provar usaremos as seguintes afirmações.
+Considerando $a,b,c,d\in\mathbb{C}$ com $ad-bd\neq 0$, definimos:
+\begin{align*}
+  \lambda_{a,b,c,d}:\mathbb{C}&\to\mathbb{C},\\
+  \xi &\to \begin{cases}
+    \frac{a\xi+b}{c\xi+d}, &\text{ para } \xi\neq-\frac{d}{c} \text{,} \\
+    \frac{d}{c}, &\text{ para } \xi=-\frac{d}{c}.
+  \end{cases}
+\end{align*}
+Com isso, dada 
+\begin{align*}
+  \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix}\in GL_{2}(\mathbb{C})
+\end{align*}
+podemos definir
+\begin{align*}
+  \varphi:GL_{2}(\mathbb{C})&\to\mathcal{G},\\
+  \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix}&\to \lambda_{a,b,c,d},
+\end{align*}
+onde $\mathcal{G}=\{\lambda_{a,b,c,d}:\mathbb{C}\to\mathbb{C}:ab-bd\neq 0\}$.\\
+Note que $\varphi$ é um homomorfismo sobrejetor de grupos, assim
+\begin{align*}
+  \varphi(A)=\lambda_{1,\alpha,0,1},\quad f=\lambda_{1,\alpha,0,1}(\xi)=\xi+a.\\
+  \varphi(B)=\lambda_{1,0,\alpha,1},\quad g=\lambda_{1,0,\alpha,1}(\xi)=\begin{cases}
+    \frac{\xi}{\alpha\xi+1}, &\text{ para } \xi\neq-\frac{-1}{\alpha} \text{,} \\
+    \frac{1}{\alpha}, &\text{ com } \xi=-\frac{1}{\alpha}.
+  \end{cases}
+\end{align*}
+Assim, temos que $\left\langle f,g \right\rangle$ é um grupo livre e isto garante que $\left\langle A,B \right\rangle$ é um grupo livre.
+\begin{lemma}[(Macbeath)]
+  Se $G$ é um grupo gerado por subgrupos $G_1$ e $G_2$ com $G_1\cap G_2=\{1\}$ tais que $|G_i|\geq 2$, para algúm $i$ e $G$ ace em um conjunto com ações.\\
+  $\Omega=\Omega_1\cup\Omega_2$ unión disjunta.\\
+  \begin{itemize}
+    \item para todo $g\in G_1\setminus\{1\}$ temos que $g_1(\Omega_1)\subseteq\Omega_{2}$.
+    \item para todo $g\in G_2\setminus\{1\}$ temos que $g_2(\Omega_{2})\subseteq\Omega_1$. 
+  \end{itemize}
+  Então, temos que $G$ é o produto livre de $G_1$ e $G_2$. 
+\end{lemma}
+\begin{example}
+  Seja $G_1=S_3=\{1,(12),(13),(23),(123),(132)\}$ e $G_2=D_{4}=\{1,r,\theta,\theta^{2},\theta^{3},r\theta,r\theta^{2},r\theta^{3}\}$.\\
+  Logo $G_1,G_2\leq G_1*G_2$ com $g_{i_1}g_{i_2}\cdots g_{i_k}$, onde $g_{i_j}\in G_1\cup G_2$
+  \begin{align*}
+    (12)\theta(13)(12)r\theta^{2}\theta^2=(12)\theta(123)r.
+  \end{align*}
+\end{example}
+O grupo livre de $G_1$ e $G_2$ é formado por palavras reduzidas que são sequencias de elementos em $G_1$ e $G_2$, respetando as relações entre elementos individualizados de $G_1$ e $G_2$ respetando sem relação entre os elementos de $G_1$ e $G_2$.\\
+Consider $G_1=\left\langle X,R \right\rangle$ e $G_2=\left\langle Y,S \right\rangle$ onde $X$ e $Y$ são conjuntos geradores e $R$ e $S$ são relações, então $G_1*G_2=\left\langle X,Y,R,S \right\rangle$.\\
+Se $G_1$ e $G_2$ são grupos livres então, temos que $G_1=\left\langle X,\emptyset \right\rangle=\left\langle X|\phantom{\emptyset} \right\rangle$ e $G_2=\left\langle Y,\emptyset \right\rangle=\left\langle Y|\phantom{\emptyset} \right\rangle$, logo $G_1*G_2=\left\langle X,Y|\phantom{\emptyset} \right\rangle$.
+\begin{example}
+  De novo, $G_1=S_3$ e $G_2=D_4$. 
+\end{example}

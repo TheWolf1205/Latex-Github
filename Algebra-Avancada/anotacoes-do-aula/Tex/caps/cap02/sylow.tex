@@ -61,11 +61,27 @@ Lembre que se $H\leq G$ e $X=\{H^{x}:x\in G\}$, logo $|X|=[G:N_{G}(H)]$. Onde $N
   Seja $P$ um $p$-subgrupo de $G$ e $S\in Syl_{p}(G)$, temos que $N_{G}(S)\cap P=S\cap P$ e $N_{P}(S)=S\cap P$. 
 \end{corollary}
 \begin{proof} 
-  $2$.
+  $2$.\\
   Seja $P$ um $p$-subgrupo de $G$ e $S\in Syl_{p}(G)$. Vamos mostrar que $P$ ésta contido em algúm conjugado de $S$.\\
-  Considere $X=\{S^{x}:x\in G\}=\{S_1,S_2,\cdots,S_k\}$, lgo camos considerar a ação de $P$ sobre $X$ dada por $\phi_{g}(S^{x})=S^{xg}$ com $g\in P$.\\
+  Considere $X=\{S^{x}:x\in G\}=\{S_1,S_2,\cdots,S_k\}$, logo vamos considerar a ação $\varphi$ de $P$ sobre $X$ dada por $\phi_{g}(S^{x})=S^{xg}$ com $g\in P$.\\
   Temos que $X=\dot{\bigcup_{1\leq i\leq k}}Orb_{p}(S_i)$, logo
   \begin{align*}
-    |X|&=
+    |X|&=\dot{\sum_{i=1}^{k}}|Orb_{P}(S_i)|\\
+    &=\dot{\sum_{i=1}^{k}}[P:Stab_{{P}(S_i)}]\\
+    &=\dot{\sum_{i=1}^{k}}[P:N_{P}(S_i)]\\
+    &=\dot{\sum_{i=1}^{k}}[P:P\cap N_{G}(S_i)]\\
+    &=\dot{\sum_{i=1}^{k}}[P:P\cap S_i].
   \end{align*}
+  Logo
+  \begin{equation}\label{eq:Sylow2}
+    [G:N_{G}(S)]=\sum_{i=1}^{k}[P:P\cap S_i],
+  \end{equation}
+  que é potencia de $p$.\\
+  Logo se $p\nmid [G:N_{G}(S)]$, então existe um $i$ tal que $[P:P\cap S_i]=1$.\\ 
+  Logo $P=P\cap S_i$, assim $P\leq S_i$.\\
+  Isto mostra que qulquer $p$-subgrupo $P$ de $G$ está contido em algúm $p$-subgrupo de Sylow de $G$. Consequentemente, todos os subgrupos de Sylow são conjugados. 
+\end{proof}
+\begin{proof} 
+  $3$.\\
+  Temos que $n_p=[G:N_{G}(S)]$, onde $S\in Syl_{p}(G)$. Logo $n_{p}\mid m$ y voltando a \eqref{eq:Sylow2} temos que $n_p=sp+1$, depois $n_{p}\equiv 1(mod\,p)$.
 \end{proof}
