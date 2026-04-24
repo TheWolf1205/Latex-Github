@@ -1,6 +1,16 @@
 \begin{homeworkProblem}[Seção 2-6]
   Seja $f : U \to \mathbb{R}^m$ diferenciável no aberto $U \subset \mathbb{R}^m$. Se $|f(x)|$ é constante quando $x$ varia em $U$, então o determinante jacobiano de $f$ é identicamente nulo.
   \begin{solution}
-    Solução.
+    Suponha $|f(x)|=c$ para todo $x\in U$. Note que se definimos
+    \begin{align*}
+      \phi:f(U)&\to\mathbb{R},\\
+      x&\to|x|-c.
+    \end{align*}
+    Temos que $(\phi\circ f)(x)=|f(x)|-c=0$.\\
+    
+    Agora, suponha que $c=0$, logo $|f(x)|=0$ implica que $f(x)=0$ para todo $x\in U$, logo $f^{\prime}(x)=0$ para todo $x\in U$o que permite conclui que o determinante jacobiano de $f$ e identicamente nulo.\\
+    
+    Por outro lado, suponha $c>0$, logo $\phi\in C^{\infty}$ e como $|f(x)|\neq 0$, então $f(x)\neq 0$ para todo $x\in U$, logo note que $\phi^{\prime}(f(x))=\frac{f(x)}{|f(x)|}=\frac{f(x)}{c}\neq 0$ para todo $x\in U$.\\
+    Portanto, pelo exercício \textbf{seção 2-5} temos que o determinante jacobiano de $f$ é identicamente nulo para todo $x\in U$. 
   \end{solution}
 \end{homeworkProblem}

@@ -1,6 +1,29 @@
 \begin{homeworkProblem}[Seção 2-5]
-  Sejam $f : U \subset \mathbb{R}^m \to \mathbb{R}^n$ diferenciável no aberto $U \subset \mathbb{R}^m$ e $\varphi : \mathbb{R}^n \to \mathbb{R}$ de classe $C^1$, com $\varphi(f(x)) = 0$ para todo $x \in U$. Dado $a \in U$, se $\nabla \varphi(b) \neq 0$, com $b = f(a)$, então $\det f'(a) = 0$.
+  Sejam $f : U \subset \mathbb{R}^n \to \mathbb{R}^n$ diferenciável no aberto $U \subset \mathbb{R}^n$ e $\phi : \mathbb{R}^n \to \mathbb{R}$ de classe $C^1$, com $\phi(f(x)) = 0$ para todo $x \in U$. Dado $a \in U$, se $\nabla \phi(b) \neq 0$, com $b = f(a)$, então $\det f^{\prime}(a) = 0$.
   \begin{solution}
-    Solução.
+    Note que como $\phi(f(x))=0$ para todo $x\in U$ e como $\phi\in C^{1}$ e $f$ é diferenciável, temos que $\phi\circ f$ é diferenciável e além mais que $\nabla(\phi\circ f)(x)=0$ para  todo $x\in U$.\\
+    Por outro lado, pela regra da cadeia se cumpre que $\nabla(\phi\circ f)(x)=\nabla \phi(f(x))\cdot\nabla f(x)$, assim
+    \begin{align*}
+      \nabla (\phi\circ f)(x)=\begin{pmatrix}
+      \frac{\partial \phi}{\partial x_1}(f(x)) , \cdots , \frac{\partial \phi}{\partial x_n}(f(x))\end{pmatrix}
+      \begin{pmatrix}
+        \frac{\partial f_1}{\partial x_1}(x) & \cdots & \frac{\partial f_1}{\partial x_n}(x)\\
+        \vdots & \ddots & \vdots\\
+        \frac{\partial f_n}{\partial x_1}(x) & \cdots & \frac{\partial f_{n}}{\partial x_n}(x)
+      \end{pmatrix}=0.
+    \end{align*}
+    Agora, suponha $a\in U$  tal que $\nabla\phi(f(a))=\nabla\phi(b)\neq 0$, então temos que como $\nabla(\phi\circ f)(a)=0$, então $\nabla(\phi\circ f)(a)=\left[ \nabla(\phi\circ f)(a) \right]^{T}$, assim
+    \begin{align*}
+      \nabla(\phi\circ f)(a)=\begin{pmatrix}
+        \frac{\partial f_1}{\partial x_1}(a) & \cdots & \frac{\partial f_n}{\partial x_1}(a)\\
+        \vdots & \ddots & \vdots\\
+        \frac{\partial f_1}{\partial x_n}(a) & \cdots & \frac{\partial f_n}{\partial x_n}(a)
+      \end{pmatrix}\begin{pmatrix}
+        \frac{\partial \phi}{\partial x_1}(b)\\
+        \vdots\\
+        \frac{\partial \phi}{\partial x_n}(b)
+      \end{pmatrix}=0.
+    \end{align*}
+    Logo como $\left[ \nabla\phi(b) \right]^{T}\neq 0$, temos que $\ker \left[ \nabla f(a) \right]^{T}\neq \{0\}$. Portanto, pelo teorema do núcleo e da imagem, temos que $\posto \nabla f(a)<m$, pelo que podemos afirmar que a matriz $\nabla f(b)$ possui linhas linearmente dependentes. Assim, podemos conclui que $\det f^{\prime}(a)=0$.
   \end{solution}
 \end{homeworkProblem}

@@ -1,17 +1,86 @@
 \begin{homeworkProblem}[Seção 2-7]
   Sejam $U = (0,+\infty)\times (0, 2\pi)\times \mathbb{R}$ e $V = \mathbb{R}^3$ menos o semiplano $y = 0$, $x \geq 0$. Mostre que $\varphi : U \to V$ definida por
-    \[
+    \begin{align*}
     \varphi(r, \theta, z) = (r \cos \theta, r \sin \theta, z)
-    \]
+    \end{align*}
     é um difeomorfismo $C^\infty$. Dada $f : V \to \mathbb{R}$ diferenciável, explique o significado e demonstre a seguinte fórmula para o gradiente de $f$ em coordenadas cilíndricas:
-    \[
+    \begin{align*}
     \nabla f =
     \frac{\partial f}{\partial r} u_r +
     \frac{1}{r}\frac{\partial f}{\partial \theta} u_\theta +
     \frac{\partial f}{\partial z} u_z,
-    \]
+    \end{align*}
     onde $u_r, u_\theta$ e $u_z$ são os vetores unitários tangentes às curvas $r, \theta$ e $z$ em $V$.
   \begin{solution}
-    Solução.
+    Veamos que $\varphi$ é um $C^{\infty}$-difeomorfismo
+    \begin{itemize}
+      \item $\varphi$ é injetivo.\\
+        Suponha $\varphi(r_1,\theta_1,z_1)=\varphi(r_2,\theta_2,z_2)$, logo isto implica que $z_1=z_2$, $r_1\cos(\theta_1)=r_2\cos(\theta_2)$ e $r_1\sin(\theta_{1})=r_2\cos(\theta_2)$, logo temos que fuzando isto se pode conclui que
+        \begin{align*}
+          r_1^{2}\left( \cos(\theta_1)^{2}+\sin(\theta_1) \right)=r_2^{2}\left( \cos(\theta_1)^{2}+\sin(\theta_2) \right).
+        \end{align*}
+        Logo $r_1^{2}=r_2^{2}$, mas como $r_1,r_2\in (0,\infty)$ temos que $r_1=r_2$.\\
+        Logo fuzando isto temos que $\cos(\theta_1)=\cos(\theta_2)$, mas como $\theta_1,\theta_2\in (0,2\pi)$, sabemos que $\theta_1=\theta_2$.\\
+
+        Assim, temos que $\varphi$ é injetiva.
+      \item $\varphi$ é sobrejetiva.\\
+        Queremos resolver $\varphi(r,\theta,z)=(u,v,w)\in V$, então note que $z=w$, logo pode pensar no $\tilde{\varphi}(r,\theta)=(r\sin(\theta),r\cos(\theta))=r(\sin(\theta),\cos(\theta))=(u,v)$ com $u<0$ e $v\neq 0$, logo temos que $r=|(u,v)|$ e $\theta=arg(u,v)$ definido por
+        \begin{align*}
+          arg(x,y)=\begin{cases}
+            \arctan\left(\frac{y}{x}\right) & \text{si } x>0,\ y>0, \\[6pt]
+            \arctan\left(\frac{y}{x}\right)+\pi & \text{si } x<0, \\[6pt]
+            \arctan\left(\frac{y}{x}\right)+2\pi & \text{si } x>0,\ y<0, \\[6pt]
+            \frac{\pi}{2} & \text{si } x=0,\ y>0, \\[6pt]
+            \frac{3\pi}{2} & \text{si } x=0,\ y<0.
+          \end{cases}
+        \end{align*}
+        Assim, podemos conclui que $\varphi$ é sobrejetiva.
+      \item $\varphi^{-1}$.\\
+        Note que pelo anterior temos que
+        \begin{align*}
+          \varphi^{-1}(u,v,w)=\left( |(u,v)|,arg(u,v),w \right).
+        \end{align*}
+        que são funções $C^{\infty}$ sob as condições de $V$. 
+    \end{itemize}
+    Assim, $\varphi$ é um $C^{\infty}$-difeomorfismo.\\
+
+    Agora, note que
+    \begin{align*}
+      \varphi^{\prime}(r,\theta,z)&=\begin{pmatrix}
+        \frac{\partial \varphi_1}{\partial r}(r,\theta,z) & \frac{\partial \varphi_1}{\partial \theta}(r,\theta,z) & \frac{\partial \varphi_1}{\partial z}(r,\theta,z)\}\\
+        \frac{\partial \varphi_2}{\partial r}(r,\theta,z) & \frac{\partial \varphi_2}{\partial \theta}(r,\theta,z) & \frac{\partial \varphi_2}{\partial z}(r,\theta,z)\\
+        \frac{\partial \varphi_3}{\partial r}(r,\theta,z) & \frac{\partial \varphi_3}{\partial \theta}(r,\theta,z) & \frac{\partial \varphi_3}{\partial z}(r,\theta,z)
+      \end{pmatrix}\\
+      &=\begin{pmatrix}
+        \cos\theta & -r\sin(\theta) & 0\\
+        \sin(\theta) & r\cos(\theta) & 0\\
+        0 & 0 & 1
+      \end{pmatrix}\\
+      &=\begin{pmatrix}
+        \frac{\partial \varphi}{\partial r}(r,\theta,z) & \frac{\partial \varphi}{\partial \theta}(r,\theta,z) & \frac{\partial \varphi}{\partial z}(r,\theta,z)
+      \end{pmatrix}.
+    \end{align*}
+    Logo, nos podemos definir o seguinte
+    \begin{itemize}
+      \item $u_r=\frac{\partial \varphi}{\partial r}$.
+      \item $r u_\theta=\frac{\partial \varphi}{\partial \theta}$.
+      \item $u_{z}=\frac{\partial \varphi}{\partial z}$.
+    \end{itemize}
+    Note que como $\varphi$ é um difeomorfismo do $V$ no $U$, então $u_r,u_\theta$ e $u_z$ são os vetores unitários tangentes às curvas geradas por $\varphi$ nas direções $r,\theta$ e $z$ em $V$. 
+    Assim, se pegamos $g=(f\circ \varphi):U\to\mathbb{R}$, pela regla da cadeia temos que $g^{\prime}(x)=f^{\prime}(\varphi(x))\cdot\varphi^{\prime}(x)$.\\
+    Depois temos que
+    \begin{itemize}
+      \item $\frac{\partial g}{\partial r}(x)=f^{\prime}(\varphi(x))\cdot u_r$.
+      \item $\frac{\partial g}{\partial \theta}(x)=f^{\prime}(\varphi(x))\cdot ru_\theta$ que implica que $\frac{1}{r}\frac{\partial g}{\partial \theta}(x)=f^{\prime}(\varphi(x))\cdot u_{\theta}$.
+      \item $\frac{\partial g}{\partial z}(x)=f^{\prime}(\varphi(x))\cdot u_{z}$.
+    \end{itemize}
+    Logo temos que respecto a os vetores $u_r,u_\theta$ e $u_z$ temos que
+    \begin{equation}\label{eq:2-7}
+      f^{\prime}(\varphi(x))=\frac{\partial g}{\partial r}(x)u_r+\frac{1}{r}\frac{\partial g}{\partial \theta}(x)u_{\theta}+\frac{\partial g}{\partial z}(x)u_z.
+    \end{equation}
+    Agora, observe que, no sentido geométrico, $g$ é o mesmo que $f$, só que não estamos mais observando $f$ do espaço $V$, senão do espaço $U$. No entanto, como estamos passando por $\varphi$, que é um $C^{\infty}$-difeomorfismo, ainda mantemos as propriedades de suavidade da função $f$ em $g$. Portanto, podemos pensar em $f^{\prime}$ dependente de $x\in U$ e nas derivadas direcionais de $f$ em relação al espacio $U$ como as derivadas parciais do $g$, assim, fazendo uso abusivo da notação podemos reescrever \eqref{eq:2-7} como
+    \begin{align*}
+      \nabla f=\frac{\partial f}{\partial r}u_r+\frac{1}{r}\frac{\partial f}{\partial \theta}u_\theta+\frac{\partial f}{\partial z}u_{z}.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}
