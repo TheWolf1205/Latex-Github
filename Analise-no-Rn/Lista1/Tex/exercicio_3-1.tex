@@ -1,0 +1,24 @@
+\begin{homeworkProblem}[Seção 3-1]
+  Seja $f:U\to\mathbb{R}^{n}$ de classe $C^{1}$ num aberto convexo $U\subseteq\mathbb{R}^{m}$, com $0\in U$ e $f(0)=0$. Se $|f^{\prime}(x)|\leq |x|$ para todo $x\in U$, então $|f(x)|\leq \frac{1}{2}|x|^{2}$ seja qual $x\in U$. Conclua que se $f(0)=0$ e $f^{\prime}(0)=0$, com $f\in C^{2}$, então $\left| \frac{\partial^{2}f }{\partial u\partial v}(x) \right|\leq |u||v|$ para $x\in U$ e $u,v\in\mathbb{R}^{m}$ quaisquer implica ainda $|f(x)|\leq\frac{1}{2}|x|^{2}$. Generalize.
+  \begin{solution}
+    Note que como $U$ é um aberto convexo, $f\in C^{1}$ e $f(0)=0$  pelo teorema fundamental do cálculo temos que
+    \begin{align*}
+      f(x)=f(x)-f(0)=\int_{0}^{1}f^{\prime}(tx)\cdot x\,dt.
+    \end{align*}
+    Logo temos que como $|f^{\prime}(x)|\leq |x|$ se cumpre que 
+    \begin{align*}
+      |f(x)|=\left| \int_{0}^{1}f^{\prime}(tx)\cdot x\,dt \right|\leq \int_{0}^{1}|f(tx)||x|\,dt\leq \int_{0}^{1}|tx||x|\,dt\leq \frac{1}{2}|x|^{2}.
+    \end{align*}
+    Isto, para todo $x\in U$.\\
+
+    Agora, note que se temos que $f(0)=0$ e $f^{\prime}(0)=0$ com $f\in C^{2}$ y além mais temos que $\left| \frac{\partial^{2}f }{\partial u\partial v}(x) \right|\leq |u||v|$ para todo $x\in U$ e $u,v\in\mathbb{R}^{m}$ quaisquer, então $|f(x)|\leq\frac{1}{2}|x|^{2}$ pelo seguinte.\\
+    Pelo teorema fundamental do cálculo temos que
+    \begin{align*}
+      f^{\prime}(x)=f^{\prime}(x)-f^{\prime}(0)=\int_{0}^{1}f^{\prime\prime}(tx)\cdot x\,dt.
+    \end{align*}
+    Mas note que
+    \begin{align*}
+      f^{\prime\prime}(tx)=
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}

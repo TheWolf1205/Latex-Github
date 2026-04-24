@@ -1,0 +1,13 @@
+\begin{homeworkProblem}[Seção 3-2]
+  Sejam $U\subseteq\mathbb{R}^{m}$ aberto $[a,b]\subseteq U,f:U\to\mathbb{R}^{n}$ contínua em $[a,b]$ e diferenciável em $(a,b)$. Para cada $y\in\mathbb{R}^{n}$ existe $c_y\in (a,b)$ tal que $\left\langle f(b)-f(a),y \right\rangle=\left\langle f^{\prime}(c_y)(b-a),y \right\rangle$.
+  \begin{solution}
+    Note que como $f$ é diferenciável, se consideramos a função $g:[0,1]:\mathbb{R}$ dada por $g_y(t)=\left\langle f(a+t(b-a)),y \right\rangle$ temos que como $f$ é contínua en $[a,b]$ e diferenciável en $(a,b)$, então $g$ é contínua en $[0,1]$ e diferenciável en $(0,1)$, logo pelo teorema do valor médio em uma variavel temos que existe $t_y\in(0,1)$ tal que 
+    \begin{align*}
+      g_y(1)-g_y(0)=g^{\prime}(t_y).
+    \end{align*}
+    Agora, se definimos $c_y=a+t_y(b-a)$, nos podemos conclui que 
+    \begin{align*}
+      \left\langle f(b)-f(a),y \right\rangle=\left\langle f^{\prime}(c_y)(b-a),y \right\rangle.
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}
