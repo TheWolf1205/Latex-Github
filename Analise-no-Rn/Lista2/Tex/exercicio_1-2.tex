@@ -1,0 +1,65 @@
+\begin{homeworkProblem}[Seção 1-2]
+  Seja $f:\mathbb{R}\to\mathbb{R}$ uma função de classe $C^{1}$ tal que $|f^{\prime}(t)|\leq k<1$ para todo $\in\mathbb{R}$. Defiina uma aplicação $\phi:\mathbb{R}^{2}\to\mathbb{R}^{2}$ pondo $\phi(x,y)=(x+f(y),y+f(x))$. Mostre que $\phi$ é um difeomorfismo de $\mathbb{R}^{2}$ sobre si mesmo.
+  \begin{solution}
+    Note que
+    \begin{align*}
+      \det \phi^{\prime}(x,y)=\det \begin{pmatrix}
+        1 & f^{\prime}(y) \\
+        f^{\prime}(x) & 1
+      \end{pmatrix}=1-f^{\prime}(x)f^{\prime}(y).
+    \end{align*}
+    Logo como $|f^{\prime}(x)|\leq k<1$ para todo $x\in U$, então $|f^{\prime}(x)f^{\prime}(y)|\leq k^{2}<1$ para todo $x,y\in U$, pelo que podemos conclui que $\det\phi^{\prime}(x,y)\neq 0$, logo $\phi^{\prime}(x,y)$ é um isomorfismo, pelo que pelo teorema da aplicação inversa temos que $f$ é um difeomorfismo local em uma vizinhançã de cada $x\in \mathbb{R}$.\\
+    Agora, veamos que $f$ é bijetiva.
+    \begin{itemize}
+      \item $\phi$ é injetiva.\\
+        Note que como $f\in C^{1}$ e $|f^{\prime}(x)|\leq k<1$ para todo $x\in \mathbb{R}$, então temos que dados $x_1,x_2\in \mathbb{R}$ se cumpre que existe $c\in \mathbb{R}$ tal que 
+        \begin{equation}\label{eq:1-2-1}
+          |f(x_1)-f(x_2)|=|f^{\prime}(c)||x_1-x_2|\leq k|x_1-x_2|< |x_1-x_2|.
+        \end{equation}
+        Portanto, suponha $x_1,x_2,y_1,y_2\in \mathbb{R}$ taes que $\phi(x_1,y_1)=\phi(x_2,y_2)$, logo $\phi(x_1,y_1)-\phi(x_2,y_2)=0$, isto implica que
+        \begin{itemize}
+          \item $x_1-x_2=f(y_2)-f(y_1)$.\\
+            Logo temos que pela equação \eqref{eq:1-2-1} aplicada no $y_1$ e $y_2$ temos que 
+            \begin{equation}\label{eq:1-2-2}
+              |x_1-x_2|=|f(y_2)-f(y_1)|< |y_1-y_2|.
+            \end{equation}
+          \item $y_1-y_2+f(x_1)-f(x_2)=0$.\\
+            Da mesma maneira y usando \eqref{eq:1-2-2} temos que
+            \begin{align*}
+              |y_1-y_2|=|f(x_2)-f(x_1)|< |x_1-x_2|< |y_1-y_2|. 
+            \end{align*}
+            Logo isto só é posivel si $y_1=y_2$ o que implica direitamente que $x_1=x_2$, pelo que sabemos que $\phi$ é injetiva.
+          \item $\phi$ é sobrejetiva.\\
+            Veamos que $\phi(\mathbb{R}^{2})$ é fechado.\\
+            Seja $\{y_k\}_{k\in\mathbb{Z}^{+}}\subseteq \phi(\mathbb{R}^{2})\subseteq \mathbb{R}^{2}$ uma sequencia de Cauchy, então, note que como $\mathbb{R}^{2}$ é completo, sabemos que existe $y\in\mathbb{R}^{2}$ tal que $y_k\xrightarrow[k\to\infty]{}y$.\\
+            Agora, note que como $\phi$ é injetiva, sabemos que para cada $y_k\in\phi(\mathbb{R}^{2})$, existe um único $x_k\in\mathbb{R}^{2}$ tal que $\phi(x_k)=y_k$, agora note o seguinte.\\
+            Como $\{y_k\}_{k\in\mathbb{Z}^{+}}$ é de Cauchy, sabemos que dado um $\epsilon>0$ existe um $N>0$ tal que si $k,l>N$, então
+            \begin{align*}
+              |y_k-y_l|<\frac{\epsilon}{2}.
+            \end{align*}
+            Fazendo algums cálculos nos podemos ver que se consideramos $x_{k}=(a_k,b_k)$ e $x_l=(a_l,b_l)$ temos que 
+            \begin{align*}
+              \frac{\epsilon}{2}>\left| \phi(x_k)-\phi(x_l) \right|&=\sqrt{\left( a_k-a_l+f(b_k)-f(b_k) \right)^{2}+\left( b_k-b_l+f(a_k)-f(b_k) \right)^{2}}\\
+              &\geq \sqrt{\left( a_k-a_l+f(b_k)-f(b_l) \right)^2}\\
+              &\geq \left| a_k-a_l+f(b_k)-f(b_l) \right|\\
+              &\geq \left| a_k-a_l\right|-\left|f(b_k)-f(b_l) \right|\\
+              &\geq \left| a_k-a_l \right|-k\left| b_k-b_l \right|.
+            \end{align*}
+            E também da mesma maneira temos que
+            \begin{align*}
+              \frac{\epsilon}{2}>\left| b_k-b_l \right|-k\left| a_k-a_l \right|.
+            \end{align*}
+            Logo sumando, factorizando e dividendo pelo $1-k$, como $1-k>0$ temos que
+            \begin{align*}
+              \frac{\epsilon}{1-k}>\left| a_k-a_l \right|+\left|b_k-b_l\right|.
+            \end{align*}
+            Logo pela equivalencia do normas de $\mathbb{R}^{2}$ temos que $\{x_k\}_{k\in\mathbb{Z}^{+}}\subseteq\mathbb{R}^{2}$ é uma sequencia de Cauchy.\\
+            Assim, como $\mathbb{R}^{2}$ é um espaço completo, temos que existe $x\in\mathbb{R}^{2}$ tal que $x_k\xrightarrow[k\to\infty]{}x$, logo como $\phi$ é uma função contínua, temos que $y=\phi(x)$. Por tanto $y\in\phi(\mathbb{R}^{2})$, logo nos podemos conclui que $\phi(\mathbb{R}^{2})$ é um conjunto fechado.\\
+            
+            Por outro lado, note que como $\phi$ é um difeomorfismo na sua imágem, temos que $\phi$ é uma aplicação aberta. Logo, como $\mathbb{R}^{2}$ é aberto, então $\phi(\mathbb{R}^{2})$ é um conjunto aberto e fechado o mesmo tempo, depois como $\mathbb{R}^{2}$ é um espaço conexo e $\phi(\mathbb{R}^{2})\neq\{\emptyset\}$, temos que $\phi(\mathbb{R}^{2})=\mathbb{R}^{2}$ o que conclui que $\phi$ é sobrejetiva.  
+        \end{itemize}
+        Portanto, se pode conclui que $\phi$ é um difeomorfismo de $\mathbb{R}^{2}$ sobre se mesmo. 
+    \end{itemize}
+  \end{solution}
+\end{homeworkProblem}
+
