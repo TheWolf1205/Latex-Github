@@ -6,19 +6,39 @@
       f(x)=f(x)-f(0)=\int_{0}^{1}f^{\prime}(tx)\cdot x\,dt.
     \end{align*}
     Logo temos que como $|f^{\prime}(x)|\leq |x|$ se cumpre que 
-    \begin{align*}
+    \begin{equation}\label{eq:3-1-3}
       |f(x)|=\left| \int_{0}^{1}f^{\prime}(tx)\cdot x\,dt \right|\leq \int_{0}^{1}|f(tx)||x|\,dt\leq \int_{0}^{1}|tx||x|\,dt\leq \frac{1}{2}|x|^{2}.
-    \end{align*}
+    \end{equation}
     Isto, para todo $x\in U$.\\
 
     Agora, note que se temos que $f(0)=0$ e $f^{\prime}(0)=0$ com $f\in C^{2}$ y além mais temos que $\left| \frac{\partial^{2}f }{\partial u\partial v}(x) \right|\leq |u||v|$ para todo $x\in U$ e $u,v\in\mathbb{R}^{m}$ quaisquer, então $|f(x)|\leq\frac{1}{2}|x|^{2}$ pelo seguinte.\\
     Pelo teorema fundamental do cálculo temos que
     \begin{align*}
-      f^{\prime}(x)=f^{\prime}(x)-f^{\prime}(0)=\int_{0}^{1}f^{\prime\prime}(tx)\cdot x\,dt.
+      f^{\prime}(x)\cdot u=(f^{\prime}(x)-f^{\prime}(0))\cdot u=\int_{0}^{1}f^{\prime\prime}(tx)\cdot (x,u)\,dt.
     \end{align*}
-    Mas note que
-    \begin{align*}
-      f^{\prime\prime}(tx)=
-    \end{align*}
+    Mas note que pela hipótese temos que $f^{\prime\prime}(tx)\cdot (x,u)=\frac{\partial^{2}f }{\partial x\partial u}(tx)\leq |x||u|$, assim
+    \begin{equation}\label{eq:3-1-1}
+      |f^{\prime}(x)\cdot u|\leq \int_{0}^{1}\left| f^{\prime\prime}(tx)\cdot (x,u) \right|\,dt\leq |x||u|.
+    \end{equation}
+    Logo pegando $u$ com $\left| u \right|=1$ temos que a norma do operador cumpre
+    \begin{equation}\label{eq:3-1-2}
+      |f^{\prime}(x)|\leq |x|.
+    \end{equation}
+    Logo, tamos no caso anterior y se pode conclui que $|f(x)|\leq\frac{1}{2}\left| x \right|^{2}$.\\
+
+    \textbf{Generalização:} Seja $f:U\to\mathbb{R}^{n}$ de classe $C^{k}$ num aberto convexo $U\subseteq \mathbb{R}^{m}$, com $0\in U$ e (fazendo uso abusivo do notação) $f(0)=f^{\prime}(0)=\cdots=f^{(k-1)}(0)=0$. Se $\frac{\partial^{k}f }{\partial u_1\cdots u_k}(x)\leq |u_1|\cdots|u_k|$ para todo $x\in U$ e $u_i\in\mathbb{R}^{m}$ com $i\in\{1,\cdots,k\}$, então temos que $|f(x)|\leq \frac{1}{k!}|x|^{k}$.\\
+      Então, note que fazendo o mesmo cálculo que \eqref{eq:3-1-1} e \eqref{eq:3-1-2} temos que
+      \begin{align*}
+        |f^{(k-1)}(x)|\leq |x|.
+      \end{align*}
+      Logo faendo o mesmo cálculo que \eqref{eq:3-1-3}, temos que isto implica que
+      \begin{align*}
+        |f^{(k-2)}(x)|\leq \frac{1}{2}|x|^{2}.
+      \end{align*}
+      Logo fazendo um raciocinio indutívo temos que
+      \begin{align*}
+        |f(x)|\leq\frac{1}{k!}|x|^{k}.
+      \end{align*}
+      (Intuição: Note que para cada derivada estamos ganhando um $|x|$, portanto estamos ganhando uma potência em cada derivada faltante; além disso, por essa mesma potência, temos que a integral de \eqref{eq:3-1-3} o valor de $t$ ganha essa mesma potência, de modo que cada integral resulta em uma constante $\frac{1}{j}$, portanto a multiplicação dessas constantes é o fatorial das derivadas faltantes).
   \end{solution}
 \end{homeworkProblem}
