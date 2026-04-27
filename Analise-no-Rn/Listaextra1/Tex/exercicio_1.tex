@@ -1,0 +1,20 @@
+\begin{homeworkProblem}
+  Seja $f : U \to U$ uma aplicação de classe $C^k$ ($k \geq 1$), definida em um aberto conexo $U \subset \mathbb{R}^m$. Suponha que $f \circ f = f$ (isto é, $f$ é idempotente). Defina $M = f(U)$. Prove que $f$ tem posto constante numa vizinhança de $M$. Conclua que $M$ é uma superfície de classe $C^k$ em $\mathbb{R}^m$.
+  \begin{solution}
+    Seja $x\in U$, então, pela regra da cadeia temos que si $(f\circ f)(x)=f(x)$ se cumpre que se pegamos $y=f(x)$, então
+    \begin{align*}
+      f^{\prime}(f(x))\cdot f^{\prime}(x)=f^{\prime}(y)\cdot f^{\prime}(x)=f^{\prime}(x),\quad\text{para todo }x\in U.
+    \end{align*}
+    Em particular, note que como $M=f(U)\subseteq U$, se tomamos $x\in U$ tal que $f(x)=y^{\prime}\in M$, então temos que $f(f(x))=f(y^{\prime})=f(x)=y^{\prime}$, de ahí que para todo $y^{\prime}\in M$ temos que $f(y^{\prime})=y^{\prime}$, pelo que temos que $f\big|_{M}=Id_{M}$, mas ainda
+    \begin{align*}
+      f^{\prime}(y)\cdot f^{\prime}(y)=f^{\prime}(y),\quad\text{para todo }y\in M.
+    \end{align*}
+    Isto é que $[f^{\prime}(y)]^{2}=f^{\prime}(y)$, logo $f^{\prime}(y)$ é uma projeção, além mais, como $f\in C^{1}$ temos que se tomamos $a\in B(y,\delta)$ com $\delta>0$ suficientemente pequenho temos que $\posto f^{\prime}(y)\leq \posto f^{\prime}(a)$, logo
+    \begin{align*}
+      \posto f^{\prime}(a)= m-\posto [I-f^{\prime}(a)]\leq m-\posto[I-f^{\prime}(y)]=\posto[f^{\prime}(y)].
+    \end{align*}
+    Assim, $\posto f^{\prime}(y)=\posto f^{\prime}(a)$, logo como isto se pode fazer para cada $y\in M$, temos que para cada $y\in M$ temos que existe uma vizinhança $V_y$ de $U$ com $y\in V_y$ tal que se $a\in V_y$, então $\posto f^{\prime}(a)=\posto f^{\prime}(y)$.\\
+    Agora, note que como $U$ é conexo e $f$ é contínua, então $M=f(U)$ é conexo, logo temos que $M=\bigcup_{y\in M} M\cap V_y$, e como $M$ é conexo, então temos que $M$ não se pode escrever como união disjunta de subconjuntos $M\cap V_y$, pelo contrario $M$ possui uma disconexão. Portanto, temos que para todo $a\in \bigcup_{y\in M}V_{y}$ temos que $\posto f^{\prime}(a)=\posto f^{\prime}(y)=c$ com $c$ constante.\\
+    Assim, pelo teorema do posto, como $f\in C^{k}$ e $M=f(U)$, com $f^{\prime}$ constante em $M$ temos que $M$ é uma superfície de classe $C^{k}$. 
+  \end{solution}
+\end{homeworkProblem}
