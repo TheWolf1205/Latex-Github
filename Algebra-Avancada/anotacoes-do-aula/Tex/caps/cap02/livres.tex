@@ -29,6 +29,101 @@ Note que
 \begin{theorem}
   Se $F$ é um corpo infinito, então o grupo $GL_{n}(F)$ comtém subgrupos livres de posto $\geq 2$, para $n\geq 2$. 
 \end{theorem}
+\begin{lemma}[Macbeath]
+  Se $G$ é um grupo gerado por subgrupos $G_1$ e $G_2$ com $G_1\cap G_2=\{1\}$ tais que $|G_i|> 2$, para algúm $i$ e $G$ ace em um conjunto com ações.\\
+  $\Omega=\Omega_1\cup\Omega_2$ unión disjunta.
+  \begin{itemize}
+    \item para todo $g\in G_1\setminus\{1\}$ temos que $g_1(\Omega_1)\subseteq\Omega_{2}$.
+    \item para todo $g\in G_2\setminus\{1\}$ temos que $g_2(\Omega_{2})\subseteq\Omega_1$. 
+  \end{itemize}
+  Então, temos que $G$ é o produto livre de $G_1$ e $G_2$. 
+\end{lemma}
+\begin{proof} 
+  Vamos a provar que não existe uma relação não trivial do tipo
+  \begin{align*}
+    x_1y_1x_2y_2\cdots=1,
+  \end{align*}
+  com $x_i\in G_r\setminus\{1\},y_i\in G_s\setminus\{1\},\,r,s\in\{1,2\}$ e $r\neq s$.\\
+  Raciocinemos pelo contradição.\\
+  Suponha que $|G_1|\geq 3$ e definamos $w$ a palavra dada por
+  \begin{align*}
+    w=x_1y_1x_2y_2\cdots=1.
+  \end{align*}
+  Sem perdida de generalidade nos podemos asumir que $w$ começa e termina com um elemento do $G_1$. Pelo contrario, se $w$ començã com un elemento de $G_1$ e termina com um elementto de $G_2$ podemos fazer o seguinte, suponha que $g\in G_1$ com $g\notin \{1,x_1\}$, logo temos que
+  \begin{align*}
+    g_1^{-1}wg_1=g_1^{-1}1g_1=1.
+  \end{align*}
+  Isto é
+  \begin{align*}
+    w=(g_1^{-1}x_1)y_1x_2y_2\cdots x_ny_ng_1=1.
+  \end{align*}
+  Portanto, podemos afirmar que $w$ comença y termina com um elemento de $G_1$, assim temos que
+  \begin{align*}
+    w=x_1y_1x_2y_2\cdots x_ny_nx_{n+1}=1.
+  \end{align*}
+  Então, como $w=1$, temos que $w(\Omega_1)=\Omega_1$. Por outro, pela hipótese temos que
+  \begin{align*}
+    x_1y_1x_2y_2\cdots x_ny_nx_{n+1}(\Omega 1)&\subseteq x_1y_1x_2y_2\cdots x_ny_n(\Omega_2)\\
+    &\subseteq x_1y_1x_2y_2\cdots x_n(\Omega_1)\\
+    &\subseteq x_1y_1x_2y_2\cdots (\Omega_2)\\
+    &\subseteq x_1y_1x_2y_2(\Omega_2)\\
+    &\subseteq x_1y_1x_2(\Omega_1)\\
+    &\subseteq x_1y_1(\Omega_2)\\
+    &\subseteq x_1(\Omega_1)\\
+    &\subseteq (\Omega_2).
+  \end{align*}
+  Isto é
+  \begin{align*}
+    w(\Omega_1)\subseteq \Omega_2.
+  \end{align*}
+  Mas $w(\Omega_1)=\Omega_1$, pelo que temos que $\Omega_1\subseteq \Omega_2$. Absurdo, ya que $\Omega_1\cup\Omega_2$ são uma união disjunta. Assim, temos que não existe uma relação não trivial do tipo
+  \begin{align*}
+    w=x_1y_1x_2y_2\cdots=1.
+  \end{align*}
+  Logo como toda palavra reducida e sem elemento neutro é distinta de $1$, temos que $G$ é o produto livre de $G_1\ast G_2$.
+\end{proof}
+\begin{example}[grupo livre de permutações do plano complexo]
+  Seja $\alpha\in \mathbb{C}$ com $|\alpha|\geq 2$. Considere $f$ e $g$ dadas por lo siguiente
+  \begin{align*}
+    f(z)&=z+\alpha.\\
+    g(z)&=\begin{cases}
+      \frac{z}{\alpha z+1}, &\text{ se } z\neq-\frac{1}{\alpha}\text{,} \\
+      \frac{1}{\alpha}, &\text{ se } z=-\frac{1}{\alpha}.
+    \end{cases}
+  \end{align*}
+  Veamos que $\left\langle f,g \right\rangle$ é um grupo livre.\\
+  Primeiro, note que para qualquer $z\in \mathbb{C}$, em particular com $|z|< 1$ temos que
+  \begin{align*}
+    |z+\alpha| \geq |\alpha|-|z| > 2-1=1.
+  \end{align*}
+  Mais geralmente temos que se $k\geq 1$ temos que 
+  \begin{align*}
+    |f^{k}(z)|=|z+k\alpha|\geq k|\alpha|-|z|> 2k-1\geq 1.
+  \end{align*}
+  Logo, podemos dizer que $f$ envia o interior do círculo unitário para o exterior do círculo unitário.\\
+  Agora, veamos que $g$ envia o exterior do círculo unitário para o interior do círculo unitário, ja que se pegamos $z\in\mathbb{C}$ com $|z|< 1$ temos que 
+  \begin{align*}
+    g\left(\frac{1}{z} \right)=\frac{\frac{1}{z}}{\alpha\frac{1}{z}+1}=\frac{1}{\alpha+z}.
+  \end{align*}
+  Mais geralmente, temos que se $k\geq 1$ temos que
+  \begin{align*}
+    g^{k}\left( \frac{1}{z} \right)=\frac{1}{k\alpha+z}.
+  \end{align*}
+  logo como temos que
+  \begin{align*}
+    |k\alpha+z|\geq |k\alpha|-|z|>2k-1\geq 1.
+  \end{align*}
+  Assim,
+  \begin{align*}
+    \left| g^{k}\left( \frac{1}{z} \right) \right| = \left| \frac{1}{k\alpha+z} \right|< 1.
+  \end{align*}
+  Assim, nos definimos
+  \begin{align*}
+    \Omega_1&=\{z\in\mathbb{C}: |z|< 1\}.\\
+    \Omega_2&=\{z\in\mathbb{C}: |z|> 1\}=\left\{\frac{1}{w}\in\mathbb{C}:|w|<1\right\}.
+  \end{align*}
+  Assim, temos que $\left\langle g \right\rangle\cap \left\langle f \right\rangle=\{1\}$ com ambos de ordem mais grande que $2$ e com ações mencionadas anteriormente para $\Omega_1$ e $\Omega_2$ que cumplen $f^{k}(\Omega_1)\subseteq \Omega_2$ e $g^{k}(\Omega_2)\subseteq \Omega_1$ para todo $k$, logo temos que pelo lema de Macbeath $\left\langle f,g \right\rangle$ é um grupo livre. 
+\end{example}
 \begin{theorem}[Sanov]
   Considere $\alpha\in\mathbb{C}$, $|\alpha|\geq 2$. Então
   \begin{align*}
@@ -42,51 +137,43 @@ Note que
   \end{align*}
   geram um subgrupo livre de $GL_2(\mathbb{C})$.
 \end{theorem}
-Para provar usaremos as seguintes afirmações.
-Considerando $a,b,c,d\in\mathbb{C}$ com $ad-bd\neq 0$, definimos:
-\begin{align*}
-  \lambda_{a,b,c,d}:\mathbb{C}&\to\mathbb{C},\\
-  \xi &\to \begin{cases}
-    \frac{a\xi+b}{c\xi+d}, &\text{ para } \xi\neq-\frac{d}{c} \text{,} \\
-    \frac{d}{c}, &\text{ para } \xi=-\frac{d}{c}.
-  \end{cases}
-\end{align*}
-Com isso, dada 
-\begin{align*}
-  \begin{pmatrix}
-    a & b \\
-    c & d
-  \end{pmatrix}\in GL_{2}(\mathbb{C})
-\end{align*}
-podemos definir
-\begin{align*}
-  \varphi:GL_{2}(\mathbb{C})&\to\mathcal{G},\\
-  \begin{pmatrix}
-    a & b \\
-    c & d
-  \end{pmatrix}&\to \lambda_{a,b,c,d},
-\end{align*}
-onde $\mathcal{G}=\{\lambda_{a,b,c,d}:\mathbb{C}\to\mathbb{C}:ab-bd\neq 0\}$.\\
-Note que $\varphi$ é um homomorfismo sobrejetor de grupos, assim
-\begin{align*}
-  \varphi(A)=\lambda_{1,\alpha,0,1},\quad f=\lambda_{1,\alpha,0,1}(\xi)=\xi+a.\\
-  \varphi(B)=\lambda_{1,0,\alpha,1},\quad g=\lambda_{1,0,\alpha,1}(\xi)=\begin{cases}
-    \frac{\xi}{\alpha\xi+1}, &\text{ para } \xi\neq-\frac{-1}{\alpha} \text{,} \\
-    \frac{1}{\alpha}, &\text{ com } \xi=-\frac{1}{\alpha}.
-  \end{cases}
-\end{align*}
-Assim, temos que $\left\langle f,g \right\rangle$ é um grupo livre e isto garante que $\left\langle A,B \right\rangle$ é um grupo livre.
-\begin{lemma}[(Macbeath)]
-  Se $G$ é um grupo gerado por subgrupos $G_1$ e $G_2$ com $G_1\cap G_2=\{1\}$ tais que $|G_i|\geq 2$, para algúm $i$ e $G$ ace em um conjunto com ações.\\
-  $\Omega=\Omega_1\cup\Omega_2$ unión disjunta.\\
-  \begin{itemize}
-    \item para todo $g\in G_1\setminus\{1\}$ temos que $g_1(\Omega_1)\subseteq\Omega_{2}$.
-    \item para todo $g\in G_2\setminus\{1\}$ temos que $g_2(\Omega_{2})\subseteq\Omega_1$. 
-  \end{itemize}
-  Então, temos que $G$ é o produto livre de $G_1$ e $G_2$. 
-\end{lemma}
+\begin{proof}
+  Considerando $a,b,c,d\in\mathbb{C}$ com $ad-bd\neq 0$, definimos:
+  \begin{align*}
+    \lambda_{a,b,c,d}:\mathbb{C}&\to\mathbb{C},\\
+    \xi &\to \begin{cases}
+      \frac{a\xi+b}{c\xi+d}, &\text{ para } \xi\neq-\frac{d}{c} \text{,} \\
+      \frac{d}{c}, &\text{ para } \xi=-\frac{d}{c}.
+    \end{cases}
+  \end{align*}
+  Com isso, dada 
+  \begin{align*}
+    \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}\in GL_{2}(\mathbb{C})
+  \end{align*}
+  podemos definir
+  \begin{align*}
+    \varphi:GL_{2}(\mathbb{C})&\to\mathcal{G},\\
+    \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}&\to \lambda_{a,b,c,d},
+  \end{align*}
+  onde $\mathcal{G}=\{\lambda_{a,b,c,d}:\mathbb{C}\to\mathbb{C}:ab-bd\neq 0\}$.\\
+  Note que $\varphi$ é um homomorfismo sobrejetor de grupos, assim
+  \begin{align*}
+    \varphi(A)=\lambda_{1,\alpha,0,1},\quad f=\lambda_{1,\alpha,0,1}(\xi)=\xi+a.\\
+    \varphi(B)=\lambda_{1,0,\alpha,1},\quad g=\lambda_{1,0,\alpha,1}(\xi)=\begin{cases}
+      \frac{\xi}{\alpha\xi+1}, &\text{ para } \xi\neq-\frac{-1}{\alpha} \text{,} \\
+      \frac{1}{\alpha}, &\text{ com } \xi=-\frac{1}{\alpha}.
+    \end{cases}
+  \end{align*}
+  Assim, temos que pelo exemplo anterior $\left\langle f,g \right\rangle$ é um grupo livre e isto garante que $\left\langle A,B \right\rangle$ é um grupo livre.
+\end{proof}
 \begin{example}
-  Seja $G_1=S_3=\{1,(12),(13),(23),(123),(132)\}$ e $G_2=D_{4}=\{1,r,\theta,\theta^{2},\theta^{3},r\theta,r\theta^{2},r\theta^{3}\}$.\\
+  Seja $G_1=S_3=\{1,(12),(13),(23),(123),(132)\}$ e\\ $G_2=D_{4}=\{1,r,\theta,\theta^{2},\theta^{3},r\theta,r\theta^{2},r\theta^{3}\}$.\\
   Logo $G_1,G_2\leq G_1*G_2$ com $g_{i_1}g_{i_2}\cdots g_{i_k}$, onde $g_{i_j}\in G_1\cup G_2$
   \begin{align*}
     (12)\theta(13)(12)r\theta^{2}\theta^2=(12)\theta(123)r.
