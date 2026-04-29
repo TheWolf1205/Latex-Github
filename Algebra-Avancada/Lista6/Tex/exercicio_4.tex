@@ -1,0 +1,24 @@
+\begin{homeworkProblem}[4]
+  Se $A$ é um anél (comutativo com unidade) e $I$ é um ideal próprio de $A$ então mostre que existe um ideal maximal de $A$ contendo $I$. Conclua ainda que todo elemento $a$ de $A$ que não é uma unidade está contido em um ideal maximal de $A$. 
+  \begin{solution}
+    Temos que como $I$ é um ideal próprio, temos que $I$ é um subanel de $A$ com $I\neq A$ que cumpre
+    \begin{itemize}
+      \item Dado $a\in A$ e $i\in I$ temos que $a\cdot i=i\cdot a\in I$.
+      \item Dada $u\in \mathcal{U}(A)$ unidade, temos que $a\notin I$. 
+    \end{itemize}
+    Então, como $I\neq R$ temos que existe $x\in R\setminus I$, logo considere o ideal $J=\left\langle x \right\rangle+I$ que como $A$ é um anél comutativo com unidade, temos que $J=xA+I$. Agora, note que se $x\in\mathcal{U}(A)$, então $\left\langle x \right\rangle=A$ e temos que $J=A$, neste caso si não existe $x\in R-I$ com $x\notin\mathcal{U}(A)$, então $I$ é maximal. Assim no casso contrario, suponha $x\notin\mathcal{U}(A)$.\\
+    Note que $I\subsetneq J\subsetneq A$, pelo que nos vamos considerar o seguinte conjunto
+    \begin{align*}
+      \mathcal{M}=\{J\text{ ideal}:I\subseteq J\subsetneq A\}.
+    \end{align*}
+    Note que pelo que falamos anteriormente temos que $I,J\in \mathcal{M}$. Além mais, você pode ordenar $\mathcal{M}$ com o ordem da união. Depois, considere $\{J_i\}_{i\in\mathbb{Z}^{+}}$ uma cadeia ordenada de $\mathcal{M}$ e note que $\overline{J}=\bigcup_{i\in\mathbb{Z}^{+}}J_{i}\in \mathcal{M}$, ja que $\overline{J}$ é ideal e $\overline{J}\neq M$, pelo contrario temos que existe $i\in\mathbb{Z}^{+}$ tal que existe $x\in\mathcal{U}(A)\cap J_i$ o que é um absurdo, pois $J_i\neq A$. Logo, note que
+    \begin{itemize}
+      \item $\mathcal{M}\neq\emptyset$.
+      \item $\mathcal{M}$ é parcialmente ordenado.
+      \item A cadeia $\{J_i\}_{i\in\mathbb{Z}^{+}}\subseteq\mathcal{M}$ cumpre que para todo $i\in\mathbb{Z}^{+}$ temos que $J_i\subseteq J$. 
+    \end{itemize}
+    Portanto, pelo lema de Zorn, temos que existe $M\in\mathcal{M}$ elemento máximal do $\{J_i\}_{i\in\mathbb{Z}^{+}}$, pelo que podemos conclui que $I\subseteq M\subsetneq A$ com $M$ ideal máximal de $A$.\\
+
+    Note que se $a\notin\mathcal{U}(A)$, então $I=aA$ é um ideal próprio de $A$, pelo anterior temos que existe $M$ ideal maximal de $A$ tal que $I\subseteq M$, assim como $a\in I$, temos que $a\in M$, logo podemos conclui que todo elemento $a$ de $A$ que não é uma unidade está contido em um ideal maximal de $A$. 
+  \end{solution}
+\end{homeworkProblem}
