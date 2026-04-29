@@ -1,0 +1,162 @@
+%-----------------------------------------------------------------------
+% Beginning of proc-l-template.tex
+%-----------------------------------------------------------------------
+%
+%     This is a topmatter template file for PROC for use with AMS-LaTeX.
+%
+%     Templates for various common text, math and figure elements are
+%     given following the \end{document} line.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%     Remove any commented or uncommented macros you do not use.
+
+\documentclass{proc-l}
+\usepackage[hidelinks]{hyperref}
+\usepackage[usenames]{color}
+%     If you need symbols beyond the basic set, uncomment this command.
+\usepackage{amssymb}
+
+%     If your article includes graphics, uncomment this command.
+\usepackage{graphicx}
+
+%     If the article includes commutative diagrams, ...
+%\usepackage[cmtip,all]{xy}
+\DeclareFontFamily{U}{mathx}{}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+\renewcommand{\check}{\widecheck}
+\renewcommand{\hat}{\widehat}
+
+%     Update the information and uncomment if AMS is not the copyright
+%     holder.
+%\copyrightinfo{2009}{American Mathematical Society}
+
+\renewcommand{\proofname}{Demostración}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolario}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{note}[theorem]{Nota:}
+\newtheorem{proposition}[theorem]{Proposición:}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{xca}[theorem]{Ejercicio}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+% \title[short text for running head]{full title}
+\title{Buen planteamiento para la ecuación no lineal modificada de Zakharov-Kusnetsov}
+
+%    Only \author and \address are required; other information is
+%    optional.  Remove any unused author tags.
+
+%    author one information
+% \author[short version for running head]{name for top of paper}
+\author{Andrés David Cadena Simons}
+\address{}
+\curraddr{}
+\email{acadenas@unal.edu.co}
+\thanks{}
+
+%    author two information
+\author{David Felipe Viuche Malaver}
+\address{}
+\curraddr{}
+\email{dviuchem@unal.edu.co}
+\thanks{}
+
+%    author three information
+\author{Jhon Alejandro Ayala}
+\address{}
+\curraddr{}
+\email{jayalao@unal.edu.co}
+\thanks{}
+
+
+%    \subjclass is required.
+\subjclass[2020]{Primary }
+
+\date{\today}
+
+\dedicatory{"Al profesor Oscar por estar tan atento a nuestras dudas, inquietudes y respuestas."}
+
+%    "Communicated by" -- provide editor's name; required.
+
+%    Abstract is required.
+\begin{abstract}
+En este trabajo, analizamos el buen planteamiento de la ecuación no lineal modificada de Zakharov-Kusnetsov en espacios de Sobolev. A través de un enfoque basado en la transformada de Fourier y técnicas de análisis funcional, demostramos la existencia y unicidad de soluciones dentro de ciertos espacios de Sobolev. Además, establecemos propiedades clave como la continuidad de la transformada de Fourier y el encajamiento de Sobolev. Estos resultados permiten abordar problemas de valor iniciales relacionados con ecuaciones diferenciales parciales no lineales en un marco teórico sólido.
+\end{abstract}
+
+\maketitle
+
+\include{introduccion}
+\include{preliminares}
+\include{buen-planteamiento}
+
+%    Text of article.
+
+%    Bibliographies can be prepared with BibTeX using amsplain,
+%    amsalpha, or (for "historical" overviews) natbib style.
+\bibliographystyle{amsplain}
+\bibliography{referencias}
+%    Insert the bibliography data here.
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%    Templates for common elements of a journal article; for additional
+%    information, see the AMS-LaTeX instructions manual, instr-l.pdf,
+%    included in the PROC author package, and the amsthm user's guide,
+%    linked from http://www.ams.org/tex/amslatex.html .
+
+%    Section headings
+\section{}
+\subsection{}
+
+%    Ordinary theorem and proof
+\begin{theorem}[Optional addition to theorem head]
+% text of theorem
+\end{theorem}
+
+\begin{proof}[Optional replacement proof heading]
+% text of proof
+\end{proof}
+
+%    Figure insertion; default placement is top; if the figure occupies
+%    more than 75% of a page, the [p] option should be specified.
+\begin{figure}
+\includegraphics{filename}
+\caption{text of caption}
+\label{}
+\end{figure}
+
+%    Mathematical displays; for additional information, see the amsmath
+%    user's guide, linked from http://www.ams.org/tex/amslatex.html .
+
+% Numbered equation
+\begin{equation}
+\end{equation}
+
+% Unnumbered equation
+\begin{equation*}
+\end{equation*}
+
+% Aligned equations
+\begin{align}
+  &  \\
+  &
+\end{align}
+
+%-----------------------------------------------------------------------
+% End of proc-l-template.tex
+%-----------------------------------------------------------------------

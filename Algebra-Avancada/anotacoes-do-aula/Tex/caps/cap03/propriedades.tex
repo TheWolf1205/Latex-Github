@@ -2,17 +2,7 @@ Considere $n\in\mathbb{N}$, $n\geq 3$, então lembremos
 \begin{align*}
   S_n=\{\sigma:\{1,\cdots,n\}\to\{1,\cdots,n\}:\sigma\text{ é bijetiva.}\}
 \end{align*}
-Sabemos que $|S_n|=n!$ e temos o seguinte resultado que garante que $Z(S_n)=\{1\}$.
-\begin{proposition}
-  Para $n\geq 3$, temos que $Z(S_n)=\{1\}$.
-\end{proposition}
-\begin{proof} 
-  Considere $\alpha\in S_n$ com $\alpha\neq 1$. Vamos mostrar que sempre existe $\tau\in S_n$ tal que $\alpha\tau\neq\tau\alpha$ e desta forma, temos que $\alpha\neq Z(S_n)$. Observe que sendo $\alpha\neq 1$ existe $i\in\{1,\cdots,n\}$ tal que $\alpha(i)=j\neq i$. Como $n\geq 3$, existe $k\in\{1,\cdots,n\}$, onde $k\neq i$ e $k\neq j$. Assim, tome $\tau=(i\,k)$, depois temos que
-  \begin{align*}
-    \alpha\tau(i)=\alpha(k)\neq j\,\text{e}\,\tau\alpha(i)=\tau(j)=j.
-  \end{align*}
-  Portanto, $\alpha\tau\neq\tau\alpha$, pelo que podemos conclui que $Z(S_n)=\{1\}$ com $n\neq 3$. 
-\end{proof}
+Sabemos que $|S_n|=n!$.\\
 Então, dado  $\sigma\in S_n$ com $\sigma\neq 1$, podemos considerar a estructura cíclica de $\sigma$.
 \begin{definition}
   Chamamos a $\sigma$ um cíclo de comprimendo $m$ se $\sigma$ é uma permutação do tipo
@@ -46,7 +36,7 @@ Você pode fazer e seguinte exercicio.
     (i_1\, i_2\, \cdots\, i_m)=(i_1i_m)(i_1i_{m-1})\cdots (i_1i_2).
   \end{align*}
 \end{note}
-\begin{note}[Propriedades de $S_n$]
+\begin{note}[Propriedades de $S_n$]\label{note:propriedades-gerador-Sn}
   Um conjunto gerador de $S_n$
   \begin{align*}
     \left\langle (ij):1\leq i\neq j\leq n \right\rangle=S_n.
@@ -66,14 +56,15 @@ Você pode fazer e seguinte exercicio.
   \begin{align*}
     A_n:=\{\sigma\in S_n:\sigma\text{ é par.}\}
   \end{align*}
-  Ele é um subgrupo de $S_n$ dito subgrupo \textbf{alternado de grau $n$} de $S_n$.
+  Ele é um subgrupo de $S_n$ dito subgrupo \textbf{alternado de grau $n$} de $S_n$.\\
+  Note que $|A_n|=\frac{n!}{2}$.
 \end{definition}
 \begin{note}[$A_n\normal S_n$]
   Note que $A_n\normal S_n$ para todo $n\geq 5$.\\
   Seja $\varsigma=(ij)$ uma transposição de $S_n$ defina
   \begin{align*}
     f:S_n&\to A_n\\
-    \sigma&\to f(\sigma)LHS= 
+    \sigma&\to f(\sigma)= 
     \begin{cases}
       \sigma, &\text{ se } \sigma\text{ e par} \text{,} \\
       \varsigma\sigma, &\text{ se } \sigma\text{ e impar} .
@@ -104,44 +95,3 @@ Em $S_4$ nos temos que $|A_4|=12$, logo $\tilde{K_4}=\{1,(12)(34),(13)(23),(14)(
   \end{align*}
   Defina $\gamma: i_t^{l}\to j_t^{l}$.
 \end{proof}
-\begin{note}
-  Cada estructura cĩclica posivel em $S_n$ está associada a uma partição de $n$, isto es, por exemplo
-  \begin{align*}
-    (489)(125)(67)(3).
-  \end{align*}
-  $(3,3,2,1)\to 9$.
-\end{note}
-\begin{note}
-  Seja $\sigma$ um cíclo de comprimento $m$, logo $m$ é par ou impar. Se $m$ é par, então $\sigma$ é impar, caso contrario $\sigma$ é impar. Com isso, os $3$-cíclos em $S_n$ são elementos de $A_n$ com $n\geq 3$. 
-\end{note}
-\begin{proposition}
-  \begin{enumerate}
-    \item Os $3$-cíclos suam o subgrupo de $A_n$, para $n\geq 3$.
-    \item Todos os $3$-cíclos são conjugados em $A_n$, para $n\geq  5$.
-  \end{enumerate}
-  \begin{align*}
-    A_3=\{1,(123),(132)\}\text{ sendo $3$-cíclos.} 
-  \end{align*}
-\end{proposition}
-\begin{proof} 
-  Considere $n\geq 4$ e tome $\sigma\in A_4$ e escreva como um produto de transposições
-  \begin{align*}
-    \sigma=(i_1j_1)(i_2j_2)\cdots(i_mj_m)\text{ $m$ par.}
-  \end{align*}
-  Onde as transposições são disjuntas ou não.\\
-  No primer caso, reescreve
-  \begin{align*}
-    (i_1j_1)(i_2j_2)=(i_1i_2j_2)(i_1j_1j_2).
-  \end{align*}
-  No segundo caso, sem perdida de generalidade, considere $i_1=i_2$, temos
-  \begin{align*}
-    (i_1j_1)(i_2j_2)&=(i_1j_1)(i_1j_2)\\
-    &=(i_1j_2j_1).
-  \end{align*}
-
-  Para provar \textbf{2.} considere $\alpha$ e $\beta$ $3$-cíclos em $A_n$. Sabemos que existe $\gamma\in S_n$ tal que $\beta=\alpha^{\gamma}$.\\
-  Se $\gamma\in A_n$, acabou.\\
-  Se $\gamma\notin A_n$, como $\alpha=(i_1i_2i_3)$, nesse caso considere $\varsigma=(j_1j_2)$ onde $j_1,j_2\notin\{i_1,i_2,i_3\}$, assim temos que definimos $\theta=\gamma\varsigma\in A_n$ e $\alpha^{\theta}=\alpha^{\gamma\varsigma}=\alpha^{\gamma}=\beta$. 
-\end{proof}
-
-

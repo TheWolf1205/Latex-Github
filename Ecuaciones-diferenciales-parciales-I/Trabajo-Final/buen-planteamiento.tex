@@ -1,0 +1,249 @@
+\section{Resultados del buen planteamiento}\label{sec:buen-planteamiento}
+  En esta parte, estudiaremos la existencia de soluciones para la ecuación con no linealidad modificada de Zakharov-Kusnetsov en espacios de Sobolev.
+  \subsection{Problema}
+    Consideremos el siguiente problema de Cauchy:
+    \begin{equation}
+      \begin{cases}
+        u_t+\partial_{x_1}\Delta u+u^2=0, & (x,t)=(x_1,\cdots,x_n,t)\in \pi_R\times \mathbb{R} \text{,} \\
+        u(x,0)=u_0(x), & x\in\pi_R.
+      \end{cases}\label{eq:problema-de-cauchy}
+    \end{equation}
+    donde $u_0$ es un dato inicial en algún espacio de Sobolev periódico, que denotaremos por $H^s(\mathbb{T}^{n})$, $s \geq 0$.
+  \subsection{Formula integral}
+    Ahora, con la intención de proponer un candidato de solución para $\textcolor{red}{\ref{eq:problema-de-cauchy}}$ usaremos la transformada de Fourier y sus propiedades vistas en los preliminares, esto es:
+    \begin{align*}
+      \hat{u_t+\partial_{x_1}\Delta u+u^2}&=\hat{u_t}+\hat{\partial \Delta u} + \hat{u^2}\\
+      &=\hat{u_t}+\sum_{i=1}^{n}\hat{(\partial_{x_1x_ix_i}u)}+\hat{u^2}\\
+      &=\hat{u_t}+\sum_{i=1}^{n}i^{3}k_1k_i^2\hat{u}+\hat{u^2}\\
+      &=\hat{u_t}-ik_1\hat{u}\sum_{i=1}^{n}k_i^2+\hat{u^2}\\
+      &=\hat{u_t}-ik_1|k|^2\hat{u}+\hat{u^2}=0
+    \end{align*}
+    Por lo que es tentador pensar en el siguiente problema de Cauchy.
+    \begin{equation}
+      \begin{cases}
+        \hat{u_t}-ik_1|k|^2\hat{u}+\hat{u^2}=0, & (k,t)=(k_1,\cdots,k_n,t)\in \mathbb{Z}^{n}\times \mathbb{R} \text{,} \\
+        \hat{u}(k,0)=\hat{u}_0(k), & k\in\mathbb{Z}^{n}.
+      \end{cases}\label{eq:problema-de-cauchy-fourier} 
+    \end{equation}
+    Ahora, usando técnicas de resolución para ecuaciones diferenciales ordinarias podemos buscar un candidato de solución para $\textcolor{red}{\ref{eq:problema-de-cauchy-fourier}}$ de la siguiente forma.\\
+    Note que $\hat{u_t}-ik_1|k|^2\hat{u}+\hat{u^2}=0$ implica: 
+    \begin{align*}
+      \hat{u_t}-ik_1|k|^2\hat{u}=-\hat{u^2},
+    \end{align*}
+    lo que a su vez nos lleva a:
+    \begin{align*}
+      \frac{d}{dt}\left( e^{ik_1|k|^2t}\hat{u} \right)=-e^{-ik_1|k|^2t}\hat{u^2},
+    \end{align*}
+    aplicando integración en el intervalo de tiempo $(0,t)$:
+    \begin{align*}
+      e^{ik_1|k|^2t}\hat{u}-\hat{u_0}&=-\int_{0}^{t}\hat{u}e^{-ik_1|k|^2t'}dt',
+    \end{align*}
+    y por consecuente un candidato de solución para $\textcolor{red}{\ref{eq:problema-de-cauchy-fourier}}$ es:
+    \begin{align}
+      \hat{u}=\hat{u_0}e^{ik|k|^2t}-\int_{0}^{t}\hat{u^2}e^{ik|k|^2(t-t')}dt'.\label{eq:solucion-en-fourier}
+    \end{align}
+    Ahora, usando transformada inversa de Fourier en $\textcolor{red}{\ref{eq:solucion-en-fourier}}$ llegaremos a:
+    \begin{align}
+      u(x,t)&=\check{[\hat{u_0}e^{ik_1|k|^2}t]}+\int_{0}^{t}\check{[\hat{u^2}e^{-ik_1|k|^2(t-t')}]}dt'\notag{}\\
+      &=\sum_{k\in\mathbb{Z}^{n}}\hat{u_0}(k)e^{ik_1|k|^2t+ik\cdot x}-\int_{0}^{t}\sum_{k\in\mathbb{Z}^{n}}\hat{u^2}(k)e^{-ik_1|k|^2(t-t')+ik\cdot x}dt'.
+    \end{align}
+    Por convención y facilidad para la lectura será adecuado introducir la siguiente definición.
+    \begin{definition}
+      Sea $f\in H^s(\mathbb{T}^{n})$, definiremos $U(t)f(x)$ como:
+      \begin{align*}
+        U(t)f(x)=\begin{cases}
+          \sum_{k\in\mathbb{Z}^{n}}\hat{f}(k)e^{ik_1|k|^2t+ik\cdot x}, &\text{ si } t\in\mathbb{R}\setminus\{0\} \text{,} \\
+          f(x), &\text{ si } t=0.
+        \end{cases}
+      \end{align*}
+    \end{definition}
+    Por lo que será importante la siguiente definición.
+    \begin{definition}
+      Dada $u\in H^s(\mathbb{T}^{n})$, diremos que la formula integral (o formula de Duhamel) asociada al problema de Cauchy $\textcolor{red}{\ref{eq:problema-de-cauchy}}$ es:
+      \begin{equation}
+        u(x,t)=U(t)u_0(x)-\int_{0}^{t}U(t-t')u^2(x)dt'.\label{eq:formula-integral}
+      \end{equation}
+    \end{definition}
+  \subsection{Buen planteamiento en $H^s$}
+    A partir de ahora nos concentraremos en demostrar buen planteamiento local para el problema de Cauchy $\textcolor{red}{\ref{eq:problema-de-cauchy}}$, por lo que será interesante saber en qué sentido entendemos el buen planteamiento local.
+    \begin{definition}
+      Dado $s>0$. Diremos que el problema de Cauchy $\textcolor{red}{\ref{eq:problema-de-cauchy}}$ está localmente bien planteado en $H^s(\mathbb{T}^{n})$ si:
+      \begin{enumerate}
+        \item (Existencia y unicidad). Dado $u_0\in H^s(\mathbb{T}^{n})$ existe $T>0$ y una única solución de la formula integral $\textcolor{red}{\ref{eq:formula-integral}}$ con dato inicial $u_0$ en el espacio\\
+        $C([-T,T];H^s(\mathbb{T}^{n}))$.
+        \item (Dependencia continua). Dado $u_0\in H^s(\mathbb{T}^{n})$ existe una vecindad $V$ de $u_0$ en $H^s(\mathbb{T}^{n})$ y $T>0$ tal que la aplicación dato inicial solución:
+        $$v_0\in H^s(\mathbb{T}^{n})\to v\in C([-T,T];H^s(\mathbb{T}^{n}))$$
+        es continua. 
+      \end{enumerate}
+    \end{definition}
+    Ahora vamos a enunciar unas cuantas definiciones y teoremas que nos servirán para demostrar el buen planteamiento.
+    \begin{definition}\label{definition:contraccion}
+      Una función $\Psi:M\to M$ sobre un espacio métrico $(M,d)$ se dice que es una \textbf{contracción} si existe $0<L<1$ tal que:
+      \begin{equation}
+        d(\Psi(x),\Psi(y))\leq Ld(x,y)\label{eq:contraccion}
+      \end{equation}
+      para todo $x,y\in M$.
+    \end{definition}
+    \begin{definition}\label{definition:punto-fijo}
+      Un \textbf{punto fijo} de una aplicación $\Psi:M\to M$ es un punto $x\in M$ tal que $\Psi(x)=x$.
+    \end{definition}
+    \begin{theorem}(Teorema del punto fijo de Banach)\label{theorem:teorema-del-punto-fijo}
+      Sea $(M,d)$ un espacio métrico completo, entonces toda contracción tiene un único punto fijo. 
+    \end{theorem}
+    \begin{definition}
+        Dados $T>0$ y $a>0$ fijos, definimos el espacio
+            \begin{align*}
+                X^{s}_{T}(a) = \left\{v \in C([0,T], H^{s}_{per}) : \sup_{t \in [0,T]} \|v(t)\|_{H^{s}} \leq a \right\}.
+            \end{align*}
+        Con la siguiente distancia.
+        \begin{align*}
+            d(u(t), v(t)) = \sup_{t \in [-T,T]} \|u(t) - v(t)\|_{H^{s}},
+        \end{align*}
+        Para $u,v \in X^{s}_{T}(a)$.\\
+    \end{definition}
+    \begin{theorem}
+        El espacio $X_T^s(a)$ es un espacio completo.
+    \end{theorem}
+    \begin{proof}
+        Primero probemos que $H^{s}(\mathbb{T}^{n})$ es completo.\\
+        Sea $\left\{ f_{n} \right\} _{n \in \mathbb{Z}^{+}} \subset H^{s}(\mathbb{T}^{n})$ una sucesión de Cauchy, esto es, dado $\epsilon >0$, existe $N>0$ tal que si $m,l >N$ entonces $\|f_{m} - f_{l}\|_{H^{s}} < \epsilon$. Como
+    \begin{align*}
+        \|f_{m} - f_{l}\|^{2}_{H^{s}} = \sum_{k \in \mathbb{Z}^{n}} \langle k \rangle ^{2s} |\hat{f}_{m}(k) - \hat{f}_{l}(k) |^{2}.
+    \end{align*}
+    y como $\left\{ \langle k \rangle  ^{s} \hat{f}_{j}(k) \right\}$ es de Cauchy en $l^{2}(\mathbb{Z}^{n})$, y este es completo, entonces $\langle k \rangle ^{s} \hat{f}_{j}(k) \rightarrow g \in l^{2}(\mathbb{Z}^{n})$. Tome $f = \check{\left( \dfrac{g(k)}{\langle k \rangle ^{s}} \right)}$, de modo que $\hat{f}(k) = \dfrac{g(k)}{\langle k \rangle ^{s}}$.\\ 
+    Veamos que 
+    \begin{enumerate}
+        \item $f \in H^{s}$:
+            \begin{align*}
+                \|f\|^{2}_{H^{s}}  = \sum_{k \in \mathbb{Z}^{n}} \langle k \rangle ^{2s}  \left| \frac{g(k)}{\langle k \rangle ^{s}} \right| ^{2}.
+            \end{align*}
+        Esto ya que la transformada de Fourier es un isomorfismo de $L^2$ en $l^2$. Luego
+        \begin{align*}
+            \|f\|^{2}_{H^{s}}  &= \sum_{k \in \mathbb{Z}^{n}} \langle k \rangle ^{2s} \frac{|g(k)|^{2}}{\langle k \rangle ^{2s}}\\
+            &= \sum_{k \in \mathbb{Z}^{n}} |g(k)|^{2}\\
+            &= \|g\|_{l^{2}} < \infty.
+        \end{align*}
+        \item $ \left( f_{j} \right) \rightarrow f$ en $H^{s}$:\\
+            Dado $1>\epsilon >0$, tome $N$ tal que Si $j>N$, 
+            \begin{align*}
+                \|f - f_{j}\|^{2}_{H^{s}} &= \sum_{k \in \mathbb{Z}^{n}} \langle k \rangle ^{2s} |\hat{f}(k) - \hat{f}_{j}(k)|^{2}\\
+                &= \sum_{k \in \mathbb{Z}^{n}} \langle k \rangle ^{2s}  \left| \frac{g(k)}{\langle k \rangle ^{s}} - \hat{f}_{j}(k) \right| ^{2} \\
+                &= \sum_{k \in \mathbb{Z}^{n}} \left| g(k) - \langle k \rangle ^{s} \hat{f}_{j}(k) \right| ^{2} < \epsilon
+            \end{align*}
+            ya que $\langle k\rangle^s\hat{f_j} \to g$ cuando $j\to \infty$.
+    \end{enumerate}
+    Por lo tanto $H^{s}(\mathbb{T}^{n})$ es completo y $C([-T, T]; H^{s}(\mathbb{T})^{n})$ al ser un espacio de funciones continuas con dominio compacto y rango completo también lo es.\\
+    Ahora, por la definición de $X^{s}_{T} (a)$ tenemos que es cerrado en $C([-T, T]; H^{s}(\mathbb{T})^{n})$, luego $X^{s}_{T} (a)$ es completo.
+    \end{proof}
+    Ahora sí, veamos el resultado estrella del trabajo.
+    \begin{theorem}
+        Para cualquier $n \geq 1$ fijo, el problema de Cauchy \textcolor{red}{\ref{eq:problema-de-cauchy}} está localmente bien planteado en $H^s(\mathbb{T}^n)$, con $s > \frac{n}{2}$. Esto es:
+        \begin{itemize}
+            \item \textbf{Existencia y unicidad}. Para cualquier $u_0 \in H^s(\mathbb{T}^n)$, existe un tiempo $T > 0$ y una única $u \in C([-T, T]; H^s(\mathbb{T}^n))$ solución de la fórmula integral \textcolor{red}{\ref{eq:formula-integral}} con dato inicial $u_0$.
+            \item \textbf{Dependencia continua}. Dado $u_0 \in H^s(\mathbb{T}^n)$, existe una vecindad $V$ de $u_0$ en $H^s(\mathbb{T}^n)$ y $T > 0$ tal que la aplicación $v_0 \in V \to v \in C([-T, T]; H^s(\mathbb{T}^n))$ es continua.
+        \end{itemize}
+    \end{theorem}
+    \begin{proof}
+        \begin{enumerate}
+            \item (Existencia y unicidad).\\
+                (Existencia).
+                    Sea $u \in H^{s}(\mathbb{T})$ con $s> \frac{n}{2}$ arbitrario pero fijo. Veamos que existe una solución de la fórmula integral \textcolor{red}{\ref{eq:formula-integral}} con dato inicial $u_{0}$. Si $u_{0}=0$, tomando $u=0$ tenemos la existencia buscada, por lo que vamos a asumir $u \neq 0$, i.e., $\|u_{0}\|_{H^{s}} > 0$.\\
+                    Ahora, para $v \in X^{s}_{T}$ consideremos la función $\Phi (v)$ dada por
+                    \begin{align*}
+                        \Phi (v) (t) = U(t)u_{0} - \int_{0}^{t} U(t-t') v^{2}(t') dt'.
+                    \end{align*} 
+                    De esta manera queremos ver que existen $T>0$, $a>0$ tales que $\Phi$ es una contracción en $X^{s}_{T}(a)$. Procedemos como sigue:
+                    \begin{enumerate}
+                        \item $\Phi (v) \in X^{s}_{T}(a)$.
+                        \begin{align*}
+                            \|\Phi (v)\|_{H^{s}} &\leq \|U(t)u_{0}\|_{H^{s}} + \int_{0}^{t} \|U(t-t')v^{2}(t')\|_{H^{s}}dt'\\ 
+                            &\leq  \left(\sum_{k \in \mathbb{Z}^{n}} \langle k \rangle ^{2s} |\hat{U(t)u_{0}}(k)|^{2} \right) ^{\frac{1}{2}} + \int_{0}^{t} \left(\sum_{k \in \mathbb{Z}^{n}} \langle k \rangle ^{2s} |\hat{U(t-t')}v^{2}(t') (k)|^{2} \right) ^{\frac{1}{2}} dt'\\ 
+                            &\leq \|\langle k \rangle ^{s} U(t)u_{0}\|_{l^2} + \int_{0}^{t} \left(\sum_{k \in \mathbb{Z}^{n}} \langle k \rangle ^{2s} |v^{2}(t') e^{i k_{1}|k|^{2}(t-t')}|^{2} \right) ^{\frac{1}{2}} dt'\\ 
+                            &\leq \|u_{0}\|_{H^{s}} + \int_{0}^{t} \left(\sum_{k \in \mathbb{Z}^{n}} |\langle k \rangle ^{s} v^{2}(t') e^{i k_{1}|k|^{2}(t-t')}|^{2} \right) ^{\frac{1}{2}} dt'\\
+                            &\leq \|u_{0}\|_{H^{s}} + \int_{0}^{t} \| v^{2}(t')\|_{H^{s}} \|e^{i k_{1}|k|^{2}(t-t')}\|_{\infty}  dt'\\
+                            &\leq \|u_{0}\|_{H^{s}} + \int_{0}^{t} \| v^{2}(t')\|_{H^{s}} dt'\\
+                            &\leq \|u_{0}\|_{H^{s}} + \sup_{t \in [-T,T] }\| v^{2}(t)\|_{H^{s}} \int_{0}^{t} dt'\\
+                            &\leq \|u_{0}\|_{H^{s}} + 2T \sup_{t \in [-T,T] }\| v^{2}(t)\|_{H^{s}}
+                        \end{align*}
+                        Se concluye
+                        \begin{align*}
+                        \sup_{t \in [-T,T]} \|\Phi (v) (t)\|_{H^{s}} &\leq \|u_{0}\|_{H^{s}} + 2T \sup_{t \in [-T,T]}\|v^{2}(t)\|_{H^{s}}\\
+                        &\leq \|u_{0}\|_{H^{s}} + cT \sup_{t \in [-T,T]} \|v(t)\|^{2}_{H^{s}}
+                        \end{align*}
+                        Ya que contamos con una estructura de álgebra de Banach.\\ 
+                        Como queremos $\Phi(v) \in X^{s}_{T}(a)$, entonces
+                        \begin{align*}
+                            \sup_{t \in [-T,T]} \|\Phi(v)(t)\|_{H^{s}} &\leq \| u_{0} \|_{H^{s}} + cT \sup_{-T,T} \| v(t) \|^{2}\\ 
+                            &\leq \| u_{0} \|_{H^{s}} + cT a^{2}\\
+                            &\leq a
+                        \end{align*}
+                        Por lo que será conveniente definir $a$ y $T$ de la siguiente manera:
+                        \begin{align}\label{eq:T-y-a}
+                            \begin{cases}
+                                a = 2\| u_{0}\|_{H^{s}},\\
+                                0< T < \frac{1}{2ca},
+                            \end{cases}
+                        \end{align}
+                        por lo que $\sup_{t \in [-T,T] }\|\Phi (v) \|_{H^{s}} \leq a$.\\
+                        Ahora veamos que $\Phi \in C([-T,T]; H^{s})$:
+                        \begin{align*}
+                            \lim_{t \rightarrow t_{1}} \|\Phi(v)(t_{1}) - \Phi(v)(t)\|_{H^{s}}^2 &= \lim_{t \rightarrow t_{1}} \| U(t_{1})u_{0} - \int_{0}^{t_{1}} U(t_{1}-t')v^{2}(t')dt' - U(t)u_{0}\\ 
+                            &\phantom{=}+\int_{0}^{t} U(t-t')v^{2}(t')dt'\|_{H^{s}}^2\\ 
+                            &= \lim_{t \rightarrow t_{1}} \| u_{0} (U(t_{1}) - U(t)) - \int_{t}^{t_{1}} v^{2}(t')(U(t_{1}-t') - U(t-t')) dt' \|_{H^{s}}^2\\
+                            &=\lim_{t\to t_1}\|U(t_1)u_0-U(t)u_0\|^2_{H^s}\\
+                            &= \lim_{t\to t_1}\sum_{k\in\mathbb{Z}^n}\langle k \rangle^s|\hat{U(t_1)u_0}-\hat{U(t)u_0}|^2\\
+                            &=\lim_{t\to t_1}\sum_{k\in \mathbb{Z}^n}\langle k \rangle^s|u_0e^{ik_1|k|^2t}-u_0e^{ik_1|k|^2t_1}|^2\\
+                            &=0
+                        \end{align*}
+                        Ya que la función $e^{ik_1|k|^2t}$ es continua respecto a $t$.\\
+                        Lo que nos permite concluir que $\Phi\in C([-T,T];H^s(\mathbb{T}^n))$.
+                        \item Veamos que $\Phi$ define una contracción sobre $X_T^s(a)$.
+                        Sean $a$ y $T$ dados por \textcolor{red}{\ref{eq:T-y-a}}. Entonces:
+                        \begin{align*}
+                            \|\Phi(u)-\Phi(v)\| &\leq cT\sup_{t\in[-T,T]}\|(u-v)(u+v)\| \\
+                            &\leq cT \sup_{t \in [-T,T]} \| u-v \| (\| u\| + \|v\|)\\
+                            & \leq cT \sup_{t \in [-T,T]} \| u-v \| (2a)\\
+                            &\leq 2caT \sup_{t \in [-T,T]} \| u(t) - v(t) \|
+                        \end{align*}
+                        que como $0<2caT<1$, se puede concluir que $\Phi$ es una contracción en $X^{s}_{T} (a)$.\\
+                        Así, por el teorema de punto fijo de Banach, existe una única $u \in X^{s}_{T} (a) $ que cumple $\Phi (u) = u$, esto es:
+                        \begin{align*}
+                            u = U(t)u_{0} - \int_{0} ^{t} U(t-t')u^{2}(t')dt'.
+                        \end{align*}
+                        Quedando así demostrada la existencia de soluciones para la formula integral $\textcolor{red}{\ref{eq:formula-integral}}$.
+                    \end{enumerate}
+                    (Unicidad).
+                        Sean $u$, $v \in C([-T, T]; H^s(\mathbb{T}^n))$ soluciones de la fórmula integral y sea $M > 0$ tal que:
+                        $$\sup_{t \in [-T, T]} \|u(t)\|_{H^s} + \sup_{t \in [-T, T]} \|v(t)\|_{H^s} \leq M$$
+                        Siguiendo un argumento similar a la cota que hayamos en la parte de existencia, se llega a que existe $c > 0$ tal que si $t \in [-T_1, T_1]$ con $0<T_1\leq T$ se sigue que 
+                        $$\|u(t) - v(t)\|_{H^s} \leq c M T_1\sup_{t \in [-T_1, T_1]} \|u(t) - v(t)\|_{H^s}.$$
+                        Si escogemos $T_1 = \min\{T, \frac{1}{2cM}\}$, la desigualdad anterior nos implica que:
+                        $$\sup_{t \in [-T_1, T_1]}\|u(t) - v(t)\|_{H^s} \leq \frac{1}{2} \sup_{t \in [-T_1, T_1]} \|u(t) - v(t)\|_{H^s},$$
+                        lo cual solamente es cierto si $u(t) = v(t)$ para todo $t \in [-T_1, T_1]$. Ahora, si $T_1 \neq T$ razonamos de forma análoga al proceso anterior, y tomando $t\in [-2T_1,T_1]\cup[T_1,2T_1]$ para llegar a la siguiente forma:
+                        $$\|u(t) - v(t)\|_{H^s} \leq C M 2 T_1 \sup_{t \in [-2T_1, -T_1]\cup [T_1, 2T_1]} \|u(t) - v(t)\|.$$
+                        Y de forma análoga al caso $T_1$, se concluye que $u(t) = v(t)$ para todo $t \in [-2T_1, 2T_1]$.\\
+                        Ahora, si $T \leq 2T_1$, se concluye la demostración.\\
+                        De lo contrario, se puede iterar el argumento con $4T_1, 8T_1, \cdots$ hasta que $kT_1 \geq T$, concluyendo que $u(t) = v(t)$ en todo el intervalo $[-T,T]$.
+            \item (Dependencia Continua).
+                Consideremos las soluciones \( u(t) \) y \( v(t) \) dadas por la fórmula de Duhamel \textcolor{red}{\ref{eq:formula-integral}}:
+                \begin{align*}
+                    u(t) = U(t) u_0 - \int_0^t U(t - t') u^2(t') \, dt',\\
+                    v(t) = U(t) v_0 - \int_0^t U(t - t') v^2(t') \, dt'.
+                \end{align*}
+                La diferencia entre ambas soluciones es:
+                $$u(t) - v(t) = U(t)(u_0 - v_0) - \int_0^t U(t - t') \left( u^2(t') - v^2(t') \right) dt'.$$
+                Usando la isometría de $U(t)$ y que $H^s(\mathbb{T}^n)$ es de Banach, estimamos la norma $H^s$ de esta diferencia:
+                $$\|u(t) - v(t)\|_{H^s} \leq \|u_0 - v_0\|_{H^s} + C_s \int_0^t \left( \|u(t')\|_{H^s} + \|v(t')\|_{H^s} \right) \|u(t') - v(t')\|_{H^s} \, dt'.$$
+                Entonces podemos aplicar la desigualdad de Gronwall $\textcolor{red}{\ref{theorem:desigualdad-de-gronwall}}$ con $u(t) = \|u(t) - v(t)\|$, lo que implica que:
+                $$\|u(t) - v(t)\| \leq \|u_0 - v_0\| e^{Ct},$$
+                Una manera de obtener una cota uniforme válida para todo $t \in [0, T]$ es simplemente tomar el supremo en el lado derecho de la desigualdad, lo que nos lleva a:
+                $$\sup_{t \in [0, T]} \|u(t) - v(t)\| \leq \|u_0 - v_0\| \sup_{t \in [0, T]} e^{Ct}.$$
+                Dado que la exponencial $e^{Ct}$ es creciente en $t$, su máximo en el intervalo $[0, T]$ ocurre cuando $t = T$, por lo que obtenemos:
+                $$\sup_{t \in [0, T]} \|u(t) - v(t)\| \leq \|u_0 - v_0\| e^{C T}.$$
+                Esta cota es válida en todo el intervalo $[0, T]$, y asegura que la diferencia entre $u(t)$ y $v(t)$ está controlada por el crecimiento exponencial en $t$. Así tenemos entonces
+                $$\|u(t) - v(t)\|_{H^s} \leq C \|u_0 - v_0\|_{H^s},$$
+                lo que demuestra la dependencia continua de la solución respecto al dato inicial.
+        \end{enumerate}
+        Así, nos permitimos concluir que el problema de Cauchy $\textcolor{red}{\ref{eq:problema-de-cauchy}}$ está localmente bien planteado.
+    \end{proof}
+\newpage

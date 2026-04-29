@@ -1,0 +1,53 @@
+\begin{document}
+
+section{Serie de Fourier}
+En esta sección estudiaremos la transformada y serie de Fourier con el objetivo de establecer diferentes técnicas que nos permitan solucionar varios tipos de EDPs. Primero, recordaremos algunas nociones básicas de espacios vectoriales que utilizaremos para entender la transformada de Fourier para diferentes clases de funciones. Luego, comenzaremos el análisis de la transformada de Fourier para funciones periódicas. Vale la pena mencionar que seguimos de cerca los libros \cite{Fuente3, Fuente4}, recomendamos su lectura para un tratamiento más profundo de lo aquí expuesto. Para otras referencias sobre resultados de análisis funcional y transformada de Fourier, invitamos al lector a consultar \cite{Fuente1, Fuente2, Fuente5, Fuente6}.
+
+\subsection{Espacios vectoriales}
+En esta parte, daremos algunos preliminares sobre espacios vectoriales que serán de utilidad para entender la transformada de Fourier en diferentes contextos. No presentaremos demostraciones de muchos de los resultados presentados abajo, sin embargo, seguiremos de cerca lo tratado en \cite{Fuente3, Fuente4}. 
+
+Comencemos con algunos preliminares sobre espacios vectoriales. Sea \( V \) un espacio vectorial real o complejo. La norma \( \| \cdot \|: V \to [0, \infty) \) es una función tal que para cualquier \( v_1, v_2 \in V \) y \( \alpha \) un escalar se satisface: 
+\begin{itemize}
+    \item \( \|v_1\| = 0 \) si y solo si \( v_1 = 0 \),
+    \item \( \|\alpha v_1\| = |\alpha| \|v_1\| \),
+    \item Desigualdad triangular: \( \|v_1 + v_2\| \leq \|v_1\| + \|v_2\| \).
+\end{itemize}
+
+Un espacio vectorial \( V \) dotado con una norma \( \| \cdot \| \) que satisface las condiciones anteriores se llama un espacio vectorial normado. Se suele denotar como \( (V, \| \cdot \|) \). Recordamos que un espacio de Banach es un espacio vectorial normado que es completo con respecto a la norma asignada.
+
+Un producto interno sobre un espacio vectorial complejo \( V \) es una aplicación \( ( \cdot | \cdot ): V \times V \to \mathbb{C} \) tal que para cualquier \( v_1, v_2, v_3 \in V \) y \( \alpha, \beta \in \mathbb{C} \):
+\begin{itemize}
+    \item \( ( \alpha v_1 + \beta v_2 | v_3 ) = \alpha ( v_1 | v_3 ) + \beta ( v_2 | v_3 ) \),
+    \item \( ( v_1 | v_2 ) = \overline{( v_2 | v_1 )} \),
+    \item \( ( v_1 | v_1 ) \geq 0 \), donde \( ( v_1 | v_1 ) = 0 \) si y solo si \( v_1 = 0 \).
+\end{itemize}
+
+Tenemos que el producto interno induce una norma en \( V \) dada por \( \| v \| = ( v | v )^{1/2} \). En este caso se dice que la norma viene dada por un producto interno. Un espacio de Banach cuya norma está dada por un producto interno se llama un espacio de Hilbert.
+
+Similarmente, manteniendo i) y iii) y cambiando ii) por la condición de simetría \( (v_1 | v_2) = (v_2 | v_1) \), podemos definir el producto interno sobre un espacio vectorial \( V \) a valores reales.
+
+Adicionalmente, dado un espacio vectorial \( V \) real o complejo con producto interno \( ( \cdot | \cdot ) \) (por ende, con norma \( \| v \| = ( v | v )^{1/2} \)) vale la desigualdad de Cauchy-Bunyakovsky-Schwarz (o Cauchy–Schwarz por brevedad):
+\[
+|( v | w )| \leq \| v \| \| w \|, \quad \text{para } v, w \in V.
+\]
+
+\subsubsection{Ejemplo 2.1 (Espacios Euclídeos)}
+Sean \( n \geq 1 \) entero y \( 1 \leq p \leq \infty \). \( ( \mathbb{R}^n, \| \cdot \|_p ) \) es un espacio de Banach con cualquiera de las normas:
+\[
+\| v \|_p = \left( \sum_{k=1}^n | v_k |^p \right)^{1/p},
+\]
+con \( p < \infty \) y \( v = (v_1, \ldots, v_n) \in \mathbb{R}^n \). Cuando \( p = \infty \), la norma es dada por
+\[
+\| v \|_\infty = \sup_{1 \leq k \leq n} | v_k |.
+\]
+
+Si \( p = 2 \), entonces la norma es inducida por el producto interno \( (v, w) = \sum_{k=1}^n v_k w_k \), para \( v = (v_1, \ldots, v_n) \), \( w = (w_1, \ldots, w_n) \in \mathbb{R}^n \).
+
+\subsubsection{Ejemplo 2.2 (Espacios \( l_p \))}
+Sea \( 1 \leq p < \infty \). Consideramos el siguiente conjunto de secuencias complejas
+\[
+l_p = l_p(\mathbb{Z}) := \{ \alpha = (\alpha_k)_{k \in \mathbb{Z}} : \alpha_k \in \mathbb{C} \text{ para todo } k, \sum_{k=-\infty}^{\infty} |\alpha_k|^p < \infty \}.
+\]
+
+
+\end{document}\

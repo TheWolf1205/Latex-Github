@@ -1,0 +1,126 @@
+A seguir, temos um lema técnico que será útil para verificarmos que, quando $n\geq 3$ e $n\neq 6$, todos os automorfismos de $S_n$ são internos. 
+\begin{lemma}\label{lema:2.2.3}
+  Sejam $n\neq 6$ e $\tau\in S_n$ um elemento de ordem $2$ que é produto de $k$ transposições disjuntas. Então
+  \begin{enumerate}
+    \item O tamanho da classe de conjugação de $\tau$ é $\displaystyle \frac{n!}{2^{k}(n-2k)k!}$.
+    \item Se $k>1$ então $|Cl(\tau)|\neq |Cl(\sigma)|$, para qualquer transposição $\sigma$ de $S_n$. 
+  \end{enumerate}
+\end{lemma}
+\begin{proof} 
+  Note que como $|S_n|=n!$ e $2\mid n!$, pelo teorema de Cauchy, temos que existe $\tau\in S_n$ que cumpre que $o(\tau)=2$. Assim, o grupo $S_n$ possui um elemento de ordem $2$ que é produto de $k$ transposições disjuntas com $1\leq k\leq\frac{n}{2}$, isto porque nos podemos ver que como $o(\tau)=2$, temos que se $\tau(i_l)=j_l$, então $\tau(j_l)=i_l$, pelo que você pode considerar a transposição $(i_l\,j_l)$. Por outro lado, note que se $i_l=j_l$ para algúm $l$, isto é que $\tau$ fixa $i_l$, pelo que nos vamos ignorar esse caso. Assim, note que como cada transposição $(i_l\,j_l)$ tem $2$ elementos $i_l$ e $j_l$ que cumpren que $i_l\neq j_l$, como $S_n$ são permutacões de $n$ elementos, temos que $2k\leq n$, assim temos que $1\leq k\leq\frac{n}{2}$. Em geral, temos que $\tau$ se pode escrever como 
+  \begin{equation}\label{eq:tau-lema1}
+    \tau=(i_1\,j_1)(i_2 j_2)\cdots(i_k,j_k).
+  \end{equation}
+  Agora, note que se $\tau$ não fixa $2k$ elementos, temos que $\tau$ fixa $n-2k$ elementos.\\
+  Assim, contaremos o tamanho da classe de conjugação de $\tau$ em termos de $k$ e $n$. Analisando, novamente, que $\tau$ se escreve como produto de $k$ transposições disjuntas \eqref{eq:tau-lema1}, então que as posibilidades de escrever a primeira transposição são $\frac{n(n-1)}{2}$, isto ja que pra primeira transposição $(i_1\,j_1)$ temos que $i_1$ tem $n$ posibilidades, como $j_1\neq i_1$, temos que $j_1$ tem $n-1$ posibilidades e como a transposição $(i_1\,j_1)=(j_1,i_1)$ temos que as posibilidades de escrever a primeira transposição $(i_1\,j_1)$ são $\frac{n(n-1)}{2}$. Portanto, a próxima posibilidade de escolha para a segunda transposição, como restam $n-2$ elementos, então será $\frac{(n-2)(n-3)}{2}$.\\
+  Prosseguindo a contagem dessa forma, segue que a possibilidade total de escolhas será dada pelo produto das posibilidades, mas, dentre as possibilidades mencionadas acima, porém, como a ordem das transposições não importa, dividiremos o resultado desse produto por $k!$, já que esse é o número de vezes que as mesmas $k$ transposições serão misturadas. Então teremos
+  \begin{align*}
+    |Cl(\tau)|&=\frac{1}{k!}\cdot \prod_{i=1}^{k}\frac{(n-2(i-1))(n-(2i-1))}{2}\\
+    &=\frac{1}{k!}\cdot\prod_{i=0}^{k-1}\frac{(n-2i)(n-(2i+1))}{2}\\
+    &=\frac{1}{k!}\cdot\frac{(n)(n-1)\cdots(n-2k-2)(n-2k-1)}{2^{k}}\\
+    &=\frac{n!}{2^{k}k!(n-2k)!},
+  \end{align*}
+  maneiras de escrever o produto de $k$ transposições disjuntas. Assim concluimos o item \textbf{1.} afirmando que
+  \begin{equation}\label{eq:clase-tau-lema1}
+    |Cl(\tau)|=\frac{n!}{2^{k}k!(n-2k)!}.
+  \end{equation}
+
+  Agora, para provarmos o item \textbf{2.}, note que se $k=1$, então temos que $\tau$ é uma tranposição $(i_1\,j_1)$ e de \eqref{eq:clase-tau-lema1} temos que
+  \begin{align*}
+    |Cl(\tau)|=\frac{n!}{2(n-2)!}.
+  \end{align*}
+  Assim, queremos garantir que para $k>1$, o tamanho da cclasse de $\tau$ é diferente da classe de uma transposição, istó é
+  \begin{align*}
+    |Cl(\tau)|=\frac{n!}{2^{k}k!(n-2k)!}\neq\frac{n!}{2(n-2)!}.
+  \end{align*}
+  Que é o mesmo que provar
+  \begin{equation}\label{eq:item2-lema1}
+    2^{k}k!(n-2k)!\neq 2(n-2)!,\quad\text{ para todo }1<k\leq\frac{n}{2}.
+  \end{equation}
+  \begin{itemize}
+    \item Se $k=2$, é fácil ver que $(4)(2)(n-4)\neq 2(n-2)!$ se $n\geq 2$.
+    \item Agora, suponha que $k\geq 3$, pelo que temos que $\tau$ pode sé produto de $3$ transposições disjuntas, mas  istó implica que $n\geq 6$.\\
+      Primeiro, note que se $n=6$ e $k=3$ temos que
+      \begin{align*}
+        2^{3}(3!)(6-2(3))!=(8)(9)(1)=2(6-2)!
+      \end{align*}
+      o que mostra a necessidade de nossa hipótese $n\neq 6$.\\
+      Agora, como $n>6$ para provar \eqref{eq:item2-lema1} mostrarems que
+      \begin{align*}
+        2^{k}k!(n-2k)!<2(n-2)!
+      \end{align*}
+      que é o mesmo que provar
+      \begin{align*}
+        2^{k-1}k!(n-2k)!<(n-2)!.
+      \end{align*}
+      Note que pela definição de número binomial temos que
+      \begin{align*}
+        1\leq \binom{n-k}{k}=\frac{(n-k)!}{k!(n-2k)!}.
+      \end{align*}
+      Daqui segue que $k!(n-2k)!\leq (n-k)!$ o que implica que
+      \begin{equation}\label{eq:item2-lema1-2}
+        2^{k-1}k!(n-2k)!\leq 2^{k-1}(n-k)!.
+      \end{equation}
+      Agora, vamos ver que 
+      \begin{equation}\label{eq:item2-lema1-3}
+        2^{k-1}<(n-2)(n-3)\cdots(n-(k-1))=\frac{(n-2)!}{(n-k)!}.
+      \end{equation}
+      Para mostrar isto, observe que no lado direito dessa inequação temos $(n-2)-(n-k)=k-2$ fatores com o de menor valor sendo $(n-(k-1))$. Assim, lembre que como $1<k\leq \frac{n}{2}$, temos que $k-1\leq\frac{n-2}{2}$, logo temos que como $n>6$ se cumpre que 
+      \begin{align*}
+        n-(k-1)\geq n-\frac{n-2}{2}=\frac{n+2}{2}>4.
+      \end{align*}
+      Assim, temos que
+      \begin{align*}
+        2^{k-1}=\underbrace{2\cdots 2}_{k-1\text{ vezes}}<\underbrace{4\cdots 4}_{k-2\text{ vezes}}\leq (n-2)\cdots(n-(k-1))=\frac{(n-2)!}{(n-k)!}.
+      \end{align*}
+      Assim, usando na inequação \eqref{eq:item2-lema1-3} em na inequação \eqref{eq:item2-lema1-2} temos que
+      \begin{align*}
+        2^{k-1}k!(n-2k)!\leq 2^{k-1}(n-k)!\leq (n-2)!
+      \end{align*}
+      o que prova na desigualdade \eqref{eq:item2-lema1} e conclui o item \textbf{2}.
+  \end{itemize}
+\end{proof}
+Agora, estamos prontos para provar que $S_n$, para $n\neq 6$ e $n\geq 3$, é um grupo completo.
+\begin{proposition}\label{prop:2.2.4}
+  Para $n\geq 3$, temos que $Z(S_n)=\{1\}$.
+\end{proposition}
+\begin{proof} 
+  Considere $\alpha\in S_n$ com $\alpha\neq 1$. Vamos mostrar que sempre existe $\tau\in S_n$ tal que $\alpha\tau\neq\tau\alpha$ e desta forma, temos que $\alpha\neq Z(S_n)$. Observe que sendo $\alpha\neq 1$ existe $i\in\{1,\cdots,n\}$ tal que $\alpha(i)=j\neq i$. Como $n\geq 3$, existe $k\in\{1,\cdots,n\}$, onde $k\neq i$ e $k\neq j$. Assim, tome $\tau=(i\,k)$, depois temos que
+  \begin{align*}
+    \alpha\tau(i)=\alpha(k)\neq j\,\text{e}\,\tau\alpha(i)=\tau(j)=j.
+  \end{align*}
+  Portanto, $\alpha\tau\neq\tau\alpha$, pelo que podemos conclui que $Z(S_n)=\{1\}$ com $n\neq 3$. 
+\end{proof}
+\begin{theorem}\label{theo:2.2.5}
+  Se $n\neq 6$, então todo automorfismo de $S_n$ é interno. 
+\end{theorem}
+\begin{proof} 
+  Seja $\sigma\in Aut(S_n)$ e $\psi$ uma transposição em $S_n$. Note que um automorfismo leva conjuntos com $m$ elementos em conjuntos com $m$ elementos, ou seja, $\sigma$ leva $\frac{n!}{2(n-2)!}$ elementos da classe de $\psi$ em $\frac{n!}{2(n-2)!}$ elementos. Assim, pelo lema \ref{lema:2.2.3}, temos que como na classe de $\sigma(\psi)$ tem $\frac{n!}{2(n-2)!}$ elementos, então a classe de $\sigma(\psi)$ só possui transposições, portanto podemos afirmar que $\sigma$ leva transposições em transposições.\\
+  Tome $c_i=(i\,i+1)$ para $1\leq i\leq n-1$ e seja $\psi_i=\sigma(c_i)$. Para $i=1$ escreva $\psi_1=(a_1\,a_2)$. Note que $c_1=(1\,2)$ e $c_2=(2\,3)$ não comutam, temos que $\psi_1$ e $\psi_2$ também não comutam, pois $\sigma$ é um isomorfismo, istó e
+  \begin{align*}
+    \psi_1\psi_2=\sigma(c_1)\sigma(c_2)=\sigma(c_1c_2)\neq\sigma(c_2c_1)=\sigma(c_2)\sigma(c_1)=\psi_2\psi_1.
+  \end{align*}
+  Podemos escrever então $\psi_2=(a_2\,a_3)$ com $a_3\neq a_1$. Análogamente, $\psi_3$ não comuta com $\psi_2$, pois $c_3$ não comuta com $c_2$. Assim $\psi_3$ deve possuir $a_2$ ou $a_3$. No entanto, uma vez que $c_1$ comuta com $c_3$, $\psi_1$ comuta com $\psi_3$. Sendo assim, $\psi_3=(a_3\,a_4)$ onde $a_4\notin\{a_1,a_2,a_3\}$. Da mesma forma, $\psi_4$ possui interseção com $\psi_3$ e é disjunto de $\psi_1$ e $\psi_2$. Assim sendo $\psi_4=(a_4\,a_5)$, com $a_5\notin\{a_1,a_2,a_3,a_4\}$. Continuando deste mdo podemoos escrever $\psi_i=(a_i\,a_{i+1})$ com $a_1,\cdots,a_n$ distintos e $a_i\in\{1,\cdots,n\}$.\\
+  Seja $\gamma\in S_n$ uma permutação tal que $\gamma(i)=a_i$. Então $(c_i)^{\gamma}=\gamma^{-1}c_i\gamma=\gamma^{-1}(i\,i+1)\gamma=(a_{i}\,a_{i+1})=\psi_i$. Agora, se tomamos $\alpha$ o automorfismo interno induzido por $\gamma$, ou seja
+  \begin{align*}
+    \alpha:S_n&\to S_n,\\
+            \eta&\to\eta^{\gamma},
+  \end{align*}
+  nos podemos mostrar que $\alpha^{-1}\sigma$ fixa cada $c_i$. Isto é importante porque $\{c_i\}$ gera $S_n$ (\ref{note:propriedades-gerador-Sn}). Se $\alpha^{-1}\sigma$ fixar todo $c_i$, teremos que $\alpha^{-1}\sigma$ fixará todo elemento de $S_n$, ou seja, $\alpha^{-1}\sigma=Id$.\\
+  Então, sabemos que $\psi_i=\sigma(c_i)$, logo temos que $\alpha^{-1}\sigma(c_1)=\alpha^{-1}(\psi_i)$, depois como
+  \begin{align*}
+    \alpha^{-1}:S_n&\to S_n,\\
+               \eta&\to\eta^{\gamma^{-1}},
+  \end{align*}
+  e $\psi_i=c_i^{\gamma}$ temos que
+  \begin{align*}
+    \alpha^{-1}(\sigma(c_i))=\alpha^{-1}(\psi_i)=\alpha^{-1}(c_i^{\gamma})=(c_i^{\gamma})^{\gamma^{-1}}=c_i.
+  \end{align*}
+  Assim $\alpha=\sigma$ é podemos conclui que todo automorfismo $\sigma\in Aut(S_n)$ é um automorfismo interno, i.é, $\sigma\in Inn(G)$, como queríamos provar. 
+\end{proof}
+\begin{theorem}
+  $S_n$ é um grupo completo, para todo $n\geq 3$ e $n\neq 6$.
+\end{theorem}
+\begin{proof} 
+  Usando a proposição \ref{prop:2.2.4} e o teorema \ref{theo:2.2.5} temos que $Z(S_n)=\{1\}$ e além mais $Aut(S_n)=Inn(S_n)$, logo se pode conclui que $S_n$ é um grupo completo. 
+\end{proof}

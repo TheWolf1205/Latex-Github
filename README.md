@@ -151,7 +151,7 @@ Repositorio para subir trabajos o talleres de la U :p.
   - [Solución.](<./Ecuaciones-diferenciales-parciales-I/Heat-Equation/Tex/Ejercicios ecuación del calor - EDP.pdf>)
   - [Presentación.](<./Ecuaciones-diferenciales-parciales-I/Heat-Equation/Beamer_Andres/Presentación ecuación del calor - EDP.pdf>)
 - Trabajo Final.
-  - [Escrito.](./Ecuaciones-diferenciales-parciales-I/Trabajo_EDP.pdf)
+  - [Escrito.](<./Ecuaciones-diferenciales-parciales-I/Trabajo-Final/Trabajo Final EDP I.pdf>)
 </details>
 
 <details>
