@@ -1,0 +1,75 @@
+Na seguinte parte, nos vamos provar que para $n=6$, não temos $S_6\cong Aut(S_6)$. Ou seja, $S_6$ tem um automorfismoque não é interno. Para demostrar isso, é necessário discutir certascaracterísticas do grupo $S_6$ e do seu grupo de automorfismos, $Aut(S_6)$.\\
+
+Nos vamos provar que $S_6$ possui um subgrupo, que denotaremos de $K$ que cumpre que $|K|=120$ e que $K$ não contém transposições. Para começarmos  provar a existência do subgrupo $K$ de $S_6$ a seguinte definição deve ser levada em consideração.
+
+\begin{definition}[Subgrupo transitivo]
+  Dado um conjunto $X$, dizemos que um subgrupo $S$ de $Sim(X)$ é um \textbf{subgrupo transitivo} se dados $x,y\in X$, temos que existe $\sigma\in S$ tal que $\sigma(x)=y$. 
+\end{definition}
+\begin{lemma}\label{lema:1-S6-triste}
+  Seja $G$ um grupo e $H\leq G$. Definamos $X=\{xH:x\in G\}$ (o conjunto das classes laterais a esquerda de $H$) e $\varphi$ da seguinte maneira
+  \begin{align*}
+    \varphi:G&\to Sim(X),\\
+            g&\to \varphi_g:X\to X,\\
+  \phantom{g}&\phantom{\to \varphi_g:}xH\to gxH.
+  \end{align*}
+  Então $\Img \varphi$ é um subgrupo transitivo de $Sim(X)$.
+\end{lemma}
+\begin{proof} 
+  Seja $x,y\in X$, isto é que $x=aH$ e $y=bH$ com $a,b\in G$. Agora, nos vamos tirar $g\in G$ com $g=ba^{-1}$, note que se definimos $\sigma=\varphi_{g}\in\Img\varphi$, assim temos que
+  \begin{align*}
+    \sigma(x)=\varphi_{g}(aH)=gaH=ba^{-1}aH=bH=y.
+  \end{align*}
+  Logo como $x,y\in X$ são arbitrarios e $\varphi$ é um homomorfismo, temos que $\Img\varphi$ é um subgrupo transitivo de $Sim(X)$. 
+\end{proof}
+\begin{lemma}\label{lema:2-S6-triste}
+  Existe um subgrupo transitivo $K$ de $S_6$ com ordem $120$ que não contém transposições. 
+\end{lemma}
+\begin{proof} 
+  Considere $G=S_5$, $P\in Syl_5(S_5)$ e $H=N_{S_5}(P)=\{x\in G:xP=Px\}$. Então, como $|S_5|=5!$, nos temos que pelos teoremas de Silow $n_5\mid (2\ast 3\ast 4)=24$ logo temos que $n_5\in\{1,2,3,6,8,12,24\}$, mas como $n_5\equiv 1(mod\,5)$, temos que $n_5\notin\{2,3,8,12,24\}$, pelo que só temos que $n_5\in\{1,6\}$.\\
+  Más note que $|\left\langle (12345) \right\rangle|=5$, $|\left\langle (12)(12345)(12) \right\rangle|=|\left\langle (13452) \right\rangle|=5$ e $\left\langle (12345) \right\rangle\neq\left\langle (13452) \right\rangle$, pelo que podemos afirmar que $n_5=6$.\\
+  Assim, temos que $[G:H]=[S_5:N_{S_5}(P)]=6$.\\
+  Portanto, definindo $X=\{aH:a\in G\}$ temos que $|X|=6$ e $|Sim(X)|=6!$, pelo que sabemos que $Sim(X)\cong S_6$. Deste modo consideremos
+  \begin{align*}
+    \varphi:S_5&\to Sim(X),\\
+            g&\to \varphi_g:X\to X,\\
+  \phantom{g}&\phantom{\to \varphi_g:}xH\to gxH.
+  \end{align*}  
+  Note que $\varphi$ é homomorfismo injetor, ja que
+  \begin{align*}
+    \ker\varphi=\{g\in S_5:\varphi_{g}=Id\}=\{g\in S_5:aH=gaH,\text{ para todo }a\in S_5\}.
+  \end{align*}
+  Mas note que se $a=1$, então temos que $H=gH$, pelo que podemos afirmar que $g\in H$, assim $\ker\varphi\leq H$ e portanto temos que $[S_5:H]\leq[S_5:\ker\varphi]$.\\
+  Logo, como temos que pelo teorema de isomorfismos $\ker\varphi\normal S_5$, então como $A_5$ é simple, temos que $\ker\varphi=\{1\}$ ou $\ker\varphi= A_5$. Mas note que como $[S_5:H]=6\leq [S_5:\ker\varphi]$, então a única possibilidade é que $\ker\varphi=\{1\}$, pelo contrario se $\ker\varphi=A_5$, temos que $[S_5:A_5]=2\not\geq 6$. Portanto, temos que $\varphi$ é um homomorfismo injetor.\\
+  Assim, definamos $K=\Img\varphi$ e como $\varphi$ é injetivo, temos que $|K|=|\Img\varphi|=|S_5|=120$ e pelo teorema de isomorfismos temos que $K\leq S_6$ que pelo lema \ref{lema:1-S6-triste} temos que $K$ é um subgrupo transitivo de $S_6$.
+
+  Agora, nos vamos provar que $K$ não possui transposições.\\
+  Raciocinemos pela contradição.\\
+  Note que como $\varphi$ é um isomorfismo de $S_5$ sobre $\Img\varphi=K$, então temos que existe $\alpha\in K$ tal que $o(\alpha)=5$. Sem perdida de generalidade suponha $\alpha=(12345)$. Então, se nos assumimos que existe $(ij)\in K$ transposição. Como $K$ é transitivo e $j,6\in\{1,2,3,4,5,6\}$, então existe $\beta\in K$ tal que $\beta(6)=j$ e $\beta^{-1}(j)=6$. Logo note que $\beta(ij)\beta^{-1}\in K$, ou seja, $(\beta(i)\,6)$ com $\beta(i)\neq 6$, ja que $i\neq j$. Conjugando $(\beta(i)\,6)$ por todas las potencias de $\alpha$ teremos que $(16),(26),(36),(46),(56)\in K$, logo temos que como $\left\langle (16),(26),(36),(46),(56) \right\rangle= S_6$, então $K=S_6$, absurdo, pois $S_5\cong K$.\\
+  Assim, temos que existe $K\leq S_6$ com ordem $120$ e que não possui transposições. 
+\end{proof}
+\begin{theorem}\label{th:S-6pronto}
+  Existe um automorfismo de $S_6$ que não é interno. 
+\end{theorem}
+\begin{proof} 
+  De acordo com o lema \ref{lema:2-S6-triste}, temos que existe $K\leq S_6$ com ordem $120$ e que não possui transposições. Note que como $|K|=120$ e $|S_6|=6\ast 120$, então temos que $[S_6:K]=6$, assim, considere $X=\{\alpha_1K,\alpha_2K,\alpha_3K,\alpha_4K,\alpha_5K,\alpha_6K\}$ as classes a esquerda de $K$. Então, suponha
+  \begin{align*}
+    \sigma:S_6&\to Sim(X),\\
+             g&\to \sigma_g:X\to X,\\
+   \phantom{g}&\phantom{\to \sigma_g:}\alpha_iK\to g\alpha_iK.
+  \end{align*}
+  Utilizando um argumento semelhante ao da demonstração do lema \ref{lema:2-S6-triste}, mostramos que $\sigma$ é injetiva. Além disso, note que como $|Sim(X)|=|S_6|$, então $\sigma$ é sobrejetiva. Portanto, $\sigma\in Aut(S_6)$.\\
+  
+  Raciocinando pela contradição, suponha que $\sigma\in Inn(S_6)$. Sendo assim, $\sigma$ é uma conjugação e preserva estructura cíclica dos elementos de $S_6$. Portanto, temos que $\sigma[(12)]=\sigma_{(12)}$ é uma transposição, entao temos que
+  \begin{align*}
+    \sigma:S_6&\to S_6,\\
+             (12)&\to \sigma_(12):X\to X,\\
+      \phantom{g}&\phantom{\to \sigma_(12):}\alpha_iK\to (12)\alpha_iK.
+  \end{align*}
+  para cada $1\leq i\leq 6$. Depois, como $\sigma_{(12)}$ é uma transposição, então $(12)\in \alpha_jK$ para algúm $1\leq j\leq 6$, isto é que $(12)\alpha_jK=\alpha_jK$, logo podemos conclui que $\alpha_j^{-1}(12)\alpha_j\in K$, mas note que como $\alpha_j^{-1}(12)\alpha_j$ é uma conjugação de a transposição $(12)$, entao $\alpha_j^{-1}(12)\alpha_j$ é uma tranposição em $K$, contradição, pois $K$ não possui transposições. Assim, temos que $\sigma\notin Inn(S_6)$, i.é, que $S_6$ possui um automorfismo que não é interno.
+\end{proof}
+\begin{corollary}[$S_6$ não é completo]
+  $S_6$ não é um grupo completo. 
+\end{corollary}
+\begin{proof} 
+  Note que pelo teorema \ref{th:S-6pronto} temos que $S_6$ possui um autormorfismo que não e interno, logo $Inn(S_6)\neq Aut(S_6)$ o que nos permite conclui que $S_6$ não é completo. 
+\end{proof}

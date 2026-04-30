@@ -95,3 +95,37 @@ Em $S_4$ nos temos que $|A_4|=12$, logo $\tilde{K_4}=\{1,(12)(34),(13)(23),(14)(
   \end{align*}
   Defina $\gamma: i_t^{l}\to j_t^{l}$.
 \end{proof}
+\begin{theorem}[$A_n$ é simple]
+  Seja $G=A_n$. Se $n\geq 5$ temos que $A_n$ é simple. 
+\end{theorem}
+\begin{proof} 
+  Seja $\{1\}\neq N\normal A_n$, para mostrar que $N=A_n$ basta mostrar que $N$ contem um $3$-cíclo, ja que os $3$-cíclos são conjugação de outro $3$-cíclo.\\
+  Considere $p$ primo tal que $p\mid |N|$.\\
+  Pelo teorema de Cauchy, existe $\sigma\in N$ tal que $o(\sigma)=p$.\\
+  Escrevemos $\sigma$ como produto de ciclos disjuntos $\varsigma_i$, $1\leq i\leq m$, logo $\sigma=\varsigma_1\cdots\varsigma_m$.\\
+  Deta forma, cada $\varphi_i$ é um $p$-cíclo.\\
+  Analisamos os valorespossivels para $p$.
+  \begin{enumerate}
+    \item $p=2$.\\
+      uma transposiçõe e assim, $m\geq 2$ par, escreva
+      \begin{align*}
+        \sigma=(ab)(cd)\varsigma_3\cdots\varsigma_m\in N.
+      \end{align*}
+      Considere $\gamma=(abc)$, temo que como $N$ é normal se pode calcular
+      \begin{align*}
+        \sigma^{\gamma}\sigma^{-1}&=(ab)^{\gamma}(cd)^{\gamma}\varsigma_3^{\gamma}\cdots\varsigma_{m}^{\gamma}\cdot \sigma^{-1}\\
+        &=(ab)^{\gamma}(cd)^{\gamma}(ab)(cd)\\
+        &=(ac)(bd)\in N.
+      \end{align*}
+      Agora, como $n\geq 5$, podemos tomar $k\notin\{a,b,c,d\}$, consideremos $\theta=(ack)$ e $\alpha=(ac)(bd)$ e temos que $(akc)=\alpha^{\theta}\alpha\in N$.
+    \item $p=3$.\\
+      Neste caso, cada $\varsigma_i$ é um $3$-cíclo, se $m=1$, acabou. Caso contrário, se $m\geq 2$, escreva $\sigma=(abc)(def)\varsigma_3\cdots\varsigma_m$. Considere o $3$-cíclo $\gamma=(bcd)$ e, como $N$ é normal se cumpre que $\sigma^{\gamma}\sigma^{-1}\in N$ e é um $5$-cíclo, este caso será resolvido a partir de na próxima situação.
+    \item $p>3$.\\
+      Consider $\varsigma_1=(a_1a_2\cdots a_p)$: $p$-cíclo em $N$ e $\gamma=(a_2a_3a_4)$ (observe que $\gamma$ comuta com todos $\varsigma_i$ com $i\geq 2$). Temos que
+      \begin{align*}
+        \sigma^{\gamma}\sigma^{-1}=(a_2a_3a_5)\in N.
+      \end{align*}
+      Isto mostra o resultado.
+  \end{enumerate}
+  Em conclução $N=A_n$.
+\end{proof}
