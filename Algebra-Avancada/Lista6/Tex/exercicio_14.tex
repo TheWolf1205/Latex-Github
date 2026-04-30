@@ -13,6 +13,52 @@
     \item $R/I$ contém um subanel isomorfo à $A$. 
   \end{enumerate}
   \begin{solution}
-    XXX
+  \begin{enumerate}[a)]
+    \item Seja $(n,a),(m,b)\in I$, agora veamos que $(n,a)-(m,b)\in I$.
+      Note que $(n,a)-(m,b)=(n-m,a-b)$, agora tirando $x\in A$ temos que
+      \begin{align*}
+        (n-m)x+(a-b)x=nx-mx+ax-bx=nx+ax-(mx+bx).
+      \end{align*}
+      Logo como $nx+ax=0$ e $mx+bx=0$ (ja que $(n,a),(m,b)\in I$) temos que
+      \begin{align*}
+        (n-m)x+(a-b)x=0-0=0.
+      \end{align*}
+      Logo $(n,a)-(m,b)\in I$.\\
+      Agora tome $(m,b)\in R$ e $(n,a)\in I$, logo temos que $(n,a)\cdot (m,b)=(nm,ma+nb+ab)$, assim note que tirando $x\in A$ temos que como $nm=mn$ (ja que são elementos de $\mathbb{Z}$), então 
+      \begin{align*}
+        (nm)x+(ma+nb+ab)x=nmx+max+nbx+abx=m(nx+ax)+(nbx+abx).
+      \end{align*}
+      Logo como $bx=y\in A$, temos que $nbx+abx=ny+ay=0$ e também que $nx+ax=0$, logo
+      \begin{align*}
+        (nm)x+(ma+nb+ab)x=m(0)+(0)=0.
+      \end{align*}
+      Depois $(n,a)\cdot(m,b)\in I$.\\
+      Finalmente note que $R$ é comutativo, ja que como $\mathbb{Z}$ e $A$ são comutativos temos que
+      \begin{align*}
+        (n,a)\cdot (m,b)=(nm,ma+nb+ab)=(mn,nb+ma+ba)=(m,b)\cdot(n,a).
+      \end{align*}
+      Assim $I$ também é ideal a esquerda y portanto temos que $I$ é um ideal de $R$.
+    \item Definamos
+      \begin{align*}
+        \varphi:A&\to R/I,\\
+                a&\to (0,a)+I.
+      \end{align*}
+      Vamos ver que $\varphi$ é homomorfismo.
+      \begin{itemize}
+        \item Seja $a,b\in A$, logo
+          \begin{align*}
+            \varphi(a+b)=(0,a+b)+I=(0,a)+(0,b)+I=(0,a)+I+(0,b)+I=\varphi(a)+\varphi(b).
+          \end{align*}
+          Também temos que
+          \begin{align*}
+            \varphi(a\cdot b)=(0,a\cdot b)+I=(0,0(a)+0(b)+ab)+I&=((0,a)\cdot (0,b))+I\\
+            &=((0,a)+I)\cdot((0,b)+I)\\
+            &=\varphi(a)\cdot\varphi(b).
+          \end{align*}
+        \item Logo note que como $a$ não tem divisores de zero, então $\varphi(a)=(0,a)+I=I$ se, somente se, $a=0$, pelo que podemos afirmar que $\varphi$ é injetiva.
+        \item Finalmente temos que $\varphi$ é um isomorfismo de $A$ sobre $\varphi(A)\leq R/I$. 
+      \end{itemize}
+      Portanto, nos podemos conclui que $R/I$ contém um subanel isomorfo à $A$. 
+  \end{enumerate}
   \end{solution}
 \end{homeworkProblem}

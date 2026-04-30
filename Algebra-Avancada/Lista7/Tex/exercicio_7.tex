@@ -1,0 +1,31 @@
+\begin{homeworkProblem}[7]
+  Considere $I$ um ideal em um anel comutativo $A$. Definimos
+  \begin{align*}
+    Rad(I):=\left\{ a\in A:a^{n}\in I,\text{ para algum }n\in\mathbb{N}\right\}.
+  \end{align*}
+  \begin{enumerate}[a)]
+    \item Mostre que $R=Rad(I)$ é um ideal de $A$ que contém $I$.
+    \item Mostre que o anel $A/R$ não contém elementos nilpotentes não nulos. 
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}[a)]
+    \item Seja $a\in I$, logo $a^{1}\in I$, portanto $a\in R$.\\
+      Agora nos vamos ver que $R$ é um ideal de $A$.
+      \begin{itemize}
+        \item Seja $a,b\in R$, então existem $m,n\in\mathbb{N}$ taes que $a^{n}\in I$ e $b^{m}\in I$, sem perdida de generalidade suponha $m\geq n$, logo nos sabemos que $a^{n}a^{m-n}=a^m\in I$, ja que $I$ é um ideal, logo temos que
+        \begin{align*}
+          (a-b)^{2m}=\sum_{i=0}^{2m}\binom{2m}{i}a^{i}(-b)^{2m-i}.
+        \end{align*}
+        Note que se $i<m$, então $2m-i>m$, logo $(-b)^{2m-i}\in I$ e como $I$ é ideal temos que $\binom{2m}{i}a^{i}(-b)^{2m-i}\in I$, logo se $i\geq m$, temos que $a^{i}\in I$ e portanto $\binom{2m}{i}a^{i}(-b)^{2m-i}\in I$, logo como $I$ é fechado pela soma temos que
+        \begin{align*} 
+          (a-b)^{2m}=\sum_{i=0}^{2m}\binom{2m}{i}a^{i}(-b)^{2m-i}\in I.
+        \end{align*}
+        Assim, temos que $a-b\in R$.
+        \item Suponha $a\in A$ e $x\in R$, logo temos que existe $n\in\mathbb{N}$ tal que $x^{n}\in I$, logo como $I$ é ideal, temos que $a^{n}x^{n}=(ax)^{n}\in I$, isto porque $A$ é um anel comutativo, logo $ax\in R$. 
+      \end{itemize}
+      Assim, nos podemos conclui que $R$ é um ideal de $A$ que contém $I$.
+    \item Suponha $x\in A$ com $x+R\in A/R$ tal que existe um $k\in\mathbb{N}$ que cumpre que $(x+R)^{k}=x^{k}+R=0$.\\
+      Logo, como $x^{k}+R=0\in A/R$, temos que $x^{k}\in R$, isto implica que existe $n\in \mathbb{N}$ tal que $(x^{k})^{n}=x^{kn}\in I$, logo temos que $x\in R$, pelo que podemos conclui que $x+R=R=0+R$, portanto, temos que $A/R$ não contém elementos nilpotentes não nulos.  
+  \end{enumerate}  
+  \end{solution}
+\end{homeworkProblem}

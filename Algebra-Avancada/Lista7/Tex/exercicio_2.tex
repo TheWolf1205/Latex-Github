@@ -1,0 +1,32 @@
+\begin{homeworkProblem}[2]
+  Considere $p$ um número primo e $A=\left\{\frac{n}{m}\in\mathbb{Q}:p\text{ não divide }m\right\}$. Mostre que $A$ é um anel e que $A$ é local. 
+  \begin{solution}
+    Sem perdida de generalidade, nos vamos a suponer que em geral $\mcd(m,n)=1$.
+    \begin{itemize}
+      \item Seja $\frac{m}{n},\frac{x}{y}\in A$, então nos vamos ver que $\frac{m}{n}-\frac{x}{y}\in A$.\\
+        Note que $\frac{m}{n}-\frac{x}{y}=\frac{my-nx}{xy}$.\\
+        Se $my-nx=0$, então $\frac{m}{n}=\frac{x}{y}$, portanto, suponha $my-nx\neq 0$, logo note que como $p$ é primo e temos que $p\nmid n$ e $p\nmid y$, então $p\nmid ny$, logo $\frac{m}{n}-\frac{x}{y}\in A$.
+      \item Seja $\frac{n}{m}\in A$ e seja $\frac{x}{y}\in A$, logo temos que
+        \begin{align*}
+          \frac{n}{m}\cdot\frac{x}{y}=\frac{nx}{my}.
+        \end{align*}
+        Logo como $p\nmid m$ e $p\nmid y$, temos que $p\nmid my$.
+      \item Note que $\frac{0}{1}=0\in A$ e $\frac{1}{1}=1\in A$. 
+    \end{itemize}
+    Assim, $A$ é um anél.\\
+
+    Agora, nos vamos ver que $A$ é local, i.é, que $A$ tem um único ideal máximal.\\
+
+    Note que $A=\mathcal{U}(A)\cup(\mathcal{U}(A))^{c}$, logo note que se $\frac{n}{m}\in \mathcal{U}(A)$, então $\frac{m}{n}\in\mathcal{U}(A)$, pelo que temos que $p\nmid m$ e $p\nmid n$, portanto
+    \begin{align*}
+      \mathcal{U}(A)&=\left\{ \frac{n}{m}\in\mathbb{Q}:p\nmid n,p\nmid m \right\}\\
+      \left[\mathcal{U}(A)\right]^{c}&=\left\{ \frac{n}{m}\in\mathbb{Q}:p\mid n,p\nmid m \right\}
+    \end{align*}
+    Agora note que $M=\left[ \mathcal{U}(A) \right]^{c}$ é um ideal maximal, ja que
+    \begin{itemize}
+      \item Seja $\frac{n}{m},\frac{x}{y}\in M$, então $\frac{n}{m}-\frac{x}{y}=\frac{ny-mx}{my}\in M$, ja que $p\nmid my$ e como $p\mid n$ e $p\mid x$, temos que $n=pk_1$ e $m=pk_2$, logo $ny-mx=p(k_1y-k_2x)$, portanto $p\mid ny-mx$.
+      \item Seja $\frac{n}{m}\in M$ e $\frac{x}{y}\in A$, logo $\frac{n}{m}\cdot\frac{x}{y}=\frac{nx}{my}\in M$, ja que $p\nmid my$ e como $p\mid n$, então $p\mid nx$. 
+    \end{itemize}
+    Portanto $M$ é ideal, e como $A$ é comutativo e con unidade, temos que se tiramos $x\in A\setminus M$, então $x\in\mathcal{U}(A)$, logo $\left\langle x \right\rangle+M=A$ para qualquer $x\in A\setminus M$, pelo que podemos conclui que $A$ é local. 
+  \end{solution}
+\end{homeworkProblem}
