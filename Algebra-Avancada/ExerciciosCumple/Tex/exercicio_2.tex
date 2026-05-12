@@ -1,0 +1,19 @@
+\begin{homeworkProblem}
+  Considere $D$ um domínio de ideais principais e $p\in D$ um elemento irredutível. Seja $M=M(p)$ um $p$-módulo de torção sobre $D$ finitamente gerado. Mostre que $M$ é isomorfo a soma direta (finita) de $D$-módulos quocientes $D/\left\langle p^{s_1} \right\rangle\oplus\cdots\oplus D/\left\langle p^{s_k} \right\rangle$.
+  \begin{solution}
+    Seja $M=M(p)=\{m\in M:p^{n}\in Ann(m)\text{ para algúm }n\in\mathbb{Z}^{+}\}=\{m\in M:\text{ existe }m\in\mathbb{Z}^{+}\text{ tal que }p^{n}m=0\}$. Como $M$ é finitamente gerado, temos que existe $S\subseteq M$ minimal tal que $S=\{x_1,\cdots,x_k\}$ e $\left\langle S \right\rangle=\{d_1x_1+d_2x_2+\cdots+d_kx_k: d_i\in D\}=M$, depois temos que 
+    \begin{align*}
+      M=Dx_1\oplus Dx_2\oplus\cdots\oplus Dx_k.
+    \end{align*}
+    Agora, definamos $\varphi:D\to Dx_i$ dado por $\varphi(a)=ax_i$, logo note que $\varphi$ é um homomorfismo sobrejetor e que $\ker\varphi=\{a\in D:ax_i=0\}=Ann(x_i)$.\\
+    Então, note que como $x_i\in M$, nos temos que existe $n_i\in\mathbb{Z}^{+}$ tal que $p^{n_i}x_i=0$, logo nos vamos definir $s_i=\min n_i$ que cumpren que $p^{n_i}x_i=0$. Observe que $s_i\geq 1$, do contrario $1x_i=0$, pelo que temos que $x_i=0$, o qual é um absurdo ja que $S$ é gerador minimal.\\
+    Depois, note que $p^{s_i}\in Ann(x_i)$, mas como $Ann(x_i)$ é um ideal e nos temos que $D$ é um domínio de ideais principais, então sabemos que existe $a_i\in Ann(x_i)$ tal que $\left\langle a_i \right\rangle=Ann(x_i)$, logo isto implica que $a_i\mid p^{s_i}$, pelo que temos que como $p$ é irredutível, então $a_i\in\{p,p^{2},\cdots,p^{s_i}\}$ (lembre que não pode ser $1$, ja que nesse caso $x_i=0$), más nos tomamos $s_i$ como o mínimo dos $n_i$ que cumpren que $p^{n_i}x_i=0$, pelo que podemos concluir que $a_i=p^{s_i}$. Portanto, nos podems afirmar que $\ker\varphi=\left\langle p^{s_i} \right\rangle$, logo pelo teorema de isomorfismo do módulos nos temos que
+    \begin{align*}
+      D/\ker\varphi=D/\left\langle p^{s_i} \right\rangle\cong Dx_i.
+    \end{align*}
+    Assim, nos podemos concluir que
+    \begin{align*}
+      M\cong D/\left\langle p^{s_1} \right\rangle\oplus\cdots\oplus D/\left\langle p^{s_k} \right\rangle.
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}

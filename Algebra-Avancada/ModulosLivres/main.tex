@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+
+\title{Módulos Livres}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+Um subconjunto $S$ de elementos em um $A$-módulo $M$ é um \textbf{conjunto gerador} de $M$ se todo elemento de $M$ é uma combinação linear finita de elementos de $S$ com coeficientes em $A$. Quando $S$ é finito, então dizemos que $M$ é \textbf{{}finitamente gerado}. O subconjunto $S$  é \textbf{linearmente independente} se para qualquer
+\begin{align*}
+  \alpha_{i_1}m_{i_1} + \cdots + \alpha_{i_t}m_{i_t} = 0,
+\end{align*}
+uma combinação linear (finita) de elementos de $S$ com coeficientes em $A$ temos $\alpha_{i_1} = \cdots = \alpha_{i_t} = 0$.\\
+
+Se $S$ é um conjunto gerador linearmente independente de $M$ então dizemos que $S$ é uma $A$\textbf{-base}.
+
+\textbf{Proposição 1.} Um conjunto $S = \{s_i\}_{i \in I}$ de elementos de um $A$-módulo $M$ é uma base se, e somente se, todo elemento $m \in M$ pode ser expresso de um modo único como uma combinação linear (finita)
+\begin{align*}
+  m = \alpha_{i_1}s_{i_1} + \cdots + \alpha_{i_t}s_{i_t}, 
+\end{align*}
+com $\alpha_{i_j} \in A$, $s_{i_j} \in S$, $1 \leq j \leq t$.\\
+
+Mas nem todo $A$-módulo possui uma base (encontre um exemplo!).
+
+Consideremos o $\mathbb{Z}$-módulo $\mathbb{Q}$. Mostraremos que $\mathbb{Q}$ não é livre como $\mathbb{Z}$-módulo.\\
+
+Suponha, por absurdo, que $\mathbb{Q}$ possui uma base $\{q_i\}_{i \in I}$ como $\mathbb{Z}$-módulo. Então todo elemento de $\mathbb{Q}$ pode ser escrito de maneira única como uma combinação linear finita
+\begin{align*}
+  q = n_{i_1} q_{i_1} + \cdots + n_{i_t} q_{i_t}, \quad n_{i_j} \in \mathbb{Z}.
+\end{align*}
+Em particular, existe uma decomposição para o elemento $1 \in \mathbb{Q}$. Agora, como $\mathbb{Q}$ é divisível, para qualquer inteiro $n \geq 2$ existe $x \in \mathbb{Q}$ tal que
+\begin{align*}
+  nx = 1.
+\end{align*}
+Escrevendo $x$ na base,
+\begin{align*}
+  x = m_{i_1} q_{i_1} + \cdots + m_{i_t} q_{i_t}, \quad m_{i_j} \in \mathbb{Z},
+\end{align*}
+temos
+\begin{align*}
+  1 = nx = n m_{i_1} q_{i_1} + \cdots + n m_{i_t} q_{i_t}.
+\end{align*}
+Mas pela unicidade da decomposição na base, os coeficientes de $1$ deveriam ser únicos. No entanto, isso implica que os coeficientes são divisíveis por $n$ para todo $n \geq 2$, o que só é possível se todos forem zero, o que é uma contradição.\\
+
+Logo, $\mathbb{Q}$ não admite uma base como $\mathbb{Z}$-módulo, isto é, \textbf{não é um módulo livre}.\\
+
+Se $M$ tem uma $A$-base então dizemos que $M$ é um módulo livre. Se $\{x_i\}_{i \in I}$ é uma base de um $A$-módulo livre $M$, então
+\begin{align*}  
+  M = \bigoplus_{i \in I} A \cdot x_i,
+\end{align*}
+e assim $M \cong A^{(I)}$, onde $A^{(I)}$ é a soma direta de cópias de $A$, uma para cada índice $i \in I$.\\
+
+\textbf{Exemplos:}
+\begin{enumerate}
+    \item Todo espaço vetorial sobre um corpo $K$ é um $K$-módulo livre.
+    \item No $\mathbb{Z}$-módulo $\mathbb{Z} \oplus \mathbb{Z}$, o conjunto $\{e_1, e_2\}$, onde $e_1 = (1,0)$ e $e_2 = (0,1)$, é uma base.
+    \item Mais geralmente, dado um anel $A$, consideremos a soma direta $A^{(I)}$. Indicaremos por $e_k$ o elemento $e_k = (x_i)_{i \in I}$, onde $x_k = 1$ e $x_i = 0$ se $i \neq k$. O conjunto $\{e_k\}_{k \in I}$ é uma base de $A^{(I)}$, chamada sua base canônica.
+\end{enumerate}
+As afirmativas abaixo são falsas:
+\begin{enumerate}
+    \item Todo subconjunto linearmente independente de um $A$-módulo livre pode ser ampliado para uma $A$-base.\\
+      Seja $\mathbb{Q}$ como $\mathbb{Z}$-módulo, então nos sabemos que $\{1\}\subseteq\mathbb{Q}$ é um subconjunto linearmente independente de $\mathbb{Q}$, mas como nos vimos anteriormente $\{1\}$ não pode ser ampliado para uma $\mathbb{Z}$-base de $\mathbb{Q}$. 
+    \item Todo conjunto gerador de um $A$-módulo livre contém uma $A$-base.\\
+      Seja $\mathbb{Z}\oplus \mathbb{Z}$ como $\mathbb{Z}$-módulo e note que $S=\{(1,0),(0,4),(0,-3)\}$ é um conjunto gerador de $\mathbb{Z}\oplus\mathbb{Z}$, mas note que $S$ não contem uma $Z$-base de $\mathbb{Z}\oplus\mathbb{Z}$. 
+    \item Um submódulo de um $A$-módulo livre também é livre.\\
+      Seja $\mathbb{Z}_{6}$ como $\mathbb{Z}_{6}$-módulo, logo nos sabemos que $\mathbb{Z}_{6}$ é um módulo livre, mas note que $\left\langle 2 \right\rangle$ submódulo não é livre, ja que $\left\langle 2 \right\rangle=\{0,2,4\}$ so pode ser gerado por $2$ e temos que $3*2=0$, pelo que não é linearmente independente. 
+    \item Se $M$ é um $A$-módulo livre e $S$ é um submódulo livre próprio de $M$, então o número de elementos de uma base de $S$ é estritamente menor que o número de elementos de uma base de $M$.
+    \item Duas bases de um mesmo $A$-módulo livre $M$ têm a mesma cardinalidade.
+\end{enumerate}
+\textbf{Proposição 2} Se A é um anel comutativo com $1$ e $M$ é um $A$-módulo livre com bases finitas $\{v_1,\cdots, v_n\}$ e $\{w_1,\cdots,w_m\}$ então $n=m$.\\
+
+Note que como $V=\{v_1,\cdots,v_n\}$ e $W=\{w_1,\cdots,w_m\}$ são bases, então temos que existem constantes $a_{ij},b_{ij}\in A$ taes que
+\begin{align*}
+  v_k=\sum_{j=1}^{m}a_{kj}w_{j}\quad\text{e}\quad w_l=\sum_{i=1}^{n}b_{li}v_{i}.
+\end{align*}
+Daqui se pode conclui que
+\begin{align*}
+  v_k=\sum_{j=1}^{m}a_{kj}w_j=\sum_{j=1}^{m}\sum_{i=1}^{n}a_{kj}b_{ji}v_{i}=\sum_{i=1}^{n}\left[\sum_{j=1}^{m}a_{kj}b_{ji}\right]v_{i}.
+\end{align*}
+E da mesma maneira
+\begin{align*}
+  w_l=\sum_{i=1}^{n}b_{li}v_i=\sum_{i=1}^{n}\sum_{j=1}^{m}b_{li}a_{ij}w_{j}=\sum_{j=1}^{m}\left[\sum_{i=1}^{n}b_{li}a_{ij}\right]w_{j}.
+\end{align*}
+Agora, note que como $V$ e $W$ são bases, então elas são linearmente independentes, pelo que temos que
+\begin{equation}\label{eq:deltas}
+  \sum_{j=1}^{m}a_{kj}b_{ji}=\delta_{ik}\quad\text{e}\quad\sum_{i=1}^{n}b_{li}a_{ij}=\delta_{lj}
+\end{equation}
+Agora nos vamos suponer a seguintes matrices
+\begin{align*}
+  A=\begin{pmatrix}
+    a_{11} & \cdots & a_{1m}\\
+    \vdots & \ddots & \vdots\\
+    a_{n1} & \cdots & a_{nm}
+  \end{pmatrix}_{n\times m}\quad\text{e}\quad B=\begin{pmatrix}
+    b_{11} & \cdots & b_{1n}\\
+    \vdots & \ddots & \vdots\\
+    b_{m1} & \cdots & b_{mn}
+  \end{pmatrix}_{m\times n},
+\end{align*}
+e pela equacão \eqref{eq:deltas} temos que $AB=Id_{n\times n}$ e $BA=Id_{m\times m}$. Raciocinando pela contradição, suponha que $m>n$, logo note que como a matriz $AB=Id_{n\times n}$, então podemos extender com $0$'s as matrices $A$ e $B$, pelo que temos o seguinte
+\begin{align*}
+  A=\begin{pmatrix}
+    a_{11} & \cdots & a_{1m} & 0 & \cdots & 0\\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+    a_{n1} & \cdots & a_{nm} & 0 & \cdots & 0
+  \end{pmatrix}_{n\times n}\quad\text{e}\quad B=\begin{pmatrix}
+    b_{11} & \cdots & b_{1n}\\
+    \vdots & \ddots & \vdots\\
+    b_{m1} & \cdots & b_{mn}\\
+    0      & \cdots & 0\\
+    \vdots & \ddots & \vdots\\
+    0      & \cdots & 0\\
+  \end{pmatrix}_{n\times n},
+\end{align*}
+Logo temos que se cumpre que dados $x_1,\cdots,x_n,y_1,\cdots,y_n\in A$ temos que
+\begin{align*}
+  (x_1+\cdots+x_n)(y_1+\cdots+y_n)=\sum_{k_1,k_2=1}^{n}x_{k_1}y_{k_2}.
+\end{align*}
+Assim, temos que
+\begin{align*}
+  \det(AB)&=\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}\delta_{i\sigma(i)}\\
+  &=\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}\sum_{j=1}^{n}a_{\sigma(i)j}b_{ji}\\
+  &=\sum_{\sigma\in S_{n}}sgn(\sigma)\sum_{k_1,\cdots,k_n=1}^{n}\prod_{i=1}^{n}a_{\sigma(i)k_{i}}b_{k_{i}i}\\
+  &=\sum_{k_1,\cdots,k_n=1}^{n}\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}b_{k_{i}i}\\
+\end{align*}
+e, como $A$ é comutativo temos que $\prod_{i=1}^{n}a_{\sigma(i)k_i}b_{k_ii}=\prod_{l=1}^{n}a_{\sigma(i)k_i}\prod_{i=1}^{n}b_{k_ii}$, logo temos que
+\begin{align*}
+  \det(AB)&=\sum_{k_1,\cdots,k_n=1}^{n}\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}b_{k_{i}i}\\
+  &=\sum_{k_1,\cdots,k_n=1}^{n}\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}\prod_{l=1}^{n}b_{k_{l}l}\\
+  &=\sum_{k_1,\cdots,k_n=1}^{n}\prod_{l=1}^{n}b_{k_{l}l}\left(\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}\right).
+\end{align*}
+Agora, note que se temos $k_r=k_s$, então vamos ter o seguinte
+\begin{align*}
+  \sum_{\sigma\in S_n}sgn(\sigma)\prod_{i=1}^{n}a\sigma(i)k(i)=  \sum_{\sigma\in S_n}sgn(\sigma)(a_{\sigma(r)k_r}a_{\sigma(s)k_r})\prod_{i=1,i\neq r,s}^{n}a_{\sigma(i)k(i)}.
+\end{align*}
+Assim, dada $\sigma\in S_n$ temos que $\overline{\sigma}=\sigma\circ (r\,s)\in S_n$ e temos que $sgn(\overline{\sigma})=-sgn(\sigma)$, Portanto, neste caso, os termos em que os $k_i$ são iguais sempre terão um dos termos com o mesmo valor, mas com o sinal oposto na soma, de modo que serão cancelados e como $S_n$ tem ordem par, nenhum termo permanecerá sem ser cancelado. Então, nesse caso, a soma será $0$. Em seguida, consideraremos apenas os casos em que $k_i$ é diferente de todos os outros, ou seja, as permutações de $n$ elementos. Depois
+\begin{align*}
+  \det(AB)&=\sum_{k_1,\cdots,k_n=1}^{n}\prod_{l=1}^{n}b_{k_{l}l}\left(\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}\right)\\
+    &=\sum_{\theta\in S_n}\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)\theta(i)}\right)
+\end{align*}
+Agora, definamos $\rho=\sigma\circ\theta$, logo $\sigma=\rho\circ\theta^{-1}$, $sgn(\sigma)=sgn(\rho)sgn(\theta^{-1})=sgn(\rho)sgn(\theta)$. Portanto
+\begin{align*}
+  \det(AB)&=\sum_{\theta\in S_n}\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)\theta(i)}\right)\\
+  &=\sum_{\theta\in S_n}\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\rho\in S_{n}}sgn(\rho)sgn(\theta)\prod_{i=1}^{n}a_{\rho(\theta^{-1}(i))\theta(i)}\right)\\
+  &=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\rho\in S_{n}}sgn(\rho)\prod_{i=1}^{n}a_{\rho(\theta^{-1}(i))\theta(i)}\right)
+\end{align*}
+Logo, suponha $\tilde{\rho}=\rho\circ \theta^{-1}\circ\theta^{-1}$, logo $sgn(\tilde{\rho})=sgn(\rho)$ e fazendo $j=\theta(i)$, temos que $\tilde{\rho}(j)=\rho(\theta^{-1}(i))$, logo 
+\begin{align*}
+  \det(AB)&=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\rho\in S_{n}}sgn(\rho)\prod_{i=1}^{n}a_{\rho(\theta^{-1}(i))\theta(i)}\right)\\
+  &=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\tilde{\rho}\in S_{n}}sgn(\tilde{\rho})\prod_{i=1}^{n}a_{\tilde{\rho}(j)j}\right)
+\end{align*}
+Mas ainda $\tilde{\rho}$ depende do $\theta$, temos que
+\begin{align*}
+  \det(AB)&=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\tilde{\rho}\in S_{n}}sgn(\tilde{\rho})\prod_{i=1}^{n}a_{\tilde{\rho}(j)j}\right)\\
+  &=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\det(A)\\
+  &=\det(B)\det(A)\\
+  &=\det(A)\det(B).
+\end{align*}
+Assim, como $AB=Id_{n\times n}$, então $\det(AB)=1$, mas note que como $B$ tem linhas nulas, então sabemos que $\det(B)=0$ (com a matriz $B$ extendida), logo temos que $1=\det(AB)=\det(A)\det(B)=0$. Absurdo, pelo que temos que $m=n$ o que conclui a prova.  
+\end{document}

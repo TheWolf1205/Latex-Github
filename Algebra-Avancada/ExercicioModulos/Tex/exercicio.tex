@@ -1,0 +1,93 @@
+\begin{homeworkProblem}
+  \textbf{Proposição 2} Se A é um anel comutativo com $1$ e $M$ é um $A$-módulo livre com bases finitas $\{v_1,\cdots, v_n\}$ e $\{w_1,\cdots,w_m\}$ então $n=m$.
+  \begin{solution}
+    Note que como $V=\{v_1,\cdots,v_n\}$ e $W=\{w_1,\cdots,w_m\}$ são bases, então temos que existem constantes $a_{ij},b_{ij}\in A$ taes que
+\begin{align*}
+  v_k=\sum_{j=1}^{m}a_{kj}w_{j}\quad\text{e}\quad w_l=\sum_{i=1}^{n}b_{li}v_{i}.
+\end{align*}
+Daqui se pode conclui que
+\begin{align*}
+  v_k=\sum_{j=1}^{m}a_{kj}w_j=\sum_{j=1}^{m}\sum_{i=1}^{n}a_{kj}b_{ji}v_{i}=\sum_{i=1}^{n}\left[\sum_{j=1}^{m}a_{kj}b_{ji}\right]v_{i}.
+\end{align*}
+E da mesma maneira
+\begin{align*}
+  w_l=\sum_{i=1}^{n}b_{li}v_i=\sum_{i=1}^{n}\sum_{j=1}^{m}b_{li}a_{ij}w_{j}=\sum_{j=1}^{m}\left[\sum_{i=1}^{n}b_{li}a_{ij}\right]w_{j}.
+\end{align*}
+Agora, note que como $V$ e $W$ são bases, então elas são linearmente independentes, pelo que temos que
+\begin{equation}\label{eq:deltas}
+  \sum_{j=1}^{m}a_{kj}b_{ji}=\delta_{ik}\quad\text{e}\quad\sum_{i=1}^{n}b_{li}a_{ij}=\delta_{lj}
+\end{equation}
+Agora nos vamos suponer a seguintes matrices
+\begin{align*}
+  A=\begin{pmatrix}
+    a_{11} & \cdots & a_{1m}\\
+    \vdots & \ddots & \vdots\\
+    a_{n1} & \cdots & a_{nm}
+  \end{pmatrix}_{n\times m}\quad\text{e}\quad B=\begin{pmatrix}
+    b_{11} & \cdots & b_{1n}\\
+    \vdots & \ddots & \vdots\\
+    b_{m1} & \cdots & b_{mn}
+  \end{pmatrix}_{m\times n},
+\end{align*}
+e pela equacão \eqref{eq:deltas} temos que $AB=Id_{n\times n}$ e $BA=Id_{m\times m}$. Raciocinando pela contradição, suponha que $n>m$, logo note que como a matriz $AB=Id_{n\times n}$, então podemos extender com $0$'s as matrices $A$ e $B$, pelo que temos o seguinte
+\begin{align*}
+  A=\begin{pmatrix}
+    a_{11} & \cdots & a_{1m} & 0 & \cdots & 0\\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+    a_{n1} & \cdots & a_{nm} & 0 & \cdots & 0
+  \end{pmatrix}_{n\times n}\quad\text{e}\quad B=\begin{pmatrix}
+    b_{11} & \cdots & b_{1n}\\
+    \vdots & \ddots & \vdots\\
+    b_{m1} & \cdots & b_{mn}\\
+    0      & \cdots & 0\\
+    \vdots & \ddots & \vdots\\
+    0      & \cdots & 0\\
+  \end{pmatrix}_{n\times n},
+\end{align*}
+Logo temos que se cumpre que dados $x_1,\cdots,x_n,y_1,\cdots,y_n\in A$ temos que
+\begin{align*}
+  (x_1+\cdots+x_n)(y_1+\cdots+y_n)=\sum_{k_1,k_2=1}^{n}x_{k_1}y_{k_2}.
+\end{align*}
+Assim, temos que
+\begin{align*}
+  \det(AB)&=\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}\delta_{i\sigma(i)}\\
+  &=\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}\sum_{j=1}^{n}a_{\sigma(i)j}b_{ji}\\
+  &=\sum_{\sigma\in S_{n}}sgn(\sigma)\sum_{k_1,\cdots,k_n=1}^{n}\prod_{i=1}^{n}a_{\sigma(i)k_{i}}b_{k_{i}i}\\
+  &=\sum_{k_1,\cdots,k_n=1}^{n}\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}b_{k_{i}i}\\
+\end{align*}
+e, como $A$ é comutativo temos que $\prod_{i=1}^{n}a_{\sigma(i)k_i}b_{k_ii}=\prod_{l=1}^{n}a_{\sigma(i)k_i}\prod_{i=1}^{n}b_{k_ii}$, logo temos que
+\begin{align*}
+  \det(AB)&=\sum_{k_1,\cdots,k_n=1}^{n}\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}b_{k_{i}i}\\
+  &=\sum_{k_1,\cdots,k_n=1}^{n}\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}\prod_{l=1}^{n}b_{k_{l}l}\\
+  &=\sum_{k_1,\cdots,k_n=1}^{n}\prod_{l=1}^{n}b_{k_{l}l}\left(\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}\right).
+\end{align*}
+Agora, note que se temos $k_r=k_s$, então vamos ter o seguinte
+\begin{align*}
+  \sum_{\sigma\in S_n}sgn(\sigma)\prod_{i=1}^{n}a\sigma(i)k(i)=  \sum_{\sigma\in S_n}sgn(\sigma)(a_{\sigma(r)k_r}a_{\sigma(s)k_r})\prod_{i=1,i\neq r,s}^{n}a_{\sigma(i)k(i)}.
+\end{align*}
+Assim, dada $\sigma\in S_n$ temos que $\overline{\sigma}=\sigma\circ (r\,s)\in S_n$ e temos que $sgn(\overline{\sigma})=-sgn(\sigma)$, Portanto, neste caso, os termos em que os $k_i$ são iguais sempre terão um dos termos com o mesmo valor, mas com o sinal oposto na soma, de modo que serão cancelados e como $S_n$ tem ordem par, nenhum termo permanecerá sem ser cancelado. Então, nesse caso, a soma será $0$. Em seguida, consideraremos apenas os casos em que $k_i$ é diferente de todos os outros, ou seja, as permutações de $n$ elementos. Depois
+\begin{align*}
+  \det(AB)&=\sum_{k_1,\cdots,k_n=1}^{n}\prod_{l=1}^{n}b_{k_{l}l}\left(\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)k_{i}}\right)\\
+    &=\sum_{\theta\in S_n}\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)\theta(i)}\right)
+\end{align*}
+Agora, definamos $\rho=\sigma\circ\theta$, logo $\sigma=\rho\circ\theta^{-1}$, $sgn(\sigma)=sgn(\rho)sgn(\theta^{-1})=sgn(\rho)sgn(\theta)$. Portanto
+\begin{align*}
+  \det(AB)&=\sum_{\theta\in S_n}\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\sigma\in S_{n}}sgn(\sigma)\prod_{i=1}^{n}a_{\sigma(i)\theta(i)}\right)\\
+  &=\sum_{\theta\in S_n}\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\rho\in S_{n}}sgn(\rho)sgn(\theta)\prod_{i=1}^{n}a_{\rho(\theta^{-1}(i))\theta(i)}\right)\\
+  &=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\rho\in S_{n}}sgn(\rho)\prod_{i=1}^{n}a_{\rho(\theta^{-1}(i))\theta(i)}\right)
+\end{align*}
+Logo, suponha $\tilde{\rho}=\rho\circ \theta^{-1}\circ\theta^{-1}$, logo $sgn(\tilde{\rho})=sgn(\rho)$ e fazendo $j=\theta(i)$, temos que $\tilde{\rho}(j)=\rho(\theta^{-1}(i))$, logo 
+\begin{align*}
+  \det(AB)&=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\rho\in S_{n}}sgn(\rho)\prod_{i=1}^{n}a_{\rho(\theta^{-1}(i))\theta(i)}\right)\\
+  &=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\tilde{\rho}\in S_{n}}sgn(\tilde{\rho})\prod_{i=1}^{n}a_{\tilde{\rho}(j)j}\right)
+\end{align*}
+Mas ainda $\tilde{\rho}$ depende do $\theta$, temos que
+\begin{align*}
+  \det(AB)&=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\left(\sum_{\tilde{\rho}\in S_{n}}sgn(\tilde{\rho})\prod_{i=1}^{n}a_{\tilde{\rho}(j)j}\right)\\
+  &=\sum_{\theta\in S_n}sgn(\theta)\prod_{l=1}^{n}b_{\theta(l)l}\det(A)\\
+  &=\det(B)\det(A)\\
+  &=\det(A)\det(B).
+\end{align*}
+Assim, como $AB=Id_{n\times n}$, então $\det(AB)=1$, mas note que como $B$ tem linhas nulas, então sabemos que $\det(B)=0$ (com a matriz $B$ extendida), logo temos que $1=\det(AB)=\det(A)\det(B)=0$. Absurdo, pelo que temos que $n=m$ o que conclui a prova.  
+  \end{solution}
+\end{homeworkProblem}

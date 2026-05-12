@@ -1,0 +1,53 @@
+\begin{homeworkProblem}
+  Verifique se as seguintes sentençãs são verdadeiras ou falsas, com justificativa.
+  \begin{enumerate}[i)]
+    \item Se $G$ é um grupo abeliano de torção então $G$ é finito.
+    \item Se $G$ é finitamente generado por elementos de toção então $G$ é finito.
+    \item Se $G$ é abeliano finitamente generado e de torção então $G$ é finito. 
+  \end{enumerate}
+\textbf{Grupo de torção:} Se $G$ é um grupo qualquer, o conjunto $\tau(G):\{x\in G: o(x)<\infty\}$ e dito \textbf{torção} de $G$. 
+  \begin{solution}
+\begin{enumerate}[i)]
+  \item \textbf{Falsa}.\\
+    Considere $G=(\mathbb{Q}/\mathbb{Z},+)$, então se $a,b\in \mathbb{Z}$, nos podemos pegar $x=\frac{a}{b}+\mathbb{Z}\in \mathbb{Q}/\mathbb{Z}$. Portanto, temos que 
+    \begin{align*}
+      \underbrace{\frac{a}{b}+\mathbb{Z}+\cdots+\frac{a}{b}+\mathbb{Z}}_{b\text{ vezes}}=\frac{ab}{b}+\mathbb{Z}=a+\mathbb{Z}=\mathbb{Z}. 
+    \end{align*}
+    Assim, nos podemos afirmar que $o(x)\leq b<\infty$ e fazer o mesmo racionamento para todo $x\in G$, logo temos que $\tau(G)=G$, mas $|G|=\infty$.
+  \item \textbf{Falsa}.\\
+    Seja $x,y\in GL_2(\mathbb{R})$, como  
+    \begin{align*}
+      x=\begin{pmatrix}
+      1 & 0 \\
+      0 & -1
+      \end{pmatrix},\qquad y=\begin{pmatrix}
+        1 & 1 \\
+        0 & -1
+      \end{pmatrix}.
+    \end{align*}
+    Pode-se calcular que $o(x)=o(y)=2$, isto é que $x,y\in\tau(GL_2(\mathbb{R}))$, mas note que
+    \begin{align*}
+      xy&=\begin{pmatrix}
+      1 & -1 \\
+      0 & 1
+      \end{pmatrix}\\
+      (xy)^2&=\begin{pmatrix}
+      1 & -2 \\
+      0& 1
+      \end{pmatrix}\\
+      (xy)^{k}&=\begin{pmatrix}
+      1 & -k \\
+      0 & 1
+      \end{pmatrix},
+    \end{align*}
+    i,e, $o(xy)=\infty$, logo se pegamos $G=\left\langle x,y \right\rangle$ temos que $G$ é finitamente gerado por elementos de torção, mas $|G|=\infty$.
+  \item \textbf{Verdadeiro}.\\
+    Seja $G$ um grupo abeiano finitamente generado e de torção, então note que existe um conjunto $S\subseteq G$ tal que $S=\{x_1,\cdots,x_n\}$ e $\left\langle S \right\rangle=G$, sem perdida de generalidade, suponha $S$ o conjunto gerador minimal.\\
+    Agora, note que como $G$ é abeliano, nos temos que para cada $y\in G$ existem $k_1,\cdots,k_n\in\mathbb{Z}$ taes que
+    \begin{align*}
+      y=x_1^{k_1}\cdots x_n^{k_n}.
+    \end{align*}
+    Mas, note que como $G$ é de torção, isto é que $G=\tau(G)$, temos que existem $m_1,\cdots,m_n\in\mathbb{Z}^{+}$ taes que $o(x_i)=m_i$. Portanto, nos temos que para todo $y\in G$, temos que $k_i\leq m_i$, pelo que podemos concluir que $|G|=\prod_{i\in\{1,\cdots,n\}}m_i$, isto é, que $G$ é finito. 
+\end{enumerate}
+  \end{solution}
+\end{homeworkProblem}
