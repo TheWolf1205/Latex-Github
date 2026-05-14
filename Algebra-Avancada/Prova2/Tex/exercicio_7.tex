@@ -1,0 +1,21 @@
+\begin{homeworkProblem}[7]
+  Seja $R$ um anel comutativo com unidade. Considere 
+  \begin{align*}
+    I = \{a \in R \mid a \notin \mathcal{U}(R)\}
+  \end{align*}
+  o conjunto dos elementos não invertíveis de $R$ e suponha que $(I, +)$ seja um subgrupo aditivo de $(R, +)$. Mostre que:
+  \begin{enumerate}[(a)]
+    \item $I$ é um ideal de $R$.
+    \item $I$ é um ideal maximal de $R$.
+    \item $R/I$ é um corpo.
+    \item $R$ é um anel local, ou seja, possui um único ideal maximal.
+\end{enumerate}
+  \begin{solution}
+  \begin{itemize}
+    \item Suponha $a,b\in I$, logo note que $a-b\in I$, ja que $I$ é um subgrupo aditivo pela hipótese. Por outro lado, note que se tomamos $a\in R$ e $b\in I$, então temos que $ab\in I$, ja que raciocinando pela contradição temos que se $ab\in\mathcal{U}(R)$, então existe um $y\in R$ tal que $aby=1$, mas note como $R$ é um anel comutativo nos temos que $(ay)b=1$, pelo que temos que $b\in\mathcal{U}$, absurdo, pois $b\in I$. Logo temos que $I$ é um ideal de $R$.
+    \item Note que se $x\in R\setminus I$, então $x\in\mathcal{U}(R)$, logo nos sabemos que como $R$ é um anél comutativo com unidade, então temos que $\left\langle x \right\rangle=R$, logo se pegamos qualquer $x\in R\setminus I$, temos que $I+\left\langle x \right\rangle=R$, pelo que podemos concluir que $I$ é maximal.
+    \item Seja $x\in R$, note que $x+I\in R/I$, logo note que se $x+I\neq I$, pelo que falamos anteriormente, temos que $x\in\mathcal{U}(R)$, pelo que temos que existe $x^{-1}\in R$ tal que $(x+I)(x^{-1}+I)=1+I$. Por outro lado, note que se $x\in I$, então nos temos que $x+I=I=0+I$, pelo que não precisamos de que $x+I$ seja unidade. Portanto, nos podemos concluir que $R/I$ é um corpo.
+    \item Note que como falamos no item (b), nos temos que se $x\in\mathcal{U}(R)$, então $\left\langle x \right\rangle=R$, pelo que temos que se $N$ é um ideal própio de $R$, então $N\leq [\mathcal{U}(R)]^{c}$, pelo que temos que qualquer ideal própio de $R$ está contido no $I$ e como $I$ é maximal, temos que $R$ é um anel local. 
+  \end{itemize}
+  \end{solution}
+\end{homeworkProblem}

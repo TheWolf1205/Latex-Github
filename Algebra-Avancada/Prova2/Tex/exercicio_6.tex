@@ -1,0 +1,51 @@
+\begin{homeworkProblem}[6]
+  Seja $R$ um anel comutativo com unidade e considere $\psi : V \to W$ um $R$-homomorfismo, onde $V$ e $W$ são dois $R$-módulos.
+  \begin{enumerate}[(a)]
+    \item Se $\Ker(\psi)$ e $\Img(\psi)$ são finitamente gerados então mostre que $V$ é finitamente gerado.    
+    \item Se $U$ é um $R$-submódulo de $W$ então mostre que
+    \begin{align*}
+      \psi^{-1}(U) = \{v \in V \mid \psi(v) \in U\}
+    \end{align*}
+    é um $R$-submódulo de $V$.
+    \item Considere $R$ um DIP e suponha que $W$ é um $R$-módulo livre de posto finito. Mostre que se $\Ker(\psi)$ é $R$-módulo livre de posto finito então $V$ é $R$-módulo livre de posto finito.
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}[(a)]
+    \item Note que como $\psi(V)$ é finitamente gerado, temos que existe um conjunto $X=\{x_1,\cdots,x_k\}\subseteq V$ tal que o conjunto $\overline{X}=\{\psi(x_1),\cdots,\psi(x_k)\}$ cumpre que $\left\langle \overline{X} \right\rangle=\psi(V)$. Assim mesmo, temos que se definimos $K=\Ker\psi$, então como $K$ é finitamente gerado, existe um conjunto $L=\{l_1,\cdots,l_s\}\subseteq V$ tal que $\left\langle L\right\rangle=K$.\\
+      Agora, note que pelo anterior temos que dado $v\in V$ existem $v_1,\cdots,v_k\in R$ taes que 
+      \begin{align*}
+        \psi(v)=\sum_{i=1}^{k}v_i\psi(x_i).
+      \end{align*}
+      Logo isto implica que
+      \begin{align*}
+        \psi(v)-\sum_{i=1}^{k}v_i\psi(x_i)=\psi\left( v-\sum_{i=1}^{k}v_ix_i \right)=0.
+      \end{align*}
+      Logo note que como $v-\sum_{i=1}^{k}v_ix_i\in\Ker\psi$, então existem $k_1,\cdots,k_s\in R$ taes que
+      \begin{align*}
+        v-\sum_{i=1}^{k}v_ix_i=\sum_{j=1}^{s}k_jl_j.
+      \end{align*}
+      Depois temos que
+      \begin{align*}
+        v=\sum_{i=1}^{k}v_ix_i+\sum_{j=1}^{s}k_jl_j.
+      \end{align*}
+      Pelo que temos que dado $v\in V$, nos podemos escrever como combinação linear de $X\cup L$. Assim, nos podemos concluir que $V=\left\langle X\cup L \right\rangle$, isto é, que $V$ é finitamente gerado.
+    \item Então, suponha $a,b\in \psi^{-1}(U)$ e $r\in R$, logo nos temos que:\\
+      \begin{itemize}
+        \item Como $a,b\in\psi^{-1}(U)$, existem $x,y\in U$ taes que $\psi(a)=x$ e $\psi(b)=y$, logo note que como $V$ é um $R$-módulo, então $a+rb\in V$, logo $\phi(a+rb)=\phi(a)+r\phi(b)=x+ry\in U$, ja que $U$ é um $R$-módulo e $x,y\in U$, pelo que temos que $a+rb\in \psi^{-1}(U)$.
+        \item Note que como $U$ é um $R$-módulo, então $0\in U$ e como $\psi$ é um homomorismo, então temos que $0\in\psi^{-1}(U)$, ya que se pegamos $0_V\in V$ temos que $\psi(0_V)=0\in U$. 
+      \end{itemize}
+      Logo temos que $\psi^{-1}(U)$ é um $R$-submódulo de $V$.
+    \item Note que como $W$ é um $R$-módulo livre de posto finito, nos temos que existe uma $R$-base de $W$ de posto $n<\infty$, logo note que como $\Img(\psi)$ é um $R$-submódulo de $W$, então como $R$ é DIP, temos que existe um conjunto $\overline{X}=\{y_1,\cdots,y_k\}$ com $k\leq n$ tal que $\overline{X}$ é uma $R$-base de $\Img(\psi)$.\\
+      Da mesma maneira, temos que como $K=\Ker\psi$ é um $R$-módulo livre, então existe um conjunto $L=\{l_1,\cdots,l_s\}$ tal que é uma $R$-base de $K$. Por outro lado, fazemos $X=\{x_1,\cdots,x_k\}$ taes que $\varphi(x_i)=y_i$. Depois da mesma maneira que o iten $(a)$ temos que dado $v\in V$, então nos podemos escrever
+      \begin{align*}
+        v=\sum_{i=1}^{k}v_ix_i+\sum_{j=1}^{s}k_jl_j.
+      \end{align*}
+      Logo sabemos que $X\cup L$ é um conjunto gerador de $V$.\\
+      Depois, note que $X\cup L$ é linearmente independente, ja que se $v=0$, então nos temos que $\psi(v)=0$, pelo que temos que $v_i=0$ para cada $i\in\{1,\cdots,k\}$, ja que $\overline{X}$ é uma $R$-base (linearmente independente). Logo temos que
+      \begin{align*}
+        v-\sum_{i=1}^{k}=0=\sum_{j=1}^{s}k_jl_j.
+      \end{align*}
+      E como $L$ é uma $R$-base, então temos que $k_j=0$ para todo $j\in\{1,\cdots,s\}$, pelo que temos que $X\cup L$ é uma $R$-base finita de $V$, isto é, que $V$ é uum $R$-módulo livre de posto finito. 
+  \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}
