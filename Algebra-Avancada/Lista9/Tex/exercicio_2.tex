@@ -1,0 +1,8 @@
+\begin{homeworkProblem}[2]
+  Mostre que se $A$ é um DIP, então $A$-submódulos de um $A$-módulo finitamente gerado são finitamente generados.
+  \begin{solution}
+    Seja $M$ um $A$-módulo finitamente gerado, isto é, que existe $X\subseteq M$, tal que $X=\{x_1,\cdots,x_k\}$ e $\left\langle X \right\rangle=M$. Logo temos que se definimos $\varphi:A^{k}\to M$ tal que $\varphi(e_i)=x_i$ temos que $\varphi(A^{k})=M$, isto é que $\varphi$ é um homomorfismo de módulos sobrejetor.\\
+    Assim, suponha $N\subseteq M$ como um $A$-submódulo, logo definamos $\tilde{N}=\varphi^{-1}(N)\subseteq A^{k}$, logo como $A^{k}$ é um $A$-módulo, também temos que $\tilde{N}$ é um $A$-submódulo, mas como $A^{k}$ é um $A$-módulo livre de posto $k$ e $A$ é um DIP, então temos que $\tilde{N}$ é um $A$-submódulo livre de posto $n\leq k$, pelo que sabemos que existem $y_1,\cdots,y_n\in A^{k}$ taes que $\left\langle y_1,\cdots,y_n \right\rangle=\tilde{N}$.\\
+    Depois, como $\varphi(\tilde{N})=N$, então temos que se definimos $S=\{\varphi(y_1),\cdots,\varphi(y_n)\}$, então $\left\langle S \right\rangle=N$, pelo que podemos concluir que $N$ é um $A$-submodulo de $M$ finitamente gerado. 
+  \end{solution}
+\end{homeworkProblem}

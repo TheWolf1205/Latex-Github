@@ -1,0 +1,18 @@
+\begin{homeworkProblem}[4]
+  Considere $A$ um domínio de integridade. Mostre que:
+  \begin{enumerate}
+    \item Produtos diretos e somas diretas de $A$-módulos sem torção são sem torção.
+    \item Soma direta de $A$-módulos de torção é um $A$-módulo de torção.
+    \item Dê um contra-exemplo para mostrar que nem todo produto de $A$-módulos de torção é de torção.
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}
+    \item Seja $M_i$ um $A$-módulo sem torção com $i\in I$ indice, então note que se pegamos $(a_i)_{i\in I}\in \prod_{i\in I}M_i$ com $(a_i)_{i\in I}\neq 0$, então temos que dado $n\in A$ $n(a_i)_{i\in I}=0$ se, somente se $na_i=0$ para cada $i\in I$, logo como $(a_i)_{i\in I}\neq 0$ temos que existe $j\in I$ tal que $a_j\neq 0$ e portanto como $a_j\in M_j$ que é um módulo sem torção, a igualdade $na_j=0$ so se cumpre se $n=0$. Portanto podemos afirmar que $\prod_{i\in I}M_i$ é sem torção.\\
+      Por outro lado, para somas diretas, temos que se pegamos $(a_i)_{i\in I}\in \oplus_{i\in I}M_i$ com $(a_i)_{i\in I}\neq 0$ da mesma maneira vamos ter que existe $j\in I$ tal que $a_j\neq 0$, pelo que de novo $na_j=0$ somente se $n=0$. Pelo que podemos concluir que $\oplus_{i\in I}M_i$ é sem torção.
+    \item Seja $M_i$ um $A$-módulo de torção com $i\in I$, logo para cada $a_i\in M_i$ temos que existe um $n_i\in A$ com $n_i\neq 0$ tal que $n_ia_i=0$.\\
+      Assim, considere $(a_i)_{i\in I}\in\oplus_{i\in I}M_i$, logo sabemos que existem finitos $i_{1},\cdots,i_k\in I$ taes que $a_{i_j}\neq 0$ com $j\in\{1,\cdots,k\}$, logo se pegamos $n=n_{i_1}\cdots n_{i_k}\neq 0$, ja que $A$ é um domínio de  integridade, nos vamos ter que $n(a_i)_{i\in I}=0$, poiss note que como $A$ é comutativo, nos podemos reordenar $n$ da forma que definimos $m$ tal que $n=mn_{i_j}$, logo $na_{i_j}=mn_{i_j}a_{i_j}=0$ para todo $i_{j}$, pelo que podemos concluir que $\oplus_{i\in I}M_i$ é de torção.
+    \item Seja $M_n=\mathbb{Z}/n\mathbb{Z}$ como $Z$-módulo.\\
+      Nos sabemos que $M_n$ é um $Z$-módulo de torção, mas note que se pegamos $(1)_{n\in\mathbb{Z}^{+}}\in \prod_{n\in\mathbb{Z}^{+}} \mathbb{Z}/n\mathbb{Z}$, nos podemos afirmar que $m\in \mathbb{Z}$ cumpre que $m(1)_{n\in\mathbb{Z}}=0$ se, somente se, $m=0$, ja que se pegamos $j>m$ e $1\in \mathbb{Z}/j\mathbb{Z}$, então $m1=m\neq 0$. 
+  \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}

@@ -1,0 +1,20 @@
+\begin{homeworkProblem}[3]
+  Mostre que:
+  \begin{enumerate}
+    \item Todo $A$-submódulo de um $A$-módulo sem torção é sem torção.
+    \item Todo $A$-submódulo de um $A$-módulo de torção é de torção.
+    \item O que se pode dizer sobre os $A$-submódulos dos $A$-módulos com torção?
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}
+    \item Vamos a raciocinar pela contradição.\\
+      Seja $M$ um $A$-módulo sem torção, isto é, que $\tau(M)=\{m\in M:Ann_{A}(m)\neq 0\}=\{0\}$ e suponha que existe $N\subseteq M$ um $A$-submódulo tal que $\tau(N)\neq\{0\}$, logo, temos que existe $n\in N$ tal que $n\neq 0$ e $n\in\tau(N)$, i.é, que existe $m\in A$ com $m\neq 0$ tal que $mn=0$. Mas, note que como $N\subseteq M$, temos que $n\in M$, pelo que temos que $n\in\tau(M)$. Absurdo, pois nos asumimos que $M$ é um $A$-módulo sem torção. Logo nos podemos concluir que todo $A$-submódulo de um $A$-módulo sem torção é sem torção.
+    \item Vamos a raciocinar pela contradição.\\
+      Seja $M$ um $A$-módulo de torção, isto é, que $\tau(M)=M$ o que significa que para todo $m\in M$ temos que existe um $n\in A$ tal que $n\neq 0$ e $mn=0$. Suponha que existe $N\subseteq M$ tal que $N$ não é um $A$-submódulo do torção, isto é, existe um $x\in N$ tal que $x\notin\tau(N)$ que e o mesmo que dizer que $Ann_A(x)=\{0\}$. Mas note que como $N\subseteq M$, temos que $x\in M$, pelo que sabemos que existe $n\in A$ tal que $n\neq 0$ e $nx=0$. Absurdo, pois $Ann_{A}(x)=\{0\}$. Logo nos podemos concluir que todo $A$-submódulo de um $A$-módulo de torção é de torção.
+    \item Ao contrário dos casos anteriores, um submódulo de um $A$-módulo com torção pode ser de torção, livre de torção ou também um módulo com torção.\\
+      Suponha $M=\mathbb{Z}\oplus \mathbb{Z}/2\mathbb{Z}$.\\
+      Note que $(0,1)\neq 0\in M$, mas $2(0,1)=(0,2)=(0,0)$, pelo que sabemos que $M$ é de torção.\\
+      Agora, note que $N=\mathbb{Z}\oplus\{0\}$ é $Z$-submódulo de $M$, mas $N$ é livre de torção e como falamos antes $T=\{0\}\oplus\mathbb{Z}/2\mathbb{Z}$ é um $Z$-submódulo de torção. 
+  \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}
