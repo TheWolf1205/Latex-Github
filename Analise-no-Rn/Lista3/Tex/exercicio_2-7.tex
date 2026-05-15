@@ -1,0 +1,24 @@
+\begin{homeworkProblem}[Seção 2-7]
+  Seja $f:U\to\mathbb{R}$ de classe $C^{2}$ no aberto $U\subseteq \mathbb{R}^{m}$. Para cada $a\in\mathbb{R}^{m}$, considere a função $g=g_a:U\to\mathbb{R}$ definida por
+  \begin{align*}
+    g(x)=f(x)-\left\langle a,x \right\rangle.
+  \end{align*}
+  Mostre que existe um conjunto $X\subseteq\mathbb{R}^{m}$ de medida  nula tal que, para todo $a\in\mathbb{R}^{m}\setminus X$, $g$ é uma função de Morse (isto é, seus pontos críticos são todos não degenerados).\\
+  Conclua que, dada $f\in C^{2}$ e dado $\epsilon>0$, se $U$ é limitdo, existe uma função de Morse $g:U\to\mathbb{R}$ tal que
+  \begin{align*}
+    |f(x)-g(x)|<\epsilon\quad\text{e}\quad|df(x)v-dg(x)v|<\epsilon|v|
+  \end{align*}
+  para quaisquer $x\in U$ e $v\in\mathbb{R}^{m}$. 
+  \begin{solution}
+    Note que
+    \begin{align*}
+      dg(x)=df(x)-d\left\langle a,x \right\rangle=df(x)-\left\langle a,1 \right\rangle=df(x)-a.
+    \end{align*}
+    Logo temos que $a$ é ponto crítico se $df(a)=a$. Além mais
+    \begin{align*}
+      Hg(x)=Hf(x).
+    \end{align*}
+    Portanto temos que $a$ é ponto crítico degenerado se $\det(Hg(a))=0$.\\
+    Assim, defina $X=\{a\in\mathbb{R}^{m}:df(a)=a\text{ e }det(Hf(a))=0\}$.
+  \end{solution}
+\end{homeworkProblem}

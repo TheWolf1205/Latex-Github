@@ -1,0 +1,30 @@
+\begin{homeworkProblem}[Seção 2-2]
+  Seja $X\subseteq\mathbb{R}^{n}$. Denotamos por $C(X)$ o \textbf{conteudo exterior de Jordan} (ou mediida exterior de Jordan) de $X$, definido por:
+  \begin{align*}
+    C(X)=\inf\left\{ \sum_{i=1}^{k}Vol(B_i):X\subseteq\bigcup_{i=1}^{\infty}B_i,\,B_i\text{ são blocos (rectângulos) em }\mathbb{R}^{m} \right\},
+  \end{align*}
+  onde o ínfimo é tomado sobre todas as coberturas \textbf{finita} de $X$ por blocos.\\
+  Mostre que
+  \begin{enumerate}[(i)]
+    \item Se $C(X)=0$, então $med(X)=0$ (isto é, $X$ tem medida de Lebesgue nula).
+    \item Se $X$ é compacto e $med(X)=0$, então $C(X)=0$. 
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}[(i)]
+    \item Note que como $C(X)=0$, pelas propriedades do ínfimo temos que dado $\epsilon>0$, existe uma cobertura $\{B_i\}_{i=1}^{k}$ de $X$ por meio de blocos taes que
+      \begin{align*}
+        \sum_{i=1}^{k}Vol(B_i)<\epsilon.
+      \end{align*}
+      Logo como isto tem-se para todo $\epsilon>0$, podemos dizer que $X$ tem medida nula, i.é, $med(X)=0$.
+    \item Note que como $X$ tem medida nula, nos temos que para todo $\epsilon>0$, existe uma cobertura $\{B_j\}_{j\in\mathbb{Z}^{+}}$ de $X$ por meio de blocos taes que
+      \begin{align*}
+        \sum_{j\in\mathbb{Z}^{+}}B_j<\epsilon.
+      \end{align*}
+      Mas, note que como $X$ é compacto, então qualquer cobertura dele, se pode reducir a uma cobertura finita, pelo que temos que existe $k_\epsilon\in\mathbb{Z}^{+}$ tal que reindexando o conjunto $\{B_{i}\}_{i=1}^{k_\epsilon}$ é uma cobertura de $X$ por meio de blocos taes que
+      \begin{align*}
+        \sum_{i=1}^{k_{\epsilon}}B_i<\epsilon.
+      \end{align*}
+      Pelo que podemos dizer que $\epsilon\in C(X)$ para todo $\epsilon>0$. Portanto, podemos concluir que $C(X)=0$. 
+  \end{enumerate} 
+  \end{solution}
+\end{homeworkProblem}

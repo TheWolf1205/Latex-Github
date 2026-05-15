@@ -1,0 +1,26 @@
+\begin{homeworkProblem}[Seção 1-3]
+  Sejam $f:A\to\mathbb{R}$, $g:B\to\mathbb{R}$ funções limitadas não negativas nos blocos $A$ e $B$. Defina $\phi:A\times B\to\mathbb{R}$ pondo $\phi(x,y)=f(x)\cdot g(y)$. Prove que
+  \begin{align*}
+    \overline{\int_{A\times B}}\phi(z)\,dz=\overline{\int_{A}}f(x)\,dx\cdot\overline{\int_{B}}g(y)\,dy.
+  \end{align*}
+  \begin{solution}
+    Sabemos que
+    \begin{align*}
+      \overline{\int_{A\times B}}\phi(z)\,dz=\inf_{P}S(\phi,p)=\sum_{K\in P}M_{K}Vol(K).
+    \end{align*}
+    Más note que como $P$ é partição do $A\times B$, então temos que $P=P_A\times P_B$, onde $P_A$ é uma partição de $A$ e $P_{B}$ é uma partição de $B$. Logo, dado um $K\in P$, nos podemos escrever $K=\overline{B}\times\tilde{B}$ com $\overline{B}\in P_{A}$ e $\tilde{B}\in P_{B}$, pelo que temos a seguinte
+    \begin{align*}
+      \overline{\int_{A\times B}}\phi(z)\,dz=\inf_{P}\sum_{K\in P}M_{K}Vol(K)=\inf_{P}\sum_{K\in P}M_{K}Vol(\overline{B})Vol(\tilde{B}). 
+    \end{align*}
+    Depois, note que como $\phi(x,y)=f(x)\cdot g(y)$ e $f$ e $g$ são funções limitadas não negativas nos blocos $A$ e $B$, então como $|f(x)\cdot g(y)|=f(x)\cdot g(y)$, pelo que podemos dizer que  
+    $$M_{K}=\max_{z\in K}\phi(z)=\max_{\substack{x\in\overline{B}\\y\in\tilde{B}}}f(x)\cdot g(y)=\max_{x\in\overline{B}}f(x)\cdot \max_{y\in\tilde{B}}g(y)=M_{\overline{B}}\cdot M_{\tilde{{B}}}.$$
+    Assim, podemos escrever
+    \begin{align*} 
+      \overline{\int_{A\times B}}\phi(z)\,dz=&\inf_{P}\sum_{K\in P}M_{K}Vol(\overline{B})Vol(\tilde{B})\\
+      =&\inf_{\substack{P_A\\ P_B}}\sum_{\substack{\overline{B}\in P_a\\ \tilde{B}\in P_{B}}}M_{\overline{B}}M_{\tilde{B}}Vol(\overline{B})Vol(\tilde{B})\\
+      =&\inf_{P_A}\sum_{\overline{B}\in P_A}M_{\overline{B}}Vol(\overline{B})\cdot\inf_{P_B}\sum_{\tilde{B}\in P_B}M_{\tilde{B}}Vol(\tilde{B})\\
+      =&\overline{\int_{A}}f(x)\,dx\cdot\overline{\int_{B}}g(y)\,dy.
+    \end{align*}
+    O que conclui a prova.
+  \end{solution}
+\end{homeworkProblem}

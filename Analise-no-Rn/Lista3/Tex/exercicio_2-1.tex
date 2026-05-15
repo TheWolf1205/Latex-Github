@@ -1,0 +1,20 @@
+\begin{homeworkProblem}[Seção 2-1]
+  Se $X\subseteq \mathbb{R}^{m}$ tem medida nula, então para qualquer $Y\subseteq \mathbb{R}^{n}$, o produto cartesiano $X\times Y\subseteq \mathbb{R}^{n+m}$ tem medida nula. 
+  \begin{solution}
+    Seja $\{B_{k}\}_{k=1}^{\infty}\subseteq\mathbb{R}^{n}$ tal que $Y\subseteq \bigcup_{k=1}^{\infty}B_{k}$ (por exemplo o cubo do centro no origem e aresta de comprimento $k\in\mathbb{Z}^{+}$). Então, note que como $X\subseteq\mathbb{R}^{m}$ tem medida nula, temos que dado $\epsilon>0$, existe uma cobertura enumerável de blocos abertos $\{A_{l}\}_{l=1}^{\infty}\subseteq\mathbb{R}^{m}$ de $X$ tal que
+    \begin{align*}
+      \sum_{i=1}^{l}Vol(A_l)<\frac{\epsilon}{Vol(B_k)}.
+    \end{align*}
+    Para todo $k\in\mathbb{Z}^{+}$.\\
+    Assim, suponha $\bigcup_{l\in\mathbb{Z}^{+}}A_l \times B_{k}$ cobertura de $X\times B_{k}$, logo note que
+    \begin{align*}
+      \sum_{l\in\mathbb{Z}^{+}}Vol(A_l\times B_k)=\sum_{l\in\mathbb{Z}^{+}}Vol(A_l)Vol(B_k)=Vol(B_k)\sum_{l\in\mathbb{Z}^{+}}Vol(A_l)<Vol(B_k)\frac{\epsilon}{B_k}=\epsilon.
+    \end{align*}
+    E como temos isto para todo $\epsilon>0$, então podemos dizer que $X\times B_k$ tem medida cero para todo $k\in\mathbb{Z}^{+}$.\\
+    Agora, note que como $X\times B_{k}$ tem medida nula para todo $B_{k}$, então como $\bigcup_{k\in\mathbb{Z}^{+}}X\times B_k$ é união numerável do conjuntos de medida nula, podemos dizer que é de medida nula, i.é, que dado $\epsilon>0$ temos que existe uma cobertura $\{M_{m}\}_{m\in\mathbb{Z}^{+}}$ de $\bigcup_{k\in\mathbb{Z}^{+}}X\times B_{k}$ com $M_m$ blocos abertos tal que
+    \begin{align*}
+      \sum_{m\in\mathbb{Z}^{+}}Vol(M_n)<\epsilon.
+    \end{align*}
+    Mas note que como $X\times Y\subseteq \bigcup_{k\in\mathbb{Z}^{+}}X\times B_{k}$, então temos que $X\times Y\subseteq \bigcup_{m\in\mathbb{Z}^{+}}M_m$, pelo que podemos concluir que $X\times Y$ tem medida nula. 
+  \end{solution}
+\end{homeworkProblem}

@@ -1,0 +1,41 @@
+\begin{homeworkProblem}[Seção 2-3]
+  Sejam $g,f:A\to\mathbb{R}$ funções limitadas, $A\subseteq\mathbb{R}^{n}$ um bloco fechado. Suponha que $f$ e $g$ são integráveis e que $g=f$ exceto em um subconjunto de medida nula. Mostre que
+  \begin{align*}
+    \int_{A}f(x)\,dx=\int_{A}g(x)\,dx.
+  \end{align*}
+  \begin{solution}
+    Note que se $f=g$ exceto em um conjunto de medida nula, então $f-g=0$ exceto em um conjunto de medida nula, logo como $f$ e $g$ são funções limitadas e integráveis temos que $f-g$ é uma função limitada e integrável, isto é que
+    \begin{align*}
+      \int_{A}f(x)-g(x)\,dx=\underline{\int_{A}}f(x)-g(x)\,dx.
+    \end{align*}
+    Agora, sem perdida de generalidade, nos podemos suponher que $f-g\geq 0$, ja que do contrario podemos definir
+    \begin{align*}
+      \phi(x)= 
+      \begin{cases}
+        1, &\text{ se } f(x)-g(x)\geq 0 \text{,} \\
+        0, &\text{ se } f(x)-g(x)< 0.
+      \end{cases}
+    \end{align*}
+    e como $\phi:A\to\mathbb{R}$ é uma função limitada e $f-g=0$ exceto em um subconjunto de medida nula, então o conjunto do discontínuidades de $\phi$ é de medida nula $\phi$ é integrável e temos que $(f-g)\phi$ e $(f-g)(\phi-1)$ é integrável e $(f-g)\phi\geq 0$ e $(f-g)(\phi-1)\geq 0$, logo
+    \begin{align*}
+      \int_{A}f(x)-g(x)\,dx=\int_{A}(f(x)-g(x))\phi(x)\,dx-\int_{A}(f(x)-g(x))(\phi(x)-1)\,dx.
+    \end{align*}
+    Pelo que se probamos no casso $f-g\geq 0$ podemos provar o caso geral.\\
+    Então, note que pegando $P$ partição de $A$ temos que como $f-g\geq 0$, então
+    \begin{align*}
+      \underline{\int_{A}}f(x)-g(x)\,dx=\sup_{P}\sum_{B\in P}m_{B}Vol(B).
+    \end{align*}
+    Mas como $f-g=0$ exceto em um subconjunto de medida nula, nos temos que no qualquer bloco $B\subseteq A$, existe $x\in B$ tal que $f(x)-g(x)=0$, do contrario nos temos que $f-g\neq 0$ num bloco aberto, o que é um absurdo, pois $f-g=0$ exceto em um subconjunto de medida nula. Logo, temos que para todo $B\in P$ se cumpre que $m_{B}=0$, pelo que temos que
+    \begin{align*}
+      \underline{\int_{A}}f(x)-g(x)=\sup_{P}\sum_{B\in P}m_BVol(B)=\sup_{P}\sum_{B\in P}(0)Vol(B)=0.
+    \end{align*}
+    Assim, temos que
+    \begin{align*}
+      \int_{A}f(x)-g(x)\,dx=0.
+    \end{align*}
+    Logo pela linearidad da integral nos temos que
+    \begin{align*}
+      \int_{A}f(x)\,dx=\int_{A}g(x)\,dx.
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}
