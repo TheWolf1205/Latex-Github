@@ -14,11 +14,13 @@
     \begin{align*}
       dg(x)=df(x)-d\left\langle a,x \right\rangle=df(x)-\left\langle a,1 \right\rangle=df(x)-a.
     \end{align*}
-    Logo temos que $a$ é ponto crítico se $df(a)=a$. Além mais
+    Logo temos que $x$ é ponto crítico de $g$ se $df(x)=a$. Além mais
     \begin{align*}
       Hg(x)=Hf(x).
     \end{align*}
-    Portanto temos que $a$ é ponto crítico degenerado se $\det(Hg(a))=0$.\\
-    Assim, defina $X=\{a\in\mathbb{R}^{m}:df(a)=a\text{ e }det(Hf(a))=0\}$.
+    Portanto temos que se dado $x\in U$ tal que $\det(Hf(x))=0$, então podemos dizer que $a=df(x)$ cumpre ser um ponto crítico degenerado de $g$.\\
+    Assim, definindo $A=\{x\in U:det(Hf(x))=0\}$, temos que $X=df\left( A \right)$.\\
+    Agora, note que se pegamos $x\in A$, então como $det(Hf(x))=0$ temos que $Hf(x)=d^{2}f(x)$ não é invertível, sendo asi considere o seguinte.\\
+    Note que se definimos $F=df:U\subset\mathbb{R}^{m}\to\mathbb{R}^{m}$, ista é uma aplicação de classe $C^1$ (pois $f:U\to\mathbb{R}$ é de classe $C^2$ com $U\subseteq \mathbb{R}^{m}$) e note que $A$ é o conjunto dos pontos os quais $dF$ não é um isomorfismo. Então, afirmamos que $F(A)=df(A)=X$ tém medida nula.\\
   \end{solution}
 \end{homeworkProblem}
