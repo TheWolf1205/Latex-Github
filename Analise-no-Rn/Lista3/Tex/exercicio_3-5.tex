@@ -1,6 +1,106 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[Seção 3-5]
+  Seja $f:A\to\mathbb{R}$ uma função limitada e não negativa no bloco $A\subseteq\mathbb{R}^{m}$. A fim de que $f$ seja integravél, é necessário e suficiente que o conjunto
+  \begin{align*}
+    C(f)=\{(x,y)\in\mathbb{R}^{m+1}:x\in A,0\leq y\leq f(x)\}
+  \end{align*}
+  seja $J$-mensurável. No caso afirmtivo, tem-se
+  \begin{align*}
+    \int_{A}f(x)\,dx=Vol(C(f)).
+  \end{align*}
   \begin{solution}
-    XXX  
+  \textbf{Necessário:}\\
+    Suponha que $f$ é integrável e vamos ver que $C(f)$ é $J$-mensurável.\\
+    Seja $r>0$, logo para cada $x\in A$, defina o cubo de centro $x$ e aresta $r$ como $C(x,r)$, logo temos que $A\subseteq \bigcup_{x\in A}C(x,r)$, mas pelo teorema de Lindelöf, temos que existe uma subcoleção enumerável de cubos taes que $A\subseteq \bigcup_{i=1}^{\infty}C_i$.\\
+    Assim, definamos
+    \begin{align*}
+      C_i(f)=\{(x,y)\in\mathbb{R}^{m+1}:x\in A\cap C_i\text{ e }0\leq y\leq f(x)\}.
+    \end{align*}
+    Agora, note que como $f$ é limitada no bloco $A$, temos que existe $M>0$ tal que $f(x)\in [0,M]$ para todo $x\in A$, logo temos que $C_i(f)\subseteq C_i\times [0,M]$, pelo que temos que $C_i(f)$ é limitado. Portanto, para ver que $C_i(f)$ é J-mensurável, basta ver que $med(Fr(C_i(f)))=0$.\\
+    Então, nos podemos ver o seguinte
+    \begin{align*}
+      Fr(C_i(f))=&\{(x,y)\in \mathbb{R}^{m+1}:x\in A\cap C_i\text{ e }y\in\{0,f(x)\}\text{ ou }x\in D_f\cap C_i\text{ e }y\in\mathbb{R}\}\\
+      =&A\cap C_i\times \{0\}\cup \{(x,f(x)):x\in A\cap C_i\}\cup D_f\cap C_i\times \mathbb{R}\\
+      :=& I+J+K.
+    \end{align*}
+    \begin{itemize}
+      \item Note que $med(I)=0$, ja que como $\{0\}$ é um conjunto de medida nula no $\mathbb{R}$, então $A\cap C_i\times \{0\}$ é um conjunto de medida nula no $\mathbb{R}^{m+1}$.
+      \item Note que $med(K)=0$, ja que como $D_f\cap C_i\subseteq D_f$ e $med(D_f)=0$ (pois $f$ é integrável), então $med(D_f\cap C_i)=0$.
+      \item Vamos ver que $med(J)=0$, note que
+        \begin{align*}
+          J=\{(x,f(x)):x\in A\cap C_i\cap D_f\}\cup\{(x,f(x)):x\in A\cap C_i\setminus D_f\}:=J_1+J_2.
+        \end{align*}
+        Logo note que como $A\cap C_i\cap D_f\subseteq D_f$ e $med(D_f)=0$, então como temos que $J_1\subseteq D_f\times [0,M]$, podemos dizer que $med(J_1)=0$.\\
+        Agora, vamos ver que $J_2$ tem medida nula.\\
+        Note que como $x\in \tilde{J}=A\cap C_i\setminus D_f$, temos que $f$ é contínua no $\tilde{J}$, isto é que dado $\epsilon>0$ e dado $x\in \tilde{J}$, existe $\delta>0$ tal que se $y\in C(x,\delta)$ (cubo de centro $x$ e aresta $\delta$) então $f(y)\in C(f(x),\epsilon)$.\\
+        Assim, observe que dado $\epsilon>0$, temos que para cada $x\in \tilde{J}$ existe $\delta_x>0$ tal que se $y\in C(x,\delta_x)\cap \tilde{J}$, então $f(y)\in C(f(x),\epsilon)$, logo note que $\tilde{J}\subseteq \bigcup_{x\in \tilde{J}}C(x,\delta_x)$, mas como $\tilde{J}\subseteq C_i$ e $\bigcup_{x\in \tilde{J}}C(x,\delta_x)$ é fechado, temos que $\bigcup_{x\in\tilde{J}}C(x,\delta_x)\cap C_i$ é fechado e limitado, logo compacto, pelo que sabemos que existe $k\in\mathbb{Z}^{+}$ tal que $\tilde{J}= \bigcup_{j=1}^{k}C_j$ com $C_j=C(x_j,\delta_{x_j})\cap \tilde{J}$, logo temos que
+        \begin{align*}
+          med(J_2)\leq \sum_{j=1}^{k}med(C_{j}\times C(f(x_j),\epsilon))
+          \leq \sum_{j=1}^{k}med(C_j)\epsilon
+          \leq \epsilon \sum_{j=1}^{k}med(C_j)
+          \leq \epsilon\, med(\tilde{J}).
+        \end{align*}
+        Isto para todo $\epsilon>0$, logo podemos concluir que $med(J_2)=0$, depois $med(J)=0$. 
+    \end{itemize}
+    Assim, temos que $med(Fr(C_i(f)))=0$ e portanto que $C_i(f)$ é J-mesurável.\\
+    Agora, note que $A=\bigcup_{i=1}^{\infty}C_i\cap A$, logo
+    \begin{align*}
+      C(f)=\bigcup_{i=1}^{\infty}C_i(f)=\bigcup_{i=1}^{\infty}\{(x,y)\in\mathbb{R}^{m+1}:A\cap C_i,\text{ e }0\leq y\leq f(x)\}.
+    \end{align*}
+    Portanto, como união numerável de conjuntos J-memsuravéis é J-mensuravél, temos que $C(f)$ é J-mensurável.\\
+  \textbf{Suficiente:}\\
+    Suponha que $C(f)$ é J-mensurável e vamos ver que $f$ é integrável.\\
+    Note que $f$ é uma função limitada e não negativa no bloco $A\subseteq\mathbb{R}^{m}$, então existe um $M>0$ tal que $C(f)\subseteq A\times [0,M]$, logo definindo $\xi:A\times[0,M]\to\mathbb{R}$ dada por
+    \begin{align*}
+      \xi:A\times[0,M]&\to\mathbb{R}\\
+                    (x,y)&\to\begin{cases}
+                      1, &\text{ se } y\leq f(x) \text{,} \\
+                      0, &\text{ se } y>f(x).
+                    \end{cases}
+    \end{align*}
+    Temos que como $C(f)$ é J-mensurável, então $\xi$ é integrável e
+    \begin{align*}
+      \int_{A\times[0,M]}\xi(z)\,dz= Vol(C(f)).
+    \end{align*}
+    Note que como $\xi$ é integrável, temos que dado $\epsilon>0$ existe uma partiçao $P=P_1\times P_2$ com $P_1$ partição de $A$ e $P_2$ partição de $[0,M]$ tal que
+    \begin{equation}\label{eq:S}
+      \sum_{\substack{B_1\in P_1\\ B_2\in P_2}}M_{B_1\times B_2}Vol(B_1)Vol(B_2)-Vol(C(f))<\epsilon.
+    \end{equation}
+    Sem perdida de generalidad, suponja que $\displaystyle \max_{x\in B_1}f(x)\in P_2$ e $\displaystyle \min_{x\in B_1}f(x)\in P_2$ para cada $B_1\in P_1$, isto ja que se pegamos $\tilde{P}_2=P_2\cup\{\max_{x\in B_1}f(x),\min_{x\in B_1}f(x):B_1\in P_1\}$, então $P_2\subseteq \tilde{P}_2$, pelo que temos que $S(\xi, P_1\times P_2)\geq S(\xi,P_1\times\tilde{P}_2)$, logo temos que se $B_2\in \tilde{P}_2$, então a equação \eqref{eq:S} se cumpre.\\
+    Agora, note que como $\max_{x\in B_1}f(x)\in P_2$, temos que ou $B_2\subseteq [0,\max_{x\in B_1}f(x)]$ ou $B_2\cap [0,\max_{x\in B_1}f(x)]=\emptyset$, i.é, que o $\min\{y\in B_2\}> \max_{x\in B_1}f(x)$, logo
+    \begin{align*}
+      M_{B_1\times B_2}=\max_{(x,y)\in B_1\times B_2}\xi(x,y)= 
+      \begin{cases}
+        1, &\text{ se } \displaystyle B_2\subseteq \left[0,\max_{x\in B_1}f(x)\right]\text{,} \\
+        0, &\text{ se } \displaystyle B_2\cap \left[0,\min_{x\in B_1}f(x)\right]=\emptyset.
+      \end{cases}
+    \end{align*}
+    Logo como $\displaystyle \max_{x\in B_1}f(x)\in P_2$, então temos que
+    \begin{align*}
+      \sum_{\substack{B_1\in P_1\\ B_2\in P_2}}M_{B_1\times B_2}Vol(B_1)Vol(B_2)=&\sum_{ B_1\in P_1}\left[\sum_{B_2\cap \left[0,\max_{x\in B_1}f(x)\right]\neq\emptyset}Vol(B_2)\right]Vol(B_1)\\
+      =&\sum_{B_1\in P_1}\max_{x\in B_1}f(x)Vol(B_1)\\
+      =&S(f,P_1).
+    \end{align*}
+    Agora, note que da mesma maneira temos que como $\min_{x\in B_1}f(x)\in P_2$, temos que ou $B_2\subseteq [0,\min_{x\in B_1}f(x)]$ ou $B_2\cap [0,\min_{x\in B_1}f(x)]=\emptyset$, i.é, que o $\min\{y\in B_2\}> \min_{x\in B_1}f(x)$, logo
+    \begin{align*}
+      m_{B_1\times B_2}=\min_{(x,y)\in B_1\times B_2}\xi(x,y)=\begin{cases}
+        1, &\text{ se } B_2\subseteq\displaystyle \left[0,\min_{x\in B_1}f(x)\right]  \text{,} \\
+        0, &\text{ se } B_2\cap \displaystyle\left[0,\min_{x\in B_1}f(x)\right]=\emptyset.
+      \end{cases}
+    \end{align*}
+    Asimm,
+    \begin{align*}
+      \sum_{\substack{B_1\in P_1\\ B_2\in P_2}}m_{B_1\times B_2}Vol(B_1)Vol(B_2)=&\sum_{B_1\in P_1}\left[\sum_{B_2\subseteq \left[0,\min_{x\in B_1}f(x)\right]\neq\emptyset}Vol(B_2)\right]Vol(B_1)\\
+      =&\sum_{B_1\in P_1}\min_{x\in B_1}f(x)Vol(B_1)\\
+      =&s(f,P_1).      
+    \end{align*}
+    Logo como pela caracterização de funções integráveis temos que se $S(\xi,P)-s(\xi,P)<\epsilon$, então $S(f,P_1)-s(f,P_1)<\epsilon$, pelo que podemos afirmar que $f$ é uma função integrável.\\
+    Além mais, pela equação \eqref{eq:S} temos que
+    \begin{align*}
+      S(f,P_1)-Vol(C(f))<\epsilon.
+    \end{align*}
+    Pelo que podemos concluir que
+    \begin{align*}
+      \int_{A}f(x)\,dx=Vol(C(f)).
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}

@@ -1,6 +1,8 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[Seção 4-3]
+  Sejam $A\subseteq \mathbb{R}^{m}$ e $B\subseteq \mathbb{R}^{n}$ blocos fechados, Suponha que $f:A\times B\to\mathbb{R}$ é uma função integrável. Então existe um conjunto de medida $m$-dimensional nula $X\subseteq A$ tal que $f_x:B\to\mathbb{R}$ é integrável para todo $x\in A\setminus X$, onde $f_x(y)=f(x,y)$. 
   \begin{solution}
-    XXX  
+    Note que como $f$ é uma função integrável, temos que pelo críterio de Lebesgue a $med(D_f)=0$.\\
+    Agora note que se $y\in D_{f_x}$, então $y\in D_{f}$.\\
+    Definamos $X=\{x\in A: med(D_{f_x})\neq 0\}$ com a medida $n$-dimensional. 
   \end{solution}
 \end{homeworkProblem}

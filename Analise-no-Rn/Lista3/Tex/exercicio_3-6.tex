@@ -1,6 +1,30 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[Seção 3-6]
+  Sejam $X\subseteq \mathbb{R}^{n}$ um conjunto J-mesurável, $x_0\in X$ e $f:X\to\mathbb{R}$ uma função contínua.\\
+  Para cada $n\in\mathbb{N}$, seja $X_n$ um conjunto J-mesurável de volume positivo, tal que $X_n\subseteq X\cap B(x_0,\frac{1}{n})$. Prove que
+  \begin{align*}
+    f(x_0)=\lim_{n \to \infty}\frac{1}{Vol(X_n)}\int_{X_n}f(x)\,dx.
+  \end{align*}
   \begin{solution}
-    XXX  
+    Note que como $|f-f(x_0)|$ é contínua no bloco $X$ J-mensurável, temos que $|f-f(x_0)|$ é contínua no cada bloco $X_n$ J-mensurável, pelo que temos que $|f-f(x_0)|$ é integrável no cada bloco $X_n$.\\
+    Agora, note que como $f$ é contínua em $x_0\in X_n$ para todo $n\in\mathbb{Z}^{+}$, temos que dado $\epsilon>0$ existe $\delta>0$ tal que se $x\in B(x_0,\delta)$, então $|f(x)-f(x_0)|<\epsilon$.\\
+    Assim, dado $\epsilon>0$, note que se pegamos $n\in \mathbb{Z}^{+}$ tal que $\frac{1}{n}<\delta$, então temos que se $x\in X\cap B(x_0,\frac{1}{n})$, então $|f(x)-f(x_0)|<\epsilon$.\\
+    Portanto temos o seguinte
+    \begin{align*}
+      \frac{1}{Vol(X_n)}\int_{X_n}|f(x)-f(x_0)|\,dx\leq &\frac{1}{Vol(X_n)}\int_{X_n}\epsilon\,dx\\
+      \leq&\frac{1}{Vol(X_n)}Vol(X_n)\epsilon\\
+      \leq& \epsilon.
+    \end{align*}
+    Assim, temos que
+    \begin{align*}
+      \lim_{n \to \infty}\frac{1}{Vol(X_n)}\int_{X_n}|f(x)-f(x_0)|\,dx=0.
+    \end{align*}
+    Logo note que isto implica que
+    \begin{align*} 
+      \lim_{n \to \infty}\frac{1}{Vol(X_n)}\int_{X_n}f(x)-f(x_0)\,dx=0.
+    \end{align*}
+    O que nos permite concluir que
+    \begin{align*}
+      f(x_0)=\lim_{n \to \infty}\frac{1}{Vol(X_n)}\int_{X_n}f(x)\,dx.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}
