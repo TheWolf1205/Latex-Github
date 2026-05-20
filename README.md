@@ -21,6 +21,10 @@ Repositorio para subir trabajos o talleres de la U :p.
 - Lista 3.
   - [Exercícios](<./Analise-no-Rn/Lista3/Exercícios 3 - Análise no Rn.pdf>) 
   - [Solução](<./Analise-no-Rn/Lista3/Tex/Lista 3 Análise no Rn.pdf>)
+
+- Prova 1.
+  - [Prova](<./Analise-no-Rn/Prova1/Prova_1_Analise_no_Rn.pdf>) 
+  - [Solução](<./Analise-no-Rn/Prova1/Gabarito_Prova 1_Analise_no_Rn.pdf>)  
 </details>
 
 <details>
@@ -30,12 +34,45 @@ Repositorio para subir trabajos o talleres de la U :p.
 - Lista 1.
   - [Exercícios](<./Algebra-Avancada/Lista1/ExerciciosGrupos1.pdf>) 
   - [Solução](<./Algebra-Avancada/Lista1/Tex/Lista 1 Álgebra Avançada.pdf>) 
+
 - Lista 2.
   - [Exercícios](<./Algebra-Avancada/Lista2/ExerciciosGrupos2.pdf>) 
   - [Solução](<./Algebra-Avancada/Lista2/Tex/Lista 2 Álgebra Avançada.pdf>) 
+
 - Lista 3.
   - [Exercícios](<./Algebra-Avancada/Lista3/ExerciciosGrupos3.pdf>) 
   - [Solução](<./Algebra-Avancada/Lista3/Tex/Lista 3 Álgebra Avançada.pdf>) 
+
+- Lista 4.
+  - [Exercícios](<./Algebra-Avancada/Lista4/ExerciciosGrupos4.pdf>) 
+
+- Lista 5.
+  - [Exercícios](<./Algebra-Avancada/Lista5/ExerciciosGrupos5.pdf>) 
+  - [Solução](<./Algebra-Avancada/Lista5/Tex/Lista 5 Álgebra Avançada.pdf>) 
+
+- Lista 6.
+  - [Exercícios](<./Algebra-Avancada/Lista6/ExerciciosGrupos6.pdf>) 
+  - [Solução](<./Algebra-Avancada/Lista6/Tex/Lista 6 Álgebra Avançada.pdf>) 
+
+- Lista 7.
+  - [Exercícios](<./Algebra-Avancada/Lista7/ExerciciosGrupos7.pdf>) 
+  - [Solução](<./Algebra-Avancada/Lista7/Tex/Lista 7 Álgebra Avançada.pdf>) 
+
+- Lista 9.
+  - [Exercícios](<./Algebra-Avancada/Lista9/ExerciciosGrupos9.pdf>) 
+  - [Solução](<./Algebra-Avancada/Lista9/Tex/Lista 9 Álgebra Avançada.pdf>) 
+
+- Lista Módulos.
+  - [Exercícios](<./Algebra-Avancada/ExercicioModulos/ExerciciosGruposModulos.pdf>) 
+  - [Solução](<./Algebra-Avancada/ExercicioModulos/Tex/Lista Modulos Álgebra Avançada.pdf>) 
+
+- Lista día 12.
+  - [Exercícios](<./Algebra-Avancada/ExerciciosCumple/ExerciciosModulos_AA_2026.pdf>) 
+  - [Solução](<./Algebra-Avancada/ExerciciosCumple/Tex/Lista dia 12 Álgebra Avançada.pdf>) 
+
+- Prova 2.
+  - [Exercícios](<./Algebra-Avancada/Prova2/Prova2 Álgebra Avançada.pdf>) 
+  - [Solução](<./Algebra-Avancada/Prova2/Tex/Solução Prova 2 Álgebra Avançada.pdf>) 
 </details>
 
 <details>
