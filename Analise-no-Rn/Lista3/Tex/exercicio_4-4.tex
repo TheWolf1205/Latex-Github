@@ -1,6 +1,54 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[Seção 4-4]
+  (Princípio de Cavalieri) Sejam $X,Y\subseteq \mathbb{R}^{m+1}$ conjuntos J-mensuráveis tais que, para cada $t\in\mathbb{R}$, as seções
+  \begin{align*}
+    X_{t}=\{x\in\mathbb{R}^{m}:(x,t)\in X\},\quad Y_t=\{y\in\mathbb{R}^{m}:(y,t)\in Y\}
+  \end{align*}
+  são J-mensuráveis em $\mathbb{R}^{m}$ e satisfazem $Vol(X_t)=Vol(Y_t)$. Então $Vol(X)=Vol(Y)$. 
   \begin{solution}
-    XXX  
+    Note que como $X_t$ é J-mensurável, temos que se definimos $\xi_{X_t}:\mathbb{R}^{m}\to\mathbb{R}$ dada por
+    \begin{align*}
+      \xi_{X_t}(x)=\begin{cases}
+        1, &\text{ se } (x,t)\in X \text{,} \\
+        0, &\text{ no outro caso }.
+      \end{cases}
+    \end{align*}
+    é uma função integrável e cumpre
+    \begin{align*}
+      \int_{\mathbb{R}^{m}}\xi_{X_{t}}(x)\,dt=Vol(X_t).
+    \end{align*}
+    Agora, note que se definimos $\xi_{X}:\mathbb{R}^{m}\times\mathbb{R}\to\mathbb{R}$ dada por 
+    \begin{align*}
+      \xi_{X}(x,t)=\begin{cases}
+        1, &\text{ se } (x,t)\in X \text{,} \\
+        0, &\text{ no outro caso }.
+      \end{cases}
+    \end{align*}
+    Então dado $t\in\mathbb{R}$ fixo, temos que $\xi_{X}(x,t)=\xi_{X_t}(x)$ e
+    \begin{align*}
+      \int_{\mathbb{R}}\xi_{X}(x,t)\,dx=Vol(X_t).
+    \end{align*}
+    Más note que como $X$ é J-mensurável, temos que
+    \begin{align*}
+      \int_{\mathbb{R}^{m+1}}\xi_{X}(z)\,dz=Vol(X).
+    \end{align*}
+    Logo pelo anterior e o teorema da integração repetida temos que
+    \begin{align*}
+      Vol(X)=&\int_{\mathbb{R}^{m+1}}\xi_{X}(z)\,dz\\
+      =&\int_{\mathbb{R}}\int_{\mathbb{R}^{m}}\xi_{X}(x,t)\,dx\,dt\\
+      =&\int_{\mathbb{R}}\int_{\mathbb{R}^{m}}\xi_{X_t}(x)\,dx\,dt\\
+      =&\int_{\mathbb{R}}Vol(X_t)\,dt.
+    \end{align*}
+    Logo note que podemos fazer o mesmo para $Y_t$, isto é que
+    \begin{align*}
+      Vol(Y)=&\int_{\mathbb{R}^{m+1}}\xi_{Y}(z)\,dz\\
+      =&\int_{\mathbb{R}}\int_{\mathbb{R}^{m}}\xi_{Y}(y,t)\,dy\,dt\\
+      =&\int_{\mathbb{R}}\int_{\mathbb{R}^{m}}\xi_{Y_t}(y)\,dy\,dt\\
+      =&\int_{\mathbb{R}}Vol(Y_t)\,dt.
+    \end{align*}
+    Logo temos que como $Vol(X_t)=Vol(Y_t)$ para cada $t\in \mathbb{R}$, então 
+    \begin{align*}
+      Vol(X)=\int_{\mathbb{R}}Vol(X_{t})\,dt=\int_{\mathbb{R}}Vol(Y_t)\,dt=Vol(Y).
+    \end{align*}
+    O que conclui a prova.
   \end{solution}
 \end{homeworkProblem}

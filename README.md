@@ -17,6 +17,10 @@ Repositorio para subir trabajos o talleres de la U :p.
 - Lista 2.
   - [Exercícios](<./Analise-no-Rn/Lista2/Exercícios 2 - Análise no Rn.pdf>) 
   - [Solução](<./Analise-no-Rn/Lista2/Tex/Lista 2 Análise no Rn.pdf>)
+
+- Lista 3.
+  - [Exercícios](<./Analise-no-Rn/Lista3/Exercícios 3 - Análise no Rn.pdf>) 
+  - [Solução](<./Analise-no-Rn/Lista3/Tex/Lista 3 Análise no Rn.pdf>)
 </details>
 
 <details>

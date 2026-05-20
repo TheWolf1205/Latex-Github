@@ -32,11 +32,11 @@
         Logo note que como $A\cap C_i\cap D_f\subseteq D_f$ e $med(D_f)=0$, então como temos que $J_1\subseteq D_f\times [0,M]$, podemos dizer que $med(J_1)=0$.\\
         Agora, vamos ver que $J_2$ tem medida nula.\\
         Note que como $x\in \tilde{J}=A\cap C_i\setminus D_f$, temos que $f$ é contínua no $\tilde{J}$, isto é que dado $\epsilon>0$ e dado $x\in \tilde{J}$, existe $\delta>0$ tal que se $y\in C(x,\delta)$ (cubo de centro $x$ e aresta $\delta$) então $f(y)\in C(f(x),\epsilon)$.\\
-        Assim, observe que dado $\epsilon>0$, temos que para cada $x\in \tilde{J}$ existe $\delta_x>0$ tal que se $y\in C(x,\delta_x)\cap \tilde{J}$, então $f(y)\in C(f(x),\epsilon)$, logo note que $\tilde{J}\subseteq \bigcup_{x\in \tilde{J}}C(x,\delta_x)$, mas como $\tilde{J}\subseteq C_i$ e $\bigcup_{x\in \tilde{J}}C(x,\delta_x)$ é fechado, temos que $\bigcup_{x\in\tilde{J}}C(x,\delta_x)\cap C_i$ é fechado e limitado, logo compacto, pelo que sabemos que existe $k\in\mathbb{Z}^{+}$ tal que $\tilde{J}= \bigcup_{j=1}^{k}C_j$ com $C_j=C(x_j,\delta_{x_j})\cap \tilde{J}$, logo temos que
+        Assim, observe que dado $\epsilon>0$, temos que para cada $x\in \tilde{J}$ existe $\delta_x>0$ tal que se $y\in C(x,\delta_x)\cap \tilde{J}$, então $f(y)\in C(f(x),\epsilon)$, logo note que $\tilde{J}\subseteq \bigcup_{x\in \tilde{J}}C(x,\delta_x)$, mas pelo teorema de Lindelöf, temos que existem enumeráveis $C_j$ tales que $\tilde{J}= \bigcup_{j=1}^{\infty}C_j$ com $C_j=C(x_j,\delta_{x_j})\cap \tilde{J}$, logo temos que
         \begin{align*}
-          med(J_2)\leq \sum_{j=1}^{k}med(C_{j}\times C(f(x_j),\epsilon))
-          \leq \sum_{j=1}^{k}med(C_j)\epsilon
-          \leq \epsilon \sum_{j=1}^{k}med(C_j)
+          med(J_2)\leq \sum_{j=1}^{\infty}med(C_{j}\times C(f(x_j),\epsilon))
+          \leq \sum_{j=1}^{\infty}med(C_j)\epsilon
+          \leq \epsilon \sum_{j=1}^{\infty}med(C_j)
           \leq \epsilon\, med(\tilde{J}).
         \end{align*}
         Isto para todo $\epsilon>0$, logo podemos concluir que $med(J_2)=0$, depois $med(J)=0$. 
@@ -46,7 +46,7 @@
     \begin{align*}
       C(f)=\bigcup_{i=1}^{\infty}C_i(f)=\bigcup_{i=1}^{\infty}\{(x,y)\in\mathbb{R}^{m+1}:A\cap C_i,\text{ e }0\leq y\leq f(x)\}.
     \end{align*}
-    Portanto, como união numerável de conjuntos J-memsuravéis é J-mensuravél, temos que $C(f)$ é J-mensurável.\\
+    Portanto, como união numerável de conjuntos J-mensuravéis é J-mensuravél, temos que $C(f)$ é J-mensurável.\\
   \textbf{Suficiente:}\\
     Suponha que $C(f)$ é J-mensurável e vamos ver que $f$ é integrável.\\
     Note que $f$ é uma função limitada e não negativa no bloco $A\subseteq\mathbb{R}^{m}$, então existe um $M>0$ tal que $C(f)\subseteq A\times [0,M]$, logo definindo $\xi:A\times[0,M]\to\mathbb{R}$ dada por
@@ -76,7 +76,7 @@
     \end{align*}
     Logo como $\displaystyle \max_{x\in B_1}f(x)\in P_2$, então temos que
     \begin{align*}
-      \sum_{\substack{B_1\in P_1\\ B_2\in P_2}}M_{B_1\times B_2}Vol(B_1)Vol(B_2)=&\sum_{ B_1\in P_1}\left[\sum_{B_2\cap \left[0,\max_{x\in B_1}f(x)\right]\neq\emptyset}Vol(B_2)\right]Vol(B_1)\\
+      \sum_{\substack{B_1\in P_1\\ B_2\in P_2}}M_{B_1\times B_2}Vol(B_1)Vol(B_2)=&\sum_{ B_1\in P_1}\left[\sum_{B_2\subseteq \left[0,\max_{x\in B_1}f(x)\right]}Vol(B_2)\right]Vol(B_1)\\
       =&\sum_{B_1\in P_1}\max_{x\in B_1}f(x)Vol(B_1)\\
       =&S(f,P_1).
     \end{align*}
@@ -87,9 +87,9 @@
         0, &\text{ se } B_2\cap \displaystyle\left[0,\min_{x\in B_1}f(x)\right]=\emptyset.
       \end{cases}
     \end{align*}
-    Asimm,
+    Assim,
     \begin{align*}
-      \sum_{\substack{B_1\in P_1\\ B_2\in P_2}}m_{B_1\times B_2}Vol(B_1)Vol(B_2)=&\sum_{B_1\in P_1}\left[\sum_{B_2\subseteq \left[0,\min_{x\in B_1}f(x)\right]\neq\emptyset}Vol(B_2)\right]Vol(B_1)\\
+      \sum_{\substack{B_1\in P_1\\ B_2\in P_2}}m_{B_1\times B_2}Vol(B_1)Vol(B_2)=&\sum_{B_1\in P_1}\left[\sum_{B_2\subseteq \left[0,\min_{x\in B_1}f(x)\right]}Vol(B_2)\right]Vol(B_1)\\
       =&\sum_{B_1\in P_1}\min_{x\in B_1}f(x)Vol(B_1)\\
       =&s(f,P_1).      
     \end{align*}

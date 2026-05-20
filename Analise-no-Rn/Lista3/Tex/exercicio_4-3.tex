@@ -1,8 +1,43 @@
 \begin{homeworkProblem}[Seção 4-3]
   Sejam $A\subseteq \mathbb{R}^{m}$ e $B\subseteq \mathbb{R}^{n}$ blocos fechados, Suponha que $f:A\times B\to\mathbb{R}$ é uma função integrável. Então existe um conjunto de medida $m$-dimensional nula $X\subseteq A$ tal que $f_x:B\to\mathbb{R}$ é integrável para todo $x\in A\setminus X$, onde $f_x(y)=f(x,y)$. 
   \begin{solution}
-    Note que como $f$ é uma função integrável, temos que pelo críterio de Lebesgue a $med(D_f)=0$.\\
-    Agora note que se $y\in D_{f_x}$, então $y\in D_{f}$.\\
-    Definamos $X=\{x\in A: med(D_{f_x})\neq 0\}$ com a medida $n$-dimensional. 
+    Note que como $f$ é uma função integrável, temos que pelo críterio de Lebesgue o conjunto $D_f$ tem medida nula.\\
+    Agora note que se $y\in D_{f_x}$, então $(x,y)\in D_{f}$.\\
+    Definamos $X=\{x\in A: med(D_{f_x})\neq 0\}$ com a medida $n$-dimensional.\\
+    Entao, note que como $med(D_f)=0$, temos que dado $\epsilon>0$ existem blocos $\{C_{ij}\}_{i,j\in\mathbb{Z}^{+}}$ taes que
+    \begin{align*}
+      D_f\subseteq \bigcup_{i,j\in\mathbb{Z}^{+}}C_{ij}\quad\text{e}\quad \sum_{i,j\in\mathbb{Z}^{+}}med(C_{ij})<\frac{\epsilon}{2}.
+    \end{align*}
+    Agora, note que $C_{ij}=A_i\times B_j$ com $A_i$ bloco de $\mathbb{R}^{m}$ e $B_j$ bloco de $\mathbb{R}^{n}$, logo temos que $D_{f_x}\subseteq\bigcup_{j\in\mathbb{Z}^{+}}B_j$, logo temos que
+    \begin{align*}
+      med(D_{f_x})\leq\sum_{j\in\mathbb{Z}^{+}}med(B_j).
+    \end{align*}
+    Agora note que como $X\subseteq \bigcup_{i\in\mathbb{Z}^{+}}A_i$, temos que $X=\bigcup_{i\in\mathbb{Z}^{+}}A_i\cap X$.\\
+    Então, seja $P$ a partição de $X$ dada pelos blocos $A_i\cap X$, logo temos que 
+    \begin{align*}
+      S(med(D_{f_{x}}),P)=\sum_{i\in\mathbb{Z}^{+}}\max_{x\in A_i}med(D_{f_x})Vol(A_i)\leq\sum_{i,j\in\mathbb{Z}^{+}}Vol(B_j)Vol(A_i)\leq\frac{\epsilon}{2}.
+    \end{align*}
+    E
+    \begin{align*}
+      s(med(D_{f_{x}}),P)=\sum_{i\in\mathbb{Z}^{+}}\min_{x\in A_i}med(D_{f_x})Vol(A_i)\leq\sum_{i,j\in\mathbb{Z}^{+}}Vol(B_j)Vol(A_i)\leq\frac{\epsilon}{2}.
+    \end{align*}
+    Logo temos que
+    \begin{align*}
+      S(med(D_{f_x}),P)-s(med(D_{f_x}),P)\leq \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon.
+    \end{align*}
+    Pelo que podemos afirmar que $med(D_{f_x})$ é integrável no $X$ e como
+    \begin{align*}
+      \underline{\int_{X}}med(D_{f_x})\,dx=\inf_{P}S(med(D_{f_x}),P)\leq \epsilon,
+    \end{align*}
+    para todo $\epsilon>0$, temos que
+    \begin{align*}
+      \int_{X}med(D_{f_x})\,dx=0.
+    \end{align*}
+    Logo como $med(D_{f_x})=0$ se $x\in A\setminus X$, então temos que
+    \begin{align*}
+      \int_{A}med(D_{{f_x}})\,dx=0.
+    \end{align*}
+    Logo, note que como $med(D_{f_x})\geq 0$ para todo $x\in A$, temos que a $med(D_{f_x})=0$ exepto no conjunto de discontinuidades que pelo críterio de Lebesgue, é de medido nula, isto é, $med(X)=0$.\\
+    Assim, temos que se pegamos $x\in A\setminus X$, então $med(D_{f_x})=0$, o que permite concluir pelo criterio de Lebesgue que $f_x$ é integrável. 
   \end{solution}
 \end{homeworkProblem}

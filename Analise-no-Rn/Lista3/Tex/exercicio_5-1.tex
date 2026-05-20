@@ -1,6 +1,21 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[Seção 5-1]
+  Seja $f:U\to\mathbb{R}^{m}$ de classe $C^{1}$ no aberto $U\subseteq\mathbb{R}^{m}$. Para algúm $a\in U$, seja $f^{\prime}(a):\mathbb{R}^{m}\to\mathbb{R}^{m}$ um isomorfismo. Mostre que
+  \begin{align*}
+    \lim_{r \to 0}\frac{Vol f(B[a;r])}{Vol B[a;r]}=|det f^{\prime}(a)|.
+  \end{align*}
   \begin{solution}
-    XXX  
+    Note que como $f^{\prime}(a)$ é um isomorfismo, temos que $f^{\prime}(a)$ é invertível, logo temos que pelo teorema da função inversa, existe um $\delta>0$ tal que $f:B(a;\delta)\to f(B(a;\delta))$ é um difeomorfismo.\\
+    Agora, note que dado $r>0$ com $r<\delta$, temos que $B[a;r]$ é um conjunto compacto J-mensurável de $B(a;\delta)$. Logo como $f$ é um difeomorfismo local, então $f(B[a;r])$ é J-mensurável.\\
+    Assim, temos que $\xi_{f(B[a:r])}:f(B[a:r])\to\mathbb{R}$ é integrável e pelo teorema da mudançã de variaveis temos que 
+    \begin{align*}
+      \int_{f(B[a;r])}\xi_{f(B[a;r])}(x)\,dx=\int_{B[a;r]}\xi_{f(B[a;r])}(f(x))|det f^{\prime}(x)|\,dx=\int_{B[a;r]}|det f^{\prime}(x)|\,dx.
+    \end{align*}
+    Agora, note que como $f\in C^{1}$, então $|det f^{\prime}(x)|$ é contínua, e como $B[a;r]$ e J-mensuravel para todo $r>0$, temos que se $r<\delta$, então
+    \begin{align*}
+      \lim_{r \to 0}\frac{Vol(f(B[a;r]))}{Vol(B[a:r])}=&\lim_{r \to 0}\frac{1}{Vol(B[a;r])}\int_{f(B[a;r])}\xi_{f(B[a;r])}(x)\,dx\\
+      =&\lim_{r \to 0}\frac{1}{Vol(B[a;r])}\int_{B[a;r]}|det f^{\prime}(x)|\,dx\\
+      =&|det f^{\prime}(a)|.
+    \end{align*}
+    O que nos permite concluir o exercício.
   \end{solution}
 \end{homeworkProblem}

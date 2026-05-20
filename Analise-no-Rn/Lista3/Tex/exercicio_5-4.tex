@@ -1,6 +1,43 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[Seção 5-4]
+  Seja $f:\mathbb{R}^{m}\to\mathbb{R}^{m}$ um difeomorfismo tal que $f(B)\subseteq B$, onde $B=\overline{B}(0,1)$ é a bola unitária fechada, e $|det f^{\prime}(x)|<1$ para todo $x\in B$. Prove que, para toda função contínua $g:B\to\mathbb{R}$,
+  \begin{align*}
+    \lim_{n \to \infty}\int_{f^{n}(B)}g(x)\,dx=0,
+  \end{align*}
+  onde $f^{n}=f\circ f\circ \cdots\circ f$ ($n$ vezes). 
   \begin{solution}
-    XXX  
+    Note que como $f$ é um difeomorfismo e $B$ é um conjunto compácto $J$-mensurável, temos que $f(B)$ é J-mensurável e como $g:B\to\mathbb{R}$ é integrável (pois é contínua) temos que pelo teorema da mudanza de varíaveis
+    \begin{align*}
+      \int_{f(B)}|g(x)|\,dx=\int_{B}|g(f(x))||det f^{\prime}(x)|\,dx.
+    \end{align*}
+    Agora, raciocinando da mesma maneira induivamente, temos que
+    \begin{align*}
+      \int_{f^{n}(B)}|g(x)|\,dx=\int_{B}|g(f^{n}(x))||det (f^{n})^{\prime}(x)|\,dx.
+    \end{align*}
+    Más, note que pela regra da cadeia temos que
+    \begin{align*}
+      (f^{n})^{\prime}(x)=f^{\prime}(f^{n-1}(x))(f^{n-1})^{\prime}(x)=\prod_{i=0}^{n-1}f^{\prime}(f^{i}(x)),
+    \end{align*}
+    onde $f^{0}(x)=x$.\\
+    Logo como o determinante é multiplicativo, temos que
+    \begin{align*}
+      |det (f^{n})^{\prime}(x)|=\prod_{i=0}^{n-1}|det f^{\prime}(f^{i}(x))|.
+    \end{align*}
+    Agora, note que como $f\in C^{1}$ e $B$ é compacto, então existe $c<1$ tal que $|det f^{\prime}(x)|\leq c<1$ para todo $x\in B$. Portanto, como $f^{i}(B)\subseteq B$ para todo $i\in\mathbb{Z}^{+}$, temos que
+    \begin{align*}
+      |det (f^{n})^{\prime}(x)|=\prod_{i=0}^{n-1}|det f^{\prime}(f^{i}(x))|\leq\prod_{i=0}^{n}c\leq c^{n}.
+    \end{align*}
+    Por outro lado, como $g$ é contínua, temos que existe $M>0$ tal que $|g(x)|<M$ para todo $x\in B$, por lo que temos que usando todo o anterior se cumpre que
+    \begin{align*}
+      \int_{f^{n}(B)}|g(x)|\,dx=\int_{B}|g(f^{n}(x))||det(f^{n})^{\prime}(x)|\,dx\leq \int_{B}Mc^{n}\,dx\leq Vol(B)Mc^{n}.
+    \end{align*}
+    Pelo que temos que como $c<1$, então
+    \begin{align*}
+      \lim_{n \to \infty}\left| \int_{f^{n}(B)}g(x)\,dx \right|\leq\lim_{n \to \infty}\int_{f^{n}(B)}|g(x)|\,dx\leq \lim_{n \to \infty}Vol(B)Mc^{n}=0.
+    \end{align*}
+    Logo temos que
+    \begin{align*}
+      \lim_{n \to \infty}\int_{f^{n}}g(x)\,dx=0.
+    \end{align*}
+    O que nos permite concluir a prova.
   \end{solution}
 \end{homeworkProblem}

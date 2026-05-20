@@ -12,15 +12,98 @@
   \begin{solution}
     Note que
     \begin{align*}
-      dg(x)=df(x)-d\left\langle a,x \right\rangle=df(x)-\left\langle a,1 \right\rangle=df(x)-a.
+      \nabla g(x)=\nabla f(x)-\nabla \left\langle a,x \right\rangle=\nabla f(x)-\left\langle a,1 \right\rangle=\nabla f(x)-a.
     \end{align*}
-    Logo temos que $x$ é ponto crítico de $g$ se $df(x)=a$. Além mais
+    Logo temos que $x$ é ponto crítico de $g$ se $\nabla f(x)=a$. Além mais
     \begin{align*}
       Hg(x)=Hf(x).
     \end{align*}
-    Portanto temos que se dado $x\in U$ tal que $\det(Hf(x))=0$, então podemos dizer que $a=df(x)$ cumpre ser um ponto crítico degenerado de $g$.\\
-    Assim, definindo $A=\{x\in U:det(Hf(x))=0\}$, temos que $X=df\left( A \right)$.\\
-    Agora, note que se pegamos $x\in A$, então como $det(Hf(x))=0$ temos que $Hf(x)=d^{2}f(x)$ não é invertível, sendo asi considere o seguinte.\\
-    Note que se definimos $F=df:U\subset\mathbb{R}^{m}\to\mathbb{R}^{m}$, ista é uma aplicação de classe $C^1$ (pois $f:U\to\mathbb{R}$ é de classe $C^2$ com $U\subseteq \mathbb{R}^{m}$) e note que $A$ é o conjunto dos pontos os quais $dF$ não é um isomorfismo. Então, afirmamos que $F(A)=df(A)=X$ tém medida nula.\\
+    Portanto temos que se dado $x\in U$ tal que $\det(Hf(x))=0$, então podemos dizer que $a=\nabla f(x)$ cumpre ser um ponto crítico degenerado de $g$.\\
+    Assim, definindo $S=\{x\in U:det(Hf(x))=0\}$, temos que $X=\nabla f\left( S \right)$, pelo que vamos ver que $X$ tem medida nula.\\
+    Note que como $f\in C^{2}$, então $\nabla f:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{m}$ é $C^{1}$.\\
+    Agora, observe que dado $r>0$ como $U\subseteq \bigcup_{x\in U}C(x,r)$ (onde $C(x,r)$ são os cubos do centro $x$ e aresta $r$), logo pelo teorema de Lindelöf temos que existem $C_i$ enumeráveis taes que $U\subseteq \bigcup_{i=1}^{\infty}C_i$.\\
+    Depois, tome $k\in\mathbb{Z}^{+}$ e considere a partição do cubo $C_i$ feita pelos cubos da aresta $\frac{r}{k}$
+    \begin{center}
+      \begin{tikzpicture}[scale=3]
+        % Parámetro
+        \def\k{3}
+        % Rejilla interna
+        \foreach \i in {0,...,\k} {
+            % Líneas verticales
+            \draw[gray] (\i/\k,0) -- (\i/\k,1);
+            % Líneas horizontales
+            \draw[gray] (0,\i/\k) -- (1,\i/\k);
+        }
+       
+        \draw[
+          decorate,
+          decoration={brace, mirror, amplitude=4pt}
+        ]
+        (0,0) -- (1,0)
+        node[midway, below=6pt] {$r$};
+        \draw[
+          decorate,
+          decoration={brace, amplitude=4pt}
+        ]
+        (0,0) -- (0,0.33)
+        node[midway, left=6pt] {$\frac{r}{k}$};
+      \end{tikzpicture}
+    \end{center}
+    Pelo que temos $k^{m}$ cubos $c_j$ taes que $C_i\subseteq \bigcup_{i=1}^{\infty}C_j$ da aresta $\frac{r}{k}$ e volúmen $\left( \frac{r}{k} \right)^{m}$.\\
+    Considere $T=\{x\in C_i:det(Hf(x))=0\}$ e pelo cada $j$ tal que $T\cap C_j\neq\emptyset$, pegamos $x_j\in T\cap C_j$.\\
+    Agora, note que como $det(Hf(x_j))=0$, temos que não é invertível, logo pelo teorema de núcleo e imágem temos que $Hf(x_i)(\mathbb{R}^{m})$ tem dimensão $\leq m-1$.\\
+    Depois, como $\nabla f\in C^{1}$ temos que
+    \begin{align*}
+      \nabla f(x)=\nabla f(x_j)+Hf(x_j)(x-x_j)+r(x-x_j),\quad\text{onde}\lim_{x \to x_j}\frac{r(x-x_j)}{|x-x_j|}=0.
+    \end{align*}
+    Isto é, que dado $\epsilon>0$, existe $\delta>0$ tal que se $|x-x_j|<\delta$, então $\frac{r(x-x_j)}{|x-x_j|}<\epsilon$, que é o mesmo que $r(x-x_j)<\epsilon|x-x_j|$.\\
+    Portanto, seja $k$ tal que $\frac{r}{k}<\delta$, logo temos que para todo $x\in C_j$ se cumpre que $|x-x_j|<\frac{r}{k}$ e portanto 
+    \begin{align*}
+      r(x-x_j)<\epsilon|x-x_j|\leq \epsilon \frac{r}{k}. 
+    \end{align*}
+    Agora, note que como $Hf(x)$ é contínua, temos que se pegamos $x\in C_{i}$ como $C_i$ é um conjunto limitado, existe $c$ tal que $c=\sup_{x\in C_i}|Hf(x)|$, logo temos que para todo $x\in C_j$ se cumpre que
+    \begin{align*}
+      |Hf(x_j)\cdot (x-x_j)|\leq c|x-x_j|\leq c\frac{r}{k}.
+    \end{align*}
+    Assim, temos que pelo anterior para todo $x\in C_j$, o ponto $\nabla(x)=\nabla(x_j)+Hf(x_j)(x-x_j)$ pertenece no cubo de centro $\nabla(x_j)$ e aresta $2c\frac{r}{k}$, pois
+    \begin{align*}
+      \nabla(x)\in \{\nabla f(x_j)+Hf(x_j)(x-x_j):x\in C_j\}\subseteq C\left(\nabla f(x_j),2c\frac{r}{k}\right).
+    \end{align*}
+    Agora, note que como a dimensão da imágem de $Hf(x_j)$ é de dimensão $\leq m-1$, temos que a dimensão do cubo $C(\nabla f(x_j),2c\frac{r}{k})$ é de dimensão $\leq m-1$.\\
+    Portanto, dado $\overline{\epsilon}>0$, considere o paralelepípedo retangular $P_j$ em $\mathbb{R}^{m}$ dado por
+    \begin{align*}
+      P_{j}=C\left(\nabla f(x_j),2c\frac{r}{k}\right)\times \left[0,2\epsilon \frac{r}{k}\right].
+    \end{align*}
+    Logo temos que
+    \begin{align*}
+      Vol(P_j)=2^{m}\left( \frac{r}{k} \right)^{m}c^{m-1}\overline{\epsilon}.
+    \end{align*}
+    Assim, como $C_i\subseteq \bigcup_{j=1}^{k^{m}}C_j$, temos que
+    \begin{align*}
+      med(\nabla f(C_i))\leq&\sum_{j=1}^{k^{m}}med(\nabla(f(C_j)))\\
+      \leq&\sum_{i=1}^{k^{m}}med(P_j)\\
+      \leq&\sum_{i=1}^{k^{m}}2^{m}\left( \frac{r}{k} \right)^{m}c^{m-1}\overline{\epsilon}\\
+      \leq& k^{m}2^{m}\left( \frac{r}{k} \right)^{m}c^{m-1}\overline{\epsilon}\\
+      \leq& 2^{m}r^{m}c^{m-1}\overline{\epsilon}.
+    \end{align*}
+    Logo como $\overline{\epsilon}>0$ é arbitrário e $r,c$ são constantes independentes de $\overline{\epsilon}$, temos que
+    \begin{align*}
+      med(\nabla f(C_i))=0.
+    \end{align*}
+    Logo como $U\subseteq \bigcup_{i=1}^{\infty}C_i$, então $U=\bigcup_{i=1}^{\infty}C_i\cap U$, e logo como
+    \begin{align*}
+      \nabla f(U)=\bigcup_{i=1}^{\infty}\nabla f(C_i\cap U)\quad\text{e}\quad med(\nabla f(C_i\cap U))=0,
+    \end{align*}
+    para todo $i\in\mathbb{Z}^{+}$, então temos que $med(\nabla f(U))=0$, isto é o mesmo que dizer que $med(X)=0$.\\
+    Assim, para todo $a\in\mathbb{R}^{m}\setminus X$ temos que $g$ é Morse.\\
+    Agora, suponha que $U$ é limitado por $M>0$, logo note que dado $\epsilon>0$ temos que se $|a|<\min\{\epsilon,\frac{\epsilon}{M}\}$, temos que
+    \begin{align*}
+      |f(x)-g(x)|=|\left\langle a,x \right\rangle|\leq|a||x|\leq |a|M\leq \epsilon,
+    \end{align*}
+    e
+    \begin{align*}
+      |\nabla f(x)\cdot v-\nabla g(x)\cdot v|=|\left\langle a,v \right\rangle|\leq |a||v|\leq \epsilon |v|,
+    \end{align*}
+    para quaisquer $x\in U$ e $v\in\mathbb{R}^{m}$. 
   \end{solution}
 \end{homeworkProblem}
