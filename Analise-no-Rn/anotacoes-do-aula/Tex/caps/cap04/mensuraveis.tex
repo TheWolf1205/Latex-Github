@@ -1,0 +1,170 @@
+\begin{definition}[Função característica]
+  Dado o conjunto limitado $X\subseteq\mathbb{R}^{n}$, seja $A$ um bloco $n$-dimensional contendo $X$. Definimos a função característica $\xi_X$ dada por
+  \begin{align*}
+    \xi_{X}:A&\to\mathbb{R}\\
+    x&\to\begin{cases}
+      1, &\text{ se } x\in X \text{,} \\
+      0, &\text{ se } x\notin X.
+    \end{cases}
+  \end{align*}
+\end{definition}
+\begin{proposition}[Propriedades]
+\begin{itemize}
+  \item Se $X$ e $Y$ são subconjuntos do bloco $A$ temos 
+    \begin{itemize}
+      \item $\xi_{X\cup Y}=\xi_{X}+\xi_{Y}-\xi_{X\cap  Y}$.
+      \item $\xi_{X\cap Y}=\xi_{X}\xi_{Y}$.
+    \end{itemize}
+  \item $X\subseteq Y$ se, somente se, $\xi_{X}(x)\leq \xi_{Y}(x)$ para todo $x\in A$. Neste caso temos que $\xi_{Y\setminus X}=\xi_{Y}-\xi_{X}$.
+  \item Se $X\cap Y=\emptyset$, então $\xi_{X\cup Y}=\xi_{X}+\xi_{Y}$.
+  \item Se $X\subseteq Int(A)$, então $Fr(X)$ é o conjunto de pontos de descontinuidade da função $\xi_X:A\to\mathbb{R}$. 
+\end{itemize}
+\end{proposition}
+\begin{definition}[Volúme interno e externo]
+  O \textbf{volúme interno} e o \textbf{volúme externo} do conjunto limitado $X\subseteq\mathbb{R}^{n}$ são definidos respectivamente pondo:
+  \begin{align*}
+    Volint(X)=\underline{\int_{A}}\xi_{X}(x)\,dx\\
+    Volext(X)=\overline{\int_{A}}\xi_{X}(x)\,dx
+  \end{align*}
+\end{definition}
+\begin{definition}[Conjunto J-mensurável]
+  Quando a função carácteristica $\xi_{X}:A\to\mathbb{R}$ é integrável, dizemos que $X$ é J-mensurável (segundo Jordan) e que seu volúme é
+  \begin{align*}
+    Vol(X)=\int_{A}\xi_{X}(x)\,dx.
+  \end{align*}
+\end{definition}
+Se $X\subseteq A$ e $P$ é partição do bloco $A$, as somas inferior e superior das função $\xi_{X}:A\to\mathbb{R}$ relativas à partição $P$ são
+\begin{align*}
+  s(\xi_{X},P)=\sum_{B\in P}m_BVol(B)=\sum_{B_j\subseteq  X}Vol(B_j)\\
+  S(\xi_{X},P)=\sum_{B\in P}M_BVol(B)=\sum_{B_j\cap X\neq\emptyset}Vol(B_j).
+\end{align*}
+\begin{note}
+  Se $v=Volint(X)$ e $V=Volext(X)$, temos que dado $\epsilon>0$ existem partições $P_1$ e $P_2$ taes que
+  \begin{itemize}
+    \item $v-\epsilon< s(\xi_{X},P_1)\leq v $.
+    \item $V< S(\xi_{X},P_2)\leq V+\epsilon $.
+  \end{itemize}
+  Se pegamos $R$ partição tal que $P_1,P_2\subseteq R$, temos que
+  \begin{align*}
+    v-\epsilon\leq s(\xi,R)\leq S(\xi_{X},R)\leq V+\epsilon.
+  \end{align*}
+\end{note}
+\begin{theorem}[Caraterização de J-mensuráveis]
+  \begin{enumerate}
+    \item O conjunto limitado $X\subseteq \mathbb{R}^{n}$ é J-mensurável se, somente se $med(Fr(X))=0$.
+    \item Se $X,Y\subseteq\mathbb{R}^{n}$ são J-mensuráveis, então $X\cup Y$, $X\cap Y$ e $X\setminus Y$ são J-mensuráveis com
+      \begin{align*}
+        Vol(X\cup Y)=Vol(X)+Vol(Y)-Vol(X\cap Y)\\
+        Vol(X\setminus Y)=Vol(X)-Vol(Y).
+      \end{align*}
+      quando $Y\subseteq X$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof} 
+  Tomando um bloco $n$-dimensional $A$ contendo $X$ seu interior e consideranddo $\xi_{X}:A\to\mathbb{R}$ temos que $X$ é J-mensurável se, somente se, $\xi_X$ é integrável, isto se, somente se, $med(D_{\xi_X})=0$ que se cumpre se, somente se $med(Fr(X))=0$.\\
+  O demais é pela linearidade da integral e propriedades da fronteira dos conjuntos.
+\end{proof}
+\begin{example}
+  \begin{enumerate}
+    \item Todo conjunto limitado $X\subseteq \mathbb{R}^{n}$ cuja fronteira é uma superfície ou uma reunião de um número finito ou enumerável de superficies de dimensão $n-1$ é J-mensurável.
+    \item Seja $X=[0,1]\cup(\mathbb{Q}\cap(1,2])$ é um conjunto que não é J-mensurável por $Volint(X)=1$, mas $Volext(X)=0$.
+    \item Se $X\subseteq\mathbb{R}^{n}$ é J-mensurável é $int(X)=\emptyset$, então $Vol(X)=0$. 
+  \end{enumerate}
+\end{example}
+\begin{definition}[Decomposição]
+  Diz-se que $D=\{X_1,\cdots,X_k\}$ é uma \textbf{decomposição} de $X$ quando os conjuntos $X_j$ são J-mnsuráveise $X_i\cap X_j\subseteq Fr(X_i)\cap Fr(X_j)$ quando $i\neq j$ com $X=\bigcup_{i=1}^{k}X_{i}$.\\
+  A norma de decomposição $D$ é o máximo diametro, isto é
+  \begin{align*}
+    |D|=\max diam(X_i).
+  \end{align*}
+\end{definition}
+\begin{example}
+  Se $X\subseteq\mathbb{R}^{n}$ é um bloco $n$-dimensional toda partição $P$ determina uma decomposição $X=B_1\cup\cdots,B_k$ onde os $B_i$ são os blocos da partição. 
+\end{example}
+\begin{definition}[Soma inferior e soma superior]
+  Seja $f:X\to\mathbb{R}$ uma função limitada no conjunto J-mensurável $X\subseteq\mathbb{R}^{n}$. Dada a decomposição $D=(X_1,\cdots,X_k)$ de $X$ escrevemos para cada $i=1,\cdots,k$
+  \begin{align*}
+    m_i=\inf\{f(x):x\in X_i\},\quad M_i=\sup\{f(x):x\in X_i\}.
+  \end{align*}
+  Assim, definimos
+  \begin{itemize}
+    \item Soma inferior
+      \begin{align*}
+        s(f,D)=\sum_{i=1}^{k}m_iVol(X_i).
+      \end{align*}
+     \item Soma superior
+      \begin{align*}
+        S(f,D)=\sum_{i=1}^{k}M_iVol(X_i).
+      \end{align*}
+  \end{itemize}
+  Diz-se que o número real $J$ é
+  \begin{align*}
+    J=\lim_{|D| \to 0}S(f,D).  
+  \end{align*}
+  Análogamente
+  o número real $I$ é
+  \begin{align*}
+    I=\lim_{|D| \to 0}s(f,D).
+  \end{align*}
+\end{definition}
+\begin{lemma}
+  Sejam $Y\subseteq X\subseteq \mathbb{R}^{n}$ conjuntos J-mensuráveis com $Vol(Y)=0$, então dado $\epsilon>0$ temos que existe $\delta>0$ tal que se $D$ é decomposição de $X$ e anorma $|D|<\delta$, então
+  \begin{align*}
+    \sum_{d(X_i,Y)<\delta}Vol(X_i)<\epsilon.
+  \end{align*}
+\end{lemma}
+\begin{proof} 
+  Dado $\epsilon>0$, podemos cubrir $Y$ com uma coleção finita de blocos $B$ cuja soma dos volúmenes é menor que $\epsilon.$\\
+  Como $Y$ é um conjunto J-mensurável e $Vol(Y)=0$, temos que $\xi_Y$ é integrável e portanto existe uma partição $P$ tal que
+  \begin{align*}
+    S(\xi_Y,P)-s(\xi_Y,P)<\epsilon.
+  \end{align*}
+  Mas como $Vol(Y)=0$, temos que $s(\xi_Y,P)=0$, logo temos que $S(\xi_Y,P)<\epsilon$, assim temos que
+  \begin{align*}
+    S(\xi_Y,P)=\sum_{B_j\cap Y\neq\emptyset}Vol(B_j)<\epsilon.
+  \end{align*}
+  e $Y\subseteq \bigcup_{j=1}^{k}B_j$.\\
+  Pegando $\delta>0$ ponhamos cada um desses blocos $B_j=\prod[a_{ij},b_{ij}]$ dentro do bloco $\tilde{B}_{j}=\prod[a_{ij}-2\delta,b_{ij}+2\delta]$.\\
+  Note que
+  \begin{align*}
+    \lim_{\delta \to 0}Vol(\tilde{B}_{j})=Vol(B_j),
+  \end{align*}
+  para todo $j$.\\
+  Logo, existe $\delta>0$ tal que $\sum Vol(\tilde{B}_{j})<\epsilon$.\\
+  Agora, suponha $Z$ tal que $diam Z<\delta$ e $d(Z,B_j)<\delta$. Assim, sabemos que existem $z_0\in Z$ e $b_0\in B_j$, tal que $|z-b_0|\leq \delta$. Agora, tome qualquer $z\in Z$, como $diam Z<\delta$, então temos que $|z-z_0|\leq \delta$, então $|z-b_0|\leq |z-z_0|+|z_0+b_0|\leq 2\delta$.\\
+  Isto é, que $z\in \tilde{B}_j$ e portanto $Z\subseteq \tilde{B}_j$.\\
+  Agora, tome $D=(X_1,\cdots,X_k)$ uma descomposição de $X$ com $|D|<\delta$, então $diam X_i<\delta$ para todo $i$. Considere um conjunto $X_i$ tal que $d(X_i,Y)<\delta$.\\
+  Como $Y\subseteq \bigcup_{i=1}^{k}B_i$, então existe $B_j$ tal que $d(X_i,B_j)<\delta$. Logo $X_i\subseteq X\tilde{B}_j$. Assim
+  \begin{align*}
+    \sum_{d(X_i,Y)<\delta}Vol(X_i)<\epsilon.
+  \end{align*}
+\end{proof}
+\begin{theorem}
+  Para toda função $f:X\to\mathbb{R}$ limitada no conjunto J-mensurável $X\subseteq\mathbb{R}^{n}$ tem-se
+  \begin{align*}
+    \underline{\int_{X}}f(x)\,dx=\lim_{|D| \to 0}s(f,D).
+  \end{align*}
+  e
+  \begin{align*}
+    \overline{\int_{X}}f(x)\,dx=\lim_{|D| \to 0}S(f,D).
+  \end{align*}
+\end{theorem}
+\begin{note}[Decomposição pontillada]
+  Uma \textbf{decomposição pontillada} do conjunto J-mensurável $X\subseteq\mathbb{R}^{n}$ é um par $D^{\ast}(D,\xi)$ onde $D=(X_1\cdots,X_k)$ é uma decomposição de $X$ e $\xi=(\xi_1,\cdots,\xi_k)$ com $\xi_1\in X_1,\cdots,\xi_k\in X_k$. 
+\end{note}
+\begin{definition}[Soma de Riemman]
+  A \textbf{soma de Riemman} $\sum (f,D^{\ast})$ é definida por
+  \begin{align*}
+    \sum(f,D^{\ast})=\sum_{i=1}^{k}f(\xi_i)Vol(X_i).
+  \end{align*}
+  Diz-se que o  número $I$ é o límite das smas de Riemman $\sum (f,D^{\ast})$ quando $|D|$ tende a zero, e escreve-se
+  \begin{align*}
+    I=\lim_{|D| \to 0}\sum (f,D^{\ast}).
+  \end{align*}
+\end{definition}
+\begin{theorem}
+  Se $f:X\to\mathbb{R}$ é integrável no conjunto J-mensurável $X\subseteq\mathbb{R}^{n}$, então
+  \begin{align*}
+    \int_{X}f(x)\,dx=\lim_{|D| \to 0}\sum (f,D^{\ast}).
+  \end{align*}
+\end{theorem}

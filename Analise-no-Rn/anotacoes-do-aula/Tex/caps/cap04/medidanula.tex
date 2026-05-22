@@ -1,0 +1,100 @@
+\begin{definition}[Medida nula]
+  Diz-se que $X\subseteq\mathbb{R}^{n}$ tem medida $n$-dimensional  nula, e escrevese $med(X)=0$, quando dado $\epsilon>0$ é possivel obter uma cobertura enumerávell $X\subseteq\bigcup_{k=1}^{\infty}B_k$ por meio de blocos abertos $B_k\subseteq \mathbb{R}^{n}$ tais que
+  \begin{align*}
+    \sum_{k=1}^{\infty}Vol(B_k)<\epsilon.
+  \end{align*}
+\end{definition}
+\begin{proposition}
+  Se temos que $Y\subseteq X\subseteq \mathbb{R}^{n}$ e $med(X)=0$, então $med(Y)=0$. 
+\end{proposition}
+\begin{theorem}
+  Uma reuniãon enumerável de conjuntoos de medida nuula é ainda um conjunto de medida nula.
+\end{theorem}
+\begin{proof} 
+  Sejam $\{X_k\}_{k\in\mathbb{Z}^{+}}$ uma familia de subconjuntos de $\mathbb{R}^{n}$ com $med(X_k)=0$ para toddo $k\in\mathbb{Z}^{+}$.\\
+  Seja $X=\bigcup_{k\in\mathbb{Z}^{+}}X_k$.\\
+  Observe que dado $\epsilon>0$, para cada $k\in\mathbb{Z}^{+}$, como $med(X_k)=0$ existe uma sequencia de blocos abertos $\{B_{k_i}\}_{i\in\mathbb{Z}^{+}}$ tal que
+  \begin{align*}
+    X_k\subseteq \bigcup_{i\in\mathbb{Z}^{+}}B_{k_i}\quad\text{e}\quad\sum_{i=1}^{\infty}Vol(B_{k_i})\leq\frac{\epsilon}{2^{k}}.
+  \end{align*}
+  Logo temos que
+  \begin{align*}
+    X\subseteq \bigcup_{i,j\in\mathbb{Z}^{+}}B_{k_i},
+  \end{align*}
+  e note que dado $j\in\mathbb{Z}^{+}$ temos que
+  \begin{align*}
+    \sum_{k,i=1}^{j}Vol(B_{k_{i}})\leq \sum_{k=1}^{j}\frac{\epsilon}{2^{k}}\leq\frac{\epsilon}{2}.
+  \end{align*}
+  Logo temos que
+  \begin{align*}
+    \sum_{i,j\in\mathbb{Z}^{+}}Vol(B_{k_i})<\epsilon.
+  \end{align*}
+  Pelo que poodemos concluir que $med(X)=0$.
+\end{proof}
+\begin{theorem}
+  As seguintes afirmações a respeito de um conjunto $X\subseteq\mathbb{R}^{n}$ são equivalentes
+  \begin{enumerate}[a)]
+    \item Dado $\epsilon>0$, pode-se obter uma cobertura enumerável $\{B_{k}\}_{k\in\mathbb{Z}^{+}}$ de $X$ por meio de blocos \textbf{abertos} $B_k\subseteq\mathbb{R}^{n}$ tal que
+      \begin{align*}
+        \sum_{k\in\mathbb{Z}^{+}}Vol(B_k)<\epsilon.
+      \end{align*}
+    \item Dado $\epsilon>0$, pode-se obter uma cobertura enumerável $\{B_{k}\}_{k\in\mathbb{Z}^{+}}$ de $X$ por meio de blocos \textbf{fechados} $B_k\subseteq\mathbb{R}^{n}$ tal que
+      \begin{align*}
+        \sum_{k\in\mathbb{Z}^{+}}Vol(B_k)<\epsilon.
+      \end{align*}
+    \item Dado $\epsilon>0$, pode-se obter uma cobertura enumerável $\{B_{k}\}_{k\in\mathbb{Z}^{+}}$ de $X$ por meio de \textbf{cubos abertos} $B_k\subseteq\mathbb{R}^{n}$ tal que
+      \begin{align*}
+        \sum_{k\in\mathbb{Z}^{+}}Vol(B_k)<\epsilon.
+      \end{align*}
+    \item Dado $\epsilon>0$, pode-se obter uma cobertura enumerável $\{B_{k}\}_{k\in\mathbb{Z}^{+}}$ de $X$ por meio de \textbf{cubos fechados} $B_k\subseteq\mathbb{R}^{n}$ tal que
+      \begin{align*}
+        \sum_{k\in\mathbb{Z}^{+}}Vol(B_k)<\epsilon.
+      \end{align*}
+  \end{enumerate}
+\end{theorem}
+\begin{theorem}
+  Seja $f:X\to\mathbb{R}^{n}$ uma aplicação Lipschitz no conjunto $X$. Se $med(X)=0$, então $med(f(X))=0$. 
+\end{theorem}
+\begin{proof} 
+  Como $med(X)=0$, sabemos que dado $\epsilon>0$ existe uma cobertura $\{C_k\}_{k\in\mathbb{Z}^{+}}$ de cubos abertos com cada um de aresta $a_k$ e
+  \begin{align*}
+    \sum_{k\in\mathbb{Z}^{+}}Vol(C_k)=\sum_{k\in\mathbb{Z}^{+}}a_{k}^{n}<\frac{\epsilon}{C^{n}},
+  \end{align*}
+  onde $C$ é a constante de Lipschitz de $f$.\\ 
+  Sejam $x,y\in C_k$. Então temos que $|x-y|_{\infty}\leq a_k$ e como $f$ é Lipschitz, então temos que $|f(x)-f(y)|_{\infty}\leq C|x-y|\leq Ca_k$.\\
+  Logo note que $f(C_k\cap X)$ está contido no cubo $\tilde{C}_k$ de aresta $Ca_k$. Depois
+  \begin{itemize}
+    \item $Vol(\tilde{C}_k)=C^{n}a_{k}^{n}$.\\
+    \item $f(X)=f\left( \bigcup_{k\in\mathbb{Z}^{+}}C_k\cap X \right)=\bigcup_{k\in\mathbb{Z}^{+}}f(C_k\cap X)\subseteq \bigcup_{k\in\mathbb{Z}^{+}}\tilde{C}_{k}$.
+    \item $\sum_{k\in\mathbb{Z}^{+}}Vol(\tilde{C}_{k})=\sum_{k\in\mathbb{Z}^{+}}C^{n}a_{k}^{n}<\epsilon.$
+  \end{itemize}
+\end{proof}
+\begin{theorem}[Teorema de Lindelöf]
+  Toda cobertura aberta $X\subseteq\bigcup_{\lambda\in\Lambda}U_{\lambda}$ de um conjunto arbitrario $X\subseteq \mathbb{R}^{n}$ admite uma subcobertura enumerável $X\subseteq_{i\in\mathbb{Z}^{+}}U_{i}$. 
+\end{theorem}
+\begin{proof} 
+  Seja $B$ o conjunto dos blocos abertos em $\mathbb{R}^{n}$ cujos vértices tem coordenadas racionais e cada um deles está contido em algum aberto $U_{\lambda}$. Note que $B$ é enumeravel pois os vertices são racionais e elos forman um conjunto numerável $B_{\lambda}$ por cada bloco $U_{\lambda}$.\\
+  Agora, note que dado $x\in U_{\lambda}$, temos que como $U_{\lambda}$ é um bloco aberto, então existe um cubo aberto $C_i$ de centro $x$ contido em $U_{\lambda}$ com vértices racionais (isto ja que $\mathbb{Q}$ é denso no $\mathbb{R}$), logo escolha um único $U_{i}=U_{\lambda}$ tal que $C_i\subseteq U_i$, logo temos que se $x\in\bigcup_{\lambda\in\Lambda}U_{\lambda}$, então $x\in\bigcup_{i\in\mathbb{Z}^{+}}C_i\subseteq \bigcup_{i\in\mathbb{Z}^{+}} U_i$, o que permite concluir a prova.
+\end{proof}
+\begin{theorem}
+  Seja $f:U\to\mathbb{R}^{n}$ uma aplicação $C^{1}$ no aberto $U\subseteq \mathbb{R}^{n}$. Se $X\subseteq U$ tem medida nula, então $f(X)\subseteq\mathbb{R}^{n}$ também tem medida nula. 
+\end{theorem}
+\begin{proof} 
+  Note que como $U$ é aberto, temos que dado $x\in U$ existe um cubo aberto $C_{x}$ tal que $x\in C_x\subseteq U$, logo note que como $C_x$ é limitado, temos que $f^{\prime}$ atingue um máximo no $C_x$, logo temos que para todo $\max_{x\in C_x}|f^{\prime}(x)|\leq M_x$, assim, pelo teorema do valor meio, para quaisquer $y,z\in C_x$ temos que
+  \begin{align*}
+    |f(y)-f(z)|\leq M_x|y-z|.
+  \end{align*}
+  Pero lo que temos que $f$ é Lipschitz em $C_x$.\\
+  Agora, note que pelo teorema de Lindelöf temos que existe uma subcobertura enumerável de $C_x$ tal que $X\subseteq \bigcup_{i\in\mathbb{Z}^{+}}C_i$.\\
+  Logo, como $f$ é Lipschitz no cada $C_i$ e $med(X)=0$, temos que $med(f(C_i\cap X))=0$, assim como
+  \begin{align*}
+    f(X)=f\left( \bigcup_{i\in\mathbb{Z}^{+}}C_i\cap X \right)=\bigcup_{i\in\mathbb{Z}^{+}}f(C_i\cap X).
+  \end{align*}
+  temos que $med(f(X))=0$.
+\end{proof}
+\begin{corollary}
+  Seja $f:U\to\mathbb{R}^{n}$ uma aplicação $C^{1}$ no aberto $U\subseteq\mathbb{R}^{m}$. Se $m<n$, então $f(U)\subseteq\mathbb{R}^{n}$ tem medida nula. 
+\end{corollary}
+\begin{corollary}
+  Seja $M\subseteq\mathbb{R}^{m}$ uma superfície $m$-dimensional de classe $C^{1}$. Se $m<n$, então $M$ tem medida $n$-dimensional nula. 
+\end{corollary}

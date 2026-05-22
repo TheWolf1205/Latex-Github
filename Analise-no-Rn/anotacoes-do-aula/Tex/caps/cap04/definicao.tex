@@ -131,7 +131,7 @@
 \begin{lemma}\label{lema:particao-refinada-somas}
   Se uma partição $Q$ refina a partição $P$, então
   \begin{align*}
-    s(f,P)\leq S(f,Q)\,\text{ e }\,S(f,Q)\leq S(f,P).
+    s(f,P)\leq s(f,Q)\,\text{ e }\,S(f,Q)\leq S(f,P).
   \end{align*}
 \end{lemma}
 \begin{proof} 
@@ -190,3 +190,55 @@
     S(f,P)-s(f,P)<\epsilon.
   \end{align*}
 \end{theorem}
+\begin{proof} 
+  \textbf{Suficiente:}\\
+  Suponha que dado $\epsilon>0$ existe uma partição $P$ de $A$ tal que
+  \begin{align*}
+    S(f,P)-s(f,p)<\epsilon.
+  \end{align*}
+  Logo como $\overline{\int_{A}}f(x)\,dx\leq S(f,P)$ e $\underline{\int_{A}}f(x)\,dx\geq s(f,P)$, temos que
+  \begin{align*}
+    \overline{\int_A}f(x)\,dx-\underline{\int_{A}}f(x)\,dx<S(f,P)-s(f,P)<\epsilon. 
+  \end{align*}
+  Assim, como $\epsilon$ é arbitrário temos que $f$ é integrável.\\
+  \textbf{Necessario:}\\
+  Suponha que $f$ é integrável.\\
+  Sabesmos que dado $\epsilon>0$ pelas propriedades do ínfimo temos que existe uma partição $R$ de $A$ tal que
+  \begin{align*}
+    \underline{\int_A}f(x)\,dx\leq S(f,P)\leq \underline{\int_A}f(x)\,dx + \frac{\epsilon}{2}.
+  \end{align*}
+  Da mesma maneira temos que existe $Q$ partição de $A$ tal que
+  \begin{align*}
+    \overline{\int_A}f(x)\,dx\leq s(f,P)\leq \overline{\int_A}f(x)\,dx-\frac{\epsilon}{2}.
+  \end{align*}
+  Agora, tome $P$ como a partição de $A$ como $Q\cup R$, logo temos que
+  \begin{align*}
+    S(f,P)-s(f,P)\leq S(f,R)-s(f,Q)\leq \overline{\int_A}f(x)\,dx+\frac{\epsilon}{2}-\underline{\int_A}f(x)\,dx+\frac{\epsilon}{2}\leq \epsilon.
+  \end{align*}
+\end{proof}
+\begin{note}
+  \begin{align*}
+    S(f,P)-s(f,P)=\sum_{B\in P}w_{B}Vol(B)<\epsilon.
+  \end{align*}
+\end{note}
+\begin{theorem}
+  Toda função $f:A\to\mathbb{R}$ contínua é integrável.
+\end{theorem}
+\begin{proof} 
+  Como $A$ é ompacto e $f$ é contínua, então $f$ é uniformemente contínua. Portanto, dado $\epsilon>0$ existe $\delta>0$ tal que se $|x-y|<\delta$, então $|f(x)-f(y)|<\epsilon$.\\
+  Escolhemos, em cada aresta $[a_i,b-i]$ do bloco $A$, uma partição $P_i$ cujos intervalos tenham todos os comprimentos menores que $\delta$.\\
+  Assim, consideramos a partição $P=P_1\times\cdots\times P_k$ do bloco $A$.\\
+  \textbf{Afirmação:} Cada bloco $B\in P$ é tal que
+  \begin{align*}
+    diam B=\{|x-y|_{\infty}:x,y\in B\}<\delta.
+  \end{align*}
+  Seja $B=\prod_{i=1}^{n}[T_{i,j_i-1},T_{i,j_i}]$, então, dados $x,y\in B$ temos que
+  \begin{align*}
+    |x-y|_{\infty}=\max{|x_i-y_i|,i\in\{1,2,\cdots,n\}}\leq \delta.
+  \end{align*}
+  Logo temos que $diam B<\delta$.\\
+  Portanto, note que $w_B=M_B-m_B=f(x^{\prime})-f(y^{\prime})\leq c_n\epsilon$. Então
+  \begin{align*}
+    \sum_{B\in P}w_B Vol(B)\leq c_n\epsilon\sum_{B\in P}Vol(B)=c_n Vol(A)\epsilon.
+  \end{align*}
+\end{proof}

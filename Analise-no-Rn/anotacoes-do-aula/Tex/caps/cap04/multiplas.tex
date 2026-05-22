@@ -1,0 +1,63 @@
+Dados os blocos $A_1\subseteq\mathbb{R}^{n}$ e $A_2\subseteq\mathbb{R}^{m}$ os pontos do bloco $A_1\times A_2\subseteq \mathbb{R}^{n+m}$, escreve-se como $(x,y)$ com $x\in A_1$ e $y\in A_2$ se $f:A_1\times A_2\to\mathbb{R}$ é integrável e sua integral é indicada com
+\begin{align*}
+  \int_{A_1\times A_2}f(x,y)\,dx\,dy,
+\end{align*}
+para cada $x\in A_1$, definimos $f_x:A_2\to\mathbb{R}$, pondo $f_x(y)=f(x,y)$ para cada $y\in A_2$.
+\begin{example}
+  Seja $A_1=A_2=[0,1]$ e  
+  \begin{align*}
+    f:[0,1]\times[0,1]&\to\mathbb{R}\\
+                 (x,y)&\to\begin{cases}
+                  0, &\text{ se } x\neq\frac{1}{2} \text{,} \\
+                  0, &\text{ se } y\in\mathbb{Q},\\
+                  1, &\text{ se } y\in\mathbb{R}\setminus\mathbb{Q}\text{ e } x=\frac{1}{2}.
+                \end{cases}
+  \end{align*}
+\end{example}
+\begin{theorem}[Integração repetida]
+  Seja $f:A_1\times A_2\to\mathbb{R}$ integrável no produto dos blocos $A_1\subseteq\mathbb{R}^{m}$ e $A_2\subseteq\mathbb{R}^{n}$. Para todo $x\in A_1$, seja $f_x:A_2\to\mathbb{R}$ definida por $f_x(y)=f(x,y)$. Ponhamos
+  \begin{align*}
+    \varphi(x)=\underline{\int_{A_2}}f_x(y)\,dy\quad\text{e}\quad\psi(x)=\overline{\int_{A_2}}f_x(y)\,dy
+  \end{align*}
+  As funções $\varphi,\psi:A_1\to\mathbb{R}$ são integráveis com
+  \begin{align*}
+    \int_{A_1}\varphi(x)\,dx=\int_{A_1}\psi(x)\,dx=\int_{A_1\times A_2}f(x,y)\,dx\,dy.
+  \end{align*}
+  Isto é,
+  \begin{align*}
+    \int_{A_1\times A_2}f(x,y)\,dx\,dy=\int_{A_1}\left( \underline{\int_{A_2}}f(x,y)\,dy \right)\,dx=\int_{A_1}\left( \overline{\int_{A_2}}f(x,y)\,dy \right)\,dx
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Seja $P$ partição de $A_1\times A_2$, logo temos que $P=P_1\times P_2$ com $P_1$ partição de $A_1$ e $P_2$ partição de $A_2$.\\
+  \textbf{Afirmação:}
+  \begin{align*}
+    s(f,P)\leq s(\varphi,P_1)\leq S(\varphi,P_1)\leq S(f,P).
+  \end{align*}
+  \textbf{Observação:} Note que em geral, temos que se $X\subseteq Y$, então $\inf X \geq \inf Y$.\\
+  Assim, temos que para cada bloco $B_1\times B_2\in P$ tem-se que
+  \begin{align*}
+    m(f,B_1\times B_2)\leq m(f_x,B_2),\quad\text{para todo }x\in B_1.
+  \end{align*}
+  Então temos que para todo $x\in B_1$ é certo que 
+  \begin{align*}
+    \sum_{B_2\in P_2}m(f,B_1\times B_2)Vol(B_2)\leq \sum_{B_2\in P}m(f_x,B_2)Vol(B_2)\leq \varphi(x).
+  \end{align*}
+  Logo
+  \begin{align*}
+    \sum_{B_2\in P_2}m(f,B_1\times B_2)\leq m(\varphi,B_1).
+  \end{align*}
+  Assim
+  \begin{align*}
+    s(f,P)=\sum_{B_1\times B_2}m(f,B_1\times B_2)Vol(B_1)Vol(B_2)\leq \sum_{B_1\in P_1}m(\varphi,B_1)Vol(B_1)=s(\varphi,P_1).
+  \end{align*}
+  Fazendo um argumento análogo temos que
+  \begin{align*}
+    S(f,P)\geq S(\varphi,P_1).
+  \end{align*}
+  Logo temos que dado $\epsilon>0$, como $f$ é integrável, então $S(f,P)-s(f,P)<\epsilon$ o qual implica que
+  \begin{align*}
+    S(\varphi,P_1)-s(\varphi,P_1)<\epsilon.
+  \end{align*}
+  Logo podemos obter o mesmo resultado pra $\psi$. Pelo que podemos concluir o resultado. 
+\end{proof}

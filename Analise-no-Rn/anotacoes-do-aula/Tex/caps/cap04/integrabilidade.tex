@@ -1,0 +1,125 @@
+\begin{definition}[Oscilação num ponto]
+  Seja $f:X\to\mathbb{R}$ limitada e $X\subseteq\mathbb{R}^{n}$.\\
+  Fixando $x\in X$. Para cada $\delta>0$, ponhamos
+  \begin{align*}
+    w(f;x,\delta)=w(f;X\cap B(x,\delta))=\sup_{y,z\in X\cap B(x,\delta)}|f(y)-f(z)|.
+  \end{align*}
+  A função $\delta\to w(f,x,\delta)$ é não decresente e limitada.\\
+  Logo existe o límite
+  \begin{align*}
+    w(f,x)=\lim_{\delta \to 0^{+}}w(f,x,\delta)=\inf_{\delta>0}w(f,x,\delta).
+  \end{align*}
+\end{definition}
+\begin{proposition}
+  $w(f,x)=0$ se, somente se, $f$ é contínua em $x$. 
+\end{proposition}
+\begin{proof} 
+\textbf{Suficiente:}\\
+  Suponha que $w(f,x)=0$, logo como $w(f,x)=\inf_{\delta>0}w(f,x,\delta)=0$, então temos que para todo $\epsilon>0$ existe $\delta>0$ tal que $w(f,x,\delta)<\epsilon$.\\
+  Logo $w(f,x,\delta)=\sup_{y,z\in X\cap B(x,\delta)}|f(y)-f(z)|<\epsilon$.\\
+  Assim, para cada $\epsilon>0$, existe $\delta>0$ tal que se $y,z\in B(x,\delta)\cap X$, então
+  \begin{align*}
+    |f(y)-f(z)|\leq\sup_{y,z\in X\cap B(x,\delta)}|f(y)-f(z)|<\epsilon.
+  \end{align*}
+  Isto é, que $f$ é contínua em $X$.
+\textbf{Necessario:}\\
+  Suponha que $f$ é contínua em $X$. Então, dado $\epsilon>0$, existe $\delta>0$ tal que si $y\in X\cap B(x,\delta)$, então
+  $|f(y)-f(x)|<\frac{\epsilon}{2}$, logo se tomamos $z\in X\cap B(x,\delta)$, temos que
+  \begin{align*}
+    |f(z)-f(y)|\leq |f(z)-f(x)|+|f(y)-f(x)|\leq \epsilon.
+  \end{align*}
+  Logo temos que $w(f,x)=\inf_{\delta}w(f,x,\delta)=0$.
+\end{proof} 
+\begin{proposition}
+  O conjunto $D_f$ dos pontos de descontinuidade de $f$ pode ser escrito como
+  \begin{align*}
+    D_f=\bigcup_{k=1}^{\infty}D_k,
+  \end{align*}
+  onde $D_k=\{x\in A:w(f,x)\geq \frac{1}{k}\}$.
+\end{proposition}
+\begin{proof} 
+  Se $x\in D_f$, então $w(f,x)>0$. Assim, existe $k\in\mathbb{Z}^{+}$ tal que $w(f,x)\geq \frac{1}{k}$. Logo $x\in D_x$.\\
+  Logo se $x\in D_k$ para algúm $k$, temos que $w(f,x)>\frac{1}{k}>0$, isto é que $x\in D_{f}$. 
+\end{proof}
+\begin{theorem}[Criterio de Lebesgue para integrabilidade]
+  A função $f:A\to\mathbb{R}$, limitada no bloco $A\subseteq\mathbb{R}^{n}$, é integrável se, somente se, $med(D_f)=0$.
+\end{theorem}
+\begin{proof} 
+\textbf{Suficiente:}\\
+  Assuma que $med(D_f)=0$.\\
+  Então, dado $\epsilon>0$, existe uma cobertura enumerável $\{C_j\}_{j\in\mathbb{Z}^{+}}$ de $D_f$ por meio de blocos com
+  \begin{align*}
+    \sum_{j=1}^{\infty}Vol(C_j)<\frac{\epsilon}{2k}.
+  \end{align*}
+  onde $k=\sup_{x\in A}f(x)-\inf_{x\in A}f(x)$.\\
+  (Queremos provar que dado $\epsilon>0$ existe uma partição $P$ do bloco $A$ tal que $S(f,P)-s(f,P)<\epsilon$).\\
+  Para cada $x\in A\setminus D_f$, $f$ é contínua em $x$, pelo que temos que existe $\delta_x>0$ tal que se $y,z\in B(x,\delta_x)\cap A$, então $|f(y)-f(z)|\leq \frac{\epsilon}{2}Vol(A)$.\\
+  Considere $B_x$ bloco aberto contido em $B(x,\delta_x)$.\\
+  Assim
+  \begin{align*}
+    A\subseteq \bigcup_{j=1}^{\infty}\cup\bigcup_{x\in A\setminus D_f}B_x.
+  \end{align*}
+  Mas, como $A$ é compacto, temos que ista cobertura se pode redducir a finita
+  \begin{align*}
+    A\subseteq \bigcup_{k=1}^{r}C_k\cup \bigcup_{i=1}^{s}B_{x_i}.
+  \end{align*}
+  Então, seja $P$ uma partição de $A$ tal que cada bloco aberto $B\in P$ esteja contido em algum dos $C_1,\cdots,C_r$ ou em algum dos $B_{x_1},\cdots,B_{x_{s}}$. Isto é  possível pois para cada coordenada $i=1,\cdots,n$ considere o conjunto finito $T_i$ formado por $a_i,b_i$ e todas as $i$-ésimas coordenadas dos vérties dos blocos $C_1,\cdots,C_r$ e $B_{x_1},\cdots,B_{x_{s}}$. Ordenamos $T_i$ e obtemos ma partição $P_i$ de $[a_i,b_i]$.\\
+  Então, $P=P_1\times\cdots\times P_n$ tem as propriedades desejadas.\\
+  Agora, separemos os blocos de $P$ em duas categorias
+  \begin{itemize}
+    \item $B^{\prime}$ blocos contido em algum $C_j$.
+    \item $B^{\prime\prime}$ blocos contido em algum $B_{x_j}$. 
+  \end{itemize}
+  note que a união dos blocos $B^{\prime}$ está contida em $\bigcup_{j=1}^{r}C_j$, logo
+  \begin{align*}
+    \sum_{B\in B^{\prime}}Vol(B)\leq \sum_{j=1}^{r}Vol(C_j)\leq\frac{\epsilon}{2k}.
+  \end{align*}
+  Para os blocos $B^{\prime\prime}$, cada um está contído em algúm $B_{x_i}$, onde a oscilação de $f$ é menor que $\frac{\epsilon}{2 Vol(A)}$.\\
+  Portanto
+  \begin{align*}
+    \sum_{B\in P}w_BVol(B)=\sum_{B\in B^{\prime}}w_BVol(B)+\sum_{B\in B^{\prime\prime}}w_BVol(B)\leq k\frac{\epsilon}{2k}+\frac{\epsilon}{2Vol(A)}\sum_{B\in B^{\prime\prime}}Vol(B)\leq \epsilon.
+  \end{align*}
+\textbf{Necessario:}\\
+  Suponha que $f$ é integrável.\\
+  Logo, dado $\epsilon>0$ existe uma partição $P$ do bloco $A$ tal que $S(f,P)-s(f,p)<\frac{\epsilon}{k}$ com $k\in\mathbb{Z}$.\\
+  Seja $P^{\prime}\subseteq P$ a coleção dos blocos $B$ que côntem algúm ponto de $D_k$ em su interior. Note que os pontos de $D_k$ que estão nas faces dos blocos forman um conjunto do medida nula.\\
+  Agora, para cada $B\in P^{\prime}$, como $B$ contém um ponto $x\in D_k$ no interior, temos que $w(f,x)\geq \frac{1}{k}$. Além disso, para $\delta<<1$, $B(x,\delta)\leq B$, logo temos que $w_{B}\geq w(f,x,\delta)$. Então
+  \begin{align*}
+    w_B\geq w(f,x)\geq \frac{1}{k}.
+  \end{align*}
+  Então
+  \begin{align*}
+    \frac{1}{k}\sum_{B\in P^{\prime}}Vol(B)\leq \sum_{B\in P^{\prime}}w_BVol(B)\leq \sum_{B\in P}w_BVol(B)\leq \epsilon.
+  \end{align*}
+  Logo como $med(D_k)\leq \sum_{B\in P^{\prime}}Vol(B)+med(faces)<\epsilon$, então temos que
+  \begin{align*}
+    med(D_f)\leq med(D_k)=0.
+  \end{align*}
+\end{proof}
+\begin{theorem}[Propriedades]
+  Seja $f,g:A\to\mathbb{R}$ funções integrãveis no bloco $A\subseteq\mathbb{R}^{n}$ e $c\in\mathbb{R}$. Então
+  \begin{enumerate}
+    \item $f+g:A\to\mathbb{R}$ é integrável e
+      \begin{align*}
+        \int_{A}f(x)+g(x)\,dx=\int_{A}f(x)\,dx+\int_{A}g(x)\,dx.
+      \end{align*}
+    \item $cf:A\to\mathbb{R}$ é integrável e
+      \begin{align*}
+        \int_{A}cf(x)\,dx=c \int_{A}f(x)\,dx.
+      \end{align*}
+    \item $f\cdot g:A\to\mathbb{R}$ é integrável.
+    \item Se $|g(x)|\geq k>0$ para todo $x\in A$, então $f/g:A\to\mathbb{R}$ é integrável.
+    \item Se $f(x)\leq g(x)$ para todo $x\in A$, então 
+      \begin{align*}
+        \int_{A}f(x)\,dx\leq \int_{A}g(x)\,dx.
+      \end{align*}
+    \item $|f|:A\to\mathbb{R}$ é integrável e
+      \begin{align*}
+        \left| \int_{A}f(x)\,dx \right|\leq \int_{A}|f(x)|\,dx.
+      \end{align*}
+    \item Se $A_0$ é um bloco contido em $A$ e $f(x)=0$ para todo $x\in A\setminus A_0$, então
+      \begin{align*}
+        \int_{A}f(x)\,dx=\int_{A_0}f(x)\,dx.
+      \end{align*}
+  \end{enumerate}
+\end{theorem}
