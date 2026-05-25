@@ -1,0 +1,162 @@
+\begin{theorem}
+  Sejam $U,V\subseteq\mathbb{R}$ abertos, $h:U\to V$ um difeomorfismo $C^{1}$, $I\subseteq U$ um intervalo compacto, $J=h(I)$ e $f:J\to\mathbb{R}$ uma função integrável. Então
+  \begin{align*}
+    \overline{\int_{J}}f(y)\,dy=\overline{\int_{I}}f(h(x))\cdot |h^{\prime}(x)|\,dx.
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Sem perdida de generalidade, podemos assumir que $f(y)\geq 0$ para todo $y\in J$.\\
+  Note que as partições de $J=h(I)$ são de tipo $h(P)$ dados pr intervalos da forma $J_r=h(I_r)$, onde $I_r$ com $r\in\{1,\cdots,k\}$, são os intervalos da partição $P$ de $I$. Definamos
+  \begin{align*}
+    M_r=\sup_{y\in J_r}f(y),\quad C_r=\sup_{x\in I_r}|h^{\prime}(x)|.
+  \end{align*}
+  Pelo teorema do valor meio temos que para cada $r$, existe um $\xi_r\in I_r$ tal que
+  \begin{align*}
+    |J_r|=|h^{\prime}(\xi_r)||I_r|.
+  \end{align*}
+  Pondo $\eta_r=C_r-|h^{\prime}(\xi_r)|\geq 0$. Note que como $h$ é uniformemente contínua no $I$, então temos que $\lim_{|P| \to 0}\eta_r=0$ e assim
+  \begin{align*}
+    \lim_{|P| \to 0}\sum_{r=1}^{k}\eta_r|I_r|=0.
+  \end{align*}
+  Pois
+  \begin{align*}
+    0\geq \sum_{r=1}^{k}\eta_{r}|I_r|\leq \max_{1\leq r\leq k}\eta_{r}|I|.
+  \end{align*}
+  Agora, por um lado temos que 
+  \begin{align*}
+    S(f,h(P))=\sum_{r=1}^{k}M_r|J_r|=\sum_{r=1}^{k}M_r|h^{\prime}(\xi_{r})||I_r|=\sum_{r=1}^{k}M_r(C_r-\eta_r)|I_r|.
+  \end{align*}
+  Por outro lado
+  \begin{align*}
+    S((f\circ h)|h^{\prime}|,P)=\sum_{r=1}^{k}\sup_{x\in I_r}(f\circ h)(x)|h^{\prime}(x)||I_r|\leq \sum_{r=1}^{k}M_rC_r|I_k|=S(f,h(P))+\sum_{r=1}^{k}M_r\eta_r|I_r|.
+  \end{align*}
+  Logo isto implica que
+  \begin{align*}
+    \overline{\int_{J}}f(h(x))|h^{\prime}(x)|\,dx\leq \overline{\int_{I}}f(y)\,dy.
+  \end{align*}
+  Para verificar a desigualdade contrária temos que usar o fato de que $h^{-1}$ é difeomorfismo $C^{1}$, lembrando que $(h^{-1})^{\prime}(y)=\frac{1}{h^{\prime}(x)}$. De fato, sabemos que para qualquer $g:I\to\mathbb{R}$ não negativa limitada
+  \begin{align*}
+    \overline{\int_{J}}g(h^{-1}(y))|(h^{-1})^{\prime}(y)|\,dy\leq\overline{\int_{I}}g(x)\,dx.
+  \end{align*}
+  Assim, tomemos $g(x)=f(h(x))$. Logo
+  \begin{align*}
+    \overline{\int_{J}}f(y)\,dy\leq \overline{\int_{I}}f(h(x))|h^{\prime}(x)|\,dx.
+  \end{align*}
+  O que nos permite concluir a prova.
+\end{proof}
+\begin{definition}[Difeomorfismo primitivo de tipo 1]
+  Dizemos que um difeomorfismo $h:\mathbb{R}^{n}\to\mathbb{R}^{n}$ é \textbf{primitivo de tipo 1} se existem $i,j$ com $1\leq i,j\leq n$, tais que $h$ é dado por
+  \begin{align*}
+    h(x)=h(x_1,\cdots,x_i,\cdots,x_j,\cdots,x_n)=(x_1,\cdots,x_j,\cdots,x_i,\cdots,x_n).
+  \end{align*}
+  Isto é, que $h$ é uma permutação de coordenadas. 
+\end{definition}
+\begin{theorem}
+  Seja $h:\mathbb{R}^{n}\to\mathbb{R}^{n}$ um difeomorfismo primitivo de tipo $1$. Para todo conjunto J-mensurável $X\subseteq \mathbb{R}^{n}$, e toda função integrável $f:h(X)\to\mathbb{R}$, tem-se 
+  \begin{align*}
+    \int_{h(X)}f(y)\,dy=\int_{X}f(h(x))|\det(h^{\prime}(x))|\,dx.
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Temos que $|\det(h^{\prime}(x))|=1$.\\
+  Consideremos o bloco $B=\prod_{i=1}^{n}[a_i,b_i]$ e note que $h(B)$ também é um bloco com arestas do mesmo comprimento que os de $B$. Ou seja, $Vol(B)=Vol(f(B))$.  Além disso, dado um conjunto J-mensurável $Z\subseteq \mathbb{R}^{n}$, temos que 
+  \begin{align*}
+    Vol(Z)=\inf\{\sum_{i=1}^{k}Vol(B_i):Z\subseteq \bigcup_{i=1}^{k}B_i\}.
+  \end{align*}
+  Assim, toda decomposição $h(X)=Y_1\cup\cdots\cup Y_k$ e tal que $Y_i=h(X_i)$, onde $X=X_1\cup\cdots\cup X_k$ é uma decomposição de $X$.\\
+  Logo, todo ponto de $Y_i$ é da forma $h(\xi_i)$, com $\xi_i\in X_i$. Seguese que
+  \begin{align*}
+    \int_{h(X)}f(y)\,dy=\lim_{|D| \to 0}\sum f(h(\xi_i))Vol(Y_i)=\lim_{|D| \to 0}\sum f(h(\xi_i))Vol(X_i)=\int_{X}(f\circ h)(x)\,dx.
+  \end{align*}
+\end{proof}
+\begin{definition}[Difeomorfismo primitivo de tipo 2]
+  Dizemos que um difeomorfismo $h:\mathbb{R}^{n}\to\mathbb{R}^{n}$ é \textbf{primitivo de tipo 2} se existe uma função $\phi:U\subseteq\mathbb{R}^{n}\to\mathbb{R}$ de classe $C^{1}$, tal que para todo $x\in U$ se cumpre que
+  \begin{align*}
+    h(x)=(\phi(x),x_2,\cdots,x_n).
+  \end{align*}
+\end{definition}
+\begin{theorem}
+  Seja $h:U\to U$ um difeomorfismo primitivo de tipo 2. Para todo bloco $X\subseteq\mathbb{R}^{n}$ e toda função integrável $f:h(X)\to\mathbb{R}$, tem-se:
+  \begin{align*}
+    \int_{h(X)}f(y)\,dy=\int_{X}f(h(x))|\det h^{\prime}(x)|\,dx.
+  \end{align*}
+\end{theorem}
+\begin{proof} 
+  Escrevemos $x\in\mathbb{R}^{n}=\mathbb{R}\times\mathbb{R}^{n-1}$ como $x=(s,w)$ com $s\in\mathbb{R}$ e $w\in\mathbb{R}^{n-1}$. Considere o bloco $X=I\times A\subseteq\mathbb{R}^{n}$, onde $I=[a,b]$ e $A\subseteq \mathbb{R}^{n-1}$ é um bloco.\\
+  Para todo $w\in A$ fixado, temos que a função $\phi_{w}(s)=\phi(s,w)$ é um difeomorfismo do intervalo $I$ no intervalo $J_w=\phi_{w}(I)$. Note que
+  \begin{align*}
+    \det(h^{\prime}(x))=\frac{\partial \phi}{\partial s}(s,w)=\phi_w^{\prime}(s).
+  \end{align*}
+  Seja $J\subseteq\mathbb{R}$ um intervalo contendo $J_w$ para todo $w\in A$. Então, $h(X)\subseteq J\times A$. Agora definamos
+  \begin{align*}
+    \tilde{f}:J\times A&\to\mathbb{R},\\
+                      x&\to\begin{cases}
+                        f(x), &\text{ se } x\in h(X) \text{,} \\
+                        0, &\text{ se } x\in J\times A\setminus h(X).
+                      \end{cases}
+  \end{align*}
+  Assim, pelo teorema de Fubinni (integração multipla), temos que
+  \begin{align*}
+    \int_{h(x)}f(y)\,dy=\int_{J\times A}\tilde{f}(x,w)\,dx\,dw&=\int_{A}\int_{J}\tilde{f}_{w}(x)\,dx\,dw\\
+    &=\int_{A}\int_{J_w}\tilde{f}_w(x)\,dx\,dw\\
+    &=\int_{A}\int_{I}f_w(\phi(s,w))|\phi_w^{\prime}(s)|\,ds\,dw\\
+    &=\int_{X}f(h(x))|\det h^{\prime}(x)|\,dx.
+  \end{align*}
+\end{proof}
+\begin{note}
+  Diremos que um difeomorfismo $C^{1}$ é admisivél se satisfaz as condiçoes do teorema de mudançã de variaveis. Todo difeomorfísmo $C^{1}$ é localmente admisivel. Além diso, se $h_1,h_2\in D$, então $h_1\circ h_2\in D$.\\
+  \textbf{Exemplo:}\\
+  \begin{align*}
+    h(x)=\left( x_1,\cdots,\phi(x),\cdots,x_n \right).
+  \end{align*}
+  Então $h\in D$.
+\end{note}
+\begin{theorem}\label{th:localmente-admissivel}
+  Seja $h:U\to V$ um difeomorfismo $C^1$ entre abertos de $\mathbb{R}^{n}$. Todo ponto de $U$ possui uma vizihança restricta ão qual $h$ é admisivel. 
+\end{theorem}
+\begin{proof} 
+  Dado $x_0\in U$, $h$ é definida numa vizinhança de $x_0$ como
+  \begin{align*}
+    h(x)=\left( \phi_1(x),\cdots,\phi_j(x),x_{j+1},\cdots,x_n \right).
+  \end{align*}
+  Queremos provar que existe um difeomorfismo $K$ de classe $C^{1}$, comprendo por difeomorfismos primitivos, cuja imágem é uma vizinhança de $x_0$ tal que
+  \begin{align*}
+    h(k(w))=\left( \psi_1(w),\cdots,\psi_{j-1}(w),w_j,\cdots,w_n \right).
+  \end{align*}
+  Note que
+  \begin{align*}
+    h^{\prime}(x)=\left( \nabla\phi_1(x),\cdots,\nabla\phi_{j}(x),e_{j+1},\cdots,e_{n} \right)^{T}.
+  \end{align*}
+  Logo temos que $h$ é difeomorfismo, pelo que podemos afirmar que $h^{\prime}(x)$ é invertível. Em particular, a submatrices são invertiveis.\\
+  Então, como $\nabla_{j}(x_0)\neq 0$, temos que existe $l$ tal que $\frac{\partial \phi_j}{\partial x_l}(x_0)\neq 0$, portanto as permutando as coordenadas $l$ e $j$ e temos que se cumpre que
+  \begin{align*}
+    \frac{\partial \phi_j}{\partial x_j}(x_0)\neq 0.
+  \end{align*}
+  Assim, pela forma forma local das submersões aplicado a $\phi_j$ existe um difeomorfismo admisivel
+  \begin{align*}
+    K:w\to\left( w_1,\cdots,k_j(w),w_{j+1},\cdots,w_n \right).
+  \end{align*}
+  Cuja imágem é uma vizinhança de $x_0$ tal que $\phi_j(k(w))=w_j$ para todo $w$ no domínio de $K$. Logo
+  \begin{align*}
+    h(k(w))=\left( \phi_1(k(w)),\cdots,\phi_{j-1}(k(w)),w_j,\cdots,w_n \right).
+  \end{align*}
+  Pelo que podemos concluir que todo difeomorfismo $C^{1}$ é localmente admissivel. 
+\end{proof}
+\begin{definition}[Número de Lebesgue]
+  Seja $X\subseteq \bigcup_{\lambda\in \Lambda}C_{\lambda}$ uma cobertura de $X\subseteq\mathbb{R}^{n}$. Diz-se que $\delta>0$ é um \textbf{número de Lebesgue} desta cobertura quando todo subconjunto $Y\subseteq X$ com $diam(Y)<\delta$ está contido em algúm $C_{\lambda}$. 
+\end{definition}
+\begin{theorem}\label{th:numero-de-lebesgue}
+  Toda cobertura $X\subseteq \bigcup_{\lambda\in\Lambda}C_{\lambda}$ de um conjunto compacto $X\subseteq\mathbb{R}^{n}$ possui um número de Lebesgue. 
+\end{theorem}
+\begin{theorem}
+  Todo difeomorfismo $C^{1}$ é admissível. 
+\end{theorem}
+\begin{proof} 
+  Note que dado $x\in X$, pelo teorema \ref{th:localmente-admissivel} e o theorema \ref{th:numero-de-lebesgue} temos que existe uma vizinhança $W_{x}\subseteq U$ tal que $h\big|_{W_x}$ é um difeomorfismo admisivel. Seja $\{W_x:x\in X\}$ cobertura de $X$ que admite um número de Lebesgue $\delta>0$. Tomemos uma decomposição $D=\left( X_1,\cdots,X_k \right)$ de $X$ tal que cada conjunto $X_i$ tem diametro inferior a $\delta$. Logo, como cada $X_i$ tem diametro menor a $\delta$, temos que existe um aberto $W_{x_i}$ da cobertura tal que $X_i\subseteq W_{x_i}$. Note que $h\big|_{W_{x_i}}$ é admissível, temos portanto que vale
+  \begin{align*}
+    \int_{h(X)}f(y)\,dy=\sum_{i=1}^{k}\int_{h(X_i)}f(y)\,dy=\sum_{i=1}^{k}\int_{X_i}f(h(x))|\det h^{\prime}(x)|\,dx=\int_{X}f(h(x))|\det h^{\prime}(x)|\,dx.
+  \end{align*}
+\end{proof}
+\begin{corollary}
+  Seja $T:\mathbb{R}^{n}\to\mathbb{R}^{n}$ linear. Para todo conjunto J-mensurável $X\subseteq\mathbb{R}^{n}$, tem-se que $Vol(T(X))=|\det (T)|Vol(X)$. 
+\end{corollary}

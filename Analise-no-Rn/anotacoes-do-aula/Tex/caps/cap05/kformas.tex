@@ -1,0 +1,138 @@
+\begin{definition}[$k$-tensor]
+  Um tensor de grau $k$ ou um  \textbf{k-tensor} é uma função real $k$-linear
+  \begin{align*}
+    T:\underbrace{V\times\cdots\times K}_{k-vezes}:\to \mathbb{R}.
+  \end{align*}
+  O espaço vetoril dos vetores $k$-tensores em $V$ é denotado por $T^{k}(V)$. 
+\end{definition}
+\begin{example}
+  \phantom{X}
+  \begin{itemize}
+    \item $k=0$ temos que $T^{0}(V)=\mathbb{R}$.
+    \item $k=1$ temos que $T^{1}(V)=V^{\ast}=\{T:V\to\mathbb{R}: T\text{ é linear}\}$.
+    \item $k=2$ temos que $T^{2}(V)$ são os tensores bilineares como por exemploo o produto interno.
+    \item $k=n$ temos que $\det\in T^{n}(V)$. 
+  \end{itemize}
+\end{example}
+\begin{definition}[$k$-formas]
+  As \textbf{$k$-formas} ou tensores alternados são tensores tais que
+  \begin{align*}
+    w(v_1,\cdots,v_i,\cdots,v_j,\cdots,v_n)=-w(v_1,\cdots,v_j,\cdots,v_i,\cdots,v_n).
+  \end{align*}
+  O subespaço vetorial das $k$-formas de um espaço vetorial $V$ será denotado por $\Lambda^{k}(V)$. 
+\end{definition}
+\begin{example}
+  \phantom{X}
+  \begin{itemize}
+    \item $\Lambda^{0}(V)=T^{0}(V)=\mathbb{R}$.
+    \item $\Lambda^{1}(V)=T^{1}(V)=V^{\ast}$.
+    \item $\Lambda^{2}(V)\subseteq T^{2}(V)$.
+  \end{itemize}
+\end{example}
+\begin{proposition}
+  Seja $\sigma\in S_n$ uma permutação. Se $w\in\Lambda^{k}(V)$, então
+  \begin{align*}
+    w(v_{\sigma(1)},\cdots,v_{\sigma(k)})=(\sgn(\sigma))w(v_1,\cdots,v_k).
+  \end{align*}
+\end{proposition}
+\begin{proposition}
+  As seguintes afirmações são equivalentes
+  \begin{enumerate}[i)]
+    \item $T$ é um tensor alternado.
+    \item $T(v_1,\cdots,v,\cdots,v,\cdots,v_k)=0$ para todo $v$.
+    \item Se $v_i=v_{i+1}=v$ para algúm $i$, então $w(v_1,\cdots,v,v,\cdots,v_k)=0$.
+    \item $T(v_1,\cdots,v_k)=0$ sempre que $v_1,\cdots,v_k$ são linearmente dependentes. 
+  \end{enumerate}
+\end{proposition}
+\begin{proof} 
+  $i)\to ii)$\\
+  Sabemos que
+  \begin{align*}
+    T(v,v)&=-T(v,v)\\
+    2T(v,v)&=0\\
+    T(v,v)&=0.
+  \end{align*}
+  $ii)\to i)$\\
+  Temos que pela linearidad de $T$ e a hipótese se cumpre que 
+  \begin{align*}
+    0=T(v_i+v_j,v_i+v_j)=T(v_i,v_i)+T(v_j,v_i)+T(v_i,v_j)+T(v_j,v_j).
+  \end{align*}
+  Mas como $T(v,v)=0$, então temos que $0=T(v_i,v_j)+T(v_j,v_i)$ o que implica que
+  \begin{align*}
+    T(v_i,v_j)=-T(v_j,v_i).
+  \end{align*}
+  $ii)\to iii)$\\
+  Inmediato.\\
+  $iii)\to ii)$\\
+  Raciocinando por indução sobre $n$ em $v_i=v_{i+n}$ temos que pela hipótese o caso $n=1$ se cumpre.\\
+  Agora, suponha se $v_i=v_{i+j}$ para algúm $i$ e para qualquer $j\in\{1,\cdots,r\}$, então vale que $T(v_1,\cdots,v_k)=0$. Vamos probar que isto implica que se $v_i=v_{i+r+1}$, então $T(v_1,\cdots,v_k)=0$.\\
+  De fato temos que usando as hipóteses temos que como $v_i=v_{i+r+1}$, então
+  \begin{align*}
+    T(v_i,v_{i+r},v_{i+r+1})&=T(v_i,v_{i+r},v_{i+r+1}+v_{i+r})-\underbrace{T(v_i,v_{i+r},v_{i+r})}_{\to 0}\\
+    &=\underbrace{T(v_i,v_{i+r}+v_{i+r+1},v_{i+r+1}+v_{i+r})}_{\to 0}-T(\underbrace{v_i}_{i-ésima},\underbrace{v_{i+r+1}}_{i+r-ésima},v_{i+r+1}+v_{i+r})\\
+    &=0.
+  \end{align*}
+  $iv)\to ii)$\\
+  Inmediato.\\
+  $ii)\to iv)$\\
+  Suponha que
+  \begin{align*}
+    v_i=\sum_{\substack{j=1\\j\neq i}}^{k}x^{j}v_j.
+  \end{align*}
+  Logo temos que pela linearidad de $T$ na $i$-ésima coordenada 
+  \begin{align*}
+    T(v_1,\cdots,v_k)=\sum_{\substack{j=1\\j\neq i}}^{k}x^{j}T(v_1,\cdots,v_j,\cdots,v_k)=0.
+  \end{align*}
+\end{proof}
+\begin{theorem}[Existencia e unicidade do tensor determinante]
+  Seja $V$ um espaço vetorial e $B=\{e_1,\cdots,e_n\}$ uma base de $V$.\\
+  Existe uma única $n$-forma $\det$ tal que $\det(e_1,\cdots,e_n)=1$.\\
+  Consequentemente temos que
+  \begin{align*}
+    \det(v_1,\cdots,v_n)=\sum_{\sigma\in S_n}(\sgn(\sigma))v_1^{\sigma(1)}\cdots v_{n}^{\sigma(n)}.
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  Definamos $\det$ como
+  \begin{align*}
+    \det(v_1,\cdots,v_n)=\sum_{\sigma\in S_n}(\sgn(\sigma))v_1^{\sigma(1)}\cdots v_{n}^{\sigma(n)}.
+  \end{align*}
+  \textbf{Afirmação:}\\
+  Temos que $\det$ é uma $n$-forma, ou seja é $n$-multilinear e alternada e $\det(e_1,\cdots,e_n)=1$.
+  \begin{itemize}
+    \item Note que $\det$ é multilinear, ja que o produto dos $v_i^{\sigma(i)}$ é multilinear.
+    \item Note que se pegamos $\gamma=(i,j)$, então
+      \begin{align*}
+        \det(e_{\gamma(1)},\cdots,e_{\gamma_{\gamma(n)}})&=\sum_{\sigma\in S_n}(\sgn(\sigma))\delta_{1}^{\sigma(\gamma(1))}\cdots\delta_{n}^{\sigma(\gamma(n))}\\
+        &=\sum_{\sigma\in S_n}(\sgn(\sigma))(\sgn(\gamma))\delta_{1}^{\sigma(1)}\cdots\delta_{n}^{\sigma(n)}\\
+        &=-\det(e_1,\cdots,e_n).
+      \end{align*}
+    \item Note que
+      \begin{align*}
+        \det(e_1,\cdots,e_n)=\sum_{\sigma\in S_n}(\sgn(\sigma))(\sgn(\gamma))\delta_{1}^{\sigma(1)}\cdots\delta_{n}^{\sigma(n)}=1.
+      \end{align*}
+  \end{itemize}
+  Pelo que podemos afirmar existencia.\\
+  Para mostrar a unicidade temos que como $\det(e_1,\cdots,e_n)=1$, então dados vetores arbitrarios
+  \begin{align*}
+    v_j=\sum_{i=1}^{n}v_j^{i}e_i,\quad\text{ com }j\in\{1,\cdots,n\}.
+  \end{align*}
+  Aplicamos a multilinearidade de $\det$ e temos que
+  \begin{align*}
+    \det(v_1,\cdots,v_n)=\det\left( \sum_{i_1=1}^{n}v_{1}^{i_1}e_{i_1},\cdots, \sum_{i_n=1}^{n}v_{n}^{i_n}e_{i_n}\right)=\sum_{i_1=1}^{n}\cdots\sum_{i_n=1}^{n}v_{1}^{i_1}\cdots v_{n}^{i_n}\det(e_{i_1},\cdots,e_{i_n}).
+  \end{align*}
+  Agora, suponha que existem $p,q$ taes que $i_p=i_q$ com $p\neq q$, então como $\det$ é uma forma alternada, temos que $\det(e_{i_1},\cdots,e_{i_n})=0$, logo temos que
+  \begin{align*}
+    \det(v_1,\cdots,v_n)=\sum_{\sigma\in S_n}(\sgn(\sigma))v_1^{\sigma(1)}\cdots v_{n}^{\sigma(n)}.
+  \end{align*}
+\end{proof}
+\begin{proposition}
+  Se $\dim(V)=n$, então $\Lambda^{k}(v)=0$ para todo $k>n$. 
+\end{proposition}
+\begin{proof} 
+  Note que como $k>n$, entao temos más componentes que vetores da base, logo se pegamos $w\in\Lambda^{k}(v)$ se cumpre que
+  \begin{align*}
+    w(e_1,\cdots,e_k)=0.
+  \end{align*}
+  Pois tem que existir algúm $i\neq j$ tal que $e_i=e_j$. 
+\end{proof}

@@ -1,0 +1,157 @@
+Considere o espaço vetorial graduado
+\begin{align*}
+  \Lambda(V)=\oplus_{k=0}^{n}\Lambda^{k}(V).
+\end{align*}
+\begin{definition}[Produto exterior]
+  O \text{produto exterior} (ou produto wedge) é o operador bilinear
+  \begin{align*}
+    \wedge:\Lambda^{k}(V)\times\Lambda^{l}(V)\to\Lambda^{k+l}(V),
+  \end{align*}
+  definido por
+  \begin{align*}
+    w\wedge\eta (v_1,\cdots,v_k,v_{k+1},\cdots,v_{k+l})=\sum_{\sigma\in S_{k+l}}(\sgn\sigma)w(v_{\sigma(1)},\cdots,v_{\sigma(k)})\eta(v_{\sigma(k+1)},\cdots,v_{\sigma_{k+l}}).
+  \end{align*}
+  Pelo que temos que $w\wedge\eta\in\Lambda^{k+l}(V)$.
+\end{definition}
+\begin{definition}[Álgebra exterior]
+  A \textbf{Álgebra exterior} de $V$ é a álgebra graduada
+  \begin{align*}
+    \left( \Lambda(V),\wedge \right).
+  \end{align*}
+\end{definition}
+\begin{definition}[$k$-forma elementar]
+  Seja $I=i_1,\cdots,i_k$ e $J=j_1,\cdots,j_k$ multi-indices. Definimos a \textbf{$k$-forma elementar} $e^{I}\in\Lambda^{k}(V)$ por
+  \begin{align*}
+    e^{I}(e_J)=e^{I}(e_{j_1},\cdots,e_{j_k})=\det\left[ e^{i_r}(e_{j_s}) \right],
+  \end{align*}
+  onde $\left[ e^{i_r}(e_{j_s}) \right]$ denota a matriz $k\times k$ cuja entrada $rs$ é o valor $e^{i_r}(e_{j_s})$. 
+\end{definition}
+\begin{note}
+  Em nosso caso, estamos assumindo que $\{e_1,\cdots,e_k\}$ é a base de $V$ e que $\{e^{1},\cdots,e^{k}\}$ é a base do dual $V^{\ast}$, portanto temos que
+  \begin{align*}
+    e^{i}(e_j)=\delta^{i}_j.
+  \end{align*}
+  So que extendemos isto para multi-índices.\\
+  Mais tarde veremos que
+  \begin{align*}
+    e^{i_1,i_2}(e_{j_1},e_{j_2})=e^{i_1}(e_{j_1},e_{j_2})\wedge e^{i_2}(e_{j_1},e_{j_2}).
+  \end{align*}
+  Mas, por agora, vejamos os seguintes exemplos do que mencionamos.
+\end{note}
+\begin{example}
+  Suponha $I=1,2$, então
+  \begin{align*}
+    e^{1,2}(e_1,e_2)&=\det \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}=1.\\
+    e^{1,2}(e_2,e_1)&=\det \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}=-1.
+  \end{align*}
+\end{example}
+\begin{definition}[Multidelta de Kronecker]
+  Sejam $I$ e $J$ multi-índices com o mesmo tamanho. Definimos o \textbf{multidelta de Kronecker} de $I$ e $J$ por
+  \begin{align*}
+    \delta_{J}^{I}=\det\left[ \delta_{j_s}^{i_r} \right].
+  \end{align*}
+\end{definition}
+\begin{example}
+  Seja $I=1,2$, logo
+  \begin{align*}
+    \delta_{1,2}^{I}&=\det \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}=1.\\
+    \delta_{2,1}^{I}&=\det \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}=-1.\\
+    \delta_{1,1}^{I}&=\det \begin{pmatrix}
+      1 & 1 \\
+      0 & 0
+    \end{pmatrix}=0.
+  \end{align*}
+\end{example}
+\begin{notation}
+  Seja $I=i_1,\cdots,i_k$ é multi-índice e $\sigma\in S_{k}$, então denotamos
+  \begin{align*}
+    I_\sigma=i_{\sigma(1)},\cdots,i_{\sigma(k)}.
+  \end{align*}
+\end{notation}
+\begin{proposition}\label{prop:multi-delta}
+  As seguintes afirmações são validas
+  \begin{enumerate}[i)]
+    \item $I_{\sigma\gamma}=(I_{\gamma})_{\sigma}$.
+    \item $e^{I_{\sigma}}=(\sgn\sigma)e^{I}$.
+    \item 
+      \begin{align*}
+        \delta_{J}^{I}= 
+        \begin{cases}
+          \sgn\sigma, &\text{ se } J=I_{\sigma}\text{ e $I$ e $J$ não tem índices repetidos} \text{,} \\
+          0, &\text{ se $I,J$ possuem algúm indice repetido}.
+        \end{cases}
+      \end{align*}
+    \item $e^{I}(e_{j_1},\cdots,e_{j_k})=\delta_{J}^{I}$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof} 
+  $ii)$\\
+  Sabemos que
+  \begin{align*}
+    e^{I_\sigma}(e_{j_1},\cdots,e_{j_k})=\det\left[ e^{i_{\sigma(r)}}(e_{j_s}) \right].
+  \end{align*}
+  Logo temos que
+  \begin{itemize}
+    \item Cada troca das linhas multiplica o determinante por $-1$.
+    \item Em geral, uma permutação $\sigma$ multiplica por $\sgn\sigma$.
+  \end{itemize}
+  Assim
+  \begin{align*}
+    e^{I_\sigma}(e_J)=\det\left[ e^{i_{\sigma(r)}}(e_{j_s}) \right]=\sgn\sigma\det\left[ e^{i_r}(e_{j_s}) \right]=\sgn\sigma e^{I}.
+  \end{align*}
+  $iii)$
+  \begin{align*}
+    \delta_{J}^{I}= 
+    \begin{cases}
+      \sgn\sigma, &\text{ se $J=I_{\sigma}$ sem repetições} \text{,} \\
+      0, &\text{ caso contrario }.
+    \end{cases}
+  \end{align*}
+  Considere a matriz $A=(\delta_{j_s}^{i_r})$.\\
+  \begin{itemize}
+    \item Caso $1$, se $J=I_\sigma$ sem repetições, então temos que $\det(A)=\sgn\sigma$.
+    \item Caso $2$, se $I$ ou $J$ tem índices repetidos, temos que existem duas linhas da matriz $A$ linearmente dependentes, pelo que temos que $\det(A)=0$ (por exemplo $e^{1,2}_{1,1}$).
+    \item Caso $3$ índices totalmente diferentes, então temos que a matriz $A$ tem algunha linha nula, pelo que temos que $\det(A)=0$. 
+  \end{itemize}
+\end{proof}
+\begin{definition}[Multi-índice crescente]
+  Dizemos que un multi-índice $I=i_1,\cdots,i_k$ é um \textbf{muli-índice crescente} se $i_1<i_2<\cdots<i_k$.
+\end{definition}
+\begin{proposition}
+  Se $w\in\Lambda^{k}(V)$, vale
+  \begin{align*}
+    w=\sum_{I}w_{I}e^{I},\quad\text{ Com $I$ crescente,}
+  \end{align*}
+  e a base elementar
+  \begin{align*}
+    B^{k}=\{e^{I}:I\text{ é multi-índice de componente }k\},
+  \end{align*}
+  é base para $\Lambda^{k}(V)$.\\
+  Em particular temos que se $\dim V=n$, então $\dim\Lambda^{k}(V)=\binom{n}{k}$ se $k\leq n$ e $\dim\Lambda^{k}(V)=0$ se $k>n$. 
+\end{proposition}
+\begin{proof} 
+  Sabemos que pela proposição \ref{prop:multi-delta} item $iii)$ temos que
+  \begin{align*}
+    \sum_{I}w_Ie^{I}(e_J)=\sum_{I}w_{I}\delta_{J}^{I}=\sum_{I}W_I\delta_{J}^{I}=w_{J}=w(e_J)=w(e_{j_1},\cdots,e_{j_k}).
+  \end{align*}
+  Logo $w=\sum_{I}w_Ie^{I}$.\\
+  Por outro lado, suponha que $\sum_{I}w_Ie^{I}=0$, logo pelo anterior temos que $w_J=0$, pelo que podemos afirmar que $B^{k}$ é linearmente independente e um gerador, ou seja, $B^{k}$ é uma base. 
+\end{proof}
+\begin{corollary}
+  Se $\dim V=n$, e $L\in L(V,V)$ e $w\in\Lambda^{n}(V)$, então
+  \begin{align*}
+    w(Lv_1,\cdots,Lv_n)=(\det L)w(v_1,\cdots,v_n).
+  \end{align*}
+\end{corollary}
