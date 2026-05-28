@@ -1,0 +1,152 @@
+Desejamos definir o operador de derivada para $k$-formas, isto é,
+\begin{align*}
+  d:\Lambda^{k}(M)&\to\Lambda^{k+1}(M),\\
+                 w&\to dw.
+\end{align*}
+Sabemos que para $0$-fórmas se cumpre que
+\begin{align*}
+  d(w\wedge\eta)=dw\wedge\eta + w\wedge d\eta.
+\end{align*}
+E seríamos tentados a estender essa definição da regra de Leibniz ao caso geral, ou seja, que dadas $w\in\Lambda^{k}(M)$ e $\eta\in\Lambda^{l}(M)$ temos
+\begin{align*}
+  d(w\wedge\eta)=dw\wedge\eta + w\wedge d\eta.
+\end{align*}
+Mas note que como $w\wedge\eta=(-1)^{kl}\eta\wedge w$, então
+\begin{align*}
+  d(\eta\wedge w)=d((-1)^{kl}w\wedge \eta)=(-1)^{k}d\eta\wedge w+(-1)^{l}d\eta\wedge w.
+\end{align*}
+O que pode se tornar problemático.
+\begin{definition}[Regra de Leibniz graduada]
+  Seja $w\in\Lambda^{k}(M)$ e $\eta\in\Lambda^{l}(M)$, então temos que a \textbf{regra de Leibniz graduada} é 
+  $$d(w\wedge \eta)=dw\wedge\eta+(-1)^{k}w\wedge d\eta.$$
+\end{definition}
+\begin{proposition}
+  A regra de Leibniz graduada tem compatibilidade com
+  \begin{align*}
+    \eta\wedge w=(-1)^{kl}w\wedge\eta.
+  \end{align*}
+  Em outras palavras, diferenciar antes ou depois da permutação produz o mesmo resultado.
+\end{proposition}
+\begin{proof} 
+  \begin{align*}
+    d(\eta\wedge w)=&d((-1)^{kl}w\wedge\eta)\\
+    =&(-1)^{kl}dw\wedge\eta +(-1)^{kl}(-1)^{k}w\wedge d\eta\\
+    =&(-1)^{kl}(-1)^{(k+1)l}\eta\wedge dw+(-1)^{kl}(-1)^{k}(-1)^{k(l+1)}d\eta\wedge w\\
+    =&(-1)^{l}\eta\wedge dw+ d\eta\wedge w\\
+    =&d\eta\wedge w+(-1)^{l}\eta\wedge dw.
+  \end{align*}  
+\end{proof}
+Note que $dx^{i}=e^{i}$ no $\mathbb{R}^{n}$ e como $dx^{1}\in\Lambda^{1}(V)$, então temos que $d(dx^{i})=0$.\\
+Em geral, a forma elementar $dx^{I}$ é constante na vizinhança de coordenadas ($e^{I}=dx^{I}$ em $\mathbb{R}^{n}$) e definimos
+\begin{align*}
+  d(dx^{I})=0.
+\end{align*}
+\begin{proposition}[Propriedades]
+  Se $f$ é uma função, então a $1$-forma $df$ se escreve na base dual como
+  \begin{align*}
+    df=\sum_{i=1}^{n}\frac{\partial f}{\partial x_i}dx^{i}.
+  \end{align*}
+  De fato,
+  \begin{align*}
+    df(v)=df\left( \sum_{i=1}^{n}v^{i}e_i \right)=\sum_{i=1}^{n}v_idf(e_i)=\sum_{i=1}^{n}dx^{i}(v)df(e_i)=\sum_{i=1}^{n}df(e_i)dx^{i}(v).
+  \end{align*}
+  Daí, se temos que $w=\sum_{J}w_Jdx^{J}$, segue se que como $w_J$ é uma $0$-forma, se existe um tal operador $d$, então usando a regra de Leibniz graduada, ele deve satisfazer
+  \begin{align*}
+    dw=&\sum_{J}dw_J\wedge dx^{J}+\sum_{J}(-1)^{0}w_J\wedge d(dx^{J})\\
+    =&\sum_{J}\left(\sum_{i=1}^{n}\frac{\partial w_J}{\partial x^{i}}dx^{i} \right)\wedge dx^{J}+0\\
+    =&\sum_{J}\sum_{i=1}^{n}\frac{\partial w_J}{\partial x^{i}}dx^{i}\wedge dx^{J}.
+  \end{align*}
+\end{proposition}
+\begin{definition}[Derivada exterior]
+  Definimos o operador \textbf{derivada exterior}
+  \begin{align*}
+    d:\Lambda^{k}(\mathbb{R}^{n})\to\Lambda^{k+1}(\mathbb{R}^{n}).
+  \end{align*}
+  Da seguinte maneira
+  \begin{itemize}
+    \item Se $f\in\Lambda^{0}(\mathbb{R}^{n})=C^{\infty}(\mathbb{R}^{n})$, sua derivada exterior é simplemente a sua diferencial $df$.
+    \item Se $w\in\Lambda^{k}(\mathbb{R}^{n})$, escrevemos en coordenadas canônicas de $\mathbb{R}^{n}$
+      \begin{align*}
+        w=\sum_{J}w_Jdx^{J}.
+      \end{align*}
+      E definimos a sua derivada exterior $dw\in\Lambda^{k+1}(\mathbb{R}^{n})$ por
+      \begin{align*}
+        dw=\sum_{J}dw_J\wedge dx^{J}=\sum_{J}\sum_{i=1}^{n}\frac{\partial w_J}{\partial x^{i}}dx^{i}\wedge dx^{J}.
+      \end{align*}
+  \end{itemize}
+\end{definition}
+\begin{note}
+  Se $w$ é uma $1$-forma, então temos que cada $w_j$ é uma função, daqui que
+  \begin{align*}
+    dw_j=\sum_{i=1}^{n}\frac{\partial w_j}{\partial x_i}dx^{i}.
+  \end{align*}
+  Logo temos que
+  \begin{align*}
+    dw=\sum_{j=1}^{n}dw_j\wedge dx^{j}=\sum_{i,j=1}^{n}\frac{\partial w_j}{\partial x_i}dx^{i}\wedge dx^{j}=\sum_{i<j}\left( \frac{\partial w_j}{\partial x_i}-\frac{\partial w_i}{\partial x_j} \right)dx^{i}\wedge dx^{j}.
+  \end{align*}
+\end{note}
+\begin{proposition}
+  A derivada exterior
+  \begin{align*}
+    d:\Lambda^{k}(V)\to\Lambda^{k+1}(V),
+  \end{align*}
+  é um operador linear que satisfaz a regra do produto graduada.
+\end{proposition}
+\begin{proof} 
+  \begin{align*}
+    d(w\wedge\eta)=&d\left[ \sum_{I}w_Idx^{I}\wedge\sum_{J}\eta_{J}dx^{J} \right]\\
+    =&d\left[ \sum_{I,J}w_{I}\eta_{J}dx^{I}\wedge d^{J} \right]\\
+    =&\sum_{I,J}d(w_I\eta_{{J}})\wedge dx^{I}\wedge dx^{J}\\
+    =&\sum_{I,J}(dw_I\eta_{J}+w_Id\eta_J)\wedge dx^{I}\wedge dx^{J}\\
+    =&\sum_{I,J}dw_I\eta_J\wedge dx^{I}\wedge dx^{J} + \sum_{I,J}w_Id\eta_J\wedge dx^{I}\wedge dx^{J}\\
+    =&\sum_{I,J}dw_I\wedge dx^{I}\wedge \eta_J dx^{J}+ \sum_{I,J}d\eta_J\wedge w_Idx^{I}\wedge dx^{J}\\
+    =&\sum_{I,J}dw_I\wedge dx^{I}\wedge \eta_J dx^{J}+ (-1)^{k}\sum_{I,J} w_Idx^{I}\wedge d\eta_{J}\wedge dx^{J}\\
+    =&\sum_{I}dw_I\wedge dx^{I}\wedge \sum_{J}\eta_J dx^{J}+ (-1)^{k}\sum_{I} w_Idx^{I}\wedge \sum_{J}d\eta_J\wedge dx^{J}\\
+    =&dw\wedge \eta+(-1)^{k}w\wedge d\eta.
+  \end{align*}
+\end{proof}
+\begin{note}
+  Se $f$ é uma $0$-forma $C^{2}$, temos
+  \begin{align*}
+    d^{2}(f)=d(df)=d\left( \sum_{i=1}^{n}\frac{\partial f}{\partial x_i} dx^{i}\right)&=\sum_{i,j=1}^{n}\frac{\partial^{2}f }{\partial x_j\partial x_i}dx^{i}\wedge dx^{j}\\
+    &=\sum_{i<j}\left( \frac{\partial^2 f }{\partial x_i\partial x_j}-\frac{\partial^{2} }{\partial x_j\partial x_i} \right)dx^{i}\wedge dx^{j}\\
+    &=0.
+  \end{align*}
+\end{note}
+\begin{proposition}
+  Em geral vale
+  \begin{align*}
+    d^{2}=d\circ d=0.
+  \end{align*}
+\end{proposition}
+\begin{proposition}
+  Seja $F:U\subseteq \mathbb{R}^{m}\to\mathbb{R}^{m}$ uma aplicação diferenciável. Então
+  \begin{align*}
+    F^{\ast}(dw)=d(F^{\ast}w).
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  O resultado para $0$-formas foi provado na proposição \ref{prop:pullback-0-forma}.\\
+  Para o caso geral escrevemos pelo colorario \ref{cor:pullback-formas} (pegando $w_I=1$)
+  \begin{align*}
+    F^{\ast}dy^{I}=dF^{J},
+  \end{align*}
+  i.é,
+  \begin{align*}
+    F^{\ast}\left( dy^{i_1}\wedge\cdots\wedge dy^{i_k} \right)=dF^{i_1}\wedge\cdots\wedge dF^{j_k}.
+  \end{align*}
+  Daí
+  \begin{align*}
+    d(F^{\ast}dy^{J})=0.
+  \end{align*}
+  Pois $d(F^{\ast}dy^{J})$ será uma soma de produtos exteriores, cada um contendo um elemento da forma $d^{2}F^{i_j}$.\\
+  Logo,
+  \begin{align*}
+    F^{\ast}(dw)&=F^{\ast}\left( \sum_{J}dw_J\wedge dy^{J} \right)\\
+    &=\sum_{J}F^{\ast}dw_{J}\wedge F^{\ast}dy^{J}\\
+    &=\sum_{J}\left[ d(F^{\ast}w_J)\wedge F^{\ast}dy^{J}-F^{\ast}w_J\wedge d(F^{\ast}dy^{J}) \right]\\
+    &=\sum_{J}d\left( F^{\ast}w_J\wedge F^{\ast}dy^{J} \right)\\
+    &=d\left( F^{\ast}\left( \sum_{J}w_Jdy^{J} \right) \right)\\
+    &=d(F^{\ast}w).
+  \end{align*}
+\end{proof}

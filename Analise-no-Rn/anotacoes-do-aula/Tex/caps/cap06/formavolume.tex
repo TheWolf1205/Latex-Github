@@ -1,0 +1,66 @@
+\begin{definition}
+  Seja $M^{n}$ ($M$ superfície de dimenção $n$) uma superficie diferenciável.\\
+  Dizemos que uma $n$-forma $Vol\in\Lambda^{n}(M)$ é uma \textbf{forma volume} para $M$ se para todo $p\in M$ tem-se que $Vol_p\neq 0$. 
+\end{definition}
+Localmente, uma forma volume sempre existe. Se $f:U\to V$ é uma parametrização, então
+\begin{align*}
+  Vol_V=dx^{1}\wedge\cdots\wedge dx^{n},
+\end{align*}
+é uma forma de volúme em $V\subseteq M$ e ela é chamada a \textbf{forma de volume local} em $M$ associada a parametrização $f$.
+\begin{example}
+  Se $B=\{e_1,\cdots,e_n\}$ é a base canônica de $\mathbb{R}^{n}$, então
+  \begin{align*}
+    Vol_{\mathbb{R}^{n}}=\det=e^{1}\wedge\cdots\wedge e^{n},
+  \end{align*}
+  é a forma volume para $\mathbb{R}^{n}$.
+\end{example}
+\begin{proposition}
+  Se $F:M\to N$ é um difeomorfismo local é $Vol_{N}$ é a forma volume em $M$, então
+  \begin{align*}
+    Vol_{M}=F^{\ast}Vol_{N},
+  \end{align*}
+  é uma forma de volume em $M$.
+\end{proposition}
+\begin{proof} 
+  \begin{align*}
+    Vol_{M}(v)=F^{\ast}Vol_{N}(v)=(Vol_N)_{F(p)}(dF_{p}(v)),
+  \end{align*}
+  e como $dF_{p}$ é um isomorfismo, se $v=\{v_1,\cdots,v_n\}$ é uma base, então $dF_{p}(v)$ é uma base e como $Vol_N$ não se anula, temos que $Vol_M$ não se anula. 
+\end{proof}
+\begin{corollary}
+  Se $\varphi:U\to V$ é uma parametrização, então
+  \begin{align*}
+    Vol_U=(\varphi^{-1})^{\ast}Vol_{\mathbb{R}^{n}}.
+  \end{align*}
+  Consequentemente, se
+  \begin{align*}
+    \varphi_1&:U_1\to V_1,\\
+    \varphi_2&:U_2\to V_2,
+  \end{align*}
+  são outras parametrizações, temos que
+  \begin{align*}
+    Vol_{V_2}=det(\varphi^{-1}_2\circ\varphi_1)Vol_{V_1}.
+  \end{align*}
+\end{corollary}
+\begin{proposition}
+  Seja $M$ uma superfície diferenciável que possui uma forma volume $Vol$.\\
+  Toda $n$-forma $\eta\in\Lambda^{n}(M)$ se escreve na forma
+  \begin{align*}
+    \eta=f Vol,
+  \end{align*}
+  para alguma função $f\in C^{\infty}(M)$.\\
+  $\eta$ é também uma forma volume se, somente se $f$ não se anula em nenhum ponto $p\in M$. 
+\end{proposition}
+\begin{theorem}
+  Uma superfície diferenciável $M$ é orientável se, somente se, ela admite uma forma volume.\\
+  Além disso, esta forma determina uma orientação para $M$.
+\end{theorem}
+\begin{proof} 
+  Exercício :c.  
+\end{proof}
+\begin{corollary}
+  Se $M,N$ são superfícies diferenciáveis difeomorfas e $N$ é orientavel, então $M$ é orientável. 
+\end{corollary}
+\begin{definition}[Forma volume consistente]
+   Seja $M$ uma superfície orientada e seja $\omega$ uma forma volume em $M$. Dizemos que $\omega$ é consistente com a orientação de $M$ se a orientação induzida por $\omega$ coincide com a orientação previamente fixada em $M$.
+\end{definition}

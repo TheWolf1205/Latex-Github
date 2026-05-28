@@ -1,0 +1,174 @@
+\begin{definition}[Concatenação]
+  Se pegamos $I,J$ multi-índices dados por
+  \begin{align*}
+    I=i_1,\cdots,i_k,\\
+    J=j_1,\cdots,j_l.
+  \end{align*}
+  Definimos a sua \textbf{concatenação} $IJ$ por
+  \begin{align*}
+    IJ=i_1,\cdots,i_k,j_1,\cdots,j_l.
+  \end{align*}
+\end{definition}
+\begin{proposition}
+  Vale
+  \begin{align*}
+    e^{I}\wedge e^{J}=e^{IJ}.
+  \end{align*}
+  Em particular,
+  \begin{align*}
+    e^{I}=e^{i_1}\wedge\cdots\wedge e^{i_k},
+  \end{align*}
+  de modo que
+  \begin{align*}
+    e^{i_1}\wedge\cdots\wedge e^{i_k}(e_{j_1},\cdots,e_{j_l})=e^{I}(e_J)=\det\left[ e^{i_r}(e^{j_s}) \right],
+  \end{align*}
+  é a base exterior
+  \begin{align*}
+    B^{k}=\{e^{i_1}\wedge\cdots\wedge e^{i_k}:i_{r}\in\{1,\cdots,n\}\, r\in\{1,\cdots,k\}\text{ e $I$ crescente }\}
+  \end{align*}
+  é base para $\Lambda^{k}(V)$.
+\end{proposition}
+\begin{proof} 
+  Sejam
+  \begin{align*}
+    I=&i_1,\cdots,i_k.\\
+    J=&j_1,\cdots,j_l.\\
+    N=&n_1,\cdots,n_{k+l}.\\
+    N^{k}=&n_1,\cdots,n_k.\\
+    N^{l}=&n_{k+1},\cdots,n_{k+l}.
+  \end{align*}
+  Note que por multilinearidade temos que basta provar a identidade para os vetores $e^{N}$ da base $\Lambda^{{k+l}}(V)$, isto é vamos ver que $e^{I}\wedge e^{J}(e_N)=e^{IJ}(e_N)$.\\
+  De fato temos que
+  \begin{itemize}
+    \item 
+      \begin{align*}
+        e^{I}\wedge e^{J}(e_N)=\frac{1}{k!l!}\sum_{\sigma\in S_{k+l}}(\sgn\sigma)e^{I}(e_{N^{k}_{\sigma}})e^{J}(e^{l}_{\sigma}).
+      \end{align*}
+    \item
+      \begin{align*}
+        e^{IJ}(e_{N})=\delta^{IJ}_{N}.
+      \end{align*}
+  \end{itemize}
+  Note que se $N$ possui algúm índice que não pertenece nem $I$, nem $J$ ou se $N$ possui índices repetidos, então ambos lados são nulos.\\
+  Logo, podemos então nos restringir ao caso em que $N$é uma permutação de $IJ$.\\
+  Segue-se que
+  \begin{itemize}
+    \item $e^{I}(e_{N^{k}_{\sigma}})=\delta^{I}_{N^{k}_{\sigma}}$.
+    \item $e^{J}(e_{N^{l}_{\sigma}})=\delta^{J}_{N^{l}_{\sigma}}$.
+  \end{itemize}
+  De modo que a única maneira de obter um valor não nulo é se $\sigma$ for uma permutação que permuta os primeiros $k$ índices e os últimos $l$ índices separadamente, logo temos que existe $\tau\in S_{k}$ e $\eta\in S_{l}$ tal que
+  \begin{align*}
+    \sigma=\tau\eta,\quad\text{e}\quad \sgn\sigma=\sgn\tau\sgn\eta.
+  \end{align*}
+  Daí que
+  \begin{align*}
+    e^{I}\wedge e^{J}(e_N)=&\frac{1}{k!l!}\sum_{\sigma\in S_{k+l}}(\sgn\sigma)e^{I}(e_{N^{k}_{\sigma}})e^{J}(e^{l}_{\sigma})\\
+    =&\frac{1}{k!l!}\sum_{\substack{\tau\in S_{k}\\\eta\in S_{l}}}(\sgn\tau)(\sgn\eta)e^{I}(e_{N^{k}_{\tau}})e^{J}(e^{l}_{\eta})\\
+    =&\left[ \frac{1}{k!}\sum_{\tau\in S_{k}}(\sgn\tau)e^{I}(e_{N^{k}_{\tau}}) \right]\left[ \frac{1}{l!}\sum_{\eta\in S_{l}}(\sgn\eta)e^{J}(e_{N^l_{\eta}}) \right]\\
+    =&e^{I}(e_{N^{k}})e^{J}(e_{N^{l}})\\
+    =&\delta_{N^{k}}^{I}\delta_{N^{l}}^{J}\\
+    =&\delta_{N}^{IJ}\\
+    =&e^{IJ}(e_{N}).
+  \end{align*}
+  Pelo que podemos concluir que
+  \begin{align*}
+    e^{I}\wedge e^{J}=e^{IJ}.
+  \end{align*}
+  Logo, fazendo um argumento inductivo temos que
+  \begin{align*}
+    e^{I}=e^{i_1}\wedge\cdots\wedge e^{i_k}.
+  \end{align*}
+\end{proof}
+\begin{corollary}
+  Se pegamos $I$ e $J$ multi-índices crescentes temos que 
+  \begin{align*}
+    w=&\sum_{I}w_{I}e^{I}.\\
+    \eta=&\sum_{J}e_{J}e^{J}.
+  \end{align*}
+  Então
+  \begin{align*}
+    w\wedge\eta=\sum_{IJ}w_{I}\eta_{J}e^{IJ}.
+  \end{align*}
+  Logo, em particular, toda $k$-forma se escreve como
+  \begin{align*}
+    w=\sum_{I}w_{i_1\cdots,i_k}e^{i_1}\wedge\cdots\wedge e^{i_k}.
+  \end{align*}
+  Com $I$ multi-índice crescente. Portanto, toda base elementar é base exterior.
+\end{corollary}
+\begin{proposition}[Propriedade do produto exterior]
+  O produto exterior satisfaz as seguintes propriedades
+  \begin{enumerate}[i)]
+    \item Se $a,b\in\mathbb{R}$, então se cumpre que
+      \begin{align*}
+        (aw+b\eta)\wedge\theta=&a(w\wedge\theta)+b(\eta\wedge\theta).\\
+        \theta\wedge(aw+b\eta)=&a(\theta\wedge w)+b(\theta\wedge\eta).
+      \end{align*}
+    \item $(w\wedge\eta)\wedge\theta=w\wedge(\eta\wedge\theta)$.
+    \item Se $w\in\Lambda^{k}(V)$ e $\eta\in\Lambda^{l}(V)$, então
+      \begin{align*}
+        w\wedge\eta=(-1)^{kl}\eta\wedge w.
+      \end{align*}
+    \item Se $v_1,\cdots,v_k$ são vetores e $w^{1},\cdots,w^{k}$ são $1$-formas, então
+      \begin{align*}
+        w^{1}\wedge\cdots\wedge w^{k}(v_1,\cdots,v_k)=\det\left[ w^{i}(v_j) \right].
+      \end{align*}
+      Em particular,
+      \begin{align*}
+        e^{1}\wedge\cdots\wedge e^{k}(v_1,\cdots,v_k)=\det\left[ v^{i}_{j} \right].
+      \end{align*}
+      Isto é,
+      \begin{align*}
+        e^{1}\wedge\cdots\wedge e^{k}=\det.
+      \end{align*}
+  \end{enumerate}
+\end{proposition}
+\begin{proof} 
+  \begin{enumerate}[i)]
+    \item Pela definição.\\
+    \item $(e^{I}\wedge e^{J})\wedge e^{K}=e^{IJ}\wedge e^{K}=e^{IJK}=\cdots$.
+    \item $e^{I}\wedge e^{J}=e^{IJ}=(-1)^{kl}e^{JI}=(-1)^{kl}e^{J}\wedge e^{I}$.
+    \item Sabemos que se $I,J$ são multi-índices de ordem $k$, então 
+      \begin{align*}
+        e^{I}(e_J)=\det\left[ e^{i_r}(e_{j_s}) \right].
+      \end{align*}
+      Logo pela multilinearidade a prova esta concluida.
+  \end{enumerate}
+\end{proof}
+\begin{note}
+  Como antes mencionamos, sabemos que $e^{i}$ são os elementos da base de $V^{\ast}$, daqui temos o seguinte comentario.\\
+  Note que como
+  \begin{align*}
+    e^{i_1}\wedge\cdots\wedge e^{i_k}(v_1,\cdots,v_k)=\det\left[ v^{i_r}_{j} \right].  
+  \end{align*}
+  Más pelas propriedades do determinante temos que
+  \begin{align*} 
+    e^{i_1}\wedge\cdots\wedge e^{i_k}(v_1,\cdots,v_k)=Vol(Proj_{\left\langle e^{i_1},\cdots,e^{i_k} \right\rangle}\left[ v_1,\cdots,v_k \right]).  
+  \end{align*}
+  Portanto, temos que se $w\in\Lambda^{k}(V)$, então pegando $I$ multi-índice crescente temos que 
+  \begin{align*}
+    w=\sum_{I}\underbrace{w_I}_{\text{função ou $0$-forma}}\underbrace{e^{i_1}\wedge\cdots\wedge e^{i_k}}_{\text{$k$-forma}}.
+  \end{align*}
+  E como falamos anteriormente temos que
+  \begin{align*}
+    w(v_1,\cdots,v_k)=\sum_{I}w_I Vol(Proj_{\left\langle e^{i_1},\cdots,e^{i_k} \right\rangle}\left[ v_1,\cdots,v_k \right])
+  \end{align*}
+\end{note}
+\begin{proposition}
+  Se $w\in\Lambda^{k}(V)$ e $k$ é impar, então temos que $w\wedge w=0$. 
+\end{proposition}
+\begin{proof} 
+  \begin{align*}
+    w\wedge w=(-1)^{k^{2}}w\wedge w=-w\wedge w=0.
+  \end{align*}
+\end{proof}
+Em geral isso não se cumpre
+\begin{example}
+  Suponha $w\in\Lambda^{4}(V)$ dado por 
+  \begin{align*}
+    w=e^{1}\wedge e^{2}\wedge e^{3}\wedge e^{4}.
+  \end{align*}
+  Logo fazendo ums cálculos temos que
+  \begin{align*}
+    w\wedge w=2e^{1}\wedge e^{2}\wedge e^{3}\wedge e^{4}\neq 0. 
+  \end{align*}
+\end{example}

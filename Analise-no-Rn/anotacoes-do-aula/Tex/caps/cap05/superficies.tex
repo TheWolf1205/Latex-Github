@@ -1,0 +1,22 @@
+\begin{definition}
+  Seja $M\subseteq\mathbb{R}^{n}$ uma superfície de dimensão $n$.  Una forma diferencialde grau $k$ ém $M$ é uma forma diferenciável
+  \begin{align*}
+    w:M\to\sqcup_{p\in M}\Lambda^{k}(TM_p).
+  \end{align*}
+  Temos que $w$ é diferenciável no seguinte sentido.\\
+  Em cada aberto $V$ da superficie parametrizada por uma parametrização considderamos a base coordenada $\{\partial_1\big|_p,\cdots,\partial_{n}\big|_p\}$ onde $\partial_i\big|_p=d\varphi_{p}(e_i)$. Temos que
+  \begin{align*}
+    d\varphi_p:\mathbb{R}^{n}\to& TM_p\\
+    \{e_1,\cdots,e_n\}\to&\{d\varphi_p(e_1),\cdots,d\varphi_p(e_n)\}=\{\partial_1\big|_p,\cdots,\partial_n\big|_p\}.
+  \end{align*}
+  A sua base dual coordenada $\{dx^{1}\big|_p,\cdots,dx^{n}\big|_p\}$ de modo que $w$ em coordenadas locais seja dado por $I$ multi-índice crescente
+  \begin{align*}
+    w(p)=\sum_{I}w_{i_1,\cdots,i_k}(p)dx^{i_1}\big|_p\wedge\cdots\wedge dx^{i_k}\big|_p=\sum_I w_{I}dx^{I}\big|_p.
+  \end{align*}
+  Dizer que $w$ é diferenciável significa que as funções componente $w_I:V\to\mathbb{R}$ são todas diferenciáveis.\\
+  A forma diferenciavel é de classe $C^m$ se todas as suas funções componente forem $C^{m}$. Assim
+  \begin{itemize}
+    \item $\Lambda^{k}(M)$ é o espaço vetorial das $k$-formas diferenciáveis em $M$.
+    \item $\Lambda(M)$ é a algebra exterior das formas diferenciáveis em $M$. 
+  \end{itemize}
+\end{definition}

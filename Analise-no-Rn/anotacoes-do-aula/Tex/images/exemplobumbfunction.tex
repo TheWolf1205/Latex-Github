@@ -1,0 +1,45 @@
+\begin{tikzpicture}[scale=1.2]
+
+  % Eixos
+  \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,2.5) node[above] {$f(x)$};
+
+  % Parte constante
+  \draw[thick] (-1,2) -- (1,2);
+
+  % Decaimento suave à direita
+  \draw[
+    domain=1.001:1.999,
+    samples=150,
+    smooth,
+    thick
+  ]
+  plot (\x,{2*exp(1)*exp(-1/(1-(\x-1)^2))});
+
+  % Decaimento suave à esquerda
+  \draw[
+    domain=-1.999:-1.001,
+    samples=150,
+    smooth,
+    thick
+  ]
+  plot (\x,{2*exp(1)*exp(-1/(1-(\x+1)^2))});
+
+  % Parte zero
+  \draw[thick] (-3,0) -- (-2,0);
+  \draw[thick] (2,0) -- (3,0);
+
+  % Linhas auxiliares
+  \draw[dashed] (-1,0) -- (-1,2);
+  \draw[dashed] (1,0) -- (1,2);
+
+  % Marcas
+  \draw (-2,0.05) -- (-2,-0.05) node[below] {$-2$};
+  \draw (-1,0.05) -- (-1,-0.05) node[below] {$-1$};
+  \draw (1,0.05) -- (1,-0.05) node[below] {$1$};
+  \draw (2,0.05) -- (2,-0.05) node[below] {$2$};
+
+  \draw (0,2.03) -- (-0.05,2.03);
+  \node at (0.2,2.15) {$2$};
+
+\end{tikzpicture}

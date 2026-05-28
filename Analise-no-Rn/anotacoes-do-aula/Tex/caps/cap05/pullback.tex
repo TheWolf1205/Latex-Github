@@ -1,0 +1,107 @@
+\begin{definition}[Pullback]
+  Se $M$ e $N$ são superficies e $F:M\to N$ é uma função diferenciável, a \textbf{pullback} e a função
+  \begin{align*}
+    F^{\ast}:\Lambda^{k}(N)\to\Lambda^{k}(M),
+  \end{align*}
+  definida por
+  \begin{align*}
+    (F^{\ast}w)_{p}(v_1,\cdots,v_n)=w_{F(p)}\left( dF_p(v_1),\cdots,dF_p(v_k) \right)=w(F(p))\left( dF_p(v_1),\cdots,dF_p(v_k) \right),
+  \end{align*}
+  para todos os vetores $v_1,\cdots,v_k\in TM_p$.\\
+  Se $f\in\Lambda^{0}(N)=C^{m}(N)$, então definimos
+  \begin{align*}
+    F^{\ast}f=f\circ F.
+  \end{align*}
+\end{definition}
+\begin{proposition}
+  Se $M,N$ e $P$ são superficies e $f:M\to N$, $G:N\to P$ são funções diferenciaveis, então
+  \begin{align*}
+    (G\circ F)^{\ast}=F^{\ast}G^{\ast}.
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  Usando regra da cadeia temos que
+  \begin{align*}
+    \left[ (G\circ F)^{\ast}_{w} \right]_{p}(v_1,\cdots,v_k)=&w_{G(F(p))}(d(G\circ F)_p(v_1),\cdots,d(G\circ F)_p(v_k))\\
+    =&w_{G(F(p))}(dG_{F(p)}dF_p(v_1),\cdots,dG_{F(p)}dF_p(v_k))\\
+    =&G^{\ast}w_{F(p)}(dF_p(v_1),\cdots,dF_p(v_k))\\
+    =&(F^{\ast}G^{\ast})_{p}(v_1,\cdots,v_k).
+  \end{align*}
+\end{proof}
+\begin{proposition}
+  Seja $F:M\to N$ uma função diferenciável entre superfícies. O operador
+  \begin{align*}
+    F^{\ast}:\Lambda(N)\to\Lambda(M)
+  \end{align*}
+  é um morfismo entre álgebras, i.é,
+  \begin{itemize}
+    \item Para cada $k$
+      \begin{align*}
+        F^{\ast}:\Lambda^{k}(N)\to\Lambda^{k}(M)
+      \end{align*}
+      é linear e
+    \item $F^{\ast}(w\wedge\eta)=F^{\ast}w\wedge F^{\ast}\eta$.
+  \end{itemize}
+\end{proposition}
+\begin{proof} 
+  Sejam $w^{1},\cdots, w^{k}\in\Lambda^{1}(N)$. Então, como temos que $w^{1}(F(p))\in\Lambda^{1}(M)$, então seguindo as propriedades das $k$-formas temos que
+  \begin{align*}
+    F^{\ast}(w^{1}\wedge\cdots\wedge w^{k})_p(v_1,\cdots,v_k)=&\left( w^1\wedge\cdots\wedge w^{k} \right)_{F(p)}\left( dF_p(v_1),\cdots,dF_p(v_k) \right)\\
+    =&\det\left[ w^{i}_{F(p)}dF_p(v_j) \right]\\
+    =&\det\left[ (F^{\ast}w^{i})_p(v_j) \right]\\
+    =&(F^{\ast}w^1)_p\wedge\cdots\wedge(F^{\ast}w^k)_p(v_1,\cdots,v_k).
+  \end{align*}
+\end{proof}
+\begin{proposition}\label{prop:pullback-0-forma}
+  Sejam $M,N$ superfícies e $F:M\to N$ uma função diferenciável e $f\in\Lambda^{0}(N)=C^{\infty}(N)$. Então
+  \begin{align*}
+    F^{\ast}(df)=d(F^{\ast}f).
+  \end{align*}
+  Em particular,
+  \begin{align*}
+    F^{\ast}dy^{i}=d(y^{i}\circ F)=dF^{i}.
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  Pela definição temos que
+  \begin{align*}
+    F^{\ast}(df)_p(v)=df_{F(p)}(dF_p(v))=d(f\circ F)(v)=d(F^{\ast}f)(v).
+  \end{align*}
+\end{proof}
+\begin{corollary}\label{cor:pullback-formas}
+  Em coordenadas, se $(U,x^{i})$ é uma carta para $p\in M$ e $(V,y^{i})$ é uma carta para $F(p)\in M$, temos que
+  \begin{align*}
+    F^{\ast}(w_Idy^{i_1}\wedge\cdots\wedge dy^{i_k})=(w_I\circ F)d(y^{i_1}\circ F)\wedge\cdots\wedge d(y^{i_k}\circ F).
+  \end{align*}
+  Em particular, se $\dim M=\dim N=n$.
+  \begin{align*}
+    F^{\ast}(fdy^{i_1}\wedge\cdots\wedge dy^{i_k})=(\det dF)(f\circ F)dx^{1}\wedge\cdots\wedge dx^{n}.
+  \end{align*}
+  Se $M=N$, então
+  \begin{align*}
+    dy^{1}\wedge\cdots\wedge dy^{n}=\det\left[ \frac{\partial y^{i}}{\partial x_j} \right]dx^{1}\wedge\cdots\wedge dx^{n}.
+  \end{align*}
+\end{corollary}
+\begin{proof} 
+  \begin{align*}
+    F^{\ast}(w_Idy^{i_1}\wedge\cdots\wedge dy^{i_k})&=F^{\ast}(w_I\wedge dy^{i_1}\wedge\cdots\wedge dy^{i_k})\\
+    &=F^{\ast}w_I\wedge F^{\ast}dy^{i_1}\wedge\cdots\wedge F^{\ast}dy^{i_k}\\
+    &=(w_I\circ F)dF^{\ast}y^{i_1}\wedge\cdots\wedge dF^{\ast}y^{i_k}\\
+    &=(w_I\circ F)d(y^{i_1}\circ F)\wedge\cdots\wedge d(y^{i_k}\circ F).
+  \end{align*}
+  Para a segunda equação
+  \begin{align*}
+    F^{\ast}(fdy^1\wedge\cdots\wedge dy^{n})=(f\circ F)d(y^{1}\circ F)\wedge\cdots\wedge d(y^{n}\circ F)=(f\circ F)dF^{1}\wedge\cdots\wedge dF^{n}.
+  \end{align*}
+  Assim, note que
+  \begin{align*}
+    (df^{1}\wedge\cdots\wedge df^{n})(\partial_1,\cdots,\partial_{n})=&\det\left[ df^{i}(\partial_j) \right]=\det\left( \frac{\partial F^{i}}{\partial x_j} \right)\\
+    =&\det\left[ dF \right]\\
+    =&\det\left[ dF \right]dx^{1}\wedge\cdots\wedge dx^{n}(\partial_1,\cdots,\partial_n).
+  \end{align*}
+  Logo temos que
+  \begin{align*}
+    F^{\ast}(fdy^{1}\wedge\cdots\wedge dy^{n})=\det\left[ dF \right](f\circ F)dx^{1}\wedge\cdots\wedge dx^{n}.
+  \end{align*}
+  Agora, note que se $M=N$, então temos que $f\circ F=1$.
+\end{proof}

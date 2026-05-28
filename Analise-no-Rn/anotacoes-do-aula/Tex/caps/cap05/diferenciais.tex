@@ -1,0 +1,38 @@
+\begin{notation}
+  Seja $V=\mathbb{R}^{n}$.\\
+  Neste caso denotamos
+  \begin{align*}
+    e^{i}=dx^{i}.
+  \end{align*}
+\end{notation}
+\begin{definition}[Forma diferencial]
+  Uma \textbf{forma diferencial} de grau $k$ em um aberto $U\subseteq\mathbb{R}^{n}$ é uma função
+  \begin{align*}
+    w:U\to\Lambda^{k}(\mathbb{R}^{n}).
+  \end{align*}
+  diferenciável no seguinte sentido, escrevendo em coordenadas locais, pegando $I$ multi-índice crescente 
+  \begin{align*}
+    w(x)=\sum_{I}w_{i_1,\cdots,i_k}(x)dx^{i_1}\wedge\cdots\wedge dx^{i_k}=\sum_{I}w_{I}dx^{I}.
+  \end{align*}
+  Onde as funções componentes
+  \begin{align*}
+    w_{I}:U\to\mathbb{R}.
+  \end{align*}
+  são todas diferenciaveis.\\
+  A forma diferenciável é de classe $C^{m}$ se todas as funções componentes são $C^{m}$. 
+\end{definition}
+\begin{note}
+  \begin{itemize}
+    \item Note que
+      \begin{align*}
+        w+\eta=&\sum_{I}(w_I+\eta_I)dx^{I}.\\
+        \lambda w=&\sum_{I}\lambda w_Idx^{I}.\\
+        w\wedge\eta=\sum_{IJ}w_I\eta_{J}dx^{I}\wedge dx^{J}.
+      \end{align*}
+    \item Se $\Lambda^{k}(\mathbb{R}^{n})$ é o espaço vetorial das $k$-formas diferenciáveis, temos que
+    \begin{align*}
+      \Lambda(\mathbb{R}^{n})=\oplus_{k=0}^{n}\Lambda^{k}(\mathbb{R}^{n})
+    \end{align*}
+    é a álgebra exterior.
+  \end{itemize}
+\end{note}

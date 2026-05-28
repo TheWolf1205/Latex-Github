@@ -127,8 +127,21 @@ Considere o espaço vetorial graduado
   \end{itemize}
 \end{proof}
 \begin{definition}[Multi-índice crescente]
-  Dizemos que un multi-índice $I=i_1,\cdots,i_k$ é um \textbf{muli-índice crescente} se $i_1<i_2<\cdots<i_k$.
+  Dizemos que un multi-índice $I=i_1,\cdots,i_k$ é um \textbf{muli-índice crescente} se $i_1<i_2<\cdots<i_k$ com $i_r\in\{1,\cdots,n\}$ e $r\in\{1,\cdots,k\}$.
 \end{definition}
+Tomamos os multi-índices $I=(i_{1},\dots,i_{k})$ crescentes, isto é,
+\begin{align*}
+  i_{1}<i_{2}<\cdots<i_{k},
+\end{align*}
+pois o produto exterior é alternado. De fato, se $\sigma\in S_{k}$ é uma permutação, então
+\begin{align*}
+  e^{i_{\sigma(1)}}\wedge\cdots\wedge e^{i_{\sigma(k)}}=\sgn(\sigma)\,e^{i_{1}}\wedge\cdots\wedge e^{i_{k}},
+\end{align*}
+de modo que permutações dos índices produzem o mesmo elemento a menos de sinal. Além disso, se algum índice se repete, então
+\begin{align*}
+  e^{i_{1}}\wedge\cdots\wedge e^{i_{k}}=0. 
+\end{align*}
+Assim, cada elemento não nulo pode ser escrito unicamente, a menos de sinal, por um multi-índice crescente, evitando redundâncias na descrição da base de $\Lambda^{k}(V)$.
 \begin{proposition}
   Se $w\in\Lambda^{k}(V)$, vale
   \begin{align*}
