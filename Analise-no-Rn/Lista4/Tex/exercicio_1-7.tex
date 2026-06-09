@@ -1,0 +1,59 @@
+\begin{homeworkProblem}[Seção 1-7]
+  Prove que para todo subconjunto fechado
+\[
+F\subset\mathbb{R}^{n}
+\]
+existe uma função
+\[
+f:\mathbb{R}^{m}\to\mathbb{R}
+\]
+de classe $C^{\infty}$ tal que
+\[
+F=f^{-1}(0).
+\]
+
+\textbf{Sugestão:}
+Para $i=0,1,2,\ldots$ sejam
+\[
+K_i=\{x\in F\mid i\le |x|\le i+1\},
+\]
+\[
+U_i=\{x\in\mathbb{R}^{m}\mid i-1<|x|\le i+1\}
+\]
+e
+\[
+f_i:\mathbb{R}^{m}\to\mathbb{R}
+\]
+uma função $C^{\infty}$ tal que
+\[
+f_i^{-1}(0)=K_i
+\]
+e
+\[
+f_i(\mathbb{R}^{m}\setminus U_i)=1.
+\]
+
+Defina
+\[
+f:\mathbb{R}^{m}\to\mathbb{R}
+\]
+pondo, para cada $x\in\mathbb{R}^{m}$,
+\[
+f(x)=f_0(x)\cdot f_1(x)\cdot f_2(x)\cdots
+\]
+
+Note que o produto é localmente finito, logo $f$ é $C^{\infty}$.
+Observe também que
+\[
+f^{-1}(0)
+=
+\bigcup_i f_i^{-1}(0)
+=
+\bigcup_i K_i
+=
+F.
+\]
+  \begin{solution}
+    XXX  
+  \end{solution}
+\end{homeworkProblem}

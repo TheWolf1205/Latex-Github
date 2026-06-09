@@ -1,0 +1,41 @@
+\begin{homeworkProblem}[Seção 1-1]
+  Seja $\omega$ uma forma diferencial de grau $k$ em $\mathbb{R}^n$ tal que
+  \begin{align*}
+    F^{*}\omega = 0
+  \end{align*}
+  para toda transformação afim
+  \begin{align*}
+    F:\mathbb{R}^{m}\longrightarrow\mathbb{R}^{n},\qquad m\geq k. 
+  \end{align*}
+  Prove que $\omega=0$.
+  \begin{definition}{}
+    Uma transformação $F:\mathbb{R}^{m}\to\mathbb{R}^{n}$ \textbf{afim} é uma transformação dada por
+    \begin{align*}
+      F(x)=Ax+b,
+    \end{align*}
+    onde $A\in M_{n\times m}(\mathbb{R})$ e $b\in\mathbb{R}^{n}$. 
+  \end{definition}
+  \begin{solution}
+    Raciocinemos pela contadição.\\
+    Suponha que $w\neq 0$, isto é, existe $p\in\mathbb{R}^{n}$ tal que $w_p\in\Lambda^{k}(\mathbb{R}^{n})$ e $w_p\neq 0$, ou seja, que existem $v_1,\cdots,v_k\in T_{p}(\mathbb{R}^{n})\cong \mathbb{R}^{n}$ tales que
+    \begin{equation}\label{eq:1}
+      w_p(v_1,\cdots,v_k)\neq 0.
+    \end{equation}
+    Por outro lado temos que
+    \begin{align*}
+      F^{\ast}:\Lambda^{k}(\mathbb{R}^{n})&\to\Lambda^{k}(\mathbb{R}^{m}),\\
+    (F^{\ast}w)_{q}(u_1,\cdots,u_k)&\to w_{F(q)}\left( dF_{q}(u_1),\cdots,dF_{q}(u_k) \right),
+    \end{align*}
+    onde $u_1,\cdots,u_k\in T_{q}(\mathbb{R}^{m})$ e $q\in \mathbb{R}^{m}$.\\
+    Sendo assim, suponha $F:\mathbb{R}^{m}\to\mathbb{R}^{n}$ dada pela matriz $A\in M_{n\times m}$ definida por 
+    \begin{align*}
+      F(x)=\left(v_{1}, v_{2}, \cdots, v_k, 0, \cdots, 0\right)^{T}x+p.
+    \end{align*}
+    Depois temos que pela equação \ref{eq:1} se cumpre
+    \begin{align*}
+      (F^{\ast}w)_{0}(e_1,\cdots,e_k)=w_{F(0)}(dF_{0}(e_1),\cdots,dF_{0}(e_k))=w_{p}(v_1,\cdots,v_k)\neq 0.
+    \end{align*}
+    Absurdo, pois pela hipótese temos que $F^{\ast}w=0$ para toda $F$ afim.\\
+    Assim, podemos conclui que $w=0$.
+  \end{solution}
+\end{homeworkProblem}

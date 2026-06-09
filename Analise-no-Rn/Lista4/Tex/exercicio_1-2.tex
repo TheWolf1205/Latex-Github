@@ -1,0 +1,64 @@
+\begin{homeworkProblem}[Seção 1-2]
+  Sejam $\alpha,\beta$ $1$-formas em um aberto $U\subset\mathbb{R}^{3}$ tais que
+  \begin{align*}
+    (\alpha\wedge\beta)(x)\neq 0   
+  \end{align*}
+  para todo $x\in U$.\\
+  Se $\omega$ é uma $2$-forma em $U$ tal que
+  \begin{align*}
+    \omega\wedge\alpha=\omega\wedge\beta=0,
+  \end{align*}
+  mostre que existe uma função
+  \begin{align*}
+    f:U\longrightarrow\mathbb{R}
+  \end{align*}
+  tal que
+  \begin{align*}
+    \omega=f(\alpha\wedge\beta).
+  \end{align*}
+  Se $\alpha,\beta,\omega\in C^{1}$, então $f\in C^{1}$.
+  \begin{solution}
+    Seja $p\in U$, logo temos que $\alpha_p,\beta_p\in\Lambda^{1}(\mathbb{R}^{3})$. Além disso, lembremos que $\Lambda^{1}(\mathbb{R}^{3})=(\mathbb{R}^{3})^{\ast}$.\\
+    \textbf{Afirmação:} $\alpha_p$ e $\beta_p$ são linearmente independentes.\\
+    Raciocinemos pela contrareciproca, isto é, mostremos que se $\alpha_p$ e $\beta_p$ são linearmente dependentes, então $\alpha_p\wedge\beta_p=0$.\\
+    Note que se $\alpha_p=\lambda\beta_p$ para algúm $\lambda$, então temos que 
+    \begin{align*}
+      \alpha_p\wedge\beta_p=\lambda\beta_p\wedge\beta_p=0.
+    \end{align*}
+    Agora, note que como $\alpha_p$ e $\beta_p$ são linearmente independentes, temos que existe $\gamma_p\in\Lambda^{1}(\mathbb{R}^{3})$ tal que o conjunto $\{\alpha_p,\beta_p,\gamma_p\}$ é base de $(\mathbb{R}^{3})^{\ast}$.\\
+    Assim, pela caracterização de $\Lambda^{2}(\mathbb{R}^{3})$, temos que $B^{2}=\{\alpha_p\wedge\beta_p,\alpha_p\wedge\gamma_p,\beta_p\wedge\gamma_p\}$ é base de $\Lambda^{2}(\mathbb{R}^{3})$.\\
+    Portanto, como $\omega_p\in\Lambda^{2}(\mathbb{R}^{3})$, temos que existem constantes $a,b,c\in\mathbb{R}$ de modo que
+    \begin{equation}\label{eq:2}
+      \omega_p=a\alpha_p\wedge\beta_p+b\alpha_p\wedge\gamma_p+c\beta_p\wedge\gamma_p.
+    \end{equation}
+    Agora, lembre que como $\omega\wedge\alpha=\omega\wedge\beta=0$, então pela equação \ref{eq:2} e pela linearidade do produto exterior temos que
+    \begin{align*}
+      \omega_p\wedge\alpha_p=(a\alpha_p\wedge\beta_p+b\alpha_p\wedge\gamma_p+c\beta_p\wedge\gamma_p)\wedge\alpha_p=c\beta_p\wedge\gamma_p\wedge\alpha_p=0.\\
+      \omega_p\wedge\beta_p=(a\alpha_p\wedge\beta_p+b\alpha_p\wedge\gamma_p+c\beta_p\wedge\gamma_p)\wedge\beta_p=b\alpha_p\wedge\gamma_p\wedge\beta_p=0.
+    \end{align*}
+    Agora, como $\alpha_p,\beta_p$ e $\gamma_p$ são linearmente independentes, temos que $\alpha_p\wedge\beta_p\wedge\gamma_p\neq 0$, pelo que usando o anterior sigue-se que $b=c=0$. Então temos que
+    \begin{align*}
+      \omega_p=a\alpha_p\wedge\beta_p.
+    \end{align*}
+    Com $a$ dependente do $p$, assim, definamos
+    \begin{align*}
+      f:U&\to\mathbb{R},\\
+        p&\to a_p.
+    \end{align*}
+    Assim, temos que $\omega_p=f(p)\alpha_p\wedge\beta_p$, pelo que podemos concluir que $\omega=f(\alpha\wedge\beta)$.\\
+    Agora, suponha que $\alpha,\beta,\omega\in C^{1}$ e vamos ver que $f\in C^{1}$.\\
+    Note que como $\alpha_p\wedge\beta_p\neq 0$, temos que existem vetores $v_1,v_2\in\mathbb{R}^{3}$ tais que $\alpha_p\wedge\beta_p(v_1,v_2)\neq 0$. Logo
+    \begin{align*}
+      (\alpha\wedge\beta)_p(v_1,v_2)=\sum_{\sigma\in S_2}(sgn\sigma)\alpha_p(v_{\sigma(1)})\beta_p(v_{\sigma(2)})\neq 0.
+    \end{align*}
+    Assim, como $\alpha$ e $\beta$ são contínuas, temos que $\alpha\wedge\beta$ é contínua, pelo que temos que existe uma vizinhança $V$ de $p$ tal que se $x\in V$, então
+    \begin{align*}
+      (\alpha\wedge\beta)_x(v_1,v_2)\neq 0.
+    \end{align*}
+    Logo como nessa vizinança $\alpha\wedge\beta\neq 0$, $\alpha\wedge\beta\in C^{1}$ e $\omega\in C^{1}$ temos que como $f$ é dada por 
+    \begin{align*}
+      f(x)=\frac{\omega_x(v_1,v_2)}{(\alpha\wedge\beta)_{x}(v_1,v_2)},
+    \end{align*}
+    podemos concluir que $f$ é contínua no $p$, mas como $p$ é arbitrário, temos que $f\in C^1$ o que nos permite concluir o exercício.
+  \end{solution}
+\end{homeworkProblem}
