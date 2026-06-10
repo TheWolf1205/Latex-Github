@@ -1,59 +1,87 @@
 \begin{homeworkProblem}[Seção 1-7]
-  Prove que para todo subconjunto fechado
-\[
-F\subset\mathbb{R}^{n}
-\]
-existe uma função
-\[
-f:\mathbb{R}^{m}\to\mathbb{R}
-\]
-de classe $C^{\infty}$ tal que
-\[
-F=f^{-1}(0).
-\]
-
-\textbf{Sugestão:}
-Para $i=0,1,2,\ldots$ sejam
-\[
-K_i=\{x\in F\mid i\le |x|\le i+1\},
-\]
-\[
-U_i=\{x\in\mathbb{R}^{m}\mid i-1<|x|\le i+1\}
-\]
-e
-\[
-f_i:\mathbb{R}^{m}\to\mathbb{R}
-\]
-uma função $C^{\infty}$ tal que
-\[
-f_i^{-1}(0)=K_i
-\]
-e
-\[
-f_i(\mathbb{R}^{m}\setminus U_i)=1.
-\]
-
-Defina
-\[
-f:\mathbb{R}^{m}\to\mathbb{R}
-\]
-pondo, para cada $x\in\mathbb{R}^{m}$,
-\[
-f(x)=f_0(x)\cdot f_1(x)\cdot f_2(x)\cdots
-\]
-
-Note que o produto é localmente finito, logo $f$ é $C^{\infty}$.
-Observe também que
-\[
-f^{-1}(0)
-=
-\bigcup_i f_i^{-1}(0)
-=
-\bigcup_i K_i
-=
-F.
-\]
+  Prove que para todo subconjunto fechado $F\subset\mathbb{R}^{n}$  existe uma função $f:\mathbb{R}^{m}\to\mathbb{R}$ de classe $C^{\infty}$ tal que $F=f^{-1}(0)$.\\
+  \textbf{Sugestão:}
+  Para $i=0,1,2,\ldots$ sejam
+  \begin{align*}
+    K_i=\{x\in F\mid i\le |x|\le i+1\},\quad U_i=\{x\in\mathbb{R}^{m}\mid i-1<|x|\le i+1\}
+  \end{align*}
+  e $f_i:\mathbb{R}^{m}\to\mathbb{R}$ uma função $C^{\infty}$ tal que $f_i^{-1}(0)=K_i$ e $f_i(\mathbb{R}^{m}\setminus U_i)=1$. Defina $f:\mathbb{R}^{m}\to\mathbb{R}$ pondo, para cada $x\in\mathbb{R}^{m}$,
+  \begin{align*}
+    f(x)=f_0(x)\cdot f_1(x)\cdot f_2(x)\cdots   
+  \end{align*}
+  Note que o produto é localmente finito, logo $f$ é $C^{\infty}$.\\
+  Observe também que
+  \begin{align*}
+    f^{-1}(0)=\bigcup_i f_i^{-1}(0)=\bigcup_i K_i=F.
+  \end{align*}
   \begin{solution}
-    XXX  
+    Vamos mostrar a existencia da função $f_i$.\\
+    Para isto, vamos exemplificar com o conjunto fechado $F=[1,2]\subseteq \mathbb{R}$.\\
+    Definamos $\phi:\mathbb{R}\to\mathbb{R}$ dada por
+    \begin{align*}
+      \phi(x)= 
+      \begin{cases}
+        1-e^{1-\frac{1}{1-|x|^{2}}}, &\text{ se } |x|<1 \text{,} \\
+        1, &\text{ se } |x|\geq 1.
+      \end{cases}
+    \end{align*}
+    Logo definamos $f_1:\mathbb{R}\to\mathbb{R}$ dada por
+    \begin{align*}
+      f_1(x)\begin{cases}
+      1, &\text{ se } x\leq 0,\\
+      \phi(x-1), &\text{ se } 0<x<1,\\
+      0, &\text{ se } 1\leq x\leq 2,\\
+      \phi(x-2), &\text{ se } 2< x < 3,\\
+      1, &\text{ se } x\geq 3.
+    \end{cases}
+    \end{align*}
+    \begin{center}
+      \begin{tikzpicture}[scale=1]
+        \begin{axis}[
+          axis lines=middle,
+          xmin=-1,
+          xmax=4,
+          ymin=-0.1,
+          ymax=1.2,
+          samples=300,
+          xlabel={$x$},
+          ylabel={$f_1(x)$},
+        ]
+        
+        % x <= 0
+        \addplot[thick,domain=-1:0] {1};
+        
+        % 0 < x < 1
+        \addplot[thick,domain=0:1]
+        {1-exp(1-1/(1-(x-1)^2)))};
+        
+        % 1 <= x <= 2
+        \addplot[thick,domain=1:2] {0};
+        
+        % 2 < x < 3
+        \addplot[thick,domain=2:3]
+        {1-exp(1-1/(1-(x-2)^2))};
+        
+        % x >= 3
+        \addplot[thick,domain=3:4] {1};
+        
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}
+    Assim, note que $f_1^{-1}(0)=K_1$ e $f_1\left( \mathbb{R}\setminus U_1 \right)=1$, logo em particular se pegamos $f(x)=f_1(x)$ temos que $f\in C^{\infty}$ e $F=f^{-1}(0)$.\\
+    Assim, em geral, pegando $F$ arbitrario, temos que $K_i=F\cap [i,i+1]$, logo temos que $K_i$ é fechado y portanto temos que existe $f_i\in C^{\infty}$ (construída em partes com base em translações de $\phi$ e das funções constantes $1$ e $0$) tais que $f_i^{-1}(0)=K_i$ e $f_i(\mathbb{R}^{m}\setminus U_i)=1$.\\
+    Portanto, definamos $f:\mathbb{R}^{m}\to\mathbb{R}$ dada por
+    \begin{align*}
+      f(x)=f_0(x)\cdot f_1(x)\cdot f_2(x)\cdots,
+    \end{align*}
+    Agora, note que se pegamos $x$ tal que $i\leq |x|\leq i+1$, então temos que $f_{j}(x)=1$ com $j\geq i+2$ ou $j\leq i-2$, pelo que temos que
+    \begin{align*}
+      f(x)=f_0(x)\cdot f_1(x)\cdots= f_{i-1}(x)\cdot f_{i}(x)\cdot f_{i+1}(x)=f_{i-1}(x)\cdot f_{i+1}(x).
+    \end{align*}
+    Logo, como temos isto pra todo $x\in\mathbb{R}^{m}$, temos que $f$ é um produto localmente finito, pelo que temos que dado $x\in\mathbb{R}^{m}$ com $x\in [i,i+1]$ se cumpre que  $f^{\prime}(x)=(f_{i-1}(x)\cdot f_{i+1}(x))^{\prime}$, logo como $f_j$ é $C^{\infty}$ para todo $j$, temos que $f$ é $C^{\infty}$ no $x$ para todo $x\in\mathbb{R}^{m}$, isto é que $f\in C^{\infty}$ e além mais disso temos que, como o produto é localmente finito, então $f(x)=0$ se, somente se, existe $j\in\mathbb{Z}$ tal que $f_{j}(x)=0$, logo como $F=F\cap \mathbb{R}^{m}=F\cap \bigcup_{i\in\mathbb{Z}}C_i=\bigcup_{i\in\mathbb{Z}}K_i$ onde $C_i=\{x:i\leq |x|\leq i+1\}$, temos que 
+    \begin{align*}
+      f^{-1}(0)=\bigcup_{i\in\mathbb{Z}}f_{i}^{-1}(0)=\bigcup_{i\in\mathbb{Z}}K_i=F.
+    \end{align*}
+    Pelo que podemos concluir o exercício.
   \end{solution}
 \end{homeworkProblem}

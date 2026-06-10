@@ -1,20 +1,31 @@
 \begin{homeworkProblem}[Seção 2-3]
-  Seja
-\[
-f:M\longrightarrow\mathbb{R}
-\]
-uma função real de classe $C^{k}$ definida em uma superfície $M$
-de classe $C^{k}$ de dimensão $m+1$.
-
-Prove que se $a\in\mathbb{R}$ é um valor regular de $f$ então o conjunto
-\[
-N=\{x\in M: f(x)\le a\}
-\]
-é uma superfície com bordo de classe $C^{k}$, com dimensão $m+1$ e
-\[
-\partial N=f^{-1}(a).
-\]
+  Seja $f:M\longrightarrow\mathbb{R}$ uma função real de classe $C^{k}$ definida em uma superfície $M$ de classe $C^{k}$ de dimensão $m+1$.\\
+  Prove que se $a\in\mathbb{R}$ é um valor regular de $f$ então o conjunto
+  \begin{align*}
+    N=\{x\in M: f(x)\le a\}
+  \end{align*}
+  é uma superfície com bordo de classe $C^{k}$, com dimensão $m+1$ e $\partial N=f^{-1}(a)$.
   \begin{solution}
-    XXX  
+    Dado $p\in M$ sabemos que existe uma parametrização $\phi:U\subseteq\mathbb{R}^{m+1}\to V$ com $p\in \phi(U)$ aberto de $M$ e $x\in U$ tal que $\phi(x)=p$ e portanto $f(p)=f(\phi(x))$.\\
+    Note que $f\circ\phi: U\subseteq\mathbb{R}^{m+1}\to\mathbb{R}$ é de classe $C^{k}$. Assim, dado $p\in N$ tal que $f(p)<a$, considere o conjunto
+    \begin{align*}
+      \tilde{N}=(f\circ\phi)^{-1}((-\infty,a)).
+    \end{align*}
+    Note que como $f\circ\phi$ é contínua, temos que $\tilde{N}$ é aberto e $\tilde{N}\subseteq U$, logo como $\phi$ é uma função aberta, temos que $\phi(\tilde{N})$ é um aberto de $M$, mas pela definição temos que $\phi(\tilde{N})\subseteq N$, pelo que temos que também é um aberto de $N$. Assim, note que $\phi:\tilde{N}\to \phi(\tilde{N})\subseteq N$ é uma parametrização local de $p$, depois, como $p$ só cumpre que $f(p)<a$, temos que
+    \begin{align*}
+      \overline{N}=\{x\in M:f(x)<a\},
+    \end{align*}
+    é uma superfície de classe $C^{k}$ com dimensão $m+1$.\\
+    Agora, suponha $p\in N$ tal que $f(p)=a$.\\
+    Como $a$ é ponto regular de $f$, temos que $\nabla(f\circ \phi)(x)\neq 0$. Logo, isto implica que uma das derivadas parciais não é nula, pelo que sem perdida de generalidade, vamos supor que 
+    \begin{align*}
+      \frac{\partial f\circ \phi}{\partial x_{m+1}}(x)\neq 0.
+    \end{align*}
+    Logo, escrevendo $x=(x_1,x_2)\in\mathbb{R}^{m}\times\mathbb{R}$, temos que pelo teorema da função implícita existem abertos $W$ com $(x_1,x_2)\in W\subseteq U$ e $A$ com $x_1\in A\subseteq\mathbb{R}^{m}$ taes que para todo $c\in A$ se cumpre que existe um único $b=\xi(c)\in\mathbb{R}$ com $\xi:A\to\mathbb{R}$ de classe $C^{k}$ tal que $(c,\xi(c))\in W$ e $(f\circ\phi)(c,\xi(c))=a$.\\
+    Portanto, note que
+    \begin{align*}
+      f^{-1}(a)\cap \phi(W)=\{p\in \phi(W):f(p)=a\}=\{(c,\xi(c)):c\in A\subseteq\mathbb{R}^{m}\}.
+    \end{align*}
+    Agora, note que como $\nabla(f\circ\phi)(c,\xi(c))\neq 0$, temos que a função $f\circ\phi$ não tem troco de sinal perto de $(c,\xi(c))$, pelo que supondo que $f\circ\phi$ é crecente, temos que dado $t>\xi(c)$ suficentemente perto de $\xi(c)$, se cumpre que $f(c,\xi(c))=a<f(c,t)$ e se $t<\xi(c)$, então $f(c,t)<a=f(c,\xi(c))$, logo $\phi(U)=U_1\times U_2$ com $U_1\subseteq\mathbb{R}^{m}$ e $U_2\subseteq (-\infty,\xi(c)]$ abertos, logo $U\cap\partial \mathbb{H}^{m+1}\neq \emptyset$, pelo que temos que $\phi$ é uma parametrização com bordo, logo como $p$ é arbitrário, temos que $\partial N=f^{-1}(a)$. 
   \end{solution}
 \end{homeworkProblem}

@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{tikz}
-\usetikzlibrary{decorations.pathreplacing}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usepackage{fancyhdr}
 \usepackage{extramarks}
 \usepackage[plain]{algorithm}
@@ -218,6 +219,7 @@
 \newcommand{\Bias}{\mathrm{Bias}}
 
 \DeclareMathOperator*{\MMC}{MMC}
+\DeclareMathOperator*{\supp}{supp}
 \DeclareMathOperator*{\MDC}{MDC}
 
 %TcolorBox

@@ -1,9 +1,25 @@
 \begin{homeworkProblem}[Seção 1-6]
-  Se $f_{1},\ldots,f_{k}\in C^{k}(M)$ têm suportes disjuntos,
-mostre que elas são linearmente independentes.
-
-Conclua que $C^{k}(M)$ tem dimensão infinita.
+  Se $f_{1},\cdots,f_{k}\in C^{k}(M)$ têm suportes disjuntos, mostre que elas são linearmente independentes. Conclua que $C^{k}(M)$ tem dimensão infinita.
   \begin{solution}
-    XXX  
+    Sejam $\{\lambda_i\}_{i=1}^{k}$ constantes tais que
+    \begin{align*}
+      \lambda_1 f_1(x)+\lambda_2 f_2(x)+\cdots+\lambda_k f_k(x)=0.
+    \end{align*}
+    Vamos ver que isto implica que $\lambda_1=\cdots=\lambda_k=0$.\\
+    Seja $x\in \supp(f_j)$ tal que $f_j(x)\neq 0$ com $j\in\{1,\cdots,k\}$, logo como as funções $f_i$ têm suportes disjuntos, temos que $f_{i}(x)=0$ para todo $i\in\{1,\cdots,k\}\setminus\{j\}$, portanto temos que
+    \begin{align*} 
+      \lambda_1 f_1(x)+\lambda_2 f_2(x)+\cdots+\lambda_k f_k(x)=\lambda_j f_j(x)=0.
+    \end{align*}
+    Mas como $f_j(x)\neq 0$, temos que $\lambda_j=0$. Depois, como $j$ é arbitrário, temos que $\lambda_1=\cdots=\lambda_k=0$ e portanto $f_1,\cdots,f_k\in C^{k}(M)$ são linearmente independentes.\\
+    Agora, seja $p\in M$, logo temo que existe a carta $(U_p,\varphi_p)$ para cada $p\in M$. Depois temos que $\{\varphi_p(U_p)\}_{p\in M}$ é uma cobertura de $M$, portanto, podems afirmar que exise umma partição da unidade subordinada a issa cobertura é uma coleção $\{\rho_p\}_{p\in M}$ de funções $C^{k}(M)$ tais que
+    \begin{itemize}
+      \item $\supp(\rho_p)\subseteq\varphi_p(U_p)$.
+      \item $\{\sup(\rho_p)\}_{p\in M}$ é localmente finita. 
+    \end{itemize}
+    Assim, fixando $p_1\in M$, vamos definir $\rho_1=\rho_{p_1}$ e depois vamos definir o seguinte conjunto
+    \begin{align*}
+      S_1:=\{p:\supp(\rho_p)\cap\supp(\rho_1)=\emptyset\}.
+    \end{align*}
+    Note que como $\{\sup(\rho_p)\}_{p\in M}$ é localmente finita, temos que $S_1$ é um conjunto infinito ainda, pelo que podemos pegar $p_2\in S_1$ e definir $\rho_2=\rho_{p_2}$. Logo, fazendo o mesmo argumento do maneira inductiva, temos que existem $\{\rho_i\}_{i=1}^{\infty}\subseteq C^{k}(M)$ funções com suportes disjuntos, pelo que temos que cada um delas é linearmente independente das demas y portanto podemos concluir que a dimensão de $C^{k}(M)$ é infinita. 
   \end{solution}
 \end{homeworkProblem}

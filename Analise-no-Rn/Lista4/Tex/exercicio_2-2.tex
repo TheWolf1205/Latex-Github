@@ -1,16 +1,22 @@
 \begin{homeworkProblem}[Seção 2-2]
-  O produto cartesiano de superfícies com bordo em geral não é uma superfície com
-bordo, pois podem surgir quinas. No entanto, prove o resultado a seguir.
-
-Se $M$ é uma superfície e $N$ é uma superfície com bordo, então
-\[
-M\times N
-\]
-é uma superfície com bordo e
-\[
-\partial(M\times N)=M\times\partial N.
-\]
+  O produto cartesiano de superfícies com bordo em geral não é uma superfície com bordo, pois podem surgir quinas. No entanto, prove o resultado a seguir.\\
+  Se $M$ é uma superfície e $N$ é uma superfície com bordo, então $M\times N$ é uma superfície com bordo e
+  \begin{align*}
+    \partial(M\times N)=M\times\partial N.
+  \end{align*}
   \begin{solution}
-    XXX  
+    Seja $M$ uma superfície de dimensão $m$ e $N$ uma superfície com bordo de dimensão $n$, vamos ver que $M\times N$ é uma superfície com bordo.\\
+    Seja $x\in M\times N$, logo, existem $x_1\in M$ e $x_2\in N$ tais que $x=(x_1,x_2)$. Portanto, temos que existe uma parametrização $\phi_1:U_1\subseteq \mathbb{R}^{m}\to V_1$ com $V_1$ aberto de $M$ tal que $x_1\in \phi_1(U)$. Por outro lado, como $N$ é uma superfície com bordo, temos que existe uma parametrização local (com bordo o interior dependendo do caso) $\phi_2:U_2\subseteq \mathbb{H}^{n}\to V_2$ com $V_2$ aberto de $N$ tal que $x_2\in\phi_2(U_2)$.\\
+    Assim, como $U_1\times U_2\subseteq\mathbb{R}^{m}\times\mathbb{H}^{n}=\mathbb{H}^{m+n}$, temos que dado $x\in M\times N$, podemos definir
+    \begin{align*}
+      \phi=U_1\times U_2&\to V_1\times V_2\subseteq M\times N,\\
+      x&\to (\phi_1(x_1),\phi_2(x_2)).
+    \end{align*}
+    Logo como $\phi_1$ e $\phi_2$ são homeomorfismos e imersões, temos que $\phi$ é uma parametrização local da vizinhança coordenada $V=V_1\times V_2\subseteq M\times N$. Logo como $x$ é arbitrário podemos concluir que $M\times N$ é uma superfície diferencial com bordo.\\
+    
+    Agora, note que se $p\in \partial(M\times N)$, então existe $\phi:U\to V\subseteq M\times N$ parametrização local tal que $p\in\phi(\partial U)$, isto é, que $x=\phi^{-1}(p)\in\partial\mathbb{H}^{m+n}$, logo, se escrevemos $U=U_1\times U_2$, temos que $x=(x_1,x_2)\in U_1\times \partial U_2\subseteq \mathbb{R}^{m}\times\partial \mathbb{H}^{n}$, pelo que temos que $p\in M\times\partial N$. Por outro lado, realizando um racionamento semelhante chegamos a que se $p\in M\times \partial N$, então $p\in\partial(M\times N)$, pelo que podemos concluir que
+    \begin{align*}
+      \partial(M\times N)=M\times\partial N.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}
