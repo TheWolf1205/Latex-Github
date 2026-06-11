@@ -1,21 +1,33 @@
 \begin{homeworkProblem}[Seção 2-10]
-  Seja $D\subset\mathbb{R}^{2}$ um domínio compacto com fronteira regular.
-
-Dada
-\[
-F:D\to\mathbb{R}^{2}
-\]
-de classe $C^{2}$, com
-\[
-F(x)=(f(x),g(x)),
-\]
-tem-se
-\[
-\int_D \det F'(x)\,dx
-=
-\int_{\partial D} f\,dg.
-\]
+  Seja $D\subset\mathbb{R}^{2}$ um domínio compacto com fronteira regular. Dada $F:D\to\mathbb{R}^{2}$ de classe $C^{2}$, com $F(x)=(f(x),g(x))$, tem-se 
+  \begin{align*}
+    \int_D \det F^{\prime}(x)\,dx=\int_{\partial D} f\,dg.
+  \end{align*}
   \begin{solution}
-    XXX  
+    Note que
+    \begin{align*}
+      dF=\begin{pmatrix}
+        f_{x} & f_{y} \\
+        g_{x} & g_{y}
+      \end{pmatrix}.
+    \end{align*}
+    Logo temos que 
+    \begin{align*}
+      \det F^{\prime}=f_xg_y-f_yg_x.
+    \end{align*}
+    Assim, escrevendo $dg=g_xdx+g_ydy$, usando as propriedades da derivada $d$, que $d(dx)=d(dy)=0$ e que como $F\in C^{2}$, então $g\in C^{2}$ (o que implica que $g_{xy}=g_{yx}$) temos que
+    \begin{align*}
+      d(fdg)=&d\left( fg_xdx+fg_ydy \right)\\
+      =&\left( df\cdot g_x+fdg_x \right)\wedge dx+\left( df\cdot g_y+fdg_y \right)\wedge dy\\
+      =&\left( f_yg_x+fg_{xy} \right)dy \wedge dx+\left( f_xg_y+fg_{yx} \right)dx\wedge dy\\
+      =&\left( -f_yg_x-fg_{xy}+f_xg_y+fg_{yx} \right)dx\wedge dy\\
+      =&\left( f_xg_y-f_yg_x \right)dx\wedge dy\\
+      =&\det F^{\prime}dx\wedge dy\\
+      =&\det F^{\prime}d\overline{x}.
+    \end{align*}
+    Assim, como $D$ é uma superfície orientada com bordo e $fdg\in\Lambda^{1}(D)$, temos que pelo teorema de Stokes se cumpre que
+    \begin{align*}
+      \int_{D}d(fdg)=\int_{D}\det F^{\prime}(x)dx=\int_{\partial D}fdg.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}

@@ -1,25 +1,40 @@
 \begin{homeworkProblem}[Seção 2-7]
-  Mostre que em
-\[
-\mathbb{R}^{2}\setminus\{0\}
-\]
-a $1$-forma
-\[
-\omega=
-\frac{x\,dy-y\,dx}{x^{2}+y^{2}}
-\]
-é fechada mas não é exata.
-
-\textbf{Sugestão:}
-Se $\omega$ fosse exata em $\mathbb{R}^{2}\setminus\{0\}$,
-ela também seria exata em $S^{1}$.
-
-Mas verifique que
-\[
-\int_{S^{1}}\omega=2\pi\neq 0
-\]
-e use um exercício anterior.
+  Mostre que em $\mathbb{R}^{2}\setminus\{0\}$ a $1$-forma
+  \begin{align*}
+    \omega=\frac{x\,dy-y\,dx}{x^{2}+y^{2}}
+  \end{align*}
+  é fechada mas não é exata.\\
+  \textbf{Sugestão:} Se $\omega$ fosse exata em $\mathbb{R}^{2}\setminus\{0\}$, ela também seria exata em $S^{1}$. Mas verifique que $\int_{S^{1}}\omega=2\pi\neq 0$ e use um exercício anterior.
   \begin{solution}
-    XXX  
+    Usando as propriedades da $d$ e que $d(dx)=d(dy)=0$ temos que 
+    \begin{align*}
+      dw=&d\left( \frac{x}{x^{2}+y^{2}}dy \right)-d\left( \frac{y}{x^{2}-y^{2}}dx \right)\\
+      =&\left( \frac{x^{2}+y^{2}-2x^{2}}{(x^{2}+y^{2})^{2}},-\frac{2xy}{x^{2}+y^{2}} \right)\wedge dy-\left( -\frac{2xy}{x^{2}+y^{2}},\frac{x^{2}+y^{2}-2y^{2}}{(x^{2}+y^{2})^{2}} \right)\wedge dx\\
+      =&\frac{y^{2}-x^{2}}{(x^{2}+y^{2})^{2}}dx\wedge dy - \frac{x^{2}-y^{2}}{(x^{2}+y^{2})^{2}}dy\wedge dx\\
+      =&\left( \frac{y^{2}-x^{2}}{(x^{2}+y^{2})^{2}}+\frac{x^{2}-y^{2}}{(x^{2}+y^{2})^{2}} \right)dx\wedge dy\\
+      =&(0)dx\wedge dy\\
+      =&0.
+    \end{align*}
+    Logo temos que $dw=0$, pelo que podemos afirmar que $w$ é uma $1$-forma fechada.\\
+    Agora, note que se $w$ fosse exata, temos que existe $f\in\Lambda^{0}(\mathbb{R}^{2}\setminus\{0\})$ tal que $df=w$. Depois, note que se pegamos $i:S^{1}\to\mathbb{R}^{2}\setminus\{0\}$ como a inclusão, temos que
+    \begin{align*}
+      i^{\ast}w=i^{\ast}df=d(i^{\ast}f).
+    \end{align*}
+    Mas como $i^{\ast}f=f\big|_{S^{1}}$, temos que $w\big|_{S^{1}}=d\left( w\big|_{S^1} \right)$, pelo que temos que se $w$ é exata, então $w\big|_{S^{1}}$ é exata.\\
+    Assim, raciocínio pelo contra-recíproco temos que se $w\big|_{S^{1}}$ não é exata, então $w$ não é exata.\\
+    Note que se definimos $\varphi:[0,2\pi)\to S^{1}$ dada por $\varphi(t)=(\cos(t),\sen(t)$, temos que $\varphi$ é um difeomorfismo $C^{\infty}$, logo temos que
+    \begin{align*}
+      \int_{S^{1}}w=\int_{\varphi([0,2\pi))}w=\int_{0}^{2\pi}\varphi^{\ast}w.
+    \end{align*}
+    Logo temos que
+    \begin{align*}
+      x=&\cos(t)\quad\quad\quad\,\,\,\, y=\sen(t)\\
+      dx=&-\sen(t)\,dt\quad dy=\cos(t)\,dt.
+    \end{align*}
+    Portanto
+    \begin{align*}
+      \int_{S^{1}}w=\int_{0}^{2\pi}\frac{\cos(t)\cos(t)-(\sen(t)(-\sen(t)))}{\cos^{2}(t)+\sen^{2}(t)}\,dt=\int_{0}^{2\pi}\,dt=2\pi\neq 0.
+    \end{align*}
+    Logo como $S^{1}$ é uma superfície compacta sem bordo, pelo exercicio anterior, temos que $w\big|_{S^{1}}$ não é exata e portanto $w$ não é exata no $\mathbb{R}^{2}\setminus\{0\}$. 
   \end{solution}
 \end{homeworkProblem}

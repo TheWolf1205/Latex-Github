@@ -26,6 +26,11 @@
     \begin{align*}
       f^{-1}(a)\cap \phi(W)=\{p\in \phi(W):f(p)=a\}=\{(c,\xi(c)):c\in A\subseteq\mathbb{R}^{m}\}.
     \end{align*}
-    Agora, note que como $\nabla(f\circ\phi)(c,\xi(c))\neq 0$, temos que a função $f\circ\phi$ não tem troco de sinal perto de $(c,\xi(c))$, pelo que supondo que $f\circ\phi$ é crecente, temos que dado $t>\xi(c)$ suficentemente perto de $\xi(c)$, se cumpre que $f(c,\xi(c))=a<f(c,t)$ e se $t<\xi(c)$, então $f(c,t)<a=f(c,\xi(c))$, logo $\phi(U)=U_1\times U_2$ com $U_1\subseteq\mathbb{R}^{m}$ e $U_2\subseteq (-\infty,\xi(c)]$ abertos, logo $U\cap\partial \mathbb{H}^{m+1}\neq \emptyset$, pelo que temos que $\phi$ é uma parametrização com bordo, logo como $p$ é arbitrário, temos que $\partial N=f^{-1}(a)$. 
+    Agora, note que como $\nabla(f\circ\phi)(c,\xi(c))\neq 0$, temos que a função $f\circ\phi$ não tem troco de sinal perto de $(c,\xi(c))$, pelo que sem perdida de generalidade, supondo que $f\circ\phi$ é decrecente, temos que como $x_1\in A$, existe $\delta>0$ suficientemente pequenho, tal que se $t\in(x_2-\delta,x_2+\delta)$ temos que 
+    \begin{align*}
+      a=(f\circ\phi)(x_1,x_2)<(f\circ\phi)(x_1,t)\quad t<x_2.\\
+      a=(f\circ\phi)(x_1,x_2)>(f\circ\phi)(x_1,t)\quad t>x_2.
+    \end{align*}
+    Logo, se $t\geq x_2$, temos que $\phi(x_1,t)\in N$. Logo $A\times [x_1,x_1+\delta)$ é isomorfo baixo translações a um aberto de $\mathbb{H}^{m+1}$. Portanto, como $(x_1,x_2)\in A\times [x_2,x_2+\delta]$, temos que $\phi^{-1}(p)\cap\partial\mathbb{H}^{m+1}\neq\emptyset$ e $\phi:A\times[x_2,x_2+\delta]\to N$ é uma parametrização com bordo, logo como $p$ é arbitrário e todo $x\in N$ que cumpre $f(x)<a$ é um ponto interior do $N$, temos que $\partial N=f^{-1}(a)$. 
   \end{solution}
 \end{homeworkProblem}
