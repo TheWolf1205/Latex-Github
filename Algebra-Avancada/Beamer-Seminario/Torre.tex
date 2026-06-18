@@ -1,0 +1,43 @@
+\begin{frame}{}
+  \begin{block}{Imersão}
+    Dado $G$ grupo, definamos
+    \begin{align*}
+      \tau_{G}:G&\to Aut(G),\\
+               g&\to \tau_{g}:G\to G,\\
+               \phantom{g}&\hspace{1.35cm} x\to gxg^{-1}.
+    \end{align*}
+    Note que se $g\in Z(G)$, temos que $\tau_g(x)=gxg^{-1}=xgg^{-1}=x=id(x)$.\\
+    Logo, como $\Img(\tau_{G})=\Inn(G)$ temos que pelo teorema de isomorfismo de grupos
+    \begin{align*}
+      G/Z(G)\cong Inn(G)\normal Aut(G).
+    \end{align*}
+  \end{block}
+\end{frame}
+\begin{frame}{}
+  \begin{block}{Lema}
+    Dado $G$ grupo, temos que se $Z(G)=\{1\}$, então $Z(Aut(G))=\{1\}$. 
+  \end{block}
+  \begin{block}{Torre de automorfismos}
+    Assim, seja $G$ grupo com $Z(G)=\{1\}$, pelo que vamos denotar $G_0=G$. Logo, pelo anterior temos que $G_0\normal Aut(G_0)$. Depois, denotando $G_1=Aut(G_0)$, temos que como $Z(G_1)=\{1\}$, então $G_0\normal G_1\normal Aut(G_1)$. Assim, raciocinando de maneira indutiva temos
+    \begin{align*}
+      G_0\normal \underbrace{G_1}_{Aut(G_0)}\normal \underbrace{G_2}_{Aut(G_1)}\normal \underbrace{G_3}_{Aut(G_2)}\normal\cdots\normal G_{\alpha}\normal G_{\alpha+1}\normal\cdots
+    \end{align*}
+    com $\alpha$ ordinal.\\
+    Ista cadeia ascenndente é chamada a \textbf{torre de automorfismos}.\\
+    Se $\gamma$ é um ordinal límite, definimos $G_{\gamma}=\bigcup_{\beta<\gamma}G_{\beta}$. 
+  \end{block}
+\end{frame}
+\begin{frame}{}
+  \begin{block}{Teorema de Wielandt}
+    Dado $G$ grupo finito com $Z(G)=\{1\}$ temos que existe $N\in\mathbb{Z}^{+}$ tal que $G_{N}=G_{N+i}$ com $i\in\mathbb{Z}^{+}$. Isto é, que a torre de automorfismos de $G$ estabiliza num número finito de pasos. 
+  \end{block}
+  \begin{block}{Observação}
+    Note que $G_{N}=G_{N+1}$ é o mesmo que dizer que $Inn(G_N)=Aut(G_{N})$, pois
+    \begin{align*}
+      Inn(G)\cong G_N/Z(G)=G_N=G_{N+1}=Aut(G_N).
+    \end{align*}
+    Pelo que podemos asegurar que a cadeia estabiliza num grupo \textbf{completo}.
+  \end{block}
+\end{frame}
+\subsection{Examples}
+

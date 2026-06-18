@@ -1,42 +1,52 @@
 \begin{homeworkProblem}[Seção 2-12]
-  Uma função
-\[
-f:U\to\mathbb{R}
-\]
-de classe $C^{2}$ num aberto
-\[
-U\subset\mathbb{R}^{m}
-\]
-chama-se harmônica quando
-\[
-\Delta f
-=
-\sum_{i=1}^{m}
-\frac{\partial^{2}f}{\partial x_i^{2}}
-=
-0
-\]
-em todos os pontos de $U$.
-
-Prove que $f$ é harmônica se, e somente se, para todo domínio compacto
-com fronteira regular
-\[
-D\subset U
-\]
-tem-se
-\[
-\int_{\partial D}
-\frac{\partial f}{\partial\eta}
-=
-0,
-\]
-onde
-\[
-\frac{\partial f}{\partial\eta}:\partial D\to\mathbb{R}
-\]
-é a derivada de $f$ na direção de $\eta$, normal unitária exterior à
-fronteira de $D$.
+  Uma função $f:U\to\mathbb{R}$ de classe $C^{2}$ num aberto $ U\subset\mathbb{R}^{m}$ chama-se harmônica quando
+  \begin{align*}
+    \Delta f=\sum_{i=1}^{m}\frac{\partial^{2}f}{\partial x_i^{2}}=0   
+  \end{align*}
+  em todos os pontos de $U$.\\
+  Prove que $f$ é harmônica se, e somente se, para todo domínio compacto com fronteira regular $D\subset U$ tem-se
+  \begin{align*}
+    \int_{\partial D}\frac{\partial f}{\partial\eta}=0,  
+  \end{align*}
+  onde
+  \begin{align*}
+    \frac{\partial f}{\partial\eta}:\partial D\to\mathbb{R}
+  \end{align*}
+  é a derivada de $f$ na direção de $\eta$, normal unitária exterior à fronteira de $D$.
   \begin{solution}
-    XXX  
+    Note que $\frac{\partial f}{\partial \eta}=\left\langle df,\eta \right\rangle$, logo como $f\in C^{2}$, temos que $df\in C^{1}$ no domínio compacto com fronteira regular $D\subseteq U$, temos que pelo teorema de divergencia se cumpre que
+    \begin{align*}
+      \int_{\partial D}\frac{\partial f}{\partial \eta}=\int_{\partial D}\left\langle df, \eta\right\rangle=\int_{D} div(df).
+    \end{align*}
+    Assim, note que como
+    \begin{align*}
+      df=f_{x_1}dx^{1}+f_{x_2}dx^{2}+\cdots+f_{x_m}dx^{m},
+    \end{align*}
+    aplicando o operador de Hodge
+    \begin{align*}
+      \star df=f_{x_1}dx^{2}\wedge\cdots\wedge dx^{m}+\cdots+(-1)^{m-1}f_{x_m}dx^{1}\wedge\cdots\wedge dx^{m-1}.
+    \end{align*}
+    Portanto,
+    \begin{align*}
+      div(df)=d(\star df)=&\frac{\partial^2 f}{\partial x_1^{2}}dx^{1}\wedge\cdots\wedge dx^{m}+\cdots+\frac{\partial^{2}f }{\partial x_m^{2}}dx^{1}\wedge\cdots\wedge dx^{m}\\
+      =&\left( \sum_{i=1}^{m}\frac{\partial^{2}f }{\partial x_i^{2}} \right)dx^{1}\wedge\cdots\wedge dx^{m}.
+    \end{align*}
+    Assim, temos que
+    \begin{align*}
+      \int_{\partial D}\frac{\partial f}{\partial \eta}=\int_{D}div(df)=\int_{D}\sum_{i=1}^{m}\frac{\partial^{2}f }{\partial x_i^{2}}.
+    \end{align*}
+    Portanto, temos que se $f$ é harmônica, então
+    \begin{align*}
+      \int_{\partial D}\frac{\partial f}{\partial \eta}=\int_{D}div(df)=\int_{D}\sum_{i=1}^{m}\frac{\partial^{2}f }{\partial x_i^{2}}=0.
+    \end{align*}
+    Y por outro lado, se 
+    \begin{align*}
+      0=\int_{\partial D}\frac{\partial f}{\partial \eta}=\int_{D}div(df)=\int_{D}\sum_{i=1}^{m}\frac{\partial^{2}f }{\partial x_i^{2}}.
+    \end{align*}
+    Então temos que $\sum_{i=1}^{m}\frac{\partial^{2}f }{\partial x_i^{2}}=0$, pois do contrario, como $f\in C^{2}$, temos que $\Delta f\in C$, logo se $\nabla f\neq 0$, temos que existe um dominio compacto com fronteira regular (isto porque existe uma bola na que $\nabla f\neq 0$, logo se pegamos a bola fechada do radio $r/2$ temos um domínio compacto com fronteira regular) no qual $\nabla  f(x)\neq 0$ se $x\in D$, logo ela atingue o mínimo $k>0$ no $D$ e portanto temos que 
+    \begin{align*}
+      0=\int_{\partial D}\frac{\partial f}{\partial \eta}=\int_{D}div(df)=\int_{D}\sum_{i=1}^{m}\frac{\partial^{2}f }{\partial x_i^{2}}\geq k Vol(D)>0.      
+    \end{align*}
+    O que é um absurdo. Pelo que podemos concluir que $\nabla f=0$,, isto é, que $f$ é harmônica. 
   \end{solution}
 \end{homeworkProblem}

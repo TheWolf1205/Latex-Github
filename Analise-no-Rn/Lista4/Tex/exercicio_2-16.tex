@@ -1,26 +1,20 @@
 \begin{homeworkProblem}[Seção 2-16]
-  Usando a Segunda Fórmula de Green, conclua que se $u,v$ são funções
-harmônicas tais que
-\[
-\frac{\partial u}{\partial\eta}
-=
-\frac{\partial v}{\partial\eta},
-\]
-então
-\[
-u-v=\text{constante}.
-\]
-
-Em particular, se $u$ é uma função harmônica tal que
-\[
-\frac{\partial u}{\partial\eta}=0
-\]
-em $\partial\Omega$, então
-\[
-u=\text{constante}
-\]
-em $\Omega$.
+  Usando a Segunda Fórmula de Green, conclua que se $u,v$ são funções harmônicas tais que
+  \begin{align*}
+    \frac{\partial u}{\partial\eta}=\frac{\partial v}{\partial\eta},    
+  \end{align*}
+  então $u-v=$ constante.
+  Em particular, se $u$ é uma função harmônica tal que $\frac{\partial u}{\partial\eta}=0$ em $\partial\Omega$, então $u=$ constante em $\Omega$.
   \begin{solution}
-    XXX  
+    Note que pela hipótese e pela segunda fórmula de Green temos que
+    \begin{align*}
+      \int_{\Omega}u\Delta v-v\Delta u=\int_{\partial\Omega}u\frac{\partial v}{\partial \eta}-v\frac{\partial u}{\partial \eta}=\int_{\partial\Omega}u\frac{\partial u}{\partial \eta}-v\frac{\partial u}{\partial \eta}=\int_{\partial\Omega}(u-v)\frac{\partial u}{\partial \eta}.
+    \end{align*}
+    Mas como $u$ e $v$ são harmônicas, temos que $\Delta u=\Delta v=0$, logo
+    \begin{align*}
+      \int_{\partial\Omega}(u-v)\frac{\partial u}{\partial \eta}=0.
+    \end{align*}
+    Agora, temos que $(u-v)=0$ ou $\frac{\partial u}{\partial \eta}=0$.\\
+    No primeiro caso, temos que $u-v=0$ constante o que conclui o exercício. Por outro lado, se $\frac{\partial u}{\partial \eta}=0$, temos que $u$ é constante, mas como $\frac{\partial u}{\partial \eta}=\frac{\partial v}{\partial \eta}$, então $v$ também é constante e portanto $u-v$ é constante (na direção do $\eta$?) o que nos permite afirmar que $u-v=$ constante. 
   \end{solution}
 \end{homeworkProblem}

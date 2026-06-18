@@ -1,25 +1,38 @@
 \begin{homeworkProblem}[Seção 2-15]
+  Sejam $u,v:U\to\mathbb{R}$ funções de classe $C^{2}$ definidas em um aberto $U\subseteq \mathbb{R}^{n}$ e $\Omega\subseteq U$ é um domínio compacto com fronteira regular e $\eta$ o campo normal unitário apontando para fora.\\
   Obtenha a Segunda Fórmula de Green:
-\[
-\int_{\Omega}
-\bigl(u\Delta v-v\Delta u\bigr)
-=
-\int_{\partial\Omega}
-\left(
-u\frac{\partial v}{\partial\eta}
--
-v\frac{\partial u}{\partial\eta}
-\right).
-\]
-
-Daí obtenha a fórmula
-\[
-\int_{\Omega}\Delta u
-=
-\int_{\partial\Omega}
-\frac{\partial u}{\partial\eta}.
-\]
+  \begin{align*}
+    \int_{\Omega}\bigl(u\Delta v-v\Delta u\bigr)=\int_{\partial\Omega}\left(u\frac{\partial v}{\partial\eta}-v\frac{\partial u}{\partial\eta}\right).
+  \end{align*}
+  Daí obtenha a fórmula
+  \begin{align*}
+    \int_{\Omega}\Delta u=\int_{\partial\Omega}\frac{\partial u}{\partial\eta}.
+  \end{align*}
   \begin{solution}
-    XXX  
+    Note que
+    \begin{align*}
+      udv=uv_{x_1}dx^{1}+uv_{x_2}dx^{2}+\cdots+uv_{x_n}dx^{n},
+    \end{align*}
+    aplicando o operador de Hodge
+    \begin{align*}
+      \star udv=uv_{x_1}dx^{2}\wedge\cdots\wedge dx^{m}+\cdots+(-1)^{n-1}uv_{x_n}dx^{1}\wedge\cdots\wedge dx^{n-1}.
+    \end{align*}
+    Portanto,
+    \begin{align*}
+      div(udv)=d(\star udv)=&\frac{\partial uv_{x_1}}{\partial x_1}dx^{1}\wedge\cdots\wedge dx^{n}+\cdots+\frac{\partial uv_{x_n} }{\partial x_n}dx^{1}\wedge\cdots\wedge dx^{n}\\
+      =&\left( \sum_{i=1}^{n}\frac{\partial uv_{x_i} }{\partial x_i} \right)dx^{1}\wedge\cdots\wedge dx^{n}\\
+      =&\left( \left\langle du,dv \right\rangle+u\Delta v \right)dx^{1}\wedge\cdots\wedge dx^{n}.
+    \end{align*}
+    Assim, usando a simetría do produto interno e o teorema de divergencia temos que
+    \begin{align*}
+      \int_{\Omega}u\Delta v-v\Delta u=&\int_{\Omega}\left\langle du,dv \right\rangle+ u\Delta v-\left\langle dv,du \right\rangle-v\Delta u\\
+      =&\int_{\partial \Omega}\left\langle udv,\eta \right\rangle-\left\langle vdu,\eta \right\rangle\\
+      =&\int_{\partial \Omega}u\frac{\partial v}{\partial \eta}-v\frac{\partial u}{\partial \eta}.
+    \end{align*}
+    Agora, note que se pegamos $v=1$ e multiplicando por $-1$ temos que como $dv=0$ e $\Delta v=0$, então 
+    \begin{align*}
+      \int_{\Omega}\Delta u=\int_{\partial\Omega}\frac{\partial u}{\partial \eta}.
+    \end{align*}
+    O que nos permite concluir o exercício.
   \end{solution}
 \end{homeworkProblem}
