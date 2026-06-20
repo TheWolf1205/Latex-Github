@@ -22,6 +22,10 @@ Repositorio para subir trabajos o talleres de la U :p.
   - [Exercícios](<./Analise-no-Rn/Lista3/Exercícios 3 - Análise no Rn.pdf>) 
   - [Solução](<./Analise-no-Rn/Lista3/Tex/Lista 3 Análise no Rn.pdf>)
 
+- Lista 3.
+  - [Exercícios](<./Analise-no-Rn/Lista4/Exercícios 4 - Análise no Rn.pdf>) 
+  - [Solução](<./Analise-no-Rn/Lista4/Tex/Lista 4 Análise no Rn.pdf>)
+
 - Prova 1.
   - [Prova](<./Analise-no-Rn/Prova1/Prova_1_Analise_no_Rn.pdf>) 
   - [Solução](<./Analise-no-Rn/Prova1/Gabarito_Prova 1_Analise_no_Rn.pdf>)  

@@ -6,15 +6,18 @@
   então $u-v=$ constante.
   Em particular, se $u$ é uma função harmônica tal que $\frac{\partial u}{\partial\eta}=0$ em $\partial\Omega$, então $u=$ constante em $\Omega$.
   \begin{solution}
-    Note que pela hipótese e pela segunda fórmula de Green temos que
+    Note que como $u$ e $v$ são funções harmônicas temos que se definimos $w=u-v$, então $\Delta w=0$, logo, note que pela hipótese temos que
     \begin{align*}
-      \int_{\Omega}u\Delta v-v\Delta u=\int_{\partial\Omega}u\frac{\partial v}{\partial \eta}-v\frac{\partial u}{\partial \eta}=\int_{\partial\Omega}u\frac{\partial u}{\partial \eta}-v\frac{\partial u}{\partial \eta}=\int_{\partial\Omega}(u-v)\frac{\partial u}{\partial \eta}.
+      \frac{\partial w}{\partial \eta}=\frac{\partial u}{\partial \eta}-\frac{\partial v}{\partial \eta}=0.
     \end{align*}
-    Mas como $u$ e $v$ são harmônicas, temos que $\Delta u=\Delta v=0$, logo
+    Pelo que temos que $\frac{\partial w}{\partial \eta}=0$, logo usando a primeira fórmula de Green (que se pode mostrar usando o mesmo  argumento do exercício 2-15), que $\Delta w=0$ e que $\frac{\partial w}{\partial \eta}=0$, temos que
     \begin{align*}
-      \int_{\partial\Omega}(u-v)\frac{\partial u}{\partial \eta}=0.
+      \int_{\Omega}\left| dw \right|^{2}=&\int_{\Omega}\left\langle dw,dw \right\rangle+w\Delta w
+      =\int_{\partial\Omega}\left\langle wdw,\eta \right\rangle
+      =\int_{\partial\Omega}w\frac{\partial w}{\partial \eta}
+      =0.
     \end{align*}
-    Agora, temos que $(u-v)=0$ ou $\frac{\partial u}{\partial \eta}=0$.\\
-    No primeiro caso, temos que $u-v=0$ constante o que conclui o exercício. Por outro lado, se $\frac{\partial u}{\partial \eta}=0$, temos que $u$ é constante, mas como $\frac{\partial u}{\partial \eta}=\frac{\partial v}{\partial \eta}$, então $v$ também é constante e portanto $u-v$ é constante (na direção do $\eta$?) o que nos permite afirmar que $u-v=$ constante. 
+    Logo, como $\left| dw \right|^{2}\geq 0$, temos que $dw=0$. Depois podemos afirmar que $w=$ constante, mas $w=u-v$, o que nos permite concluir que $u-v=$ constante.\\
+    Agora, note que se $v=0$, temos que $\frac{\partial u}{\partial \eta}=0$, logo $u-v=u=$ constante, o que nos permite concluir o exercício. 
   \end{solution}
 \end{homeworkProblem}
