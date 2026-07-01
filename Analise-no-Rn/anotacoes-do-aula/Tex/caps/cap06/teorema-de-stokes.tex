@@ -1,0 +1,88 @@
+\begin{theorem}[Teorema de Stokes]
+  Seja $M^{n}$ uma superfície orientada com bordo, $\partial M$ com a orientação induzida e $w\in\Lambda^{n-1}_c(M)$. Então
+  \begin{align*}
+    \int_{M}dw=\int_{\partial M}i^{\ast}w,
+  \end{align*}
+  onde a forma $w$ na segunda integral é entendida como $i^{\ast}w$, sendo $i^{\ast}:\Lambda^{k-1}(M)\to\Lambda^{k-1}(\partial M)$ o pullback da inclusão.
+\end{theorem}
+\begin{proof} 
+  \begin{itemize}
+    \item Caso 1) $M=\mathbb{H}^{n}$.\\
+      Como $w$ tem suporte compacto existe $R>0$ tal que
+      \begin{align*}
+        \supp w\subseteq [-R,R]^{n-1}\times[0,R]\subseteq\mathbb{H}^{n}.
+      \end{align*}
+      Sabemos que uma $(n-1)$-forma em $\mathbb{R}^{n}$ se escreve como
+      \begin{align*}
+        w=\sum_{i=1}^{n}w_i\,dx^1\wedge\cdots\wedge\hat{dx^i}\wedge\cdots dx^{n}.
+      \end{align*}
+      Portanto, fazendo algums cálculos temos que
+      \begin{align*}
+        dw=&d\left( \sum_{i=1}^{n}w_i\,dx^1\wedge\cdots\wedge\hat{dx^i}\wedge\cdots\wedge dx^{n}\right)\\
+        =&\sum_{i,j=1}^{n}\frac{\partial w_i}{\partial x_j}\,dx^{j}\wedge dx^1\wedge\cdots\wedge\hat{dx^i}\wedge\cdots\wedge dx^{n}\\
+        =&\sum_{i=1}^{n}\frac{\partial w_i}{\partial x_i}\,dx^{i}\wedge dx^1\wedge\cdots\wedge dx^{n}\\
+        =&\sum_{i=1}^{n}(-1)^{i-1}\frac{\partial w_i}{\partial x_i}\,dx^{1}\wedge\cdots\wedge dx^{n}. 
+      \end{align*}
+      Assim, pela definição temos que
+      \begin{align*}
+        \int_{\mathbb{H}^{n}}dw=\sum_{i=1}^{n}(-1)^{i-1}\int_{0}^{R}\int_{-R}^{R}\cdots\int_{-R}^{R}\frac{\partial w_i}{\partial x_i}\,dx^{1}\cdots dx^{n}.
+      \end{align*}
+      Mas note que se $i\neq n$, então como $w_i(R)=w_i(-R)=0$, temos que
+      \begin{align*}
+        \int_{-R}^{R}\frac{\partial w_i}{\partial x_i}\,dx^{i}=0.
+      \end{align*}
+      Logo
+      \begin{align*}
+        \int_{\mathbb{H}^{n}}dw=&\sum_{i=1}^{n}(-1)^{i-1}\int_{0}^{R}\int_{-R}^{R}\cdots\int_{-R}^{R}\frac{\partial w_i}{\partial x_i}\,dx^{1}\cdots dx^{n}\\
+        =&(-1)^{n-1}\int_{0}^{R}\int_{-R}^{R}\cdots\int_{-R}^{R}\frac{\partial w_n}{\partial x_n}\,dx^{1}\cdots dx^{n}\\
+        =&(-1)^{n}\int_{-R}^{R}\cdots\int_{-R}^{R}w_n(x^1,\cdots,x^{n-1},0)\,dx^{1}\cdots dx^{n-1}.
+      \end{align*}
+      Agora, como o bordo $\partial\mathbb{H}^{n}=\mathbb{R}^{n-1}\times\{0\}$ com coordenadas $(x^{1},\cdots,x^{n-1})$, temos que a inclusão $i:\partial\mathbb{H}^{n}\to\mathbb{H}^{n}$ satisfaz $i^{\ast}(dx^{i})=dx^{i}$ para todo $i<n$ e $i^{\ast}(dx^{n})=0$.\\
+      Logo, como vimos na proposição \ref{prop:difeomorfismo-superficies} a orientação inuzida $\partial\mathbb{H}^{n}$ é dada por
+      \begin{align*}
+        \int_{\partial\mathbb{H}^{n}}w=(-1)^n\int_{\mathbb{H}^{n}}w_n(x^{1},\cdots,x^{n-1},0)dx^{1}\cdots dx^{n-1}=\int_{\mathbb{H}^{n}}dw.
+      \end{align*}
+    \item Caso 2) $M=\mathbb{R}^{n}$.\\
+      Neste caso, tomamos $R>0$ tal que $\supp w\subseteq [-R,R]^{n}$, logo $\int_{\mathbb{R}^{n}}w=0$ e como $\partial\mathbb{R}^{n}=\emptyset$, temos que $\int_{\partial\mathbb{R}^{n}}w=0$, logo temos que
+      \begin{align*}
+        \int_{\partial\mathbb{R}^{n}}w=\int_{\mathbb{R}^{n}}dw.
+      \end{align*}
+    \item Caso 3) $M$ é superfície com bordo arbitrária e $\supp w$ ta contida na imagem de uma parametrização $(\varphi,U)$.\\
+      Para fixar ideias, assuma $\varphi$ positiva, logo pelo caso 1), temos que
+      \begin{align*}
+        \int_{M}dw=\int_{U}\varphi^{\ast}dw=\int_{U}d\left( \varphi^{\ast}w \right)=\int_{\partial U}\varphi^{\ast}w=\int_{\partial M}w.
+      \end{align*}
+      Pois, $\partial M$ tem a orientação induzida e $\varphi(U)\cap \partial M$ é um difeomorfismo que preserva orientação.
+    \item Caso 4) $M$ superfície com bordo arbitrário e $w$ uma $(n-1)$-forma com suporte compacto.\\
+      Seja $(U_i,\rho_i)_{i=1}^{m}$ uma cobertura por domínios de parametrizações positivaas e uma partição da unidade associadda. Temos que, pelo caso 3) se cumpre
+      \begin{align*}
+        \int_{\partial M}w=\sum_{i=1}^{m}\int_{\partial M}\rho_i w=\sum_{i=1}^{m}\int_{M}d(\rho_i w)=&\sum_{i=1}^{m}\int_M d(\rho_i\wedge w)\\
+        =&\int_{M}d\left( \sum_{i=1}^{m}\rho_i \right)\wedge w + \sum_{i=1}^{m}\rho_i\wedge dw\\
+        =&\int_{M}dw.
+      \end{align*}
+  \end{itemize}
+\end{proof}
+\subsection{Interpretação geométrica de derivada exterior}
+  Queremos mostrar que a derivada exterior calculada em um ponto mede a taxa de variação infinitesimal da integral de $w$ sobre a fronteira de pequenos paralelepipedos, i.é, mede o fluxo de $w$ através de fronteiras de regioes que escolhem para um ponto.\\
+  Sejam $v_1,\cdots,v_n\in\mathbb{R}^{n}$ linearmente independentes e considere os paralelepipedos $P=[v_1,\cdots,v_n]$ e $\epsilon P=[\epsilon v_1,\cdots, \epsilon v_n]$.\\
+  Seja $w\in\lambda^{n-1}(\mathbb{R}^{n})$ uma $n$-forma diferenciável arbitrária, de modo que a derivada exterior de $w$ é dada por
+  \begin{align*}
+    dw=f\,dx^{1}\wedge\cdots\wedge dx^{n},\quad f\in C^{\infty}(\mathbb{R}^{n}).
+  \end{align*}
+  Note que como $Vol_{\mathbb{R}^{n}}=dx^{1}\wedge\cdots\wedge dx^{n}$, temos que
+  \begin{align*}
+    dw_0(v_1,\cdots,v_n)=f(0)\,dx^{1}\wedge\cdots\wedge dx^{n}(v_1,\cdots,v_n)=f(0)Vol_{\mathbb{R}^{n}}(P)=\int_{P}\,dw_0.
+  \end{align*}
+  De maneira análoga
+  \begin{align*}
+    \epsilon^{n}dw_0(v_1,\cdots,v_n)=\int_{\epsilon P}dw_0.
+  \end{align*}
+  Agora, em geral, temos que $Vol_{\mathbb{R}^{n}}(\epsilon P)=\epsilon^{n}Vol_{\mathbb{R}^{n}}(P)$, logo pelo teorema do valor meio para integráis multiplas temos que existe $\xi\in\epsilon P$ tal que
+  \begin{align*}
+    \int_{\epsilon P}dw=\int_{\epsilon P}f(x)\, dx^{1}\wedge\cdots\wedge dx^{n}=f(\xi)Vol(\epsilon P).
+  \end{align*}
+  Logo, quando $\epsilon\to 0$, temos que $f(\xi)\to f(0)$, pelo que temos que pelo teorema de Stokes se cumpre que
+  \begin{align*}
+    \lim_{\epsilon \to 0}\frac{1}{\epsilon^{n}}\int_{\partial(\epsilon P)}w=\lim_{\epsilon \to 0}\frac{1}{\epsilon}\int_{\epsilon p}dw=f(0)Vol_{\mathbb{R}^{n}}(P)=dw_0(v_1,\cdots,v_n).
+  \end{align*}
+  Assim, a derivada exterior da $(n-1)$-forma $w$ em $0$ calculada nos vetores $v_1,\cdots,v_n$ dá a variação infinitesimal da integral de $w$ no paralelepipedo $\partial(\epsilon P)$.

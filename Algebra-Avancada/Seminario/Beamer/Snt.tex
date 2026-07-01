@@ -1,0 +1,82 @@
+\subsection{Subgrupo transitivo}
+\begin{frame}{Subgrupo transitivo}
+  \begin{block}{Definição}
+    Dado um conjunto $X$, dizemos que um subgrupo $S$ de $Sim(X)$ é um \textbf{subgrupo transitivo} se dados $x,y\in X$, temos que existe $\sigma\in S$ tal que $\sigma(x)=y$. 
+  \end{block}
+  \begin{block}{Lema}
+    Seja $G$ um grupo e $H\leq G$. Definamos $X=\{xH:x\in G\}$ (o conjunto das classes laterais a esquerda de $H$) e $\varphi$ da seguinte maneira
+    \begin{align*}
+      \varphi:G&\to Sim(X),\\
+              g&\to \varphi_g:X\to X,\\
+    \phantom{g}&\phantom{\to \varphi_g:}xH\to gxH.
+    \end{align*}
+    Então $\Img \varphi$ é um subgrupo transitivo de $Sim(X)$.
+  \end{block}
+\end{frame}
+\subsection{$S_6$ não é completo}
+\begin{frame}{}
+  \begin{block}{Lema}
+    Existe um subgrupo transitivo $K$ de $S_6$ com ordem $120$ que não contém transposições. 
+  \end{block}
+  \begin{block}{Proof}
+    \begin{enumerate}
+      \item Pelos teoremas de Sylow temos que existe $H\leq S_5$ tal que $[G:H]=6$.\\
+      \item Definimos $X=\{aH:a\in S_5\}$, logo $|Sim(X)|\cong S_6$.
+      \item 
+        \begin{align*}
+          \varphi:S_5&\to Sim(X),\\
+                  g&\to \varphi_g:X\to X,\\
+        \phantom{g}&\phantom{\to \varphi_g:}xH\to gxH.
+        \end{align*}
+      \item $K\cong \Img\varphi$.
+    \end{enumerate}
+  \end{block}
+\end{frame}
+\begin{frame}{}
+  \begin{block}{Proof}
+    Raciocinemos pela contradição
+    \begin{enumerate}
+      \item Suponha $\alpha=(12345)\in K$ e $(ij)\in K$ transposição.
+      \item Como $K$ é transitivo temos que existe $\beta\in K$ tal que $\beta(j)=6$.
+      \item $\beta(ij)\beta^{-1}=(\beta(i),6)$.
+      \item Conjugando $(\beta(i),6)$ pelas potencias de $\alpha$ temos que $(16),(26),(36),(46),(56)\in K$.
+      \item $\left\langle (16),(26),(36),(46),(56) \right\rangle=S_6$. Absurdo.
+    \end{enumerate}        
+  \end{block}
+\end{frame}
+\begin{frame}{}
+  \begin{block}{Teorema}
+    Existe um automorfismo de $S_6$ que não é interno.     
+  \end{block}
+  \begin{block}{Proof}
+    \begin{enumerate}
+      \item $[S_6:K]=6$, considere $X=\{\alpha_i K:i\in\{1,\cdots,6\}\}$.
+      \item
+        \begin{align*}
+          \sigma:S_6&\to Sim(X),\\
+                   g&\to \sigma_g:X\to X,\\
+                    &\phantom{\to\sigma_g}\,\alpha_i K\to g\alpha_i K.
+        \end{align*}
+      \item Logo $\sigma=Aut(S_6)$.
+    \end{enumerate}
+  \end{block}
+\end{frame}
+\begin{frame}
+  \begin{block}{}
+    Raciocinemos pela contradição
+    \begin{enumerate}
+      \item Suponha que $\sigma\in Inn(S_6)$, logo $\sigma[(12)]=\sigma_{(12)}$ é uma transposição, assim
+      \item
+        \begin{align*}
+          \sigma:S_6&\to S_6,\\
+                   (12)&\to \sigma_{(12)}:X\to X,\\
+                    &\phantom{\to\sigma_g}\,\alpha_i K\to (12)\alpha_i K.
+        \end{align*}
+      \item Existe $j$ tal que $(12)\in \alpha_{j}K$, logo $(12)\alpha_jK=\alpha_j K$.
+      \item Logo $\alpha_j^{-1}(12)\alpha_j\in K$. Absurdo.
+    \end{enumerate}
+  \end{block}
+  \begin{block}{Teorema}
+    $S_6$ não é completo.        
+  \end{block}
+\end{frame}

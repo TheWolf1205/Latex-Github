@@ -1,0 +1,55 @@
+\begin{definition}[Integral de linha]
+  Seja $I=[a,b]\subseteq\mathbb{R}$ um intervalo fechado e $w\in\lambda^{1}(I)$ uma $1$-forma diferenciável, de modo que $w=f(t)dt$ para alguma função $f\in C^{\infty}(I)$ e $t$ é o sistema de coordenadas globais padrão em $\mathbb{R}$. Definimos a \textbf{integral de linhha} de $w$ em $I$ plea integral de Riemman
+  \begin{align*}
+    \int_{I}w=\int_{a}^{b}f(t)\,dt.
+  \end{align*}
+\end{definition}
+\begin{proposition}[Invariança de integral por mudançã de coordenadas]
+  Sejam $I=[a,b]$ e $J=[c,d]$, com $\varphi:I,J$ um difeomorfismo $C^{1}$ e $w\in\lambda^{1}(I)$. Então temos que
+  \begin{align*}
+    \int_{I}w=\int_{J}\varphi^{\ast}w\cdot|\varphi^{\prime}|.
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  Em coordenadas globais $t\in I$ e $s\in J$, escrevendo $v=v^{1}\partial s\in T_s J$, temos que
+  \begin{align*}
+    (\varphi^{\ast}w)_s(v)=&w_{\varphi(s)}(d\varphi_s(v))\\
+    =&(f\circ\varphi)(s)dt(d\varphi_s(v))\\
+    =&(f\circ\varphi)(s)dt(v^{1}\varphi^{\prime}(s)\partial_s)\\
+    =&(f\circ\varphi)(s)\varphi^{\prime}(s)dt(v^{1}\partial_s)\\
+    =&f(\varphi(s))\varphi^{\prime}(s)ds(v).
+  \end{align*}
+  Logo, usando o teorema de mudançã de variaveis temos que
+  \begin{align*}
+    \int_{I}w=\int_{a}^{b}f(t)\,dt=\int_{c}^{d}f(\varphi(s))|\varphi^{\prime}(s)|\,ds=\int_{J}\varphi^{\ast}w\cdot|\varphi^{\prime}|.
+  \end{align*}
+\end{proof}
+\begin{definition}
+  Seja $M$ uma superfície diferenciável $\gamma:[a,b]\to M$ uma curva diferenciável e $w\in\Lambda^{1}(M)$ uma $n$-forma diferenciável. Definimos a \textbf{integral de linha} de $w$ em $\gamma$ por
+  \begin{align*}
+    \int_{\gamma}w=\int_{I}\gamma^{\ast}w|\gamma^{\prime}|=\int_{a}^{b}w_{\gamma(t)}|\gamma^{\prime}(t)|\,dt.
+  \end{align*}
+  Se $\gamma:I\to M$ é uma curva diferenciável por partes, então a integral está bem definida no cada subintervalo e é a soma das integrais sobre cada intervalo. 
+\end{definition}
+\begin{proposition}
+  Se $F:M\to N$ é uma função diferenciável, $\gamma$ é uma curva diferenciável em $M$ e $\eta\in\Lambda^{1}(N)$, então
+  \begin{align*}
+    \int_{\gamma}F^{\ast}\eta=\int_{F\circ\gamma}\eta.
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  \begin{align*}
+    \int_{F\circ\gamma}\eta=\int_{I}(F\circ \gamma)^{\ast}\eta=\int_{I}\gamma^{\ast}F^{\ast}\eta=\int_{\gamma}F^{\ast}\eta.
+  \end{align*}
+\end{proof}
+\begin{proposition}[Teorema de Stokes para integrais de linha]
+  Sejam $\gamma:[a,b]\to M$ uma curva diferenciável e $f\in C^{\infty}$, vale que
+  \begin{align*}
+    \int_{\gamma}df=f(\gamma(b))-f(\gamma(a)).
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  \begin{align*}
+    \int_{\gamma}df=\int_{a}^{b}df_{\gamma(t)}\gamma^{\prime}(t)dt=\int_{a}^{b}(f\circ\gamma)^{\prime}(t)\,dt=(f\circ\gamma)(b)-(f\circ\gamma)(a).
+  \end{align*}
+\end{proof}

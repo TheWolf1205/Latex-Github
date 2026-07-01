@@ -1,0 +1,86 @@
+\begin{definition}[Integral em superfícies]\label{def:7.1-integral}
+  Sejam $M$ uma superfície diferencial orientada $(\varphi,U)$ uma parametrização para $M$ e $w\in\Lambda^{n}_c(V)$.\\
+  Definimos a \textbf{integral de $w$ em $M$} por
+  \begin{align*}
+    \int_{M}w=\int_{\varphi^{-1}(V)=U}\varphi^{\ast}w,\quad\text{ se $\varphi$ é uma parametrização positiva}.\\
+    \int_{M}w=-\int_{\varphi^{-1}(V)=U}\varphi^{\ast}w,\quad\text{ se $\varphi$ é uma parametrização negativa}.
+  \end{align*}
+\end{definition}
+\begin{note}[parametrização positiva]
+  Uma parametrização $\varphi:U\subseteq\mathbb{H}^{n}\to V\subseteq M$, é positiva se $\varphi$ mapeia a orientação padrão de $\mathbb{R}^{n}$ na orientação dada de $M$. 
+\end{note}
+\begin{proposition}
+  Seja $M$ uma superfície diferenciável orientada de dimensão $n$. Sejam
+  \begin{align*}
+    \varphi:U\to V\subseteq M\quad\text{e}\quad\psi:W\to Z\subseteq M,
+  \end{align*}
+  duas parametrizações de $M$, ambas positivas (ou ambas negativas) e seja $w\in\Lambda^{n}_c(M)$ uma $n$-forma com suporte compacto contido em $V\cap Z$. Então
+  \begin{align*}
+    \int_{\varphi^{-1}(V)}\varphi^{\ast}w=\int_{\psi^{-1}(Z)}\psi^{\ast}w.
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  Considere o difeomorfismo $\Phi:\psi^{-1}\circ\varpi:\varphi^{-1}(Z\cap V)\to\psi^{-1}(Z\cap V)$, logo
+  \begin{align*}
+    \int_{\varphi^{-1}(V)}\varphi^{\ast}w=\int_{\varphi^{-1}(V\cap Z)}\varphi^{\ast}w=\int_{\Phi(\varphi^{-1}(V\cap Z))}(\Phi^{-1})^{\ast}\varphi^{\ast}w=\int_{\psi(V)}\psi^{\ast}w.
+  \end{align*}
+\end{proof}
+\begin{definition}
+  Seja $M$ uma superfície diferenciável orientada e $w\in\Lambda^{k}_c(M)$. Seja $\{U_i\}_{i\in\{1,\cdots,m\}}$ uma cobertura finita de $\supp w$ por domínios de parametrizações todas positivas ou todas negativas e $\{\rho_i\}_{i\in\{1,\cdots,m\}}$ uma partição da unidade subordinada a esta cobertura.\\
+  Definamos a integral de $w$ em $M$ por
+  \begin{align*}
+    \int_{M}w=\sum_{i=1}^{m}\int_{M}\rho_i w.
+  \end{align*}
+\end{definition}
+\begin{proposition}
+  A integral $w$ em $M$ é independente da cobertura finita e da partição da unidade. 
+\end{proposition}
+\begin{proof} 
+  Sejam $(U_i,\rho_i)_{i\in\{1,\cdots,r\}}$ e $(V_j,\eta_j)_{j\in\{1,\cdots,s\}}$ duas coberturas por domínios de parametrizações todas positivas ou todas negativas para $\supp w$ e respectivas partições da unidade.\\
+  Fixemos $i$, logo temos que
+  \begin{align*}
+    \int_{M}\rho_i w=\int_{M}\sum_{j=1}^{s}\eta_j\rho_i w=\sum_{j=1}^{s}\int_{M}\eta_j\rho_i w.
+  \end{align*}
+  Logo temos que
+  \begin{align*}
+    \sum_{i=1}^{r}\int_{M}\rho_i w=\sum_{i=1}^{r}\sum_{j=1}^{s}\int_{M}\eta_j\rho_i w=\sum_{j=1}^{s}\int_{M}\eta_j w.
+  \end{align*}
+\end{proof}
+\begin{proposition}\label{prop:difeomorfismo-superficies}
+  Seja $F:M\to N$ um difeomorfismo entre duas superfícies orientadas de dimensão $n$. Seja $w\in\Lambda^{n}_c(N)$ uma $n$-forma com suporte compacto em $N$.
+  \begin{itemize}
+    \item Se $F$ preserva orientação, então
+      \begin{align*}
+        \int_{N}w=\int_{M}F^{\ast}w.
+      \end{align*}
+     \item Se $F$ reverte orientação, então
+      \begin{align*}
+        \int_{N}w=-\int_{M}F^{\ast}w.
+      \end{align*}
+ \end{itemize}
+\end{proposition}
+\begin{proof} 
+  Como $w$ tem suporte compacto podemos escolher
+  \begin{itemize}
+    \item Um atlas finito $\{U_i,\varphi_i\}_{i=1}^{r}$ de $N$, onde cada $\varphi_i:\tilde{U}_i\subseteq\mathbb{H}^{n}\to U_i\subseteq N$ é uma parametrização positiva.
+    \item uma partição da unidade $\{\rho_i\}_{i=1}^{r}$ subordiada a $\{U_i\}$. 
+  \end{itemize}
+  Escrevemos $w=\sum_{i=1}^{r}\rho_i w$, logo pela linearidade da integral temos que
+  \begin{align*}
+    \int_{N}w=\sum_{i=1}^{r}\int_{N}\rho_i w.
+  \end{align*}
+  Assim, como $F$ é difeomorfismo $F:M\to N$ temos uma partição da unidadeem $M$ $\{\tilde{\rho}_i\}_{i=1}^{r}$ com $\tilde{\rho}_i=\rho_i\circ F$. Alem disso, temos que
+  \begin{align*}
+    \int_{M}F^{\ast}w=\sum_{i=1}^{r}\int_{M}\tilde{\rho}_i F^{\ast}w.
+  \end{align*}
+  Como relacionar $\int_N\rho_iw$ com $\int_{M}\tilde{\rho}_{i}(F^{\ast}w)$?\\
+  De fato, para cada $\rho_i w$, temos suporte contido em $U_i$. Como $\varphi_i:\overline{U_i}\to U_i$ é uma parametrização positiva, logo pela definição \ref{def:7.1-integral} temos que
+  \begin{align*}
+    \int_{N}\rho_i w=\int_{\tilde{U_i}}\varphi_i^{\ast}rho_i w.
+  \end{align*}
+  Agora, note que $F^{-1}(U_i)$ é aberto em $M$ e $\psi_i=F^{-1}\circ\varphi_i:\overline{U}_i\to F^{-1}(U_i)$ é parametrização de $M$.\\
+  Agora, supondo que $F$ preserva orientação, temos que como $\phi_i$ preserva orientação, então $\psi_i$ é positiva, de modo que peladefinição \ref{def:7.1-integral} se cumpre que
+  \begin{align*}
+    \int_M\tilde{\rho}_iF^{\ast}w=\int_{\tilde{U}_i}\psi_i^{\ast}\tilde{\rho}_iF^{\ast}w=\int_{\tilde{U}_i}=\int_{\tilde{U}_i}\varphi_i^{\ast}(\rho_iw).
+  \end{align*}
+\end{proof}

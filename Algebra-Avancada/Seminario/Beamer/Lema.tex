@@ -1,0 +1,53 @@
+\begin{frame}{Lema Técnico}
+\begin{block}{Teorema}
+    Duas permutações $\alpha, \beta \in S_n$ são conjugadas em $S_n$ se, e somente se, tem a mesma estrutura cíclica.
+\end{block}
+  
+  
+  \begin{block}{Lema Técnico}
+    Sejam $n\neq 6$ e $\tau \in S_n$ um elemento de ordem $2$ que é produto de $k$ transposições disjuntas. Então:
+
+    \begin{enumerate}
+        \item O tamanho da classe de conjugação de $\tau$ é
+        $$\frac{n!}{2^k(n-2k)!k!}$$
+
+        \item Se $k>1$ então $\vert Cl(\tau)\vert \neq \vert Cl(\sigma)\vert$, para qualquer transposição $\sigma \in S_n$.
+    \end{enumerate}
+  \end{block}
+\end{frame}
+\begin{frame}{}
+  \begin{block}{Ideia da demonstração.}
+    Note que, por hipótese, $\tau=(i_1j_1)\dots(i_kj_k)$, $1\leq k \leq \frac{n}{2}$.
+   
+    Para $(i_1j_1)$, temos $\frac{n(n-1)}{2}$. Façamos uma escolha.\\
+    \vspace{0.3 cm}
+    Para $(i_2,j_2)$, temos $\frac{(n-2)(n-3)}{2}$.\\
+    \vspace{0.3 cm}
+    Seguindo o raciocínio, para $(i_k,j_k),$ temos $\frac{(n-2(k-1))(n-2k-1)}{2}$. De modo que
+    $$\frac{n!}{2^k(n-2k)!k!}$$
+    representa a quantidade de permutações possíveis para representar  $\tau$.
+    \vspace{0.3 cm}
+    Portanto,
+    $$\vert Cl(\tau)\vert = \frac{n!}{2^k(n-2k)!k!}.$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Ideia da demonstração}
+        Seja $k\geq 2$ e $\sigma$ uma transposição qualquer em $S_n$.
+        Queremos mostrar que 
+        $$\vert Cl(\tau)\vert \neq \vert Cl(\sigma)\vert.$$
+        Basta ver que 
+        $$2^{k-1}(n-2k)! k! < (n-2)!,
+        $$
+para $n>6$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Proposição}
+    \begin{block}{Proposição}
+    Para $n\geq 3,$ temos que $Z(S_n)=\{1\}.$
+        
+    \end{block}
+\end{frame}
+

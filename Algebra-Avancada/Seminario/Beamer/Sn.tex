@@ -1,0 +1,78 @@
+
+\begin{frame}{$S_n$ com $n \neq 6$ é completo}
+\begin{block}{Teorema}
+    Se $n \neq 6$, todo automorfismo de $S_n$ é interno.
+\end{block}
+     \begin{block}{Proof}
+        Considere $S_n $ com $n \neq 6 $, $\sigma \in Aut(S_n)$ e $\psi$ uma transposição em $S_n$.
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{}
+    \begin{block}{Proof}
+      \begin{enumerate}
+          \item $\sigma$ leva transposição em transpoisição: Note que se $\sigma$  leva $Cl(\psi)$ em $Cl(\sigma(\psi))$, por injetividade, $ \big| Cl(\sigma(\psi)) \big| = \frac{n !}{2(n-2)!}$ (Lema Técnico). Este tamanho de classe  admite somente transposições.  
+          \item Tomando $c_i = (i \; i+1)$, com $1 \leq i \leq n-1$ e $\psi_i= \sigma (c_i)$, definindo $\psi_1=(a_1 \; a_2)$. 
+
+Note que $c_1$ e $c_2$ não comutam, logo $\psi_1$ e $\psi_2$  também não comutam, assim $\psi_2 = (a_2 \; a_3)$, com $a_3 \neq a_1$. Analogamente, $\psi_2$ e $\psi_3$ não comutam, pois  $c_2$ e $c_3$ não comutam, mas  $\psi_3$ comuta com $\psi_1$, então $\psi_3= (a_3 \; a_4)$ com $a_4 \notin \{a_1,a_2,a_3\} $. Do mesmo modo, $\psi_4$ deve ter interseção com $\psi_3$ e ser disjunto a $\psi_1$ e $\psi_2$, portanto $\psi_4 = (a_4\; a_5)$, $a_5 \notin \{a_1,a_2,a_3, a_4\} $...
+\item De modo geral, $\psi_i = (a_i \; a_{i+1})$, com $a_{i+1} \notin \{a_1,..,a_i\} $ elementos distintos e  $a_j \in \{1,2,...,n\}$.
+ 
+      \end{enumerate}
+    \end{block}
+    
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+\begin{block}{Proof}
+Agora considere $\gamma \in S_n$ tal que $\gamma(i)=a_i$ .
+\begin{enumerate}
+    \item  $\gamma \; c_i \; \gamma^{-1} = \psi_i$.
+    \item   Tome $\alpha$  o automorfismo induzido por $\gamma$; 
+\[
+\begin{aligned}
+\alpha : S_n &\longrightarrow S_n\\
+\eta &\longmapsto \gamma \; \eta \;\gamma^{-1}
+\end{aligned}
+\]
+\item Note que $\{c_i\}$ gera $S_n$
+
+
+\end{enumerate}
+    
+\end{block}
+    
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+\begin{block}{Proof}
+    O Próximo passo é mostrar que $\alpha^{-1}\sigma$ fixa $\{c_i\}$, e portanto $\alpha^{-1}\sigma = Id$. 
+    \begin{enumerate}
+        \item Sabemos que $\alpha^{-1}(\sigma(c_i))=\alpha^{-1}(\psi_i)$ e que $\psi_i = \gamma \; c_i \;\gamma^{-1}$
+        \item Como 
+\[
+\begin{aligned}
+\alpha^{-1} : S_n &\longrightarrow S_n\\
+\eta &\longmapsto \gamma^{-1} \; \eta \; \gamma
+\end{aligned}
+\]
+\item $\alpha^{-1}(\sigma(c_i))= \alpha^{-1}(\psi_i)=\alpha^{-1}( \gamma^{-1}  \eta  \gamma) = c_i$
+
+    \end{enumerate}
+ 
+    
+    Assim concluímos que $\alpha = \sigma$ é automorfismo interno. 
+\end{block}
+    
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+\begin{block}{Teorema}
+$S_n$ é um grupo completo para $n \geq 3 $ e $n \neq 6$.   
+\end{block}
+
+\begin{block}{Proof}
+    O resultado é consequência do ultimo teorema e do fato de que para $n \geq 3$, $Z(S_n) = \{1\}$.
+\end{block}
+    
+\end{frame}

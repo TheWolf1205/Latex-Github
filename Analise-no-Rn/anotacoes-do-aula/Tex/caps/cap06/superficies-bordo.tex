@@ -1,0 +1,242 @@
+\begin{definition}[Diferenciávilidade geral]
+  Seja $X\subseteq\mathbb{R}^{m}$ um conjunto arbitrário.\\
+  Dizemos que uma função $F:X\to\mathbb{R}^{n}$ é diferenciável de classe $C^{k}$ se ela possui uma \textbf{extensão diferenciável local} de classe $C^{k}$ para todo $x\in X$. Ou seja, para cada $x\in X$ existe uma vizinhançã $U$ de $x$ é uma função diferenciável de classe $C^{k}$ $\tilde{F}:U\to\mathbb{R}^{n}$ tais que $\tilde{F}\big|_{U\cap X}=F\big|_{U\cap X}$. Em particular, $F$ é contínua. 
+\end{definition}
+\begin{lemma}[Lema da extensão]
+  Seja $A\subseteq\mathbb{R}^{m}$ fechado e $U\supseteq A$ aberto tal que $F:A\to\mathbb{R}^{n}$ é de classe $C^{k}$, então existe uma extensão diferenciável de classe $C^{k}$ $\tilde{F}:\mathbb{R}^{m}\to\mathbb{R}^{n}$ de $F$ tal que $\supp\tilde{F}\subseteq U$. 
+\end{lemma}
+\begin{proof} 
+  Para cada $x\in A$, seja $U_x\subset\subset U$ (isto é, que $\overline{U_x}\subseteq U$ onde $\overline{U_x}$ é compacto) uma vizinhançã de $x$ tal que existe uma extensão local $\overline{F}_x:U_x\to\mathbb{R}^{n}$ de classe $C^{k}$ de $F$.\\
+  Considere a coleção $\displaystyle \bigcup_{x\in A}U_x\cup \mathbb{R}^{m}\setminus A$, uma covertura aberta de $\mathbb{R}^{m}$. Logo, temos que existe uma partição da unidade subordinada a esta cobertura $\{\rho_x\}_{x\in A}\cup\{\rho_0\}$.\\
+  Definimos 
+  \begin{align*}
+    \tilde{F}:\mathbb{R}^{m}&\to\mathbb{R}^{n},\\
+                          y &\to\sum_{x\in A}\rho_{x}(y)\overline{F}_x(y).
+  \end{align*}
+  Depois, como $\tilde{F}$ é uma soma localmente finita, temos que ela é de classe $C^{k}$, logo temos que se pegamos $y\in A$, então $\rho_0(y)=0$ e $\overline{F}_x(y)=F(y)$, assim
+  \begin{align*}
+    \tilde{F}(y)=\sum_{x\in A}\rho_x(y)\overline{F}_x(y)=F(y)\sum_{x\in A}\rho_x(y)=F(y).
+  \end{align*}
+\end{proof}
+\begin{definition}[Semiespaço superior de $\mathbb{R}^{m}$]
+  Definimos o \textbf{semiespao superior de }$\mathbb{R}^{m}$ como o conjunto
+  \begin{align*}
+    \mathbb{H}^{m}:=\{(x_1,\cdots,x_{m-1},x_m): x_m\geq 0\}.
+  \end{align*}
+\end{definition}
+\begin{proposition}
+  Se $F:\mathbb{H}^{m}\to\mathbb{R}^{n}$ é uma função diferenciável, então a derivada $dFx$ está bem definida para todo $x\in \mathbb{H}^{m}$. 
+\end{proposition}
+\begin{proof} 
+  O caso quando $x\in Int(\mathbb{H}^{m})$ é o mesmo que pensar no $\mathbb{R}^{m}$, pelo que vamos provar o caso para o bordo.\\
+  Seja $x\in\partial\mathbb{H}^{m}$. Seja $\overline{F}:U\to\mathbb{R}^{n}$ uma extensão local de $F$ em uma vizinhançã $U$ de $x$, então
+  \begin{itemize}
+    \item Se $i\neq m$, temos que
+      \begin{align*}
+        d\overline{F}_x(e_i)=\partial_i\overline{F}(x)=\lim_{t \to 0}\frac{\overline{F}(x+te_i)-\overline{F}(x)}{t}=\lim_{t \to 0}\frac{F(x+te_i)-F(x)}{t}=dF_x(e_i).
+      \end{align*}
+    \item Se $i=m$, temos que
+      \begin{align*}
+        d\overline{F}_x(e_m)=\partial_m\overline{F}(x)=\lim_{t \to 0^{+}}\frac{\overline{F}(x+te_m)-\overline{F}(x)}{t}=\lim_{t \to 0^{+}}\frac{F(x+te_m)-F(x)}{t}=dF_x(e_m).
+      \end{align*}
+  \end{itemize}
+  Portanto, temos que $d\overline{F}_x=dF_x$, para qualquer extensão local de $F$ em uma vizinhançã $U$ de $x$. 
+\end{proof}
+\begin{definition}[Superfície com bordo]
+  Uma \textbf{superfície com bordo} de dimensão $n$ mergulhada em $\mathbb{R}^{N}$ é um subconjunto $M\subseteq \mathbb{R}^{N}$ tal que para todo $x\in M$ existe uma vizinhançã $V$ de $x$, um aberto $U$ de $\mathbb{H}^{n}$ é uma função diferenciável $\varphi:U\to V$ tal que
+  \begin{itemize}
+    \item $\varphi$ éum homeomorfismo.
+    \item A derivada $d\varphi_x:\mathbb{R}^{n}\to\mathbb{R}^{N}$é injetiva para todo $x\in U$.
+  \end{itemize}
+  Cada função $\varphi$ é chamada uma \textbf{parametrização} local da vizinhançã coordenada $V$ é \newline $(x_1,\cdots,x_n)\in U$ são as coordenadas locais de $V$.
+  \begin{itemize}
+    \item Se $U\cap\partial\mathbb{H}^{n}\neq \emptyset$, $\varphi$ é chamada uma \textbf{parametrização com bordo}. Caso contrario, é chamada uma \textbf{parametrização interior}.
+    \item Um conjunto de parametrizações cujas imagems cobrem $M$ é chamado um \textbf{atlas} e $\mathbb{R}^{N}$ é o espaçõ ambiante de $M$.
+    \item Um ponto $p\in M$ é chamado um \textbf{ponto interior} se $p\in\varphi(Int(U))$ para alguma $\varphi$ e um \textbf{ponto no bordo} se $p\in\varphi(\partial U)$ para alguma $\varphi$.
+    \item Temos que $M=Int M\cup\partial M$.
+  \end{itemize}
+\end{definition}
+\begin{proposition}
+  Seja $M$ uma superfície com bordo de dimensão $n$. Se $p\in\partial M$, então para toda parametrização $\varphi$ vale que $\varphi^{-1}(p)\in\partial\mathbb{H}^{n}$.\\
+  Em particular, $Int M\cap\partial M=\emptyset$ e $\partial M$ é uma superfície de dimensão $n-1$. 
+\end{proposition}
+\begin{proof} 
+  Sejam
+  \begin{align*}
+    \varphi_1:U_1\to V_1\\
+    \varphi_2:U_2\to V_2
+  \end{align*}
+  parametrizações de $M$ tais que $p\in V_1\cap V_2$.\\
+  Suponha por absurdo que $\varphi^{-1}_2(p)\in\partial \mathbb{H}^{n}$ mas $\varphi^{-1}_1(p)\in Int \mathbb{H}^{n}$.\\
+  Sabemos que $\varphi_2^{-1}\circ\varphi_1:\varphi_1^{-1}(V_1\cap V_2)\to\varphi^{-1}_2(V_1\cap V_2)$ é um difeomorfismo, logo pelo teorema da função inversa $\varphi^{-1}_2\circ\varphi_1$ leva um aberto $W\subseteq \varphi_1^{-1}(V_1\cap V_2)\cap Int\mathbb{H}^{n}$ contendo $\varphi^{-1}_1(p)$ em um aberto de $\mathbb{R}^{n}$, mas
+  \begin{align*}
+    \varphi^{-1}_2(p)\partial\mathbb{H}^{n},\quad text{e}\quad \varphi_2^{-1}(p)=\varphi_2^{-1}\circ\varphi_1(\varphi_1^{-1}(p))\in W.
+  \end{align*}
+  Absurdo.
+\end{proof}
+\begin{definition}[Espaçõ tangente]
+  Se $M^{n}\subseteq\mathbb{R}^{N}$ é uma superfície com bordo e $p\in M$. O \textbf{espaço tangente} $TM_p$ é definido por
+  \begin{align*}
+    TM_p=d\varphi_x(\mathbb{R}^{n}).
+  \end{align*}
+  Onde $\varphi$ é uma parametrização qualquer e $x=\varphi^{-1}(p)$. 
+\end{definition}
+\begin{note}
+  \phantom{x}
+  \begin{itemize}
+    \item Se $x\in\partial M$, então $T(\partial M)_p=d\varphi_x(\partial\mathbb{H}^{n})$ e $\partial\mathbb{H}^{n}=\{(x_1,\cdots,x_{n-1},0)\in\mathbb{R}^{n}\}\cong \mathbb{R}^{n-1}$.
+    \item O espaço tangente a pontos de uma superfície com bordo está bem definido, pois se $\varphi_1:U_1\to V_1$ e $\varphi_2:U_2\to V_2$ são duas parametrizações de $M$ tais que $p\in V_1\cap V_2$. Então
+      \begin{align*}
+        d\varphi_1(\mathbb{R}^{n})=d(\varphi_2\circ\varphi_2^{-1}\circ\varphi_1)(\mathbb{R}^{n})=d\varphi_2\cdot d(\varphi_2^{-1}\circ\varphi_1)(\mathbb{R}^{n})=d\varphi_2(\mathbb{R}^{n}).
+      \end{align*}    
+  \end{itemize}
+\end{note}
+\begin{definition}
+  Seja $M$ uma superfíciecom bordo e $p\in\partial M$ um ponto no bordo.\\
+  Dizemos que um vetor $v\in TM_p=T(\partial M)_p$ \textbf{aponta para fora} de $M$ se existe uma curva $\gamma:(-\epsilon,0]\to M$ tal que $\gamma(0)=p$ e $\gamma^{\prime}(0)=v$. ($v\in TM_p^{out}$)\\
+  Dizemos que um vetor $v\in TM_p=T(\partial M)_p$ \textbf{aponta para dentro} de $M$ se existe uma curva $\gamma:[0,\epsilon)\to M$ tal que $\gamma(0)=p$ e $\gamma^{\prime}(0)=v$. ($v\in TM_p^{in}$)\\
+\end{definition}
+\begin{note}
+  $v$ aponta para dentro, se somente se, $-v$ aponta para dentro. 
+\end{note}
+\begin{notation}
+  $\mathcal{T}(M)$ é o espaço vetorial dos campos vetoriais diferenciáveis tangentes a $M$. 
+\end{notation}
+\begin{definition}[Campo vetorial]
+  Seja $M$ uma superfície com bordo, dizemos que um campo vetorial $X\in\mathcal{T}(M)$ aponta para fora de $M$ ao longo $\partial M$ se para todo $p\in\partial M$ o vetor $X_p$ aponta para fora (dentro).
+  \begin{itemize}
+    \item Denotamos $\mathcal{T}^{out}(M)$ aos campos vetoriais apontando para fora. 
+    \item Denotamos $\mathcal{T}^{in}(M)$ aos campos vetoriais apontando para dentro. 
+  \end{itemize}
+\end{definition}
+\begin{proposition}
+  Seja $M$ é uma superfície com bordo, $p\in\partial M$ e $X\in\mathcal{T}(M)$. Temos que $X$ se escreve em coordenadas locais de uma parametrização $\varphi$ de $x$ como
+  \begin{align*}
+    X=\sum_{i=1}^{n}x^{i}\partial_i.
+  \end{align*}
+  Então, $X$  aponta para dentro (fora) de $M$ ao longo de $\partial M$ se, somente se, $x^{n}\geq 0$ ($x^{n}< 0$). 
+\end{proposition}
+\begin{proof} 
+  Seja $p\in\partial M\cap U$ um ponto arbitrário. Sejam $x_0=\varphi^{-1}(q)\in\partial\mathbb{H}^{m}$ e $v=d\varphi_p^{-1}(X_p)$. Por definição,
+  \begin{align*}
+    v=\sum_{i=1}^{n}x^{i}(p)e_i.
+  \end{align*}
+  Note que
+  \begin{itemize}
+    \item A semi-reta $\alpha^{+}(t)=x_0+tv\in\mathbb{H}^{n}$ se, somente se, $x^{n}\geq 0$. 
+    \item A semi-reta $\alpha^{-}(t)=x_0-tv\in\mathbb{H}^{n}$ se, somente se, $x^{n}< 0$. 
+  \end{itemize}
+  Agora, considere
+  \begin{align*}
+    \gamma^{+}=\varphi\circ\alpha^{+}:[0,\epsilon)\to M,\\
+    \gamma^{+}(0)=\varphi(\alpha^{+}(0))=\varphi(x_0),\\
+    (\gamma^{+})^{\prime}(0)=d\varphi_{x_0}(v)=X_p.
+  \end{align*}
+  Logo, $X_p$ aponta para dentro de $M$, enquanto que no segundo caso com $\gamma^{-}=\varphi\circ\alpha^{-}$ temos que $X_{p}$ aponta para fora de $M$.\\
+  Reciprocamente, se $X_{q}$ aponta para dentro de $M$, então existe uma curva $\gamma^{+}:[0,\epsilon)\to M$ tal que $\gamma^{+}(0)=p$ e $(\gamma^{+})^{\prime}(0)=X_p$.\\
+  Defina $\beta^{+}=\varphi^{-1}\circ\gamma^{+}:[0,\epsilon)\to \mathbb{H}^{n}$. Segue se que $\beta^{+}(0)=\varphi^{-1}(\gamma^{+}(0))=\varphi^{-1}(p)=x_0$ e $(\beta^{+})^{\prime}(0)=d\varphi^{-1}_p(X_p)=v$. Logo $v$ deve ter a coordenada $x^{n}(p)>0$. (Analogamente para fora).
+\end{proof}
+\begin{corollary}
+  Seja $M$ uma superfície com bordo e $p\in\partial M$, então
+  \begin{align*}
+    TM_p=T(\partial M)_p\cup TM_p^{out}\cup TM_p^{in}.
+  \end{align*}
+\end{corollary}
+\begin{definition}[Produto interior]
+  Dados $v\in V$ e $w\in\Lambda^{k}(V)$ definimos o seu produto interior
+  \begin{align*}
+    \lrcorner:V\times\Lambda^{k}(V)\to\Lambda^{k-1}(V),
+  \end{align*}
+  dada por
+  \begin{align*}
+    (v\lrcorner w)(v_2,\cdots,v_k)=w(v,v_2,\cdots,v_k).
+  \end{align*}
+\end{definition}
+\begin{proposition}
+  Seja $M$ uma superfície com bordo. Então existem campos em $M$ apontando para dentro de $M$ ao longo de $\partial M$ e campos apontando para fora de $M$ ao longo de $\partial M$. 
+\end{proposition}
+\begin{proof} 
+  Seja $\Phi=\{\varphi_\alpha:U_\alpha\to M\}_{\alpha\in A}$ um atlas em $M$.\\
+  Sabemos que podemos escolher atlas de forma que cada $U_\alpha$ seja:
+  \begin{itemize}
+    \item Ou aberto em $\mathbb{R}^{n}$ (parametrizações interiores). 
+    \item Ou aberto em $\mathbb{H}^{n}$ (parametrizações com bordo). 
+  \end{itemize}
+  Para cada pametrização cm bordo $\varphi_\alpha$ definimos o campo $X_\alpha=\partial_n$ (onde $\varphi_\alpha=-\partial_n$) os quais apontan para dentro de $M$ ao longo da fronteira $\partial M$ (para fora).\\
+  Note que
+  \begin{itemize}
+    \item Os campos $X_\alpha$ estão definidos em $V_\alpha=\varphi_\alpha(U_\alpha)$.
+    \item Precisamos de campos globais.
+  \end{itemize}
+  Sendo assim, suponha a partição da unidade subordinada a $\{V_\alpha\}_{\alpha\in A}$. Logo
+  \begin{itemize}
+    \item $\rho_\alpha:M\to[0,1]$ é de classe $C^{\infty}$.
+    \item $\supp\rho_\alpha\subseteq V_\alpha$.
+    \item O conjunto $\{\supp\rho_\alpha\}_{\alpha\in A}$ é localmente finito.
+    \item $\sum_{\alpha\in A}\rho_{\alpha}(p)=1$ para todo $p\in M$. 
+  \end{itemize}
+  Logo, definimos $X(p)=\sum_{\alpha\in A}\rho_{\alpha}(p)X_{\alpha}(p)$ o qual esta bem definido (pois pontoalmente é soma finita), é de classe $C^{\infty}$, é tangente a $M$ pois $X_\alpha(p)$ é tangente e $X$ aponta pra dentro no bordo.\\
+  Seja $p\in\partial M$ para cada $\alpha$ com $\rho_{\alpha}(p)\neq 0$ temos que
+  \begin{align*}
+    X^{n}(p)=\sum_{\alpha\in A}\rho_\alpha(p)X^{n}_\alpha(p)>0.
+  \end{align*}
+\end{proof}
+\begin{theorem}
+  Se $M$ é uma superfície orientada, então $\partial M$ é orientavel e qualquer campo em $M$ apontando para fora de $M$ ao longo de $\partial M$ determina a mesma orientação em $\partial M$, enquanto que qualquer campo em $M$ apontando para dentro de $M$ ao longo de $\partial M$ determina a orientação oposta em $\partial M$. 
+\end{theorem}
+\begin{proof} 
+  Seja
+  \begin{itemize}
+    \item $dim M=n$.
+    \item $Vol_M$ uma forma volume em $M$.
+    \item $i:\partial M\to M$ a inclusão ao bordo em $M$.
+    \item $X$ um campo vetorial em $M$ que aponta para fora ao longo de $\partial M$. 
+  \end{itemize}
+  Definimos uma $(n-1)$-forma em $\partial M$ por
+  \begin{align*}
+    w_{\partial M}=i^{\ast}(X\lrcorner Vol_M)\quad \text{(pullback da inclusão)}
+  \end{align*}
+  \textbf{Afirmação:} $w_{\alpha M}$ é uma forma volume em $\partial M$.\\
+  Seja $p\in\partial M$. Escolha coordenadas locais $(x^{1},\cdots,x^{n})$ em uma vizinhançã de $p$ em $M$ tal que
+  \begin{itemize}
+    \item $\partial M$ é dado por $x^{n}=0$.
+    \item $M$ é dado por $x^{n}\geq 0$.
+    \item $Vol_M=dx^1\wedge\cdots\wedge dx^{n}$.
+    \item Se $x^{n}<0$. Em particular $x^{n}(p)\neq 0$.
+  \end{itemize}
+  Agora, temos que
+  \begin{align*}
+    x\lrcorner Vol_M=X\lrcorner (dx^{1}\wedge\cdots\wedge dx^{n})=\sum_{i=1}^{n}(-1)^{n-1}x^{i}dx^{1}\wedge\cdots\hat{dx^{i}}\wedge\cdots\wedge dx^{n}.
+  \end{align*}
+  Logo como $i^{\ast}(dx^{n})=0$, temos que
+  \begin{align*}
+    i^{\ast}(X\lrcorner Vol_M)=(-1)^{n-1}x^{n}(p)dx^{1}\wedge\cdots\wedge dx^{n-1}\neq 0.
+  \end{align*}
+  Portanto, $w_{\partial M}$ é uma forma volume em $\partial M$, logo $\partial M$ é orientável.\\
+  Agora, estudemos a independencia do campo que apont para fora.\\
+  Sejam $X,Y\in \mathcal{T}^{out}(\partial M)$, então eles induzem a mesma orientação em $\partial M$.\\
+  De fato,
+  \begin{align*}
+    X=\sum_{i=1}^{n}x^{i}\partial_i,
+    Y=\sum_{i=1}^{n}y^{i}\partial_i.
+  \end{align*}
+  Sabemos que $i^{\ast}(dx^{n})=0$, $x^n(p)<0$ e $y^{n}(p)<0$, logo
+  \begin{align*}
+    i^{\ast}(X\lrcorner Vol_M)=(-1)^{n-1}x^{n}(p)dx^{1}\wedge\cdots\wedge dx^{n-1},
+    i^{\ast}(Y\lrcorner Vol_M)=(-1)^{n-1}y^{n}(p)dx^{1}\wedge\cdots\wedge dx^{n-1}.
+  \end{align*}
+  Assim,
+  \begin{align*}
+    i^{\ast}(Y\lrcorner Vol_M)=\frac{y^{n}}{x^{n}}i^{\ast}(X\lrcorner Vol_M).
+  \end{align*}
+  Logo ambas induzen a mesma orientação.
+\end{proof}
+\begin{definition}
+  Seja $M$ uma superfície com bordo. A orientação determinada por um campo apontando para fora de $M$ é chamada a orientação induzida de $\partial M$. 
+\end{definition}
+\begin{example}
+  A orientação induzida em $\partial\mathbb{H}^{n}=\mathbb{R}^{n-1}\times\{0\}$ é dada pelo campo constante apontando para fora de $-e_n$. Seguese que a inclusão canônica $i:\mathbb{R}^{n-1}\to\mathbb{R}^{n}$ o qual é difeomorfismo, preserva orientação quando $n$ é par e verte a orentação quando $n$ é impar, pois
+  \begin{align*}
+    -e_n\lrcorner Vol_{\mathbb{R}^{n}}=(-1)^{n-1}(-1)dx^{1}\wedge\cdots\wedge dx^{n}=(-1)^{n}dx^1\wedge\cdots\wedge dx^n.
+  \end{align*}
+\end{example}

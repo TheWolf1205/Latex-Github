@@ -1,0 +1,47 @@
+\begin{definition}[Domínio]
+  Dizemos que um aberto $\Omega\subseteq\mathbb{R}^{n}$ é um \textbf{domínio} se $\Omega$ é limitado e $med(\partial\Omega)=0$. 
+\end{definition}
+\begin{definition}[Integral de formas diferenciais]
+  Seja $\Omega\subseteq\mathbb{R}^{n}$ um domínio e $w\in\Lambda^{k}(\overline{\Omega})$ uma $n$-forma diferencial, de modo que
+  \begin{align*}
+    w=f(x)\,dx^{1}\wedge\cdots\wedge dx^{n},
+  \end{align*}
+  para alguma função $f\in C^{\infty}(\overline{\Omega})$ e $(x^{1},\cdots,x^{n})$ é o sistema de coordenadas padrão em $\mathbb{R}^{n}$.\\
+  Definimos a \textbf{integral de forma} $w$ em $\Omega$ por
+  \begin{align*}
+    \int_{\Omega}w=\int_{\Omega}f(x)\,dx^{1}\wedge\cdots\wedge dx^{n}.
+  \end{align*}
+\end{definition}
+\begin{note}
+  Note que $w$  ser uma $n$-forma diferenciável no aberto com bordo $\overline{\Omega}\subseteq\mathbb{R}^{n}$, significa que a componente $f$ de $w$ admite uma extensão suave até uma vizinhançã aberta de $\overline{\Omega}$. Se $f\in C^{\infty}_{c}(U)$, i.é, $w$ tem suporte compacto em $U$, definimos
+  \begin{align*}
+    \int_{U}w=\int_{\Omega}w,
+  \end{align*}
+  onde $\Omega\subseteq\mathbb{R}^{n}$ é qualquer domínio que contém $\supp w$. 
+\end{note}
+\begin{notation}
+  $\Lambda^{k}_c(U)$ é o espaço das $k$-formas com suporte compacto em $U$. 
+\end{notation}
+\begin{proposition}[Invariança da integral por mudança de coordenadas]
+  Sejam $\Omega,\Omega^{\prime}$ dominios e $\varphi:\overline{\Omega}\to\overline{\Omega^{\prime}}$ uma aplicação diferenciável tal que $\varphi:\Omega\to\Omega^{\prime}$ é um difeomorfismo $C^{1}$ e $w\in\Lambda^{n}(\overline{\Omega^{\prime}})$. Então
+  \begin{align*}
+    \int_{\varphi(\Omega)}w=\sgn(\det d\varphi)\int_{\omega}\varphi^{\ast}w.
+  \end{align*}
+  O mesmo resultado vale para formas com suporote compacto.
+\end{proposition}
+\begin{proof} 
+  Denotando por $(x^{1},\cdots,x^{n})$ as coordenadas em $\Omega$ e por $(y^{1},\cdots,y^{n})$ as coordenadas em $\Omega^{\prime}$ temos que usando o teorema da mudançã de variaveis
+  \begin{align*}
+    \int_{\varphi(\Omega)}w=&\int_{\varphi(\Omega)}f(y)\,dy^{1}\wedge\cdots\wedge dy^{n}\\
+    =&\int_{\Omega}(f\circ\varphi)(x)|\det d\varphi_x|\, dx^{1}\wedge\cdots\wedge dx^{n}\\
+    =&\sgn(\det d\varphi_x)\int_{\Omega}(f\circ\varphi)(x)\det d\varphi_x\,dx^{1}\wedge\cdots\wedge dx^{n}\\
+    =&\sgn(\det d\varphi_x)\int_{\Omega}\varphi^{\ast}(f\,d^{1}\wedge\cdots\wedge dy^{n})\\
+    =&\sgn(\det d\varphi_x)\int_{\Omega}\varphi^{\ast}w.
+  \end{align*}
+\end{proof}
+\begin{note}
+  Se $dim M=dim N$, temos que
+  \begin{align*}
+    F^{\ast}(f\, dy^{1}\wedge\cdots\wedge dy^{n})=(f\circ F)\det dF\, dx^{1}\wedge\cdots\wedge dx^{n}.
+  \end{align*}
+\end{note}
