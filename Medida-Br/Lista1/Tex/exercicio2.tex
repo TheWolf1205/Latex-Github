@@ -1,6 +1,37 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[2]
+  Se $f$ é mensurável, não negativa e limitada em $X$, mostre que existe uma sequência de funções simples $\{\varphi_n\}_{n\in\mathbb{Z}^{+}}$ tal que $0\leq\varphi_{n}\leq\varphi_{n+1}$ para todo $n\in\mathbb{Z}^{+}$ e $\varphi_{n}\xrightarrow[n\to\infty]{}f$ uniformemente (isto é, para cada $\epsilon>0$ existe $n_0$ tal que $|f(x)-\varphi_{n}(x)|<\epsilon$ para quaisquer $x\in X$ e $n\geq n_0$). (\textbf{Sugestão:} Tente a construção já vista o curso. O que falta provar?)
   \begin{solution}
-    XXX  
+    Note que, como $f$ é limitada em $X$, temos que existe $M=\sup_{x\in X}f(x)$, isto é, que $f(x)\leq M$ para todo $x\in X$. Logo, dado $n\in\mathbb{Z}^{+}$ considere o seguinte conjunto
+    \begin{align*}
+      A_{k,n}=f^{-1}\left( \left[k2^{-n}M,(k+1)2^{-n}M\right) \right),\quad\text{ com }k=0,1,\cdots,2^{n}.
+    \end{align*}
+    Observe que, como $f$ é mensurável, os conjuntos $A_{k,n}$ são mensuráveis.\\
+    Sendo assim, definamos 
+    \begin{align*}
+      \varphi_n:X&\to\mathbb{R}\\
+                x&\to kM2^{-n},\quad \text{ se } \displaystyle x\in A_{k,n} \text{.}
+    \end{align*}
+    \textbf{Afirmação:} nossa sequência é $\{\varphi_n\}_{n\in\mathbb{Z}^{+}}$.
+    \begin{itemize}
+      \item Segue se que, dado $n\in\mathbb{Z}^{+}$ os conjuntos $A_{k,n}$ são disjuntos e finitos. Daí que
+        \begin{align*}
+          \varphi_{n}(x)=\sum_{k=1}^{2^{n}}k2^{-n}M\chi_{A_{k,n}}(x).
+        \end{align*}
+        Isto é, que $\varphi_n$ é simple para todo $n\in\mathbb{Z}^{+}$.
+      \item Agora, note que se $x\in A_{k,n}$, então $x\in A_{2k,n+1}$ ou $x\in A_{2k+1,n+1}$. Assim
+        \begin{align*}
+          \varphi_{n+1}(x)\geq 2k2^{-(n+1)}M=k2^{-n}M=\varphi_{n}(x).
+        \end{align*}
+        Logo $0\leq \varphi_{n}\leq\varphi_{n+1}$ para todo $n\in\mathbb{Z}^{+}$.
+      \item Note que, se $x\in A_{k,n}$, então $k2^{-n}M\leq f(x)\leq (k+1)2^{-n}M$, o implica que $0\leq f(x)-k2^{-n}M\leq (k+1)2^{-n}M-k2^{-n}M$, isto é
+        \begin{equation}
+          \left| f(x)-\varphi_n(x) \right|=f(x)-k2^{n}M\leq 2^{-n}M.
+        \end{equation}
+        Para todo $n\in\mathbb{Z}^{+}$. Portanto, note que dado $\epsilon>0$, se pegamos $n_0\in\mathbb{Z}^{+}$ tal que $n_0> \log_{2}\left( \frac{M}{\epsilon} \right)$, então para todo $x\in X$ e qualquer $n\geq n_0$ temse que
+        \begin{align*}
+          \left| f(x)-\varphi_{n}(x) \right|\leq 2^{-n}M\leq 2^{-n_0}M< 2^{-\log_{2}\left( \frac{M}{\epsilon} \right)}M=\epsilon.
+        \end{align*}
+        Isto é, que $\varphi_n\xrightarrow[n\to\infty]{}f$ uniformemente. 
+    \end{itemize} 
   \end{solution}
 \end{homeworkProblem}

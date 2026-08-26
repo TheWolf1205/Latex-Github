@@ -1,6 +1,41 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[3]
+  Seja $B\in\cali{A}$ fixado.
+  \begin{enumerate}[a)]
+    \item Mostre que $\cali{B}=\{A\cap B:A\in\cali{A}\}$ é uma $\sigma$-álgebra em $B$.
+    \item Mostre que $\lambda(A)=\mu(A\cap B)$ define uma medida $\lambda$ em $\cali{A}$. 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+    \begin{enumerate}[a)]
+      \item Vamos provar que $\cali{B}$ é uma $\sigma$-álgebra em $B$.\\
+      \begin{itemize}
+        \item Note que como $\emptyset,B\in\cali{A}$, então $\emptyset\cap B=\emptyset\in\cali{B}$ e $B\cap B=B\in\cali{B}$.
+        \item Seja $C\in\cali{B}$, logo existe $A\in\cali{A}$ tal que $A\cap B=C$, logo
+          \begin{align*}
+            B\setminus C=B\setminus(A\cap B)=(B\setminus A)\cup(B\setminus B)=B\setminus A=(X\setminus A)\cap B.
+          \end{align*}
+          Logo como $X\setminus A\in\cali{A}$, então $(X\setminus A)\cap B=B\setminus C\in\cali{B}$.
+        \item Seja $\{B_n\}_{n\in\mathbb{Z}^{+}}\subseteq\cali{B}$, então para cada $B_n$ temos que existe um $A_n\in\cali{A}$ tal que $B_n=A_n\cap B$, logo como $\cali{A}$ é $\sigma$-álgebra, temos que $\bigcup_{n\in\mathbb{Z}^{+}}A_n=A\in\cali{A}$. Sendo assim,
+          \begin{align*}
+            \bigcup_{n\in\mathbb{Z}^{+}}B_n=\bigcup_{n\in\mathbb{Z}^{+}}A_n\cap B=\left( \bigcup_{n\in\mathbb{Z}^{+}}A_n \right)\cap B=A\cap B\in\cali{B}.
+          \end{align*}
+      \end{itemize}
+      Portanto, podemos concluir que $\cali{B}$ é uma $\sigma$-álgebra em $B$.
+    \item Vamos provar que $\lambda$ define uma medida em $\cali{A}$.
+    \begin{itemize}
+      \item Seja $A\in\cali{A}$, então como $\mu$ é uma medida sobre $\cali{A}$, temos que
+        \begin{align*}
+          \lambda(A)=\mu(A\cap B)\geq 0,\quad\text{para todo}A\in\cali{A}.
+        \end{align*}
+      \item Segue-se que
+        \begin{align*}
+          \lambda(\emptyset)=\mu(\emptyset\cap B)=\mu(\emptyset)=0.
+        \end{align*}
+      \item Seja $\{A_n\}_{n\in\mathbb{Z}^{+}}\subseteq\cali{A}$ uma sequência disjunta, logo como $A_n\cap B\subseteq A_n$ para todo $n\in\mathbb{Z}^{+}$, então temos que a sequência $\{A_n\cap B\}_{n\in\mathbb{Z}^{+}}$ também é disjunta, daí que, como $\mu$ é uma medida em $\cali{A}$ temos que 
+        \begin{align*}
+          \lambda\left( \bigcup_{n\in\mathbb{Z}^{+}} \right)=\mu\left( \bigcup_{n\in\mathbb{Z}^{+}}A_n\cap B \right)=\mu\left( \bigcup_{n\in\mathbb{Z}^{+}}[A_n\cap B] \right)=\sum_{n\in\mathbb{Z}^{+}}\mu(A_n\cap B)=\sum_{n\in\mathbb{Z}^{+}}\lambda(A_n).
+        \end{align*}
+    \end{itemize}
+    Portanto, podemos concluir que $\lambda$ define uma medida em $\cali{A}$. 
+  \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
