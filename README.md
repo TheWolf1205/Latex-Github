@@ -7,6 +7,15 @@ Repositorio para subir trabajos o talleres de la U :p.
 # Contenido
 
 <details>
+<summary><strong>Medida é integração</strong></summary>
+
+- Lista 1.
+  - [Exercícios](<./Medida-Br/Lista1/Exercícios Medida 1.pdf>) 
+  - [Solução](<./Medida-Br/Lista1/Tex/main.pdf>) 
+
+</details>
+
+<details>
 <summary><strong>Análise no Rn</strong></summary>
 
 - [Anotaçoes do aula](<./Analise-no-Rn/anotacoes-do-aula/Tex/main.pdf>)

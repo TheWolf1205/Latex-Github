@@ -1,0 +1,48 @@
+\begin{homeworkProblem}[1]
+  Mostre que nenhuma $\sigma$-álgebra pode ter uma quantidade infinita enumerável de elementos.
+  \begin{solution}
+    Vamos raciocinar pela contradição.\\
+    Suponha que temos $(X,\cali{A})$ espaço mensurável com $|\cali{A}|=\aleph_{0}$, i.é, que $\cali{A}$ tem uma quantidade infinita enumerável de elementos.\\
+    
+    Agora, como $\cali{A}$ é enumeravel, temos que $\cali{A}=\{A_i\}_{i\in\mathbb{Z}^{+}}$, tais que se $i\neq j$, então $A_i\neq A_j$. Considere o seguinte conjunto
+    \begin{align*}
+      S_0=\{A_i: i\in\mathbb{Z}^{+}\text{ e }A_i\subseteq X\}=\cali{A}.
+    \end{align*}
+    Agora, seja $N_1\in S_0$ tal que $N_1\neq\emptyset$ e $N_1\neq X$ considere os seguintes conjuntos
+    \begin{align*}
+      B_1&:=\{A_i:i\in\mathbb{Z}^{+}\text{ e }A_i\subseteq N_1\}\\
+      B_2&:=\{A_i:i\in\mathbb{Z}^{+}\text{ e }A_i\subseteq (X\setminus N_1)\}.
+    \end{align*}
+    Note que dado $A_i$, temos que como $\cali{A}=\{A_i\}_{i\in\mathbb{Z}^{+}}$, então existem $n,m\in \mathbb{Z}^{+}$ tais que como interseção finita de mensuraveis é mensurável, então $A_i=(A_i\cap N_1)\cup(A_i\cap X\setminus N_1)=A_n\cup A_m$, logo $A_n\in B_1$ e $A_m\in B_2$. Portanto, como $|S_0|=|\cali{A}|=\infty$, então $|B_1|=\infty$ ou $|B_2|=\infty$. Caso contrario, como vimos anteriormente, se $|B_1|<\infty$ e $|B_2|<\infty$, então
+    \begin{align*}
+      |\cali{A}|=|\{A_n\cup A_m: A_n\in B_1,A_m\in B_2\}|<\infty  
+    \end{align*}
+    o que é uma contradição.\\
+    Logo, sem perdida de generalidade suponha que $|B_1|=\infty$ e denotemos $\overline{A}_1=N_1$ e $S_1=B_1$. Depoiss, seja $N_2\in S_1$ tal que $N_2\neq \emptyset$ e $N_2\neq \overline{A}_1$, logo considere os seguintes conjuntos
+    \begin{align*}
+      B_3&:=\{A_i:i\in\mathbb{Z}^{+}\text{ e }A_i\subseteq N_2\}\\
+      B_4&:=\{A_i:i\in\mathbb{Z}^{+}\text{ e }A_i\subseteq (X\setminus N_2)\}.
+    \end{align*}
+    De novo, ou $|B_3|=\infty$ ou $|B_4|=\infty$, pelo mesmo argumento anterior. Depoiss, sem perdida de generalidade suponha $|B_3|=\infty$ e denotemos $\overline{A}_2=N_2$ e $S_2=B_3$.\\
+    Note que fazendo um argumento indutivo temos que 
+    \begin{align*}
+      \overline{A}_1\in S_0&=\{A_i:i\in\mathbb{Z}^{+},A_i\subseteq X\}\\
+      \overline{A}_2\in S_1&=\{A_i:i\in\mathbb{Z}^{+},A_i\subseteq \overline{A}_1\}\\
+      \overline{A}_3\in S_2&=\{A_i:i\in\mathbb{Z}^{+},A_i\subseteq \overline{A}_2\}\\
+      &\,\,\,\vdots\\
+      \overline{A}_n\in S_{n-1}&=\{A_i:i\in\mathbb{Z}^{+},A_i\subseteq \overline{A}_{n-1}\}
+    \end{align*}
+    Logo a sequência $\{\overline{A}_i\}_{i\in\mathbb{Z}^{+}}\subseteq \{A_i\}_{i\in\mathbb{Z}^{+}}=\cali{A}$ é uma cadeia estritamente decresente, i.é, que para todo $n\in\mathbb{Z}^{+}$ se cumpre que $\overline{A}_n\supsetneq \overline{A}_{n+1}$.
+
+    Agora, para todo $i\in\mathbb{Z}^{+}$ defina $C_i=\overline{A}_i\setminus\overline{A}_{i+1}$ que é mensurável, pois $C_i=\overline{A}_i\setminus\overline{A}_{i+1}=\overline{A}_{i}\cap(X\setminus \overline{A}_{i+1})$ e interseção de mensuráveis é mensurável. Logo note que $\{C_i\}_{i\in\mathbb{Z}^{+}}\subseteq\cali{A}$ é uma sequência disjunta com $C_i\neq \emptyset$ para todo $i\in\mathbb{Z}^{+}$.
+
+    Agora, note que dado $I\subseteq \mathbb{Z}^{+}$, temos que como união enumerável de mensuráveis é mensurável, então nos podemos definir
+    \begin{align*}
+      f:\wp(\mathbb{Z}^{+})&\to\cali(A)\\
+                          I&\to f(I)=\bigcup_{i\in I}C_i.
+    \end{align*}
+    Logo como a sequência $\{C_i\}_{i\in\mathbb{Z}^{+}}\subseteq \cali{A}$ é disjunta, temos que dados $I,J\in \wp(\mathbb{Z}^{+})$ tais  que $I\neq J$, então $f(I)\neq f(J)$, o que nos permite garantir que $f$ é uma função injetiva, logo podemos afirmar que $|\wp(\mathbb{Z}^{+})|\leq |\cali{A}|$, o que é uma contradição, pois pela hipótese nos temos que $\cali{A}$ é enumerável, mas a quantidade de elementos no conjunto $\wp(\mathbb{Z}^{+})$ é não enumerável.\\
+
+    Portanto, podemos concluir que nenhuma $\sigma$-álgebra pode ter uma quantidade infinita enumerável de elementos.
+  \end{solution}
+\end{homeworkProblem}
