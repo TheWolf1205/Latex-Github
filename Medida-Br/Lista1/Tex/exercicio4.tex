@@ -1,6 +1,35 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[4]
+  Dada uma sequência $\{c_n\}_{n\in\mathbb{N}}$ em $(0,+\infty)$, mostre que
+  \begin{align*}
+    \mu(A)=\begin{cases}
+      0, &\text{ se } A=\emptyset \text{,} \\
+      \displaystyle\sum_{n\in A}c_n, &\text{ se } A\neq\emptyset.
+    \end{cases}
+  \end{align*}
+  Define uma medida em $\wp(N)$.
   \begin{solution}
-    XXX  
+    Vamos provar que $\mu$ define uma medida sobre $\wp(\mathbb{N})$, temos que
+    \begin{itemize}
+      \item Seja $A\in\wp(\mathbb{N})$, logo como $\{c_n\}_{n\in\mathbb{N}}\subseteq (0,+\infty)$, temos que para todo $n\in\mathbb{N}$ tem-se que $c_n>0$, daí que
+        \begin{align*}
+          \mu(A)=\sum_{n\in A}c_n\geq\sum_{n=1}^{|A|}0=0,\quad\text{para todo }A\in\wp(\mathbb{N}).
+        \end{align*}
+      \item Segue-se pela definição de $\mu$ que
+        \begin{align*}
+          \mu(\emptyset)=0.
+        \end{align*}
+      \item Seja $\{A_k\}_{k\in\mathbb{Z}^{+}}\subseteq\wp(\mathbb{N})$ uma sequência disjunta, logo considere os seguintes casos.\\
+
+        Seja $\displaystyle\mu\left( \bigcup_{k\in\mathbb{Z}^{+}}A_k \right)<\infty$, logo temos que a soma converge absolutamente, pelo que temos que ela admite reordenamentos, daí que como os conjuntos são disjuntos, então
+        \begin{align*}
+          \mu\left( \bigcup_{k\in\mathbb{Z}^{+}}A_k \right)=\sum_{n\in\bigcup_{k\in\mathbb{Z}^{+}}A_k}c_n=\sum_{n\in A_1}c_n+\sum_{n\in A_2}c_n+\cdots=\sum_{k\in\mathbb{Z}^{+}}\sum_{n\in A_k}c_n=\sum_{k\in\mathbb{Z}^{+}}\mu(A_k).
+        \end{align*}
+
+        Por outro lado, se $\displaystyle\mu\left( \bigcup_{k\in\mathbb{Z}^{+}}A_k \right)=\infty$, temos que qualquer reordenamento da soma também diverge, do contrario, se algum deles converge, temos que a soma converge absolutamente e portanto ela é absolutamente convergente, o que é um absurdo. Segue-se que, em particular tem-se
+        \begin{align*}
+          \mu\left( \bigcup_{k\in\mathbb{Z}^{+}}A_k \right)=\sum_{n\in\bigcup_{k\in\mathbb{Z}^{+}}A_k}c_n=\sum_{n\in A_1}c_n+\sum_{n\in A_2}c_n+\cdots=\sum_{k\in\mathbb{Z}^{+}}\sum_{n\in A_k}c_n=\sum_{k\in\mathbb{Z}^{+}}\mu(A_k)=\infty.
+        \end{align*}
+    \end{itemize}
+    Portanto, temos que $\mu$ define uma medida sobre $\wp(\mathbb{N})$. 
   \end{solution}
 \end{homeworkProblem}

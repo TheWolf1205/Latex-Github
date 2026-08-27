@@ -1,6 +1,17 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[5]
+  Dada uma sequência $\{A_n\}_{n\in\mathbb{Z}^{+}}$ em $\cali{A}$, defina $\liminf A_n=\bigcup_{m=1}^{\infty}\left( \bigcap_{n=m}^{\infty} A_n \right)$.
+  \begin{enumerate}[a)]
+    \item Mostre que $x\in \liminf A_n$ se, somente se, $x$ pertenece a todos exceto uma quantidade finita dos $A_n$.
+    \item Mostre que $\mu(\liminf A_n)\leq\liminf\mu(A_n)$.
+  \end{enumerate}
   \begin{solution}
-    XXX  
+    \begin{enumerate}[a)]
+      \item Denotemos $B_m=\bigcap_{n=m}^{\infty}A_n$.\\
+        
+        Assim, note que se $x\in\liminf A_n$, pela definição temos que $x\in\bigcup_{m=1}^{\infty}B_m$, isto é, que existe $M\in\mathbb{Z}^{+}$ tal que $x\in B_M$, isto implica que $x\in\bigcap_{n=M}^{\infty}A_n$, daí que $x\in A_n$ para todo $n\geq M$. Em outras palavras, $x$ pertenece a todos exceto uma quantidade finita dos $A_n$.
+
+        Por outro lado, note que se $x$ pertenece a todos exceto uma quantidade finita dos $A_n$, temos que o conjunto $X:=\{n\in\mathbb{Z}^{+}:x\notin A_n\}$ é finito e portanto tem máximo, suponha $M=\max X$, logo temos que $x\in A_{n}$ para todo $n>M$, isto implica que $x\in B_n$ para todo $n>M$ o que nos permite garantir que $x\in\bigcup_{m=1}^{\infty}\left( \bigcap_{n=m}^{\infty}A_n \right)=\liminf A_n$.
+      \item 
+    \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}
