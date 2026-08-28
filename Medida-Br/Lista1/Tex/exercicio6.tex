@@ -1,6 +1,51 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[6]
+  Dada uma sequência $\{A_n\}_{n\in\mathbb{Z}^{+}}$ em $\cali{A}$, defina $\limsup A_n=\bigcap_{m=1}^{\infty}\left( \bigcup_{n=m}^{\infty} A_n \right)$.
+  \begin{enumerate}[a)]
+    \item Mostre que $x\in \limsup A_n$ se, somente se, $x$ pertenece a uma quantidade infinita dos $A_n$.
+    \item Assumindo que $\mu\left( \bigcup_{n=1}^{\infty}A_n \right)<+\infty$, mostre que $\limsup\mu(A_n)\leq \mu\left( \limsup A_n \right)$. Mostre, por um exemplo, que a desigualdade pode não valer quando $\mu\left( \bigcup_{n=1}^{\infty}A_n \right)=+\infty$.
+  \end{enumerate}
   \begin{solution}
-    XXX  
+    \begin{enumerate}[a)]
+      \item Denotemos $B_m=\bigcup_{n=m}^{\infty}A_n$.\\ 
+        Assim, note que se $x\in\limsup A_n$, pela definição temos que $x\in\bigcap_{m=1}^{\infty}B_m$, isto é, que para todo $m\in\mathbb{Z}^{+}$ temos que $x\in B_m$. Logo, pela definição de $B_m$ temos que se $x\in B_m$, então existe algúm $m^{\ast}\geq m$ tal que $x\in A_{m^{\ast}}$. Assim, temos que se pegamos $m_1\in\mathbb{Z}^{+}$, então $x\in B_{m_1}$, logo existe $\hat{m}_1>m_1$ tal que $x\in A_{\hat{m}_1}$, logo se pegamos $m_2=\hat{m}_1+1$, temos que $x\in B_{m_2}$, depois existe $\hat{m}_2\geq m_2$ tal que $x\in A_{\hat{m}_2}$ e, raciocinando de maneira inductiva, temos que pela construção da sequência $\{\hat{m}_i\}_{i\in\mathbb{Z}^{+}}$ se cumpre que $\hat{m}_{i}\lneq \hat{m}_{i+1}$ e $x\in A_{\hat{m}_i}$, para todo $i\in\mathbb{Z}^{+}$. Em  outras palavras, $x$ pertenece a uma quantidade infinita dos $A_n$. 
+
+        Por outro lado, note que se $x$ pertenece a uma quantidade infinita dos $A_n$, temos que o conjunto $S=\{\hat{m}\in\mathbb{Z}^{+}:x\in A_{\hat{m}}\}$ é infinito enumerável, logo como $S\subseteq \mathbb{N}$ temos que $S$ se pode bem ordenar, pelo que sem perdida de generalidade podemos supor que $\hat{m}_{i}\lneq \hat{m}_{i+1}$ para todo $i\in\mathbb{Z}^{+}$. Logo temos que dado $m\in\mathbb{Z}^{+}$, sempre existe $\hat{m}_{i}\in\mathbb{Z}^{+}$ tal que $m\leq \hat{m}_{i}$ e portanto como $x\in A_{\hat{m}_i}$, então temos que $x\in B_m$ para todo $m\in\mathbb{Z}^{+}$. Pelo que podemos concluir que $x\in\bigcap_{m=1}^{\infty}\left( \bigcup_{n=m}^{\infty}A_n \right)=\limsup A_n$.
+
+      \item Note que a sequência $\{B_m\}_{m\in\mathbb{Z}^{+}}\subseteq\cali{A}$ é uma sequência decrescente, i.é, que para todo $m\in\mathbb{Z}^{+}$ temos que $B_{m}=A_m\cup B_{m+1}\supseteq B_{m+1}$, daí que, usando as propriedades da medida $\mu$ temos que 
+        \begin{align*}
+          \mu\left( \limsup A_n \right)=\mu\left(\bigcap_{m=1}^{\infty}B_m \right)=\lim_{m\to\infty}\mu(B_m).
+        \end{align*}
+        Agora, note que como $B_m=\bigcup_{j=m}^{\infty}A_j\supseteq A_n$ para todo $n\geq m$, temos que pela $\sigma$-aditividade de $\mu$, se $A\subseteq B$ com $A,B\in\cali{A}$, temos que $\mu(A)\leq \mu(B)$, logo 
+        \begin{align*}
+          \mu(B_m)\geq\sup_{n\geq m}\mu(A_n).
+        \end{align*}
+        Segue-se que
+        \begin{align*}
+          \mu(B_m)\geq\inf_{m\geq 0}\sup_{n\geq m}\mu(A_n)=\limsup \mu(A_n),\quad\text{para todo }m\in\mathbb{Z}^{+}.
+        \end{align*}
+        Portanto temos que
+        \begin{align*}
+          \mu\left( \liminf A_n \right)=\lim_{m\to\infty}\mu(B_m)\geq\lim_{m\to\infty}\limsup \mu(A_n)\geq\limsup\mu(A_n).
+        \end{align*}
+        Agora, note que no espaçõ $(\mathbb{R},\cali{A},\mu)$ usual, se definimos $A_i=[i,i+1]\in\cali{A}$ temos que
+        \begin{align*}
+          \mu\left( \bigcup_{n=1}^{\infty}A_n \right)=\mu\left( [1,+\infty) \right)=+\infty.
+        \end{align*}
+        Mas note que
+        \begin{align*}
+          \limsup A_n=\bigcap_{m=1}^{\infty}\left( \bigcup_{n=m}^{\infty}A_n \right)=\bigcap_{m=1}^{\infty}\left( [m,+\infty) \right)=\emptyset.
+        \end{align*}
+        Portanto temos que
+        \begin{align*}
+          \mu(\limsup A_n)=\mu(\emptyset)=0.
+        \end{align*}
+        Por outro lado temos que
+        \begin{align*}
+          \limsup\mu(A_n)=\inf_{n>0}\sup_{m\geq n}\mu(A_m)=\inf_{n>0}\sup_{m\geq n}1=1.
+        \end{align*}
+        Portanto, como $1\not{\leq}0$, podemos concluir que se $\mu(\bigcup_{n=1}^{\infty}A_n)=+\infty$, então a desigualdade pode não valer.
+    \end{enumerate}
+    O que nos permite concluir o exercício.
   \end{solution}
 \end{homeworkProblem}
+

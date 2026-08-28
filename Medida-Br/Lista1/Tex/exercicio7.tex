@@ -1,6 +1,33 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[7]
+  Se $\lambda$ é uma sequência complexa em $\cali{A}$, mostre que
+  \begin{align*}
+    \nu\left( A \right)=\sup\left\{ \sum_{j=1}^{\infty}|\lambda(A_j)|:A_1,A_2,\cdots\in\cali{A}\,\text{são disjuntos, }A=\bigcup_{j=1}^{\infty}A_j \right\},
+  \end{align*}
+  define uma medida em $\cali{A}$.
   \begin{solution}
-    XXX  
+    Vamos provar que $\nu$ define uma medida em $\cali{A}$.
+    \begin{enumerate}
+      \item Seja $A\in\cali{A}$, logo como $\lambda$ é uma medida complexa em $\cali{A}$, temos em particular que
+        \begin{align*}
+          \nu(A)\geq|\lambda(A)|\geq 0,\quad\text{ para todo }A\in\cali{A}.
+        \end{align*}
+      \item Agora, note que se $\emptyset=\bigcup_{j=1}^{\infty}A_j$, então temos que $A_j=\emptyset$ para todo $j\in\mathbb{Z}^{+}$, logo como $\lambda$ é uma medida complexa em $\cali{A}$, temos que 
+        \begin{align*}
+          \nu(\emptyset)=\sup\sum_{j=1}^{\infty}|\lambda(\emptyset)|=0.
+        \end{align*}
+      \item Seja $\{B_k\}_{k\in\mathbb{Z}^{+}}\subseteq\cali{A}$  uma sequência disjunta, denotemos $B=\bigcup_{k\in\mathbb{Z}^{+}}B_k$. Logo, note que dada uma partição disjunta $\{A_j\}_{j\in\mathbb{Z}^{+}}$ de $B$, i.é, que se $i\neq j$, então $A_i\cap A_j=\emptyset$ e $\bigcup_{j\in\mathbb{Z}^{+}}A_j=B$, temos que $A_j\subseteq B$, portanto
+        \begin{align*}
+          A_j=A_j\cap B=A_j\cap \bigcup_{k\in\mathbb{Z}^{+}}B_k=\bigcup_{k\in\mathbb{Z}^{+}}[A_j\cap B_k].
+        \end{align*}
+        Logo temos que a sequência dos $A_j$ define uma partição disjunta para cada $B_k$ com $k\in\mathbb{Z}^{+}$, isto é que $B_k=\bigcup_{j\in\mathbb{Z}^{+}}[B_k\cap A_j]$, portanto temos que dada uma partição de $B$, ista define uma partição para cada $B_k$.\\
+        Por outro lado, note que dada uma partição $\{A_{j,k}\}_{j\in\mathbb{Z}^{+}}$ para $B_k$, temos que a sequência $\{A_{j,k}\}_{j,k\in\mathbb{Z}^{+}}$ define uma partição para $B$.\\
+        Daí que como cada partição fica no cada conjunto de partições, temos que
+        \begin{align*}
+          \nu(B)=&\sup\left\{ \sum_{j=1}^{\infty}|\lambda(A_j)|:A_1,A_2,\cdots\in\cali{A}\,\text{são disjuntos, }B=\bigcup_{j=1}^{\infty}A_j \right\}\\
+          =&\sum_{k=1}^{\infty}\sup\left\{ \sum_{j=1}^{\infty}|\lambda(A_j)|:A_1,A_2,\cdots\in\cali{A}\,\text{são disjuntos, }B_k=\bigcup_{j=1}^{\infty}A_j \right\}\\
+          =&\sum_{k=1}^{\infty}\nu(B_k).
+        \end{align*}
+    \end{enumerate}
+    O que nos permite concluir exercício.
   \end{solution}
 \end{homeworkProblem}

@@ -11,7 +11,23 @@
         Assim, note que se $x\in\liminf A_n$, pela definição temos que $x\in\bigcup_{m=1}^{\infty}B_m$, isto é, que existe $M\in\mathbb{Z}^{+}$ tal que $x\in B_M$, isto implica que $x\in\bigcap_{n=M}^{\infty}A_n$, daí que $x\in A_n$ para todo $n\geq M$. Em outras palavras, $x$ pertenece a todos exceto uma quantidade finita dos $A_n$.
 
         Por outro lado, note que se $x$ pertenece a todos exceto uma quantidade finita dos $A_n$, temos que o conjunto $X:=\{n\in\mathbb{Z}^{+}:x\notin A_n\}$ é finito e portanto tem máximo, suponha $M=\max X$, logo temos que $x\in A_{n}$ para todo $n>M$, isto implica que $x\in B_n$ para todo $n>M$ o que nos permite garantir que $x\in\bigcup_{m=1}^{\infty}\left( \bigcap_{n=m}^{\infty}A_n \right)=\liminf A_n$.
-      \item 
-    \end{enumerate} 
+      \item Note que a sequência $\{B_m\}_{m\in\mathbb{Z}^{+}}\subseteq\cali{A}$ é uma sequência crescente, i.é, que para todo $m\in\mathbb{Z}^{+}$ temos que $B_m=A_m\cap B_{m+1}\subseteq B_{m+1}$, daí que, usando as propriedades da medida $\mu$ temos que 
+        \begin{align*}
+          \mu\left( \liminf A_n \right)=\mu\left(\bigcup_{m=1}^{\infty}B_m \right)=\lim_{m\to\infty}\mu(B_m).
+        \end{align*}
+        Agora, note que como $B_m=\bigcap_{j=m}^{\infty}A_j\subseteq A_n$ para todo $n\geq m$, temos que pela $\sigma$-aditividade de $\mu$, se $A\subseteq B$ com $A,B\in\cali{A}$, temos que $\mu(A)\leq \mu(B)$, logo 
+        \begin{align*}
+          \mu(B_m)\leq\inf_{n\geq m}\mu(A_n).
+        \end{align*}
+        Depoiss
+        \begin{align*}
+          \sup_{m\geq 0}\mu(B_m)\leq\sup_{m\geq 0}\inf_{n\geq m}\mu(A_n)=\liminf \mu(A_n).
+        \end{align*}
+        Portanto temos que
+        \begin{align*}
+          \mu\left( \liminf A_n \right)=\lim_{m\to\infty}\mu(B_m)\leq\lim_{m\to\infty}\liminf \mu(A_n)=\liminf\mu(A_n).
+        \end{align*}
+    \end{enumerate}
+    O que nos permite concluir o exercício.
   \end{solution}
 \end{homeworkProblem}
