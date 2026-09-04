@@ -1,6 +1,80 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[6]
+  Seja $m$ a medida de Lebesgue em $\cali{B}_{\mathbb{R}}$. Dada $f\in L(m)$, defin sua transformada de Fourier por
+  \begin{align*}
+    \hat{f}(\xi)=\int_{\mathbb{R}}f(x)e^{-ix\xi}\,dm(x),\quad\xi\in\mathbb{R}.
+  \end{align*}
+  Mostre que $\hat{f}$ é contínua em $\mathbb{R}$ e que $\lim_{|\xi|\to \infty}\hat{f}(\xi)=0$. 
   \begin{solution}
-    XXX  
+    Seja $\{\xi_n\}_{n\in\mathbb{Z}^{+}}\subseteq \mathbb{R}$ uma sequência tal que $\xi_n\to a$. Logo, definindo $g_n:X\to\mathbb{R}$ dada por
+    \begin{align*}
+      g_n(x)=f(x)e^{-ix\xi}.
+    \end{align*}
+    Logo, note que
+    \begin{align*}
+      |g_n(x)|=\left| f(x)e^{-ix\xi} \right|\leq \left| f(x) \right|,\quad\text{ para todo }x\in\mathbb{R}\text{ e para cada }n\in\mathbb{Z}^{+}.
+    \end{align*}
+    Logo, como $f\in L(m)$ e $g_n\to f(x)e^{ixa}$, temos que pelo teorema da convergência dominada
+    \begin{align*}
+      \lim_{n \to \infty}\hat{f}(\xi_n)=\lim_{n \to \infty}\int_{\mathbb{R}}f(x)e^{ix\xi_n}\,dm(x)=&\lim_{n \to \infty}\int_{\mathbb{R}}g_n(x)\,dm(x)\\
+      =&\int_{\mathbb{R}}\lim_{n \to \infty}g_n(x)\,dm(x)\\
+      =&\int_{\mathbb{R}}\lim_{n \to \infty}f(x)e^{ix\xi_n}\,dm(x)\\
+      =&\int_{\mathbb{R}}f(x)e^{ixa}\,dm(x)\\
+      =&\hat{f}(a).
+    \end{align*}
+    Assim, em geral, podemos concluir que
+    \begin{align*}
+      \lim_{\xi \to a}\hat{f}(\xi)=\hat{f}(a).
+    \end{align*}
+    E como isto se cumpre para todo $a\in\mathbb{R}$, temos que $\hat{f}$ é contínua.\\
+    Agora, note que se definimos $\varphi(x)=a\chi_{(c,d)}(x)$ com $a>0$, temos que $\varphi\in M^{+}(\mathbb{R},\cali{B}_{\mathbb{R})}$ com $\varphi$ $m$-integrável, note que neste caso temos que
+    \begin{align*}
+      \left|\int_{\mathbb{R}}\varphi(x)e^{-ix\xi}\,dm(x)\right|=a\left| \int_{c}^{d}e^{-ix\xi}\,dm(x)\right|a\left| \frac{e^{-ix\xi}}{-i\xi}\Big|_{c}^{d} \right|\leq \frac{2a}{|\xi|}.
+    \end{align*}
+    Logo temos que
+    \begin{align*}
+      \lim_{|\xi| \to \infty}|\hat{\varphi}(\xi)|\leq \lim_{|\xi| \to \infty}\frac{2a}{|\xi|}=0.
+    \end{align*}
+    Agora, note que, em geral, se $\varphi$ é simples tal que $0\leq\varphi\leq f$, temos que
+    \begin{align*}
+      \varphi(x)=\sum_{i=1}^{k}a_i\chi_{A_i}(x).
+    \end{align*}
+    Onde $A_i$ tem as seguintes opções
+    \begin{align*}
+      A_i=\begin{cases}
+        \bigcup_{j=1}^{l}(a_j,b_j), &\text{ é união finita de intervalos disjuntos }  \text{,} \\
+        \bigcup_{j\in \mathbb{Z}^{+}}\{x_j\}, &\text{ união enumerável de pontos }.
+      \end{cases}
+    \end{align*}
+    Note que no caso $A_i$ é união enumerável de pontos, temos que $\chi_{A_i}=0$ $\mu$-q.t.p., pelo que temos que $\hat{\chi_{A_i}}=0$. E temos que $A_i$ não pode ser um intervalo não limitado, pois se $A_i=(b_i,+\infty)$, temos que
+    \begin{align*}
+      +\infty=a_i m(A_i)=\int_{A_i}\varphi(x)\,dm(x)\leq \int_{A_i}f(x)\,dm(x).
+    \end{align*}
+    O que é uma contradição.\\
+    Assim, sem perdida de generalidade, temos que para toda $\varphi$ simples tal que $0\leq \varphi\leq f$ se cumpre que
+    \begin{equation}\label{eq:riemman-lebesgue-simples}
+      \lim_{|\xi| \to \infty}\hat{\varphi}(\xi) = \lim_{|\xi| \to \infty}\sum_{i=1}^{k}a_i \hat{\chi_{(c_i,d_i)}}=\sum_{i=1}^{k}a_i \lim_{|\xi| \to \infty}\hat{\chi_{(c_i,d_i)}}(\xi)=\sum_{i=1}^{k}a_i(0)=0.
+    \end{equation}
+    Portanto, note que pelo exercício $5)$, temos que dado $\epsilon>0$ existe uma função simples tal que $0\leq \varphi\leq f$ que cumpre que
+    \begin{align*}
+      \int_{\mathbb{R}}|f-\varphi|\,dm(x)<\frac{\epsilon}{2}.
+    \end{align*}
+    E, pelo que mostramos na equação \eqref{eq:riemman-lebesgue-simples}, temos que existe $N>0$ tal que se $|\xi| >N$, então
+    \begin{align*}
+      |\hat{\varphi}(\xi)|<\frac{\epsilon}{2}.
+    \end{align*}
+    Assim, note que
+    \begin{align*}
+      |\hat{f}(\xi)|=\left| \int_{\mathbb{R}}f(x)e^{-ix\xi}\,dm(x) \right|&=\left| \int_{\mathbb{R}}(f(x)-\varphi(x)+\varphi(x))e^{-ix\xi}\,dm(x) \right|\\
+      &\leq \left| \int_{\mathbb{R}}(f(x)-\varphi(x))e^{-ix\xi}\,dm(x) \right|+|\hat{\varphi}(\xi)|\\
+      &\leq \int_{\mathbb{R}}\left| f(x)-\varphi(x) \right||e^{-ix\xi}|\,dm(x)+|\hat{\varphi}(\xi)|\\
+      &\leq \int_{\mathbb{R}}|f(x)-\varphi(x)|\,dm(x)+|\hat{\varphi}(\xi)|\\
+      &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+      &< \epsilon. 
+    \end{align*}
+    Portanto, temos que
+    \begin{align*}
+      \lim_{|\xi| \to \infty}\hat{f}(\xi)=0.
+    \end{align*}
+    O que nos permite concluir o exercício.
   \end{solution}
 \end{homeworkProblem}

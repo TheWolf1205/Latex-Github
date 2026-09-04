@@ -1,6 +1,64 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[5]
+  Seja $f$ uma função $\mu$-integrável em $X$.
+  \begin{enumerate}[a)]
+    \item Mostre que para cada $\epsilon>0$ existe uma função simples $\varphi$ tal que $\int |f-\varphi|d\mu<\epsilon$.
+    \item Mostre que para cada $\epsilon>0$ existe $\delta>0$ tal que $\mu(A)<\delta$, então $\int_{A}|f|\,d\mu <\epsilon$. 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+  \begin{enumerate}[a)]
+    \item Note que se $f$ é integrável, temos que
+      \begin{align*}
+        \int_{X}|f|\,d\mu =\sup\left\{ \int_{X}|\varphi|\,d\mu,\, 0\leq \varphi\leq f \right\}<+\infty.
+      \end{align*}
+      Logo, pela caracterização do supremo temos que dado $\epsilon>0$ existe $\varphi_\epsilon$ simples tal que
+      \begin{align*}
+        \int_{X}|f|\,d\mu < \int_{X}|\varphi_{\epsilon}|\,d\mu +\epsilon. 
+      \end{align*}
+      Isto é que
+      \begin{align*}
+        \int_{X}|f|\,d\mu - \int_{X}|\varphi_{\epsilon}|\,d\mu <\epsilon.
+      \end{align*}
+      Logo como isto se cumpre para todo $\epsilon>0$, temos que
+      \begin{align*}
+        \lim_{\epsilon \to 0}\int_{X}|f|\,d\mu - \int_{X}|\varphi_{\epsilon}|\,d\mu =0.
+      \end{align*}
+      Logo pelo exercício anterior temos que
+      \begin{align*}
+        \lim_{\epsilon \to 0}\int_{X}|f-\varphi_\epsilon|\,d\mu=0.
+      \end{align*}
+      Isto é, que dado $\epsilon>0$ existe $\varphi_\epsilon$ tal que
+      \begin{align*}
+        \int_{X}|f-\varphi_\epsilon|\,d\mu<\epsilon.
+      \end{align*}
+    \item Note que como $f$ é integrável, temos que dado $A\in\cali{A}$, então
+      \begin{align*}
+        \int_{A}|f|\,d\mu \leq \int_{X}|f|\,d\mu <+\infty.
+      \end{align*}
+      Logo se $\frac{\epsilon}{2}\geq \int_{X}|f|\,d\mu$, temos que para todo $A$ se cumpre que
+      \begin{align*}
+        \int_{A}|f|\,d\mu<\epsilon.
+      \end{align*}
+      Logo neste caso, suponha $\delta=1$.\\
+      Por outro lado, note que formalmente, temos
+      \begin{align*}
+        \int_{A}|f|\,d\mu\leq \int_{A}|f-\varphi|\,d\mu+\int_{A}|\varphi|\,d\mu
+        &\leq \int_{X}|f-\varphi|\,d\mu+\int_{A}|\varphi|\,d\mu\\
+        &\leq \int_{X}|f-\varphi|\,d\mu+\sum_{i=1}^{k}a_i\mu(A_i)\\
+        &\leq  \int_{X}|f-\varphi|\,d\mu +\left(\sum_{i=1}^{k}a_i\right)\mu(A).
+      \end{align*}
+      Assim, pelo item $a)$ temos que dado $\epsilon>0$ existe $\varphi$ simples tal que
+      \begin{align*}
+        \int_{X}|f|-\varphi\,d\mu<\frac{\epsilon}{2}.
+      \end{align*}
+      Agora, definindo $M=\sum_{i=1}^{k}a_i$, definamos $\delta>0$ dado por
+      \begin{align*}
+        \delta=\frac{\epsilon}{2M}.
+      \end{align*}
+      Assim, para todo $A\in\cali{A}$ tal que $\mu(A)<\delta$ temos que
+      \begin{align*}
+        \int_{A}|f|\,d\mu\leq \int_{X}|f-\varphi|\,d\mu+ M\mu(A)< \frac{\epsilon}{2}+M\frac{\epsilon}{2M}=\epsilon.
+      \end{align*}
+  \end{enumerate}
+    O que nos permite concluir o exercício.
   \end{solution}
 \end{homeworkProblem}
