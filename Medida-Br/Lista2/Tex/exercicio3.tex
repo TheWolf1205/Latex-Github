@@ -1,0 +1,22 @@
+\begin{homeworkProblem}[3]
+  Considere $\mathbb{N}$ com a medida de contagem $\nu$ definida na $\sigma$-álgebra $\cali{P}(\mathbb{N})$. Mostre que uma função $f:\mathbb{N}\to\mathbb{C}$ é $\nu$-integrável se, e somente se, a série $\sum f_n$ é absolutamente convergente e, neste caso,
+  \begin{align*}
+    \int f\,d\nu=\sum_{n\in\mathbb{N}}f(n).
+  \end{align*}
+  \begin{solution}
+    Note que $f$ é integravel se, e somente se, $\operatorname{Re}f$ e $\operatorname{Im}f$ são integráveis, pelo que sem perdida de generalidade vamos supor que $f:\mathbb{N}\to\mathbb{R}$. Além disso, temos que $f$ é integrável se, e somente se $|f|$ é integrável, pelo que sem perdida de generalidade vamos supor que $f$ é não negativa.\\ 
+    Observe que dado qualquer subconjunto $I\in \cali{P}(\mathbb{N})$ finito, temos que
+    \begin{align*}
+      \varphi_{I}(n)=f(n)\chi_{I}(n)=\sum_{i\in I}f(n)\chi_{\{i\}}(n).
+    \end{align*}
+    é simples e portanto
+    \begin{align*}
+      \int \varphi_I\,d\nu=\sum_{i\in I}f(n)\nu(\{i\})=\sum_{i\in I}f(i).
+    \end{align*}
+    Agora, em particular, para todo $k\in\mathbb{N}^{+}$, temos que se $J=\{0,\cdots,k\}$, então $\varphi_J(n)\leq f(n)$. Assim, podemos afirmar que
+    \begin{align*}
+      \int f\,d\nu=\sup\left\{ \int \varphi\,d\nu: 0\leq \varphi\leq f \right\}=\sum_{n\in\mathbb{N}}f(n).
+    \end{align*}
+    Portanto, temos que $f$ é integrável se, e somente se, a série $\sum f(n)$ é convergente, mas como $f$ é não negativa, temos que $\sum f(n)$ é convergente se, e somente se, a série $\sum f(n)$ é absolutamente convergente. 
+  \end{solution}
+\end{homeworkProblem}

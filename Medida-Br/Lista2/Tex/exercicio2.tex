@@ -1,0 +1,59 @@
+\begin{homeworkProblem}[2]
+  Dê contraexemplos mostrando que
+  \begin{enumerate}[a)]
+    \item A conclusão do Teorema da Convergência Monótona pode não valer para uma sequência decresente de funções.
+    \item A conclusão do Lema de Fatou pode não valer para uma sequência de funções que não é positiva.
+    \item A conclusão do Teorema da Convergência Dominada pode não valer para uma sequência que não possui função limitante integrável.
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}[a)]
+    \item Seja $f_n(x)=\chi_{[n,+\infty)}(x)$.\\
+      Note que $\{f_n\}_{n\in\mathbb{Z}^{+}}\subseteq M^{+}(X,\cali{A})$ é uma sequência decresente tal que $f_n\xrightarrow[n\to\infty]{}0$, portanto
+      \begin{align*}
+        \int_{-\infty}^{\infty}\lim_{n \to \infty}f_n(x)\,dx=\int_{-\infty}^{\infty}0\,dx=0.
+      \end{align*}
+      Por outro lado,
+      \begin{align*}
+        \lim_{n \to \infty}\int_{-\infty}^{\infty}f_n(x)\,dx=\lim_{n \to \infty}\int_{n}^{\infty}\,dx=\lim_{n \to \infty}+\infty=+\infty.
+      \end{align*}
+      Portanto a conclusão do teorema da convergência monótona
+      \begin{align*}
+        +\infty=\lim_{n \to \infty}\int_{-\infty}^{\infty}f_n(x)\,dx\neq \int_{-\infty}^{\infty}\lim_{n \to \infty}f_n(x)\,dx=0,
+      \end{align*}
+      pode não valer para uma sequênccia decresente de funções.
+    \item Seja $f_n(x)=-n\chi_{\left( 0,\frac{1}{n} \right)}(x)$.\\
+      Note que $\{f_n\}_{n\in\mathbb{Z}^{+}}\subseteq M(X,\cali{A})$ é uma sequência de funçôes que não é positiva, note que
+      \begin{align*}
+        \liminf f_n(x)=\lim_{n \to \infty}f_n(x)=0,\quad\text{ para todo }x\in(0,1).
+      \end{align*}
+      Por outro lado,
+      \begin{align*}
+        \liminf \int_{0}^{1}f_n(x)\,dx=\liminf \int_{0}^{\frac{1}{n}}-n\,dx=\liminf -n\cdot\frac{1}{n}=\liminf -1=-1.
+      \end{align*}
+      Portanto a conclusão do lema de Fatou
+      \begin{align*}
+        0=\int_{-\infty}^{\infty}\liminf f_n(x)\,dx\not{\leq} \liminf \int_{-\infty}^{\infty}f_n(x)\,dx=-1,
+      \end{align*}
+      pode não valerpara uma sequência de funções que não é positiva.
+    \item Seja $f_n(x)=\chi_{[n,n+1]}(x)$.\\
+      Note que $\{f_n\}_{n\in\mathbb{Z}^{+}}$ é uma sequência de funções $\mu$-integráveis em $\mathbb{R}$, pois
+      \begin{align*}
+        \int_{-\infty}^{\infty}f_n(x)\,dx=\int_{n}^{n+1}\,dx=(n+1)-n=1,\quad\text{ para todo }n\in\mathbb{Z}^{+}.
+      \end{align*}
+      e $f_n\xrightarrow[n\to\infty]{}f=0$ com $f\in M(X,\cali{A})$.\\
+      Observe que
+      \begin{align*}
+        \int_{-\infty}^{\infty}\lim_{n \to \infty}f_n(x)\,dx=\int_{-\infty}^{\infty}0\,dx=0.
+      \end{align*}
+      Por outro lado,
+      \begin{align*}
+        \lim_{n \to \infty}\int_{-\infty}^{\infty}f_n(x)\,dx=\lim_{n \to \infty}1=1.
+      \end{align*}
+      Portanto a conclusão do teorema da convergência dominada
+      \begin{align*}
+        0=\int_{-\infty}^{\infty}\lim_{n \to \infty}f_n(x)\,dx\neq \lim_{n \to \infty}\int_{-\infty}^{\infty}f_n(x)\,dx=1,
+      \end{align*}
+      pode não valer para uma sequencia que não possui função limitante integrável.
+  \end{enumerate} 
+  \end{solution}
+\end{homeworkProblem}

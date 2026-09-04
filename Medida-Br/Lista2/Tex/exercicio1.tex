@@ -1,0 +1,82 @@
+\begin{homeworkProblem}[1]
+  Seja $f$ mensurável em $X$, não negativa e tal que $\int_{X}f\,d\mu<+\infty$. Mostre que
+  \begin{enumerate}[a)]
+    \item o conjunto $\{x\in X: f(x)=+\infty\}$ tem medida nula.
+    \item o conjunto $\{x\in X: f(x)>0\}$ é $\sigma$-finito, ou seja, é união enumerável de conjuntos de medida finita.
+    \item para cada $\epsilon>0$ existe $A\in\cali{A}$ tal que $\mu(A)<+\infty$ e $\int_{X}f\,d\mu\leq \int_{A}f\,d\mu +\epsilon$. 
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}[a)]
+    \item Raciocinando pela contradição, suponha que $A:=\{x\in X:f(x)=+\infty\}$ não tem medida nula, isto é, que $\mu(A)=M$ com $M>0$.\\
+      Note que definindo $\varphi_n:X\to\mathbb{R}$ dada por
+      \begin{align*}
+        \varphi_n(x)=n\chi_{A}(x).
+      \end{align*}
+      Daí, temos que $\varphi_n(x)< f(x)$ para todo $x\in X$ e para todo $n\in\mathbb{Z}^{+}$.\\
+      Logo note que como $\varphi$ é simples sigue-se que 
+      \begin{align*}
+        \int_{X}\varphi_n\,d\mu= n\mu(A),\quad\text{ para todo }n\in\mathbb{Z}^{+}. 
+      \end{align*}
+      Assim, podemos afirmar que
+      \begin{align*}
+        +\infty=\sup_{n\in\mathbb{Z}^{+}}n\mu(A)=\sup_{n\in\mathbb{Z}^{+}}\int_{X}\varphi_n\,d\mu<\int_{X}f\,d\mu.
+      \end{align*}
+      O que é uma contradição, pois $\int_{X}f\,d\mu<+\infty$. Portanto, podemos concluir que o conjunto $\{x\in X:f(x)=+\infty\}$ tem medida nula.
+    \item Raciocinando pela contradição, suponha que $A:\{x\in X:f(x)>0\}$ não é $\sigma$-finito, ou seja, para toda familia de conjuntos $\{A_i\}_{i\in\mathbb{Z}^{+}}$ tais que $A=\bigcup_{i\in\mathbb{Z}^{+}}A_i$ tem-se que existe ao menos um $A_j$ tal que $\mu(A_j)=+\infty$.\\
+      Note que
+      \begin{align*}
+        A=f^{-1}((0,+\infty])=f^{-1}\left( \bigcup_{i=1}^{\infty}\left[ \frac{1}{i},+\infty \right] \right)=\bigcup_{i=1}^{\infty}f^{-1}\left( \left[ \frac{1}{i},+\infty \right] \right)=\bigcup_{i=1}^{\infty}A_i.
+      \end{align*}
+      Agora, note que pela hipótese temos que existe um $j\in\mathbb{Z}^{+}$ tal que  $A_j\in \{A_i\}_{i\in\mathbb{Z}^{+}}$ e $\mu(A_j)=+\infty$.\\
+      Daí que, definindo $\varphi:X\to\mathbb{R}$ dada por
+      \begin{align*}
+        \varphi(x)=\frac{1}{j}\chi_{A_j}(x),
+      \end{align*}
+      temos que $\varphi(x)\leq f(x)$ para todo $x\in X$.\\
+      Logo note que como $\varphi$ é simples sigue-se que 
+      \begin{align*}
+        \int_{X}\varphi\,d\mu= \frac{1}{j}\mu(A_j)=+\infty. 
+      \end{align*}
+      Assim, podemos afirmar que
+      \begin{align*}
+        +\infty=\frac{1}{j}\mu(A_j)=\int_{X}\varphi\,d\mu\leq\int_{X}f\,d\mu.
+      \end{align*}
+      O que é uma contradição, pois $\int_{X}f\,d\mu<+\infty$. Portanto, podemos concluir que o conjunto $\{x\in X: f(x)>0\}$ é $\sigma$-finito.
+    \item Note que se $B:=\{x\in X:f(x)>0\}$, então
+      \begin{align*}
+        \int_{X}f\,d\mu=\int_{X\setminus B}f\,d\mu +\int_{B}f\,d\mu=\int_{B}f\,d\mu.
+      \end{align*}
+      Pois $f$ e não negativa, pelo que temos que $f(x)=0$ para todo $x\in X\setminus B$.\\
+      Agora, note que
+      \begin{align*}
+        B=\bigcup_{i=1}^{\infty}f^{-1}\left( \left[ \frac{1}{i},+\infty \right] \right)=\bigcup_{i=1}^{\infty}B_i.
+      \end{align*}
+      Assim, observe que $\mu(B_i)<+\infty$, pois
+      \begin{align*}
+        \mu(B_i)\frac{1}{i}=\int_{B_i}\frac{1}{i}\,d\mu\leq \int_{B_i}f\,d\mu\leq \int_{B}f\,d\mu <+\infty.
+      \end{align*}
+      Logo dado $i\in\mathbb{Z}^{+}$ temos que $\mu(B_i)<i \int_{X}f\,d\mu<+\infty$.\\
+      Assim, note que definindo
+      \begin{align*}
+        f_i(x)=f(x)\chi_{B_i}(x),\quad\text{ para cada }i\in\mathbb{Z}^{+}.
+      \end{align*}
+      Logo temos que $f_i\leq f_{i+1}$ e portanto $\{f_i\}_{i\in\mathbb{Z}^{+}}$ é uma sequência não decresente em $M^{+}(X,\cali{A})$ com $f_{i}\to f$. Então pello teorema da convergencia monótona temos que
+      \begin{align*}
+        \lim_{i \to \infty}\int_{B_i}f\,d\mu=\lim_{i \to \infty}\int_{X}f_i\,d\mu=\int_{X}f\,d\mu.
+      \end{align*}
+      Isto é, que dado $\epsilon>0$, existe $i\in\mathbb{Z}^{+}$ tal que
+      \begin{align*}
+        \int_{X}f\,d\mu - \int_{B_i}f\,d\mu <\epsilon.
+      \end{align*}
+      O que implica que
+      \begin{align*}
+        \int_{X}f\,d\mu < \int_{B_i}f\,d\mu + \epsilon. 
+      \end{align*}
+      Assim dado $\epsilon>0$, defina $A=B_i$, logo $\mu(A)<+\infty$ e
+      \begin{align*}
+        \int_{X}f\,d\mu < \int_{A}f\,d\mu + \epsilon. 
+      \end{align*}
+      O que nos permite concluir o exercício.
+  \end{enumerate} 
+  \end{solution}
+\end{homeworkProblem}

@@ -1,0 +1,42 @@
+\begin{homeworkProblem}[4]
+  Seja $\{f_n\}_{n\in\mathbb{Z}^{+}}$ uma sequência de funções $\cali{A}$-mensuráveis a valores complexos em $X$.
+  \begin{enumerate}[a)]
+    \item Assumindo que $\sum_{n=1}^{\infty}\int|f_n|\,d\mu<+\infty$, mostre que a série $\sum f_n$ converge $\mu$-q.t.p. para uma função mensurável $f$ tal que
+      \begin{align*}
+        \int f\,d\mu=\sum_{n=1}^{\infty}\int f_n\,d\mu.
+      \end{align*}
+    \item Assumindo que $f_n\to f\,\mu$-q.t.p., onde $f$ é mesurável, mostre que $\int |f_n-f|\,d\mu\to 0$ se, e somente se, $\int |f_n|\,d\mu\to \int |f|\,d\mu$. 
+  \end{enumerate}
+  \begin{solution}
+    \begin{enumerate}[a)]
+    \item Note que como cada $f_n$ é mensurável, temos que dado $k\in\mathbb{Z}^{+}$ definimos $g_k:X\to\mathbb{C}$ dada por
+      \begin{align*}
+        g_k(x)=\sum_{i=1}^{k}f_i(x)\in M(X,\cali{A}).
+      \end{align*}
+      Logo, temos que $g_k\to f:=\sum_{n=1}^{\infty}f_n$, pelo que podemos afirmar que $f$ é mensuravel (pois é limite de mensuráveis).\\
+      Agora, note que para cada $k\in\mathbb{Z}^{+}$ temos que pela linearidade da integral podemos obter
+      \begin{align*}
+        \left|\int g_k\,d\mu\right| = \left|\int\sum_{i=1}^{k}f_i\,d\mu\right|
+        =\left|\sum_{i=1}^{k}\int f_i\,d\mu\right| 
+        &\leq\sum_{n=1}^{\infty}\left| \int f_n\,d\mu \right|\\
+        &\leq\sum_{n=1}^{\infty}\int|f_n|\,d\mu\\
+        &<+\infty.
+      \end{align*}
+      Pelo que temos que $g_k$ é $\mu$-integrável para todo $k\in\mathbb{Z}^{+}$.
+      Logo temos que
+      \begin{align*}
+        |g_k(x)|=\left| \sum_{i=1}^{k}f_i(x) \right|\leq\sum_{n=1}^{\infty}\left|f_n(x)\right|=g(x),\quad\text{ para todo }k\in\mathbb{Z}^{+},
+      \end{align*}
+      com $g$ mensurável, pois $|f_n|$ é mensurável para todo $n$ e $g$ é limite de a série  parcial de $|f_n|$ e como vimos anteriormente temos que como cada  $|f_n|$ é mensurável, então 
+      \begin{align*}
+        \int g\,d\mu=\int \sum_{n=1}^{\infty}|f_n|\,d\mu=\sum_{n=1}^{\infty}\int |f_n|\,d\mu.
+      \end{align*}
+      Portanto temos que $g$ é $\mu$-integrável, pelo que usando o teorema da convergência dominada temos que a série $\sum f_n$ converge $\mu$-q.t.p para uma função mensurável $f$ tal que
+      \begin{align*}
+        \int f\,d\mu=\int \lim_{n \to \infty}g_n\,d\mu=\lim_{n \to \infty}\int g_n\,d\mu=\lim_{n \to \infty}\sum_{i=1}^{n}\int f_i\,d\mu=\sum_{n=1}^{\infty}\int f_n\,d\mu.
+      \end{align*}
+      \item Note que se $f_n\to f,\, \mu$-q.t.p., então temos que $\lim_{n \to \infty}f_n(x)-f(x)=0$ para todo $x\in X\setminus N$ com $\mu(N)=0$.\\
+        Agora, note que 
+  \end{enumerate} 
+  \end{solution}
+\end{homeworkProblem}

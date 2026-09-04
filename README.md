@@ -13,6 +13,10 @@ Repositorio para subir trabajos o talleres de la U :p.
   - [Exercícios](<./Medida-Br/Lista1/Exercícios Medida 1.pdf>) 
   - [Solução](<./Medida-Br/Lista1/Tex/main.pdf>) 
 
+- Lista 2.
+  - [Exercícios](<./Medida-Br/Lista2/Exercícios Medida 2.pdf>) 
+  - [Solução](<./Medida-Br/Lista2/Tex/main.pdf>) 
+
 </details>
 
 <details>
