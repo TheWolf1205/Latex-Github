@@ -9,6 +9,77 @@
   \end{align*}
   (\textbf{Sugestão:} No caso $\alpha<1$, use Lema de Fatou. Nos outros casos, mostre que o integrando é limitado por $\alpha f$- pode ser necessário conjeturar e provar uma desigualdade intermediária. nos três casos, verifique a convergência pontual dos integrandos).
   \begin{solution}
-    XXX  
+    Note que se $x\in X$ cumpre que $f(x)=+\infty$, então como vimos anteriormente se $f$ é $\mu$-integrável, temos que o conjunto $\{x\in X:f(x)=+\infty\}$ tem medida nula.\\
+    Assim, sem perdida de generalidade, vamos supor que $f(x)<+\infty$ para todo $x\in X$.\\
+    \textbf{Afirmação:} $\log(1+t)\geq \frac{t}{2}$ com $0\leq t\leq 1$.\\
+    Seja $g(t)=\log(1+t)-\frac{t}{2}$.\\
+    Logo temos que 
+    \begin{align*}
+      g^{\prime}(t)=\frac{1}{1+t}-\frac{1}{2}=\frac{2-1-t}{2(1+t)}=\frac{1-t}{2(1+t)}.
+    \end{align*}
+    Logo temos que o ponto crítico de $g$ é $t=1$ e como
+    \begin{align*}
+      g^{\prime}(0)=\frac{1-0}{2(1+0)}=\frac{1}{2}>0.
+    \end{align*}
+    Temos que $g$ é uma função crescente no intervalo $[0,1]$, logo temos que para todo $t\in[0,1]$ se cumpre que 
+    \begin{align*}
+      g(t)\geq g(0)=\log(1)-\frac{0}{2}=0.
+    \end{align*}
+    Isto implica que
+    \begin{align*}
+      \log(1+t)\geq \frac{t}{2},\quad\text{ para todo }t\in[0,1].
+    \end{align*}
+    Assim, no caso $0<\alpha<1$, note que como $f(x)<+\infty$, então para $n>\sqrt[\alpha]{f(x)^{\alpha}}$, temos que $\frac{f(x)^{\alpha}}{n^{\alpha}}<1$, logo 
+    \begin{align*}
+      n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\geq n \frac{\left(\frac{f(x)}{n}\right)^{\alpha}}{2}=\frac{f(x)^{\alpha}}{2}n^{1-\alpha}. 
+    \end{align*}
+    Logo, como $0<\alpha<1$, temos que $1-\alpha>0$ e portanto 
+    \begin{align*}
+      \lim_{n \to \infty}n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\geq \lim_{n \to \infty}\frac{f(x)^{\alpha}}{2}n^{1-\alpha}=+\infty
+    \end{align*}
+    Agora, note que como $\int f\,d\mu=c>0$, temos que existe $n\in\mathbb{Z}^{+}$ tal que o conjunto $B_n=f^{-1}\left[ \frac{1}{n},+\infty \right]$ não tem medida nula, isto é, que $0<\mu(B_n)<+\infty$.\\
+    Assim, note que para todo $x\in B_n$ temos que $\lim n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]=\infty$. Pelo que usando o Lema de Fatou e que $\log(1+x)\geq 0$ para todo $x>0$, temos que
+    \begin{align*}
+      +\infty=+\infty\mu(B_n)&=\int_{B_n}\liminf n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\,d\mu(x)\\
+      &\leq \liminf \int_{B_n}n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\,d\mu(x)\\
+      &\leq \liminf \int_{X}n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\,d\mu(x).
+    \end{align*}
+    Daí, temos que se $0<\alpha<1$, então
+    \begin{align*}
+      \lim_{n \to \infty}\int n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\,d\mu(x)=+\infty.
+    \end{align*}
+    Agora, se $\alpha=1$, temos que
+    \begin{align*}
+      \lim_{n \to \infty}n\log\left[ 1+ \frac{f(x)}{n}\right]=\log\left[ \lim_{n \to \infty}\left( 1+ \frac{f(x)}{n}\right)^{n} \right]=\log\left[ e^{f(x)} \right]=f(x).
+    \end{align*}
+    Agora, usando que $\log(1+x)\leq x$ para todo $x\geq 0$, temos que
+    \begin{align*}
+      |f_n(x)|=n\log\left[ 1+ \frac{f(x)}{n} \right]\leq n\frac{f(x)}{n}=f(x).
+    \end{align*}
+    Logo como $f\in L(\mu)$, usando o teorema da convergência dominada temos  que
+    \begin{align*}
+      \lim_{n \to \infty}\int n\log\left[ 1+\frac{f(x)}{n} \right]\,d\mu=\int \lim_{n \to \infty}n\log\left[ 1+\frac{f(x)}{n} \right]\,d\mu=\int f\,d\mu=c.
+    \end{align*}
+    Agora, para o caso $1<\alpha<+\infty$, note que
+    \begin{align*}
+      n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\leq n\frac{f(x)^{\alpha}}{n^{\alpha}}=f(x)^{\alpha}n^{1-\alpha}.
+    \end{align*}
+    Logo como $1<\alpha<+\infty$, temos que $1-\alpha<0$ e portanto
+    \begin{align*}
+      \lim_{n \to \infty}n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\leq \lim_{n \to \infty}f(x)^{\alpha}n^{1-\alpha}=0.
+    \end{align*}
+    Agora, note que como $\log$ é uma função crescente, temos que $1+t^{\alpha}\leq (1+t)^{\alpha}$, logo usando que $\log(1+t)\leq t$ para todo $t\geq 0$ temos que
+    \begin{align*}
+      \log\left[ 1+t^{\alpha} \right]\leq \log\left[ (1+t)^{\alpha} \right]\leq \alpha\log\left[ 1+t \right]\leq \alpha t.
+    \end{align*}
+    Assim, note que
+    \begin{align*}
+      n\log\left[ 1+\left( \frac{f(x)}{n} \right)^{\alpha} \right]\leq n\alpha\frac{f(x)}{n}=\alpha f(x).
+    \end{align*}
+    Logo como $f\in L(\mu)$, temos que pelo teorema da convergência dominada se cumple que
+    \begin{align*}
+      \lim_{n \to \infty}\int n\log\left[ 1+\left(\frac{f(x)}{n}\right)^{\alpha} \right]\,d\mu=\int \lim_{n \to \infty}n\log\left[ 1+\left(\frac{f(x)}{n}\right)^{\alpha} \right]\,d\mu=\int 0\,d\mu=0.
+    \end{align*}
+    O que nos permite concluir o exercício.
   \end{solution}
 \end{homeworkProblem}
