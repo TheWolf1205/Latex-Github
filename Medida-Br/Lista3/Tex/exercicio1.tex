@@ -1,0 +1,56 @@
+\begin{homeworkProblem}[Seção 1]
+  Considere a medida de Lebesgue $m$ em $\cali{B}_{\mathbb{R}}$. Dados expoentes $0<p_1<p_2<+\infty$, encontre uma função $f$ tal que
+  \begin{enumerate}[a)]
+    \item $f\in L^{p}$ se, e somente se, $p_1<p<p_2$.
+    \item $f\in L^{p}$ se, e somente se, $p_1\leq p\leq p_2$.
+    \item $f\in L^{p}$ se, e somente se, $p=p_1$. 
+  \end{enumerate}
+  \begin{solution}
+    \textbf{Observação:} Nos podemos verificar que
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}}x^{\alpha}\left[ \ln(x) \right]^{\beta}\,dx<+\infty,\quad\text{se e somente se}\quad \begin{cases}
+        \alpha>-1, &\text{ ou }  \text{,} \\
+        \alpha=1\,\beta<-1.
+      \end{cases}
+    \end{align*}
+    E por outro lado
+    \begin{align*}
+      \int_{2}^{\infty}x^{\alpha}\left[ \ln(x) \right]^{\beta}\,dx<+\infty,\quad\text{se e somente se}\quad \begin{cases}
+        \alpha<-1, &\text{ ou }  \text{,} \\
+        \alpha=-1\,\beta<-1.
+      \end{cases}
+    \end{align*}
+  \begin{enumerate}[a)]
+    \item Seja $f$ dada por
+      \begin{align*}
+        f(x)=\begin{cases}
+          x^{-\frac{1}{p_2}}\left[ \ln(x) \right]^{-\frac{1}{p_2}}, &\text{ se } x\in\left[ 0,\frac{1}{2} \right] \text{,} \\
+          x^{-\frac{1}{p_1}}\left[ \ln(x) \right]^{-\frac{1}{p_1}}, &\text{ se } x\in\left[ 2,+\infty \right),\\
+          0,&\text{ no outro caso}.
+        \end{cases}
+      \end{align*}
+      Note que pelo mencionado anteriormente temos que, se $p<p_1$, então $-\frac{p}{p_1}>-1$, pelo que a segunda parte da integral diverge e portanto $f\notin L^{p}(\mathbb{R})$. Similarmente, temos que se $p>p_2$, então $-\frac{p}{p_2}<-1$, pelo que temos que a primeira parte da integral diverge.\\
+      Por outro lado, se $p=p_1$, note que $-\frac{p}{p_1}=-1$, pelo que temos que a segunda integral diverge, poiss $\alpha=-1$ e $\beta=-1$. Analogamente, se $p=p_2$, nos temos que a primeira integral diverge, poiss $\alpha=-\frac{p}{p_2}=-1$ e $\beta=-\frac{p}{p_2}=-1$.\\
+      Daí, se $p_1<p<p_2$, nos temos que $-\frac{p}{p_2}>-1$ e $-\frac{p}{p_1}<-1$, pelo que podemos garantir que $f\in L^{p}(\mathbb{R})$.\\
+      Assim, temos que $f\in L^{p}(\mathbb{R})$ se, somente se, $p_1<p<p_2$.
+    \item Seja $f$ dada por
+      \begin{align*}
+        f(x)=\begin{cases}
+          x^{-\frac{1}{p_2}}\left[ \ln(x) \right]^{-2}, &\text{ se } x\in\left[ 0,\frac{1}{2} \right] \text{,} \\
+          x^{-\frac{1}{p_1}}\left[ \ln(x) \right]^{-2}, &\text{ se } x\in\left[ 2,+\infty \right),\\
+          0,&\text{ no outro caso}.
+        \end{cases}
+      \end{align*}
+      Note que, como no item anterior, nas dois partes da integral temos que $\beta=-2<-1$, pelo que não vamos ter problemas quando $p=p_1$ ou $p=p_2$. Daí, temos que $f\in L^{p}(\mathbb{R})$ se, somente se, $p_1\leq p\leq p_2$.
+    \item Seja $f$ dada por
+      \begin{align*}
+        f(x)=\begin{cases}
+          x^{-\frac{1}{p_1}}\left[ \ln(x) \right]^{-2}, &\text{ se } x\in\left[ 0,\frac{1}{2} \right] \text{,} \\
+          x^{-\frac{1}{p_1}}\left[ \ln(x) \right]^{-2}, &\text{ se } x\in\left[ 2,+\infty \right),\\
+          0,&\text{ no outro caso}.
+        \end{cases}
+      \end{align*}
+      Logo, pelo visto anteriormente $p_1\leq p\leq p_1$, isto é, $f\in L^{p}(\mathbb{R})$ se, somente se $p=p_1$. 
+  \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}
