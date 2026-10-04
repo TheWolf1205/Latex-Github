@@ -1,6 +1,163 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[6]
+  Considere a medida de Lebesgue $m$ em $\cali{B}_{\mathbb{R}}$. Verifique se cada sequência $\{f_n\}_{n\in\mathbb{Z}^{+}}$ abaixo converge para a função nula nos sentidos: em quase todo ponto, em medida, em $L^{p}$ e quase uniforme.
+  \begin{enumerate}[a)]
+    \item $f_n=n^{-1}\chi_{[0,n]}$.
+    \item $f_n=\chi_{[n,n+1]}$.
+    \item $f_n=n\chi_{[0,\frac{1}{n}]}$.
+    \item $f_n=\chi_{I_n}$, onde $I_1=[0,\frac{1}{2}]$, $I_2=[\frac{1}{2},1]$, $I_3=[0,\frac{1}{4}]$, $\cdots$, $I_6=[\frac{3}{4}, 1]$, $I_7=[0,\frac{1}{8}]$, $\cdots$, $I_{14}=[\frac{7}{8},1]$. 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+    \begin{enumerate}[a)]
+      \item $f_n=n^{-1}\chi_{[0,n]}$.\\
+        Note que dado $x\in \mathbb{R}$ arbitrário, temos que dado $\epsilon>0$, temos que para todo $n\geq \frac{1}{\epsilon}$ se cumpre que
+        \begin{align*}
+          \left| f_n(x) \right|=\left| n^{-1}\chi_{[0,n]}(x) \right|\leq \left| n^{-1} \right|\leq \epsilon.
+        \end{align*}
+        Pelo que temos que $f_n\to 0$ uniformemente. Daí temos que $f_n$ converge a $0$ em quase todo ponto, quase uniformemente e em medida.\\
+        Para verificar a convergência em $L^{p}$ note que se $0<p<+\infty$, temos que
+        \begin{align*}
+          \norm{f_n}_{p}^{p}=\int_{-\infty}^{\infty}|n^{-1}|^{p}\chi_{[0,n]}\,dx=\int_{0}^{n}n^{-p}\,dx=n^{-p}(n)=n^{1-p}.
+        \end{align*}
+        Logo se $p<1$, temos que $\frac{1}{p}-1>0$ e portanto
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_{p}=\lim_{n \to \infty}n^{\frac{1}{p}-1}=+\infty.
+        \end{align*}
+        Pelo que não temos convergência em $L^{p}$.\\
+        Agora, se $p=1$, temos que
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_{1}=1.
+        \end{align*}
+        Pelo que tampouco temos convergência em $L^{1}$.\\
+        Agora, se $p>1$, temos que $\frac{1}{p}-1<0$ e portanto
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_p=\lim_{n \to \infty}n^{\frac{1}{p}-1}=0.
+        \end{align*}
+        Onde temos que $f_n\to 0$ em $L^{p}$.\\
+        Por último, note que
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_{\infty}=\lim_{n \to \infty}n^{-1}=0.
+        \end{align*}
+        Pelo que temos que $f_n\to 0$ em $L^{\infty}$. 
+      \item $f_n=\chi_{[n,n+1]}$.\\
+        Note que dado $x\in \mathbb{R}^{n}$, temos que dado $\epsilon>0$, se $n>x$ se cumpre que
+        \begin{align*}
+          |f_n(x)|=|0|<\epsilon.
+        \end{align*}
+        Pelo que temos que $f_n\to 0$ pontoalmente e portanto em quase todo ponto.
+        Agora, note que dado $\alpha>0$ tal que $\alpha\leq 1$, temos que
+        \begin{align*}
+          \mu\left( \left\{ x\in\mathbb{R}: |\chi_{[n,n+1]}(x)|\geq \alpha \right\} \right)=1,\quad\text{ para todo }n\in\mathbb{Z}^{+}.
+        \end{align*}
+        Daí que
+        \begin{align*}
+          \lim_{n \to \infty}\mu\left( \left\{ x\in\mathbb{R}:|f_n(x)-0|\geq \alpha \right\} \right)=1.
+        \end{align*}
+        Portanto temos que $f_n$ não convergê em medida para $0$.\\
+        Por outro lado, para verificar a convergência em $L^{p}$, note que se $0<p<+\infty$, então
+        \begin{align*}
+          \norm{f_n}_p=\int_{n}^{n+1}\,dx=1,\quad\text{para todo }n\in\mathbb{Z}^{+}.
+        \end{align*}
+        Pelo que temos que
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_p=\lim_{n \to \infty}1=1.
+        \end{align*}
+        Pelo que temos que $f_n$ não convêrge para $0$ em $L^{p}$.\\
+        Da mesma maneira temos que
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_{\infty}=\lim_{n \to \infty}1=1.
+        \end{align*}
+        Pelo que não temos convergência em $L^{\infty}$.\\
+        Por último, note que se pegamos $m\in\mathbb{Z}^{+}$, então temos que para $x\in [m,m+1]$ se cumpre que
+        \begin{align*}
+          |f_m(x)|=|1|.
+        \end{align*}
+        Logo note que se pegamos $\epsilon=\frac{1}{2}$, dado $n_0\in\mathbb{Z}^{+}$ nos sempre temos que para todo $n> n_0$, e todo $x\in [n,n+1]$ se cumpre que
+        \begin{align*}
+          |f_{n}(x)|=1>\epsilon.
+        \end{align*}
+        E como $\mu([n,n+1])=1$, temos que $f_n$ não convêrge para $0$ quase uniformemente.
+      \item $f_n=n\chi_{[0,\frac{1}{n}]}$.
+        Dado $x\in\mathbb{R}\setminus\{0\}$, temos que dado $\epsilon>0$ se $n>\frac{1}{x}$, então $x\notin [0,\frac{1}{n}]$ e portanto 
+        \begin{align*}
+          |f_n(x)|=|n\chi_{[0,\frac{1}{n}]}|=0<\epsilon.
+        \end{align*}
+        Pelo que temos que $f_n\to 0$ em quase todo ponto.\\
+        Agora, note que dado $\alpha>0$ temos que
+        \begin{align*}
+          \mu\left( x\in \mathbb{R}: |f_n(x)|\geq \alpha \right)=\mu\left( x\in \left[0,\frac{1}{n}\right]: |n|\geq \alpha \right)\leq \frac{1}{n}.
+        \end{align*}
+        Portanto
+        \begin{align*}
+          \lim_{n \to \infty}\mu\left( \left\{ x\in\mathbb{R}: |f_n(x)|\geq \alpha \right\}\right)\leq \lim_{n \to \infty}\frac{1}{n}=0.
+        \end{align*}
+        Pelo que podemos garantir que $f_n\to 0$ em medida.\\
+        Agora, para verificar a convergência em $L^{p}$, note que se $0<p<+\infty$, então
+        \begin{align*}
+          \norm{f_n}_{p}=\left( \int_{-\infty}^{\infty}f_n(x)\,dx \right)^{\frac{1}{p}}=n\mu\left(\left[ 0,\frac{1}{n} \right] \right)^{\frac{1}{p}}=n \frac{1}{n^{\frac{1}{p}}}=n^{1-\frac{1}{p}}.
+        \end{align*}
+        Logo, se $p<1$, temos que $1-\frac{1}{p}<0$, logo
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_p=\lim_{n \to \infty}n^{1-\frac{1}{p}}=0.
+        \end{align*}
+        Pelo que temos convergência em $L^{p}$.\\
+        Agora, se $p=1$, temos que
+        \begin{align*} 
+          \lim_{n \to \infty}\norm{f_n}_1=\lim_{n \to \infty}n^{0}=1.
+        \end{align*}
+        Pelo que não temos convergência em $L^{1}$.\\
+        Por outro lado, se $p>1$, então $1-\frac{1}{p}>0$, logo
+        \begin{align*} 
+          \lim_{n \to \infty}\norm{f_n}_p=\lim_{n \to \infty}n^{1-\frac{1}{p}}=+\infty.
+        \end{align*}
+        Pelo que não temos convergência em $L^{p}$.\\
+        Por ultimo, se $p=\infty$, nos temos que
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_\infty=\lim_{n \to \infty}n=+\infty.
+        \end{align*}
+        Pelo quenão temos convergência em $L^{\infty}$.
+        Agora, note que dado $\alpha>0$, pegando $A=\left[0,\frac{1}{N} \right]$ con $N>\frac{1}{\alpha}$, temos que $\mu(A)<\alpha$ e que dado $\epsilon>0$ se $n\geq N$ (i.é., $\frac{1}{n}<\frac{1}{N}$) então
+        \begin{align*}
+          |f_n(x)|=|n\chi_{[0,\frac{1}{n}]}(x)|=0<\epsilon,\quad\text{para todo }x\in \mathbb{R}\setminus \left[ 0,\frac{1}{N} \right].
+        \end{align*}
+        Pelo que temos que $f_n\to f$ quase uniformemente.
+      \item $f_n=\chi_{I_n}$.\\
+        Note que dado $0<p<+\infty$ nos temos que
+        \begin{align*}
+          \norm{f_n}_{p}=\left( \mu\left( I_n \right) \right)^{\frac{1}{p}}.
+        \end{align*}
+        Logo, note que dado $n\in\mathbb{Z}^{+}$, sempre existe $k\in\mathbb{N}$ tal que 
+        \begin{align*}
+          \sum_{i=0}^{k}2^{i}\leq n \leq \sum_{i=1}^{k+1}2^{i}.
+        \end{align*}
+        Portanto
+        \begin{align*}
+          \mu(I_n)\leq \frac{1}{2^{k+1}}.
+        \end{align*}
+        Portanto
+        \begin{align*}
+          \lim_{n \to \infty} \norm{f_n}_p=\left( \mu(I_n) \right)^{\frac{1}{p}}\leq \lim_{k \to \infty}2^{-\frac{k+1}{p}}=0.
+        \end{align*}
+        Pelo que temos que $f_n\to 0$ em $L^{p}$.\\
+        Agora, note que
+        \begin{align*}
+          \lim_{n \to \infty}\norm{f_n}_{\infty}=\lim_{n \to \infty}1=1.
+        \end{align*}
+        Pelo que não temos convergência em $L^{\infty}$.\\
+        Agora, note que como temos convergência em $L^{1}$, dado $\alpha>0$, pela desigualdade de Chebyshev temos que
+        \begin{align*}
+          \lim_{n \to \infty}\mu\left( \left\{ x\in\mathbb{R}:|f_n(x)|\geq \alpha \right\} \right)\leq \lim_{n \to \infty}\frac{\norm{f_n}_1}{\alpha}=0.
+        \end{align*}
+        Pelo que temos convevrgência em medida.\\
+        Agora, note que dado $x\in [0,1]$, nos temos que como os $I_n$ são partições do intervalo $[0,1]$, então dado $n\in\mathbb{Z}^{+}$ existe $m\in \mathbb{Z}^{+}$ tal que $m\geq n$ e $x\in I_m$, por tanto
+        \begin{align*}
+          \limsup_{n \to \infty}f_n(x)=\lim_{n \to \infty}\sup_{m\geq n}f_m(x)=1.
+        \end{align*}
+        Da mesma maneira, como os $I_n$ são partições do intervalo $[0,1]$, então dado $n\in\mathbb{Z}^{+}$ existe $m\in\mathbb{Z}^{+}$ tal que $m\geq n$ e $x\notin I_m$, portanto
+        \begin{align*}
+          \liminf_{n \to \infty}f_n(x)=\lim_{n \to \infty}\inf_{m\geq n}f_m(x)=0.
+        \end{align*}
+        Pelo que temos que para todo $x\in [0,1]$ a sequência $\{f_n(x)\}_{n\in\mathbb{Z}^{+}}$ não converge.\\
+        Logo como $\mu\left( [0,1] \right)=1$ temos que $f_n$ não convêrge a $0$ em quase todo ponto e portanto não convêrge quase uniformemente. 
+    \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}

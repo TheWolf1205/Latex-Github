@@ -1,6 +1,66 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[4]
+  Suponha que $\{f_n\}_{n\in\mathbb{Z}^{+}}$ é uma sequência em $L^{p}$, $f\in L^{p}$ e $\lim_{n \to \infty}\norm{f_n-f}_{p}=0$.
+  \begin{enumerate}[a)]
+    \item Para cada $\epsilon>0$, mostre que existe $A\in\cali{A}$ tal que $\mu(A)<+\infty$ e se $B\in\cali{A}$ com $B\cap A=\emptyset$, então
+      \begin{align*}
+        \int_{B}|f_n|^{p}\,d\mu<\epsilon^{p},\quad\text{para todo }n\in\mathbb{Z}^{+}.
+      \end{align*}
+    \item Para cada $\epsilon>0$, mostre que existe $\delta>0$ tal que se $A\in\cali{A}$ com $\mu(A)<\delta$, então
+      \begin{align*}
+        \int_{A}|f_n|^{p}\,d\mu<\epsilon^{p},\quad\text{para todo }n\in\mathbb{Z}^{+}.
+      \end{align*}
+  \end{enumerate}
   \begin{solution}
-    XXX  
+  \begin{enumerate}
+    \item Dado $\epsilon>0$ existe $n_0\in\mathbb{Z}^{+}$ tal que se $n\geq n_0$, então
+      \begin{align*}
+        \int_{X}|f_n-f|^{p}\,d\mu<\frac{\epsilon^{p}}{2^{p+1}}.
+      \end{align*}
+      Por outro lado, note que como $f\in L^{p}$, temos que $|f|^{p}\in L^{1}$, logo pelo exercício $1$ da lista $2$, temos que existe $\hat{A}\in\cali{A}$ tal que $\mu(\hat{A})<+\infty$ e
+      \begin{align*}
+        \int_{X}|f|^{p}\,d\mu< \int_{\hat{A}}|f|^{p}\,d\mu+\frac{\epsilon^{p}}{2^{p+1}}.
+      \end{align*}
+      Daí
+      \begin{align*}
+        \int_{X\setminus \hat{A}}|f|^{p}\,d\mu=\int_{X}|f|^{p}\,d\mu-\int_{\hat{A}}|f|^{p}\,d\mu< \frac{\epsilon^{p}}{2^{p+1}}.
+      \end{align*}
+      De forma similar, para $k=1,2,\cdots,n_0-1$, temos que $|f_k-f|\in L^{p}$ e portanto $|f_k-f|^{p}\in L^{1}$. Assim, de novo pelo exercício $1$ da lista $2$ temos que existe $A_k\in \cali{A}$ tal que $\mu(A_k)<+\infty$ e
+      \begin{align*}
+        \int_{X\setminus A_k}|f_k-f|^{p}\,d\mu < \frac{\epsilon^{p}}{2^{p+1}}. 
+      \end{align*}
+      Portanto, definindo $A$ dado por
+      \begin{align*}
+        A=\hat{A}\cup \bigcup_{k=1}^{n_0-1}A_k.
+      \end{align*}
+      Temos que como $A$ é união finita de conjuntos de medida finita, então  $\mu(A)<+\infty$. Logo, se $B\cap A=\emptyset$, então $B\subseteq X\setminus A$ e portanto
+      \begin{align*}
+        \int_{B}|f_n|^{p}\,d\mu\leq \int_{X\setminus A}|f_n|^{p}\,d\mu\leq& 2^{p}\left[ \int_{X\setminus A}|f_n-f|^{p}\,d\mu + \int_{X\setminus A}|f|^{p}\,d\mu \right]\\
+        <& 2^{p}\left[ \frac{\epsilon^{p}}{2^{p+1}}+\frac{\epsilon^{p}}{2^{p+1}} \right]\\
+        <& 2^{p}\left[ \frac{2\epsilon^{p}}{2^{p+1}} \right]\\
+        <& \epsilon^{p}.
+      \end{align*}
+    \item Dado $\epsilon>0$ existe $n_0\in\mathbb{Z}^{+}$ tal que se $n\geq n_0$, então
+      \begin{align*}
+        \int_{X}|f_n-f|^{p}\,d\mu<\frac{\epsilon^{p}}{2^{p+1}}.
+      \end{align*}
+      Por outro lado, note que como $f\in L^{p}$, temos que $|f|^{p}\in L^{1}$, logo pelo exercício $5$ da lista $2$, temos que existe $\hat{\delta}>0$ tal que se $A\in\cali{A}$ com $\mu(\hat{A})<\hat{\delta}$, então
+      \begin{align*}
+        \int_{A}|f|^{p}\,d\mu< \frac{\epsilon^{p}}{2^{p+1}}.
+      \end{align*}
+      De forma similar, para $k=1,2,\cdots,n_0-1$, temos que $|f_k-f|\in L^{p}$ e portanto $|f_k-f|^{p}\in L^{1}$. Assim, de novo pelo exercício $5$ da lista $2$ temos que existe $\delta_k>0$ tal que se $A\in\cali{A}$ com $\mu(A)<\delta_k$, então
+      \begin{align*}
+        \int_{A}|f_k-f|^{p}\,d\mu < \frac{\epsilon^{p}}{2^{p+1}}. 
+      \end{align*}
+      Portanto, definindo $\delta$ dado por
+      \begin{align*}
+        \delta=\min\{\delta_k,\hat{\delta}\}.
+      \end{align*}
+      Temos que como $\delta$ é mínimo de uma coleção finita, então $\delta>0$. Assim, dado $A\in\cali{A}$ tal que $\mu(A)<\delta$, temos que
+      \begin{align*}
+        \int_{A}|f_n|^{p}\,d\mu\leq 2^{p}\left[ \int_{A}|f_n-f|^{p}\,d\mu + \int_{A}|f|^{p}\,d\mu \right]<& 2^{p}\left[ \frac{\epsilon^{p}}{2^{p+1}}+\frac{\epsilon^{p}}{2^{p+1}} \right]\\
+        <& 2^{p}\left[ \frac{2\epsilon^{p}}{2^{p+1}} \right]\\
+        <& \epsilon^{p}.
+      \end{align*}
+  \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}

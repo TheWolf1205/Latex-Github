@@ -1,6 +1,38 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[2]
+  Sejam $f$ uma função mensurável e $1\leq p<+\infty$.
+  \begin{enumerate}[a)]
+    \item Mostre que $f$ pertenece a $L^{p}$ se, e somente se
+      \begin{align*}
+        \sum_{n=1}^{\infty}n^{p}\mu\left( \left\{ x\in X:n-1\leq |f(x)|<n \right\} \right)<+\infty.
+      \end{align*}
+    \item Mostre que se $f\in L^{p}$, então $f\in L^{r}$ para todo $r\in [1,p)$ e $\norm{f}_{r}\leq \mu(X)^{\frac{1}{r}-\frac{1}{p}}\norm{f}_p$. 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+  \begin{enumerate}[a)]
+    \item Seja $f\in L^{p}$.\\
+      Defina $A_n:=\{x\in X:n-1\leq |f(x)|<n\}$.\\
+      Note que se $x\in A_n$, então $n^{p}\leq (|f(x)|+1)^{p}$. Logo
+      \begin{align*}
+        \sum_{i=1}^{\infty}n^{p}\mu(A_n)=\sum_{n=1}^{\infty}\int_{A_n}n^{p}\,d\mu\leq &\mu(A_1)+\sum_{n=2}^{\infty}\int_{A_n}n^{p}\,d\mu\\
+        \leq& \mu(A_1)+\sum_{n=2}^{\infty}\int_{A_n}(|f(x)|+1)^{p}\,\mu\\
+        \leq& \mu(A_1)+\sum_{n=2}^{\infty}\int_{A_n}|2f(x)|^{p}\,\mu\\
+        \leq& \mu(A_1)+2^{p}\sum_{n=2}^{\infty}\int_{A_n}|f(x)|^{p}\,d\mu\\
+        \leq& \mu(A_1)+2^{p}\norm{f}_p^{p}\\
+        \leq& \mu(X)+2^{p}\norm{f}_{p}^{p}\\
+        <& +\infty.
+      \end{align*}
+      Por outro lado, note que
+      \begin{align*}
+        \norm{f}_{p}^{p}=\sum_{n=1}^{\infty}\int_{A_n}|f|^{p}\,d\mu\leq \sum_{n=1}^{\infty}\int_{A_n}n^{p}\,d\mu\leq \sum_{n=1}^{\infty}n^{p}\mu(A_n)<+\infty.
+      \end{align*}
+    \item Usando a desigualdade de Hölder, temos que
+      \begin{align*}
+        \norm{f}_{r}^{r}=\int_{X}|f|^{r}\,d\mu\leq \norm{|f|^{r}}_{\frac{p}{r}}\norm{1}_{1-\frac{p}{r}}\leq \left( \int_{X}|f|^{p}\,d\mu \right)^{\frac{r}{p}}\left( \mu(X) \right)^{1-\frac{r}{p}}\leq \mu(X)^{1-\frac{r}{p}}\norm{f}_p^{r}.
+      \end{align*}
+      Daí que
+      \begin{align*}
+        \norm{f}_{r}\leq \mu(X)^{\frac{1}{r}-\frac{1}{p}}\norm{f}_p.
+      \end{align*}
+  \end{enumerate}
   \end{solution}
 \end{homeworkProblem}

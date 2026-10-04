@@ -1,6 +1,86 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[7]
+  Suponha $\mu(X)<+\infty$. Dada $f$ mensurável, defina
+  \begin{align*}
+    \rho(f)=\int \frac{|f|}{1+|f|}\,d\mu.
+  \end{align*}
+  \begin{enumerate}[a)]
+    \item Mostre que $d(f,g)=\rho(f-g)$ define una métrica no conjunto das classes de equivalência de funções mensuráveis pela relação de igualdade $\mu$-q.t.p. 
+    \item Mostre que $\{f_n\}_{n\in\mathbb{Z}^{+}}$ converge em medida para uma função mensurável $f$ se, e somente se, $\rho(f_n-f)\to 0$. 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+    \begin{enumerate}[a)]
+    \item Vamos verificar que $d$ define uma métrica.\\
+    \begin{itemize}
+      \item Note que dada $f$ mensurável, temos que $0\leq \frac{|f|}{1+|f|}$, pelo que temos dada $f$ e $g$ mensuráveis se cumpre que
+        \begin{align*}
+          0\leq \int \frac{|f-g|}{1+|f-g|}\,d\mu \leq \int 1\,d\mu =\mu(X)<+\infty.
+        \end{align*}
+        Pelo que temos que $d$ é positiva bem definida.
+      \item Agora, note que las siguientes afirmações são equivalentes.
+        \begin{itemize}
+          \item $d(f,g)=0$.
+          \item $\int \frac{|f-g|}{1+|f-g|}\,d\mu=0$.
+          \item $|f(x)-g(x)|=0$ $\mu$-q.t.p.
+          \item $f(x)=g(x)$ $\mu$-q.t.p. 
+        \end{itemize}
+        Pelo que temos que $d(f,g)=0$ se, somente se $f=g$ $\mu$-q.t.p.
+      \item Note que dada $h$ mensurável, temos que pela desigualdade triangular se cumpre que
+        \begin{align*}
+          1+|f-g|\leq 1+|f-h|+|h-g|.
+        \end{align*}
+        Daí temos que
+        \begin{align*}
+          -\frac{1}{1+|f-g|}\leq -\frac{1}{1+|f-h|+|h-g|}.
+        \end{align*}
+        Portanto usando a desigualdade anterior e a desigualdade triangular nos temos que
+        \begin{align*}
+          d(f,g)=\int \frac{|f-g|}{1+|f-g|}\,d\mu=&\int 1-\frac{1}{1+|f-g|}\,d\mu\\
+          \leq & \int 1-\frac{1}{1+|f-h|+|h-g|}\,d\mu\\
+          \leq & \int \frac{|f-h|+|h-g|}{1+|f-h|+|h-g|}\,d\mu\\
+          \leq & \int \frac{|f-h|}{1+|f-h|+|h-g|}\,d\mu+\int \frac{|h-g|}{1+|f-h|+|h-g|}\,d\mu\\
+          \leq & \int \frac{|f-h|}{1+|f-h|}\,d\mu+\int \frac{|h-g|}{1+|h-g|}\,d\mu\\
+          \leq & d(f,h) + d(h,g).
+        \end{align*}
+        Pelo que temos que $d$ satisfaze a desigualdade triangular. 
+    \end{itemize}
+    Assim, temos que $d$ é uma métrica no conjunto das classes de equivalência de funções mensuráveis pela relação de igualdade $\mu$-q.t.p.
+    \item Vamos supor que $f_n\to f$ em medida.\\
+      Dado $\epsilon>0$, note que como $\mu(x)<+infty$, então temos que existe $\alpha>0$ tal que
+      \begin{align*}
+        \alpha\mu(X)\leq \frac{\epsilon}{2}.
+      \end{align*}
+      Logo, como $f_n\to f$ em medida, temos que existe $n_0\in\mathbb{Z}^{+}$ tal que se $n\geq n_0$, então
+      \begin{align*}
+        \mu\left( \left\{ x\in X:|f_n(x)-f(x)|\geq \alpha \right\} \right)\leq \frac{\epsilon}{2}.
+      \end{align*}
+      Segue-se que
+      \begin{align*}
+        d(f_n,f)=\int_{X}\frac{|f_n-f|}{1+|f_n-f|}\,d\mu=&\int_{|f_n-f|\geq \alpha}\frac{|f_n-f|}{1+|f_n-f|}\,d\mu+\int_{|f_n-f|<\alpha}\frac{|f_n-f|}{1+|f_n-f|}\,d\mu,\\
+        \leq& \int_{|f_n-f|\geq\alpha}1\,d\mu +\int_{|f_n-f|<\alpha}|f_n-f|\,d\mu\\
+        \leq& \mu\left( \left\{ x\in X:|f_n-f|\geq\alpha \right\} \right)+ \int_{|f_n-f|<\alpha}\alpha\,d\mu\\
+        \leq& \mu\left( \left\{ x\in X:|f_n-f|\geq\alpha \right\} \right)+ \alpha\mu(X)\\
+        \leq& \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+        \leq& \epsilon.
+      \end{align*}
+      Pelo que podemos garantir que $d(f_n,f)=\rho(f_n-f)\to 0$.\\
+      Agora, suponha que $d(f_n,f)\to 0$.\\
+      Dado $\alpha$, defina $A_{\alpha}$ dado por
+      \begin{align*}
+        A_{\alpha}=\left\{ x\in X:|f_n(x)-f(x)|\geq\alpha \right\}.
+      \end{align*}
+      Note que dado $x\in A_{\alpha}$ temos que
+      \begin{align*}
+        \frac{\alpha}{1+\alpha}\leq \frac{|f_n(x)-f(x)|}{1+|f_n(x)-f(x)|}.
+      \end{align*}
+      Logo temos que
+      \begin{align*}
+        d(f_n,f)=\int_{X}\frac{|f_n-f|}{1+|f_n-f|}\,d\mu\geq \int_{A_\alpha}\frac{|f_n-f|}{1+|f_n-f|}\,d\mu\leq \int_{A_\alpha}\frac{\alpha}{1+\alpha}\,d\mu=\frac{\alpha}{1+\alpha}\mu(A_\alpha).
+      \end{align*}
+      Daí temos que
+      \begin{align*}
+        \lim_{n \to \infty}\mu\left( \left\{ x\in X:|f_n(x)-f(x)|\geq\alpha \right\} \right)\leq \lim_{n \to \infty}\frac{1+\alpha}{\alpha}d(f_n,f)=0.
+      \end{align*}
+      Pelo que temos que $f_n\to f$ em medida. 
+  \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}

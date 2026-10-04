@@ -1,6 +1,28 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[3]
+  Se $f\in L^{p}$ ($1<p<+\infty$), $f$ não nula em quase todo ponto e $q$ é o expoente conjugado a $p$, mostre que existe $g_0\in L^{q}$ tal que $\norm{g_0}_{q}=1$ e $\int |fg_0|\,d\mu=\norm{f}_{p}$. 
   \begin{solution}
-    XXX  
+    Note que $\frac{1}{q}=\frac{1}{p^{\prime}}=1-\frac{1}{p}$, daí que $q=\frac{p}{p-1}$.\\
+    Portanto
+    \begin{align*}
+      \norm{|f|^{p-1}\sgn(z)}_{q}^{q}=\int_{\mathbb{C}}\left| |f|^{p-1}\chi_{\mathbb{C}\setminus\{0\}}\frac{z}{|z|} \right|^{\frac{p}{p-1}}\,d\mu\leq& \int_{\mathbb{C}}|f|^{p}\chi_{\mathbb{C}\setminus\{0\}}\left( \frac{|z|}{|z|} \right)^{\frac{p}{p-1}}\,d\mu\\
+      \leq& \int_{\mathbb{C}}|f|^{p}\,d\mu\\
+      \leq& \norm{f}_{p}^{p}.
+    \end{align*}
+    Daí que
+    \begin{align*}
+      \norm{|f|^{p-1}\sgn(z)}_{q}=\norm{f}_p^{p-1}.
+    \end{align*}
+    Logo pegando $g_0$ dada por
+    \begin{align*}
+      g_0(z)=\frac{|f(z)|^{p-1}}{\norm{f}_{p}^{p-1}}\sgn(z).
+    \end{align*}
+    Temos que
+    \begin{align*}
+      \norm{q_0}_q=\frac{\norm{f}_{p}^{p-1}}{\norm{f}_{p}^{p-1}}=1.
+    \end{align*}
+    Além disso, note que
+    \begin{align*}
+      \int_{\mathbb{C}}|fg_0|\,d\mu=\frac{1}{\norm{f}_{p}^{p-1}}\int_{\mathbb{C}}|f|^{p}\,d\mu\leq \frac{\norm{f}_{p}^{p}}{\norm{f}_{p}^{p-1}}=\norm{f}_{p}.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}

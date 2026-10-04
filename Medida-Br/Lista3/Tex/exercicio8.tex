@@ -1,6 +1,53 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[8]
+  Assuma que $f_n\to f$ em medida.
+  \begin{enumerate}[a)]
+    \item Mostre que se $f_n\geq 0$ para todo $n$, então $\int f\,d\mu\leq \liminf\int f_n\,d\mu$ .
+    \item Mostre que se existe $g\in L^{1}$ tal que $|f_n|\leq g$ para todo $n$, então $\int f\,d\mu=\lim\int f_n\,d\mu$ e $\int |f_n-f|\,d\mu\to 0$. 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+    \begin{enumerate}[a)]
+      \item Suponha $\{f_{n_k}\}_{n_k\in\mathbb{Z}^{+}}$ tal que
+        \begin{equation}\label{eq:8}
+          \lim_{n_k\to\infty}\int_{X}f_{n_k}\,d\mu=\liminf\int_{X}f_{n}\,d\mu.
+        \end{equation}
+        Note que como $f_n\to f$ em medida, então também temos que $f_{n_k}\to f$ em medida. Portanto, podemos garantir que existe uma subsequência $\{f_{n_{k_i}}\}_{n_{k_i}\in\mathbb{Z}^{+}}$ tal que $f_{n_{k_i}}\to f$ $\mu$-q.t.p.
+        Assim, como $f_{n_{k_i}}\geq 0$, temos que pelo lema de Fatou e usando a equação \eqref{eq:8} afirmamos que
+        \begin{align*}
+          \int_{X} f\,d\mu = \int_{X} \liminf f_{n_{k_i}}\,d\mu\leq \liminf \int_{X} f_{n_{k_i}}\,d\mu\leq\lim_{n_{k_i}\to\infty}\int_{X}f_{n_{k_i}}\,d\mu \leq& \lim_{n_{k}\to\infty}\int_{X}f_{n_{k}}\,d\mu\\
+          \leq& \liminf  \int_{X}f_n\,d\mu.
+        \end{align*}
+      \item Observe que pela hipótese temos que $f_n\in L^{1}$ para todo $n\in\mathbb{Z}^{+}$, poiss
+        \begin{align*}
+          \int_{X}f_n\,d\mu\leq \int_{X}g\,d\mu<+\infty.
+        \end{align*}
+        Agora, note que como $f_n\to f$ em medida, temos que existe uma subsequência $\{f_{n_k}\}_{n_k\in\mathbb{Z}^{+}}$ tal que $f_{n_k}\to f$ $\mu$-q.t.p.\\
+        Logo, note que pela hipótese temos que
+        \begin{align*}
+          |f|=\lim_{n_k \to \infty}|f_{n_k}|\leq g,\quad\text{para todo }n_k\in\mathbb{Z}^{+}.
+        \end{align*}
+        Assim, temos que $f\in L^{1}$.\\
+        Logo, usando o Teorema da convergência dominada temos que
+        \begin{align*}
+          \int_{X}f\,d\mu =\lim_{n_k \to \infty}\int_{X}f_{n_k}\,d\mu. 
+        \end{align*}
+        \textbf{Afirmação:} $\lim_{n \to \infty}\int f_n\,d\mu=\lim_{n_k \to \infty}\int f_{n_k}\,d\mu$.\\
+        Raciocinando pela contradição. Suponha que existe $\epsilon>0$ tal que para uma subsequência $\{f_{n_j}\}_{n_j\in\mathbb{Z}^{+}}\subseteq \{f_{n}\}_{n\in\mathbb{Z}^{+}}$ se cumpre que
+        \begin{equation}\label{eq:8-1}
+          \left| \int_{X}f_{n_j}\,d\mu - \int_{X}f\,d\mu \right|\geq \epsilon,\quad\text{para todo }n_j\in\mathbb{Z}^{+}.
+        \end{equation}
+        Agora, note que como $f_{n_j}\to f$ em medida, temos que existe uma subsequência $f_{n_{j_i}}$ tal que $f_{n_{j_i}}\to f$ $\mu$-q.t.p. Portanto, usando o Teorema da convergência dominada, temos que
+        \begin{align*}
+          \int_{X}f\,d\mu=\lim_{n_{j_i} \to \infty}\int_{X}f_{n_{j_i}}\,d\mu.
+        \end{align*}
+        O que é uma contradição de \eqref{eq:8-1}.\\
+        Portanto temos que
+        \begin{align*}
+          \int_{X}f\,d\mu=\lim_{n \to \infty}\int_{X}f_{n}\,d\mu.
+        \end{align*}
+        Agora, note que como $f_n\to f$ em medida, temos que $|f_n-f|\to 0$ em medida. Além disso, temos que $|f_n-f|\leq 2g$ para todo $n$ e usando o mesmo raciocínio anterior temos que
+        \begin{align*}
+          \lim_{n \to \infty}\int_{X}|f_n-f|\,d\mu=\int_{X}0\,d\mu=0.
+        \end{align*}
+  \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}

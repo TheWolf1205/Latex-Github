@@ -11,11 +11,15 @@ Repositorio para subir trabajos o talleres de la U :p.
 
 - Lista 1.
   - [Exercícios](<./Medida-Br/Lista1/Exercícios Medida 1.pdf>) 
-  - [Solução](<./Medida-Br/Lista1/Tex/main.pdf>) 
+  - [Solução](<./Medida-Br/Lista1/Tex/Lista 1 Medida-Br.pdf>) 
 
 - Lista 2.
   - [Exercícios](<./Medida-Br/Lista2/Exercícios Medida 2.pdf>) 
-  - [Solução](<./Medida-Br/Lista2/Tex/main.pdf>) 
+  - [Solução](<./Medida-Br/Lista2/Tex/Lista 2 Medida-Br.pdf>) 
+
+- Lista 3.
+  - [Exercícios](<./Medida-Br/Lista3/Exercícios Medida 3.pdf>) 
+  - [Solução](<./Medida-Br/Lista3/Tex/Lista 3 Medida-Br.pdf>) 
 
 </details>
 

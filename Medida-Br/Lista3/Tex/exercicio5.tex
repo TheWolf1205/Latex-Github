@@ -1,6 +1,46 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[5]
+  Mostre que se $f\in L^{\infty}\cap L^{p_0}$ para algúm $p_0\in (0,+\infty)$ então $\norm{f}_{\infty}=\lim_{p \to \infty}\norm{f}_p$. 
   \begin{solution}
-    XXX  
+    Dado $\epsilon>0$ considere o seguinte conjunto
+    \begin{align*}
+      A_{\epsilon}:=\left\{ x\in X: \norm{f}_{\infty}-\epsilon<|f(x)| \right\}.
+    \end{align*}
+    Note que $\mu(A_\epsilon)>0$, pois, caso contrário $\norm{f}_{\infty}=\norm{f}_{\infty}-\epsilon$, o que é uma contradição.\\
+    Observe que
+    \begin{align*}
+      \mu(A_{\epsilon})(|\norm{f}_{\infty}|-\epsilon)^{p_0}=\int_{A_{\epsilon}}(\norm{f}_{\infty}-\epsilon)^{p_0}\,d\mu\leq \int_{A_\epsilon}|f|^{p}\,d\mu\leq \norm{f}_{p_0}^{p_0}.
+    \end{align*}
+    Pelo que temos que
+    \begin{align*}
+      \mu(A_\epsilon)\leq \norm{f}_{p_0}^{p_0}(\norm{f}_{\infty}-\epsilon)^{p_0}<+\infty.
+    \end{align*}
+    Similarmente temos que
+    \begin{align*}
+      \mu(A_\epsilon)(\norm{f}_{\infty}-\epsilon)^{p}\leq \norm{f}_{p}^{p}.
+    \end{align*}
+    Daí que
+    \begin{align*}
+      \norm{f}_{\infty}-\epsilon\leq\norm{f}_{p}\mu(A_\epsilon)^{\frac{1}{p}}.
+    \end{align*}
+    Portanto temos que
+    \begin{align*}
+      \norm{f}_{\infty}-\epsilon\leq \liminf_{p \to \infty}\norm{f}_{p}\mu(A_{\epsilon})^{\frac{1}{p}}=\liminf_{p\to\infty}\norm{f}_p.
+    \end{align*}
+    Por outro lado, note que
+    \begin{align*}
+      \norm{f}_{p}^{p}=\int_{X}|f|^{p}\,d\mu=\int_{X}|f|^{p_0}|f|^{p-p_0}\,d\mu\leq \norm{f}_{\infty}^{p-p_0}\norm{f}_{p_0}^{p_0}.
+    \end{align*}
+    Daí que
+    \begin{align*}
+      \limsup_{p \to \infty}\norm{f}_p\leq \limsup_{p \to \infty}\norm{f}_{\infty}^{1-\frac{p_0}{p}}\norm{f}_{p_0}^{\frac{p_0}{p}}=\norm{f}_{\infty}.
+    \end{align*}
+    Portanto temos que para todo $\epsilon>0$ se cumpre que
+    \begin{align*}
+      \norm{f}_{\infty}-\epsilon\leq\liminf_{p\to\infty}\norm{f}_{p}\leq\limsup_{p\to\infty}\norm{f}_{p}\leq\norm{f}_{\infty}.
+    \end{align*}
+    Pelo que podemos garantir que
+    \begin{align*}
+      \norm{f}_{\infty}=\lim_{p \to \infty}\norm{f}_{p}.
+    \end{align*}
   \end{solution}
 \end{homeworkProblem}
