@@ -1,0 +1,131 @@
+\begin{homeworkProblem}[2]
+  Denote $\mathcal{M}(X,\cali{A})$ o conjunto das cargas em $(X,\cali{A})$.
+  \begin{enumerate}[a)]
+    \item Mostre que $\norm{\lambda}:=|\lambda|(X)$ define uma norma em $\mathcal{M}(X,\cali{A})$.
+    \item Mostre que $\mathcal{M}(X,\cali{A})$ é completo com respeito à norma do item $a)$. 
+  \end{enumerate}
+  \begin{solution}
+    \begin{enumerate}[a)]
+    \item Vamos verificar que $\norm{\cdot}$ define uma norma.
+    \begin{itemize}
+      \item Note que dada $\lambda\in\mathcal{M}(X,\cali{A})$, temos que
+        \begin{align*}
+          \norm{\lambda}=|\lambda|(X)=\lambda^{+}(X)+\lambda^{-}(X)\-geq 0.
+        \end{align*}
+        Agora, note que como $\lambda$ é carga, então $|\lambda(P)|,|\lambda(N)|<+\infty$. Logo
+        \begin{align*}
+          \norm{\lambda}=\lambda^{+}(X)+\lambda^{-}(X)=|\lambda(P)|+|\lambda(N)|<+\infty.
+        \end{align*}
+        Pelo que temos que $\norm{\cdot}$ é positiva bem definida.
+      \item Note que como $\lambda^{+}$ e $\lambda^{-}$ são medidas positivas, temos que a seguinte cadeia de afirmações é equivalente
+        \begin{itemize}
+          \item $\norm{\lambda}=0$.
+          \item $|\lambda|(X)=0$.
+          \item $\lambda^{+}(X)=0$ e $\lambda^{-}(X)=0$.
+          \item $\lambda(A)=\lambda^{+}(A)-\lambda^{-}(A)=0$ para todo $A\in\cali{A}$.
+          \item $\lambda\equiv 0$.
+        \end{itemize}
+      \item Seja $c>0$ constante e $\lambda\in\mathcal{M}(X,\cali{A})$. Logo pela definição temos que
+        \begin{align*}
+          \norm{c\lambda}=|c\lambda|(X)=|c\lambda(P)|+|c\lambda(N)|=|c|(|\lambda(P)|+|\lambda(N)|)=|c|\norm{\lambda}.
+        \end{align*}
+      \item Sejam $\lambda,\mu\in\mathcal{M}(X,\cali{A})$.\\
+        Note que como $\lambda+\mu$ é carga, temos que existe a decomposição de Hahn $(P,N)$, logo usando a $\sigma$-aditividade das cargas temos que
+        \begin{align*}
+          \norm{\lambda+\mu}=&|\lambda+\mu|(X)\\
+          =&(\lambda+\mu)^{+}(X)+(\lambda+\mu)^{-}(X)\\
+          =&(\lambda+\mu)(P)-(\lambda+\mu)(N)\\
+          =&\lambda(P)+\mu(P)-\lambda(N)-\mu(N).
+        \end{align*}
+        Agora, como $\lambda$ e $\mu$ também são cargas, temos que existe a decomposição de Hahn $(P_1,N_1)$ de $\lambda$ e a decomposição de Hahn $(P_2,N_2)$ de $\mu$. Portanto
+        \begin{align*}
+          \norm{\lambda-\mu}=&\lambda(P)+\mu(P)-\lambda(N)-\mu(N)\\
+          =&\lambda(P\cap P_1)+\lambda(P\cap N_1)-\lambda(N\cap P_1)-\lambda(N\cap N_1)\\
+          &+\mu(P\cap P_2)+\mu(P\cap N_2)-\mu(N\cap P_2)-\mu(N\cap N_2)\\
+          \leq& \lambda(P\cap P_1)-\lambda(N\cap N_1)+\mu(P\cap P_2)-\mu(N\cap N_2)\\
+          \leq& \lambda^{+}(X)+\lambda^{-}(X)+\mu^{+}(X)+\mu^{-}(X)\\
+          \leq& \left| \lambda \right|(X)+\left| \mu \right|(X)\\
+          \leq& \norm{\lambda}+\norm{\mu}.
+        \end{align*}
+        Pelo que temos que $\norm{\cdot}$ satisfaz a desigualdade triangular. 
+    \end{itemize}
+      Portanto, temos que $\norm{\cdot}$ define uma norma para $\mathcal{M}(X,\cali{A})$.
+    \item Vamos ver que $\mathcal{M}(X,\cali{A})$ é completo com respeito à norma do item $a)$.\\
+      Seja $\{\lambda_n\}_{n\in\mathbb{Z}^{+}}\subseteq \mathcal{M}(X,\cali{A})$ uma sequência de Cauchy.\\
+      Note que, dado $A\in\cali{A}$ temos que 
+      \begin{align*}
+        \left| \lambda_{n}(A)-\lambda_{m}(A)\right|=\left| (\lambda_{n}-\lambda_{m})(A) \right|\leq \left| \lambda_{n}-\lambda_{n} \right|(A)\leq \left| \lambda_n-\lambda_m \right|(X)\leq \norm{\lambda_n-\lambda_m}.
+      \end{align*}
+      Logo, como $\{\lambda_{n}\}_{n\in\mathbb{Z}^{+}}$ é um sequência de Cauchy em $\mathcal{M}(X,\cali{A})$, temos que $\{\lambda_{n}(A)\}_{n\in\mathbb{Z}^{+}}\subseteq \mathbb{R}$ é uma sequência de Cauchy. Portanto, como $\mathbb{R}$ é completo, temos que existe $y_{A}\in\mathbb{R}$ tal que $\lambda_{n}(A)\to y_{A}$.\\
+      Definamos $\lambda:\cali{A}\to\mathbb{R}$ dada por
+      \begin{align*}
+        \lambda(A)=y_A.
+      \end{align*}
+      Vamos verificar que $\lambda$ é uma carga.
+      \begin{itemize}
+        \item Note que $\lambda_{n}(\emptyset)=0$ para todo $n\in\mathbb{Z}^{+}$, logo
+          \begin{align*}
+            \lambda(\emptyset)=\lim_{n \to \infty}\lambda_{n}(\emptyset)=0.
+          \end{align*}
+        \item Seja $\{A_i\}_{i\in\mathbb{Z}^{+}}\subseteq\cali{A}$ uma sequência disjunta tal que $A=\bigcup_{i\in\mathbb{Z}^{+}}A_i$.\\
+          Temos a seguintes observações
+          \begin{itemize}
+            \item Dado $\epsilon>0$, temos que existe $\overline{N}\in\mathbb{Z}^{+}$ tal que se $n,m\geq \overline{N}$, então
+              \begin{align*}
+                \left| \lambda_{m}(B)-\lambda(n)(B) \right|\leq \norm{\lambda_m-\lambda_n}<\frac{\epsilon}{3},\quad\text{para todo }B\in\cali{A}.
+              \end{align*}
+              Em particular, tomando límite quando $m\to\infty$ temos que
+              \begin{equation}\label{eq:1-2}
+                \left| \lambda(B)-\lambda_{n}(B) \right|<\frac{\epsilon}{3}.
+              \end{equation}
+            \item Note que como $\lambda_n$ é carga, temos que 
+              \begin{align*}
+                \lim_{k \to \infty}\lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right)=\lim_{k \to \infty}\sum_{i=1}^{k}\lambda_{n}(A_i)=\sum_{i=1}^{\infty}\lambda_{n}(A_i)=\lambda_{n}(A).
+              \end{align*}
+              Isto é, que dado $\epsilon>0$ existe $\delta>0$ tal que se $k\geq \delta$, então
+              \begin{equation}\label{eq:2-2}
+                \left| \lambda_{n}(A)-\lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right) \right|< \frac{\epsilon}{3}.              
+              \end{equation}
+          \end{itemize}
+          Portanto, usando as equacões \eqref{eq:1-2} e \eqref{eq:2-2}, temos que dado $\epsilon>0$, existe $N>0$ tal que se fixamos um $n\geq N$, existe $k>0$ tal que
+          \begin{align*}
+            \left| \lambda(A) - \lambda\left( \bigcup_{i=1}^{k}A_i \right)\right|\leq& \left| \lambda(A)-\lambda_{n}(A) \right|+\left| \lambda_{n}(A)-\lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right) \right|\\
+            &+\left| \lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right)-\lambda\left( \bigcup_{i=1}^{k}A_i \right) \right|\\
+            <&\frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3}\\
+            <&\epsilon.
+          \end{align*}
+          Agora, note que
+          \begin{align*}
+            \lambda\left( \bigcup_{i=1}^{k}A_i \right)=\lim_{n \to \infty}\lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right)=\lim_{k \to \infty}\sum_{i=1}^{k}\lambda_{n}(A_i)=\sum_{i=1}^{k}\lambda(A_i).
+          \end{align*}
+          Portanto temos que
+          \begin{align*}
+            \lambda(A)=\lim_{k \to \infty}\lambda\left( \bigcup_{i=1}^{k} A_i\right)=\lim_{k \to \infty}\sum_{i=1}^{k}\lambda(A_i)=\sum_{i=1}^{\infty}\lambda(A_i).
+          \end{align*}
+          Pelo que temos que $\lambda$ é $\sigma$-aditiva e portanto é uma carga, i.e., $\lambda\in\mathcal{M}(X,\cali{A})$. 
+      \end{itemize}
+      Agora, vamos ver a convergência em $\mathcal{M}(X,\cali{A})$.\\
+      Seja $\{A_i\}_{i\in\mathbb{Z}^{+}}\subseteq\cali{A}$ uma partição disjunta de $X$, logo temos que dado $\epsilon>0$ existe $N>0$ tal que se $m,n\geq N$, então
+      \begin{align*}
+        \sum_{i=1}^{k}\left| \lambda_m(A_i)-\lambda_n(A_i) \right|\leq \sum_{i=1}^{k}\left| \lambda_m-\lambda_n \right|(A_i)\leq \left| \lambda_m-\lambda_n \right|(X)<\epsilon.
+      \end{align*}
+      Logo, tomando límite quando $m\to\infty$, temos que
+      \begin{align*}
+        \sum_{i=1}^{k}\left| \lambda(A_i)-\lambda_{n}(A_i) \right|<\epsilon,\quad\text{para todo }k\in\mathbb{Z}^{+}.
+      \end{align*}
+      Portanto, tomando limite quando $k\to\infty$ temos que
+      \begin{align*}
+        \sum_{i=1}^{\infty}\left| \lambda(A_i)-\lambda_{n}(A_i) \right|<\epsilon.
+      \end{align*}
+      Logo como $\epsilon$ não depende da partição, usando o exercicio $1$ temos que para todo $n\geq N$ se cumpre que 
+      \begin{align*}
+        \norm{\lambda-\lambda_n}=\left| \lambda-\lambda_n \right|(X)=\sup\left\{\sum_{i=1}^{k}\left| \lambda(A_i)-\lambda_{n}(A_i)\right| \right\}<\epsilon.
+      \end{align*}
+      Assim temos que
+      \begin{align*}
+        \lim_{n \to \infty}\norm{\lambda-\lambda_n}=0.
+      \end{align*}
+      O que nos permite concluir o exercício.
+  \end{enumerate} 
+  \end{solution}
+\end{homeworkProblem}
