@@ -1,6 +1,131 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[6]
+  Sejam $\mu,\lambda$ medidas positivas finitas em $(X,\cali{A})$. Complete o seguinte roteiro para demostrar o Teorema de Lebesgue-Radon-Nikodym neste caso.
+  \begin{enumerate}[a)]
+    \item Ou $\lambda\perp\mu$, ou existem $\epsilon>0$ e $A\in\cali{A}$ tais que $\mu(A)>0$ e $A$ é um conjunto positivo para a carga $\lambda-\epsilon\mu$.
+    \item Existe $f\in M^{+}(X,\cali{A})$ tal que $\int_{X}f\,d\mu=\alpha<+\infty$, onde
+    \begin{align*}
+      \alpha=\sup\left\{ \int_{X}h\,d\mu:h\in M^{+}(X,\cali{A}),\quad \int_{A}h\,d\mu\leq\lambda(A),\text{ para todo }A\in\cali{A} \right\}.
+    \end{align*}
+    \item A expressão $d\lambda_s=d\lambda-fd\mu$ define uma medida positiva $\lambda_s\perp\mu$.
+    \item A decomposição $d\lambda=d\lambda_s+fd\mu$, com $f\in L^{1}(\mu)$ e $\lambda_s\perp\mu$, é única. 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+  \begin{enumerate}[a)]
+    \item Considere a decomposição de Hahn $(P_n,N_n)$ com respeito a carga $\lambda-\frac{1}{n}\mu$.\\
+      Suponha $P=\bigcup_{n=1}^{\infty}P_n$ e note o seguinte
+      \begin{itemize}
+        \item Se $\mu(P)=0$, temos que 
+          \begin{align*}
+            \left( \lambda-\frac{1}{n}\mu \right)(P)=\lambda(P)\geq 0\quad\text{para todo }n\in\mathbb{Z}^{+}.
+          \end{align*}
+          Note que como $P_n\subseteq P$, então $N=X\setminus P\subseteq X\setminus P_n=N_n$, logo temos que
+          \begin{align*}
+            \left( \lambda-\frac{1}{n}\mu \right)(X\setminus P)\leq 0.
+          \end{align*}
+          Daí que
+          \begin{align*}
+            \lambda(X\setminus P)\leq \frac{1}{n}\mu(X\setminus P),\quad\text{para todo }n\in\mathbb{Z}^{+}.
+          \end{align*}
+          Logo como $\mu$ e $\lambda$ são medidas positivas finitas, temos que
+          \begin{align*}
+            \lambda(X\setminus P)=0.
+          \end{align*}
+          Portanto, temos que $\lambda(X\setminus P)=\mu(P)=0$ com $X\setminus P,P\in \cali{A}$ tais que $(X\setminus P)\cap P=\emptyset$ e $(X\setminus P)\cup P=X$. Pelo que temos que $\lambda\perp\mu$.
+        \item Agora, suponha que $\mu(P)\neq 0$, logo temos que
+          \begin{align*}
+            0\neq \mu(P) \leq \sum_{n=1}^{\infty}\mu(P_n).
+          \end{align*}
+          Logo como $\mu$ é medida positiva, temos que existe $m\in\mathbb{Z}^{+}$ tal que $\mu(P_m)> 0$. Sendo assim, defina $\epsilon=\frac{1}{m}>0$ e $A=P_m\in\cali{A}$. Logo, pelo anterior temos que $\mu(A)>0$ e $\left( \lambda-\epsilon\mu \right)(A)\geq 0$.
+      \end{itemize}
+    \item Agora, considere o seguinte conjunto
+      \begin{align*}
+        S:=\left\{ \int_{X}h\,d\mu:h\in M^{+}(X,\cali{A}), \int_{A}h\,d\mu\leq \lambda(A),\text{ para toda }A\in\cali{A} \right\}.
+      \end{align*}
+      Note que $S\neq \emptyset$, ja que se pegamos $h=0\in M^{+}(X,\cali{A})$ temos que
+      \begin{align*}
+        \int_{A}h\,d\mu=0\leq \lambda(A),\quad\text{ para todo }A\in\cali{A}.
+      \end{align*}
+      Logo $\int_{X}h\,d\mu=0\in S$.\\
+      Agora, note que se pegamos $h_1$ e $h_2$ (com as condições de $S$) temos que $\max\{h_1,h_2\}$ cumpre as condições de $S$, pois
+      \begin{align*}
+        \max\{h_1,h_2\}=h_1\chi_{h_1\geq h_2}+h_2\chi_{h_1<h_2}.
+      \end{align*}
+      E como $h_1,h_2in M^{+}(X,\cali{A})$, temos que os conjuntos $\{x:h_1\geq h_2\}$ e $\{x:h_1<h_2\}$ são mensuráveis, e como $h_1$ e $h_2$ cumpren as condições de $S$ para todo $A\in\cali{A}$, temos que $\max\{h_1,h_2\}$ também as cumpre.\\
+      Por outro lado, note que se pegamos $h$ (com as condições de $S$) tal que $\int_{X}h\,d\mu \in S$, temos que
+      \begin{align*}
+        \int_{A}h\,d\mu\leq\lambda(A),\quad\text{ para todo }A\in\cali{A}.
+      \end{align*}
+      Em particular, como $\lambda$ é medida finita, temos que 
+      \begin{align*}
+        \int_{X}h\,d\mu\leq\lambda(X)<+\infty.
+      \end{align*}
+      Logo temos que
+      \begin{align*}
+        \sup S=\sup \int_{X}h\,d\mu\leq \lambda(X)<+\infty.
+      \end{align*}
+      Pelo que temos que se definimos $\alpha=\sup S$, então $\alpha<+\infty$.\\
+      Sendo assim, pla caracterização de supremo, temos que dado $n\in\mathbb{Z}^{+}$ existe $h_n$ (com as condições de $S$) tal que
+      \begin{align*}
+        \alpha-\frac{1}{n}\leq \int_{X}h_n\,d\mu.
+      \end{align*}
+      Considere $g_n=\max\{h_1,\cdots,h_n\}$, logo temos que
+      \begin{align*}
+        \alpha-\frac{1}{n}\leq \int_{X}h_n\,d\mu\leq \int_{X}g_n\,d\mu,\quad\text{para todo }n\in\mathbb{Z}^{+}.
+      \end{align*}
+      Assim, usando a desigualdade anterior e que $g_n$ cumpre as condições de $S$ temos que
+      \begin{align*}
+        \lim_{n \to \infty}\int_{X}g_n\,d\mu=\alpha.
+      \end{align*}
+      Mas, note que como $g_n\in M^{+}(X,\cali{A})$, temos que pelo teorema da convergência monótona, existe $f\in M^{+}(X,\cali{A})$ tal que $g_n\to f$ pontoalmente e 
+      \begin{align*}
+        \int_{X}f\,d\mu=\lim_{n \to \infty}\int_{X}g_n\,d\mu=\alpha<+\infty.
+      \end{align*}
+      Mais que isso temos que para todo $A\in\cali{A}$ se cumpre que
+      \begin{align*}
+        \int_{A}f\,d\mu=\lim_{n \to \infty}\int_{A}g_n\,d\mu\leq\lambda(A).
+      \end{align*}
+    \item Usando o anterior, temos que definindo $\lambda_s$ dada por 
+      \begin{align*}
+        \lambda_s(A)=\lambda(A)-\int_{A}f\,d\mu\geq 0,\quad\text{ para todo }A\in\cali{A}.
+      \end{align*}
+      Então $\lambda_s$ é uma medida positiva finita.\\
+      Suponha que $\lambda_s\not\perp \mu$, logo, pelo item $a)$ temos que existe $\epsilon>0$ e $A\in\cali{A}$ tal que $\mu(A)>0$ e para todo $B\in\cali{A}$ tal que $B\subseteq A$, temos que $\left( \lambda_s-\epsilon\mu \right)(B)\geq 0$. Isto é
+      \begin{align*}
+        \left( \lambda_s-\epsilon\mu \right)(B)=\lambda(B)-\int_{B}f\,d\mu-\epsilon\mu(B)\geq 0.
+      \end{align*}
+      Daí que
+      \begin{align*}
+        \lambda(B)\geq \int_{B}f+\epsilon\,d\mu,\quad\text{para todo }B\subseteq A.
+      \end{align*}
+      Logo, note que dado $C\in\cali{A}$ temos que pela desigualdade anterior e o item $b)$ podemos garantir que 
+      \begin{align*}
+        \lambda(C)=\lambda(A\cap C)+\lambda(C\setminus A)\geq \int_{A\cap C}f+\epsilon\,d\mu + \int_{C\setminus A}f\,d\mu=\int_{C}f+\epsilon\chi_{A}\,d\mu.
+      \end{align*}
+      Logo, $f+\epsilon\chi_A$ cumpre as condições de $S$, mas
+      \begin{align*}
+        \alpha=\int_{X}f\,d\mu<\int_{X}f\,d\mu +\epsilon\mu(A)\leq \int_{X}f+\epsilon\chi_{A}\,d\mu.
+      \end{align*}
+      O que contradice a maximalidade de $\alpha$. Assim, podemos garantir que $\lambda_s\perp \mu$.
+    \item Agora, suponha que existe $\lambda_s,\overline{\lambda}_s$ medidas positivas e $f,\overline{f}\in L^{1}(\mu)$ tais que
+      \begin{align*}
+        d\lambda_s=d\lambda+f\,d\mu\perp d\mu,\quad\text{e}\quad d\overline{\lambda}_s=d\lambda+\overline{f}\,d\mu\perp d\mu.
+      \end{align*}
+      Note que pela definição temos que
+      \begin{align*}
+        \lambda_s(A)-\int_{A}f\,d\mu = \overline{\lambda}_s(A)-\int_{A}\overline{f}\,d\mu.
+      \end{align*}
+      Daí que
+      \begin{align*}
+        (\lambda_s-\overline{\lambda}_s)(A)=\int_{A}f-\overline{f}\,d\mu.
+      \end{align*}
+      Agora, note que como $\lambda_s\perp\mu$ e $\overline{\lambda}_s\perp \mu$, temos que $\lambda_s-\overline{\lambda}_s\perp \mu$.\\
+      Por outro lado, temos que $f-\overline{f}\,d\mu << \mu$.\\
+      Portanto, usando que a única medida que é absolutamente contínua a $\mu$ e singular a $\mu$ ão mesmo tempo é a medida nula, podemos garantir que
+      \begin{align*}
+        (\lambda_s-\overline{\lambda}_s)(A)=\int_{A}f-\overline{f}\,d\mu=0. 
+      \end{align*}
+      Pelo que podemos garantir que $\lambda_s=\overline{\lambda}_s$ e $f=\overline{f}$. 
+  \end{enumerate} 
+  O que nos permite concluir o exercício.
   \end{solution}
 \end{homeworkProblem}

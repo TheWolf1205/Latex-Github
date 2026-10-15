@@ -1,6 +1,93 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[4]
+  Sejam $V$ um espaço vetorial normado e $\phi$ um funcional linear em $V$.
+  \begin{enumerate}[a)]
+    \item Mostre que as quantidades
+      \begin{align*}
+        \sup\left\{ |\phi(x)|:x\in V,\norm{x}\leq 1 \right\},\quad\sup\left\{ |\phi(x)|:x\in V,\norm{x}=1 \right\},\quad\sup_{x\neq 0}\frac{|\phi(x)|}{\norm{x}},
+      \end{align*}
+      são iguais e que são finitas se, e somente se, $\phi$ é limitado.
+    \item Mostre que o conjunto dos funcionais lineares limitados em $V$ é um espaçõ métrico completo. 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+  \begin{enumerate}
+    \item Note que se denotamos $y=\frac{x}{\norm{x}}$, temos que como $\phi$ é um funcional linear, então 
+      \begin{align*}
+        \frac{|\phi(x)|}{\norm{x}}=\left| \phi\left( \frac{x}{\norm{x}} \right) \right|=\left| \phi(y) \right|.
+      \end{align*}
+      Logo temos que como $\norm{y}=1$ para todo $x\in V\setminus\{0\}$, então podemos garantir que
+      \begin{align*}
+        \sup_{x\neq 0}\frac{|\phi(x)|}{\norm{x}}=\sup_{\norm{x}=1}|\phi(x)|.
+      \end{align*}
+      Agora, note que como $\{x\in V:\norm{x}=1\}\subseteq\left\{ x\in V:\norm{x}\leq 1 \right\}$, então temos que
+      \begin{align*}
+        \sup\left\{ |\phi(x)|:x\in V,\norm{x}= 1 \right\}\leq        \sup\left\{ |\phi(x)|:x\in V,\norm{x}\leq 1 \right\}.
+      \end{align*}
+      Por outro lado, note que se $\sup\left\{ |\phi(x)|:x\in V,\norm{x}\leq 1 \right\}=0$, então temos que $|\phi(x)|=0$ para todo $x\in V$, pois $\phi(0)=0$ e para todo $x\in V\setminus\{0\}$ temos que se $y=\frac{x}{\norm{x}}$, então $\phi(x)=\phi(y)\norm{x}=0$, pelo que a igualdade com $\sup\left\{ |\phi(x)|:x\in V,\norm{x}=1 \right\}$ é trivial. Portanto, vamos considerar que $\sup\left\{ |\phi(x)|:x\in V,\norm{x}\leq 1 \right\}\neq 0$.\\
+      Segue-se do anterior que
+      \begin{align*}
+        \sup\left\{ |\phi(x)|:x\in V,\norm{x}\leq 1 \right\}=        \sup\left\{ |\phi(x)|:x\in V\setminus\{0\},\norm{x}\leq 1 \right\}.
+      \end{align*}
+      Portanto, note que se $x\in V\setminus\{0\}$ com $\norm{x}\leq 1$ se cumpre que
+      \begin{align*}
+        |\phi(x)|\leq \frac{|\phi(x)|}{\norm{x}}.
+      \end{align*}
+      Logo como $\{x\in V:\norm{x}\leq 1\}\subseteq V\setminus\{0\}$, temos que 
+      \begin{align*}
+        \sup\left\{ |\phi(x)|:x\in V\setminus\{0\},\norm{x}\leq 1 \right\}\leq\sup_{x\neq 0}\frac{|\phi(x)|}{\norm{x}}.
+      \end{align*}
+      Pelo que podemos concluir que
+      \begin{align*}
+        \sup\left\{ |\phi(x)|:x\in V,\norm{x}\leq 1 \right\}=\sup_{x\neq 0}\frac{|\phi(x)|}{\norm{x}}.
+      \end{align*}
+      O que nos permite garantir que as 3 quantidades são iguais.\\
+      Para finalizar, note que nos definimos $\left\{ \phi \right\}=\sup\left\{ |\phi(x)|:x\in V,\norm{x}\leq 1 \right\}$, pelo que podemos afirmar que $\phi$ é limitado se, e somente se, as 3 quantidades são finitas.
+    \item Seja $L(V)$ o conjunto dos funcionais lineares limitados com a norma
+      \begin{align*}
+        \norm{\phi}=\sup_{\substack{x\in V\\\norm{x}=1}}|\phi(x)|.
+      \end{align*}
+      Suponha $\{\phi_n\}_{n\in\mathbb{Z}^{+}}\subseteq L(V)$ sequência de Cauchy. Vamos ver que $\phi_n\to\phi\in L(V)$.\\
+      Seja $x\in V\setminus\{0\}$. Note que como $\{\phi_n\}_{n\in\mathbb{Z}^{+}}$ é de Cauchy, temos que dado $\epsilon>0$ existe $N>0$ tal que se $n,m\geq N$, então
+      \begin{align*}
+        \norm{\phi_n-\phi_m}<\frac{\epsilon}{\norm{x}_{V}}.
+      \end{align*}
+      Portanto, temos que  
+      \begin{align*}
+        \left|\phi_n(x)-\phi_m(x)\right|&\leq \norm{\phi_n-\phi_m}\norm{x}_{V}\\
+        &<\frac{\epsilon}{\norm{x}_{V}}\norm{x}_{V}\\
+        &<\epsilon.
+      \end{align*}
+      Logo $\{\phi_n(x)\}_{n\in\mathbb{Z}^{+}}\subseteq \mathbb{R}$ é uma sequência de Cauchy, mas como $\mathbb{R}$ é completo, temos  que existe $y_x\in \mathbb{R}$ tal que $\phi_{n}(x)\to y_x$.\\
+      Assim, defina $\phi:V\to\mathbb{R}$ dado por $\phi(x)=y_x$.\\
+      Agora, vamos ver a convergência em norma.\\
+      Como $\{\phi_n\}_{n\in\mathbb{Z}^{+}}$ é de Cauchy temos que dado $\epsilon>0$, existe $N$ tal que para todo $n,m\geq N$,
+      \begin{align*}
+        \norm{\phi_m - \phi_n} < \epsilon.
+      \end{align*}
+      Em particular, fixando $n$ y pegando límite quando $m\to \infty$, temos que para todo $x\in V$ tal que $\norm{x}=1$ se cumpre que
+      \begin{align*}
+        \left| \phi(x)-\phi_n(x) \right|=\lim_{m \to \infty}\left| \phi_m(x)-\phi_n(x) \right|\leq \lim_{m \to \infty}\norm{\phi_m-\phi_n}\norm{x}_{V}< \epsilon.
+      \end{align*}
+      Logo como $\epsilon$ é independente de $x$, temos que pegando $\sup$ sobre $x$ con $\norm{x}_V = 1$ obtemos que
+      \begin{align*}
+        \norm{\phi-\phi_n}<\epsilon,
+      \end{align*}
+      para todo $n\geq N$. Portanto
+      \begin{align*}
+        \lim_{\epsilon \to 0}\norm{\phi_n-\phi}=0.
+      \end{align*}
+      Logo usando o anterior temos que dado $\epsilon>0$ existe $N\in\mathbb{Z}^{+}$ tal que se $n\geq N$, então
+      \begin{align*}
+        \norm{\phi-\phi_n}<\epsilon.
+      \end{align*}
+      Logo usando a desigualdade triangular temos que como $\phi_n$ é um funcional linear limitado, então 
+      \begin{align*}
+        \norm{\phi}\leq \norm{\phi-\phi_n}+\norm{\phi_n}<\epsilon+\norm{\phi_n}<+\infty.
+      \end{align*}
+      Depois, note que $\phi$ é linear, pois dados $x,y\in V$ e $c$ escalar temos que
+      \begin{align*}
+        \phi(x+cy)=\lim_{n \to \infty}\phi_n(x+cy)=\lim_{n \to \infty}\phi_n(x)+c\phi_n(y)=\phi(x)+c\phi(y).
+      \end{align*}
+      Pelo que temos garantido que $\phi\in L(V)$ e que $\phi_n\to\phi$ em $L(V)$ quando $n\to\infty$ o que nos permite concluir que $L(V)$ é um espaço métrico completo. 
+  \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}
