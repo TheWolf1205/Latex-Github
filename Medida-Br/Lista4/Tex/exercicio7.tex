@@ -1,6 +1,98 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[7]
+  Vamos assumir como verdade o Teorema de Representação de Riesz para espaços de Hilbert que diz o seguinte: se $H$ é um espaço normado completo cuja norma provém de um produto interno $\left\langle \cdot,\cdot \right\rangle$, então para todo funcional linear limitado $\phi$ em $H$ existe um único $x_0\in H$ tal que $\phi(x)=\left\langle x,x_0 \right\rangle$ para todo $x\in H$. Dadas duas medidas finitas $\mu,\lambda$ em $(X,\cali{A})$, com $\lambda<<\mu$, complete o seguinte roteiro para provar o Teorema de Radon-Nikodym neste caso.
+  \begin{enumerate}[a)]
+    \item Existe $g\in L^{2}(\mu+\lambda)$ tal que $\int f(1-g)\,d\lambda=\int fg\,d\mu$ para toda $f\in L^{2}(\mu+\lambda)$.
+    \item Temos $0\leq g\leq 1$ $\lambda$-q.t.p. em $X$. Podemos tomar $g$ satisfazendo esta desigualdade em todo o $X$.
+    \item A derivada de Radon-Nikodym procurada é $\frac{g}{1-g}$.
+  \end{enumerate}
   \begin{solution}
-    XXX  
+  \begin{enumerate}[a)]
+    \item Seja $\phi:L^{2}(\mu+\lambda)\to\mathbb{R}$ dado por 
+      \begin{align*}
+        \phi(f)=\int f\,d\lambda.
+      \end{align*}
+      Note que como $\mu$ e $\lambda$ são medidas finitas, temos também que $\mu+\lambda$ define uma medida finita, logo usando a desigualdade de Hölder temos que
+      \begin{align*}
+        \left| \phi(f) \right|=\left| \int f\,d\lambda \right|\leq& \int|f|\,d\lambda\\
+        \leq& \int |f|\,d\lambda + \int |f|\,d\mu\\
+        \leq& \int |f|\,d(\mu+\lambda)\\
+        \leq& \left( \int |f|^2\,d(\mu+\lambda) \right)^{\frac{1}{2}}\left( \int 1\,d(\mu+\lambda) \right)^{\frac{1}{2}}\\
+        \leq& \left( (\mu+\lambda)(X) \right)^{\frac{1}{2}}\norm{f}_{L^{2}(\mu+\lambda)}.
+      \end{align*}
+      Pelo que temos que $\phi$ está bem definido e limitado.\\
+      Logo, pegando $f,g\in L^{2}(\mu+\lambda)$ e $c$ escalar temos que
+      \begin{align*}
+        \phi(f+cg)=\int f+cg\,d\lambda =\int f\,d\lambda + c \int g\,d\lambda =\phi(f)+c\phi(g).
+      \end{align*}
+      Daí que $\phi$ é um funcional linear limitado em $L^{2}(\mu+\lambda)$. Portanto, usando o Teorema de Representação de Riesz, temos que existe uma única $g\in L^{2}(\mu+\lambda)$ tal que
+      \begin{equation}\label{eq:1-7}
+        \int f\,d\lambda=\phi(f)=\left\langle f,g \right\rangle=\int fg\,d(\mu+\lambda).
+      \end{equation}
+      Logo isto implica que
+      \begin{equation}\label{eq:2-7}
+        \int f(1-g)\,d\lambda=\int fg\,d\mu.
+      \end{equation}
+    \item Note que
+      \begin{align*}
+        \int |\chi_{\{g<0\}}|^{2}\,d(\mu+\lambda)=(\mu+\lambda)(\{g<0\})\leq (\mu+\lambda)(X)<+\infty.
+      \end{align*}
+      Logo, temos que $\chi_{\{g<0\}}\in L^{2}(\mu+\lambda)$, pelo que usando a equação \eqref{eq:1-7} temos que
+      \begin{align*}
+        \lambda(\{g<0\})=\int \chi_{\{g<0\}}\,d\lambda= \int_{\{g<0\}}g\,d(\mu+\lambda).
+      \end{align*}
+      Logo, note que como $g<0$ para todo $x\in\{g<0\}$, então temos que
+      \begin{align*}
+        0\leq \lambda(\{g<0\})\leq \int_{\{g<0\}}g\,d(\mu+\lambda)\leq 0.
+      \end{align*}
+      Pelo que podemos garantir que $\lambda(\{g<0\})=0$.\\
+      Similarmente, note que
+       \begin{align*}
+        \int |\chi_{\{g>1\}}|^{2}\,d(\mu+\lambda)=(\mu+\lambda)(\{g>1\})\leq (\mu+\lambda)(X)<+\infty.
+      \end{align*}
+      Logo, temos que $\chi_{\{g>1\}}\in L^{2}(\mu+\lambda)$, pelo que usando a equação \eqref{eq:2-7} temos que
+      \begin{align*}
+        \int_{\{g>1\}}1-g\,d\lambda=\int_{\{g>1\}} g\,d\mu.
+      \end{align*}
+      Mas note que $1-g\leq 0$ para todo $x\in \{g>1\}$, pelo que temos que
+      \begin{align*}
+        0\leq \int_{\{g>1\}}g\,d\mu=\int_{\{g>1\}}1-g\,d\lambda\leq 0.
+      \end{align*}
+      Logo temos que $1-g=0$ $\lambda$-q.t.p para todo $x\in\{g>1\}$, mas como istas dois condições são mutuamente excluyentes, temos que $\lambda(\{g>1\})=0$.\\
+      Assim, concluimos que $0\leq g\leq 1$ $\lambda$-q.t.p em todo o $X$.
+    \item Agora, dado $A\in\cali{A}$ definamos $f_n$ dada por
+      \begin{align*}
+        f_n=\chi_{B_n\cap A}\frac{1}{(1-g)},\quad\text{onde }B_n=\left\{ 0\leq g\leq 1-\frac{1}{n} \right\}.
+      \end{align*}
+      Note que se $x\in B_n$, temos que $1\geq 1-g(x)\geq \frac{1}{n}$, pelo que podemos afirmar que $\frac{1}{(1-g(x))^{2}}\leq n^{2}$, logo temos que
+      \begin{align*}
+        \int |f_n|^{2}\,d(\mu+\lambda)=\int_{B_n\cap A}\frac{1}{(1-g)^{2}}\,d(\mu+\lambda)\leq \int n^{2}\,d(\mu+\lambda)\leq (\mu+\lambda)(B_n\cap A)n^{2}<+\infty.
+      \end{align*}
+      Pelo que podemos afirmar que $f_n\in L^{2}(\mu+\lambda)$ para todo $n\in\mathbb{Z}^{+}$.\\
+      Assim, usando \eqref{eq:2-7} temos que
+      \begin{align*}
+        \lambda(B_n\cap A)=\int \chi_{B_n\cap A}\,d\lambda=\int \chi_{B_n\cap A}\frac{(1-g)}{(1-g)}\,d\lambda=\int f_n(1-g)\,d\lambda=&\int f_ng\,d\mu\\
+        =&\int_{B_n\cap A}\frac{g}{1-g}\,d\mu.
+      \end{align*}
+      Em particular temos que se $n=1$, então $B_1=\{g=0\}$, logo
+      \begin{align*}
+        \lambda(\{g=0\})=\int_{\{g=0\}}\frac{g}{1-g}\,d\mu=0.
+      \end{align*}
+      E, usando que $\chi_{\{g=1\}}\in L^{2}(\mu+\lambda)$ (pois $\mu+\lambda$ é finita), temos que pela equação \eqref{eq:2-7} se cumpre que
+      \begin{align*}
+        \mu(\{g=1\})=\int_{\{g=1\}}g\,d\mu=\int_{\{g=1\}}1-g\,d\lambda =0.
+      \end{align*}
+      Pelo que temos que $\mu(\{g=1\})=0$, logo como $\lambda<<\mu$, temos que $\lambda(\{g=1\})=0$.\\
+      Assim, sem perdida de generalidade, podemos supor que $X=\{0<g<1\}$. Logo, note que como $B_n\subseteq B_{n+1}$ para todo $n\in\mathbb{Z}^{+}$ e a sequência de funções $\{\chi_{B_n\cap A}\frac{g}{1-g}\}_{n\in\mathbb{Z}^{+}}$ é monótona crescente, temos que pela continuidade da medida $\lambda$ e pelo Teorema da convergência Monótona se cumpre que
+      \begin{align*}
+        \lambda(A)=\lambda(X\cap A)=\lim_{n \to \infty}\lambda(B_n\cap A)=\lim_{n \to \infty}\int_{B_n\cap A}\frac{g}{1-g}\,d\mu=\int_{A}\frac{g}{1-g}\,d\mu.
+      \end{align*}
+      Logo podemos denotar $\frac{g}{1-g}=\frac{d\lambda}{d\mu}$.\\
+      Para garantir a unicidade, note que como $\lambda(X)<+\infty$, temos que $\frac{g}{1-g}\in L^{1}(\mu)$, pelo que se nos supor que existe $h\in L^{1}(\mu)$ tal que $\lambda(A)=\int_{A}h\,d\mu$ para todo $A\in\cali{A}$, temos que 
+      \begin{align*}
+        \int_{X}\frac{g}{1-g}\,d\mu=\int_{X}h\,d\mu.
+      \end{align*}
+      Pelo que temos que $h=\frac{g}{1-g}$ $\mu$-q.t.p.\\ 
+      Assim, podemos concluir o Teorema de Radon-Nikodym neste caso.
+ \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}
