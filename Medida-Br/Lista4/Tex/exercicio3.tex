@@ -1,11 +1,11 @@
 \begin{homeworkProblem}[3]
   \begin{enumerate}[a)]
     \item Se $\lambda,\lambda_1,\lambda_2,\mu,\nu$ são medidas $\sigma$-finitas em $(X,\cali{A})$, mostre que
-      \begin{enumerate}
-        \item Se $\nu<<\lambda$ e $\lambda<<\mu$, então $\frac{d\nu}{d\mu}=\frac{d\nu}{\lambda}\cdot\frac{d\lambda}{d\mu}$.
+      \begin{enumerate}[1)]
+        \item Se $\nu<<\lambda$ e $\lambda<<\mu$, então $\frac{d\nu}{d\mu}=\frac{d\nu}{d\lambda}\cdot\frac{d\lambda}{d\mu}$.
         \item Se $\lambda_1,\lambda_2<<\mu$, então $\frac{d(\lambda_1+\lambda_2)}{d\mu}=\frac{d\lambda_1}{d\mu}+\frac{d\lambda_2}{d\mu}$. 
       \end{enumerate}
-    \item Definindo a variação total $|\lambda|$ de uma medida complexa $\lambda$ por $d|\lambda|=|f|d\mu$ (relação $d\lambda=fd\mu$ sempre que $\mu$ é positiva). Mostre que $|\lambda|$ está bem definida e valem as propriedadesdo item $a)$ também para medidas complexas absolutamente contínuascom respeito a uma medida positiva. 
+    \item Definindo a variação total $|\lambda|$ de uma medida complexa $\lambda$ por $d|\lambda|=|f|d\mu$ (relação $d\lambda=fd\mu$ sempre que $\mu$ é positiva). Mostre que $|\lambda|$ está bem definida e valem as propriedadesdo item $a)$ também para medidas complexas absolutamente contínuas com respeito a uma medida positiva. 
   \end{enumerate}
   \begin{solution}
   \begin{enumerate}[a)]
@@ -33,9 +33,9 @@
           \frac{d\nu}{d\mu}=h=fg=\frac{d\nu}{d\lambda}\cdot\frac{d\lambda}{d\mu}.
         \end{align*}
       \item Note que como $\lambda_1,\lambda_2<<\mu$ usando o Teorema de Radon-Nidokym temos que existem $f_1,f_2\in M^{+}(X,\cali{A})$ taes que
-        \begin{equation}
+        \begin{align*}
           \lambda_1(A)=\int_{A}f_1\,d\mu,\quad \lambda_2(A)=\int_{A}f_2\,d\mu,\quad\text{ para todo }A\in\cali{A}.
-        \end{equation}
+        \end{align*}
         Além disso, temos que $\lambda_1+\lambda_2<<\mu$, pelo que pelo Teorema de Radon-Nikodym temos que existe $h\in M^{+}(X,\cali{A})$ tal que
         \begin{align*}
           (\lambda_1+\lambda_2)(A)=\int_{A}h\,d\mu,\quad\text{ para todo }A\in\cali{A}.
@@ -49,7 +49,33 @@
           \frac{d(\lambda_1+\lambda_2)}{d\mu}=h=f_1+f_2=\frac{d\lambda_1}{d\mu}+\frac{d\lambda_2}{d\mu}.
         \end{align*}
     \end{enumerate}
-    \item 
-  \end{enumerate} 
+    \item Sejam $\mu,\nu$ medidas positivas tais que $\lambda<<\mu$ e $\lambda<<\nu$. Logo, pelo Teorema de Radon-Nikodym (e como $\lambda$ é complexa) temos que existem $f\in L^{1}(\mu)$ e $g\in L^{1}(\nu)$ que satisfazen
+      \begin{align*}
+        \lambda(A)=\int_{A}f\,d\mu,\quad\lambda(A)=\int_{A}g\,d\nu,\quad\text{para todo }A\in\cali{A}.\\
+      \end{align*}
+      Logo definamos $|\lambda|$ e $\overline{|\lambda|}$ dadas por 
+       \begin{align*}
+        |\lambda|(A)=\int_{A}|f|\,d\mu,\quad\overline{|\lambda|}(A)=\int_{A}|g|\,d\nu,\quad\text{para todo }A\in\cali{A}.\\
+      \end{align*}
+      Vamos ver que $|\lambda|=\overline{|\lambda|}$.\\
+      Definimos $\rho=\mu+\nu$. Note que $\mu<<\rho$ e $\nu<<\rho$, pelo que usando o Teorema de Radon-Nikodym, temos que existem $h_1,h_2\in M^{+}(X,\cali{A})$ tais que $d\mu=h_1\,d\rho$ e $d\nu=h_2\,d\rho$. Logo temos que usando a regra da cadeia mostrada no item $a)$ obtemos que 
+      \begin{align*}
+        \lambda(A)=\int_{A}f\,d\mu=\int_{A}fh_1\,d\rho.
+      \end{align*}
+      Similarmente
+      \begin{align*}
+        \lambda(A)=\int_{A}g\,d\nu=\int_{A}gh_2\,d\rho.
+      \end{align*}
+      Assim, pela unicidade da derivada de Radon-Nikodym, temos que $fh_1=gh_2$ $\rho$-q.t.p., o que implica que $|f|h_1=|g|h_2$ $\rho$-q.t.p.\\
+      Segue-se que usando a regra da cadeia se cumpre que
+      \begin{align*}
+        |\lambda|(A)=\int_{A}|f|\,d\mu=\int_{A}|f|h_1\,d\rho=\int_{A}|g|h_2\,d\rho=\int_{A}|g|\,d\nu=\overline{|\lambda|}(A).        
+      \end{align*}
+      Pelo que podemos garantir que $|\lambda|=\overline{|\lambda|}$, i.e., $|\lambda|$ está bem definida.\\
+      Agora, observe que se $\lambda_1$ e $\lambda_2$ são medidas complexas e $\mu$ é uma medida positiva tal que $\lambda_1<<\mu$ e $\lambda_2<<\mu$, temos que seguindo o mesmo razonamento do item $a)$ podemos verificar que
+      \begin{align*}
+        \frac{d(\lambda_1+\lambda_2)}{d\mu}=\frac{d\lambda_1}{d\mu}+\frac{d\lambda_2}{d\mu}.
+      \end{align*}
+\end{enumerate} 
   \end{solution}
 \end{homeworkProblem}

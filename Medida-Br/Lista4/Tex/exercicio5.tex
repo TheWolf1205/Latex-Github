@@ -1,6 +1,36 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[5]
+  Dado $1\leq p<+\infty$, $q$ o expoente conjugado de $p$ e $\phi$ um funcional linear limitado positivo em $L^{p}(X,\cali{A},\mu;\mathbb{R})$, assumindo $\mu$ $\sigma$-finita, mostre que se $\phi(f)=\int gf\,d\mu$ para toda $f\in L^{p}$, então $g\in L^{q}$ e $\norm{g}_q=\norm{\phi}$. 
   \begin{solution}
-    XXX  
+    Note que como $1\leq p<+\infty$, $q$ é o expoente conjugado e $\mu$ é $\sigma$-finita, temos que pelo teorema de representação de Riesz existe uma única $g\in L^{q}$ tal que
+    \begin{align*}
+      \phi(f)=\int fg\,d\mu,\quad\text{para toda }f\in L^{p}.
+    \end{align*}
+    Agora, note que usando a desigualdade de Hölder temos que
+    \begin{align*}
+      \norm{\phi}=\sup_{\norm{f}=1}\left| \int fg\,d\mu \right|\leq \sup_{\norm{f}=1}\int \left| f \right|\left| g \right|\,d\mu\leq \sup_{\norm{f}=1}\norm{f}_p\norm{g}_q\leq \norm{g}_q.
+    \end{align*}
+    Agora, note que
+    \begin{align*}
+      \norm{|g|^{q-1}\sgn(g)}_{p}^{p}=\int_{\mathbb{C}}\left| |g|^{q-1}\chi_{\mathbb{C}\setminus\{g=0\}}\frac{g(z)}{|g(z)|} \right|^{\frac{q}{q-1}}\,d\mu=& \int_{\mathbb{C}}|g|^{q}\chi_{\mathbb{C}\setminus\{g=0\}}\left( \frac{|g(z)|}{|g(z)|} \right)^{\frac{q}{q-1}}\,d\mu\\
+      =& \int_{\mathbb{C}}|g|^{q}\,d\mu\\
+      =& \norm{g}_{q}^{q}.
+    \end{align*}
+    Logo, temos que $\norm{\left| g \right|\sgn(g)}_{p}=\norm{g}_{q}^{q-1}$. Assim, pegando $g_0$ dada por
+    \begin{align*}
+      g_0(z)=\frac{|g(z)|^{q-1}}{\norm{g}_{q}^{q-1}}\sgn(g).
+    \end{align*}
+    Temos que
+    \begin{align*}
+      \norm{g_0}_p=\frac{\norm{g}_{q-1}^{q}}{\norm{g}_{q-1}^{q}}=1.
+    \end{align*}
+    Além disso, note que
+    \begin{align*}
+      \int_{\mathbb{C}}g_0g\,d\mu=\frac{1}{\norm{g}_{q}^{q-1}}\int_{\mathbb{C}}\left| g \right|^{q-1}\sgn(g)g\,d\mu= \frac{\norm{g}_{q}^{q}}{\norm{g}_{q}^{q-1}}=\norm{g}_{q}.
+    \end{align*}
+    Logo temos que
+    \begin{align*}
+      \norm{g}_q\leq \norm{\phi}\leq \norm{g}_q.
+    \end{align*}
+    Pelo que podemos garantir que $\norm{g}_q=\norm{\phi}$.
   \end{solution}
 \end{homeworkProblem}
