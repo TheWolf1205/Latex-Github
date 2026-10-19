@@ -72,10 +72,48 @@
         |\lambda|(A)=\int_{A}|f|\,d\mu=\int_{A}|f|h_1\,d\rho=\int_{A}|g|h_2\,d\rho=\int_{A}|g|\,d\nu=\overline{|\lambda|}(A).        
       \end{align*}
       Pelo que podemos garantir que $|\lambda|=\overline{|\lambda|}$, i.e., $|\lambda|$ está bem definida.\\
-      Agora, observe que se $\lambda_1$ e $\lambda_2$ são medidas complexas e $\mu$ é uma medida positiva tal que $\lambda_1<<\mu$ e $\lambda_2<<\mu$, temos que seguindo o mesmo razonamento do item $a)$ podemos verificar que
+      Agora, observe que se $\lambda_1$ e $\lambda_2$ são medidas complexas, temos que se $\lambda_1<< |\lambda_2|$, então existe $f\in L^{1}(\left| \lambda_2 \right|)$ tal que $d\lambda_1=f\,d|\lambda_2|$. Mas, por outro lado temos que $\lambda_2<<|\lambda_2|$, pelo que temos que existe $g\in L^{1}(|\lambda_2|)$ tal que $\lambda_2=g\,d|\lambda_2|$.\\
+      Note que como $\lambda_1<<\left| \lambda_2 \right|$, então temos que $f(x)=0$ $\left| \lambda_2 \right|$-q.t.p com $x\in\left\{ g=0 \right\}$. Portanto, vamos definir
+      \begin{align*}
+        h=\begin{cases}
+          \frac{f}{g}, &\text{ se } g\neq 0 \text{,} \\
+          0, &\text{ se } g=0.
+        \end{cases}
+      \end{align*}
+      Agora, note que usando a regra da cadeia em $d\lambda_1=g\,d\left| \lambda_2 \right|$ (o argumento aqui e similar para medidas $\sigma$-finitas, pois $\left| \lambda_2 \right|$ é positiva finita e $g\in L^{1}(\left| \lambda_2 \right|)$), temos que
+      \begin{align*}
+        \int_{A}h\,d\lambda_1=\int_{A}hg\,d\left| \lambda_2 \right|=\int_{A}f\,d\left| \lambda_2 \right|=\lambda_2(A).
+      \end{align*}
+      Pelo que nos vamos definir $\lambda_1<<\lambda_2$ se $\lambda_1<<\left| \lambda_2 \right|$ e a sua derivada de Radon-Nikodym é
+      \begin{align*}
+        \frac{d\lambda_1}{d\lambda_2}=\frac{\frac{d\lambda_1}{d\left| \lambda_2 \right|}}{\frac{d\lambda_2}{d\left| \lambda_2 \right|}},\quad\lambda_2-q.t.p.
+      \end{align*}
+      Assim, supondo $\nu,\lambda$ e $\mu$ medidas complexas tais que $\nu<<\lambda$ e $\lambda<<\mu$, temos que existem funções que cumpren
+      \begin{itemize}
+        \item $d\nu=f_1\,d\left| \mu \right|$.\\
+        \item $d\mu=g_1\,d\left| \mu \right|$.\\
+        \item $d\nu=f_2\,d\left| \lambda \right|$.\\
+        \item $d\lambda=g_2\,d\left| \lambda \right|$.\\
+        \item $d\lambda=f_3\,d\left| \mu \right|$.
+      \end{itemize}
+      Logo, usando a regra da cadeia do item $a)$ podemos garantir que
+      \begin{align*}
+        \nu(A)=\int_{A}\frac{f_1}{g_1}\,d\mu=\int_{A}f_1\,d\left| \mu \right|=\int_{A}\frac{f_1}{f_3}\,d\lambda=\int_{A}\frac{f_1}{f_3}\cdot g_2\,d\left| \lambda \right|=\int_{A}\frac{f_1}{f_3}\cdot\frac{g_2}{f_2}\,d\nu.
+      \end{align*}
+      Logo temos que $\frac{f_1}{f_3}\cdot\frac{g_2}{f_2}=1$ $\nu$-q.t.p. pelo que podemos afirmar que $\frac{f_2}{g_2}\cdot\frac{f_3}{f_1}=1$ $\nu$-q.t.p. Assim
+      \begin{align*}
+        \nu(A)=\int_{A}\frac{f_2}{g_2}\cdot\frac{f_3}{f_1}\,d\nu=\int_{A}\frac{f_2}{g_2}\cdot f_3\,d\left| \mu \right|=\int_{A}\frac{f_2}{g_2}\cdot\frac{f_3}{g_1}\,d\mu.
+      \end{align*}
+      Logo, temos que
+      \begin{align*}
+        \frac{d\nu}{d\mu}=\frac{f_1}{g_1}=\frac{f_2}{g_2}\cdot\frac{f_3}{g_1}=\frac{d\nu}{d\lambda}\cdot\frac{d\lambda}{d\mu}.
+      \end{align*}
+      Pelo que temos que a regra da cadeia também é válida para medidas complexas.\\
+      Usando a definição e o mesmo argumento que usamos para o item $a)$ podemos afirmar que se $\lambda_1,\lambda_2<<\mu$ (complexas), então
       \begin{align*}
         \frac{d(\lambda_1+\lambda_2)}{d\mu}=\frac{d\lambda_1}{d\mu}+\frac{d\lambda_2}{d\mu}.
       \end{align*}
-\end{enumerate} 
+      O que nos permite concluir o exercício.
+  \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}
