@@ -1,0 +1,16 @@
+\begin{homeworkProblem}[1-8]
+  Sejam $f:\mathbb{R}\to\mathbb{R}$ um campo e $x:I\to\mathbb{R}$ uma solução máxima regular de $x^{\prime} = f(x)$ cuja imagem, $x(I)$, é limitada. Mostre que
+  \begin{enumerate}
+    \item $x$ é estritamente monótona;
+    \item $I = \mathbb{R}$ e $x(I)$ é um intervalo aberto limitado $(a,b)$;
+    \item as extremidades $a$ e $b$ do intervalo são singularidades de $f$, ou seja, $f(a) = f(b) = 0$.
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}
+    \item Note que como $x$ é uma solução regular, temos que $x$ não é constante, logo raciocinando pela contradição, se existem $t_1,t_2\in I$ tais que $x^{\prime}(t_1)>0$ e $x^{\prime}(t_2)<0$. Logo, pela continuidade de $x^{\prime}$, temos que existe $t\in (t_1,t_2)$ tal que $x^{\prime}(t)=0$, logo isto implica que $f(x(t))=0$, o que como vimos no exercício $1-6$, implica que $x$ é constante, o que é uma contradição. Assim, podemos assumir que $x^{\prime}(t)>0$ ou $x^{\prime}(t)<0$ para todo $t\in I$, isto é, que $x$ é estritamente monótona.
+    \item Sem perdida de generalidade, suponha $x$ estritamente crescente.\\
+      Raciocinando pela contradição, suponha que $I=(a,b)$
+    \item Como vimos no exercício $1-7$, como $I=\mathbb{R}$, temos que como $f(b)=\lim f(x(t))$, então $f(b)=0$. Similarmente se cumpre que $f(a)=0$.
+  \end{enumerate} 
+  \end{solution}
+\end{homeworkProblem}

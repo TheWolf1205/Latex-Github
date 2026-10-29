@@ -1,0 +1,104 @@
+\begin{homeworkProblem}[1-23]
+  Verifique quais dos sistemas lineares $x^{\prime}=Ax$, possuem uma integral primeira, no caso em que $A\in M(2)$ está na forma de Jordan. 
+  \begin{solution}
+  \begin{itemize}
+    \item Para o caso
+      \begin{equation}\label{eq:1-23-caso1}
+        \begin{pmatrix}
+          x^{\prime} \\
+          y^{\prime}
+        \end{pmatrix}=\begin{pmatrix}
+          \lambda_1 & 0 \\
+          0 & \lambda_2
+        \end{pmatrix}\begin{pmatrix}
+          x \\
+          y
+        \end{pmatrix}.
+      \end{equation}
+      Considere o seguinte método.\\
+      Note que pela regra da cadeia temos que
+      \begin{align*}
+        \frac{dy}{dx}=\frac{y^{\prime}}{x^{\prime}}=\frac{\lambda_2y}{\lambda_1x}.
+      \end{align*}
+      Equação com solução
+      \begin{align*}
+        \lambda_1\ln(|y|)-\lambda_2\ln(|x|)=c.
+      \end{align*}
+      Assim, defina
+      \begin{align*}
+        H(x,y)=\lambda_1\ln(|y|)-\lambda_2\ln(|x|).
+      \end{align*}
+      Logo temos que se $(x,y)$ é solução de \eqref{eq:1-23-caso1}, então
+      \begin{align*}
+        H(x,y)=\lambda_1\ln(|y|)-\lambda_2\ln(|x|)=0.
+      \end{align*}
+      Isto é que $H$ é integral primeira de $A$.
+    \item Para o caso
+      \begin{equation}\label{eq:1-23-caso2}
+        \begin{pmatrix}
+          x^{\prime} \\
+          y^{\prime}
+        \end{pmatrix}=\begin{pmatrix}
+          \lambda & 0 \\
+          1 & \lambda
+        \end{pmatrix}\begin{pmatrix}
+          x \\
+          y
+        \end{pmatrix}.
+      \end{equation}
+      Considere o seguinte método.\\
+      Note que pela regra da cadeia temos que
+      \begin{align*}
+        \frac{dy}{dx}=\frac{y^{\prime}}{x^{\prime}}=\frac{x+\lambda y}{\lambda x}.
+      \end{align*}
+      Logo, usando o fator integrante $e^{\int-\frac{1}{x}\,dx}=\frac{1}{x}$, podemos garantir que a sua solução é
+      \begin{align*}
+        \frac{y}{x}-\frac{\ln(|x|)}{\lambda}=c.
+      \end{align*}
+      Assim, defina
+      \begin{align*}
+        H(x,y)=\frac{y}{x}-\frac{\ln(|x|)}{\lambda}.
+      \end{align*}
+      Logo temos que se $(x,y)$ é solução de \eqref{eq:1-23-caso2}, então
+      \begin{align*}
+        H(x,y)=\frac{y}{x}-\frac{\ln(|x|)}{\lambda}=0.
+      \end{align*}
+      Isto é que $H$ é integral primeira de $A$.
+    \item Para o caso
+      \begin{equation}\label{eq:1-23-caso3}
+        \begin{pmatrix}
+          x^{\prime} \\
+          y^{\prime}
+        \end{pmatrix}=\begin{pmatrix}
+          \Re \lambda & \Im \lambda \\
+          -\Im \lambda & \Re \lambda
+        \end{pmatrix}\begin{pmatrix}
+          x \\
+          y
+        \end{pmatrix}.
+      \end{equation}
+      Considere o seguinte método.\\
+      Note que levando a coordenadas polares, temos que
+      \begin{align*}
+        r^{\prime}=\Re\lambda r,\quad \theta^{\prime}=-\Im\lambda.
+      \end{align*}
+      Note que pela regra da cadeia temos que
+      \begin{align*}
+        \frac{dr}{d\theta}=\frac{r^{\prime}}{\theta^{\prime}}=-\frac{\Re\lambda r}{\Im\lambda}.
+      \end{align*}
+      Equação com solução
+      \begin{align*}
+        \ln(|r|)+\frac{\Re\lambda}{\Im\lambda}\theta=c.
+      \end{align*}
+      Assim, defina
+      \begin{align*}
+        H(x,y)=\frac{\ln(x^{2}+y^{2})}{2}+\frac{\Re\lambda}{\Im\lambda}\arctan\left( \frac{y}{x} \right).
+      \end{align*}
+      Logo temos que se $(x,y)$ é solução de \eqref{eq:1-23-caso3}, então
+      \begin{align*}
+        H(x,y)=\frac{\ln(x^{2}+y^{2})}{2}+\frac{\Re\lambda}{\Im\lambda}\arctan\left( \frac{y}{x} \right)=0.
+      \end{align*}
+      Isto é que $H$ é integral primeira de $A$.
+  \end{itemize}
+  \end{solution}
+\end{homeworkProblem}

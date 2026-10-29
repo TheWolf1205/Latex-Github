@@ -1,0 +1,10 @@
+\begin{homeworkProblem}[1-11]
+  Seja $x : I_{x_0} \to \mathbb{R}^n$ a solução máxima de $x^{\prime} = f(x)$ e $x(0) = x_0$. Mostre que existem $t_1,t_2 \in I_{x_0}$, $t_1 \neq t_2$, tais que $x(t_1) = x(t_2)$ se e somente se existe $s>0$ tal que $s\in I_{x_0}$ e $x(s)=x_0$.\\
+  Mostre que, nesse caso, $I_{x_0}=\mathbb{R}$ e existe $\tau>0$ tal que $x(t+\tau)=x(t)$ para todo $t\in\mathbb{R}$.
+  \begin{solution}
+    Sem perdida de generalidade, suponha que $t_1<t_2$.\\
+    Seja $y(t)=x(t+t_1)$ e $w(t)=x(t+t_2)$, logo temos que $y$ é solução de $x^{\prime}=f(x)$ com dado inicial $y(0)=x(t_1)$ e $w$ é solução ao mesmo problema com dado inicial $w(0)=x(t_2)$. Similarmente, usando que $x(t_1)=x(t_2)$, temos que $y$ também é solução de $x^{\prime}=f(x)$ com dado inicial $y(0)=x(t_2)$. Logo pelo teorema de existência e unicidade, temos que $y(t)=w(t)$. Em particular, temos que definindo $s=-t_1+t_2>0$ se cumpre que $x(s)=x(-t_1+t_2)=w(-t_1)=y(-t_1)=x(-t_1+t_1)=x(0)=x_0$.\\
+    A implicação contrária segue a mesma ideá.\\
+    Do anterior, temos que como $x(t+t_1)=y(t)=w(t)=x(t+t_2)$, então temos que $x(t)=x(t+(-t_1+t_2))$ estende a solução para todo $t\in \mathbb{R}$. Além disso, definindo $\tau=-t_1+t_2$, temos que $\tau>0$ e que $x(t)=x(t+\tau)$ para todo $t\in\mathbb{R}$. 
+  \end{solution}
+\end{homeworkProblem}

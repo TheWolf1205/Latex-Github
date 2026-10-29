@@ -1,0 +1,48 @@
+\begin{homeworkProblem}[1-20]
+  Considere o sistema $(x_1^{\prime},x_2^{\prime})=\bigl(x_2\xi(x_1,x_2),-x_1\xi(x_1,x_2)\bigr)$, onde $\xi:\mathbb{R}^2\to\mathbb{R}$ é de classe $C^1$.
+  \begin{enumerate}
+    \item Prove que toda órbita desse sistema está contida em uma
+    circunferência com centro na origem ou é a origem do plano.
+    \item Esboce o retrato de fase dos sistemas da forma acima, definidos por
+    \begin{enumerate}
+      \item $\xi(x_1,x_2)=(x_1^2+x_2^2-1)(x_2-x_1^2-2)$.
+      \item $\xi(x_1,x_2)=(1-x_1^2-x_2^2)(x_1^2+x_2+2)$.
+    \end{enumerate}
+  \end{enumerate}
+  \begin{solution}
+  \begin{enumerate}
+    \item Seja $x_1(t)$ solução de $x^{\prime}_1=x_2\xi(x_1,x_2)$ e $x_2(t)$ solução de $x^{\prime}_2=-x_1\xi(x_1,x_2)$.\\
+      Note que
+      \begin{align*}
+        \frac{d}{dt}(x_1^2+x_2^2)=2x_1x_2\xi(x_1,x_2)+2x_2\left( -x_1\xi(x_1,x_2) \right)=2x_1x_2\xi(x_1,x_2)-2x_1x_2\xi(x_1,x_2)=0.
+      \end{align*}
+      Pelo que temos que
+      \begin{align*}
+        x_1^{2}(t)+x_2^2(t)=x_1^{2}(0)+x_2^2(0),\quad\text{para todo }t.
+      \end{align*}
+      Assim, toda órbita com condição inicial $X_0=(x_1(0),x_2(0))$ cumpre que
+      \begin{align*}
+        x_1^2+x_2^{2}=\norm{X_0}^{2}.
+      \end{align*}
+      Logo se $\norm{X_0}>0$ temos que é uma circunferência e se $\norm{X_0}=0$, temos que é a origem do plano.
+    \item Note que o problema é
+      \begin{align*}
+        \begin{pmatrix}
+          x_1 \\
+          x_2
+        \end{pmatrix}^{\prime}=\xi(x_1,x_2)\begin{pmatrix}
+          x_2 \\
+          -x_1
+        \end{pmatrix}.
+      \end{align*}
+      Logo como o vetor $(x_2,-x_1)$ é tangente a circunferência $x_1^2+x_2^2=r^2$, temos que $\xi$ só determina a velocidade e o sentido de movimento da órbita.\\
+      Em particular
+      \begin{itemize}
+        \item Se $\xi>0$, temos que mantém o sentido de $(x_2,-x_1)$, isto é que é horário.
+        \item Se $\xi=0$, temos que $x^{\prime}=0$.
+        \item Se $\xi<0$, temos que o sentido é anti-horário.
+      \end{itemize}
+      Assim, o exercício se reduz a estudar o sinal de $\xi$.
+  \end{enumerate}
+  \end{solution}
+\end{homeworkProblem}

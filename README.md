@@ -28,6 +28,19 @@ Repositorio para subir trabajos o talleres de la U :p.
 </details>
 
 <details>
+<summary><strong> EDO </strong></summary>
+
+- Lista 3.
+  - [Exercícios](<./EDO/Lista3/Exercicios3.pdf>) 
+  - [Solução](<./EDO/Lista3/Tex/Lista 3 EDO.pdf>) 
+
+- Lista 4.
+  - [Exercícios](<./EDO/Lista4/Exercicios4.pdf>) 
+  - [Solução](<./EDO/Lista4/Tex/Lista 4 EDO.pdf>) 
+
+</details>
+
+<details>
 <summary><strong>Análise no Rn</strong></summary>
 
 - [Anotaçoes do aula](<./Analise-no-Rn/anotacoes-do-aula/Tex/main.pdf>)

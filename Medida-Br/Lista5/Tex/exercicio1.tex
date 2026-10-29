@@ -1,0 +1,30 @@
+\begin{homeworkProblem}[1]
+  Mostre que se $\lambda$ é carga em $(X,\cali{A})$, então
+  \begin{align*}
+    |\lambda|(A)=\sup\left\{ \sum_{n=1}^{\infty}|\lambda(A_n)|:A_n\in\cali{A},\text{ para todo }n\in\mathbb{Z}^{+},\,\bigcup_{n=1}^{\infty}A_n=A \right\}.
+  \end{align*}
+  \begin{solution}
+    Seja $\mu$ dada por
+    \begin{align*}
+      \mu(A)=\sup\left\{ \sum_{n=1}^{\infty}|\lambda(A_n)|:A_n\in\cali{A},\text{ para todo }n\in\mathbb{Z}^{+},\,\bigcup_{n=1}^{\infty}A_n=A \right\}.
+    \end{align*}
+    Note que pelo exercício $7$ da lista $1$, temos que $\mu$ é medida positiva.\\
+    Suponha $(P,N)$ decomposição de Hahn para $\lambda$ e $\{A_n\}_{n\in\mathbb{Z}^{+}}$ tal que $\bigcup_{n\in\mathbb{Z}^{+}}A_n=A$. Logo
+    \begin{align*}
+      \sum_{n=1}^{\infty}|\lambda(A_n)|=\sum_{n=1}^{\infty}|\lambda^{+}(A_n)-\lambda^{-}(A_n)|\leq \sum_{n=1}^{\infty}\lambda^{+}(A_n)+\lambda^{-}(A_n)\leq \sum_{n=1}^{\infty}|\lambda|(A_n)\leq|\lambda|(A).
+    \end{align*}
+    Pelo que tomando $\sup$ temos que
+    \begin{align*}
+      \mu(A)\leq |\lambda|(A),
+    \end{align*}
+    para todo $A\in\cali{A}$.\\
+    Agora, note que $A=(A\cap P)\cup(A\cap N)$, pelo que temos que
+    \begin{align*}
+      \mu(A)\geq |\lambda(A\cap P)|+|\lambda(A\cap N)|\geq \lambda(P\cap A)+\left( -\lambda(A\cap N)\right)\geq \lambda^{+}(A)+\lambda^{-}(A)\geq |\lambda|(A).
+    \end{align*}
+    Portanto, usando as dois desigualdades anteriores, temos que
+    \begin{align*}
+      |\lambda|(A)=\sup\left\{ \sum_{n=1}^{\infty}|\lambda(A_n)|:A_n\in\cali{A},\text{ para todo }n\in\mathbb{Z}^{+},\,\bigcup_{n=1}^{\infty}A_n=A \right\}.
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}

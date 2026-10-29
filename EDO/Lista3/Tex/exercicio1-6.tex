@@ -1,0 +1,24 @@
+\begin{homeworkProblem}[1-6]
+  Seja $x : I \to \mathbb{R}^n$ uma solução de $x^{\prime}= f(x)$  com $0 \in I$. Mostre que as afirmações seguintes são equivalentes:
+  \begin{enumerate}
+    \item $x$ é constante.
+    \item $x^{\prime}(t) = 0$ para todo $t \in I$.
+    \item $x^{\prime}(0) = 0$.
+    \item $f(x(0)) = 0$.
+  \end{enumerate}
+  Mostre ainda que se ocorrer uma dessas afirmações então $I=\mathbb{R}$.
+  \begin{solution}
+    É claro que se $x$ é constante, então $x^{\prime}(t)=0$ para todo $t\in I$.\\
+    É claro que se $x^{\prime}(t)=0$ para todo $t\in I$, então $x^{\prime}(0)=0$.\\
+    Note que se $x^{\prime}(0)=0$, usando que $x$ é uma solução de $x^{\prime}=f(x)$, temos que
+    \begin{align*}
+      f(x(0))=x^{\prime}(0)=0.
+    \end{align*}
+    Por último, note que $y(t)=x(0)$ para todo $t\in I$, temos que
+    \begin{align*}
+      y^{\prime}(t)=0=f(x(0))=f(y(t)).
+    \end{align*}
+    Pelo que temos que $y$ é solução de $x^{\prime}=f(x)$. Logo pela unicidade da solução, podemos garantir que $x$ é constante.\\
+    Além disso, como $y(t)=x(0)$ para todo $t\in\mathbb{R}$, temos que $I=\mathbb{R}$.
+  \end{solution}
+\end{homeworkProblem}

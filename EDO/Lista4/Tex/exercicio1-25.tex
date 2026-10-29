@@ -1,0 +1,28 @@
+\begin{homeworkProblem}[1-25]
+  Calcule a energia total do sistema mecânico determinado pela força $F(x)=-x^3$ em $\mathbb{R}$. Encontre o campo vetorial $f$ que define esse sistema mecânico como um sistema de primeira ordem. Esboce o retrato de fase, usando a energia total.
+  \begin{solution}
+    Note que em geral temos que pela segunda lei de Newton $mx^{\prime\prime}=F(x)$, vamos considerar $m=1$.\\
+    Considere o problema
+    \begin{align*}
+      \begin{cases}
+        x^{\prime}=y \text{,} \\
+        y^{\prime}=-x^3.
+      \end{cases}
+    \end{align*}
+    Sendo assim, temos que se $(x,y)$ é solução do anterior problema, então $E(x,y)=\frac{1}{2}y^2+V(x)$, onde temos que $F(x)=-V^{\prime}(x)$, o que implica que $V(x)=\frac{x^4}{4}+c$, logo considerando $c=0$ temos que
+    \begin{equation}\label{eq:1-25}
+      E(x,y)=\frac{1}{2}y^2+\frac{1}{4}x^{4}.
+    \end{equation}
+    Note que
+    \begin{align*}
+      \frac{d}{dt}E(x,y)=\nabla E\cdot (x^{\prime},y^{\prime})=x^{3}x^{\prime}+yy^{\prime}=x^3x^{\prime}+x^{\prime}(-x^3)=0.
+    \end{align*}
+    Pelo que temos que $E(x,y)=E(x_0,y_0)$ para todo $t$.\\
+    Assim temos que de \eqref{eq:1-25} se pode concluir que
+    \begin{itemize}
+      \item Se $E=0$, então $x(t)=0$ e $y(t)=0$ para todo $t$.
+      \item Se $E>0$, então as órbitas são elipses com centro na origem.
+      \item Se $E<0$, não existem $x$ e $y$.  
+    \end{itemize}
+  \end{solution}
+\end{homeworkProblem}

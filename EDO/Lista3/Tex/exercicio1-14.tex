@@ -1,0 +1,23 @@
+\begin{homeworkProblem}[1-14]
+  Mostre que uma conjugação topológica leva singularidades em singularidades e órbitas periódicas em órbitas periódicas, preservando o período.
+  \begin{solution}
+    Seja $x^{\prime}=f(x)$ e $y^{\prime}=g(y)$ dois sistemas autónomos e $h$ conjugação topológica.\\
+    Sejam $\phi$ e $\varphi$ seus respectivos sistemas dinâmicos. Temos que $h(\phi_t(x))=\varphi_t(h(x))$ para toda $x$ condição inicial.\\
+    Suponha que $x_0$ é singularidade de $f$, logo $f(x_0)=0$ e portanto temos que $\phi_t(x_0)=x_0$ para toda $t$, logo temos que $\varphi_t(h(x_0))=h(\phi_t(x_0))=h(x_0)$, para todo $t$, pelo que $h(x_0)$ é singularidade de $g$.\\
+    Para ver que ela preserva o período mínimo, vamos raciocinar pela contradição. Suponha que $T$ é o período mínimo de $x_0$ e $S$ o período mínimo de $h(x_0)$ com $S<T$.\\
+    Note que
+    \begin{align*}
+      \varphi_S(h(x_0))=\varphi_0(h(x_0))=h(x_0).
+    \end{align*}
+    Logo, temos que
+    \begin{align*}
+      h(\phi_S(x_0))=\varphi_S(h(x_0))=h(x_0).
+    \end{align*}
+    Mas como $h$ é um difeomorfismo, temos que $h$ é injetora, pelo que podemos garantir que
+    \begin{align*}
+      \phi_S(x_0)=x_0.
+    \end{align*}
+    O que contradiz a minimalidade de $T$.\\
+    Assim, temos que $h$ leva órbitas periódicas em órbitas periódicas preservando o período. 
+  \end{solution}
+\end{homeworkProblem}

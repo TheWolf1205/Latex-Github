@@ -1,0 +1,19 @@
+\begin{homeworkProblem}[5]
+  Sejam $A$, $B$ e $C$ matrizes reais quadradas do mesmo tamanho tais que os sistemas $X^{\prime}=AX$ e $X^{\prime}=BX$, são topologicamente conjugados.\\
+  Para cada uma das afirmações seguintes, indique se é verdadeira ou falsa e justifique.
+  \begin{enumerate}
+    \item Se $X^{\prime}=CX$ é topologicamente conjugado a $X^{\prime}=BX$, então $X^{\prime}=CX$ também é topologicamente conjugado a $X^{\prime}=AX$. 
+    \item Se $C=Q^{-1}BQ$, então $X^{\prime}=CX$ é linearmente conjugado a $X^{\prime}=AX$.
+    \item As matrizes $A$ e $B$ possuem os mesmos autovalores.
+  \end{enumerate}
+  \begin{solution}
+  \begin{itemize}
+    \item Verdadeira.\\
+      Se $h$ é a conjugação topológica dos sistemas de $A$ e $B$, e $g$ é a conjugação topológica dos sistemas $B$ e $C$, então temos que $h\circ g$ é a conjugação topológica de $A$ e $C$.
+    \item Falsa.\\
+      Isto não garante, pois $h$ não necessariamente é uma conjugação linear, pelo que ainda sendo $B$ linearmente conjugado a $C$, não podemos garantir que o sistema de $A$ seja linearmente conjugado a $C$.
+    \item Falsa.\\
+      Considere o exercício anterior o contraexemplo.
+  \end{itemize} 
+  \end{solution}
+\end{homeworkProblem}

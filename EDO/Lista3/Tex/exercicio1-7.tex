@@ -1,0 +1,35 @@
+\begin{homeworkProblem}[1-7]
+  Seja $x$ uma solução de $x^{\prime}= f(x)$ definida em todo $\mathbb{R}$ e tal que $\lim_{t\to\infty} x(t) = z_0$, onde $z_0$ é um ponto do domínio de $f$. Prove que $f(z_0) = 0$.
+  \begin{solution}
+    Raciocinando pela contradição. Suponha que $x^{\prime}(t)\to v\neq 0$.\\
+    Assim, temos que dado $\epsilon>0$ existe $T>0$ tal que se $t\geq T$, então
+    \begin{align*}
+      |x^{\prime}(t)-v|<\epsilon.
+    \end{align*}
+    Note que isto implica que
+    \begin{align*}
+      |v|<\epsilon +|x^{\prime}(t)|.
+    \end{align*}
+    Tomando $\epsilon=\frac{|v|}{2}$, temos que se $t\geq T$, então
+    \begin{align*}
+      \frac{|v|}{2}< |x^{\prime}(t)|. 
+    \end{align*}
+    Agora, usando o Teorema do valor meio no intervalo $(T,t)$, temos que existe $c\in (T,t)$ tal que
+    \begin{align*}
+      x(t)-X(T)=x^{\prime}(c)(t-T).
+    \end{align*}
+    Logo, temos que como $c\in (T,t)$, então
+    \begin{align*}
+      \frac{|v|}{2}<|x^{\prime}(c)|=\frac{|x(t)-x(T)|}{t-T}.  
+    \end{align*}
+    Assim, temos que
+    \begin{align*}
+      \frac{|v|}{2}t-\frac{|v|}{2}T-|x(T)|<|x(t)|.
+    \end{align*}
+    Logo temos que
+    \begin{align*}
+      |z_0|=\lim_{t \to \infty}|x(t)|\geq \lim_{t \to \infty}\frac{|v|}{2}t + c \geq \infty.
+    \end{align*}
+    O que é uma contradição. Logo, podemos afirmar que $v=0$ e portanto $x^{\prime}(t)\to 0$, logo isto implica que $f(z_0)=0$. 
+  \end{solution}
+\end{homeworkProblem}

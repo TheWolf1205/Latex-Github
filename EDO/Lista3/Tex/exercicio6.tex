@@ -1,0 +1,11 @@
+\begin{homeworkProblem}[6]
+  Seja $H:\mathbb{R}^2\to\mathbb{R}$ uma função $C^\infty$. Mostre que $H$ é uma integral primeira do sistema Hamiltoniano definido por $(x^{\prime},y^{\prime})=\left(\frac{\partial H}{\partial y}, -\frac{\partial H}{\partial x}\right)$.
+  \begin{solution}
+    Seja $(x,y)$ solução do sistema Hamiltoniano $(x^{\prime},y^{\prime})=\left( \frac{\partial H}{\partial y},-\frac{\partial H}{\partial x} \right)$.\\
+    Note que
+    \begin{align*}
+      \frac{d}{dt}\left( H(x,y) \right)(t)=\nabla H(x,y)\cdot (x^{\prime},y^{\prime})=\frac{\partial H}{\partial x}x^{\prime}+\frac{\partial H}{\partial y}y^{\prime}=\frac{\partial H}{\partial x}\frac{\partial H}{\partial y}-\frac{\partial H}{\partial y}\frac{\partial H}{\partial x}=0.
+    \end{align*}
+    Pelo que temos que $H(x,y)$ é constante para toda $(x,y)$ solução de $(x^{\prime},y^{\prime})=\left( \frac{\partial H}{\partial y},-\frac{\partial H}{\partial x} \right)$.
+  \end{solution}
+\end{homeworkProblem}

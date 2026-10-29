@@ -1,0 +1,72 @@
+\begin{homeworkProblem}[2]
+  Considere o sistema
+  \begin{align*}
+    \begin{cases}
+      x^{\prime}=x^2+a\text{,} \\
+      y^{\prime}=-y.
+    \end{cases}
+  \end{align*}
+  Encontre e classifique os pontos de equilíbrio, em função do parâmetro $a$.
+  \begin{solution}
+    Os pontos de singularidade são determinados por $x^2+a=0$ e $y=0$.\\
+    Portanto, devemos analisar os diferentes valores do parâmetro $a$.
+    \begin{itemize}
+      \item Caso $a>0$.
+        Neste caso, $x^2+a>0$ para todo $x\in\mathbb{R}$. Assim, o sistema não possui pontos de singularidade.
+      \item Caso $a=0$.
+        Neste caso, o único ponto de singularidade é $p=(0,0)$.\\
+        A matriz jacobiana do campo é
+        \begin{align*}
+         Df(x,y)=\begin{pmatrix}
+          2x & 0\\
+          0 & -1
+          \end{pmatrix}.
+        \end{align*}
+        Em particular,
+        \begin{align*}
+          Df(0,0)=\begin{pmatrix}
+            0 & 0\\
+            0 & -1
+          \end{pmatrix},
+        \end{align*}
+        cujos autovalores são $\lambda_1=0$ e $\lambda_2=-1$. Logo, o ponto $(0,0)$ é não hiperbólico, e a linearização não é suficiente para determinar sua estabilidade.\\
+        Neste caso, o sistema é
+        \begin{align*}
+          \begin{cases}
+            x'=x^2,\\
+            y'=-y.
+          \end{cases}
+        \end{align*}
+        Consideremos uma condição inicial $(x_0,0)$, com $x_0>0$. A equação para $x$ pode ser resolvida explicitamente $x(t)=\frac{x_0}{1-x_0t}$. Assim, $x(t)\to\infty$ quando $t\to\frac{1}{x_0}^{-}$. Portanto, por mais próximo de $(0,0)$ que escolhamos o ponto inicial, podemos encontrar uma trajetória que se afasta da singularidade. Consequentemente, $(0,0)$ é instável.\\
+        Além disso, $(0,0)$ é uma singularidade isolada, pois é o único ponto de equilíbrio para $a=0$.
+      \item Caso $a<0$.
+        Neste caso, $x^2=-a$, de modo que existem dois pontos de singularidade $p_-=(-\sqrt{-a},0)$ e $p_+=(\sqrt{-a},0)$. A matriz jacobiana no ponto $p_-$ é
+        \begin{align*}
+          Df(p_-)=\begin{pmatrix}
+            -2\sqrt{-a} & 0\\
+            0 & -1
+          \end{pmatrix},
+        \end{align*}
+        cujos autovalores são $\lambda_1=-2\sqrt{-a}<0$ e $\lambda_2=-1<0$. Logo, $p_-$ é uma singularidade assintoticamente estável.\\
+        Por outro lado, no ponto $p_+$ temos
+        \begin{align*}
+          Df(p_+)=\begin{pmatrix}
+            2\sqrt{-a} & 0\\
+            0 & -1
+          \end{pmatrix},
+        \end{align*}
+        cujos autovalores são $\lambda_1=2\sqrt{-a}>0$ e $\lambda_2=-1<0$. Logo, como os autovalores possuem sinais opostos, $p_+$ é um ponto de sela e, portanto, é instável.
+    \end{itemize}
+    Assim, temos
+    \begin{align*}
+      \begin{array}{c|c|c}
+        \text{Valor de }a & \text{Pontos de singularidade} & \text{Classificação}\\
+        \hline
+        a>0 & \text{Nenhum} & -\\[2mm]
+        a=0 & (0,0) & \text{Instável, isolado e não hiperbólico}\\[2mm]
+        a<0 & (-\sqrt{-a},0) & \text{Assintoticamente estável}\\
+        & (\sqrt{-a},0) & \text{Instável, sela}
+      \end{array}
+    \end{align*}
+  \end{solution}
+\end{homeworkProblem}

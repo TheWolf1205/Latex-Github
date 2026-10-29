@@ -1,0 +1,11 @@
+\begin{homeworkProblem}[1-9]
+  Seja $f : \mathbb{R} \to \mathbb{R}$ um campo com uma única singularidade, na origem. Mostre que o retrato de fase de $f$ consiste de exatamente três órbitas e que há apenas três tipos possíveis de retratos de fase, a menos de conjugação topológica. Esboce os três tipos de retratos de fase.
+  \begin{solution}
+    Vamos estudar o que acontece respeito a condição do  valor inicial.
+    \begin{itemize}
+      \item Note que se $x(0)=0$, temos que $f(x(0))=f(0)=0$, pelo que temos que a solução $x(t)=0$ para todo $t\in\mathbb{R}$.
+      \item Note que se $x(0)>0$, temos que $f(x(0))\neq 0$ (isto já que pela hipótese temos que $f(x)\neq 0$ para todo $x\in\mathbb{R}\setminus\{0\}$), logo temos que a solução ao problema de valor inicial no $x(0)=a>0$ é uma solução regular, pelo que temos que $x$ é estritamente regular. Logo temos dois casos, ou $x$ é crescente, pelo que a solução fuje do origem, e no outro caso, se $x$ é decrescente, temos que a solução vai em direção ao origem.
+      \item Note que se $x(0)<0$, similarmente temos que $x$ é estritamente crescente. Logo, no caso $x$ é crescente, temos que a solução vai em direção ao origem, e no caso contrário, temos que se $x$ é decrescente, então a solução fuje do origem. 
+    \end{itemize}
+  \end{solution}
+\end{homeworkProblem}
