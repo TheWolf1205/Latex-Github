@@ -1,30 +1,80 @@
 \begin{homeworkProblem}[1]
-  Mostre que se $\lambda$ é carga em $(X,\cali{A})$, então
-  \begin{align*}
-    |\lambda|(A)=\sup\left\{ \sum_{n=1}^{\infty}|\lambda(A_n)|:A_n\in\cali{A},\text{ para todo }n\in\mathbb{Z}^{+},\,\bigcup_{n=1}^{\infty}A_n=A \right\}.
-  \end{align*}
+  Dizemos que um subconjunto de um espaço topológico é: um $G_\delta$ se é interseção enumerável de abertos; um $F_\sigma$ se é união enumerável de fechados. Dado $A\subseteq \mathbb{R}$, mostre que cada condição abaixo é equivalente à $\mu_F$-mensurabilidade de $A$:
+  \begin{itemize}
+    \item Existem $V,N\subseteq \mathbb{R}$ tais que $V$ é $G_\delta$, $\mu_F(N)=0$ e $A=V\setminus N$.
+      \item Existem $H,M\subseteq \mathbb{R}$ tais que $H$ é $F_\sigma$, $\mu_F(M)=0$ e $A=H\cup M$. 
+  \end{itemize}
   \begin{solution}
-    Seja $\mu$ dada por
+    Suponha $\mu_F(A)<+\infty$.\\
+  \begin{itemize}
+  \item Note que
+    \begin{equation}\label{eq:1-1}
+      \mu_F(A)=\inf\{\mu_F(V):A\subseteq V, V\text{ é aberto}\}.
+    \end{equation}
+    Portanto, temos que existe $\{V_n\}_{n\in\mathbb{Z}^{+}}$ sequência de abertos tais que
     \begin{align*}
-      \mu(A)=\sup\left\{ \sum_{n=1}^{\infty}|\lambda(A_n)|:A_n\in\cali{A},\text{ para todo }n\in\mathbb{Z}^{+},\,\bigcup_{n=1}^{\infty}A_n=A \right\}.
+      \mu_F(V_n)-\mu_F(A)=\mu_F(V_n\setminus A)<\frac{1}{n}.
     \end{align*}
-    Note que pelo exercício $7$ da lista $1$, temos que $\mu$ é medida positiva.\\
-    Suponha $(P,N)$ decomposição de Hahn para $\lambda$ e $\{A_n\}_{n\in\mathbb{Z}^{+}}$ tal que $\bigcup_{n\in\mathbb{Z}^{+}}A_n=A$. Logo
+    Sendo assim, defina $V=\bigcap_{n\in\mathbb{Z}^{+}}V_n$. Observe que como cada $V_n$ é aberto, então $V$ é $G_\delta$. Além disso, temos que como $A\subseteq V_n$ para todo $n\in\mathbb{Z}^{+}$, então $A\subseteq V$.\\
+    Portanto, definimos $N=V\setminus A$. Note que, para todo $n\in\mathbb{Z}^{+}$ temos que $N\subseteq V_n\setminus A$, logo pela Equação \eqref{eq:1-1} temos que
     \begin{align*}
-      \sum_{n=1}^{\infty}|\lambda(A_n)|=\sum_{n=1}^{\infty}|\lambda^{+}(A_n)-\lambda^{-}(A_n)|\leq \sum_{n=1}^{\infty}\lambda^{+}(A_n)+\lambda^{-}(A_n)\leq \sum_{n=1}^{\infty}|\lambda|(A_n)\leq|\lambda|(A).
+      \mu_F(N)\leq \mu_{V_n\setminus A}<\frac{1}{n},\quad\text{para todo }n\in\mathbb{Z}^{+}.
     \end{align*}
-    Pelo que tomando $\sup$ temos que
+    Isto é, que $\mu_F(N)=0$.\\
+    Por outro lado, temos que $V\setminus N= V\setminus (V\setminus A)=A$.\\
+    Reciprocamente, suponha que $A=V\setminus N$ com $V$ $G_\delta$ e $N$ tal que $\mu_F(N)=0$.\\
+    Note que como $V$ é interseção enumerável de abertos, temos que $V$ é boreliano, isto é, que $V$ é mensurável. Por outro lado, temos que $N$ é mensurável e portanto $\mathbb{R}\setminus N$ também é mensurável, logo temos que $A=V\setminus N= V\cap(\mathbb{R}\setminus N)$, pelo que podemos garantir que $A$ é $\mu_F$ mensurável.\\
+  \item Similarmente, note que
+    \begin{equation}\label{eq:1-2}
+      \mu_F(A)=\sup\{\mu_F(K):K\subseteq A, K\text{ é compacto} \}.
+    \end{equation}
+     Portanto, temos que existe $\{H_n\}_{n\in\mathbb{Z}^{+}}$ sequência de compactos tais que
     \begin{align*}
-      \mu(A)\leq |\lambda|(A),
+      \mu_F(A)-\mu_F(H_n)=\mu_F(A\setminus H_n)<\frac{1}{n}.
     \end{align*}
-    para todo $A\in\cali{A}$.\\
-    Agora, note que $A=(A\cap P)\cup(A\cap N)$, pelo que temos que
+    Sendo assim, defina $H=\bigcup_{n\in\mathbb{Z}^{+}}H_n$. Observe que como cada $H_n$ é compacto, portanto fechado, então $H$ é $F_\sigma$. Além disso, temos que como $H_n\subseteq A$ para todo $n\in\mathbb{Z}^{+}$, então $H\subseteq A$.\\
+    Portanto, definimos $M=A\setminus H$. Note que, para todo $n\in\mathbb{Z}^{+}$ temos que $M\subseteq A\setminus H_n$, logo pela Equação \eqref{eq:1-2} temos que
     \begin{align*}
-      \mu(A)\geq |\lambda(A\cap P)|+|\lambda(A\cap N)|\geq \lambda(P\cap A)+\left( -\lambda(A\cap N)\right)\geq \lambda^{+}(A)+\lambda^{-}(A)\geq |\lambda|(A).
+      \mu_F(M)\leq \mu_F(A\setminus H_n)<\frac{1}{n},\quad\text{para todo }n\in\mathbb{Z}^{+}.
     \end{align*}
-    Portanto, usando as dois desigualdades anteriores, temos que
+    Isto é, que $\mu_F(M)=0$.\\
+    Por outro lado, temos que $H\cup M= H\cup (A\setminus H)=A$.\\
+    Reciprocamente, suponha que $A=H\cup M$ com $H$ $F_\sigma$ e $M$ tal que $\mu_F(M)=0$.\\
+    Note que como $M$ é união enumerável de fechados, temos que $M$ é boreliano, isto é, que $F$ é mensurável. Por outro lado, temos que $M$ é mensurável e portanto $A=H\cup M$ é $\mu_F$ mensurável.
+  \end{itemize}
+  Agora, suponha que $\mu_F(A)=+\infty$.\\
+  \begin{itemize}
+    \item Para cada $k\in\mathbb{Z}^{+}$, defina $A_k=A\cap[-k,k]$.\\
+    Note que $\mu_F(A_k)\leq 2k<+\infty$. Portanto, pelo caso anterior, temos que $A_k$ é $\mu_F$ mensurável e existem $V_k$ $G_\delta$ e $N_k\subseteq\mathbb{R}$ tais que $A_k=V_k\setminus N_k$ e $\mu_F(N_k)=0$.\\
+    Defina $W_k=V_k\cup\left(\mathbb{R}\setminus[-k,k]\right)$.\\
+    Como $V_k$ é $G_\delta$ e $\mathbb{R}\setminus[-k,k]$ é aberto, temos que $W_k$ é $G_\delta$.\\
+    Agora, defina $V=\bigcap_{k\in\mathbb{Z}^{+}}W_k$.\\
+    Note que como $V$ é uma interseção enumerável de conjuntos $G_\delta$, temos que $V$ é $G_\delta$. Além disso, temos que $A\subseteq V$, poiss, dado $x\in A$, temos que para cada $k\in\mathbb{Z}^{+}$ tem duas possibilidades
+    \begin{itemize}
+      \item Se $x\in[-k,k]$, então $x\in A_k\subseteq V_k\subseteq W_k$.
+      \item Se $x\in\mathbb{R}\setminus[-k,k]\subseteq W_k$. 
+    \end{itemize}
+    Portanto, $x\in W_k$ para todo $k\in\mathbb{Z}^{+}$, e consequentemente $x\in V$.\\
+    Assim, definimos $N=V\setminus A$.\\
+    Vamos mostrar que $\mu_F(N)=0$. Seja $x\in N$, logo como $x\in\mathbb{R}$, existe $k\in\mathbb{Z}^{+}$ tal que $x\in[-k,k]$. Depois, como $x\in V$, temos que $x\in W_k$ e como $x\in[-k,k]$, segue que $x\notin\mathbb{R}\setminus[-k,k]$. Portanto, $x\in V_k$. Além disso, como $x\notin A$, temos que $x\notin A_k$. Logo, $x\in V_k\setminus A_k=N_k$. Assim, $N\subseteq\bigcup_{k\in\mathbb{Z}^{+}}N_k$.\\
+    Logo, como cada $N_k$ possui medida nula, temos que 
     \begin{align*}
-      |\lambda|(A)=\sup\left\{ \sum_{n=1}^{\infty}|\lambda(A_n)|:A_n\in\cali{A},\text{ para todo }n\in\mathbb{Z}^{+},\,\bigcup_{n=1}^{\infty}A_n=A \right\}.
+      \mu_F(N)\leq\mu_F\left(\bigcup_{k\in\mathbb{Z}^{+}}N_k\right)\leq\sum_{k\in\mathbb{Z}^{+}}\mu_F(N_k)=0.    
     \end{align*}
+    Portanto, $\mu_F(N)=0$.\\
+    Finalmente, $V\setminus N=V\setminus(V\setminus A)=A$.\\
+    
+    Similarmente ao caso finito, temos que o anterior é equivalente a que $A$ seja $\mu_F$ mensurável.\\
+  \item Agora, seguindo a mesma idea para cada $k\in\mathbb{Z}^{+}$ existem $H_k$ $F_\sigma$ e $M_k\subseteq\mathbb{R}$ tais que $A_k=H_k\cup M_k$ e $\mu_F(M_k)=0$.\\
+    Defina $H=\bigcup_{k\in\mathbb{Z}^{+}}H_k$.\\
+    Como cada $H_k$ é $F_\sigma$, temos que $H$ também é $F_\sigma$. Além disso, como $H_k\subseteq A_k\subseteq A$ para todo $k\in\mathbb{Z}^{+}$, segue que $H\subseteq A$.\\
+    Definimos $M=A\setminus H$.\\
+    Vamos mostrar que $\mu_F(M)=0$. Dado $x\in M$. Como $x\in A$, existe $k\in\mathbb{Z}^{+}$ tal que $x\in[-k,k]$, e portanto $x\in A_k$. Logo, como $A_k=H_k\cup M_k$ e $x\notin H$, em particular $x\notin H_k$. Assim, $x\in M_k$ e portanto $M\subseteq\bigcup_{k\in\mathbb{Z}^{+}}M_k$. Isto é
+    \begin{align*}
+      \mu_F(M)\leq\mu_F\left(\bigcup_{k\in\mathbb{Z}^{+}}M_k\right)\leq\sum_{k\in\mathbb{Z}^{+}}\mu_F(M_k)=0.    
+    \end{align*}
+    Consequentemente, $\mu_F(M)=0$. Além disso, $H\cup M=H\cup(A\setminus H)=A$.\\
+    Por último, similarmente ao caso finito, temos que o anterior é equivalente a que $A$ seja $\mu_F$ mensurável.
+  \end{itemize}
   \end{solution}
 \end{homeworkProblem}

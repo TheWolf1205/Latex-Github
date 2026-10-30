@@ -25,6 +25,10 @@ Repositorio para subir trabajos o talleres de la U :p.
   - [Exercícios](<./Medida-Br/Lista4/Exercícios Medida 4.pdf>) 
   - [Solução](<./Medida-Br/Lista4/Tex/Lista 4 Medida-Br.pdf>) 
 
+- Lista 4.
+  - [Exercícios](<./Medida-Br/Lista5/Exercícios Medida 5.pdf>) 
+  - [Solução](<./Medida-Br/Lista5/Tex/main.pdf>) 
+
 </details>
 
 <details>

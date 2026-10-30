@@ -1,131 +1,39 @@
 \begin{homeworkProblem}[2]
-  Denote $\mathcal{M}(X,\cali{A})$ o conjunto das cargas em $(X,\cali{A})$.
+  Construa o conjunto de Cantor $\cali{C}$ da seguinte forma: começamos com $C_0=[0,1]$, removemos seu terço médio para obter $C_1=\left[0,\frac{1}{3}\right]\cup\left[\frac{2}{3},1\right]$, e, indutivamente, $C_k$ é obtido retirando o terço médio de cada intervalo que compõe $C_{k-1}$ de forma a obter $2^{k+1}$ intervalos fechados de comprimento $\frac{1}{3^k}$. Definimos então $\cali{C}=\bigcap_{n=1}^{\infty}C_n$. Mostre as seguintes propriedades
   \begin{enumerate}[a)]
-    \item Mostre que $\norm{\lambda}:=|\lambda|(X)$ define uma norma em $\mathcal{M}(X,\cali{A})$.
-    \item Mostre que $\mathcal{M}(X,\cali{A})$ é completo com respeito à norma do item $a)$. 
+    \item $\cali{C}$ é fechado, tem medida $m(\cali{C})=0$ e não possui pontos insolados.
+    \item Um ponto $x\in[0,1]$ pertenece a $\cali{C}$ se, somente se, sua expressão na base $3$ possui apenas os dígitos $0$ e $2$, ou seja, existe uma sequência $\{d_n\}_{n\in\mathbb{Z}^{+}}$ tal que $d_n\in\{0,2\}$ para todo $n\in\mathbb{Z}^{+}$ e $x=\sum_{n\in\mathbb{Z}^{+}}\frac{d_n}{3^n}$.
   \end{enumerate}
   \begin{solution}
     \begin{enumerate}[a)]
-    \item Vamos verificar que $\norm{\cdot}$ define uma norma.
-    \begin{itemize}
-      \item Note que dada $\lambda\in\mathcal{M}(X,\cali{A})$, temos que
+      \item Note que, para cada $n\in\mathbb{Z}^{+}$, $C_n$ é uma união finita de intervalos fechados. Portanto, $C_n$ é fechado. Logo, como interseção arbitrária de conjuntos fechados é fechada, temos que $\cali{C}\bigcap_{n=1}^{\infty}C_n$ é fechado.\\
+        Além disso, $C_n$ é formado por $2^n$ intervalos fechados, cada um de comprimento $1/3^n$. Logo,
         \begin{align*}
-          \norm{\lambda}=|\lambda|(X)=\lambda^{+}(X)+\lambda^{-}(X)\geq 0.
+          m(C_n)=2^n\frac{1}{3^n}=\left(\frac{2}{3}\right)^n.
         \end{align*}
-        Agora, note que como $\lambda$ é carga, então $|\lambda(P)|,|\lambda(N)|<+\infty$. Logo
+        Portanto, como $\cali{C}\subseteq C_n$ para todo $n\in\mathbb{Z}^{+}$, temos que
         \begin{align*}
-          \norm{\lambda}=\lambda^{+}(X)+\lambda^{-}(X)=|\lambda(P)|+|\lambda(N)|<+\infty.
+          m(\cali{C})\leq m(C_n)=\left(\frac{2}{3}\right)^n,\quad\text{para todo }n\in\mathbb{Z}^{+}.
         \end{align*}
-        Pelo que temos que $\norm{\cdot}$ é positiva bem definida.
-      \item Note que como $\lambda^{+}$ e $\lambda^{-}$ são medidas positivas, temos que a seguinte cadeia de afirmações é equivalente
+        Isto é, que $m(\cali{C})=0$.\\
+        Agora, mostraremos que $C$ não possui pontos isolados.\\
+        Seja $x\in C$. Note que para cada $n\in\mathbb{Z}^{+}$, como $x\in C_n$, então existe um único intervalo $I_n$ que compõe $C_n$ tal que $x\in I_n$ e $|I_n|=1/3^n$.\\
+        Logo, como $x\in C_{n+1}$, temos que $x$ pertence a um dos dois intervalos obtidos ao retirar o terço médio de $I_n$, definamos $J_n$ o outro intervalo.\\
+        Observe que, um dos extremos de $J_n$ pertence a $\cali{C}$, pois os extremos dos intervalos da construção de Cantor permanecem em todo $C_n$. Escolhemos esse extremo e o denotamos por $y_n$.\\
+        Portanto, temos que $y_n\in C$, $y_n\neq x$ e
+        \begin{align*}
+          |x-y_n|\leq |I_n|=\frac{1}{3^n}.
+        \end{align*}
+        O que nos permite garantir que o $\lim_{n\to\infty}y_n=x$. Assim, como $x\in \cali{C}$ é arbitrário, temos que todo ponto de $\cali{C}$ é ponto de acumulação de $\cali{C}$, isto é, $\cali{C}$ não possui pontos isolados.
+      \item Suponha inicialmente que $x\in \cali{C}$. Logo, note que $x\in \left[ 0,\frac{1}{3} \right]$ ou $x\in\left[ \frac{2}{3},1 \right]$, Logo, pela construção do conjunto, temos que $d_1$ está determinado pelos extremos dos intervalos o que nos leva a considerar o seguinte
         \begin{itemize}
-          \item $\norm{\lambda}=0$.
-          \item $|\lambda|(X)=0$.
-          \item $\lambda^{+}(X)=0$ e $\lambda^{-}(X)=0$.
-          \item $\lambda(A)=\lambda^{+}(A)-\lambda^{-}(A)=0$ para todo $A\in\cali{A}$.
-          \item $\lambda\equiv 0$.
+          \item Se $x=1$, então a expressão na base $3$ de $x$ é $2.\overline{2}$.
+          \item Se $x=\frac{1}{3}$, então a expressão na base $3$ de $x$ é $0.\overline{2}$.
+          \item No outro caso, temos que $d_1\in\{0,2\}$. 
         \end{itemize}
-      \item Seja $c>0$ constante e $\lambda\in\mathcal{M}(X,\cali{A})$. Logo pela definição temos que
-        \begin{align*}
-          \norm{c\lambda}=|c\lambda|(X)=|c\lambda(P)|+|c\lambda(N)|=|c|(|\lambda(P)|+|\lambda(N)|)=|c|\norm{\lambda}.
-        \end{align*}
-      \item Sejam $\lambda,\mu\in\mathcal{M}(X,\cali{A})$.\\
-        Note que como $\lambda+\mu$ é carga, temos que existe a decomposição de Hahn $(P,N)$, logo usando a $\sigma$-aditividade das cargas temos que
-        \begin{align*}
-          \norm{\lambda+\mu}=&|\lambda+\mu|(X)\\
-          =&(\lambda+\mu)^{+}(X)+(\lambda+\mu)^{-}(X)\\
-          =&(\lambda+\mu)(P)-(\lambda+\mu)(N)\\
-          =&\lambda(P)+\mu(P)-\lambda(N)-\mu(N).
-        \end{align*}
-        Agora, como $\lambda$ e $\mu$ também são cargas, temos que existe a decomposição de Hahn $(P_1,N_1)$ de $\lambda$ e a decomposição de Hahn $(P_2,N_2)$ de $\mu$. Portanto
-        \begin{align*}
-          \norm{\lambda-\mu}=&\lambda(P)+\mu(P)-\lambda(N)-\mu(N)\\
-          =&\lambda(P\cap P_1)+\lambda(P\cap N_1)-\lambda(N\cap P_1)-\lambda(N\cap N_1)\\
-          &+\mu(P\cap P_2)+\mu(P\cap N_2)-\mu(N\cap P_2)-\mu(N\cap N_2)\\
-          \leq& \lambda(P\cap P_1)-\lambda(N\cap N_1)+\mu(P\cap P_2)-\mu(N\cap N_2)\\
-          \leq& \lambda^{+}(X)+\lambda^{-}(X)+\mu^{+}(X)+\mu^{-}(X)\\
-          \leq& \left| \lambda \right|(X)+\left| \mu \right|(X)\\
-          \leq& \norm{\lambda}+\norm{\mu}.
-        \end{align*}
-        Pelo que temos que $\norm{\cdot}$ satisfaz a desigualdade triangular. 
-    \end{itemize}
-      Portanto, temos que $\norm{\cdot}$ define uma norma para $\mathcal{M}(X,\cali{A})$.
-    \item Vamos ver que $\mathcal{M}(X,\cali{A})$ é completo com respeito à norma do item $a)$.\\
-      Seja $\{\lambda_n\}_{n\in\mathbb{Z}^{+}}\subseteq \mathcal{M}(X,\cali{A})$ uma sequência de Cauchy.\\
-      Note que, dado $A\in\cali{A}$ temos que 
-      \begin{align*}
-        \left| \lambda_{n}(A)-\lambda_{m}(A)\right|=\left| (\lambda_{n}-\lambda_{m})(A) \right|\leq \left| \lambda_{n}-\lambda_{n} \right|(A)\leq \left| \lambda_n-\lambda_m \right|(X)\leq \norm{\lambda_n-\lambda_m}.
-      \end{align*}
-      Logo, como $\{\lambda_{n}\}_{n\in\mathbb{Z}^{+}}$ é um sequência de Cauchy em $\mathcal{M}(X,\cali{A})$, temos que $\{\lambda_{n}(A)\}_{n\in\mathbb{Z}^{+}}\subseteq \mathbb{R}$ é uma sequência de Cauchy. Portanto, como $\mathbb{R}$ é completo, temos que existe $y_{A}\in\mathbb{R}$ tal que $\lambda_{n}(A)\to y_{A}$.\\
-      Definamos $\lambda:\cali{A}\to\mathbb{R}$ dada por
-      \begin{align*}
-        \lambda(A)=y_A.
-      \end{align*}
-      Vamos verificar que $\lambda$ é uma carga.
-      \begin{itemize}
-        \item Note que $\lambda_{n}(\emptyset)=0$ para todo $n\in\mathbb{Z}^{+}$, logo
-          \begin{align*}
-            \lambda(\emptyset)=\lim_{n \to \infty}\lambda_{n}(\emptyset)=0.
-          \end{align*}
-        \item Seja $\{A_i\}_{i\in\mathbb{Z}^{+}}\subseteq\cali{A}$ uma sequência disjunta tal que $A=\bigcup_{i\in\mathbb{Z}^{+}}A_i$.\\
-          Temos a seguintes observações
-          \begin{itemize}
-            \item Dado $\epsilon>0$, temos que existe $\overline{N}\in\mathbb{Z}^{+}$ tal que se $n,m\geq \overline{N}$, então
-              \begin{align*}
-                \left| \lambda_{m}(B)-\lambda(n)(B) \right|\leq \norm{\lambda_m-\lambda_n}<\frac{\epsilon}{3},\quad\text{para todo }B\in\cali{A}.
-              \end{align*}
-              Em particular, tomando límite quando $m\to\infty$ temos que
-              \begin{equation}\label{eq:1-2}
-                \left| \lambda(B)-\lambda_{n}(B) \right|<\frac{\epsilon}{3}.
-              \end{equation}
-            \item Note que como $\lambda_n$ é carga, temos que 
-              \begin{align*}
-                \lim_{k \to \infty}\lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right)=\lim_{k \to \infty}\sum_{i=1}^{k}\lambda_{n}(A_i)=\sum_{i=1}^{\infty}\lambda_{n}(A_i)=\lambda_{n}(A).
-              \end{align*}
-              Isto é, que dado $\epsilon>0$ existe $\delta>0$ tal que se $k\geq \delta$, então
-              \begin{equation}\label{eq:2-2}
-                \left| \lambda_{n}(A)-\lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right) \right|< \frac{\epsilon}{3}.              
-              \end{equation}
-          \end{itemize}
-          Portanto, usando as equacões \eqref{eq:1-2} e \eqref{eq:2-2}, temos que dado $\epsilon>0$, existe $N>0$ tal que se fixamos um $n\geq N$, existe $k>0$ tal que
-          \begin{align*}
-            \left| \lambda(A) - \lambda\left( \bigcup_{i=1}^{k}A_i \right)\right|\leq& \left| \lambda(A)-\lambda_{n}(A) \right|+\left| \lambda_{n}(A)-\lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right) \right|\\
-            &+\left| \lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right)-\lambda\left( \bigcup_{i=1}^{k}A_i \right) \right|\\
-            <&\frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3}\\
-            <&\epsilon.
-          \end{align*}
-          Agora, note que
-          \begin{align*}
-            \lambda\left( \bigcup_{i=1}^{k}A_i \right)=\lim_{n \to \infty}\lambda_{n}\left( \bigcup_{i=1}^{k}A_i \right)=\lim_{k \to \infty}\sum_{i=1}^{k}\lambda_{n}(A_i)=\sum_{i=1}^{k}\lambda(A_i).
-          \end{align*}
-          Portanto temos que
-          \begin{align*}
-            \lambda(A)=\lim_{k \to \infty}\lambda\left( \bigcup_{i=1}^{k} A_i\right)=\lim_{k \to \infty}\sum_{i=1}^{k}\lambda(A_i)=\sum_{i=1}^{\infty}\lambda(A_i).
-          \end{align*}
-          Pelo que temos que $\lambda$ é $\sigma$-aditiva e portanto é uma carga, i.e., $\lambda\in\mathcal{M}(X,\cali{A})$. 
-      \end{itemize}
-      Agora, vamos ver a convergência em $\mathcal{M}(X,\cali{A})$.\\
-      Seja $\{A_i\}_{i\in\mathbb{Z}^{+}}\subseteq\cali{A}$ uma partição disjunta de $X$, logo temos que dado $\epsilon>0$ existe $N>0$ tal que se $m,n\geq N$, então
-      \begin{align*}
-        \sum_{i=1}^{k}\left| \lambda_m(A_i)-\lambda_n(A_i) \right|\leq \sum_{i=1}^{k}\left| \lambda_m-\lambda_n \right|(A_i)\leq \left| \lambda_m-\lambda_n \right|(X)<\epsilon.
-      \end{align*}
-      Logo, tomando límite quando $m\to\infty$, temos que
-      \begin{align*}
-        \sum_{i=1}^{k}\left| \lambda(A_i)-\lambda_{n}(A_i) \right|<\epsilon,\quad\text{para todo }k\in\mathbb{Z}^{+}.
-      \end{align*}
-      Portanto, tomando limite quando $k\to\infty$ temos que
-      \begin{align*}
-        \sum_{i=1}^{\infty}\left| \lambda(A_i)-\lambda_{n}(A_i) \right|<\epsilon.
-      \end{align*}
-      Logo como $\epsilon$ não depende da partição, usando o exercicio $1$ temos que para todo $n\geq N$ se cumpre que 
-      \begin{align*}
-        \norm{\lambda-\lambda_n}=\left| \lambda-\lambda_n \right|(X)=\sup\left\{\sum_{i=1}^{k}\left| \lambda(A_i)-\lambda_{n}(A_i)\right| \right\}<\epsilon.
-      \end{align*}
-      Assim temos que
-      \begin{align*}
-        \lim_{n \to \infty}\norm{\lambda-\lambda_n}=0.
-      \end{align*}
-      O que nos permite concluir o exercício.
-  \end{enumerate} 
+        Assim, raciocinando indutivamente, temos que para cada $n\in\mathbb{Z}^{+}$, o coeficiente $d_n\in\{0,2\}$.\\
+        Reciprocamente, suponha que existe uma sequência $\{d_n\}_{n\in\mathbb{Z}^{+}}$ tal que $d_n\in{0,2}$ para todo $n\in\mathbb{Z}^{+}$.\\
+        Como vimos no raciocínio anterior, temos que cada coeficiente $d_n$ está indicando o extremo do intervalo de $C_n$ no que $x$ pertence, pelo que podemos garantir que $x\in C_n$ para todo $n\in\mathbb{Z}^{+}$, isto é, que $x\in\cali{C}$.
+    \end{enumerate}
   \end{solution}
 \end{homeworkProblem}
