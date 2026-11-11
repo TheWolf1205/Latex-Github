@@ -1,6 +1,31 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[5]
+  Sejam $g,F:\mathbb{R}\to \mathbb{R}$, onde $g$ é Borel-mensurável não negativa e $F$ é não decrescente contínua a direita. Determine $\int g\,dF:=\int g\,d\mu_F$ nos seguintes casos
+  \begin{enumerate}[a)]
+    \item $F$ é diferenciável em $\mathbb{R}$ e $F^{\prime}$ é Riemman-integrável em cada intervalo limitado.
+    \item Existem uma sequência $\{c_n\}_{n\in\mathbb{Z}^{+}}$ de números reais positivos com $\sum_{n\in\mathbb{Z}^{+}}c_n<+\infty$ é uma sequência crescente $\{a_n\}_{n\in\mathbb{Z}^{+}}$ na reta real tais que $F(x)=\sum_{\left\{ n:a_n\leq x \right\}}c_n$.
+  \end{enumerate}
   \begin{solution}
-    XXX  
+  \begin{enumerate}[a)]
+    \item Sejam $a,b\in\mathbb{R}$ tais que $a<b$. Logo, como $F$ é diferenciável e $F^{\prime}$ é Riemman-integrável, temos que pelo Teorema Fundamental do Cálculo se satisfaz que
+      \begin{align*}
+        \mu_F((a,b))=F(b)-F(a)=\int_{a}^{b}F^{\prime}(x)\,dx.
+      \end{align*}
+      Logo, como os mensuráveis estão caracterizados pelo borelianos, temos que pelo Teorema de Radon-Nikodym se pode garantir que $d\mu_F=F^{\prime}dx$, isto é que
+      \begin{align*}
+        \int g\,dF=\int g\,d\mu_F=\int gF^{\prime}\,dx.
+      \end{align*}
+    \item Sejam $a,b\in\mathbb{R}$ tais que $a<b$, logo
+      \begin{align*}
+        \mu_F((a,b))=F(b)-F(a)=\sum_{\left\{ n:a_n\leq b \right\}}c_n-\sum_{\left\{ n:a_n\leq a \right\}}c_n=\sum_{\left\{ n:a< a_n\leq b \right\}}c_n.
+      \end{align*}
+      Logo, como 
+      \begin{align*}
+        \mu_F(\mathbb{R})=\lim_{R \to \infty}\mu_F((-R,R))=\lim_{R\to\infty}\sum_{\{n:-R<a_n\leq R\}}c_n=\sum_{n\in\mathbb{Z}^{+}}c_n.
+      \end{align*}
+      Podemos garantir que
+      \begin{align*}
+        \int g\,dF=\int g\,d\mu_F=\sum_{n\in\mathbb{Z}^{+}}g(a_n)c_n.
+      \end{align*}
+  \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}

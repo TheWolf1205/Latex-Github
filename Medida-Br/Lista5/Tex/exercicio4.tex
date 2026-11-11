@@ -1,6 +1,18 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[4]
+  Prove o Teorema de Lusin: dados uma função Lebesgue-mensurável $f:[a,b]\to\mathbb{C}$ e $\epsilon>0$, existe $A\subseteq [a,b]$ tal que $m([a,b]\setminus A)<\epsilon$ e $f\big|_{A}$ é contínua. 
   \begin{solution}
-    XXX  
+    Note que, como $f$ é mensurável, temos que existe $\{\phi_n\}_{n\in\mathbb{Z}^{+}}\subseteq M^{+}([a,b],m\big|_{[a,b]})$ tal que $\phi_n\to f$ pontoalmente.\\
+    Agora, para cada $n\in\mathbb{Z}^{+}$ considere o seguinte conjunto
+    \begin{align*}
+      N_n=\left\{ x\in[a,b]:\phi_n(x) \text{ é discontínua}. \right\}
+    \end{align*}
+    Note que como $\phi$ é simples, temos que $\phi$ tem finitos pontos de discontinuidade, pelo que podemos garantir que $m(N_n)=0$.\\
+    Agora, considere $D_k=\bigcup_{i=1}^{k}N_i$, logo temos que para todo $k\in\mathbb{Z}^{+}$ se cumpre que $m(D_k)=0$, pois cada $N_i$ tem medida nula.\\
+    Sendo assim, considere $D=\bigcup_{i=1}^{\infty}D_i$, note que como $D_1\subseteq D_2\subseteq\cdots$, temos que pela continuidade da medida se cumpre que
+    \begin{align*}
+      m(D)=m\left( \bigcup_{i=1}^{\infty}D_i \right)=\lim_{i \to \infty}m(D_i)=\lim_{i \to \infty}0=0.      
+    \end{align*}
+    Assim, temos que pelo Teorema de Egorov, dado $\epsilon>0$ existe $E\subseteq[a,b]\setminus D$ tal que $m\left(E\right)<\epsilon$ e $\phi_n\to f$ uniformemente em $([a,b]\setminus D)\setminus E$.\\
+    Portanto, definindo $A=[a,b]\setminus (D\cup E)\subseteq ([a,b]\setminus D)\setminus E$, temos que $m([a,b]\setminus A)= m(D\cup E)=m(E)<\epsilon$ e $\phi_n\to f$ uniformemente em $A$. Alem disso, como $\phi_n$ é contínua em $A$ para todo $n\in\mathbb{Z}^{+}$ e $\phi_n\to f$ uniformemente, temos que $f$ é contínua em $A$, isto é, que $f\big|_A$ 
   \end{solution}
 \end{homeworkProblem}

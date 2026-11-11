@@ -1,0 +1,34 @@
+\begin{frame}{Por quê linearizar?}
+  \begin{block}{Definição}
+    Para o sistema
+    \begin{equation}\label{eq:sistema-autonomo}
+      x^{\prime}=f(x),\quad f:\mathbb{R}^{n}\to\mathbb{R}^{n},
+    \end{equation}
+    dizemos que $p\in\mathbb{R}^{n}$ é um \textbf{ponto singular} se dada $\varphi(t,p)$ solução do $\eqref{eq:sistema-autonomo}$ com valor inicial $x(0)=p$ satisfaz que $\varphi(t,p)=p$ para todo $t\in\mathbb{R}$. 
+  \end{block}
+  \begin{block}{Observação}
+    O anterior é equivalente a dizer que $f(p)=0$.      
+  \end{block}
+\end{frame}
+
+\begin{frame}{Motivação}
+  Note que fazendo $y=x-p$ no sistema \eqref{eq:sistema-autonomo} temos que
+  \begin{align*}
+    (y+p)^{\prime}=f(y+p).
+  \end{align*}
+  \pause
+  Onde usando a fórmula de Taylor de $f$ em $y+p$ temos que
+  \begin{align*}
+    y^{\prime}=f(p)+Df(p)\cdot y+r(y),\quad\text{onde }\lim_{y \to 0}\frac{\norm{r(y)}}{\norm{y}}=0.
+  \end{align*}
+  \pause
+  Portanto, usando que $f(p)=0$ e definindo $A=Df(p)$, então
+  \begin{align*}
+    y^{\prime}=Ay+r(y).
+  \end{align*}
+  \pause
+  O que motiva a pensar que quando $y$ é suficientemente pequeno, se satisfaz que
+  \begin{align*}
+    y^{\prime}\approx Ay.
+  \end{align*}
+\end{frame}

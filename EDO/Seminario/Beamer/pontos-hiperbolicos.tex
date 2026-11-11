@@ -1,0 +1,63 @@
+\begin{frame}{}
+  \begin{block}{Definição}
+    Dizemos que $p$ é uma singularidade hiperbólica quando nenhum autovalor de $A=Df(p)$ tem parte real nula.      
+  \end{block}
+  Lembremos a classificação em dimensão $2$.
+\end{frame}
+
+\begin{frame}{}
+  Considere o sistema linear
+  \begin{equation}
+    x^{\prime}=Ax,\quad A\in\mathbb{R}^{n\times n}.
+  \end{equation}
+  Onde a solução do problema de valor inicial $x(0)=x_0$ é
+  \begin{align*}
+    x(t)=e^{tA}x_0,\quad\text{para todo }t\in\mathbb{R}.
+  \end{align*}
+  Alem disso, em geral, temos que existem $\{v_1,v_2,\cdots,v_n\}\subseteq\mathbb{R}^{n}$ vetores da base de Jordan para $A$ associados a seus autovalores.\\
+  \begin{block}{Definição}
+    Chamamos $E^s$ ao \textbf{espaço estável} dado por
+    \begin{align*}
+      E^s=span\left\{ v_i: Re\lambda_i<0 \right\}.
+    \end{align*}
+    Similarmente, definimos $E^u$ como o \textbf{espaço instável} dado por
+    \begin{align*}
+      E^{u}=span\left\{ v_i: Re\lambda_i>0 \right\}.
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Proposição}
+    Seja $A$ hiperbólica, então
+    \begin{align*}
+      \mathbb{R}^{n}=E^{s}\oplus E^u. 
+    \end{align*}
+  \end{block}
+  Imagen
+\end{frame}
+
+\begin{frame}{}
+  O quê significa isto?\\
+  Se $x_0\in E^s$, então $e^{tA}x_0\to 0$ quando $t\to +\infty$.\\
+  Se $x_0\in E^u$, então $e^{tA}x_0\to 0$ quando $t\to -\infty$.\\
+  Alem disso, definindo $\alpha_s=\min\left\{ |Re\lambda|:Re\lambda<0 \right\}$ temos que para cada $x\in E^s$ se satisfaz que
+  \begin{align*}
+    \norm{e^{tA}x}\leq ce^{-\alpha_st}\norm{x},\quad t\geq 0.
+  \end{align*}
+  Similarmente, se $\alpha_u=\min\left\{ Re\lambda:Re\lambda>0 \right\}$, então para $y\in E^{u}$ temos que
+  \begin{align*}
+    \norm{e^{tA}y}\leq ce^{\alpha_ut}\norm{y},\quad t\geq 0.
+  \end{align*}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{}
+    Isto deixa uma nova pergunta.\\
+    Se nos modificamos $Ax$ com um termo não linear pequeno,
+    \begin{align*}
+      x^{\prime}=Ax+r(x),\quad r(x)=O(\norm{x}),
+    \end{align*}
+    a estrutura de expansão e contração ainda permanece?\\
+  \end{block}
+\end{frame}

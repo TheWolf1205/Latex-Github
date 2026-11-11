@@ -1,6 +1,63 @@
-\begin{homeworkProblem}[Seção X]
-  Pregunta
+\begin{homeworkProblem}[3]
+  Dado o conjunto de Cantor $\cali{C}$, defina $f:\cali{C}\to[0,1]$ por
+  \begin{align*}
+    x=\sum_{n=1}^{\infty}\frac{d_n}{3^n},\quad d_n\in\{0,2\}\text{ para todo }n\in\mathbb{Z}^{+},
+  \end{align*}
+  então
+  \begin{align*}
+    f(x)=\sum_{n=1}^{\infty}\frac{d_n/2}{2^n}.
+  \end{align*}
+  \begin{enumerate}[a)]
+    \item Verifique que $f$ está bem definida é sobrejetiva.
+    \item Mostre que $f$ é contínua em $\cali{C}$ e obtenha uma extensão de $f$ contínua e não decrescente $\tilde{f}:[0,1]\to[0,1]$ ($\tilde{f}$ é chamada função de Cantor-Lebesgue.) 
+  \end{enumerate}
   \begin{solution}
-    XXX  
+  \begin{enumerate}[a)]
+    \item Note que, dado $x\in \cali{C}$, em geral temos que $\frac{d_n}{2}\leq 1$ para todo $n\in\mathbb{Z}^{+}$, pelo que temos que 
+      \begin{align*}
+        f(x)=\sum_{n=1}^{\infty}\frac{d_n/2}{2^n}\leq \sum_{n=1}^{\infty}\frac{1}{2^n}\leq 1,\quad\text{para todo }x\in \cali{C}.
+      \end{align*}
+      Daí que $f$ esteja bem definida.\\
+      Agora, note que dado $y\in [0,1]$, temos que existem constantes $\{a_n\}_{n\in\mathbb{Z}^{+}}$ tais que $a_n\in\{0,1\}$ para todo $n\in\mathbb{Z}^{+}$ que satisfazem
+      \begin{align*}
+        y=\sum_{n=1}^{\infty}\frac{a_n}{2^n}.
+      \end{align*}
+      Seja $x$ dado por 
+      \begin{align*}
+        x=\sum_{n=1}^{\infty}\frac{2a_n}{3^{n}}.
+      \end{align*}
+      Note que como $a_n\in\{0,1\}$ para todo $n\in\mathbb{Z}^{+}$, temos que $2a_n\in\{0,2\}$ para todo $n\in\mathbb{Z}^{+}$, pelo que usando o exercício $2$, temos que $x\in\cali{C}$. Daí, nos podemos garantir que
+      \begin{align*}
+        f(x)=\sum_{n=1}^{\infty}\frac{2a_n/2}{2^n}=\sum_{n=1}^{\infty}\frac{a_n}{2^n}=y.
+      \end{align*}
+      Pelo que nos temos que $f$ é sobrejetiva.
+    \item Dado $\epsilon>0$, seja $N\in\mathbb{Z}^{+}$ tal que $\frac{1}{2^N}<\epsilon$ e $\delta=\frac{1}{3^N}$. Note que se tomamos $x,y\in\cali{C}$ tais que $|x-y|<\delta$, então dadas as representações
+      \begin{align*}
+        x=\sum_{n=1}^{\infty}\frac{a_n}{3^{n}},\quad y=\sum_{n=1}^{\infty}\frac{b_n}{3^n}.
+      \end{align*}
+      Temos que $a_j=b_j$ para todo $j\in\{1,\cdots, N\}$, do contrário, se existe $j\in\{1,\cdots, N\}$ tal que $a_j\neq b_j$, então
+      \begin{align*}
+        |x-y|\geq \frac{|a_j-b_j|}{3^j}=\frac{2}{3^{j}}\geq\frac{1}{3^N}=\delta.
+      \end{align*}
+      O que é uma contradição.\\
+      Logo, temos que
+      \begin{align*}
+        |f(x)-f(y)|=\left| \sum_{n=1}^{\infty}\frac{a_n/2}{2^n}-\sum_{n=1}^{\infty}\frac{b_n/2}{2^n} \right|\leq&\sum_{n=N+1}^{\infty}\frac{|a_n-b_n|/2}{2^n}\leq \sum_{n=N+1}^{\infty}\frac{1}{2^n}\leq \frac{1}{2^N}<\epsilon.
+      \end{align*}
+      Pelo que podemos afirmar que $f$ é contínua.\\
+      Agora, para construir a extensão, note que como $\cali{C}$ é fechado, temos que $[0,1]\setminus \cali{C}$ é aberto e, além disso, se pode escrever o seguinte
+      \begin{align*}
+        [0,1]\setminus \cali{C}=\bigcup_{n=1}^{\infty}I_n.       
+      \end{align*}
+      Onde, sem perdida de generalidade, podemos supor que cada $I_n$ é um intervalo disjunto dois a dois. Pois, suponha que $I_1=\left( \frac{1}{3},\frac{2}{3} \right)$ e que, por exemplo $I_2=\left( \frac{1}{9},\frac{2}{9} \right)$ (os intervalos tirados em cada iteração da construção do conjunto de Cantor).\\
+      Sendo assim, vamos ver que se $I_j=(a_j,b_j)$, então como $a_j,b_j\in\cali{C}$, podemos afirmar que $f(a_j)=f(b_j)$, pois temos que para todo $x\in I_j$ se cumpre que $x\notin\cali{C}$ e como $f$ é contínua, então $f(a_j)=f(b_j)$. Portanto, podemos definir $\tilde{f}:[0,1]\to[0,1]$ dada por
+      \begin{align*}
+        \tilde{f}(x)=\begin{cases}
+          f(x), &\text{ se } x\in\cali{C} \text{,} \\
+          f(a_j), &\text{ se } x\in I_j.
+        \end{cases}
+      \end{align*}
+      Logo como $\tilde{f}$ é constante em cada $I_j$ e $f$ é não crescente e contínua, temos que $\tilde{f}$ é não decrescente e contínua. 
+  \end{enumerate} 
   \end{solution}
 \end{homeworkProblem}

@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+% Pacotes matemáticos
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+% Ambientes de teorema
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposição}
+\newtheorem{corollary}[theorem]{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definição}
+\newtheorem{example}[theorem]{Exemplo}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Observação}
+\title{Completude de $S_n$}
+\author{Gustavo Reis de Araújo Pinheiro\\Andrés David Cadena Simons\\
+Jean da Cruz Oliveira\\
+\large Universidade Federal de Minais Gerais}
+
+\date{Junho 2026}
+
+\begin{document}
+
+\maketitle
+    Grupos completos ocupam um lugar de destaque na teoria dos grupos, pois coincidem com o seu próprio grupo de automorfismos. Nesta palestra estudaremos a completude dos grupos de permutação, demonstrando que $S_n$ é completo para $n\neq 6$. Para isso, apresentaremos um lema técnico sobre os automorfismos de $S_n$ e analisaremos como esse resultado se relaciona com o problema da torre de automorfismos. Por fim, discutiremos o caráter excepcional de $S_6$, cuja estrutura de automorfismos difere daquela dos demais grupos de permutação.
+\section{Motivação: O problema da torre dos automorfismos.}
+Dado um grupo $G$, pelo teorema do isomorfismo de grupos; 
+  \begin{align*}
+      G/Z(G)\cong Inn(G) \lhd Aut(G).
+    \end{align*}
+    \begin{lemma}
+         Dado $G$ grupo, temos que se $Z(G)=\{1\}$, então $Z(Aut(G))=\{1\}$.
+    \end{lemma}
+   Assim, seja $G$ grupo com $Z(G)=\{1\}$, denotando $G_0=G$. Pelo lema anterior temos que $G_0\lhd Aut(G_0)$. Depois, denotando $G_1=Aut(G_0)$, temos que como $Z(G_1)=\{1\}$, então $G_0\lhd G_1\lhd Aut(G_1)$. Assim, raciocinando de maneira indutiva temos
+    \begin{align*}
+      G_0\lhd \underbrace{G_1}_{Aut(G_0)}\lhd \underbrace{G_2}_{Aut(G_1)}\lhd\underbrace{G_3}_{Aut(G_2)}\lhd\cdots\lhd G_{\alpha}\lhd G_{\alpha+1}\lhd\cdots
+    \end{align*}
+    com $\alpha$ ordinal.  Esta cadeia ascendente é chamada a \textbf{torre de automorfismos}.
+
+    Pelo Teorema de Wielandt, a torre de automorfismos de $G$ estabiliza num número finito de passos. 
+
+    \begin{definition}
+        Um grupo $G$ é dito \textbf{completo} quando $Z(G) = 1$ e $Aut(G) = Inn(G)$
+    \end{definition}
+Note que $G_{N}=G_{N+1}$ é o mesmo que dizer que $Inn(G_N)=Aut(G_{N})$, pelo que podemos assegurar que a cadeia estabiliza num grupo \textbf{completo}.
+
+\section{Completude de $S_n$}
+\begin{lemma}
+      Sejam $n\neq 6$ e $\tau \in S_n$ um elemento de ordem $2$ que é produto de $k$ transposições disjuntas. Então:
+
+    \begin{enumerate}
+        \item O tamanho da classe de conjugação de $\tau$ é
+        $$\frac{n!}{2^k(n-2k)!k!}$$
+
+        \item Se $k>1$ então $\vert Cl(\tau)\vert \neq \vert Cl(\sigma)\vert$, para qualquer transposição $\sigma \in S_n$.
+\end{enumerate}
+\end{lemma}
+   
+\begin{proposition}
+     Para $n\geq 3,$ temos que $Z(S_n)=\{1\}.$
+\end{proposition}
+
+\begin{theorem}
+        Se $n \neq 6$, todo automorfismo de $S_n$ é interno.
+\end{theorem}
+\section{$S_6$ não é completo}
+\begin{definition}
+  Dado um conjunto $X$, dizemos que um subgrupo $S$ de $Sim(X)$ é um \textbf{subgrupo transitivo} se dados $x,y\in X$, temos que existe $\sigma\in S$ tal que $\sigma(x)=y$.     
+\end{definition}
+\begin{lemma}[]
+  Seja $G$ um grupo e $H\leq G$. Definamos $X=\{xH:x\in G\}$ (o conjunto das classes laterais a esquerda de $H$) e $\varphi$ da seguinte maneira
+  \begin{align*}
+    \varphi:G&\to Sim(X),\\
+            g&\to \varphi_g:X\to X,\\
+  \phantom{g}&\phantom{\to \varphi_g:}xH\to gxH.
+  \end{align*}
+  Então $\Img \varphi$ é um subgrupo transitivo de $Sim(X)$.
+\end{lemma}
+\begin{lemma}
+      Existe um subgrupo transitivo $K$ de $S_6$ com ordem $120$ que não contém transposições. 
+\end{lemma}
+\begin{theorem}
+       Existe um automorfismo de $S_6$ que não é interno.     
+\end{theorem}
+
+\end{document}
