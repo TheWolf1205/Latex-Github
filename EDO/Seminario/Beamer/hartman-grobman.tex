@@ -90,3 +90,69 @@
     Pelo que temos que $\tilde{r}$ é Lipschitz com $Lip(\tilde{r})<\tilde{\epsilon}$. 
   \end{block}
 \end{frame}
+
+\begin{frame}{}
+  \begin{block}{}
+    Defina $g(x)=Ax+\tilde{r}(x)$ com $x\in\mathbb{R}^{n}$, logo como $\tilde{r}$ é Lipschitz temos que $g$ é Lipschitz. Portanto o problema
+    \begin{align*}
+      \begin{cases}
+        x^{\prime}=g(x) \text{,} \\
+        x(0)=x_0.
+      \end{cases}
+    \end{align*}
+    Tem solução global. Segue-se que, definimos $g^{t}$ ao fluxo de $x^{\prime}=g(x)$.\\
+  \end{block}
+  \begin{block}{Corolario 9.11}
+    Existem $C>0$ e $M>0$ dependentes só de $\norm{A}$, tais que $g^{t}-e^{tA}$ é $C\delta$-Lipschitz e se satisfaz que
+    \begin{align*}
+      \sup_{x\in\mathbb{R}^{n}}\left| g^{t}(x)-e^{tA}x \right|\leq M\delta,\quad\text{para todo }t\in[0\leq 1].
+    \end{align*}
+  \end{block} 
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{}
+    Escolhendo $\epsilon>0$ tal que exista $\delta>0$ que satisfaz
+    \begin{align*}
+      e^{2\norm{A}+1}\delta<\epsilon,
+    \end{align*}
+    e usando que $f(x)=g(x)$ numa vizinhança de $0$ e que $g(x)=Ax$ fora de uma vizinhança de $0$, usando o Corolario 9.11 temos que, escolhendo $\delta>0$ suficientemente pequeno temos que
+    \begin{align*}
+      Lip(g^{1}-e^{A})\leq C\delta<\epsilon.
+    \end{align*}
+    Assim, definindo $\psi_1=g^1-e^{A}$ temos que $\psi_1$ é Lipschitz.\\
+    Seja $\phi=0$ e $\psi=\psi_1$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Teorema 9.13}
+    Dado um isomorfismo hiperbólico linear $e^{A}:E\to E$, temos que existe um $\epsilon>0$ tal que para toda $\epsilon$-Lipschitz $\phi:E\to E$ e $\psi:E\to E$, existe uma única função $h:E\to E$ tal que
+    \begin{enumerate}
+      \item $h(e^{A}+\psi)=h(g^1(x))=e^Ah(x)$.
+      \item $\sup\left\{ \norm{h(x)-x}:x\in\mathbb{R}^{n}\right\}=N<+\infty$.
+    \end{enumerate}
+  \end{block}
+  \begin{block}{}
+    Sendo assim, definimos $H:\mathbb{R}^{n}\to\mathbb{R}^{n}$ dado por
+    \begin{align*}
+      H(x)=\int_{0}^{1}e^{-sA}h(g^s(x))\,ds
+    \end{align*}
+    \textbf{Affirmação:} $e^{tA}H(x)=H(g^{t}(x))$.
+    \begin{align*}
+      e^{-tA}H(g^{t}(x))=\int_{0}^{1}e^{-(s+t)A}h(g^{s+t}(x))\,ds=&\int_{t}^{t+1}e^{-sA}h(g^{s}(x))\,ds\\
+      =&H(x).
+    \end{align*}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{}
+    Logo, fazendo ums cálculos, temos que
+    \begin{align*}
+      \sup\left\{ H(x)-x:x\in\mathbb{R}^{n} \right\}\leq e^{\norm{A}}(N+M)<+\infty.
+    \end{align*}
+    Logo, pela unicidade do Teorema 9.13, tems que $H=h$.\\
+    Por último, como $g(x)=f(x)$ numa vizinhança $V$ de $0$, temos que $h\big|V$ é uma conjugação topológica local dos sistemas $x^{\prime}=f(x)$ e $y^{\prime}=Ay$ com $A=Df(0)$. 
+  \end{block} 
+\end{frame}

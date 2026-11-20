@@ -7,8 +7,9 @@
       \item $h^{-1}$ é contínua. 
     \end{enumerate}
   \end{block}
-  Exemplo: Seja $h:\mathbb{R}\to\mathbb{R}$ dada por $h(x)=\sqrt[3]{x}$.\\
-  Imagem
+  \begin{center}
+    \includegraphics[scale=0.4]{figuras/cubica.png}
+  \end{center} 
 \end{frame}
 
 \begin{frame}{}
@@ -25,8 +26,33 @@
     \begin{align*}
       h(\phi_t(x))=\varphi_t(h(x)),\quad\text{para todo }t\in\mathbb{R}.
     \end{align*}
-    Grafo Algebristas :p.
   \end{block}
+  \begin{center}
+\begin{tikzpicture}[
+  scale=0.7,
+  transform shape,
+  >=stealth,
+  node distance=3.5cm,
+  every node/.style={font=\large}
+  ]
+
+% Nodos
+\node (x) {$x$};
+\node (phix) [right of=x] {$\phi_t(x)$};
+
+\node (hx) [below of=x] {$h(x)$};
+\node (varphi) [right of=hx] {$\varphi_t(h(x))$};
+
+% Flechas superiores e inferiores
+\draw[<->, thick] (x) -- node[above] {$\phi_t$} (phix);
+\draw[<->, thick] (hx) -- node[below] {$\varphi_t$} (varphi);
+
+% Flechas verticales
+\draw[<->, thick] (x) -- node[left] {$h$} (hx);
+\draw[<->, thick] (phix) -- node[right] {$h$} (varphi);
+
+\end{tikzpicture}
+  \end{center}
 \end{frame}
 
 \begin{frame}{}
